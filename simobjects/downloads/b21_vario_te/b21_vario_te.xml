@@ -1,0 +1,94 @@
+<Gauge Name="TE Vario 10 kts" Version="1.0">
+   <Image Name="b21_vario_te_k.bmp" ImageSizes="315,315,0,0"/>
+   <Element>
+      <Select>
+        <Value>(P:ABSOLUTE TIME, seconds) (&gt;L:B21_TimeNow, seconds) 
+               (L:B21_TimeNow, seconds) (L:B21_TimePrev, seconds) - (&gt;L:B21_TimeDiff, seconds) 
+               (L:B21_TimeNow, seconds) (&gt;L:B21_TimePrev, seconds)
+               (A:AIRSPEED TRUE, meters per second) (&gt;L:B21_AirspeedNow, meters per second)
+               (L:B21_AirspeedNow, meters per second) (L:B21_AirspeedNow, meters per second) * (&gt;L:B21_AirspeedNow2, meters per second)
+               (L:B21_AirspeedPrev, meters per second) (L:B21_AirspeedPrev, meters per second) * (&gt;L:B21_AirspeedPrev2, meters per second)
+               (L:B21_AirspeedNow2, meters per second) (L:B21_AirspeedPrev2, meters per second) - (&gt;L:B21_AirspeedDiff2, meters per second)
+               (L:B21_AirspeedDiff2, meters per second) (L:B21_TimeDiff, seconds) / 19.62 / (A:VERTICAL SPEED, meters per second) + (&gt;L:B21_TEvario, meters per second)
+               (L:B21_AirspeedNow, meters per second) (&gt;L:B21_AirspeedPrev, meters per second)
+        </Value>
+      </Select>
+   </Element>
+   <Element>
+      <Select>
+         <Value>(P:Units of measure, enum) 2 == </Value>
+         <Case Value="0">
+            <Image Name="b21_vario_te_k.bmp"/>
+         </Case>
+         <Case Value="1">
+            <Image Name="b21_vario_te.bmp"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="157" Y="157"/>
+      <Image Name="b21_vario_te_ring.bmp" PointsTo="North" ImageSizes="315,315,0,0">
+         <Axis X="157" Y="157"/>
+      </Image>
+      <Rotate>
+         <Value Minimum="0" Maximum="3">(A:Autopilot mach hold var, mach) 2- </Value>
+         <Nonlinearity>
+            <Item Value="0" X="2" Y="157"/>
+            <Item Value="0.5" X="315" Y="157"/>
+            <Item Value="1" X="2" Y="157"/>
+         </Nonlinearity>
+         <Delay DegreesPerSecond="30"/>
+      </Rotate>
+   </Element>
+   <Element>
+      <Position X="157" Y="157"/>
+      <Image Name="b21_vario_te_needle.bmp" ImageSizes="130,33,0,0">
+         <Axis X="16" Y="16" PointsTo="East"/>
+      </Image>
+      <Rotate>
+         <Value Minimum="-5" Maximum="5">(A:Vertical speed,meters per second)</Value>
+         <Nonlinearity>
+            <Item Value="-5" X="246" Y="236"/>
+            <Item Value="0" X="42" Y="154"/>
+            <Item Value="5" X="242" Y="76"/>
+         </Nonlinearity>
+         <Delay DegreesPerSecond="20"/>
+         <Failures>
+            <GAUGE_VERTICAL_SPEED Action="Freeze"/>
+            <SYSTEM_PITOT_STATIC Action="0"/>
+         </Failures>
+      </Rotate>
+   </Element>
+   <Element>
+      <Position X="157" Y="157"/>
+      <Image Name="b21_vario_te_needle_te.bmp" ImageSizes="130,33,0,0">
+         <Axis X="16" Y="16" PointsTo="East"/>
+      </Image>
+      <Rotate>
+         <Value Minimum="-5" Maximum="5">(L:B21_TEvario, meters per second)</Value>
+         <Nonlinearity>
+            <Item Value="-5" X="246" Y="236"/>
+            <Item Value="0" X="42" Y="154"/>
+            <Item Value="5" X="242" Y="76"/>
+         </Nonlinearity>
+         <Delay DegreesPerSecond="40"/>
+         <Failures>
+            <GAUGE_VERTICAL_SPEED Action="Freeze"/>
+            <SYSTEM_PITOT_STATIC Action="0"/>
+         </Failures>
+      </Rotate>
+   </Element>
+   <Mouse>
+      <Tooltip ID="TOOLTIPTEXT_VSI_FEET_PER_MIN" MetricID="TOOLTIPTEXT_VSI_METERS_PER_SEC"/>
+   </Mouse>
+   <Mouse>
+      <Area Left="5" Width="45" Top="75" Height="150">
+         <Click Event="AP_MACH_VAR_DEC" Repeat="Yes"/>
+         <Cursor Type="DownArrow"/>
+      </Area>
+      <Area Left="250" Width="45" Top="75" Height="150">
+         <Click Event="AP_MACH_VAR_INC" Repeat="Yes"/>
+         <Cursor Type="UpArrow"/>
+      </Area>
+   </Mouse>
+</Gauge>

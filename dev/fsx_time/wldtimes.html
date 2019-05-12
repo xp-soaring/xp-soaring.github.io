@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+
+<title>FSX Soaring Clock</title>
+
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+<meta name="author" content="Sandeep Gangadharan, SivamDesign.com" />
+
+<script language="javascript" type="text/javascript" src="timeFunctions.js">
+  <!-- Copyright 2001, Sandeep Gangadharan -->
+  <!-- For more free scripts go to http://www.sivamdesign.com/scripts/ -->
+</script>
+<script language="javascript" type="text/javascript" src="theData.js"></script>
+
+<style type="text/css">
+ body {font-family: helvetica}
+ td.styles {font-family:"ms sans serif",arial,helvetica,sans-serif; font-size:10px; color:black}
+ span.title {font-family:"ms sans serif",arial,helvetica,sans-serif; font-size:10px; color:white}
+ input.smallButton {background-color:#cccccc; font-size:10px}
+ select.theSelect {background-color:#000000; font-family:"ms sans serif",verdana,arial,helvetica,sans-serif; font-size:10px; color:#00ff00}
+ input.display {background-color:#000000; font-family:"ms sans serif",arial,helvetica,sans-serif; font-size:20px; color:#00ff00; text-align:center}
+ input.localTime {background-color:#606060; font-family:"ms sans serif",arial,helvetica,sans-serif; font-size:10px; color:#00ff00; text-align:center}
+ span.local {font-family:"ms sans serif",arial,helvetica,sans-serif; font-size:10px; color:#606060}
+ .copy {font-family:verdana,arial,helvetica,sans-serif; font-size:11px; line-height:16px}
+</style>
+
+</head>
+
+<body onload="theOnLoadBody();formatTime();">
+
+<h1>FSX Soaring Clock</h1>
+
+<form name="theForm" action="">
+
+<table>
+<tr>
+  <td>
+       Africa
+       <select name="con_1" onchange="citySelect(this, Africa_Cities_List, 'africa');" onfocus="citySelect(this, Africa_Cities_List, 'africa');" class="theSelect">
+        <option value="&lt; Choose City &gt;">&lt; Choose City &gt;</option>
+        <script type="text/javascript">writeItAll(Africa_Cities_List)</script>
+       </select>
+  </td>
+  <td>
+       <input type="text" size="20" value="00:00:00" class="display" id="africa"/><br/>
+  </td>     
+</tr>
+<tr>
+  <td>
+       The Americas
+       <select name="con_2" onchange="citySelect(this, Americas_Cities_List, 'americas');" onfocus="citySelect(this, Americas_Cities_List, 'americas');" class="theSelect">
+        <option value="&lt; Choose City &gt;">&lt; Choose City &gt;</option>
+        <script language="javascript" type="text/javascript">writeItAll(Americas_Cities_List)</script>
+       </select>
+  </td>     
+  <td>
+       <input type="text" size="20" value="00:00:00" class="display" id='americas'/><br/>
+  </td>     
+</tr>
+<tr>
+  <td>
+       Asia
+       <select name="con_3" onchange="citySelect(this, Asia_Cities_List, 'asia');" onfocus="citySelect(this, Asia_Cities_List, 'asia');" class="theSelect">
+        <option value="&lt; Choose City &gt;">&lt; Choose City &gt;</option>
+        <script language="javascript" type="text/javascript">writeItAll(Asia_Cities_List)</script>
+       </select>
+  </td>     
+  <td>
+      <input type="text" size="20" value="00:00:00" class="display" id='asia'/><br/>
+  </td>     
+</tr>
+<tr>
+  <td>
+       Australasia
+       <select name="con_4" onchange="citySelect(this, Australasia_Cities_List, 'australasia');" onfocus="citySelect(this, Australasia_Cities_List, 'australasia');" class="theSelect">
+        <option value="&lt; Choose City &gt;">&lt; Choose City &gt;</option>
+        <script language="javascript" type="text/javascript">writeItAll(Australasia_Cities_List)</script>
+       </select>
+  </td>     
+  <td>
+      <input type="text" size="20" value="00:00:00" class="display" id='australasia'/><br/>
+  </td>     
+</tr>
+<tr>
+  <td>
+       Europe
+       <select name="con_5" onchange="citySelect(this, Europe_Cities_List, 'europe');" onfocus="citySelect(this, Europe_Cities_List, 'europe');" class="theSelect">
+        <option value="&lt; Choose City &gt;">&lt; Choose City &gt;</option>
+        <script language="javascript" type="text/javascript">writeItAll(Europe_Cities_List)</script>
+       </select>
+  </td>     
+  <td>
+      <input type="text" size="20" value="00:00:00" class="display" id='europe'/><br/>
+  </td>     
+</tr>
+<tr>
+  <td>
+       <input type="text" name="theLocal" size="13" class="localTime" />
+  </td>     
+  <td>
+       <label for="a3"><input type="checkbox" id="a3" name="notoDST" />No DST</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </td>
+</tr>
+</table>
+
+</form>
+
+</div>
+
+
+</body>
+</html>

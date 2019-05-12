@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<SimBase.Document Type="AceXML" version="1,0">
+    <Descr>AceXML Document</Descr>
+    <FlightPlan.FlightPlan>
+        <Title>LOWZ to LOWZ</Title>
+        <FPType>VFR</FPType>
+        <CruisingAlt>7500</CruisingAlt>
+        <DepartureID>LOWZ</DepartureID>
+        <DepartureLLA>N47° 17' 28.59",E12° 47' 12.55",+002470.00</DepartureLLA>
+        <DestinationID>LOWZ</DestinationID>
+        <DestinationLLA>N47° 17' 28.59",E12° 47' 12.55",+002470.00</DestinationLLA>
+        <Descr>LOWZ, LOWZ</Descr>
+        <DeparturePosition>8</DeparturePosition>
+        <DepartureName>Zell Am See</DepartureName>
+        <DestinationName>Zell Am See</DestinationName>
+        <AppVersion>
+            <AppVersionMajor>10</AppVersionMajor>
+            <AppVersionBuild>60905</AppVersionBuild>
+        </AppVersion>
+        <ATCWaypoint id="LOWZ">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N47° 17' 28.59",E12° 47' 12.55",+002470.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>LOWZ</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="START">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N47° 17' 28.59",E12° 47' 12.55",+002470.00</WorldPosition>
+            <Descr>START</Descr>
+        </ATCWaypoint>
+        <ATCWaypoint id="WP1">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N47° 7' 25.17",E13° 8' 6.37",+007500.00</WorldPosition>
+            <Descr>TP1</Descr>
+        </ATCWaypoint>
+        <ATCWaypoint id="WP2">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N47° 27' 59.66",E13° 11' 57.15",+007500.00</WorldPosition>
+            <Descr>TP2</Descr>
+        </ATCWaypoint>
+        <ATCWaypoint id="WP3">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N47° 21' 28.40",E12° 18' 28.39",+007500.00</WorldPosition>
+            <Descr>TP3</Descr>
+        </ATCWaypoint>
+        <ATCWaypoint id="LOWZ">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N47° 17' 28.59",E12° 47' 12.55",+002470.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>LOWZ</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+    </FlightPlan.FlightPlan>
+</SimBase.Document>

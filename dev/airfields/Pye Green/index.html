@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>Pye Green Tower - FSX</title>
+<script type="text/javascript">
+if (document.images)
+{
+    image1 = new Image;
+    image2 = new Image;
+    image1.src = "pye green landclass far.jpg";
+    image2.src = "pye green default far.jpg";
+}
+
+function chgImg(name, image)
+{
+    if (document.images)
+    {
+        document[name].src = eval(image+".src");
+    }
+}
+</script>
+</head>
+<body>
+<font face="helvetica">
+<h2>Pye Green Tower for Flight Simulator (52 deg 43.7099 N, 2 deg 1.1868 W)</h2>
+
+<p>Pye Green Tower scenery for FSX can be downloaded here: <a href="Pye Green Tower v1_2.zip">Pye Green Tower v1_2.zip</a>
+</p>
+<p><b>To install:</b> drag the "Pye Green Tower" folder into your "FSXBASE\Addon Scenery" folder, and then add the scenery to your FSX scenery
+library via "SETTINGS" - "Scenery Library..." - "Add Area..."
+</p>
+
+<h3>A real image of Pye Green Tower</h3>
+
+<img src="pye green real.jpg"/>
+
+<h3>Here is Pye Green Tower seen from above in FSX</h3>
+
+<img src="pye green fsx.jpg"/>
+
+<p>Pye Green Tower coordinates are 52 deg 43.7099 N, 2 deg 1.1868 W.
+</p>
+
+<h3>Move your mouse over the image below to see the change from the default landclass</h3>
+
+<a href="pye green landclass far.jpg" onMouseOver='chgImg("house", "image2")'
+onMouseOut='chgImg("house", "image1")'><img name="house"
+src="pye green landclass far.jpg" border="0" alt="Mouse over to see new landclass difference"></a>
+</body>
+</html>

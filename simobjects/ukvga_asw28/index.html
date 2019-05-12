@@ -1,0 +1,148 @@
+<html>
+<head>
+<title>FSX UKVGA ASW28</title>
+</head>
+<body background="../../images/clouds.jpg">
+<font face="Helvetica">
+<p><a href="../../index.html">Soaring with FSX</a>&nbsp;&gt;&gt;&nbsp;<a href="../index.html">SimObjects</a>&nbsp;&gt;&gt;&nbsp;UKVGA ASW28
+</p>
+<h1>FSX UKVGA ASW28</h1>
+
+<p>The UKVGA ASW28 updates the original model for FS2002 with FSX instruments and
+a more accurate flight model. <a href="../downloads/UKVGA_ASW28_1.3.zip">DOWNLOAD HERE</a>
+</p>
+
+<p>The update was created for the <a href="http://www.ukvga.org.uk/">UK Virtual Gliding Association</a> in support of their
+goal to produce a <a href="http://www.ukvga.org.uk/seighfordTask1.php">simple 50km triangle for early cross-country pilots</a>
+flyable in both FS2004 and FSX. For FSX I wanted to support the standard flightplan and IGC files from sim_logger, so
+I really didn't want to use a glider with the 'CAISET' dll instruments in FSX effectively dragging it back to FS98. Hence the
+update to the panel, replacing all the FS98 DLL instruments.
+</p>
+
+<img src="ASW28.jpg"/>
+<img src="asw28_panel.jpg"/>
+
+<h2>WATER BALLAST VALVE</h2>
+
+<p>The BLUE knob on the right is the 'Water Ballast Valve': UP = valve closed, DOWN=valve open. CLICK on the knob to toggle open/closed. The ASW28 loads into FSX fully ballasted with water. The small LCD display to the lower right of the ballast valve displays percentage of water ballast carried. Broadly, full water ballast increases the weight of the empty glider by 50%. Modern competition gliders carry jettisonable water ballast (in the wings and sometimes in the vertical stabilizer). The extra weight provided by the water ballast is advantageous if the lift is likely to be strong, and may also be used to adjust the glider's center of mass. Moving the center of mass  toward the rear by carrying water in the vertical stabilizer reduces the required down-force from the horizontal stabilizer and the resultant drag from that down-force. Although heavier gliders have a slight disadvantage when climbing in rising air, they achieve a higher speed at any given glide angle. This is an advantage in strong conditions when the gliders spend only little time climbing in thermals. The pilot can jettison the water ballast before it becomes a disadvantage in weaker thermal conditions. Another use of water ballast is to dampen air turbulence such as might be encountered during ridge soaring. To avoid undue stress on the airframe, gliders must jettison any water ballast before landing. (ref wikipedia) 
+</p>
+<img src="http://upload.wikimedia.org/wikipedia/en/9/9b/LS40075.jpg"/>
+
+<h2>TRIM KNOB</h2>
+<p>The GREEN knob on the left side of the panel is TRIM, i.e. the 'neutral' setting of the elevator. 'Trim forward' will bias the glider into more of a nose-down attitude and at a neutral stick position the glider will fly faster, and the reverse for 'trim back'. You adjust trim using the default keys in FSX, worth assigning to buttons on your joystick. In general you 'trim forward' while in cruise between thermals, and 'trim back' when you pull up and turn into a thermal. The idea is simply to have the glider settle into the appropriate default speed for the situation without you constantly pulling or pushing on the stick.
+</p>
+
+
+
+<h2>GPS-NAV GPS</h2>
+<p>The GPS at the top of the panel is as in the stock FSX DG808S except the 'distance to go' 
+reading has been increased in size. This GPS assumes a flightplan is loaded, otherwise 
+its readings are pointless. In the example screenshot the 'distance to go' is 13.5 
+nautical miles and the GPS is saying 'turn to starboard a bit to head to the next 
+waypoint'. See DG808S manual. The distance-to-go units (miles, km) depends on your 
+FSX setting.
+</p>
+
+<h2>Winter variometer - total energy</h2>
+<p>The Winter variometer main needle is displaying Total Energy compensated climb rate. 
+The small red needle is a small 'debug' installation - it shows what the FSX 'VARIOMETER 
+RATE' variable is reading. In default FSX, this red needle will display uncompensated 
+pure climb rate (i.e. FSX never implemented the intended TE reading). CumulusX will 
+force the FSX variable to total energy, and the little red needle will show that. 
+Don't worry about it unless you're an FSX developer and want the quick debug info...
+</p>
+
+<h2>Moving Map GPS</h2>
+
+<p>The 'Moving Map' GPS should be fairly obvious and has very limited function - all 
+you can do is zoom in/out using the +/- buttons. The map displays the flightplan and 
+actually I find it easier to navigate to the next waypoint by ensuring the flightplan 
+track drawn on this instrument is vertical than using the '>>' indications on the GPS 
+at the top of the panel.
+</p>
+
+<h2>LCD Variometer / Computer</h2>
+
+<p>The variometer with the LCD digital display is probably the most interesting... 
+</p>
+<p>
+The main needle displays NETTO climb rate (i.e. the vertical movement of the air outside 
+the glider). The top numeric display is the expected arrival height AGL at the next 
+waypoint in the flightplan. The middle numeric display (at 3-o-clock on the instrument) 
+is the mcready setting. The bottom numeric display is the climb average. Heights are in 
+feet, climb rates in knots, or meters, meters-pe-second depending on your FSX units 
+settings.
+</p>
+
+<h2>ARRIVAL HEIGHT INDICATION ON THE LCD VARIO</h2>
+<p>Here's where the flight computer begins to get fancy. The flight computer will attempt to calculate your likely arrival height at the next waypoint. The simulated reading in the FSX ASW28 computer vario is unusually sophisticated in that it gives you arrival height *AGL* (above ground, at the waypoint).
+</p>
+
+<p>As with the FSX GPS, this indication is meaningless unless you have a sensible flightplan loaded in FSX.
+</p>
+<p>The flight computer has to take into account a variety of factors to come up with a reasonable prediction of your 
+arrival height, assuming a straight glide to the waypoint. These include:
+</p>
+<ul>
+<li>Current altitude - obviously how high you are now will directly affect how high you will be at the waypoint.
+</li>
+<li>Glider performance (also called the glider polar) - this gives the glide ratio at various speeds, i.e. the slope you 
+  glide down in still air. Generally the faster you fly, the steeper you will come down.  At 56 knots the ASW28 
+  will have a glide ratio of 45:1, i.e. in still air after flying 45km the ASW28 will have descended 1km (1000m, 
+  approx 3300 feet). 'Glide ratio' is also referred to as the 'L/D' ratio (i.e. the ratio of Lift/Drag) because the
+  physics means that these things are always equal, and 56 knots is the 'Max L/D speed' of the ASW28. If you fly faster, 
+  the glider will come down faster but it is important to know the aircraft is increasingly *less* efficient at higher 
+  speeds so if you double the speed you *more* than double the sink, i.e. the glide ratio is lower at high speeds. The 
+  flight computer in the ASW28 is calibrated for full ballast (the dash-dot line below). I.e. if you dump the ballast 
+  then you should reduce speeds to achieve the arrival heights indicated on the instrument.
+  <br/>
+<img src="http://www.alexander-schleicher.de/service/polaren/28_polare.jpg"/>
+</li>
+<li>Distance to go - the further away the waypoint is, the lower you are going to be when you get there.
+</li>
+<li>Speed you are going to be flying - the faster you fly, the steeper you come down. You tell the flight computer how 
+fast you will be flying via the Mccready Setting via the rotating knob labelled "Mc" (click the top or bottom of the 
+knob to increase/decrease, or use scroll wheel on mouse). With a McCready setting of "0" you are telling the computer 
+you are expecting zero lift in the next thermal, i.e. the cruise speed you will be flying will be 'Max L/D' i.e. around 
+56 knots and simply stretching the flight as far as possible. A McCready setting of 3 knots (i.e. you're telling the 
+flight computer the next thermal will be 3 knots) means you are expecting to cruise at 80-90 knots. Of course you don't 
+really *know* what the next thermal strength is, so the McCready setting is based on your best judgement of conditions ahead.
+</li>
+<li>Wind - strength and bearing computed automatically by the flight computer, a headwind will make you come down more steeply (reduce your arrival height), a tailwind will extend your glide (increase your arrival height).
+</li>
+</ul>
+
+<p>You can view the same 'arrival height' reading either of two ways, which are actually synonymous:
+</p>
+<ul>
+<li>it is the predicted altitude AGL you will arrive at the waypoint
+</li>
+<li>it is your current height above the glideslope that would arrive at the destination at zero feet/meters.
+</li>
+</ul>
+
+<p>You can use either of these definitions, whichever you're comfortable with.
+</p>
+
+<p>For an explanation of Total Energy, Netto, Arrival Height, Mcready Setting see 
+wikipedia or I guess ask here at ukvga - these things aren't unique to these ASW28 
+instruments.
+</p>
+
+<p>The instruments are ok, probably an improvement on the CAISET, but by far the 
+main motivation was to remove the need to install the Windows 98 / FS98 DLL-based 
+CAISET instruments.
+</p>
+
+<h2>Credits</h2>
+
+<p>3D glider and cockpit model by Peter Franke, Kris Feldmann.</p>
+
+<p>FSX XML instruments by Ian Forster-Lewis.</p>
+
+<p>Aerodynamic flight model modified by Ian Forster-Lewis from SOAR DG808S created by
+Ian Forster-Lewis, Peter Luerkens, Bert de Bruin.</p>
+
+</font>
+</body>
+</html>

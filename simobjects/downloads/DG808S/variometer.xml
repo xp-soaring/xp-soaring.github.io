@@ -1,0 +1,117 @@
+
+<SimBase.Document Type="AceXML" version="1,0" id="variometer">
+    <Filename>variometer.xml</Filename>
+    <SimGauge.Gauge id="variometer" ArtDirectory="%INETROOT%\private\fs\art\objects\aircraft\DG808S\panel\">
+        <FloatPosition>0.000,0.000</FloatPosition>
+        <Size>90,90</Size>
+        <Image id="variometer_background.bmp" Name="variometer_background.bmp">
+            <Transparent>True</Transparent>
+        </Image>
+        <Element id="Element">
+            <FloatPosition>17.000,24.000</FloatPosition>
+            <Image id="variometer_label_altitude.bmp" Name="variometer_label_altitude.bmp">
+                <Transparent>True</Transparent>
+            </Image>
+        </Element>
+        <Element id="Element">
+            <FloatPosition>16.000,48.000</FloatPosition>
+            <Image id="variometer_label_averager.bmp" Name="variometer_label_averager.bmp">
+                <Transparent>True</Transparent>
+            </Image>
+        </Element>
+        <Element id="Element">
+            <FloatPosition>30.000,50.000</FloatPosition>
+            <Image id="variometer_label_average_increasing.bmp" Name="variometer_label_average_increasing.bmp">
+                <Transparent>True</Transparent>
+            </Image>
+        </Element>
+        <Element id="Element">
+            <FloatPosition>30.000,68.000</FloatPosition>
+            <Image id="variometer_label_average_decreasing.bmp" Name="variometer_label_average_decreasing.bmp">
+                <Transparent>True</Transparent>
+            </Image>
+        </Element>
+        <Element id="Element">
+            <FloatPosition>39.000,68.000</FloatPosition>
+            <Image id="variometer_label_push_speed_up.bmp" Name="variometer_label_push_speed_up.bmp">
+                <Transparent>True</Transparent>
+            </Image>
+        </Element>
+        <Element id="Element">
+            <FloatPosition>39.000,12.000</FloatPosition>
+            <Image id="variometer_label_pull_slow_down.bmp" Name="variometer_label_pull_slow_down.bmp">
+                <Transparent>True</Transparent>
+            </Image>
+        </Element>
+        <Element id="Element">
+            <FloatPosition>55.000,37.000</FloatPosition>
+            <Image id="variometer_label_circling_mode.bmp" Name="variometer_label_circling_mode.bmp">
+                <Transparent>True</Transparent>
+            </Image>
+        </Element>
+        <Element id="Element">
+            <FloatPosition>56.000,48.000</FloatPosition>
+            <Image id="variometer_label_ballast_quantity.bmp" Name="variometer_label_ballast_quantity.bmp">
+                <Transparent>True</Transparent>
+            </Image>
+        </Element>
+        <Element id="Element">
+            <FloatPosition>70.000,56.000</FloatPosition>
+            <Image id="variometer_label_percent_symbol.bmp" Name="variometer_label_percent_symbol.bmp">
+                <Transparent>True</Transparent>
+            </Image>
+        </Element>
+        <Element id="Element">
+            <FloatPosition>67.000,31.000</FloatPosition>
+            <Image id="variometer_label_feet.bmp" Name="variometer_label_feet.bmp">
+                <Transparent>True</Transparent>
+            </Image>
+        </Element>
+        <Element id="Element">
+            <FloatPosition>66.000,26.000</FloatPosition>
+            <Image id="variometer_label_metres.bmp" Name="variometer_label_metres.bmp">
+                <Transparent>True</Transparent>    
+            </Image>
+        </Element>
+        <Element id="Element">
+            <FloatPosition>45.000,44.333</FloatPosition>
+            <Image id="variometer_needle.bmp" Name="variometer_needle.bmp">
+                <Transparent>True</Transparent>
+                <Axis>43.000,8.333</Axis>
+            </Image>
+            <Rotation id="Rotation">
+                <PointsTo>WEST</PointsTo>
+                <NonlinearityTable id="NonlinearityTable">
+                    <NonlinearityEntry id="-10">
+                        <ExpressionResult>-10</ExpressionResult>
+                        <FloatPosition>79.000,45.000</FloatPosition>
+                    </NonlinearityEntry>
+                    <NonlinearityEntry id="0">
+                        <ExpressionResult>0</ExpressionResult>
+                        <FloatPosition>1.000,45.000</FloatPosition>
+                    </NonlinearityEntry>
+                    <NonlinearityEntry id="10">
+                        <ExpressionResult>10</ExpressionResult>
+                        <FloatPosition>79.000,45.000</FloatPosition>
+                    </NonlinearityEntry>                                                                                                  
+                </NonlinearityTable>
+                <Expression id="Expression">
+                    <Minimum>-10.000</Minimum>
+                    <Maximum>10.000</Maximum>
+                    <Script>(A:Ambient Wind Y, knots) 2 /</Script>
+                </Expression>
+                <Delay id="Delay">
+                    <DelayValue>180.000</DelayValue>
+                    <DelayUnits>DEGREES_PER_SECOND</DelayUnits>
+                </Delay>
+            </Rotation>
+        </Element>
+        <MouseArea id="MouseArea">
+            <FloatPosition>0.000,0.000</FloatPosition>
+            <Size>90,90</Size>
+            <Tooltip id="Tooltip">
+                <DefaultId>TOOLTIPTEXT_DG808S_VARIOMETER</DefaultId>
+            </Tooltip>
+        </MouseArea>
+    </SimGauge.Gauge>
+</SimBase.Document>

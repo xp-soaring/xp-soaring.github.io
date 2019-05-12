@@ -1,0 +1,143 @@
+<html>
+<head>
+<title>FSX development - creating radio dialog WAV files</title>
+</head>
+<body background="../images/clouds.jpg">
+<font face="Helvetica">
+<p>
+<a href="../index.html">Soaring with FSX</a>&nbsp;&gt;&gt;&nbsp;
+radio sounds
+</p>
+<h1>Creating radio dialog WAV files</h1>
+
+<p>There's a couple of basic techniques one using a mobile phone, the other using Audacity software.</p>
+
+<h2>Recording using your mobile phone</h2>
+
+<table>
+<tr>
+<td>
+<img src="radio_images/nokia.gif"/>
+</td>
+<td>
+<img src="radio_images/arrow-right.jpg"/>
+</td>
+<td>
+<img src="radio_images/headset.jpg"/>
+</td>
+</tr>
+</table>
+
+<p>Record a voice 'memo' on your mobile phone.</p>
+<p>Open 'Accessories/Entertainment/Sound Recorder' on your PC and play the mobile phone recording into
+your PC microphone.</p>
+<p>save the file <a href="#adpcm">following these instructions</a>
+</p>
+
+<h2>PC-based creation and editing using Audacity</h2>
+
+<p>Download the Audacity sound editor from here:<br/>
+<a href="http://audacity.sourceforge.net/">http://audacity.sourceforge.net/</a>
+</p>
+
+<p>Install and then open the application.  For FSX, set the 'Project rate' to 22050Hz.
+</p>
+<img src="radio_images/project_rate.jpg"/>
+
+<p>Record your sound.  After you've recorded it click the 'play' button to see how good you sound.
+If you can't work out which is the 'Play' button don't bother reading the rest of this tutorial.
+</p>
+<img src="radio_images/record.jpg"/>
+
+<p>Trim off the entry and exit quiet bits of your recording by dragging the 'I-beam' tool across the
+section of the audio you want to remove, and hitting the delete key.
+</p>
+<img src="radio_images/trim.jpg"/>
+
+<p><a href="radio_images/sound1.wav"><font color='green'><b>Here's a link to a sample 
+recording we'll modify.</b></font></a>
+</p>
+<hr/>
+<br/>
+<p>Type 'Control+A' to select the whole audio track (or drag the I-beam across it, or use the 
+'Edit..Select..All' menu).  We are going to use a couple of 'Effect's, and these only apply to the
+selected portion of the track.  If no region of the track is selected the whole 'Effect' menu is
+grayed-out which can be damn confusing.  We're going to amplify the track to the point at which it
+just starts clipping, so select the 'Amplify' effect.
+</p>
+<img src="radio_images/amplify.jpg"/>
+
+<p>Here's a part requiring a bit of finess... leave the 'Allow clipping' checkbox <b>unchecked</b>,
+slide the slider to the right until the 'OK' button <b>just grays-out</b>. The OK button has grayed-out
+because clipping has just occurred at the amplification you've selected.  Then <b>check</b> the
+'Allow clipping' checkbox, and the 'OK' button will magically re-appear (well, stop being grayed-out anyway).
+Click 'OK'.
+</p>
+<img src="radio_images/amplify_clipping.jpg"/>
+
+<p>If you look at your track now you should see it 'clipped' at some point.  It would be useful to check
+the full audio track is still 'selected' because we're going to apply another 'Effect'.  You can replay the
+track at any time (click the play button).  So far it should still sound clean but a bit louder than before.
+<img src="radio_images/amplified.jpg"/>
+
+<p><a href="radio_images/sound2.wav"><font color='green'><b>Now our sample sounds like this.</b></font></a>
+</p>
+<hr/>
+<br/>
+<p>Select the 'Equalization' effect.
+</p>
+<img src="radio_images/equalization_menu.jpg"/>
+
+<p>The exact settings needed will depend on your voice and the setup of your microphone.  These are a good
+guide but you can spend hours tweaking them about for ever diminishing returns and go back to the settings you
+first thought of.  The principle is simply to emulate a typical airband radio by cutting off the low and
+high frequencies, and boosting the bit you've got left (250Hz to 2000Hz in this example) so that it 'clips'
+fairly hard.
+<img src="radio_images/equalization.jpg"/>
+
+<p><a href="radio_images/sound3.wav"><font color='green'><b>Now our sample sounds like this.</b></font></a>
+</p>
+<hr/>
+<br/>
+<p>The hard work is now done.  Before you save the WAV file, change the sample format to 16 bit.  I think this
+saves space for FSX.  Maybe.
+</p>
+<img src="radio_images/sample_format.jpg"/>
+
+<p>Select 'File'... 'Export'... 'WAV' and you should see a file-save dialog you recognise.
+</p>
+<img src="radio_images/export_wav.jpg"/>
+<p>When your mission is completed, it is worth opening each of your sound files and then saving in Sound Recorder as
+described below.  This will reduce the file sizes by up to a factor of 10.
+</p>
+
+<hr/>
+<a name="adpcm"></a>
+<h2>Saving in the most compressed format compatible with FSX using Sound Recorder</h2>
+
+<p><i>Note:</i> Sound Recorder will not work on PC's with more than 2GB of memory.</p>
+
+<p>If your not in it already, the small Sound Recorder application can be found on the Start Programs menu
+under Accessories/Entertainment.</p>
+
+<p>Either open an existing WAV file using Sound Recorder, or click 'Record' to record a new WAV file.</p>
+
+<p>Click the File/Save As... menu option:</p>
+<img src="radio_images/sr_save_as.gif"/>
+
+<p><i>Before</i> you click the 'Save' button, click the 'Change...' button at the bottom of the dialog window
+and select Format: 'Microsoft ADPCM'. With a bit of luck the 'Attributes:' box will default to 8kHz, 4bit, mono, as in
+the image below, but if not just select that.</p>
+
+<img src="radio_images/sr_adpcm.gif"/>
+<p>Click 'OK' in the Sound Selection dialog (picture above), and then enter a filename and click 'Save' in the 
+'Save As...' dialog window.</p>
+
+<hr/>
+<p><small>Brought to you by <font color='green'>B21</font></small></p>
+
+<!-- end of body -->
+
+</font>
+</body>
+</html>

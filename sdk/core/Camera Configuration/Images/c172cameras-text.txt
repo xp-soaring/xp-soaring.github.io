@@ -1,0 +1,48 @@
+[CameraDefinition.004]
+Title = Rear Seat Right
+Guid = {195EAB58-9E4A-4E2A-A34C-A8D9D948F078}
+Origin = Virtual Cockpit
+MomentumEffect = Yes
+SnapPbhAdjust = Swivel
+SnapPbhReturn = False
+PanPbhAdjust = Swivel
+PanPbhReturn = False
+Track = None
+ShowAxis = YES
+AllowZoom = TRUE
+InitialZoom = 1.0
+SmoothZoomTime = 2.0
+ZoomPanScalar = 1.0
+ShowWeather = Yes
+XyzAdjust = TRUE
+ShowLensFlare=FALSE
+Category = Cockpit
+PitchPanRate=20
+HeadingPanRate=60
+InitialXyz=0.5, 0.0, -1.0
+InitialPbh=10, 0, 90
+
+[CameraDefinition.005]
+Title = Rear Seat Left
+Guid = {195EAB58-9E4A-5E2A-A34C-A8D9D948F078}
+Origin = Virtual Cockpit
+MomentumEffect = Yes
+SnapPbhAdjust = Swivel
+SnapPbhReturn = False
+PanPbhAdjust = Swivel
+PanPbhReturn = False
+Track = None
+ShowAxis = YES
+AllowZoom = TRUE
+InitialZoom = 1.0
+SmoothZoomTime = 2.0
+ZoomPanScalar = 1.0
+ShowWeather = Yes
+XyzAdjust = TRUE
+ShowLensFlare=FALSE
+Category = Cockpit
+PitchPanRate=20
+HeadingPanRate=60
+InitialXyz=0.0, 0.0, -1.0
+InitialPbh=10, 0, -90
+

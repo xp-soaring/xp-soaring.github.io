@@ -1,0 +1,105 @@
+<html>
+<head>
+<title>sim_probe: Simulation of ridge lift in Microsoft Flight Simulator X (FSX)</title>
+</head>
+<body background="../../images/clouds.jpg">
+<font face="Helvetica">
+<p>
+<a href="../../index.html">Soaring with FSX</a>&nbsp;&gt;&gt;&nbsp;
+sim_probe
+</p>
+
+<h1>sim_probe: Simulation of ridge lift in Microsoft Flight Simulator X (FSX)</h1>
+
+<h2>News</h2>
+
+<ul>
+<li><p><font color=red><b>Mid 2009: dynamically created ridgelift is now a built-in feature of
+<a href="http://luerkens.homepage.t-online.de/peter/">CumulusX!</a>
+ from Peter Luerkens, and my sim_probe module is now redundant.</b></font><br/>
+   If you have sim_probe installed, you should upgrade to the latest version of
+   <a href="http://luerkens.homepage.t-online.de/peter/">CumulusX!</a> and uninstall
+   sim_probe. The <i>logging</i> capability of sim_probe is now available in a new
+   freeware module called son-of-sim_probe... ok it's really called <a href="../sim_logger">sim_logger</a>.
+   </p>
+<li><p><b>June 2008:  sim-probe 3.00 announced. Now automatically saves IGC log files</b><br/>
+   sim_probe has been extended to have an automatic IGC file logging capability. This
+   creates a lat/long/time trace of every flight in the standard IGC format, that can be
+   viewed by a variety of freeware and commercial IGC file analysis programs. See the
+   README for sim-probe version 3.00 for more details.
+   </p>
+</li>
+</ul>
+
+<h2>Ridge lift in FSX - The basic idea</h2>
+
+<p>Using the FSX programmable API called simconnect, <i>sim_probe</i> can sample the terrain
+around the users aircraft and with the prevailing wind calculate the appropriate lift factor
+to apply to the user aircraft.
+</p>
+
+<p>The end result is continuously variable highly detailed lift and sink affecting the user aircraft
+increasing the reality of the user experience.  For ridge-soaring flights in gliders the sense of 
+the lift within the flight simulator is almost tactile.
+</p>
+
+<img style="display: block; margin-left: auto; margin-right: auto" src="images/intro.jpg"/>
+
+<h2>Technical paper</h2>
+
+<table width='80%' align='center'>
+<tr>
+  <th>Link to paper</th>
+  <th>Abstract</th>
+</tr>
+<tr>
+<td>
+  <a href="sim_probe_paper.html"><img src="images/doc_icon.jpg"></a>
+</td>
+<td>
+    <i>
+    <p>By sampling the ground elevation of the terrain in a windward direction relative to the
+    current position of the user aircraft, an appropriate value of applicable topographic lift
+    can be calculated.  The technique is highly efficient for flight simulator
+    use as only the lift at the current location
+    of the user aircraft needs to be calculated. With a small number of ground elevation sample
+    points, highly detailed topographic lift can be simulated.
+    </p>
+    </i>
+</td>
+</tr>
+</table>
+
+
+<h2>Downloads</h2>
+
+<table border='1'>
+<tr>
+<td>
+<p><b>Sim_probe</b><br/>
+This is an add-on for CumulusX! that calculates ridge lift and feeds it into FSX
+</p>
+</td>
+<td><a href="sim_probe_3_00.zip">download sim_probe 3.00 here</a>.
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><b>CumulusX!</b><br/>
+For use in producing ridge lift in FSX, sim_probe is designed to be used in conjunction with 
+CumulusX!
+</p>
+</td>
+<td>
+<a href="http://www.luerkens.homepage.t-online.de/peter/">download CumulusX! from Peter Lürkens</a>.
+</p>
+</td>
+</tr>
+</table>
+
+<!-- END OF PAGE -->
+
+</font> <!-- end Helvetica -->
+</body>
+</html>

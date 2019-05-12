@@ -1,0 +1,13354 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+
+  
+  <style>
+<!--
+/* Style Definitions */
+p,div
+{mso-style-name:Text;
+margin-top:0pt;
+margin-bottom:.0001pt;
+mso-pagination:widow-orphan;
+font-size:12.0pt;
+mso-bidi-font-size:12.0pt;
+font-family:"Times New Roman";
+mso-fareast-font-family:"Times New Roman";}
+li
+{mso-style-name:Text;
+margin-top:2pt;
+margin-bottom:.0001pt;
+mso-pagination:widow-orphan;
+font-size:12.0pt;
+mso-bidi-font-size:12.0pt;
+font-family:"Times New Roman";
+mso-fareast-font-family:"Times New Roman";}
+p.Link, div.link
+{mso-style-name:Link;
+margin-top:0pt;
+margin-bottom:.0001pt;
+mso-pagination:widow-orphan;
+font-size:12.0pt;
+mso-bidi-font-size:12.0pt;
+font-family:"Times New Roman";
+mso-fareast-font-family:"Times New Roman";
+color:#3366FF;}
+li.Link
+{mso-style-name:Link;
+margin-top:0pt;
+margin-bottom:.0001pt;
+mso-pagination:widow-orphan;
+font-size:12.0pt;
+mso-bidi-font-size:12.0pt;
+font-family:"Times New Roman";
+mso-fareast-font-family:"Times New Roman";
+color:#3366FF;}
+h1
+{mso-style-next:Normal;
+margin-top:12.0pt;
+margin-right:0pt;
+margin-bottom:12.0pt;
+margin-left:0pt;
+text-align:left;
+line-height:150%;
+mso-pagination:widow-orphan;
+page-break-after:avoid;
+mso-outline-level:2;
+font-size:20.0pt;
+font-family:Arial;
+color:black;
+mso-bidi-font-style:italic;}
+h2
+{mso-style-next:Normal;
+margin-top:12.0pt;
+margin-right:0pt;
+margin-bottom:12.0pt;
+margin-left:0pt;
+text-align:left;
+line-height:150%;
+mso-pagination:widow-orphan;
+page-break-after:avoid;
+mso-outline-level:2;
+font-size:18.0pt;
+font-family:Arial;
+color:#000033;
+mso-bidi-font-style:italic;}
+h3
+{mso-style-next:Normal;
+margin-top:12.0pt;
+margin-right:0pt;
+margin-bottom:9.0pt;
+margin-left:0pt;
+text-align:left;
+mso-pagination:widow-orphan;
+page-break-after:avoid;
+mso-outline-level:3;
+font-size:16.0pt;
+mso-bidi-font-size:13.0pt;
+font-family:Arial;
+color:#0000cc;}
+h4
+{mso-style-next:Normal;
+margin-top:12.0pt;
+margin-right:0pt;
+margin-bottom:5.0pt;
+margin-left:0pt;
+text-align:left;
+mso-pagination:widow-orphan;
+page-break-after:avoid;
+mso-outline-level:3;
+font-size:13.0pt;
+mso-bidi-font-size:13.0pt;
+font-family:Arial;
+color:#00aa00;}
+h5
+{mso-style-next:Normal;
+margin-top:3.0pt;
+margin-right:0pt;
+margin-bottom:3.0pt;
+margin-left:0pt;
+text-align:left;
+mso-pagination:widow-orphan;
+page-break-after:avoid;
+mso-outline-level:3;
+font-size:12.0pt;
+mso-bidi-font-size:12.0pt;
+font-family:Arial;
+color:#000000;}
+h6
+{mso-style-next:Normal;
+margin-top:3.0pt;
+margin-right:0pt;
+margin-bottom:3.0pt;
+margin-left:0pt;
+text-align:left;
+mso-pagination:widow-orphan;
+page-break-after:avoid;
+mso-outline-level:3;
+font-size:12.0pt;
+mso-bidi-font-size:12.0pt;
+font-family:Arial;
+color:#aa0000;}
+CODE
+{mso-style-name:Code;
+margin:0pt;
+margin-bottom:.0001pt;
+mso-pagination:widow-orphan;
+font-size:11.0pt;
+mso-bidi-font-size:12.0pt;
+font-family:"Courier New";
+mso-fareast-font-family:"Courier New";
+color:#000000;}
+A:Hover
+{color:#00aa00;}
+BODY
+{margin-left:30pt;
+background:#f5f5f5;}
+@page Section1
+{size:612.0pt 792.0pt;
+margin:72.0pt 90.0pt 72.0pt 90.0pt;
+mso-header-margin:36.0pt;
+mso-footer-margin:36.0pt;
+mso-paper-source:0;}
+div.Section1
+{page:Section1;}
+table
+{class:T1;
+style:border:medium none;
+border-collapse:collapse;
+border:5;
+background-color:#FFFF99;
+border-color:#CC0000;
+border-style:inset;
+width:750;
+text-align:left;}
+tr {vertical-align:top;}
+-->
+  </style>
+  
+  <title>Simulation Variables</title>
+</head>
+
+
+<body>
+
+
+<h1><img src="Images/fsx-bannerjet.jpg" width="800" height="200"></h1>
+<h1>Simulation Variables</h1>
+<h2>Overview</h2>
+<p>There are two classes of simulation variables: aircraft and
+  global data. The following tables list all the variables that can
+  appear in <a href="../../SimObject Creation Kit/Panels and Gauges SDK/Creating XML Gauges.html">XML based gauges</a>, or used from the <a href="../SimConnect SDK/SimConnect.htm">SimConnect</a> APIs.</p>
+<p>&nbsp;</p>
+<h6>See Also</h6>
+<ul>
+  <li><a href="Event IDs.htm">Event IDs </a></li>
+  <li><a href="../../sdk overview.html">SDK Overview</a></li>
+</ul>
+<h2>Table of Contents</h2>
+<ul>
+  <li><a href="#AircraftData">Aircraft Data</a></li>
+  <li><a href="#NewSimulationVariables">New Simulation Variables for Flight Simulator X</a></li>
+  <li><a href="#AircraftEngineData">Aircraft Engine Data </a></li>
+  <li><a href="#FuelTankSelection">Fuel Tank Selection</a></li>
+  <li><a href="#AircraftFuelData">Aircraft Fuel Data </a></li>
+  <li><a href="#AircraftLightsData">Aircraft Lights Data</a></li>
+  <li><a href="#AircraftPositionAndSpeedData">Aircraft Position and Speed Data </a></li>
+  <li><a href="#AircraftFlightInstrumentationData">Aircraft Flight Instrumentation Data</a></li>
+  <li><a href="#AircraftAvionicsData">Aircraft Avionics Data </a></li>
+  <li><a href="#AircraftControlsData">Aircraft Contols Data</a></li>
+  <li><a href="#AircraftAutopilotData">Aircraft Autopilot Data</a></li>
+  <li><a href="#AircraftEnvironmentData">Aircraft Environment Data </a></li>
+  <li><a href="#AircraftHelicopterSpecificData">Helicopter Specific Data</a></li>
+  <li><a href="#AircraftMiscellaneousSystemsData">Aircraft Miscellaneous Systems Data</a></li>
+  <li><a href="#AircraftMiscellaneousData">Miscellaneous Data </a></li>
+  <li><a href="#AircraftStringData">Aircraft String Data</a></li>
+  <li><a href="#EnvironmentData">Environment Data </a></li>
+  <li><a href="#Program_Data_">Program Data </a></li>
+  <li><a href="#UnitsofMeasurement">Units of Measurement </a></li>
+</ul>
+<h3>Aircraft Data<a name="AircraftData"></a></h3>
+
+
+<p>&nbsp;</p>
+
+
+<h5>Notes (Gauges)</h5>
+
+
+<blockquote>
+  
+  <p>Aircraft data is referenced by<b> A:</b> in XML
+gauges.&nbsp;Some parameters take an index to determine which of a
+multiple of system is being queried. In XML gauges the systax for
+adding an index is :<i>N</i>, for example:</p>
+
+
+  
+  <p>&nbsp;</p>
+
+
+  
+  <p>FUEL TANK SELECTOR:<i>index</i></p>
+
+
+  
+  <p></p>
+
+
+  
+  <p>With engines, indexes are numbered from zero. However with communications equipment, indexes are numbered from 1. </p>
+
+
+</blockquote>
+
+
+<h5>Notes (SimConnect)</h5>
+
+
+<blockquote>
+  
+  <p>Simulation variables are referenced from within SimConnect
+clients with the <b>SimConnect_AddToDataDefinition</b> call (see the <a href="../SimConnect SDK/SimConnect.htm">SimConnect</a> document for full details). When the units are listed as a structure, enter the empty string, or simply NULL, in the units parameter of this function call. <br>
+
+
+  <br>
+
+
+For example:<br>
+
+
+  <code><br>
+
+
+hr = SimConnect_AddToDataDefinition(hSimConnect, DEFINITION_1,
+"Kohlsman setting hg", "inHg");<br>
+
+
+hr = SimConnect_AddToDataDefinition(hSimConnect, DEFINITION_1,
+"Indicated Altitude", "feet");<br>
+
+
+hr = SimConnect_AddToDataDefinition(hSimConnect, DEFINITION_1, "Plane
+Latitude", "degrees");<br>
+
+
+hr = SimConnect_AddToDataDefinition(hSimConnect, DEFINITION_1, "Plane
+Longitude", "degrees");</code></p>
+</blockquote>
+
+
+<h4>New Simulation Variables for <span style="font-style: italic;">Flight Simulator X</span><br>
+
+
+  <a name="NewSimulationVariables"></a></h4>
+<h4></h4>
+
+
+<table class="T1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td><h5>Simulation Variable</h5></td>
+      <td><h5>Description</h5></td>
+      <td><h5>Units</h5></td>
+      <td><h5>Settable</h5></td>
+    </tr>
+    <tr>
+      <td>ALTERNATE STATIC SOURCE OPEN</td>
+      <td>Alternate static air source </td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>AILERON TRIM PCT</td>
+      <td>The trim position of the ailerons. Zero is fully retracted. </td>
+      <td>Float. Percent over 100</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>RUDDER TRIM PCT</td>
+      <td>The trim position of the rudder. Zero is no trim. </td>
+      <td>Float. Percent over 100</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>LIGHT ON STATES</td>
+      <td><p>Bit mask:</p>
+      <p>0x0001: Nav </p>
+      <p>0x0002: Beacon</p>
+      <p>0x0004: Landing</p>
+      <p>0x0008: Taxi </p>
+      <p>0x0010: Strobe </p>
+      <p>0x0020: Panel </p>
+      <p>0x0040: Recognition</p>
+      <p>0x0080: Wing</p>
+      <p>0x0100: Logo</p>
+      <p>0x0200: Cabin          </p></td>
+      <td>Mask</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>LIGHT STATES</td>
+      <td>Same as LIGHT ON STATES </td>
+      <td>Mask</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>LANDING LIGHT PBH</td>
+      <td>Landing light pitch bank and heading </td>
+      <td><b>SIMCONNECT_DATA_XYZ</b> structure </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>LIGHT TAXI ON</td>
+      <td>Return true if the light is on. </td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>LIGHT STROBE ON</td>
+      <td>Return true if the light is on. </td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>LIGHT PANEL ON</td>
+      <td>Return true if the light is on. </td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>LIGHT RECOGNITION ON</td>
+      <td>Return true if the light is on. </td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>LIGHT WING ON</td>
+      <td>Return true if the light is on. </td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>LIGHT LOGO ON</td>
+      <td>Return true if the light is on. </td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>LIGHT CABIN ON</td>
+      <td>Return true if the light is on. </td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>LIGHT HEAD ON </td>
+      <td>Return true if the light is on. </td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>LIGHT BRAKE ON </td>
+      <td>Return true if the light is on. </td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>LIGHT NAV ON </td>
+      <td>Return true if the light is on. </td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>LIGHT BEACON ON </td>
+      <td>Return true if the light is on. </td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>LIGHT LANDING ON </td>
+      <td>Return true if the light is on. </td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>AI UNIT MODE </td>
+      <td><p>One of:</p>
+      <p>0: Sleep</p>
+      <p>1: Zombie</p>
+      <p>2: Waypoint</p>
+      <p>3: Takeoff</p>
+      <p>4: Landing</p>
+      <p>5: Taxi</p>
+      <p>6: Working</p>
+      <p>7: Waiting.  </p></td>
+      <td>Enum</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>AI DESIRED SPEED </td>
+      <td>Desired speed of the AI object. </td>
+      <td>Knots</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>AI WAYPOINT LIST </td>
+      <td>List of waypoints that an AI controlled object should follow. </td>
+      <td><b>SIMCONNECT_DATA_WAYPOINT</b> structure list </td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>AI CURRENT WAYPOINT </td>
+      <td>Current waypoint in the list </td>
+      <td>Number</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>AI DESIRED HEADING </td>
+      <td>Desired heading of the AI object. </td>
+      <td>Degrees</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td><p>AI GROUNDTURNTIME </p></td>
+      <td>Time to make a 90 degree turn. </td>
+      <td>Seconds</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>AI GROUNDCRUISESPEED</td>
+      <td>Cruising speed.</td>
+      <td>Knots</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>AI GROUNDTURNSPEED</td>
+      <td>Turning speed.</td>
+      <td>Knots</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td><p>AI TRAFFIC ISIFR </p></td>
+      <td>Request whether this aircraft is IFR or VFR See <a href="#NotesA">Note</a> 1. </td>
+      <td>Boolean</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>AI TRAFFIC STATE </td>
+      <td>English string representing object   state.&nbsp; Same as in traffic explorer dialog. See <a href="#NotesA">Note</a> 1. </td>
+      <td>String</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>AI TRAFFIC CURRENT AIRPORT </td>
+      <td>ICAO of current airpot. See <a href="#NotesA">Note</a> 1. </td>
+      <td>String</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>AI TRAFFIC ASSIGNED RUNWAY </td>
+      <td>Assigned runway name (for example: &quot;32R&quot;. See <a href="#NotesA">Note</a> 1. </td>
+      <td>String</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>AI TRAFFIC ASSIGNED PARKING </td>
+      <td>English assigned parking name. Same as shown in Traffic Explorer dialog. See <a href="#NotesA">Note</a> 1. </td>
+      <td>String</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td><p>AI TRAFFIC FROMAIRPORT </p></td>
+      <td>ICAO of airport current schedule   entry departs from. See <a href="#NotesA">Note</a> 2. </td>
+      <td>String</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>AI TRAFFIC TOAIRPORT </td>
+      <td>ICAO of airport current schedule   entry arrives at. See <a href="#NotesA">Note</a> 2. </td>
+      <td>String</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>AI TRAFFIC ETD</td>
+      <td>Estimated time of Departure for current   schedule entry. Number of seconds difference from current sim time. Can be   negative if ETD is earlier than current sim time. See <a href="#NotesA">Note</a> 2. </td>
+      <td>Seconds</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>AI TRAFFIC ETA</td>
+      <td>Estimate time of Arrival for current   schedule entry. Number of seconds difference from current sim time. Can be   negative if ETA is earlier than current sim time.  See <a href="#NotesA">Note</a> 2. </td>
+      <td>Seconds</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>DROPPABLE OBJECTS TYPE:<i>index</i></td>
+      <td>The type of droppable object at the station number identified by the index. </td>
+      <td>String</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>DROPPABLE OBJECTS COUNT:<i>index</i> </td>
+      <td>The number of droppable objects at the station number identified by the index. </td>
+      <td>Number</td>
+      <td>&nbsp;</td>
+    </tr>
+    
+    <tr>
+      <td>WING FLEX PCT </td>
+      <td>The current wing flex. </td>
+      <td>Percent over 100 </td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>APPLY HEAT TO SYSTEMS </td>
+      <td>Used when too close to a fire </td>
+      <td>Bool</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>ADF LATLONALT:<i>index</i></td>
+      <td><p>Returns the latitude, longitude and altitude of the station the radio equipment is currently tuned to, or zeros if the radio is not tuned to any ADF station.</p>
+          <p>Index of 1 or 2 for ADF 1 and ADF 2. </p></td>
+      <td><b>SIMCONNECT_DATA_LATLONALT</b>structure</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>NAV VOR LATLONALT:<i>index</i></td>
+      <td>Returns the VOR station latitude, longitude and altitude. </td>
+      <td><b>SIMCONNECT_DATA_LATLONALT</b>structure</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>NAV GS LATLONALT:<i>index</i></td>
+      <td>Returns the glide slope. </td>
+      <td><b>SIMCONNECT_DATA_LATLONALT</b>structure</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>NAV DME LATLONALT:<i>index</i></td>
+      <td>Returns the DME station. </td>
+      <td><b>SIMCONNECT_DATA_LATLONALT</b>structure</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>INNER MARKER LATLONALT</td>
+      <td>Returns the latitude, longitude and altitude of the inner marker of an appoach to a runway, if the aircraft is within the required proxmimity, otherwise it will return zeros. </td>
+      <td><b>SIMCONNECT_DATA_LATLONALT</b>structure</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>MIDDLE MARKER LATLONALT</td>
+      <td>Returns the latitude, longitude and altitude of the middle marker. </td>
+      <td><b>SIMCONNECT_DATA_LATLONALT</b>structure</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>OUTER MARKER LATLONALT</td>
+      <td>Returns the latitude, longitude and altitude of the outer marker. </td>
+      <td><b>SIMCONNECT_DATA_LATLONALT</b>structure</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>STRUCT LATLONALT</td>
+      <td>Returns the latitude, longitude and altitude of the user aircraft. </td>
+      <td><b>SIMCONNECT_DATA_LATLONALT</b>structure</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>STRUCT LATLONALTPBH</td>
+      <td>Returns the pitch, bank and heading of the user aircraft. </td>
+      <td><b>SIMCONNECT_DATA_LATLONALT</b>structure</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>STRUCT SURFACE RELATIVE VELOCITY</td>
+      <td>The relative surface velocity. </td>
+      <td><b>SIMCONNECT_DATA_XYZ</b> structure, feet per second </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>STRUCT WORLDVELOCITY</td>
+      <td>The world velocity. </td>
+      <td><b>SIMCONNECT_DATA_XYZ</b> structure, feet per second </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>STRUCT WORLD ROTATION VELOCITY</td>
+      <td>The world rotation velocity. </td>
+      <td><b>SIMCONNECT_DATA_XYZ</b> structure, radians per second </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>STRUCT BODY VELOCITY</td>
+      <td>The object body velocity. </td>
+      <td><b>SIMCONNECT_DATA_XYZ</b> structure, feet per second </td>
+      <td>&nbsp;</td>
+    </tr>
+    
+    <tr>
+      <td>STRUCT BODY ROTATION VELOCITY</td>
+      <td>The body rotation velocity.  Individual body rotation values are in the <a href="#AircraftPositionAndSpeedData">Aircraft Position and Speed </a> section. </td>
+      <td><b>SIMCONNECT_DATA_XYZ</b> structure, radians per second </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>STRUCT WORLD ACCELERATION</td>
+      <td>The world acceleration for each axis. Individual world acceleration values are in the <a href="#AircraftPositionAndSpeedData">Aircraft Position and Speed </a> section. </td>
+      <td><b>SIMCONNECT_DATA_XYZ</b> structure, feet per second squared </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>STRUCT ENGINE POSITION:<i>index</i></td>
+      <td>The engine position relative to the reference datum position for the aircraft. </td>
+      <td><b>SIMCONNECT_DATA_XYZ</b> structure, feet. </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>STRUCT EYEPOINT DYNAMIC ANGLE</td>
+      <td>The angle of the eyepoint view. Zero, zero, zero is straight ahead. </td>
+      <td><b>SIMCONNECT_DATA_XYZ</b> structure, radians </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>STRUCT EYEPOINT DYNAMIC OFFSET</td>
+      <td>A variable offset away from the EYEPOINT POSITION </td>
+      <td><b>SIMCONNECT_DATA_XYZ</b> structure, feet </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>EYEPOINT POSITION</td>
+      <td>The eyepoint position relative to the reference datum position for the aircraft. </td>
+      <td><b>SIMCONNECT_DATA_XYZ</b> structure, feet </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>FLY BY WIRE ELAC SWITCH</td>
+      <td>True if the  fly by wire Elevators and Ailerons computer is on. </td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>FLY BY WIRE FAC SWITCH</td>
+      <td>True if the fly by wire Flight Augmentation computer is on. </td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>FLY BY WIRE SEC SWITCH</td>
+      <td>True if  the fly by wire Spoilers and Elevators computer is on. </td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>FLY BY WIRE ELAC FAILED</td>
+      <td>True if the Elevators and Ailerons computer has failed. </td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>FLY BY WIRE FAC FAILED</td>
+      <td>True if the Flight Augmentation computer has failed. </td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>FLY BY WIRE SEC FAILED</td>
+      <td>True if the Spoilers and Elevators computer has failed. </td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    
+    <tr>
+      <td>&nbsp;</td>
+      <td></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+<p>&nbsp;</p>
+<h6>Notes<a name="NotesA"></a></h6>
+<ol>
+  <li>These variables only make sense for aircraft with   flight plans. SimConnect will return an exception if called for other   objects.</li>
+  <li>
+    <p>These variables only make sense for aircraft generated by the   traffic database, and so have schedules. </p>
+  </li>
+</ol>
+<h4><br>
+</h4>
+
+
+<h4>Aircraft Engine Data<a name="AircraftEngineData"></a></h4>
+
+
+<p>&nbsp;</p>
+
+
+<p>&nbsp;</p>
+
+
+<table class="T1" cellpadding="2" cellspacing="4">
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <td width="301">
+      
+      <h5>Simulation Variable</h5>      </td>
+
+
+      <td width="330">
+      
+      <h5>Description</h5>      </td>
+
+
+      <td width="81">
+      
+      <h5><b>Units</b></h5>      </td>
+
+
+      <td width="81"><h5>Settable</h5></td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>NUMBER OF ENGINES</td>
+
+
+      <td>Number of engines (minimum 0, maximum 4) </td>
+
+
+      <td>Number</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ENGINE CONTROL SELECT</td>
+
+
+      <td>
+      
+      <p>Selected engines (combination of bit flags)</p>
+
+
+      
+      <p>1 = Engine 1</p>
+
+
+      
+      <p>2 = Engine 2</p>
+
+
+      
+      <p>4 = Engine 3</p>
+
+
+      
+      <p>8 = Engine 4 </p>      </td>
+
+
+      <td>Mask</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>THROTTLE LOWER LIMIT</td>
+
+
+      <td>Percent throttle defining lower limit (negative for
+reverse thrust equipped airplanes)</td>
+
+
+      <td>Percent</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ENGINE TYPE</td>
+
+
+      <td>
+      
+      <p>Engine type:</p>
+
+
+      
+      <p>0 = Piston</p>
+
+
+      
+      <p>1 = Jet</p>
+
+
+      
+      <p>2 = None</p>
+
+
+      
+      <p>3 = Helo(Bell) turbine</p>
+
+
+      
+      <p>4 = Unsupported</p>
+
+
+      
+      <p>5 = Turboprop</p>      </td>
+
+
+      <td>Enum</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>MASTER IGNITION SWITCH</td>
+
+
+      <td>Aircraft master ignition switch (grounds all
+engines&rsquo; magnetos)</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GENERAL ENG COMBUSTION:<i>index</i></td>
+
+
+      <td>Combustion flag</td>
+
+
+      <td>Bool</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GENERAL ENG MASTER ALTERNATOR:<i>index</i></td>
+
+
+      <td>Alternator (generator) switch</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GENERAL ENG FUEL PUMP SWITCH:<i>index</i></td>
+
+
+      <td>Fuel pump switch</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GENERAL ENG FUEL PUMP ON:<i>index</i></td>
+
+
+      <td>Fuel pump on/off</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GENERAL ENG RPM:<i>index</i></td>
+
+
+      <td>Engine rpm</td>
+
+
+      <td>Rpm</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GENERAL ENG PCT MAX RPM:<i>index</i></td>
+
+
+      <td>Percent of max rated rpm</td>
+
+
+      <td>Percent</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GENERAL ENG MAX REACHED RPM:<i>index</i></td>
+
+
+      <td>Maximum attained rpm</td>
+
+
+      <td>Rpm</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GENERAL ENG THROTTLE LEVER POSITION:<i>index</i></td>
+
+
+      <td>Percent of max throttle position</td>
+
+
+      <td>Percent</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GENERAL ENG MIXTURE LEVER POSITION:<i>index</i></td>
+
+
+      <td>Percent of max mixture lever position</td>
+
+
+      <td>Percent</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GENERAL ENG PROPELLER LEVER POSITION:<i>index</i></td>
+
+
+      <td>Percent of max prop lever position</td>
+
+
+      <td>Percent</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GENERAL ENG STARTER:<i>index</i></td>
+
+
+      <td>Engine starter on/off</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GENERAL ENG EXHAUST GAS TEMPERATURE:<i>index</i></td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Rankine</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GENERAL ENG OIL PRESSURE:<i>index</i></td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Psi</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GENERAL ENG OIL LEAKED PERCENT:<i>index</i></td>
+
+
+      <td>Percent of max oil capacity leaked</td>
+
+
+      <td>Percent</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GENERAL ENG COMBUSTION SOUND PERCENT:<i>index</i></td>
+
+
+      <td>Percent of maximum engine sound</td>
+
+
+      <td>Percent</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GENERAL ENG DAMAGE PERCENT:<i>index</i></td>
+
+
+      <td>Percent of total engine damage</td>
+
+
+      <td>Percent</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GENERAL ENG OIL TEMPERATURE:<i>index</i></td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Rankine</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GENERAL ENG FAILED:<i>index</i></td>
+
+
+      <td>Fail flag</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GENERAL ENG GENERATOR SWITCH:<i>index</i></td>
+
+
+      <td>Alternator (generator) switch</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GENERAL ENG GENERATOR ACTIVE:<i>index</i></td>
+
+
+      <td>Alternator (generator) on/off</td>
+
+
+      <td>Bool</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GENERAL ENG ANTI ICE POSITION:<i>index</i></td>
+
+
+      <td>Engine anti-ice switch</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GENERAL ENG FUEL VALVE:<i>index</i></td>
+
+
+      <td>Fuel valve state</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GENERAL ENG FUEL PRESSURE:<i>index</i></td>
+
+
+      <td>Self Explanatory</td>
+
+
+      <td>Psi</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GENERAL ENG ELAPSED TIME:<i>index</i></td>
+
+
+      <td>Total engine elapsed time</td>
+
+
+      <td>Hours</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>RECIP ENG COWL FLAP POSITION:<i>index</i></td>
+
+
+      <td>Percent cowl flap opened</td>
+
+
+      <td>Percent</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>RECIP ENG PRIMER:<i>index</i></td>
+
+
+      <td>Engine primer position</td>
+
+
+      <td>Bool</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>RECIP ENG MANIFOLD PRESSURE:<i>index</i></td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Psi</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>RECIP ENG ALTERNATE AIR POSITION:<i>index</i></td>
+
+
+      <td>Alternate air control</td>
+
+
+      <td>Position</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>RECIP ENG COOLANT RESERVOIR PERCENT:<i>index</i></td>
+
+
+      <td>Percent coolant available</td>
+
+
+      <td>Percent</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>RECIP ENG LEFT MAGNETO:<i>index</i></td>
+
+
+      <td>Left magneto state</td>
+
+
+      <td>Bool</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>RECIP ENG RIGHT MAGNETO:<i>index</i></td>
+
+
+      <td>Right magneto state</td>
+
+
+      <td>Bool</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>RECIP ENG BRAKE POWER:<i>index</i></td>
+
+
+      <td>Brake power produced by engine</td>
+
+
+      <td>Foot pounds per second </td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>RECIP ENG STARTER TORQUE:<i>index</i></td>
+
+
+      <td>Torque produced by engine</td>
+
+
+      <td>Foot pound </td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>RECIP ENG TURBOCHARGER FAILED:<i>index</i></td>
+
+
+      <td>Turbo failed state</td>
+
+
+      <td>Bool</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>RECIP ENG EMERGENCY BOOST ACTIVE:<i>index</i></td>
+
+
+      <td>War emergency power active</td>
+
+
+      <td>Bool</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>RECIP ENG EMERGENCY BOOST ELAPSED TIME:<i>index</i></td>
+
+
+      <td>Elapsed time war emergency power active</td>
+
+
+      <td>Hours</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>RECIP ENG WASTEGATE POSITION:<i>index</i></td>
+
+
+      <td>Percent turbo wastegate closed</td>
+
+
+      <td>Percent</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>RECIP ENG TURBINE INLET TEMPERATURE:<i>index</i></td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Celsius</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>RECIP ENG CYLINDER HEAD TEMPERATURE:<i>index</i></td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Celsius</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>RECIP ENG RADIATOR TEMPERATURE:<i>index</i></td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Celsius</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>RECIP ENG FUEL AVAILABLE:<i>index</i></td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Bool</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>RECIP ENG FUEL FLOW:<i>index</i></td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Pounds per hour </td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>RECIP ENG FUEL TANK SELECTOR:<i>index</i></td>
+
+
+      <td>Fuel tank selected for engine. See <a href="#FuelTankSelection">fuel tank list</a>.</td>
+
+
+      <td>Enum</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>RECIP ENG FUEL TANKS USED:<i>index</i></td>
+
+
+      <td><p>Fuel tanks used, one or more of the following bit flags:</p>
+        <p>Center 1   Bit 0<br>
+        Center 2   Bit 1<br>
+        Center 3   Bit 2<br>
+        Left Main  Bit 3<br>
+        Left Aux   Bit 4<br>
+        Left Tip   Bit 5<br>
+        Right Main Bit 6<br>
+        Right Aux  Bit 7<br>
+        Right Tip  Bit 8<br>
+        External 1 Bit 9<br>
+      External 2 Bit 10</p>      </td>
+
+
+      <td>Mask</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>RECIP ENG FUEL NUMBER TANKS USED:<i>index</i></td>
+
+
+      <td>Number of tanks currently being used</td>
+
+
+      <td>Number</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>RECIP CARBURETOR TEMPERATURE:<i>index</i></td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Celsius</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>RECIP MIXTURE RATIO:<i>index</i></td>
+
+
+      <td>Fuel / Air mixture ratio</td>
+
+
+      <td>Ratio</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>TURB ENG N1:<i>index</i></td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Percent</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>TURB ENG N2:<i>index</i></td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Percent</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>TURB ENG CORRECTED N1:<i>index</i></td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Percent</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>TURB ENG CORRECTED N2:<i>index</i></td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Percent</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>TURB ENG CORRECTED FF:<i>index</i></td>
+
+
+      <td>Corrected fuel flow</td>
+
+
+      <td>Pounds per hour </td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>TURB ENG MAX TORQUE PERCENT:<i>index</i></td>
+
+
+      <td>Percent of max rated torque</td>
+
+
+      <td>Percent</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>TURB ENG PRESSURE RATIO:<i>index</i></td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Ratio</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>TURB ENG ITT:<i>index</i></td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Rankine</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>TURB ENG AFTERBURNER:<i>index</i></td>
+
+
+      <td>Afterburner state</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>TURB ENG JET THRUST:<i>index</i></td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Pounds</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>TURB ENG BLEED AIR:<i>index</i></td>
+
+
+      <td>Bleed air pressure</td>
+
+
+      <td>Psi</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>TURB ENG TANK SELECTOR:<i>index</i></td>
+
+
+      <td>Fuel tank selected for engine. See <a href="#FuelTankSelection">fuel tank list</a>.</td>
+
+
+      <td>Enum</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>TURB ENG TANKS USED:<i>index</i></td>
+
+
+      <td><p>Fuel tanks used, one or more of the following bit flags:</p>
+      <p>Center 1   Bit 0<br>
+        Center 2   Bit 1<br>
+        Center 3   Bit 2<br>
+        Left Main  Bit 3<br>
+        Left Aux   Bit 4<br>
+        Left Tip   Bit 5<br>
+        Right Main Bit 6<br>
+        Right Aux  Bit 7<br>
+        Right Tip  Bit 8<br>
+        External 1 Bit 9<br>
+      External 2 Bit 10</p></td>
+
+
+      <td>Mask</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>TURB ENG NUM TANKS USED:<i>index</i></td>
+
+
+      <td>Number of tanks currently being used</td>
+
+
+      <td>Number</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>TURB ENG FUEL FLOW PPH:<i>index</i></td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Pounds per hour </td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>TURB ENG FUEL AVAILABLE:<i>index</i></td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>TURB ENG REVERSE NOZZLE PERCENT:<i>index</i></td>
+
+
+      <td>Percent thrust reverser nozzles deployed</td>
+
+
+      <td>Percent</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>TURB ENG VIBRATION:<i>index</i></td>
+
+
+      <td>Engine vibration value</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ENG FAILED:<i>index</i></td>
+
+
+      <td>Failure flag</td>
+
+
+      <td>Number</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ENG RPM ANIMATION PERCENT:<i>index</i></td>
+
+
+      <td>Percent max rated rpm &ndash; used for visual
+animation</td>
+
+
+      <td>Percent</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ENG ON FIRE:<i>index</i></td>
+
+
+      <td>On fire state</td>
+
+
+      <td>Bool</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ENG FUEL FLOW BUG POSITION:<i>index</i></td>
+
+
+      <td>Fuel flow reference</td>
+
+
+      <td>Pounds per hour </td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>PROP RPM:<i>index</i></td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Rpm</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>PROP MAX RPM PERCENT:<i>index</i></td>
+
+
+      <td>Percent of max rated rpm</td>
+
+
+      <td>Percent</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>PROP THRUST:<i>index</i></td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Pounds</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>PROP BETA:<i>index</i></td>
+
+
+      <td>Prop blade pitch angle</td>
+
+
+      <td>Radians</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>PROP FEATHERING INHIBIT:<i>index</i></td>
+
+
+      <td>Feathering inhibit flag</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>PROP FEATHERED:<i>index</i></td>
+
+
+      <td>Feathered state</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>PROP SYNC DELTA LEVER:<i>index</i></td>
+
+
+      <td>Corrected prop correction input on
+&ldquo;slaved&rdquo; engine</td>
+
+
+      <td>Position</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>PROP AUTO FEATHER ARMED:<i>index</i></td>
+
+
+      <td>Auto-feather armed state</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>PROP FEATHER SWITCH:<i>index</i></td>
+
+
+      <td>Prop feather switch</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>PANEL AUTO FEATHER SWITCH:<i>index</i></td>
+
+
+      <td>Auto-feather arming switch</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>PROP SYNC ACTIVE:<i>index</i></td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>PROP DEICE SWITCH:<i>index</i></td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>ENG COMBUSTION</td>
+      <td>&nbsp;</td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    
+    <tr>
+      <td>ENG N1 RPM:<i>index</i></td>
+      <td>Self explanatory</td>
+      <td>Rpm (0 to 16384 = 0 to 100%) </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>ENG N2 RPM:<i>index</i></td>
+      <td>Self explanatory</td>
+      <td>Rpm(0 to 16384 = 0 to 100%) </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>ENG FUEL FLOW GPH:<i>index</i></td>
+      <td>Self explanatory</td>
+      <td>Gallons per hour </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>ENG FUEL FLOW PPH:<i>index</i></td>
+      <td>Self explanatory</td>
+      <td>Pounds per hour </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>ENG TORQUE:<i>index</i></td>
+      <td>Torque</td>
+      <td>Foot pounds </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>ENG ANTI ICE:<i>index</i></td>
+      <td>Anti-ice switch </td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>ENG PRESSURE RATIO:<i>index</i></td>
+      <td>Self explanatory</td>
+      <td>Ratio (0-16384) </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>ENG EXHAUST GAS TEMPERATURE:<i>index</i></td>
+      <td>Self explanatory</td>
+      <td>Rankine</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>ENG EXHAUST GAS TEMPERATURE GES:<i>index</i></td>
+      <td>Governed engine setting </td>
+      <td>Percent over 100 </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>ENG CYLINDER HEAD TEMPERATURE:<i>index</i></td>
+      <td>Self explanatory</td>
+      <td>Rankine</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>ENG OIL TEMPERATURE:<i>index</i></td>
+      <td>Self explanatory</td>
+      <td>Rankine</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>ENG OIL PRESSURE:<i>index</i></td>
+      <td>Self explanatory</td>
+      <td>Pounds per square foot </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>ENG OIL QUANTITY:<i>index</i></td>
+      <td>Self explanatory</td>
+      <td>Percent over 100 </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>ENG HYDRAULIC PRESSURE:<i>index</i></td>
+      <td>Self explanatory</td>
+      <td>Pounds per square foot </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>ENG HYDRAULIC QUANTITY:<i>index</i></td>
+      <td>Self explanatory</td>
+      <td>Percent over 100 </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>ENG MANIFOLD PRESSURE:<i>index</i></td>
+      <td>Self explanatory</td>
+      <td>Pounds per square foot </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>ENG VIBRATION:<i>index</i></td>
+      <td>&nbsp;</td>
+      <td>Number</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>ENG RPM SCALER:<i>index</i></td>
+      <td>&nbsp;</td>
+      <td>Scalar</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>ENG TURBINE TEMPERATURE:<i>index</i></td>
+      <td>&nbsp;</td>
+      <td>Celsius scalar 16K (degrees * 16384) </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>ENG TORQUE PERCENT:<i>index</i></td>
+      <td>&nbsp;</td>
+      <td>Percent scalar 16K (Ft/lbs * 16384) </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>ENG FUEL PRESSURE:<i>index</i></td>
+      <td>&nbsp;</td>
+      <td>PSI scalar 16K (Psi * 16384) </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>ENG ELECTRICAL LOAD:<i>index</i></td>
+      <td>&nbsp;</td>
+      <td>Percent scaler 16K (Max load * 16384) </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>ENG TRANSMISSION PRESSURE:<i>index</i></td>
+      <td>&nbsp;</td>
+      <td>PSI scalar 16K (Psi * 16384) </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>ENG TRANSMISSION TEMPERATURE:<i>index</i></td>
+      <td>&nbsp;</td>
+      <td>Celsius scalar 16K (Degrees * 16384) </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>ENG ROTOR RPM:<i>index</i></td>
+      <td>&nbsp;</td>
+      <td><p>Percent scalar 16K </p>
+      <p>(Max rpm * 16384) </p></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>ENG MAX RPM</td>
+      <td>&nbsp;</td>
+      <td>Rpm</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>GENERAL ENG STARTER ACTIVE</td>
+      <td>&nbsp;</td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>GENERAL ENG FUEL USED SINCE START</td>
+      <td>&nbsp;</td>
+      <td>Pounds</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>TURB ENG N1:<i>index</i></td>
+      <td>&nbsp;</td>
+      <td>Percentage</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>TURB ENG N2:<i>index</i></td>
+      <td>&nbsp;</td>
+      <td>Percentage</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>TURB ENG CORRECTED N1:<i>index</i></td>
+      <td>&nbsp;</td>
+      <td>Percentage</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>TURB ENG CORRECTED N2:<i>index</i></td>
+      <td>&nbsp;</td>
+      <td>Percentage</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>TURB ENG PRIMARY NOZZLE PERCENT:<i>index</i></td>
+      <td>&nbsp;</td>
+      <td>Percent over 100 </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>TURB ENG IGNITION SWITCH</td>
+      <td>&nbsp;</td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>TURB ENG MASTER STARTER SWITCH</td>
+      <td>&nbsp;</td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<p>&nbsp;</p>
+
+
+<h4>Fuel Tank Selection<a name="FuelTankSelection"></a></h4>
+
+
+<p>&nbsp;</p>
+
+
+<table class="T1" cellpadding="2" cellspacing="4">
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <td width="226">
+      
+      <h5>Number</h5>
+
+
+      </td>
+
+
+      <td width="405">
+      
+      <h5>Description</h5>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td>0</td>
+
+
+      <td>Off</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td>1</td>
+
+
+      <td>All</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td>2</td>
+
+
+      <td>Left</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td>3</td>
+
+
+      <td>Right</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td>4</td>
+
+
+      <td>Left auxilliary </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td>5</td>
+
+
+      <td>Right auxilliary</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td>6</td>
+
+
+      <td>Center</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td>7</td>
+
+
+      <td>Center2</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td>8</td>
+
+
+      <td>Center3</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td>9</td>
+
+
+      <td>External1</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td>10</td>
+
+
+      <td>External2</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td>11</td>
+
+
+      <td>Right tip</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td>12</td>
+
+
+      <td>Left tip</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td>13</td>
+
+
+      <td>Crossfeed</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td>14</td>
+
+
+      <td>Crossfeed left to right</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td>15</td>
+
+
+      <td>Crossfeed right to left</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td>16</td>
+
+
+      <td>Both</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td>17</td>
+
+
+      <td>External</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td>18</td>
+
+
+      <td>Isolate</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td>19</td>
+
+
+      <td>Left main </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td>20</td>
+
+
+      <td>Right main </td>
+
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+
+<p>&nbsp;</p>
+
+
+<h4>Aircraft Fuel Data<a name="AircraftFuelData"></a></h4>
+
+
+<p>&nbsp;</p>
+
+
+<table class="T1" cellpadding="2" cellspacing="4">
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <td width="298">
+      
+      <h5>Simulation Variable</h5>      </td>
+
+
+      <td width="333">
+      
+      <h5>Description</h5>      </td>
+
+
+      <td width="81">
+      
+      <h5>Units</h5>      </td>
+
+
+      <td width="81"><h5>Settable</h5></td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL TANK CENTER LEVEL</td>
+
+
+      <td>Percent of maximum capacity</td>
+
+
+      <td>Percent Over 100</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL TANK CENTER2 LEVEL</td>
+
+
+      <td>Percent of maximum capacity</td>
+
+
+      <td>Percent Over 100</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL TANK CENTER3 LEVEL</td>
+
+
+      <td>Percent of maximum capacity</td>
+
+
+      <td>Percent Over 100</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL TANK LEFT MAIN LEVEL</td>
+
+
+      <td>Percent of maximum capacity</td>
+
+
+      <td>Percent Over 100</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL TANK LEFT AUX LEVEL</td>
+
+
+      <td>Percent of maximum capacity</td>
+
+
+      <td>Percent Over 100</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL TANK LEFT TIP LEVEL</td>
+
+
+      <td>Percent of maximum capacity</td>
+
+
+      <td>Percent Over 100</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL TANK RIGHT MAIN LEVEL</td>
+
+
+      <td>Percent of maximum capacity</td>
+
+
+      <td>Percent Over 100</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL TANK RIGHT AUX LEVEL</td>
+
+
+      <td>Percent of maximum capacity</td>
+
+
+      <td>Percent Over 100</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL TANK RIGHT TIP LEVEL</td>
+
+
+      <td>Percent of maximum capacity</td>
+
+
+      <td>Percent Over 100</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL TANK EXTERNAL1 LEVEL</td>
+
+
+      <td>Percent of maximum capacity</td>
+
+
+      <td>Percent Over 100</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL TANK EXTERNAL2 LEVEL</td>
+
+
+      <td>Percent of maximum capacity</td>
+
+
+      <td>Percent Over 100</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL TANK CENTER CAPACITY</td>
+
+
+      <td>Maximum capacity in volume</td>
+
+
+      <td>Gallons</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL TANK CENTER2 CAPACITY</td>
+
+
+      <td>Maximum capacity in volume</td>
+
+
+      <td>Gallons</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL TANK CENTER3 CAPACITY</td>
+
+
+      <td>Maximum capacity in volume</td>
+
+
+      <td>Gallons</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL TANK LEFT MAIN CAPACITY</td>
+
+
+      <td>Maximum capacity in volume</td>
+
+
+      <td>Gallons</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL TANK LEFT AUX CAPACITY</td>
+
+
+      <td>Maximum capacity in volume</td>
+
+
+      <td>Gallons</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL TANK LEFT TIP CAPACITY</td>
+
+
+      <td>Maximum capacity in volume</td>
+
+
+      <td>Gallons</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL TANK RIGHT MAIN CAPACITY</td>
+
+
+      <td>Maximum capacity in volume</td>
+
+
+      <td>Gallons</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL TANK RIGHT AUX CAPACITY</td>
+
+
+      <td>Maximum capacity in volume</td>
+
+
+      <td>Gallons</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL TANK RIGHT TIP CAPACITY</td>
+
+
+      <td>Maximum capacity in volume</td>
+
+
+      <td>Gallons</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL TANK EXTERNAL1 CAPACITY</td>
+
+
+      <td>Maximum capacity in volume</td>
+
+
+      <td>Gallons</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL TANK EXTERNAL2 CAPACITY</td>
+
+
+      <td>Maximum capacity in volume</td>
+
+
+      <td>Gallons</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL LEFT CAPACITY</td>
+
+
+      <td>Maximum capacity in volume</td>
+
+
+      <td>Gallons</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL RIGHT CAPACITY</td>
+
+
+      <td>Maximum capacity in volume</td>
+
+
+      <td>Gallons</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL TANK CENTER QUANTITY</td>
+
+
+      <td>Current quantity in volume</td>
+
+
+      <td>Gallons</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL TANK CENTER2 QUANTITY</td>
+
+
+      <td>Current quantity in volume</td>
+
+
+      <td>Gallons</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL TANK CENTER3 QUANTITY</td>
+
+
+      <td>Current quantity in volume</td>
+
+
+      <td>Gallons</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL TANK LEFT MAIN QUANTITY</td>
+
+
+      <td>Current quantity in volume</td>
+
+
+      <td>Gallons</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL TANK LEFT AUX QUANTITY</td>
+
+
+      <td>Current quantity in volume</td>
+
+
+      <td>Gallons</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL TANK LEFT TIP QUANTITY</td>
+
+
+      <td>Current quantity in volume</td>
+
+
+      <td>Gallons</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL TANK RIGHT MAIN QUANTITY</td>
+
+
+      <td>Current quantity in volume</td>
+
+
+      <td>Gallons</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL TANK RIGHT AUX QUANTITY</td>
+
+
+      <td>Current quantity in volume</td>
+
+
+      <td>Gallons</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL TANK RIGHT TIP QUANTITY</td>
+
+
+      <td>Current quantity in volume</td>
+
+
+      <td>Gallons</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL TANK EXTERNAL1 QUANTITY</td>
+
+
+      <td>Current quantity in volume</td>
+
+
+      <td>Gallons</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL TANK EXTERNAL2 QUANTITY</td>
+
+
+      <td>Current quantity in volume</td>
+
+
+      <td>Gallons</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL LEFT QUANTITY</td>
+
+
+      <td>Current quantity in volume</td>
+
+
+      <td>Gallons</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL RIGHT QUANTITY</td>
+
+
+      <td>Current quantity in volume</td>
+
+
+      <td>Gallons</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL TOTAL QUANTITY</td>
+
+
+      <td>Current quantity in volume</td>
+
+
+      <td>Gallons</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL WEIGHT PER GALLON</td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Pounds </td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL TANK SELECTOR:<i>index</i></td>
+
+
+      <td>Which tank is selected. See <a href="#FuelTankSelection">fuel tank list</a>.</td>
+
+
+      <td>Enum</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL CROSS FEED</td>
+
+
+      <td>
+      
+      <p>Cross feed valve:</p>
+
+
+      
+      <p>0 = Closed</p>
+
+
+      
+      <p>1 = Open</p>      </td>
+
+
+      <td>Enum</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL TOTAL CAPACITY</td>
+
+
+      <td>Total capacity of the aircraft</td>
+
+
+      <td>Gallons</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL SELECTED QUANTITY PERCENT</td>
+
+
+      <td>Percent or capacity for selected tank</td>
+
+
+      <td>Percent Over 100</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL SELECTED QUANTITY</td>
+
+
+      <td>Quantity of selected tank</td>
+
+
+      <td>Gallons</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FUEL TOTAL QUANTITY WEIGHT</td>
+
+
+      <td>Current total fuel weight of the aircraft</td>
+
+
+      <td>Pounds</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>NUM FUEL SELECTORS</td>
+
+
+      <td>Number of selectors on the aircraft</td>
+
+
+      <td>Number</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>UNLIMITED FUEL</td>
+
+
+      <td>Unlimited fuel flag</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ESTIMATED FUEL FLOW</td>
+
+
+      <td>Estimated fuel flow at cruise</td>
+
+
+      <td>Pounds per hour </td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<p>&nbsp;</p>
+
+
+<p>&nbsp;</p>
+
+
+<h4>Aircraft Lights Data<a name="AircraftLightsData"></a></h4>
+
+
+<p>&nbsp;</p>
+
+
+<table class="T1" cellpadding="2" cellspacing="4">
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <td width="362">
+      
+      <h5>Simulation Variable</h5>      </td>
+
+
+      <td width="269">
+      
+      <h5>Description</h5>      </td>
+
+
+      <td width="81">
+      
+      <h5><b>Units</b></h5>      </td>
+
+
+      <td width="81"><h5>Settable</h5></td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>LIGHT STROBE</td>
+
+
+      <td>Light switch state </td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>LIGHT PANEL</td>
+
+
+      <td>Light switch state</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>LIGHT LANDING</td>
+
+
+      <td>Light switch state</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>LIGHT TAXI</td>
+
+
+      <td>Light switch state</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>LIGHT BEACON</td>
+
+
+      <td>Light switch state</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>LIGHT NAV</td>
+
+
+      <td>Light switch state</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>LIGHT LOGO</td>
+
+
+      <td>Light switch state</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>LIGHT WING</td>
+
+
+      <td>Light switch state</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>LIGHT RECOGNITION</td>
+
+
+      <td>Light switch state</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>LIGHT CABIN</td>
+
+
+      <td>Light switch state</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<p>&nbsp;</p>
+
+
+<p>&nbsp;</p>
+
+
+<h4>Aircraft Position and Speed Data<a name="AircraftPositionAndSpeedData"></a></h4>
+
+
+<p>&nbsp;</p>
+
+
+<table class="T1" cellpadding="2" cellspacing="4">
+  <tbody>
+    <tr>
+      <td width="349"><h5>Simulation Variable</h5></td>
+      <td width="282"><h5>Description</h5></td>
+      <td width="81"><h5>Units</h5></td>
+      <td width="81"><h5>Settable</h5></td>
+    </tr>
+    <tr>
+      <td>GROUND VELOCITY</td>
+      <td>Speed relative to the earth&rsquo;s surface</td>
+      <td>Knots</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>TOTAL WORLD VELOCITY</td>
+      <td>Speed relative to the earth&rsquo;s center</td>
+      <td>Feet per second</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>VELOCITY BODY Z</td>
+      <td>True longitudinal speed, relative to aircraft axis</td>
+      <td>Feet per second</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>VELOCITY BODY X</td>
+      <td>True lateral speed, relative to aircraft axis</td>
+      <td>Feet per second</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>VELOCITY BODY Y</td>
+      <td>True vertical speed, relative to aircraft axis</td>
+      <td>Feet per second</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>VELOCITY WORLD Z</td>
+      <td>Speed relative to earth, in North/South direction</td>
+      <td>Feet per second </td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>VELOCITY WORLD X</td>
+      <td>Speed relative to earth, in East/West direction</td>
+      <td>Feet per second </td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>VELOCITY WORLD Y</td>
+      <td>Speed relative to earth, in vertical direction</td>
+      <td>Feet per second </td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>ACCELERATION WORLD X</td>
+      <td>&nbsp;</td>
+      <td>Feet per second squared</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>ACCELERATION WORLD Y</td>
+      <td>&nbsp;</td>
+      <td>Feet per second squared</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>ACCELERATION WORLD Z</td>
+      <td>&nbsp;</td>
+      <td>Feet per second squared</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>ACCELERATION BODY X</td>
+      <td>&nbsp;</td>
+      <td>Feet per second squared</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>ACCELERATION BODY Y</td>
+      <td>&nbsp;</td>
+      <td>Feet per second squared</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>ACCELERATION BODY Z</td>
+      <td>&nbsp;</td>
+      <td>Feet per second squared</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>ROTATION VELOCITY BODY X</td>
+      <td>&nbsp;</td>
+      <td>Feet per second </td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>ROTATION VELOCITY BODY Y</td>
+      <td>&nbsp;</td>
+      <td>Feet per second </td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>ROTATION VELOCITY BODY Z</td>
+      <td>&nbsp;</td>
+      <td>Feet per second </td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>RELATIVE WIND VELOCITY BODY X</td>
+      <td>Lateral speed relative to wind</td>
+      <td>Feet per second</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>RELATIVE WIND VELOCITY BODY Y</td>
+      <td>Vertical speed relative to wind</td>
+      <td>Feet per second</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>RELATIVE WIND VELOCITY BODY Z</td>
+      <td>Longitudinal speed relative to wind</td>
+      <td>Feet per second</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>PLANE ALT ABOVE GROUND</td>
+      <td>Altitude above the surface</td>
+      <td>Feet</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>PLANE LATITUDE</td>
+      <td>Self Explanatory</td>
+      <td>Radians</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>PLANE LONGITUDE</td>
+      <td>Self Explanatory</td>
+      <td>Radians</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>PLANE ALTITUDE</td>
+      <td>Self Explanatory</td>
+      <td>Feet</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>PLANE PITCH DEGREES</td>
+      <td>Pitch angle, although the name mentions degrees the
+        units used are radians</td>
+      <td>Radians</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>PLANE BANK DEGREES</td>
+      <td>Bank angle, although the name mentions degrees the
+        units used are radians</td>
+      <td>Radians</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>PLANE HEADING DEGREES TRUE</td>
+      <td>Heading relative to true north, although the name
+        mentions degrees the units used are radians</td>
+      <td>Radians</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>PLANE HEADING DEGREES MAGNETIC</td>
+      <td>Heading relative to magnetic north, although the name
+        mentions degrees the units used are radians</td>
+      <td>Radians</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>MAGVAR</td>
+      <td>Magnetic variation</td>
+      <td>Degrees</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>GROUND ALTITUDE</td>
+      <td>Altitude of surface</td>
+      <td>Meters</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>SURFACE TYPE</td>
+      <td>Type of surface:</td>
+      <td>Enum</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>0 = Concrete</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>1 = Grass</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>2 = Water</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>3 = Grass_bumpy</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>4 = Asphalt</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>5 = Short_grass</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>6 = Long_grass</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>7 = Hard_turf</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>8 = Snow</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>9 = Ice</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>10 = Urban</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>11 = Forest</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>12 = Dirt</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>13 = Coral</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>14 = Gravel</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>15 = Oil_treated </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>16 = Steel_mats </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>17 = Bituminus </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>18 = Brick </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>19 = Macadam </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>20 = Planks </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>21 = Sand </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>22 = Shale </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td height="27">&nbsp;</td>
+      <td>23 = Tarmac </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>24 = Wright_flyer_track</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>SIM ON GROUND</td>
+      <td>On ground flag</td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>INCIDENCE ALPHA</td>
+      <td>Angle of attack</td>
+      <td>Radians</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>INCIDENCE BETA</td>
+      <td>Sideslip angle</td>
+      <td>Radians</td>
+      <td>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+<p>&nbsp;</p>
+
+
+<p>&nbsp;</p>
+
+
+<h4>Aircraft Flight Instrumentation Data<a name="AircraftFlightInstrumentationData"></a></h4>
+
+
+<p>&nbsp;</p>
+
+
+<table class="T1" cellpadding="2" cellspacing="4">
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <td width="345">
+      
+      <h5>Simulation Variable</h5>      </td>
+
+
+      <td width="287">
+      
+      <h5>Description</h5>      </td>
+
+
+      <td width="80">
+      
+      <h5>Units</h5>      </td>
+
+
+      <td width="80"><h5>Settable</h5></td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AIRSPEED TRUE</td>
+
+
+      <td>True airspeed</td>
+
+
+      <td>Knots</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AIRSPEED INDICATED</td>
+
+
+      <td>Indicated airspeed</td>
+
+
+      <td>Knots</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AIRSPEED TRUE CALIBRATE</td>
+
+
+      <td>Angle of &ldquo;True&rdquo; calibration scale
+on airspeed indicator</td>
+
+
+      <td>Degrees</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AIRSPEED BARBER POLE</td>
+
+
+      <td>Redline airspeed (dynamic on some aircraft)</td>
+
+
+      <td>Knots</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AIRSPEED MACH</td>
+
+
+      <td>Current mach</td>
+
+
+      <td>Mach</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>VERTICAL SPEED</td>
+
+
+      <td>Vertical speed indication</td>
+
+
+      <td>Feet per second </td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>MACH MAX OPERATE</td>
+
+
+      <td>Maximum design mach</td>
+
+
+      <td>Mach</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>STALL WARNING</td>
+
+
+      <td>Stall warning state</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>OVERSPEED WARNING</td>
+
+
+      <td>Overspeed warning state</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>BARBER POLE MACH</td>
+
+
+      <td>Mach associated with maximum airspeed</td>
+
+
+      <td>Mach</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>INDICATED ALTITUDE</td>
+
+
+      <td>Altimeter indication</td>
+
+
+      <td>Feet</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>KOHLSMAN SETTING MB</td>
+
+
+      <td>Altimeter setting</td>
+
+
+      <td>Millibars</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>KOHLSMAN SETTING HG</td>
+
+
+      <td>Altimeter setting</td>
+
+
+      <td>Inches of Mercury, inHg </td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ATTITUDE INDICATOR PITCH DEGREES</td>
+
+
+      <td>AI pitch indication</td>
+
+
+      <td>Radians</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ATTITUDE INDICATOR BANK DEGREES</td>
+
+
+      <td>AI bank indication</td>
+
+
+      <td>Radians</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ATTITUDE BARS POSITION</td>
+
+
+      <td>AI reference pitch reference bars </td>
+
+
+      <td>Percent Over 100</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ATTITUDE CAGE</td>
+
+
+      <td>AI caged state</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>WISKEY COMPASS INDICATION DEGREES</td>
+
+
+      <td>Magnetic compass indication</td>
+
+
+      <td>Degrees</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>PLANE HEADING DEGREES GYRO</td>
+
+
+      <td>Heading indicator (directional gyro) indication</td>
+
+
+      <td>Radians</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>HEADING INDICATOR</td>
+
+
+      <td>Heading indicator (directional gyro) indication</td>
+
+
+      <td>Radians</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GYRO DRIFT ERROR</td>
+
+
+      <td>Angular error of heading indicator</td>
+
+
+      <td>Radians</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>DELTA HEADING RATE</td>
+
+
+      <td>Rate of turn of heading indicator</td>
+
+
+      <td>Radians per second </td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>TURN COORDINATOR BALL</td>
+
+
+      <td>Turn coordinator ball position </td>
+
+
+      <td>Position 128 (-127 to 127) </td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ANGLE OF ATTACK INDICATOR</td>
+
+
+      <td>AoA indication</td>
+
+
+      <td>Radians</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>RADIO HEIGHT</td>
+
+
+      <td>Radar altitude</td>
+
+
+      <td>Feet</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>PARTIAL PANEL ADF</td>
+
+
+      <td>Gauge fail flag (0 = ok, 1 = fail, 2 = blank)</td>
+
+
+      <td>Enum</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>PARTIAL PANEL AIRSPEED</td>
+
+
+      <td>Gauge fail flag (0 = ok, 1 = fail, 2 = blank)</td>
+
+
+      <td>Enum</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>PARTIAL PANEL ALTIMETER</td>
+
+
+      <td>Gauge fail flag (0 = ok, 1 = fail, 2 = blank)</td>
+
+
+      <td>Enum</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>PARTIAL PANEL ATTITUDE</td>
+
+
+      <td>Gauge fail flag (0 = ok, 1 = fail, 2 = blank)</td>
+
+
+      <td>Enum</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>PARTIAL PANEL COMM</td>
+
+
+      <td>Gauge fail flag (0 = ok, 1 = fail, 2 = blank)</td>
+
+
+      <td>Enum</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>PARTIAL PANEL COMPASS</td>
+
+
+      <td>Gauge fail flag (0 = ok, 1 = fail, 2 = blank)</td>
+
+
+      <td>Enum</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>PARTIAL PANEL ELECTRICAL</td>
+
+
+      <td>Gauge fail flag (0 = ok, 1 = fail, 2 = blank)</td>
+
+
+      <td>Enum</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>PARTIAL PANEL AVIONICS</td>
+
+
+      <td>Gauge fail flag (0 = ok, 1 = fail, 2 = blank)</td>
+
+
+      <td>Enum</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>PARTIAL PANEL ENGINE</td>
+
+
+      <td>Gauge fail flag (0 = ok, 1 = fail, 2 = blank)</td>
+
+
+      <td>Enum</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>PARTIAL PANEL FUEL INDICATOR</td>
+
+
+      <td>Gauge fail flag (0 = ok, 1 = fail, 2 = blank)</td>
+
+
+      <td>Enum</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>PARTIAL PANEL HEADING</td>
+
+
+      <td>Gauge fail flag (0 = ok, 1 = fail, 2 = blank)</td>
+
+
+      <td>Enum</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>PARTIAL PANEL VERTICAL VELOCITY</td>
+
+
+      <td>Gauge fail flag (0 = ok, 1 = fail, 2 = blank)</td>
+
+
+      <td>Enum</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>PARTIAL PANEL TRANSPONDER</td>
+
+
+      <td>Gauge fail flag (0 = ok, 1 = fail, 2 = blank)</td>
+
+
+      <td>Enum</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>PARTIAL PANEL NAV</td>
+
+
+      <td>Gauge fail flag (0 = ok, 1 = fail, 2 = blank)</td>
+
+
+      <td>Enum</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>PARTIAL PANEL PITOT</td>
+
+
+      <td>Gauge fail flag (0 = ok, 1 = fail, 2 = blank)</td>
+
+
+      <td>Enum</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>PARTIAL PANEL TURN COORDINATOR</td>
+
+
+      <td>Gauge fail flag (0 = ok, 1 = fail, 2 = blank)</td>
+
+
+      <td>Enum</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>PARTIAL PANEL VACUUM</td>
+
+
+      <td>Gauge fail flag (0 = ok, 1 = fail, 2 = blank)</td>
+
+
+      <td>Enum</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>MAX G FORCE</td>
+
+
+      <td>Maximum G force attained</td>
+
+
+      <td>Gforce</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>MIN G FORCE</td>
+
+
+      <td>Minimum G force attained</td>
+
+
+      <td>Gforce</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>SUCTION PRESSURE</td>
+
+
+      <td>Vacuum system suction pressure</td>
+
+
+      <td>Inches of Mercury, inHg</td>
+
+
+      <td>Y</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<p>&nbsp;</p>
+
+
+<p>&nbsp;</p>
+
+
+<h4>Aircraft Avionics Data<a name="AircraftAvionicsData"></a></h4>
+
+
+<p>&nbsp;</p>
+
+
+<p>&nbsp;</p>
+
+
+<table class="T1" cellpadding="2" cellspacing="4" width="796">
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <td width="271">
+      
+      <h5>Simulation Variable</h5>      </td>
+
+
+      <td width="361">
+      
+      <h5>Description</h5>      </td>
+
+
+      <td width="126">
+      
+      <h5>Units</h5>      </td>
+
+
+      <td width="126"><h5>Settable</h5></td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AVIONICS MASTER SWITCH</td>
+
+
+      <td>Avionics switch state</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>NAV SOUND:<i>index</i></td>
+
+
+      <td>Nav audio flag</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>DME SOUND</td>
+
+
+      <td>DME audio flag</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ADF SOUND</td>
+
+
+      <td>ADF audio flag</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>MARKER SOUND</td>
+
+
+      <td>Marker audio flag</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>COM TRANSMIT:<i>index</i></td>
+
+
+      <td>Audio panel com transmit state</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>COM RECIEVE ALL</td>
+
+
+      <td>Flag if all Coms receiving</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>COM ACTIVE FREQUENCY:<i>index</i></td>
+
+
+      <td>Com frequency</td>
+
+
+      <td>Frequency BCD16 </td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>COM STANDBY FREQUENCY:<i>index</i></td>
+
+
+      <td>Com standby frequency</td>
+
+
+      <td>Frequency BCD16 </td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>COM STATUS:<i>index</i></td>
+
+
+      <td>Radio status flag :</td>
+
+
+      <td>Enum</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>-1 = Invalid</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>0 = Ok</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>1 = Does not exist</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>2 = No Electric</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>3 = Failed</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>NAV AVAILABLE:<i>index</i></td>
+
+
+      <td>Flag if Nav equipped on aircraft</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>NAV ACTIVE FREQUENCY:<i>index</i></td>
+
+
+      <td>Nav active frequency</td>
+
+
+      <td>MHz</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>NAV STANDBY FREQUENCY:<i>index</i></td>
+
+
+      <td>Nav standby frequency</td>
+
+
+      <td>MHz</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>NAV SIGNAL:<i>index</i></td>
+
+
+      <td>Nav signal strength</td>
+
+
+      <td>Number</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>NAV HAS NAV:<i>index</i></td>
+
+
+      <td>Flag if Nav has signal</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>NAV HAS LOCALIZER:<i>index</i></td>
+
+
+      <td>Flag if tuned station is a localizer</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>NAV HAS DME:<i>index</i></td>
+
+
+      <td>Flag if tuned station has a DME</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>NAV HAS GLIDE SLOPE:<i>index</i></td>
+
+
+      <td>Flag if tuned station has a glideslope</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>NAV BACK COURSE FLAGS:<i>index</i></td>
+
+
+      <td>Flag if tuned to a back course localizer</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>NAV MAGVAR:<i>index</i></td>
+
+
+      <td>Magnetic variation of tuned nav station</td>
+
+
+      <td>Degrees</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>NAV RADIAL:<i>index</i></td>
+
+
+      <td>Radial that aircraft is on</td>
+
+
+      <td>Degrees</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>NAV RADIAL ERROR:<i>index</i></td>
+
+
+      <td>Difference between current radial and OBS tuned radial</td>
+
+
+      <td>Degrees</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>NAV LOCALIZER:<i>index</i></td>
+
+
+      <td>Localizer course heading</td>
+
+
+      <td>Degrees</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>NAV GLIDE SLOPE ERROR:<i>index</i></td>
+
+
+      <td>Difference between current position and glideslope angle</td>
+
+
+      <td>Degrees</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>NAV CDI:<i>index</i></td>
+
+
+      <td>CDI needle deflection (+/- 127)</td>
+
+
+      <td>Number</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>NAV GSI:<i>index</i></td>
+
+
+      <td>Glideslope needle deflection (+/- 119)</td>
+
+
+      <td>Number</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>NAV TOFROM:<i>index</i></td>
+
+
+      <td>
+      
+      <p>Nav TO/FROM flag:</p>
+
+
+      
+      <p>0 = Off</p>
+
+
+      
+      <p>1 = TO</p>
+
+
+      
+      <p>2 = FROM</p>      </td>
+
+
+      <td>Enum</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>NAV GS FLAG:<i>index</i></td>
+
+
+      <td>Glideslope flag</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>NAV OBS:<i>index</i></td>
+
+
+      <td>OBS setting</td>
+
+
+      <td>Degrees</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>NAV DME:<i>index</i></td>
+
+
+      <td>DME distance</td>
+
+
+      <td>Nautical miles </td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>NAV DMESPEED:<i>index</i></td>
+
+
+      <td>DME speed</td>
+
+
+      <td>Knots</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ADF ACTIVE FREQUENCY:<i>index</i></td>
+
+
+      <td>ADF frequency</td>
+
+
+      <td>Frequency ADF BCD32 </td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ADF STANDBY FREQUENCY:<i>index</i></td>
+
+
+      <td>ADF standby frequency</td>
+
+
+      <td>Hz</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ADF RADIAL:<i>index</i></td>
+
+
+      <td>Current direction from NDB station</td>
+
+
+      <td>Degrees</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ADF SIGNAL:<i>index</i></td>
+
+
+      <td>Signal strength</td>
+
+
+      <td>Number</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>TRANSPONDER CODE:<i>index</i></td>
+
+
+      <td>4-digit code</td>
+
+
+      <td>BCO16</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>MARKER BEACON STATE</td>
+
+
+      <td>Marker beacon state:<br>
+
+
+0 = None<br>
+
+
+1 = Outer<br>
+
+
+2 = Middle<br>
+
+
+3 = Inner</td>
+
+
+      <td>Enum</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>INNER MARKER</td>
+
+
+      <td>Inner marker state</td>
+
+
+      <td>Bool</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>MIDDLE MARKER</td>
+
+
+      <td>Middle marker state</td>
+
+
+      <td>Bool</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>OUTER MARKER</td>
+
+
+      <td>Outer marker state</td>
+
+
+      <td>Bool</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>NAV RAW GLIDE SLOPE:<i>index</i></td>
+
+
+      <td>Glide slope angle</td>
+
+
+      <td>Degrees</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ADF CARD</td>
+
+
+      <td>ADF compass rose setting</td>
+
+
+      <td>Degrees</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>HSI CDI NEEDLE</td>
+
+
+      <td>Needle deflection (+/- 127)</td>
+
+
+      <td>Number</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>HSI GSI NEEDLE</td>
+
+
+      <td>Needle deflection (+/- 119)</td>
+
+
+      <td>Number</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>HSI CDI NEEDLE VALID</td>
+
+
+      <td>Signal valid</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>HSI GSI NEEDLE VALID</td>
+
+
+      <td>Signal valid</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>HSI TF FLAGS</td>
+
+
+      <td>Nav TO/FROM flag:<br>
+
+
+0 = Off<br>
+
+
+1 = TO<br>
+
+
+2 = FROM</td>
+
+
+      <td>Enum</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>HSI BEARING</td>
+
+
+      <td>Bearing of needle</td>
+
+
+      <td>Degrees</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>HSI BEARING VALID</td>
+
+
+      <td>Signal valid</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>HSI HAS LOCALIZER</td>
+
+
+      <td>Station is a localizer</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>HSI SPEED</td>
+
+
+      <td>DME/GPS speed</td>
+
+
+      <td>Knots</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>HSI DISTANCE</td>
+
+
+      <td>DME/GPS distance</td>
+
+
+      <td>Nautical miles </td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS POSITION LAT</td>
+
+
+      <td>Current GPS latitude</td>
+
+
+      <td>Degrees</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS POSITION LON</td>
+
+
+      <td>Current GPS longitude</td>
+
+
+      <td>Degrees</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS POSITION ALT</td>
+
+
+      <td>Current GPS altitude</td>
+
+
+      <td>Meters</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS MAGVAR</td>
+
+
+      <td>Current GPS magnetic variation</td>
+
+
+      <td>Radians</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS IS ACTIVE FLIGHT PLAN</td>
+
+
+      <td>Flight plan mode active</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS IS ACTIVE WAY POINT</td>
+
+
+      <td>Waypoint mode active</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS IS ARRIVED</td>
+
+
+      <td>Is flight plan destination reached</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS IS DIRECTTO FLIGHTPLAN</td>
+
+
+      <td>Is Direct To Waypoint mode active</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS GROUND SPEED</td>
+
+
+      <td>Current ground speed</td>
+
+
+      <td>Meters per second</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS GROUND TRUE HEADING</td>
+
+
+      <td>Current true heading</td>
+
+
+      <td>Radians</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS GROUND MAGNETIC TRACK</td>
+
+
+      <td>Current magnetic ground track</td>
+
+
+      <td>Radians</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS GROUND TRUE TRACK</td>
+
+
+      <td>Current true ground track</td>
+
+
+      <td>Radians</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS WP DISTANCE</td>
+
+
+      <td>Distance to waypoint</td>
+
+
+      <td>Meters</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS WP BEARING</td>
+
+
+      <td>Magnetic bearing to waypoint</td>
+
+
+      <td>Radians</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS WP TRUE BEARING</td>
+
+
+      <td>True bearing to waypoint </td>
+
+
+      <td>Radians</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS WP CROSS TRK</td>
+
+
+      <td>Cross track distance</td>
+
+
+      <td>Meters</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS WP DESIRED TRACK</td>
+
+
+      <td>Desired track to waypoint</td>
+
+
+      <td>Radians</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS WP TRUE REQ HDG</td>
+
+
+      <td>Required true heading to waypoint</td>
+
+
+      <td>Radians</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS WP VERTICAL SPEED</td>
+
+
+      <td>Vertical speed to waypoint</td>
+
+
+      <td>Meters per second</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS WP TRACK ANGLE ERROR</td>
+
+
+      <td>Tracking angle error to waypoint</td>
+
+
+      <td>Radians</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS ETE</td>
+
+
+      <td>Estimated time enroute to destination</td>
+
+
+      <td>Seconds</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS ETA</td>
+
+
+      <td>Estimated time of arrival at destination</td>
+
+
+      <td>Seconds</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS WP NEXT LAT</td>
+
+
+      <td>Latitude of next waypoint</td>
+
+
+      <td>Degrees</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS WP NEXT LON</td>
+
+
+      <td>Longitude of next waypoint</td>
+
+
+      <td>Degrees</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS WP NEXT ALT</td>
+
+
+      <td>Altitude of next waypoint</td>
+
+
+      <td>Meters</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS WP PREV VALID</td>
+
+
+      <td>Is previous waypoint valid (i.e. current waypoint is
+not the first waypoint)</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS WP PREV LAT</td>
+
+
+      <td>Latitude of previous waypoint</td>
+
+
+      <td>Degrees</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS WP PREV LON</td>
+
+
+      <td>Longitude of previous waypoint</td>
+
+
+      <td>Degrees</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS WP PREV ALT</td>
+
+
+      <td>Altitude of previous waypoint</td>
+
+
+      <td>Meters</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS WP ETE</td>
+
+
+      <td>Estimated time enroute to waypoint</td>
+
+
+      <td>Seconds</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS WP ETA</td>
+
+
+      <td>Estimated time of arrival at waypoint</td>
+
+
+      <td>Seconds</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS COURSE TO STEER</td>
+
+
+      <td>Suggested heading to steer (for autopilot)</td>
+
+
+      <td>Radians</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS FLIGHT PLAN WP INDEX</td>
+
+
+      <td>Index of waypoint</td>
+
+
+      <td>Number</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS FLIGHT PLAN WP COUNT</td>
+
+
+      <td>Number of waypoints</td>
+
+
+      <td>Number</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS IS ACTIVE WP LOCKED</td>
+
+
+      <td>Is switching to next waypoint locked</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS IS APPROACH LOADED</td>
+
+
+      <td>Is approach loaded</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS IS APPROACH ACTIVE</td>
+
+
+      <td>Is approach mode active</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS APPROACH MODE</td>
+
+
+      <td>Sub mode within approach mode :</td>
+
+
+      <td>Enum</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>0 = None</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>1 = Transition</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>2 = Final</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>3 = Missed</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS APPROACH WP TYPE</td>
+
+
+      <td>Waypoint type within approach mode :</td>
+
+
+      <td>Enum</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>0 = None</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>1 = Fix</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>2 = Procedure turn left</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>3 = Procedure turn right</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>4 = Dme arc left</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>5 = Dme arc right</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>6 = Holding left</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>7 = Holding right</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>8 = Distance</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>9 = Altitude</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>10 = Manual sequence</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>11 = Vectors to final</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS APPROACH IS WP RUNWAY</td>
+
+
+      <td>Waypoint is the runway</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS APPROACH SEGMENT TYPE</td>
+
+
+      <td>Seqment type within approach :</td>
+
+
+      <td>Enum</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>0 = Line</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>1 = Arc clockwise</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>2 = Arc counter-clockwise</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS APPROACH APPROACH INDEX</td>
+
+
+      <td>Index of approach for given airport</td>
+
+
+      <td>Number</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS APPROACH APPROACH TYPE</td>
+
+
+      <td>Approach type :</td>
+
+
+      <td>Enum</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>0 = None</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>1 = GPS</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>2 = VOR</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>3 = NDB</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>4 = ILS</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>5 = Localizer</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>6 = SDF</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>7 = LDA</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>8 = VOR/DME</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>9 = NDB/DME</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>10 = RNAV</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>11 = Backcourse</td>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS APPROACH TRANSITION INDEX</td>
+
+
+      <td>Index of approach transition</td>
+
+
+      <td>Number</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS APPROACH IS FINAL</td>
+
+
+      <td>Is approach transition final approach segment</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS APPROACH IS MISSED</td>
+
+
+      <td>Is approach segment missed approach segment</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS APPROACH TIMEZONE DEVIATION</td>
+
+
+      <td>Deviation of local time from GMT</td>
+
+
+      <td>Seconds</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS APPROACH WP INDEX</td>
+
+
+      <td>Index of current waypoint</td>
+
+
+      <td>Number</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS APPROACH WP COUNT</td>
+
+
+      <td>Number of waypoints</td>
+
+
+      <td>Number</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS DRIVES NAV1</td>
+
+
+      <td>GPS is driving Nav 1 indicator</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>COM RECEIVE ALL</td>
+      <td>&nbsp;</td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>COM AVAILABLE</td>
+      <td>&nbsp;</td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>COM TEST:<i>index</i></td>
+      <td>Enter an index of 1 or 2 </td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>TRANSPONDER AVAILABLE</td>
+      <td>&nbsp;</td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>ADF AVAILABLE</td>
+      <td>&nbsp;</td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>ADF FREQUENCY:<i>index</i></td>
+      <td>&nbsp;</td>
+      <td>Frequency BCD16 </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>ADF EXT FREQUENCY:<i>index</i></td>
+      <td>&nbsp;</td>
+      <td>Frequency BCD16 </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>ADF IDENT</td>
+      <td>&nbsp;</td>
+      <td>String</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>ADF NAME</td>
+      <td>&nbsp;</td>
+      <td>String</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>NAV IDENT</td>
+      <td>&nbsp;</td>
+      <td>String</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>NAV NAME</td>
+      <td>&nbsp;</td>
+      <td>String</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>NAV CODES:<i>index</i></td>
+      <td>&nbsp;</td>
+      <td>Flags</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>NAV GLIDE SLOPE</td>
+      <td>The glide slope gradient. </td>
+      <td>Number</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>NAV RELATIVE BEARING TO STATION:<i>index</i></td>
+      <td>&nbsp;</td>
+      <td>Degrees</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>SELECTED DME</td>
+      <td>&nbsp;</td>
+      <td>Number</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>GPS WP NEXT ID</td>
+      <td>&nbsp;</td>
+      <td>String</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>GPS WP PREV ID</td>
+      <td>&nbsp;</td>
+      <td>String</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>GPS TARGET DISTANCE</td>
+      <td>&nbsp;</td>
+      <td>Meters</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>GPS TARGET ALTITUDE</td>
+      <td>&nbsp;</td>
+      <td>Meters</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<p>&nbsp;</p>
+
+
+<p>&nbsp;</p>
+
+
+<h4>Aircraft Controls Data<a name="AircraftControlsData"></a></h4>
+
+
+<p>&nbsp;</p>
+
+
+<table class="T1" cellpadding="2" cellspacing="4" width="759">
+  <tbody>
+    <tr>
+      <td width="360"><h5>Simulation Variable</h5></td>
+      <td width="271"><h5>Description</h5></td>
+      <td width="90"><h5>Units</h5></td>
+      <td width="90"><h5>Settable</h5></td>
+    </tr>
+    <tr>
+      <td>YOKE Y POSITION</td>
+      <td>Percent control deflection fore/aft (for animation)</td>
+      <td>Position (-16K to 0) -16K = Yoke fully pushed in</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>YOKE X POSITION</td>
+      <td>Percent control deflection left/right (for animation)</td>
+      <td>Position (-16K to 0) -16K = </td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>RUDDER PEDAL POSITION</td>
+      <td>Percent rudder pedal deflection (for animation)</td>
+      <td>Position (-16K to 0) -16K = left pedal pushed full in </td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>RUDDER POSITION</td>
+      <td>Percent rudder input deflection</td>
+      <td>Position (-16K to 0) -16K = full left </td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>ELEVATOR POSITION</td>
+      <td>Percent elevator input deflection</td>
+      <td>Position (-16K to 0) -16K = full down </td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>AILERON POSITION</td>
+      <td>Percent aileron input left/right</td>
+      <td>Position (-16K to 0) -16K = full left </td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>ELEVATOR TRIM POSITION</td>
+      <td>Elevator trim deflection</td>
+      <td>Radians</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>ELEVATOR TRIM INDICATOR</td>
+      <td>Percent elevator trim (for indication)</td>
+      <td>Position (-16K to 0) -16K = full down </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>ELEVATOR TRIM PCT</td>
+      <td>Percent elevator trim</td>
+      <td>Percent Over 100</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>BRAKE LEFT POSITION</td>
+      <td>Percent left brake</td>
+      <td>Position (0 to 32K) 0 = off, 32K full </td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>BRAKE RIGHT POSITION</td>
+      <td>Percent right brake</td>
+      <td>Position (0 to 32K) 0 = off, 32K full </td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>BRAKE INDICATOR</td>
+      <td>Brake on indication</td>
+      <td>Position (0 to 16K) 0 = off, 16K full </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>BRAKE PARKING POSITION</td>
+      <td>Parking brake on</td>
+      <td>Position (0 to 32K) 0 = off, 32K full </td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>BRAKE PARKING INDICATOR</td>
+      <td>Parking brake indicator</td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>SPOILERS ARMED</td>
+      <td>Auto-spoilers armed</td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>SPOILERS HANDLE POSITION</td>
+      <td>Spoiler handle position</td>
+      <td>Percent Over 100 or Position (16K = down, 0 = up) </td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>SPOILERS LEFT POSITION</td>
+      <td>Percent left spoiler deflected</td>
+      <td>Percent Over 100 or Position (0 = retracted, 16K fully
+        extended) </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>SPOILERS RIGHT POSITION</td>
+      <td>Percent right spoiler deflected</td>
+      <td>Percent Over 100 or Position (0 = retracted, 16K fully
+        extended) </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>FLAPS HANDLE PERCENT</td>
+      <td>Percent flap handle extended</td>
+      <td>Percent Over 100</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>FLAPS HANDLE INDEX</td>
+      <td>Index of current flap position</td>
+      <td>Number</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>FLAPS NUM HANDLE POSITIONS</td>
+      <td>Number of flap positions</td>
+      <td>Number</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>TRAILING EDGE FLAPS LEFT PERCENT</td>
+      <td>Percent left trailing edge flap extended</td>
+      <td>Percent Over 100</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>TRAILING EDGE FLAPS RIGHT PERCENT</td>
+      <td>Percent right trailing edge flap extended</td>
+      <td>Percent Over 100</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>TRAILING EDGE FLAPS LEFT ANGLE</td>
+      <td>Angle left trailing edge flap extended. Use  TRAILING EDGE FLAPS LEFT PERCENT to set a value. </td>
+      <td>Radians</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>TRAILING EDGE FLAPS RIGHT ANGLE</td>
+      <td>Angle right trailing edge flap extended. Use  TRAILING EDGE FLAPS RIGHT PERCENT to set a value. </td>
+      <td>Radians</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>LEADING EDGE FLAPS LEFT PERCENT</td>
+      <td>Percent left leading edge flap extended</td>
+      <td>Percent Over 100</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>LEADING EDGE FLAPS RIGHT PERCENT</td>
+      <td>Percent right leading edge flap extended</td>
+      <td>Percent Over 100</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>LEADING EDGE FLAPS LEFT ANGLE</td>
+      <td>Angle left leading edge flap extended. Use  LEADING EDGE FLAPS LEFT PERCENT to set a value. </td>
+      <td>Radians</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>LEADING EDGE FLAPS RIGHT ANGLE</td>
+      <td>Angle right leading edge flap extended. Use  LEADING EDGE FLAPS RIGHT PERCENT to set a value. </td>
+      <td>Radians</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>IS GEAR RETRACTABLE</td>
+      <td>Self explanatory</td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>IS GEAR SKIS</td>
+      <td>Self explanatory</td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>IS GEAR FLOATS</td>
+      <td>Self explanatory</td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>IS GEAR SKIDS</td>
+      <td>Self explanatory</td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>IS GEAR WHEELS</td>
+      <td>Self explanatory</td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>GEAR HANDLE POSITION</td>
+      <td>Self explanatory</td>
+      <td>Bool</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>GEAR HYDRAULIC PRESSURE</td>
+      <td>Self explanatory </td>
+      <td>Pound force per square foot (psf) </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>TAILWHEEL LOCK ON</td>
+      <td>Self explanatory</td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>GEAR CENTER POSITION</td>
+      <td>Percent center gear extended</td>
+      <td>Percent Over 100</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>GEAR LEFT POSITION</td>
+      <td>Percent left gear extended</td>
+      <td>Percent Over 100</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>GEAR RIGHT POSITION</td>
+      <td>Percent right gear extended</td>
+      <td>Percent Over 100</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>GEAR TAIL POSITION</td>
+      <td>Percent tail gear extended</td>
+      <td>Percent Over 100</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>GEAR AUX POSITION</td>
+      <td>Percent auxiliary gear extended</td>
+      <td>Percent Over 100</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>GEAR POSITION:<i>index</i></td>
+      <td><p>Position of landing gear:</p>
+          <p>0 = unknown</p>
+        <p>1 = up</p>
+        <p>2 = down </p></td>
+      <td>Enum</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>GEAR ANIMATION POSITION:<i>index</i></td>
+      <td>Percent gear animation extended</td>
+      <td>Number</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>GEAR TOTAL PCT EXTENDED</td>
+      <td>Percent total gear extended</td>
+      <td>Percentage</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>AUTO BRAKE SWITCH CB</td>
+      <td>Auto brake switch position</td>
+      <td>Number</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>WATER RUDDER HANDLE POSITION</td>
+      <td>Self explanatory</td>
+      <td>Percent Over 100</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>ELEVATOR DEFLECTION</td>
+      <td>Angle deflection</td>
+      <td>Radians</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>ELEVATOR DEFLECTION PCT</td>
+      <td>Percent deflection</td>
+      <td>Percent Over 100</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>WATER LEFT RUDDER EXTENDED</td>
+      <td>Percent extended</td>
+      <td>Percentage</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>WATER RIGHT RUDDER EXTENDED</td>
+      <td>Percent extended</td>
+      <td>Percentage</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>GEAR CENTER STEER ANGLE</td>
+      <td>Self explanatory</td>
+      <td>Percent Over 100</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>GEAR LEFT STEER ANGLE</td>
+      <td>Self explanatory</td>
+      <td>Percent Over 100</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>GEAR RIGHT STEER ANGLE</td>
+      <td>Self explanatory</td>
+      <td>Percent Over 100</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>GEAR AUX STEER ANGLE</td>
+      <td>Self explanatory</td>
+      <td>Percent Over 100</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>GEAR STEER ANGLE:<i>index</i></td>
+      <td>Self explanatory</td>
+      <td>Percent Over 100</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>WATER LEFT RUDDER STEER ANGLE</td>
+      <td>Self explanatory</td>
+      <td>Percent Over 100</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>WATER RIGHT RUDDER STEER ANGLE</td>
+      <td>Self explanatory</td>
+      <td>Percent Over 100</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>GEAR CENTER STEER ANGLE PCT</td>
+      <td>Self explanatory</td>
+      <td>Percent Over 100</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>GEAR LEFT STEER ANGLE PCT</td>
+      <td>Self explanatory</td>
+      <td>Percent Over 100</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>GEAR RIGHT STEER ANGLE PCT</td>
+      <td>Self explanatory</td>
+      <td>Percent Over 100</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>GEAR AUX STEER ANGLE PCT</td>
+      <td>Self explanatory</td>
+      <td>Percent Over 100</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>GEAR STEER ANGLE PCT:<i>index</i></td>
+      <td>Self explanatory</td>
+      <td>Percent Over 100</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>WATER LEFT RUDDER STEER ANGLE PCT</td>
+      <td>Self explanatory</td>
+      <td>Percent Over 100</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>WATER RIGHT RUDDER STEER ANGLE PCT</td>
+      <td>Self explanatory</td>
+      <td>Percent Over 100</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>AILERON LEFT DEFLECTION</td>
+      <td>Angle deflection</td>
+      <td>Radians</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>AILERON LEFT DEFLECTION PCT</td>
+      <td>Percent deflection</td>
+      <td>Percent Over 100</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>AILERON RIGHT DEFLECTION</td>
+      <td>Angle deflection</td>
+      <td>Radians</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>AILERON RIGHT DEFLECTION PCT</td>
+      <td>Percent deflection</td>
+      <td>Percent Over 100</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>AILERON AVERAGE DEFLECTION</td>
+      <td>Angle deflection</td>
+      <td>Radians</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>AILERON TRIM</td>
+      <td>Angle deflection</td>
+      <td>Radians</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>AILERON TRIM PCT</td>
+      <td>Percent deflection</td>
+      <td>Percent Over 100</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>RUDDER DEFLECTION</td>
+      <td>Angle deflection</td>
+      <td>Radians</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>RUDDER DEFLECTION PCT</td>
+      <td>Percent deflection</td>
+      <td>Percent Over 100</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>RUDDER TRIM</td>
+      <td>Angle deflection</td>
+      <td>Radians</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>RUDDER TRIM PCT</td>
+      <td>Percent deflection</td>
+      <td>Percent Over 100</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>FLAPS AVAILABLE</td>
+      <td>Self explanatory</td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>GEAR DAMAGE BY SPEED</td>
+      <td>Self explanatory</td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>GEAR SPEED EXCEEDED</td>
+      <td>Self explanatory</td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>FLAP DAMAGE BY SPEED</td>
+      <td>Self explanatory</td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>FLAP SPEED EXCEEDED</td>
+      <td>Self explanatory</td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>CENTER WHEEL RPM</td>
+      <td>Self explanatory</td>
+      <td>Rpm</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>LEFT WHEEL RPM</td>
+      <td>Self explanatory</td>
+      <td>Rpm</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>RIGHT WHEEL RPM</td>
+      <td>Self explanatory</td>
+      <td>Rpm</td>
+      <td>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+<p>&nbsp;</p>
+
+
+<p>&nbsp;</p>
+
+
+<h4>Aircraft Autopilot Data<a name="AircraftAutopilotData"></a></h4>
+
+
+<p>&nbsp;</p>
+
+
+<table class="T1" cellpadding="2" cellspacing="4">
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <td width="378">
+      
+      <h5>Simulation Variable</h5>      </td>
+
+
+      <td width="253">
+      
+      <h5>Description</h5>      </td>
+
+
+      <td width="81">
+      
+      <h5>Units</h5>      </td>
+
+
+      <td width="81"><h5>Settable</h5></td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AUTOPILOT AVAILABLE</td>
+
+
+      <td>Available flag</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AUTOPILOT MASTER</td>
+
+
+      <td>On/off flag</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AUTOPILOT NAV SELECTED</td>
+
+
+      <td>Index of Nav radio selected</td>
+
+
+      <td>Number</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AUTOPILOT WING LEVELER</td>
+
+
+      <td>Wing leveler active</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AUTOPILOT NAV1 LOCK</td>
+
+
+      <td>Lateral nav mode active</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AUTOPILOT HEADING LOCK</td>
+
+
+      <td>Heading mode active</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AUTOPILOT HEADING LOCK DIR</td>
+
+
+      <td>Selected heading</td>
+
+
+      <td>Degrees</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AUTOPILOT ALTITUDE LOCK</td>
+
+
+      <td>Altitude hole active</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AUTOPILOT ALTITUDE LOCK VAR</td>
+
+
+      <td>Selected altitude</td>
+
+
+      <td>Feet</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AUTOPILOT ATTITUDE HOLD</td>
+
+
+      <td>Attitude hold active</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AUTOPILOT GLIDESLOPE HOLD</td>
+
+
+      <td>GS hold active</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AUTOPILOT PITCH HOLD REF</td>
+
+
+      <td>Current reference pitch</td>
+
+
+      <td>Radians</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AUTOPILOT APPROACH HOLD</td>
+
+
+      <td>Approach mode active</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AUTOPILOT BACKCOURSE HOLD</td>
+
+
+      <td>Back course mode active</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AUTOPILOT VERTICAL HOLD VAR</td>
+
+
+      <td>Selected vertical speed</td>
+
+
+      <td>Feet/minute</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AUTOPILOT FLIGHT DIRECTOR ACTIVE</td>
+
+
+      <td>Flight director active</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AUTOPILOT FLIGHT DIRECTOR PITCH</td>
+
+
+      <td>Reference pitch angle</td>
+
+
+      <td>Radians</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AUTOPILOT FLIGHT DIRECTOR BANK</td>
+
+
+      <td>Reference bank angle</td>
+
+
+      <td>Radians</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AUTOPILOT AIRSPEED HOLD</td>
+
+
+      <td>Airspeed hold active</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AUTOPILOT AIRSPEED HOLD VAR</td>
+
+
+      <td>Selected airspeed</td>
+
+
+      <td>Knots</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AUTOPILOT MACH HOLD</td>
+
+
+      <td>Mach hold active</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AUTOPILOT MACH HOLD VAR</td>
+
+
+      <td>Selected mach </td>
+
+
+      <td>Number</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AUTOPILOT YAW DAMPER</td>
+
+
+      <td>Yaw damper active</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AUTOPILOT RPM HOLD VAR</td>
+
+
+      <td>Selected rpm</td>
+
+
+      <td>Number</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AUTOPILOT THROTTLE ARM</td>
+
+
+      <td>Auto&ndash;throttle armed</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AUTOPILOT TAKEOFF POWER ACTIVE</td>
+
+
+      <td>Takeoff / Go Around power mode active</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AUTOTHROTTLE ACTIVE</td>
+
+
+      <td>Auto-throttle active</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>AUTOPILOT NAV1 LOCK</td>
+      <td>&nbsp;</td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>AUTOPILOT VERTICAL HOLD</td>
+      <td>&nbsp;</td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>AUTOPILOT RPM HOLD</td>
+      <td>&nbsp;</td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>AUTOPILOT MAX BANK</td>
+      <td>&nbsp;</td>
+      <td>Radians</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<p>&nbsp;</p>
+
+
+<p>&nbsp;</p>
+
+
+<h4>Aircraft Landing Gear Data</h4>
+<table class="T1" cellspacing="2" cellpadding="4">
+  <tr>
+    <td><h5>Simulation Variable </h5></td>
+    <td><h5>Description</h5></td>
+    <td><h5>Units</h5></td>
+    <td><h5>Settable</h5></td>
+  </tr>
+  <tr>
+    <td>WHEEL RPM</td>
+    <td>&nbsp;</td>
+    <td>Rpm</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>AUX WHEEL RPM</td>
+    <td>&nbsp;</td>
+    <td>Rpm</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>WHEEL ROTATION ANGLE</td>
+    <td>&nbsp;</td>
+    <td>Radians</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>CENTER WHEEL ROTATION ANGLE</td>
+    <td>&nbsp;</td>
+    <td>Radians</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>LEFT WHEEL ROTATION ANGLE</td>
+    <td>&nbsp;</td>
+    <td>Radians</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>RIGHT WHEEL ROTATION ANGLE</td>
+    <td>&nbsp;</td>
+    <td>Radians</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>AUX WHEEL ROTATION ANGLE</td>
+    <td>&nbsp;</td>
+    <td>Radians</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>GEAR EMERGENCY HANDLE POSITION</td>
+    <td>&nbsp;</td>
+    <td>Bool</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>GEAR WARNING</td>
+    <td><p>One of:</p>
+    <p>0: unknown</p>
+    <p>1: normal</p>
+    <p>2: amphib</p>
+    </td>
+    <td>Enum</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>ANTISKID BRAKES ACTIVE</td>
+    <td>&nbsp;</td>
+    <td>Bool</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>RETRACT FLOAT SWITCH</td>
+    <td>&nbsp;</td>
+    <td>Bool</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>RETRACT LEFT FLOAT EXTENDED</td>
+    <td>If aircraft has retractable floats. </td>
+    <td>Percent (0 is fully retracted, 100 is fully extended) </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>RETRACT RIGHT FLOAT EXTENDED</td>
+    <td>If aircraft has retractable floats. </td>
+    <td>Percent (0 is fully retracted, 100 is fully extended) </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>STEER INPUT CONTROL</td>
+    <td>&nbsp;</td>
+    <td>Percent over 100 </td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp; </p>
+<h4>Aircraft Environment Data<a name="AircraftEnvironmentData"></a></h4>
+<p>&nbsp;</p>
+
+
+<table class="T1" cellpadding="2" cellspacing="4">
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <td width="365">
+      
+      <h5>Simulation Variable</h5>      </td>
+
+
+      <td width="267">
+      
+      <h5>Description</h5>      </td>
+
+
+      <td width="80">
+      
+      <h5>Units</h5>      </td>
+
+
+      <td width="80"><h5>Settable</h5></td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AMBIENT DENSITY</td>
+
+
+      <td>Self Explanatory</td>
+
+
+      <td>Slugs per cubic feet </td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AMBIENT TEMPERATURE</td>
+
+
+      <td>Self Explanatory</td>
+
+
+      <td>Celsius</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AMBIENT PRESSURE</td>
+
+
+      <td>Self Explanatory</td>
+
+
+      <td>Inches of mercury, inHg </td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AMBIENT WIND VELOCITY</td>
+
+
+      <td>Self Explanatory</td>
+
+
+      <td>Knots</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AMBIENT WIND DIRECTION</td>
+
+
+      <td>Self Explanatory</td>
+
+
+      <td>Degrees</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AMBIENT WIND X</td>
+
+
+      <td>Wind component in East/West</td>
+
+
+      <td>Meters per second</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AMBIENT WIND Y</td>
+
+
+      <td>Wind component in vertical direction</td>
+
+
+      <td>Meters per second</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AMBIENT WIND Z</td>
+
+
+      <td>Wind component in North/South direction</td>
+
+
+      <td>Meters per second</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AMBIENT PRECIP STATE</td>
+
+
+      <td>
+      
+      <p>Precip state (bit field)</p>
+
+
+      
+      <p>2 = None</p>
+
+
+      
+      <p>4 = Rain</p>
+
+
+      
+      <p>8 = Snow</p>      </td>
+
+
+      <td>Mask</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AIRCRAFT WIND X</td>
+
+
+      <td>Wind component in aircraft lateral axis</td>
+
+
+      <td>Knots</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AIRCRAFT WIND Y</td>
+
+
+      <td>Wind component in aircraft vertical axis</td>
+
+
+      <td>Knots</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>AIRCRAFT WIND Z</td>
+
+
+      <td>Wind component in aircraft longitudinal axis</td>
+
+
+      <td>Knots</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>BAROMETER PRESSURE</td>
+
+
+      <td>Self Explanatory</td>
+
+
+      <td>Millibars</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>SEA LEVEL PRESSURE</td>
+
+
+      <td>Self Explanatory</td>
+
+
+      <td>Millibars</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>TOTAL AIR TEMPERATURE</td>
+
+
+      <td>Self Explanatory</td>
+
+
+      <td>Celsius</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>WINDSHIELD RAIN EFFECT AVAILABLE</td>
+
+
+      <td>Is visual effect available on this aircraft</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>AMBIENT IN CLOUD</td>
+      <td>True if the aircraft is in a cloud. </td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>AMBIENT VISIBILITY</td>
+      <td>&nbsp;</td>
+      <td>Meters</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>STANDARD ATM TEMPERATURE</td>
+      <td>Outside temperature </td>
+      <td>Rankine</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<p>&nbsp;</p>
+
+
+<p>&nbsp;</p>
+
+
+<h4>Helicopter Specific Data<a name="AircraftHelicopterSpecificData"></a></h4>
+
+
+<p>&nbsp;</p>
+
+
+<p><i>Note: Currently only available on the R22.</i></p>
+
+
+<p>&nbsp;</p>
+
+
+<table class="T1" cellpadding="2" cellspacing="4" width="100%">
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <td width="33%">
+      
+      <h5>Simulation Variable</h5>      </td>
+
+
+      <td width="55%">
+      
+      <h5>Description</h5>      </td>
+
+
+      <td width="12%">
+      
+      <h5>Units</h5>      </td>
+
+
+      <td width="12%"><h5>Settable</h5></td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ROTOR BRAKE HANDLE POS</td>
+
+
+      <td>Percent actuated</td>
+
+
+      <td>Percent Over 100</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ROTOR BRAKE ACTIVE</td>
+
+
+      <td>Active</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ROTOR CLUTCH SWITCH POS</td>
+
+
+      <td>Switch position</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ROTOR CLUTCH ACTIVE</td>
+
+
+      <td>Active</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ROTOR TEMPERATURE</td>
+
+
+      <td>Main rotor transmission temperature</td>
+
+
+      <td>Rankine</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ROTOR CHIP DETECTED</td>
+
+
+      <td>Chip detection</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ROTOR GOV SWITCH POS</td>
+
+
+      <td>Switch position</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ROTOR GOV ACTIVE</td>
+
+
+      <td>Active</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ROTOR LATERAL TRIM PCT</td>
+
+
+      <td>Trim percent</td>
+
+
+      <td>Percent Over 100</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ROTOR RPM PCT</td>
+
+
+      <td>Percent max rated rpm</td>
+
+
+      <td>Percent Over 100</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<p>&nbsp;</p>
+
+
+<p>&nbsp;</p>
+
+
+<h4>Aircraft Miscellaneous Systems Data<a name="AircraftMiscellaneousSystemsData"></a></h4>
+
+
+<p>&nbsp;</p>
+
+
+<table class="T1" cellpadding="2" cellspacing="4">
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <td width="368">
+      
+      <h5>Simulation Variable</h5>      </td>
+
+
+      <td width="263">
+      
+      <h5>Description</h5>      </td>
+
+
+      <td width="81">
+      
+      <h5>Units</h5>      </td>
+
+
+      <td width="81"><h5>Settable</h5></td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>SMOKE ENABLE</td>
+
+
+      <td>Smoke system active&nbsp;</td>
+
+
+      <td>Bool</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>SMOKESYSTEM AVAILABLE</td>
+
+
+      <td>Smoke system available</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>PITOT HEAT</td>
+
+
+      <td>Pitot heat active</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FOLDING WING LEFT PERCENT</td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Percent Over 100</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>FOLDING WING RIGHT PERCENT</td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Percent Over 100</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>CANOPY OPEN</td>
+
+
+      <td>Percent primary door/exit open</td>
+
+
+      <td>Percent Over 100</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>TAILHOOK POSITION</td>
+
+
+      <td>Percent tail hook extended</td>
+
+
+      <td>Percent Over 100</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>EXIT OPEN:<i>index</i></td>
+
+
+      <td>Percent door/exit open</td>
+
+
+      <td>Percent Over 100</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>STALL HORN AVAILABLE</td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ENGINE MIXURE AVAILABLE</td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>CARB HEAT AVAILABLE</td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>SPOILER AVAILABLE</td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>IS TAIL DRAGGER</td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>STROBES AVAILABLE</td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>TOE BRAKES AVAILABLE</td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>PUSHBACK STATE</td>
+
+
+      <td>Type of pushback :<br>
+
+
+0 = Straight<br>
+
+
+1 = Left<br>
+
+
+2 = Right</td>
+
+
+      <td>Enum</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ELECTRICAL MASTER BATTERY</td>
+
+
+      <td>Battery switch position</td>
+
+
+      <td>Bool</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ELECTRICAL TOTAL LOAD AMPS</td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Amperes</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ELECTRICAL BATTERY LOAD</td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Amperes</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ELECTRICAL BATTERY VOLTAGE</td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Volts</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ELECTRICAL MAIN BUS VOLTAGE</td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Volts</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ELECTRICAL MAIN BUS AMPS</td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Amperes</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ELECTRICAL AVIONICS BUS VOLTAGE</td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Volts</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ELECTRICAL AVIONICS BUS AMPS</td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Amperes</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ELECTRICAL HOT BATTERY BUS VOLTAGE</td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Volts</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ELECTRICAL HOT BATTERY BUS AMPS</td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Amperes</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ELECTRICAL BATTERY BUS VOLTAGE</td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Volts</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ELECTRICAL BATTERY BUS AMPS</td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Amperes</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ELECTRICAL GENALT BUS VOLTAGE:<i>index</i></td>
+
+
+      <td>Self explanatory (takes engine index)</td>
+
+
+      <td>Volts</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ELECTRICAL GENALT BUS AMPS:<i>index</i></td>
+
+
+      <td>Self explanatory (takes engine index)</td>
+
+
+      <td>Amperes</td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>CIRCUIT GENERAL PANEL ON</td>
+
+
+      <td>Is electrical power available to this circuit</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>CIRCUIT FLAP MOTOR ON</td>
+
+
+      <td>Is electrical power available to this circuit</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>CIRCUIT GEAR MOTOR ON</td>
+
+
+      <td>Is electrical power available to this circuit</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>CIRCUIT AUTOPILOT ON</td>
+
+
+      <td>Is electrical power available to this circuit</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>CIRCUIT AVIONICS ON</td>
+
+
+      <td>Is electrical power available to this circuit</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>CIRCUIT PITOT HEAT ON</td>
+
+
+      <td>Is electrical power available to this circuit</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>CIRCUIT PROP SYNC ON</td>
+
+
+      <td>Is electrical power available to this circuit</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>CIRCUIT AUTO FEATHER ON</td>
+
+
+      <td>Is electrical power available to this circuit</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>CIRCUIT AUTO BRAKES ON</td>
+
+
+      <td>Is electrical power available to this circuit</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>CIRCUIT STANDY VACUUM ON</td>
+
+
+      <td>Is electrical power available to this circuit</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>CIRCUIT MARKER BEACON ON</td>
+
+
+      <td>Is electrical power available to this circuit</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>CIRCUIT GEAR WARNING ON</td>
+
+
+      <td>Is electrical power available to this circuit</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>CIRCUIT HYDRAULIC PUMP ON</td>
+
+
+      <td>Is electrical power available to this circuit</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>HYDRAULIC PRESSURE</td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Pound force per square foot </td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>HYDRAULIC RESERVOIR PERCENT</td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Percent Over 100</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>HYDRAULIC SYSTEM INTEGRITY</td>
+
+
+      <td>Percent system functional</td>
+
+
+      <td>Percent Over 100</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>STRUCTURAL DEICE SWITCH</td>
+
+
+      <td>Self explanatory</td>
+
+
+      <td>Bool</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<p>&nbsp;</p>
+
+
+<p>&nbsp;</p>
+
+
+<h4>Aircraft Miscellaneous Data<a name="AircraftMiscellaneousData"></a></h4>
+
+
+<p>&nbsp;</p>
+
+
+<p>&nbsp;</p>
+
+
+<table class="T1" cellpadding="2" cellspacing="4">
+  <tbody>
+    <tr>
+      <td width="301"><h5>Simulation Variable</h5></td>
+      <td width="330"><h5>Description</h5></td>
+      <td width="81"><h5>Units</h5></td>
+      <td width="81"><h5>Settable</h5></td>
+    </tr>
+    <tr>
+      <td>TOTAL WEIGHT</td>
+      <td>Self explanatory</td>
+      <td>Pounds</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>MAX GROSS WEIGHT</td>
+      <td>Self explanatory</td>
+      <td>Pounds</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>EMPTY WEIGHT</td>
+      <td>Self explanatory</td>
+      <td>Pounds</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>IS USER SIM</td>
+      <td>Is this the user loaded aircraft</td>
+      <td>Bool</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>SIM DISABLED</td>
+      <td>Is sim disabled </td>
+      <td>Bool</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>G FORCE</td>
+      <td>Self explanatory</td>
+      <td>GForce</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>ATC HEAVY</td>
+      <td>Is this aircraft recognized by ATC as
+        &ldquo;heavy&rdquo;</td>
+      <td>Bool</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>AUTO COORDINATION</td>
+      <td>Is auto-coordination active</td>
+      <td>Bool</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>REALISM</td>
+      <td>General realism percent</td>
+      <td>Number</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>TRUE AIRSPEED SELECTED</td>
+      <td>True if True Airspeed has been selected </td>
+      <td>Bool</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>DESIGN SPEED VS0</td>
+      <td>Self explanatory</td>
+      <td>Feet per second</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>DESIGN SPEED VS1</td>
+      <td>Self explanatory</td>
+      <td>Feet per second</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>DESIGN SPEED VC</td>
+      <td>Self explanatory</td>
+      <td>Feet per second</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>MIN DRAG VELOCITY</td>
+      <td>Self explanatory</td>
+      <td>Feet per second</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>ESTIMATED CRUISE SPEED</td>
+      <td>Self explanatory</td>
+      <td>Feet per second</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>CG PERCENT</td>
+      <td>Longitudinal CG position as a percent of reference
+        chord </td>
+      <td>Percent over 100 </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>CG PERCENT LATERAL</td>
+      <td>Lateral CG position as a percent of reference chord</td>
+      <td>Percent over 100 </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>IS SLEW ACTIVE</td>
+      <td>Self explanatory</td>
+      <td>Bool</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>IS SLEW ALLOWED</td>
+      <td>Self explanatory</td>
+      <td>Bool</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>ATC SUGGESTED MIN RWY TAKEOFF</td>
+      <td>Suggested minimum runway length for takeoff. Used by
+        ATC&nbsp;</td>
+      <td>Feet</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>ATC SUGGESTED MIN RWY LANDING</td>
+      <td>Suggested minimum runway length for landing. Used by
+        ATC&nbsp;</td>
+      <td>Feet</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>PAYLOAD STATION WEIGHT:<i>index</i></td>
+      <td>Individual payload station weight</td>
+      <td>Pounds</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>PAYLOAD STATION COUNT</td>
+      <td>Number of payload stations</td>
+      <td>Number</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>USER INPUT ENABLED</td>
+      <td>Is input allowed from the user</td>
+      <td>Bool</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>TYPICAL DESCENT RATE</td>
+      <td>Self explanatory</td>
+      <td>Feet per minute</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>VISUAL MODEL RADIUS</td>
+      <td>Self explanatory</td>
+      <td>Meters</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>CATEGORY</td>
+      <td><p>Aircraft category:</p>
+          <p>0 = Airplane</p>
+        <p>1 = Helicopter</p>
+        <p>2 = Airplane &ndash; AI controlled only</p></td>
+      <td>Enum</td>
+      <td>&nbsp;</td>
+    </tr>
+  <tr>
+    <td>SIGMA SQRT</td>
+    <td>&nbsp;</td>
+    <td>Number</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>DYNAMIC PRESSURE</td>
+    <td>&nbsp;</td>
+    <td>Pounds per square foot </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>TOTAL VELOCITY</td>
+    <td>&nbsp;</td>
+    <td>Feet per second </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>AIRSPEED SELECT INDICATED OR TRUE</td>
+    <td>The airspeed, whether true or indicated airspeed has been selected. </td>
+    <td>Knots</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>VARIOMETER RATE</td>
+    <td>&nbsp;</td>
+    <td>Feet per second </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>VARIOMETER SWITCH</td>
+    <td>&nbsp;</td>
+    <td>Bool</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>DESIGN SPEED VS0</td>
+    <td>&nbsp;</td>
+    <td>Feet per second </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>DESIGN SPEED VS1</td>
+    <td>&nbsp;</td>
+    <td>Feet per second </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>PRESSURE ALTITUDE</td>
+    <td>&nbsp;</td>
+    <td>Meters</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>MAGNETIC COMPASS</td>
+    <td>&nbsp;</td>
+    <td>Degrees</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>TURN INDICATOR RATE</td>
+    <td>&nbsp;</td>
+    <td>Radians per second </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>TURN INDICATOR SWITCH</td>
+    <td>&nbsp;</td>
+    <td>Bool</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>YOKE Y INDICATOR</td>
+    <td>&nbsp;</td>
+    <td>Position</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>YOKE X INDICATOR</td>
+    <td>&nbsp;</td>
+    <td>Position</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>RUDDER PEDAL INDICATOR</td>
+    <td>&nbsp;</td>
+    <td>Position</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>BRAKE DEPENDENT HYDRAULIC PRESSURE</td>
+    <td>&nbsp;</td>
+    <td>Pounds per square foot </td>
+    <td>&nbsp;</td>
+  </tr>
+  
+  <tr>
+    <td>PANEL ANTI ICE SWITCH</td>
+    <td>&nbsp;</td>
+    <td>Bool</td>
+    <td>&nbsp;</td>
+  </tr>
+  
+  <tr>
+    <td>WING AREA</td>
+    <td>&nbsp;</td>
+    <td>Square feet </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>WING SPAN</td>
+    <td>&nbsp;</td>
+    <td>Feet</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>BETA DOT</td>
+    <td>&nbsp;</td>
+    <td>Radians per second </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>LINEAR CL ALPHA</td>
+    <td>&nbsp;</td>
+    <td>Per radian </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>STALL ALPHA</td>
+    <td>&nbsp;</td>
+    <td>Radians</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>ZERO LIFT ALPHA</td>
+    <td>&nbsp;</td>
+    <td>Radians</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>CG AFT LIMIT</td>
+    <td>&nbsp;</td>
+    <td>Percent over 100 </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>CG FWD LIMIT</td>
+    <td>&nbsp;</td>
+    <td>Percent over 100 </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>CG MAX MACH</td>
+    <td>&nbsp;</td>
+    <td>Machs</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>CG MIN MACH</td>
+    <td>&nbsp;</td>
+    <td>Machs</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>PAYLOAD STATION NAME</td>
+    <td>&nbsp;</td>
+    <td>String</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>ELEVON DEFLECTION</td>
+    <td>&nbsp;</td>
+    <td>Radians</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>EXIT TYPE</td>
+    <td><p>One of:</p>
+      <p>0: Main</p>
+      <p>1: Cargo</p>
+      <p>2: Emergency</p>
+      <p>3: Unknown     </p></td>
+    <td>Enum</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>EXIT POSX</td>
+    <td>&nbsp;</td>
+    <td>Feet</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>EXIT POSY</td>
+    <td>&nbsp;</td>
+    <td>Feet</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>EXIT POSZ</td>
+    <td>&nbsp;</td>
+    <td>Feet</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>DECISION HEIGHT</td>
+    <td>&nbsp;</td>
+    <td>Feet</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>DECISION ALTITUDE MSL</td>
+    <td>&nbsp;</td>
+    <td>Feet</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>EMPTY WEIGHT PITCH MOI</td>
+    <td>&nbsp;</td>
+    <td>Slugs per feet squared </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>EMPTY WEIGHT ROLL MOI</td>
+    <td>&nbsp;</td>
+    <td>Slugs per feet squared </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>EMPTY WEIGHT YAW MOI</td>
+    <td>&nbsp;</td>
+    <td>Slugs per feet squared </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>EMPTY WEIGHT CROSS COUPLED MOI</td>
+    <td>&nbsp;</td>
+    <td>Slugs per feet squared </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>TOTAL WEIGHT PITCH MOI</td>
+    <td>&nbsp;</td>
+    <td>Slugs per feet squared </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>TOTAL WEIGHT ROLL MOI</td>
+    <td>&nbsp;</td>
+    <td>Slugs per feet squared </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>TOTAL WEIGHT YAW MOI</td>
+    <td>&nbsp;</td>
+    <td>Slugs per feet squared </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>TOTAL WEIGHT CROSS COUPLED MOI</td>
+    <td>&nbsp;</td>
+    <td>Slugs per feet squared </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>WATER BALLAST VALVE</td>
+    <td>&nbsp;</td>
+    <td>Bool</td>
+    <td>&nbsp;</td>
+  </tr>
+  
+  <tr>
+    <td>MAX RATED ENGINE RPM</td>
+    <td>&nbsp;</td>
+    <td>Rpm</td>
+    <td>&nbsp;</td>
+  </tr>
+  
+  <tr>
+    <td>FULL THROTTLE THRUST TO WEIGHT RATIO</td>
+    <td>&nbsp;</td>
+    <td>Number</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>PROP AUTO CRUISE ACTIVE</td>
+    <td>&nbsp;</td>
+    <td>Bool</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>PROP ROTATION ANGLE</td>
+    <td>&nbsp;</td>
+    <td>Radians</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>PROP BETA MAX</td>
+    <td>&nbsp;</td>
+    <td>Radians</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>PROP BETA MIN</td>
+    <td>&nbsp;</td>
+    <td>Radians</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>PROP BETA MIN REVERSE</td>
+    <td>&nbsp;</td>
+    <td>Radians</td>
+    <td>&nbsp;</td>
+  </tr>
+  
+  <tr>
+    <td>FUEL SELECTED TRANSFER MODE</td>
+    <td><p>One of:</p>
+      <p>-1: off</p>
+      <p>0: auto</p>
+      <p>1: forward</p>
+      <p>2: aft    </p>
+      <p>3: manual </p></td>
+    <td>Enum</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>DROPPABLE OBJECTS UI NAME</td>
+    <td>&nbsp;</td>
+    <td>String</td>
+    <td>&nbsp;</td>
+  </tr>
+  
+  <tr>
+    <td>MANUAL FUEL PUMP HANDLE</td>
+    <td>&nbsp;</td>
+    <td>Percent over 100 </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>BLEED AIR SOURCE CONTROL</td>
+    <td><p>One of:</p>
+      <p>0: min</p>
+      <p>1: auto</p>
+      <p>2: off</p>
+      <p>3: apu</p>
+      <p>4: engines     </p>
+      </td>
+    <td>Enum</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>ELECTRICAL OLD CHARGING AMPS</td>
+    <td>&nbsp;</td>
+    <td>Amps</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>HYDRAULIC SWITCH</td>
+    <td>&nbsp;</td>
+    <td>Bool</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>CONCORDE VISOR NOSE HANDLE</td>
+    <td><p>One of:</p>
+      <p>0: visor up, nose down</p>
+      <p>1: visor down, nose up</p>
+      <p>2: visor down, nose 5 degrees</p>
+      <p>3: visor down, nose 12.5 degrees</p>
+      <p>&nbsp;     </p></td>
+    <td>Enum</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>CONCORDE VISOR POSITION PERCENT</td>
+    <td>0 = up, 1.0 = extended/down </td>
+    <td>Percent over 100 </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>CONCORDE NOSE ANGLE</td>
+    <td>0 = up </td>
+    <td>Radians</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>REALISM CRASH WITH OTHERS</td>
+    <td>True indicates crashing with other aircraft is possible. </td>
+    <td>Bool</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>REALISM CRASH DETECTION</td>
+    <td>True indicates crash detection is turned on. </td>
+    <td>Bool</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>MANUAL INSTRUMENT LIGHTS</td>
+    <td>&nbsp;</td>
+    <td>Bool</td>
+    <td>&nbsp;</td>
+  </tr>
+  
+  
+  <tr>
+    <td>STRUCT REALISM VARS</td>
+    <td>&nbsp;</td>
+    <td>Realism Variables structure </td>
+    <td>Y</td>
+  </tr>
+  <tr>
+    <td>STRUC HEADING HOLD PID CONSTS</td>
+    <td>&nbsp;</td>
+    <td>PID structure </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>STRUC AIRSPEED HOLD PID CONSTS</td>
+    <td>&nbsp;</td>
+    <td>PID structure </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>PITOT ICE PCT</td>
+    <td>&nbsp;</td>
+    <td>Percent over 100 </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>SEMIBODY LOADFACTOR Y</td>
+    <td>Semibody loadfactor x and z are not supported. </td>
+    <td>Number</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>SEMIBODY LOADFACTOR YDOT</td>
+    <td>&nbsp;</td>
+    <td>Per second </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>RAD INS SWITCH</td>
+    <td>&nbsp;</td>
+    <td>Bool</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>SIMULATED RADIUS</td>
+    <td>&nbsp;</td>
+    <td>Feet</td>
+    <td>&nbsp;</td>
+  </tr>
+  
+  <tr>
+    <td>STRUCTURAL ICE PCT</td>
+    <td>&nbsp;</td>
+    <td>Percent over 100 </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>ARTIFICIAL GROUND ELEVATION</td>
+    <td>In case scenery is not loaded for AI planes, this variable can be used to set a default surface elevation. </td>
+    <td>Feet</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>SURFACE INFO VALID</td>
+    <td>True indicates SURFACE CONDITION is meaningful. </td>
+    <td>Bool</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>SURFACE CONDITION</td>
+    <td><p>One of:</p>
+      <p>0: Normal</p>
+      <p>1: Wet</p>
+      <p>2: Icy</p>
+      <p>3: Snow     </p></td>
+    <td>Enum</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>PUSHBACK ANGLE</td>
+    <td>&nbsp;</td>
+    <td>Radians</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>PUSHBACK CONTACTX</td>
+    <td>The towpoint position, relative to the aircrafts datum reference point. </td>
+    <td>Feet</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>PUSHBACK CONTACTY</td>
+    <td>&nbsp;</td>
+    <td>Feet</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>PUSHBACK CONTACTZ</td>
+    <td>&nbsp;</td>
+    <td>Feet</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>PUSHBACK WAIT</td>
+    <td>True if waiting for pushback. </td>
+    <td>Bool</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>YAW STRING ANGLE</td>
+    <td>&nbsp;</td>
+    <td>Radians</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>YAW STRING PCT EXTENDED</td>
+    <td>&nbsp;</td>
+    <td>Percent over 100 </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>INDUCTOR COMPASS PERCENT DEVIATION</td>
+    <td>&nbsp;</td>
+    <td>Percent over 100 </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>INDUCTOR COMPASS HEADING REF</td>
+    <td>&nbsp;</td>
+    <td>Radians</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>ANEMOMETER PCT RPM</td>
+    <td>&nbsp;</td>
+    <td>Percent over 100 </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>ROTOR ROTATION ANGLE</td>
+    <td>&nbsp;</td>
+    <td>Radians</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>DISK PITCH ANGLE</td>
+    <td>&nbsp;</td>
+    <td>Radians</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>DISK BANK ANGLE</td>
+    <td>&nbsp;</td>
+    <td>Radians</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>DISK PITCH PCT</td>
+    <td>&nbsp;</td>
+    <td>Percent over 100 </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>DISK BANK PCT</td>
+    <td>&nbsp;</td>
+    <td>Percent over 100 </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>DISK CONING PCT</td>
+    <td>&nbsp;</td>
+    <td>Percent over 100 </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>NAV VOR LLAF64</td>
+    <td>&nbsp;</td>
+    <td>LLA structure </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>NAV GS LLAF64</td>
+    <td>&nbsp;</td>
+    <td>LLA structure </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>STATIC CG TO GROUND</td>
+    <td>&nbsp;</td>
+    <td>Feet</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>STATIC PITCH</td>
+    <td>&nbsp;</td>
+    <td>Radians</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>CRASH SEQUENCE</td>
+    <td><p>One of:</p>
+      <p>0: off</p>
+      <p>1: complete</p>
+      <p>3: reset</p>
+      <p>4: pause</p>
+      <p>11: start     </p></td>
+    <td>Enum</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>CRASH FLAG</td>
+    <td><p>One of:</p>
+      <p>0: None</p>
+      <p>2: Mountain</p>
+      <p>4: General</p>
+      <p>6: Building</p>
+      <p>8: Splash</p>
+      <p>10: Gear up</p>
+      <p>12: Overstress</p>
+      <p>14: Building</p>
+      <p>16: Aircraft</p>
+      <p>18: Fuel Truck</p>
+      </td>
+    <td>Enum</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>TOW RELEASE HANDLE</td>
+    <td>&nbsp;</td>
+    <td>Percent over 100 </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>TOW CONNECTION</td>
+    <td>True if a towline is connected to both tow plane and glider. </td>
+    <td>Bool</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>APU PCT RPM</td>
+    <td>&nbsp;</td>
+    <td>Percent over 100 </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>APU PCT STARTER</td>
+    <td>&nbsp;</td>
+    <td>Percent over 100 </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>APU VOLTS</td>
+    <td>&nbsp;</td>
+    <td>Volts</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>APU GENERATOR SWITCH</td>
+    <td>&nbsp;</td>
+    <td>Bool</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>APU GENERATOR ACTIVE</td>
+    <td>&nbsp;</td>
+    <td>Bool</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>APU ON FIRE DETECTED</td>
+    <td>&nbsp;</td>
+    <td>Bool</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>PRESSURIZATION CABIN ALTITUDE</td>
+    <td>The current altitude of the cabin pressurization.. </td>
+    <td>Feet</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>PRESSURIZATION CABIN ALTITUDE GOAL</td>
+    <td>The set altitude of the cabin pressurization. </td>
+    <td>Feet</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>PRESSURIZATION CABIN ALTITUDE RATE</td>
+    <td>The rate at which cabin pressurization changes. </td>
+    <td>Feet per second </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>PRESSURIZATION PRESSURE DIFFERENTIAL</td>
+    <td>The difference in pressure between the set altitude pressurization and the current pressurization. </td>
+    <td>Pounds per square foot </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>PRESSURIZATION DUMP SWITCH</td>
+    <td>True if the cabin pressurization dump switch is on. </td>
+    <td>Bool</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>FIRE BOTTLE SWITCH</td>
+    <td>&nbsp;</td>
+    <td>Bool</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>FIRE BOTTLE DISCHARGED</td>
+    <td>&nbsp;</td>
+    <td>Bool</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>CABIN NO SMOKING ALERT SWITCH</td>
+    <td>&nbsp;</td>
+    <td>Bool</td>
+    <td>Y</td>
+  </tr>
+  <tr>
+    <td>CABIN SEATBELTS ALERT SWITCH</td>
+    <td>&nbsp;</td>
+    <td>Bool</td>
+    <td>Y</td>
+  </tr>
+  <tr>
+    <td>GPWS WARNING</td>
+    <td>True if Ground Proximity Warning System installed. </td>
+    <td>Bool</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>GPWS SYSTEM ACTIVE</td>
+    <td>True if the Ground Proximity Warning System is active </td>
+    <td>Bool</td>
+    <td>Y</td>
+  </tr>
+  <tr>
+    <td>IS LATITUDE LONGITUDE FREEZE ON</td>
+    <td>True if the lat/lon of the aircraft is frozen </td>
+    <td>Bool</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>IS ALTITUDE FREEZE ON</td>
+    <td>True if the altitude of the aircraft is frozen </td>
+    <td>Bool</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+
+<h4>Aircraft String Data<a name="AircraftStringData"></a></h4>
+
+
+<p>&nbsp;</p>
+
+
+<table class="T1" cellpadding="2" cellspacing="4">
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <td width="393">
+      
+      <h5>Simulation Variable</h5>      </td>
+
+
+      <td width="238">
+      
+      <h5>Description</h5>      </td>
+
+
+      <td width="81">
+      
+      <h5>Units</h5>      </td>
+
+
+      <td width="81"><h5>Settable</h5></td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ATC TYPE</td>
+
+
+      <td>Type used by ATC</td>
+
+
+      <td>String (30) </td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ATC MODEL</td>
+
+
+      <td>Model used by ATC</td>
+
+
+      <td>String (10) </td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ATC ID</td>
+
+
+      <td>ID used by ATC</td>
+
+
+      <td>String (10) </td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ATC AIRLINE</td>
+
+
+      <td>Airline used by ATC</td>
+
+
+      <td>String (50) </td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ATC FLIGHT NUMBER</td>
+
+
+      <td>Flight Number used by ATC</td>
+
+
+      <td>String (6) </td>
+
+
+      <td>Y</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>TITLE</td>
+
+
+      <td>Title from aircraft.cfg</td>
+
+
+      <td>Variable length string </td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>HSI STATION IDENT</td>
+
+
+      <td>Tuned station identifier</td>
+
+
+      <td>String(6)</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS WP_PREV ID</td>
+
+
+      <td>ID of previous GPS waypoint</td>
+
+
+      <td>String</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS WP_NEXT ID</td>
+
+
+      <td>ID of next GPS waypoint</td>
+
+
+      <td>String</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS APPROACH AIRPORT ID </td>
+
+
+      <td>ID of airport</td>
+
+
+      <td>String</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS APPROACH APPROACH ID </td>
+
+
+      <td>ID of approach</td>
+
+
+      <td>String</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>GPS APPROACH TRANSITION ID</td>
+
+
+      <td>ID of approach transition</td>
+
+
+      <td>String</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<p>&nbsp;</p>
+
+
+<p>&nbsp;</p>
+
+
+<h3>Environment Data<a name="EnvironmentData"></a></h3>
+
+
+<p>This data is referenced by<b>&nbsp;</b><b>E:</b>
+in XML gauges. </p>
+
+
+<p>&nbsp;</p>
+
+
+<table class="T1" cellpadding="2" cellspacing="4">
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <td width="258">
+      
+      <h5>Simulation Variable</h5>      </td>
+
+
+      <td width="374">
+      
+      <h5>Description</h5>      </td>
+
+
+      <td width="80">
+      
+      <h5>Units</h5>      </td>
+
+
+      <td width="80"><h5>Settable</h5></td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ABSOLUTE TIME </td>
+
+
+      <td>Time, as referenced from 12:00 AM January 1, 0000</td>
+
+
+      <td>Seconds</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ZULU TIME </td>
+
+
+      <td>Greenwich Mean Time (GMT)</td>
+
+
+      <td>Seconds</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ZULU DAY OF WEEK </td>
+
+
+      <td>GMT day of week</td>
+
+
+      <td>Number</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ZULU DAY OF MONTH </td>
+
+
+      <td>GMT day of month </td>
+
+
+      <td>Number</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ZULU MONTH OF YEAR </td>
+
+
+      <td>GMT month of year</td>
+
+
+      <td>Number</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ZULU DAY OF YEAR </td>
+
+
+      <td>GMT day of year</td>
+
+
+      <td>Number</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ZULU YEAR </td>
+
+
+      <td>GMT year</td>
+
+
+      <td>Number</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>LOCAL TIME </td>
+
+
+      <td>Local time</td>
+
+
+      <td>Seconds</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>LOCAL DAY OF WEEK </td>
+
+
+      <td>Local day of week</td>
+
+
+      <td>Number</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>LOCAL DAY OF MONTH </td>
+
+
+      <td>Local day of month</td>
+
+
+      <td>Number</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>LOCAL MONTH OF YEAR</td>
+
+
+      <td>Local month of year</td>
+
+
+      <td>Number</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>LOCAL DAY OF YEAR </td>
+
+
+      <td>Local day of year</td>
+
+
+      <td>Number</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>LOCAL YEAR </td>
+
+
+      <td>Local year</td>
+
+
+      <td>Number</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>TIME ZONE OFFSET </td>
+
+
+      <td>Local time difference from GMT</td>
+
+
+      <td>Seconds</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>TIME OF DAY </td>
+
+
+      <td>
+      
+      <p>General time of day:</p>
+
+
+      
+      <p>1 = Day</p>
+
+
+      
+      <p>2 = Dusk/Dawn</p>
+
+
+      
+      <p>3 = Night</p>      </td>
+
+
+      <td>Enum</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<h3><a name="Program_Data_"></a>Program
+Data&nbsp;</h3>
+
+
+This data is referenced by<b> </b><b>P:</b>
+in XML gauges.<br>
+<table class="T1" cellpadding="2" cellspacing="4">
+  <tbody>
+    <tr>
+      <td><h5>Simulation Variable</h5></td>
+      <td><h5>Description</h5></td>
+      <td><h5>Units</h5></td>
+      <td><h5>Settable</h5></td>
+    </tr>
+    <tr>
+      <td>SIMULATION RATE</td>
+      <td>Time acceleration factor</td>
+      <td>Number</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>UNITS OF MEASURE</td>
+      <td><p>Units of measure:</p>
+          <p>0 = English</p>
+        <p>1 = Metric (with altitude in feet)</p>
+        <p>2 = Metric (with altitude in meters)</p></td>
+      <td>Enum</td>
+      <td>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+<h3>Units of Measurement<a name="UnitsofMeasurement"></a></h3>
+
+
+<p>The following table gives the strings that are accepted by the
+SDK for units. All the strings in the same row are identical in
+meaning. Note that some strings have "per" spelled out, and some use
+"/", and note that a few contain hyphens or underscores. </p>
+
+
+<ul>
+
+
+  <li><a href="#Distance">Distance</a></li>
+
+
+  <li><a href="#Area">Area</a></li>
+
+
+  <li><a href="#Volume">Volume</a></li>
+
+
+  <li><a href="#Temperature">Temperature</a></li>
+
+
+  <li><a href="#Angle">Angle</a></li>
+
+
+  <li><a href="#GlobalPosition">Global Position</a></li>
+
+
+  <li><a href="#AngularVelocity">Angular Velocity</a></li>
+
+
+  <li><a href="#Speed">Speed</a></li>
+
+
+  <li><a href="#Acceleration">Acceleration</a></li>
+
+
+  <li><a href="#Time">Time</a></li>
+
+
+  <li><a href="#Power">Power</a></li>
+
+
+  <li><a href="#VolumeRate">Volume Rate</a></li>
+
+
+  <li><a href="#Weight">Weight</a></li>
+
+
+  <li><a href="#WeightRate">Weight Rate</a></li>
+
+
+  <li><a href="#ElectricalCurrent">Electrical Current</a></li>
+
+
+  <li><a href="#ElectricalPotential">Electrical
+Potential</a></li>
+
+
+  <li><a href="#Frequency">Frequency</a></li>
+
+
+  <li><a href="#Density">Density</a></li>
+
+
+  <li><a href="#Pressure">Pressure</a></li>
+
+
+  <li><a href="#Torque">Torque</a></li>
+
+
+  <li><a href="#MiscellaneousUnits">Miscellaneous
+Units</a></li>
+
+
+</ul>
+
+
+<h5>Notes</h5>
+
+
+<blockquote>
+  
+  <p>When making object definitions in SimConnect, it is possible
+to request the units that the values are to be received in. All the
+units in the tables below under one heading (such as Frequency or
+Speed) can be used as appropriate to the client application, except
+those under Miscellaneous Units. See the SimConnect documentation for
+more details. </p>
+
+
+</blockquote>
+
+
+<p>&nbsp;</p>
+
+
+<table class="T1" cellpadding="2" cellspacing="4">
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <td>
+      
+      <h5>Distance<a name="Distance"></a></h5>      </td>
+
+
+      <td>
+      
+      <h5>Details</h5>      </td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>meter, meters, m </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>centimeter, centimeters, cm </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>kilometer, kilometers, km </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>millimeter, millimeters </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>mile, miles </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>decimile, decimiles </td>
+
+
+      <td>One tenth of a mile </td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>nautical mile, nautical miles, nmile, nmiles </td>
+
+
+      <td>Nautical mile, 2024 yards</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>decinmile, decinmiles </td>
+
+
+      <td>One tenth of a nautical mile</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>foot, feet, ft </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>inch, inches, in </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>yard, yards </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>
+      
+      <h5>Area<a name="Area"></a></h5>      </td>
+
+
+      <td>
+      
+      <h5>Details</h5>      </td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>square inch, square inches, sq in, in2</td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>square feet, square foot, sq ft, ft2 </td>
+
+
+      <td>
+      
+      <p>~</p>      </td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>square yard, square yards, sq yd, yd2 </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>square meter, square meters, sq m, m2 </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>square centimeter, square centimeters, sq cm, cm2 </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>square kilometer, square kilometers, sq km, km2 </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>square milimeter, square milimeters, sq mm, mm2 </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>square mile, square miles </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>
+      
+      <h5>Volume<a name="Volume"></a></h5>      </td>
+
+
+      <td>
+      
+      <h5>Details</h5>      </td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>cubic inch, cubic inches, cu in, in3</td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>cubic foot, cubic feet, cu ft, ft3</td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>cubic yard, cubic yards, cu yd, yd3 </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>cubic mile, cubic miles </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>cubic millimeter, cubic millimeters, cu mm, mm3 </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>cubic centimeter, cubic centimeters, cu cm, cm3 </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>meter cubed, meters cubed, cubic meter, cubic meters,
+cu m, m3 </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>cubic kilometer, cubic kilometers, cu km, km3 </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>liter, liters </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>gallon, gallons </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>quart, quarts </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>    </tr>
+
+
+    <tr>
+
+
+      <td>
+      
+      <h5>Temperature<a name="Temperature"></a></h5>      </td>
+
+
+      <td>
+      
+      <h5>Details</h5>      </td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>kelvin</td>
+
+
+      <td>Same graduations as Centigrade but zero degrees Kelvin
+corresponds to a temperature of -273.15&deg;C (Absolute Zero). </td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>rankine</td>
+
+
+      <td>Same graduations as Farenheit but zero degrees Rankine
+corresponds to a temperature of -459.67&deg;F</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>farenheit, fahrenheit </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>celsius</td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>
+      
+      <h5>Angle<a name="Angle"></a></h5>      </td>
+
+
+      <td>
+      
+      <h5>Details</h5>      </td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>radian, radians </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>round, rounds </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>degree, degrees </td>
+
+
+      <td>Float</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>degree latitude</td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>degree longitude</td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>grad, grads </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>
+      
+      <h5>Global position<a name="GlobalPosition"></a>      </h5>      </td>
+
+
+      <td>
+      
+      <h5>Details</h5>      </td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>degree latitude, degrees latitude</td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>degree longitude, degrees longitude</td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>meter latitude, meters latitude </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>
+      
+      <h5>Angular velocity<a name="AngularVelocity"></a></h5>      </td>
+
+
+      <td>
+      
+      <h5>Details</h5>      </td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>radian per second, radians per second</td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>revolution per minute, revolutions per minute, rpm,
+rpms </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>minute per round, minutes per round </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>nice minute per round, nice minutes per round</td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>degree per second, degrees per second </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>
+      
+      <h5>Speed<a name="Speed"></a></h5>      </td>
+
+
+      <td>
+      
+      <h5>Details</h5>      </td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>meter per second, meters/second, m/s </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>meter per minute, meters per minute </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>feet/second</td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>feet/minute, ft/min </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>kilometer/hour, kilometers/hour, kilometers per hour,
+kph </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>knot, knots </td>
+
+
+      <td>Nautical mile per hour</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>mile per hour, miles per hour, mph </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>mach, machs </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>
+      
+      <h5>Acceleration<a name="Acceleration"></a></h5>      </td>
+
+
+      <td>
+      
+      <h5>Details</h5>      </td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>meter per second squared meters per second squared</td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>Gforce, G Force </td>
+
+
+      <td>Unit of acceleration equal to the acceleration of
+gravity. </td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>feet per second squared, foot per second squared </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>
+      
+      <h5>Time<a name="Time"></a></h5>      </td>
+
+
+      <td>
+      
+      <h5>Details</h5>      </td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>second, seconds </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>minute, minutes </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>hour, hours </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>day, days </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>hour over 10, hours over 10 </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>year, years </td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>
+      
+      <h5>Power<a name="Power"></a></h5>      </td>
+
+
+      <td>
+      
+      <h5>Details</h5>      </td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>Watt, Watts </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ft lb per second</td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>
+      
+      <h5>Volume rate<a name="VolumeRate"></a></h5>      </td>
+
+
+      <td>
+      
+      <h5>Details</h5>      </td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>meter cubed per second, meters cubed per second </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>gallon per hour, gallons per hour, gph </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>liter per hour, liters per hour </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>
+      
+      <h5>Weight<a name="Weight"></a></h5>      </td>
+
+
+      <td>
+      
+      <h5>Details</h5>      </td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>kilogram, kilograms, kg </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>slug, slugs, geepound, geepounds </td>
+
+
+      <td>A unit of mass to which a force of one pound imparts an
+acceleration of one foot per second squared. One geepound, or slug,
+equals about 14.59 kg or 32.2 lb.</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>pound, pounds, lbs </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>
+      
+      <h5>Weight rate<a name="WeightRate"></a></h5>      </td>
+
+
+      <td>
+      
+      <h5>Details</h5>      </td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>kilogram per second, kilograms per second </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>pound per hour, pounds per hour </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>
+      
+      <h5>Electrical Current<a name="ElectricalCurrent"></a></h5>      </td>
+
+
+      <td>
+      
+      <h5>Details</h5>      </td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ampere, amperes, amp, amps </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>
+      
+      <h5>Electrical Potential<a name="ElectricalPotential"></a></h5>      </td>
+
+
+      <td>
+      
+      <h5>Details</h5>      </td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>volt, volts </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>
+      
+      <h5>Frequency<a name="Frequency"></a></h5>      </td>
+
+
+      <td>
+      
+      <h5>Details</h5>      </td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>Hertz, Hz, </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>Kilohertz, KHz </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>Megahertz, MHz </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>Frequency BCD32</td>
+
+
+      <td>Frequency in 32 bit binary coded decimal </td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>Frequency BCD16</td>
+
+
+      <td>Frequency in 16 bit binary coded decimal </td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>Frequency ADF BCD32</td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>
+      
+      <h5>Density<a name="Density"></a></h5>      </td>
+
+
+      <td>
+      
+      <h5>Details</h5>      </td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>kilogram per cubic meter, kilograms per cubic meter </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>Slug per cubic feet, Slugs per cubic feet, Slug/ft3,
+slug per cubic foot, slugs per cubic foot </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>pound per gallon, pounds per gallon, lbs/gallon </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>
+      
+      <h5>Pressure<a name="Pressure"></a></h5>      </td>
+
+
+      <td>
+      
+      <h5>Details</h5>      </td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>pascal, pascals, Pa </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>newton per square meter, newtons per square meter </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>kilopascal, kpa </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>kilogram force per square centimeter, KgFSqCm </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>millimeter of mercury, millimeters of mercury, mmHg </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>centimeter of mercury, centimeters of mercury, cmHg </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>inch of mercury, inches of mercury, inHg </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>atmosphere, atmospheres, atm </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>millimeter of water, millimeters of water </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>pound-force per square inch, psi </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>pound-force per square foot, psf </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>bar, bars </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>millibar, millibars, mbar, mbars, hectopascal,
+hectopascals </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>boost cmHg</td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>boost inHg</td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>boost psi </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>slug feet squared, slugs feet squared </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>kilogram meter squared, kilograms meter squared </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>millibar, millibars, mbar, mbars, hectopascal,
+hectopascals </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>
+      
+      <h5>Torque<a name="Torque"></a></h5>      </td>
+
+
+      <td>
+      
+      <h5>Details</h5>      </td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>newton meter, newton, meters, nm </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>foot-pound, foot pound, ft-lbs, foot-pounds </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>lbf-feet</td>
+
+
+      <td>One lbf-foot equals 1.36 newton meters </td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>kilogram meter, kilogram meters, kgf meter, kgf meters </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>poundal feet</td>
+
+
+      <td>One poundal foot equals 0.042 newton meters </td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>
+      
+      <h5>Miscellaneous Units<a name="MiscellaneousUnits"></a></h5>      </td>
+
+
+      <td>
+      
+      <h5>Details</h5>      </td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>part</td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>half, halfs </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>third, thirds </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>percent, percentage </td>
+
+
+      <td>Normally a value between 0 and 100, though sometimes values outside this range are possible (reverse thrust, for example). </td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>percent over 100</td>
+
+
+      <td>Normally a value between 0.0 and 1.0, though sometimes values outside this range are possible (reverse thrust, for example). </td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>bel, bels </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>decibel, decibels </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>more_than_a_half</td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>times</td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>ratio</td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>number, numbers </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>scaler</td>
+
+
+      <td>~</td>
+    </tr>
+
+
+
+    <tr>
+
+
+      <td>position </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>Enum</td>
+
+
+      <td>A positive or negative integer corresponding to the
+member of the enum</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>Bool, Boolean </td>
+
+
+      <td>0 (FALSE) or 1 (TRUE) </td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>Bco16</td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>mask</td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>flags</td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>string</td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>per radian </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>per degree </td>
+
+
+      <td>~</td>
+    </tr>
+
+
+    <tr>
+
+
+      <td>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p align="center">&copy; 2006 Microsoft Corporation. All rights reserved. </p>
+<p align="center">~~@~~ </p>
+<p align="center">&nbsp;</p>
+
+
+</body>
+</html>

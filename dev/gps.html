@@ -1,0 +1,63 @@
+<html>
+<head>
+<title>FSX development - setting the waypoints in the GPS</title>
+</head>
+<body background="../images/clouds.jpg">
+<font face="Helvetica">
+<p>
+<a href="../index.html">Soaring with FSX</a>&nbsp;&gt;&gt;&nbsp;
+GPS
+</p>
+<h1>Setting up the waypoints in the GPS</h1>
+
+
+<p>The GPS data is the .PLN file. When making a mission from scratch, you use the 
+"Free Flight" mode in the game. Set all the parameters and save the flight to 
+the name you want for the mission. It will generate the .FLT, .FFSAVE, .WX and .PLN file. 
+It will only generate a .PLN file if you make a route. Do this by clicking on the "Flight Planner" 
+button in Free Flight mode. It will ask you for a departure and destination airport. You can't set 
+the same airport for departure and return. You can edit this in Notepad after making the file.
+</p>
+
+<p>Here's an example for a task flown from LOWZ (Zell am See) in Austria.</p>
+
+<p><b>1.</b> Set departure airport as LOWZ
+</p>
+
+<p><b>2.</b> Set destination airport as LOWI (Innsbruck), or something close, it really doesn't 
+matter. After you set these airport the "Find Route" button will be active.
+</p>
+
+<p><b>3.</b> Clisk on "Find route". You can now see a red line between the airports. 
+Grab the line with your mouse and drag it close to your first waypoint. It 
+will make a "WP1". Grab it again to make another waypoint for as many as you want.
+</p>
+
+<p><b>4.</b> Now save the file. It will default to a name like "VFR Zell Am Zee to XXX". 
+I rename it to match the name of the mission.
+</p>
+
+<p><b>5.</b> After exiting out of the "flight planner" save the entire mission to the same 
+name again. This way all your files for this mission, including the .PLN will have the same name.
+</p>
+
+<p><b>6.</b> Before moving these files, open the .PLN file in Notepad and copy and paste 
+the departure data to replace the destination data for a round robin flight back 
+to the airport. Look at it closely so you don't miss anything. You can also edit 
+the waypoint data to match the lat/long data for the turnpoints POI's you 
+have in the mission .xml. If you made extra waypoints other than the ones for POI's 
+you can edit those too. Be sure to make a waypoint for the Start and Finish 
+lines unless they are right over the airport.
+</p>
+
+<p><b>7.</b> Open the .FLT file and make sure the GPS data and file name match the .PLN data.
+</p>
+
+<hr/>
+<p><small>Brought to you by <font color='green'>Beeg</font></small></p>
+
+<!-- end of body -->
+
+</font>
+</body>
+</html>

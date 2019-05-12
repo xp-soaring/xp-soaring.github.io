@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<SimBase.Document Type="AceXML" version="1,0">
+    <Descr>AceXML Document</Descr>
+    <FlightPlan.FlightPlan>
+        <Title>KYKM to KGEG</Title>
+        <FPType>IFR</FPType>
+        <CruisingAlt>7000</CruisingAlt>
+        <DepartureID>KYKM</DepartureID>
+        <DepartureLLA>N46° 33' 56.10",W120° 31' 54.28",+001095.00</DepartureLLA>
+        <DestinationID>KGEG</DestinationID>
+        <DestinationLLA>N47° 36' 51.29",W117° 32' 37.74",+002372.00</DestinationLLA>
+        <Descr>KYKM, KGEG</Descr>
+        <DeparturePosition>27</DeparturePosition>
+        <DepartureName>Yakima Air Term/Mcallister</DepartureName>
+        <DestinationName>Spokane Intl</DestinationName>
+        <AppVersion>
+            <AppVersionMajor>10</AppVersionMajor>
+            <AppVersionBuild>60327</AppVersionBuild>
+        </AppVersion>
+        <ATCWaypoint id="KYKM">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N46° 33' 56.10",W120° 31' 54.28",+001095.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>KYKM</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="KGEG">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N47° 36' 51.29",W117° 32' 37.74",+002372.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>KGEG</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+    </FlightPlan.FlightPlan>
+</SimBase.Document>

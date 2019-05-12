@@ -1,0 +1,48 @@
+dialog_00_start_gate_open.wav
+  Zell am See to all competition gliders.  It's day 3, and the start gate is now open, height limit 8000..
+
+dialog_01_bad_start.wav
+  Yankee-November, Yankee-November ground. Was that intended to be a start? It looked too high from here.
+
+dialog_02_good_start.wav
+  Yankee-November good start. All pilots, the wind from the North-East is still causing problems for pilots caught in the lee of the hills - watch out.
+
+dialog_03_height_reminder.wav
+  Zell am See all gliders remember the area height restriction of 9000 feet is still in effect today.  All gliders keep below 9000 feet.
+
+dialog_10_tp1.wav
+  Yankee-November well done reaching turnpoint 1.  There's already been a landout on the high ground so it's good you avoided that.
+
+dialog_20_tp2.wav
+  Yankee-November nice job getting round TP2. The high ground might be a bit tricky so take care.
+
+dialog_25_mid_way.wav
+  Yankee-November we can see you passing North of the lake.  You're doing well. We're getting reports of pilots struggling a bit to the West so don't push it. The trailer's ready if you land out.
+
+dialog_30_tp3.wav
+  Yankee-November good job reaching TP3.  The ridge on the South side of the valley should be working, but I'm not sure if you can reach it.
+
+dialog_35_curlover.wav
+  Yankee-November is that you in the lee of the ridge? The last guy that was there sank like a rock.
+      
+dialog_40_final_glide.wav
+  Yankee-November we can see you coming in from the West.  Well done.
+
+dialog_70_height_warning.wav
+  Yankee-November you are getting close to the area height limit.  Remember today the limit is 9000 feet.
+
+dialog_71_height_limit.wav
+  Yankee-November what happened? You've strayed into the upper airspace and have been disqualified.
+
+dialog_72_height_warning_2.wav
+  Yankee-November you're entering the upper airspace. Descend immediately below 9000 feet.
+
+dialog_73_height_warning_3.wav
+  Yankee-November watch out!
+
+dialog_90_land_out.wav
+  Yankee-November we've recorded a land-out. Please call in when you're ready.
+
+dialog_99_good_finish.wav
+  Yankee-November good finish! Absolutely fantastic. There's a cross-wind on landing but you should be ok.
+

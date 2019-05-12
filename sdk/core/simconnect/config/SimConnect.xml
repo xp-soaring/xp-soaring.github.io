@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+
+<SimBase.Document Type="SimConnect" version="1,0">
+  <Descr>SimConnect</Descr>
+  <Filename>SimConnect.xml</Filename>
+  <Disabled>False</Disabled>
+  <SimConnect.Comm>
+    <Disabled>False</Disabled>
+    <Protocol>Auto</Protocol>
+    <Scope>local</Scope>
+    <Address></Address>
+    <MaxClients>64</MaxClients>
+    <Port></Port>
+    <MaxRecvSize>4096</MaxRecvSize>
+    <DisableNagle>False</DisableNagle>
+  </SimConnect.Comm>
+</SimBase.Document>

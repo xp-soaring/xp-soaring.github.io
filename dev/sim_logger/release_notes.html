@@ -1,0 +1,55 @@
+<html>
+<head>
+<title>Sim_logger</title>
+<style type="text/css">
+ body { font-family: Helvetica, sans-serif; }
+ ul {list-style-type: square;}
+</style>
+
+</head>
+<body background="../../images/clouds.jpg">
+
+<p>
+<a href="../../index.html">Soaring with FSX</a>&nbsp;&gt;&gt;&nbsp;
+<a href="index.html">sim_logger</a>&nbsp;&gt;&gt;&nbsp;
+release notes
+</p>
+
+<h1>Sim_logger release notes</h1>
+
+<ul>
+<li><b>2.31</b> BUGFIX for non-English FSX for unverified IGC file saves to<br/>
+  <center>&lt;user documents&gt;\&lt;local language FSX Files folder&gt;\sim_logger_unverified_logs<br/></center>
+  from the hard-coded 'Flight Simulator X Files' used in 2.30 (ok in English, broken elsewhere).
+  </li>
+
+<li><b>2.30</b> Changed the default folder for unverified IGC file saves to<br/>
+  <center>(My) Documents\Flight Simulator X Files\sim_logger_unverified_logs<br/></center>
+  from the FSXBASE sub-folder used in 2.29 which clashed with Vista/Win7 security.
+  </li>
+
+<li><b>2.29</b> Fix for Plan-G flightplan files - these can now be read successfully so the task can be
+  included in the tracklog (there was a unicode incompatibility with prior versions of sim_logger).<br/>
+  To provide better support for logging in 'free flight', these tracklogs will be saved in
+  FSXBASE\Modules\sim_logger\free_flight_logs. With previous versions of sim_logger, these tracklogs may
+  have been discarded.
+  </li>
+
+<li><b>2.27</b> Modified 'Restart tracklog from here' menu option so that the 'flight start time'
+  used in the tracklog filename is updated to the current time that option was selected.  This means
+  a subsequent tracklog save on the same flight will not overwrite earlier saved tracklogs.
+  </li>
+<li><b>2.26</b> Added an 'enable/disable autosave' option to the sim_connect.ini file, so that the automatic
+  save of IGC tracklogs can be disabled (e.g. after an aircraft crash, FSX crash-to-desktop, or the end of a flight longer
+  than 20 minutes that has not been saved)
+  </li>
+<li><b>2.25</b> First production version 2, with improved recording of FSX soaring-related checksums, and a
+  'replay' function for previously saved IGC tracklog files.
+  </li>
+<li><b>1.18</b> Final production version 1, saving FSX aircraft tracklog to an IGC-format file including
+  some FSX checksums.
+  </li>
+</ul>
+  
+</body>
+</html>

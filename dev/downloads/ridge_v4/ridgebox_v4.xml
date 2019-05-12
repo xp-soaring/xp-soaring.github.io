@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<FSData
+     version="9.0"
+     xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+     xsi:noNamespaceSchemaLocation="bglcomp.xsd" >
+
+<!-- placement at LOWZ, Austria -->
+<!--
+<SceneryObject
+      lat="N47 17.50"
+      lon="E12 47.34"
+      alt="0"
+      altitudeIsAgl="TRUE"
+      pitch="0"
+      bank="0"
+      heading="0"
+      imageComplexity="NORMAL">
+
+      <LibraryObject
+            name="{a4f22592-22a4-4aa7-b91d-f5700ef8108e}"
+            scale="1.0"/>
+</SceneryObject>
+-->
+
+<ModelData
+      sourceFile="ridgebox_v4_1x1x1.mdl" />
+<ModelData
+      sourceFile="ridgebox_v4_1x2x4.mdl" />
+<ModelData
+      sourceFile="ridgebox_v4_1x2x8.mdl" />
+<ModelData
+      sourceFile="ridgebox_v4_2x2x2.mdl" />
+<ModelData
+      sourceFile="ridgebox_v4_2x2x4.mdl" />
+<ModelData
+      sourceFile="ridgebox_v4_2x2x8.mdl" />
+</FSData>
+
+ 

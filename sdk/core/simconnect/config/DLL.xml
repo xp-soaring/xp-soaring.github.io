@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+
+<SimBase.Document Type="Launch" version="1,0">
+  <Descr>Launch</Descr>
+  <Filename>DLL.xml</Filename>
+  <Disabled>False</Disabled>
+  <Launch.ManualLoad>True</Launch.ManualLoad>
+  <Launch.Addon>
+    <Disabled>True</Disabled>
+    <ManualLoad>False</ManualLoad>
+    <Name>Addon DLL</Name>
+    <Path>C:\MyPath\Addon.dll</Path>
+  </Launch.Addon>
+</SimBase.Document>

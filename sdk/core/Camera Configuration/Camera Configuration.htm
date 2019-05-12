@@ -1,0 +1,817 @@
+<html>
+<head>
+<style>
+<!--
+ /* Style Definitions */
+
+p,div
+	{mso-style-name:Text;
+	margin-top:0pt;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+li
+	{mso-style-name:Text;
+	margin-top:2pt;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.Link, div.link
+	{mso-style-name:Link;
+	margin-top:0pt;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:#3366FF;}
+li.Link
+	{mso-style-name:Link;
+	margin-top:0pt;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:#3366FF;}
+h1
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0pt;
+	margin-bottom:12.0pt;
+	margin-left:0pt;
+	text-align:left;
+	line-height:150%;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	font-size:20.0pt;
+	font-family:Arial;
+	color:black;
+	mso-bidi-font-style:italic;}
+h2
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0pt;
+	margin-bottom:12.0pt;
+	margin-left:0pt;
+	text-align:left;
+	line-height:150%;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	font-size:18.0pt;
+	font-family:Arial;
+	color:#000033;
+	mso-bidi-font-style:italic;}
+h3
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0pt;
+	margin-bottom:9.0pt;
+	margin-left:0pt;
+	text-align:left;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	font-size:16.0pt;
+	mso-bidi-font-size:13.0pt;
+	font-family:Arial;
+	color:#0000cc;}
+h4
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0pt;
+	margin-bottom:5.0pt;
+	margin-left:0pt;
+	text-align:left;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	font-size:13.0pt;
+	mso-bidi-font-size:13.0pt;
+	font-family:Arial;
+	color:#00aa00;}
+h5
+	{mso-style-next:Normal;
+	margin-top:3.0pt;
+	margin-right:0pt;
+	margin-bottom:3.0pt;
+	margin-left:0pt;
+	text-align:left;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	font-size:12.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:Arial;
+	color:#000000;}
+h6
+	{mso-style-next:Normal;
+	margin-top:3.0pt;
+	margin-right:0pt;
+	margin-bottom:3.0pt;
+	margin-left:0pt;
+	text-align:left;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	font-size:12.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:Arial;
+	color:#aa0000;}
+CODE
+	{mso-style-name:Code;
+	margin:0pt;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Courier New";
+	color:#000000;}
+A:Hover
+	{color:#00aa00;}
+BODY
+	{margin-left:30pt;
+	background:#f5f5f5;}
+@page Section1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;
+	mso-header-margin:36.0pt;
+	mso-footer-margin:36.0pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+
+table
+	{class:T1;
+	style:border:medium none;
+	border-collapse:collapse;
+	border:5;
+	background-color:#FFFF99;
+	border-color:#CC0000;
+	border-style:inset;
+	width:900;
+	text-align:left;}
+
+tr	{vertical-align:top;}
+
+-->
+</style>
+</head>
+<h1><img src="Images/fsx-bannerjet.jpg" width="800" height="200"></h1>
+<h1>Camera Configuration</h1>
+<h2>Overview<a name="Overview"></a></h2>
+<p>This document describes the camera extensibility features of <i>Flight Simulator X</i>. This system has been completely rewritten, and not  only does it provide the average end user with some great new features, it is  highly customizable and extensible, enabling add-on providers to create  interesting and useful new views. There is a distinction between the<i> view system</i> and the <i>camera  system</i>. The view system manages the 3D windowing system by tracking the  active window, processing keyboard and mouse input and providing methods for  opening new windows, selecting windows, etc. The camera system defines what  appears in each view window. The FSX user interface and end user documentation  often use the term &lsquo;view&rsquo; to refer to the camera system. This document covers the  camera system&mdash;the system that defines what appears in a view window.</p>
+<p>&nbsp;</p>
+<h6>See Also</h6>
+<ul>
+  <li><a href="../../sdk overview.html">SDK Overview</a></li>
+</ul>
+<h2>Table of Contents</h2>
+<ul>
+  <li><a href="#Overview">Overview</a></li>
+  <li><a href="#Whatisnewforenduses">What is new for end users</a></li>
+  <li><a href="#Whatisnewfordevelopers">What is new for developers</a></li>
+  <li><a href="#CameraConfigurationFileFormat">Camera Configuration File Format</a></li>
+  <li><a href="#CameraDefinitions">Camera Definitons </a></li>
+  <li><a href="#DynamicHeadMovement">Dynamic Head Movement</a></li>
+  <li><a href="#Examples">Examples </a></li>
+</ul>
+<h3>What is new for end users<a name="Whatisnewforenduses"></a></h3>
+<p>There are changes to the way end-users can interact with the  camera system:</p>
+<p><br>
+    <b>New cameras</b> &ndash;  FS2004 had five different cameras with well-defined behavior: Cockpit, Virtual  Cockpit, Tower, Spot and Top-Down. Users could also get a spot plane view of AI  aircraft. FSX adds fly-by, runway and additional tower cameras as well as  <i>contextual</i> cameras.<br>
+</p>
+<p><b>Contextual cameras</b> &ndash; FS2004 featured global cameras&mdash;cameras that were always available. The only exception  was AI traffic cameras that were created and destroyed along with the AI aircraft.  FSX adds two new but similar types of contextual cameras for nearby airports  and runways. FSX also brings the capability to create cameras that are specific  to a particular aircraft, flight or mission. These cameras will only be  available when the given situation is active.</p>
+<p><br>
+    <b>Camera categories</b> &ndash;  There are so many new cameras available in FSX that the concept  of camera categories has been introduced: Cockpit, Outside, Tower, Runway, Aircraft, Traffic,  Multiplayer and Custom. Cameras with similar characteristics are grouped into  categories and the camera system keeps track of which camera was last selected  by the user.</p>
+<p><br>
+    <b>Expanded cycling</b> &ndash;  Users could cycle forward or backward among four different camera types in FS2004  (top-down was accessed separately) using a key (typically S and SHIFT+S) or  button. FSX enables the user to cycle through the last active camera in each  category in the same fashion but adds the ability to cycle through all cameras <i>within</i> a category (A and SHIFT+A by  default).</p>
+<p><br>
+    <b>Direct keyboard access</b> &ndash; As an alternative to camera cycling, users can access cameras directly using four  different key events. These events (mapped to F9, F10,  F11 and F12 by  default) provide direct access to commonly used cameras: Virtual Cockpit, Cockpit, Locked Spot and  Top Down. Additionally, users can toggle back  and forth between <i>any</i> two cameras by  pressing CTRL+S.</p>
+<p><br>
+    <b>Track/Pan Toggling</b> &ndash; Tower cameras, which in FS2004 tracked the user aircraft, can now  toggle between tracking and free-panning modes. To do this the user must  provide a keyboard mapping for the &ldquo;View track pan toggle&rdquo; event in the  Controls Settings dialog.</p>
+<p>&nbsp; </p>
+<h3>What is new for developers<a name="Whatisnewfordevelopers"></a></h3>
+<p> The new camera system offers developers a signficant level of customization, including: </p>
+<ul>
+  <li>Customizing the behavior of the default cameras.</li>
+  <li>    Removing default cameras from the main cycle.</li>
+  <li>    Adding new global cameras.</li>
+  <li>    Adding unique cameras to individual aircraft.</li>
+  <li> Adding cameras to the world (for example, associated with scenery objects).</li>
+  <li> Adding cameras to a particular saved flight or mission.<br>
+  </li>
+</ul>
+<h2> Camera Configuration File Format<a name="CameraConfigurationFileFormat"></a></h2>
+<p>Default camera definitions are data driven based  on text configuration files. These files contain one or more sections&mdash;one for  each camera definition. Each section contains parameter definitions for the  camera.</p>
+<h4>Global Cameras</h4>
+<p>FSX loads a set of global camera definitions from  CAMERAS.CFG located in the user&rsquo;s application data folder  (%APPDATA%\Microsoft\FSX). This file is copied from the FSX root folder the  first time a new user launches FSX or whenever the file cannot be found in the  application data folder (if it was deleted or moved).</p>
+<h4>Aircraft Cameras</h4>
+<p>Aircraft can have cameras that are unique to them. For  example, an airliner with complicated landing gear might define a &ldquo;belly  camera&rdquo; that provides a close up view of the gear extension/retraction process.  Aircraft cameras are defined in the AIRCRAFT.CFG (or SIM.CFG) file for the  aircraft using the same format. Refer to the <a href="../../SimObject Creation Kit/SimObject Container SDK/Aircraft Configuration Files.htm">Aircraft Configuration Files</a> documentation. </p>
+<p><br>
+  Each time a user loads an aircraft the existing aircraft  cameras are removed from the camera system and any cameras defined for the  selected aircraft are added.</p>
+<h4>Flight/Mission Cameras</h4>
+<p>You can also define cameras that specific to a flight or  mission. As with aircraft cameras these are defined in the .FLT file using the  same definition format. When a user loads a flight or mission any existing  flight-specific cameras are removed and new ones are added. Refer to the <a href="../../Mission Creation Kit/Mission Creation.html">Mission Creation </a>documentation.</p>
+<h3>Camera Definitions <a name="CameraDefinitions"></a></h3>
+<h4>[cameradefinition.n]</h4>
+<p>This section describes the parameters that make up camera  definitions. Almost all parameters are optional with reasonable  defaults (shown in bold, or given if numeric), only Title and Guid are required.</p>
+<p>&nbsp;</p>
+<table class="T1" cellpadding="2" cellspacing="4">
+  <tbody>
+    <tr>
+      <td><h5>Property </h5></td>
+      <td><h5>Type</h5></td>
+      <td><h5>Range</h5></td>
+      <td><h5>Description </h5></td>
+      <td><h5>Examples</h5></td>
+    </tr>
+    <tr>
+      <td>title</td>
+      <td>String</td>
+      <td></td>
+      <td>Camera title; appears in the upper-right corner  of the view window when changing cameras.</td>
+      <td> Cockpit( <b>Title = Cockpit</b> )<br>
+        Virtual Cockpit( <b>Title = Virtual Cockpit</b> )<br>
+        Spot( <b>Title = Spot</b> )<br>
+        Locked Spot( <b>Title = Locked Spot</b> )<br>
+        FlyBy( <b>Title = FlyBy</b> )<br>
+        Top-Down( <b>Title = Top-Down</b> )<br>
+        Nearest Tower( <b>Title = Nearest Tower</b> )<br>
+        Facilities Tower( <b>Title = Facilities Tower</b> )<br>
+        Facilities Runway( <b>Title = Facilities Runway</b> )<br>
+        AI Planes( <b>Title = AI Planes</b> )<br>
+        Multiplayer Planes( <b>Title = Multiplayer Planes</b> )<br>
+        Object Placement( <b>Title = Object Placement</b> )</td>
+    </tr>
+    <tr>
+      <td>guid</td>
+      <td>GUID</td>
+      <td></td>
+      <td>Camera definition&rsquo;s unique identifier. This GUID must be unique.</td>
+      <td> Cockpit( <b>Guid = {B1386D92-4782-4682-A137-738E25D1BAB5}</b> )<br>
+        Virtual Cockpit( <b>Guid = {C95EAB58-9E4A-4E2A-A34C-D8D9D948F078}</b> )<br>
+        Spot( <b>Guid = {BCA3FDD1-FB83-4BBA-8407-4922A7F0D00C}</b> )<br>
+        Locked Spot( <b>Guid = {BCA3FDD1-FB83-4BBA-8407-4922A7F0D00D}</b> )<br>
+        FlyBy( <b>Guid = {6B79DD49-9B4A-439D-BF40-ACBF157B0BA0}</b> )<br>
+        Top-Down( <b>Guid = {A2849229-938A-448f-8AC6-01EF2291C171}</b> )<br>
+        Nearest Tower( <b>Guid = {60BC0819-BD04-4AF6-8954-8FC8AA3545FF}</b> )<br>
+        Facilities Tower( <b>Guid = {AA8C80C0-9EE2-4284-A1C2-B20CD3F5F3D9}</b> )<br>
+        Facilities Runway( <b>Guid = {607C4520-CA6F-4135-AE10-8BF28838068F}</b> )<br>
+        AI Planes( <b>Guid = {75A8357E-AB58-4294-9416-90C73FAFDD90}</b> )<br>
+        Multiplayer Planes( <b>Guid = {2559BCED-9F13-4bc0-88C8-3996B9311681}</b> )<br>
+        Object Placement( <b>Guid = {4D6E0979-AAC8-499F-AADB-F36877C4E8AA}</b> ) </td>
+    </tr>
+    <tr>
+      <td>description</td>
+      <td>string</td>
+      <td></td>
+      <td>Camera description. This is not  used by the system, but can be used to provide a descriptive string in the configuration file. </td>
+      <td> Cockpit( <b>Description = This is the description of the cockpit view</b> )<br>
+        Virtual Cockpit( <b>Description = This is the description of the virtual cockpit view.</b> )<br>
+        Spot( <b>Description = This is the description of the spot view.</b> )<br>
+        FlyBy( <b>Description = This is the description of the fly by view.</b> )<br>
+        Top-Down( <b>Description = This is the description of the map or top down view.</b> )<br>
+        Nearest Tower( <b>Description = This is the description of the tower view.</b> )<br>
+        Facilities Runway( <b>Description = This is the description of the runway view.</b> )<br>
+        AI Planes( <b>Description = This is the description of the AI aircraft view.</b> )<br>
+        Multiplayer Planes( <b>Description = This is the description of the Multiplayer other aircraft view.</b> )<br>
+        Object Placement( <b>Description = This is the description of the object placement view</b> ) </td>
+    </tr>
+    <tr>
+      <td>origin</td>
+      <td>list</td>
+      <td><p><b>Cockpit</b><br>
+        Virtual Cockpit<br>
+        Center<br>
+        Pilot<br>
+        Tower<br>
+        Fixed</p>
+      WorldObject</td>
+      <td><p>Every camera definition must have an origin that defines the object or point on which the camera is oriented:</p>
+        <p><br>
+  &bull;	Cockpit &ndash; Camera is locked at fixed position in the 2D cockpit. Forward views include 2D instrument panel. Oblique view angle show virtual cockpit interior.<br>
+  &bull;	Virtual Cockpit &ndash; Camera is mounted at the eye point defined in the aircraft&rsquo;s CFG file.<br>
+  &bull;	Center &ndash; External (spot plane) camera that points at the center of the aircraft&rsquo;s visual model.<br>
+  &bull;	Pilot &ndash; External (spot plane) camera that points at the pilot position inside the aircraft&rsquo;s visual model.<br>
+  &bull;	Tower &ndash; External camera mounted at a control tower defined via the facilities (BGLCOMP) database.<br>
+  &bull;	Fixed &ndash; External camera at a fixed position. Fixed camera definitions must include FixedLatitude, FixedLongitude and FixedAltitude values.<br>
+  &bull;	WorldObject &ndash; Used by SimConnect clients. Not available through CFG settings.</p>
+        <p>&nbsp;</p>
+        <p>Note that this does not affect the View menu that the camera title appears in, the menu is set by the <a href="#category">category</a> parameter. </p></td>
+      <td> Cockpit( <b>Origin = Cockpit</b> )<br>
+        Virtual Cockpit( <b>Origin = Virtual Cockpit</b> )<br>
+        Spot( <b>Origin = Center</b> )<br>
+        Nearest Tower( <b>Origin = Tower</b> )<br>
+        Facilities Tower( <b>Origin = Fixed</b> ) </td>
+    </tr>
+    <tr>
+      <td>showpanel</td>
+      <td>bool</td>
+      <td>Yes/<b>No</b></td>
+      <td>Determines whether the 2D instrument panel is  shown.</td>
+      <td> Cockpit( <b>ShowPanel = Yes</b> )<br>
+        Object Placement( <b>ShowPanel = No</b> ) </td>
+    </tr>
+    <tr>
+      <td>snappbhadjust</td>
+      <td>list</td>
+      <td><p><b>None</b><br>
+        Ordinal<br>
+        Swivel</p>
+      Orthogonal</td>
+      <td><p>These settings control how camera movement is handled when the camera system receives a view pan or &ldquo;snap to&rdquo; command. </p>
+        <p><br>
+  &bull;	None &ndash; Commands are ignored (position remains fixed).<br>
+  &bull;	Ordinal &ndash; Camera moves to the next ordinal compass position in the direction of the command (similar to the standard &ldquo;snap&rdquo; 2D cockpit view in Flight Simulator 2004).<br>
+  &bull;	Swivel &ndash; Camera moves incrementally in the direction of the command (similar to panning virtual cockpit and spot plane views in Flight Simulator 2004).<br>
+  &bull;	Orthogonal &ndash; Camera rotates in the direction of the command (used in top-down view).<br>
+        </p></td>
+      <td> Cockpit( <b>SnapPbhAdjust = Ordinal</b> )<br>
+        Virtual Cockpit( <b>SnapPbhAdjust = Swivel</b> )<br>
+        Top-Down( <b>SnapPbhAdjust = Orthogonal</b> )<br>
+        Facilities Tower( <b>SnapPbhAdjust = None</b> ) </td>
+    </tr>
+    <tr>
+      <td>panpbhadjust</td>
+      <td>list</td>
+      <td><p><b>None</b><br>
+        Ordinal<br>
+        Swivel</p>
+      Orthogonal</td>
+      <td>Same range of options as snappbhadjust.</td>
+      <td> Cockpit( <b>PanPbhAdjust = Ordinal</b> )<br>
+        Virtual Cockpit( <b>PanPbhAdjust = Swivel</b> )<br>
+        Top-Down( <b>PanPbhAdjust = Orthogonal</b> )<br>
+        Facilities Tower( <b>PanPbhAdjust = None</b> ) </td>
+    </tr>
+    <tr>
+      <td>snappbhreturn</td>
+      <td>bool</td>
+      <td>True/<b>False</b></td>
+      <td>If true, camera position returns to its initial  position when the snap movement command key is released.</td>
+      <td> Cockpit( <b>SnapPbhReturn = True</b> )<br>
+        Virtual Cockpit( <b>SnapPbhReturn = False</b> ) </td>
+    </tr>
+    
+    <tr>
+      <td>panpbhreturn</td>
+      <td>bool</td>
+      <td>True/<b>False</b></td>
+      <td>If true, camera position returns to its initial  position when the pan movement command key is released.</td>
+      <td> Cockpit( <b>PanPbhReturn = True</b> )<br>
+        Virtual Cockpit( <b>PanPbhReturn = False</b> ) </td>
+    </tr>
+    <tr>
+      <td>track</td>
+      <td>list</td>
+      <td><p><b>None</b><br>
+        FlyBy<br>
+        Track<br>
+        TrackBank<br>
+        FlatChase</p>
+      FlatChaseLocked</td>
+      <td><p>External cameras have the ability to track a user or AI object. The Track parameter controls this behavior:</p>
+        <p><br>
+  &bull;	None &ndash; No tracking behavior. User has manual control over the camera.<br>
+  &bull;	FlyBy &ndash; Fly-by mode; the camera is positioned away from the user aircraft (at a location given by ChaseDistance, ChaseAltitude and ChaseHeading values) and tracks the aircraft for ChaseTime seconds before computing a new position.<br>
+  &bull;	Track &ndash; Camera tracks the object while maintaining its position (similar to Tower view in prior versions of Flight Simulator).<br>
+  &bull;	TrackBank &ndash; Camera tracks the object while maintaining its position (similar to Tower view in prior versions of Flight Simulator).<br>
+  &bull;	FlatChase &ndash; Camera moves with the object, maintaining a fixed distance from it (similar to Spot view in prior versions of Flight Simulator). Camera movements are dampened.<br>
+  &bull;	FlatChaseLocked &ndash; Camera moves with the object, maintaining a fixed distance from it (similar to Spot view in prior versions of Flight Simulator). Camera movements are rigid.</p></td>
+      <td> Cockpit( <b>Track = None</b> )<br>
+        Spot( <b>Track = FlatChase</b> )<br>
+        Locked Spot( <b>Track = FlatChaseLocked</b> )<br>
+        FlyBy( <b>Track = FlyBy</b> )<br>
+        Nearest Tower( <b>Track = Track</b> )<br>
+        Facilities Runway( <b>Track = TrackBank</b> )<br>
+        AI Planes( <b>Track = Flat Chase</b> ) </td>
+    </tr>
+    <tr>
+      <td>showaxis</td>
+      <td>list</td>
+      <td><p>Yes<br>
+          <b>No</b></p>
+      FrontOnly</td>
+      <td>Determines whether the axis indicator is shown.</td>
+      <td> Cockpit( <b>ShowAxis = FrontOnly</b> )<br>
+        Virtual Cockpit( <b>ShowAxis = YES</b> )<br>
+        Spot( <b>ShowAxis = No</b> )<br>
+        Top-Down( <b>ShowAxis = Yes</b> ) </td>
+    </tr>
+    <tr>
+      <td>allowzoom</td>
+      <td>bool</td>
+      <td><b>Yes</b>/No</td>
+      <td>Controls whether the camera responds to zoom commands.</td>
+      <td> Cockpit( <b>AllowZoom = TRUE</b> )<br>
+        Spot( <b>AllowZoom = Yes</b> )<br>
+        Object Placement( <b>AllowZoom = FALSE</b> ) </td>
+    </tr>
+    <tr>
+      <td>initialzoom</td>
+      <td>float</td>
+      <td><p>0.0 to 512.0</p>
+      <p>&nbsp;</p>
+      <p>Default: 1.0 </p></td>
+      <td>Sets the initial zoom.</td>
+      <td> Cockpit( <b>InitialZoom = 1.0</b> )<br>
+        FlyBy( <b>InitialZoom = 10.0</b> )<br>
+        Top-Down( <b>InitialZoom = 256</b> )<br>
+        Nearest Tower( <b>InitialZoom = 8.0</b> ) </td>
+    </tr>
+    <tr>
+      <td>smoothzoomtime</td>
+      <td>float </td>
+      <td><p>0.0 to 30.0</p>
+      <p>&nbsp;</p>
+      <p>Default: 5.0 </p></td>
+      <td>The zoom time in seconds. By default, zooming in and out is &ldquo;smoothed&rdquo; by  changing between old and new zoom levels over a small time period (5 seconds).  This setting enables you to control this effect on a per-camera basis.</td>
+      <td> Cockpit( <b>SmoothZoomTime = 2.0</b> ) </td>
+    </tr>
+    <tr>
+      <td>showweather</td>
+      <td>bool</td>
+      <td>Yes/<b>No</b></td>
+      <td>Determines whether weather visuals are shown.</td>
+      <td> Cockpit( <b>ShowWeather = Yes</b> )<br>
+        Top-Down( <b>ShowWeather = No</b> ) </td>
+    </tr>
+    <tr>
+      <td>InitialXyz</td>
+      <td>XYZ (see <a href="#FileFormatNotes">notes</a>) </td>
+      <td><p>-500.0 to 500.0 (for each of the three) </p>
+      <p>&nbsp;</p>
+      <p>Defaults: 0.0 </p></td>
+      <td>Camera XYZ position offset from the default  location in meters.</td>
+      <td>See <a href="#C172Cameras">C172Cameras</a> example. </td>
+    </tr>
+    <tr>
+      <td>InitialPbh</td>
+      <td>XYZ (see <a href="#Examples">notes</a>) </td>
+      <td><p>-90 to 90.0 (pitch)</p>
+      <p>-180 to 180.0 (bank and heading)  </p>
+      <p>&nbsp;</p>
+      <p>Defaults: 0.0 </p></td>
+      <td>Camera pitch, bank and heading orientation offset from the default  in degrees. Note that positive pitches give a downward view. Positive headings are to the right. </td>
+      <td>See <a href="#C172Cameras">C172Cameras</a> example. </td>
+    </tr>
+    <tr>
+      <td>xyzadjust</td>
+      <td>bool</td>
+      <td><b>True</b>/False</td>
+      <td>Controls whether the camera responds to position  change commands.</td>
+      <td> Cockpit( <b>XyzAdjust = TRUE</b> )<br>
+        Spot( <b>XyzAdjust = FALSE</b> ) </td>
+    </tr>
+    <tr>
+      <td>AllowPbhAdjust</td>
+      <td>bool</td>
+      <td><b>Yes</b>/No</td>
+      <td>Controls whether the camera responds to pitch,  bank and heading change commands.</td>
+      <td>No examples. </td>
+    </tr>
+    <tr>
+      <td>showlensflare</td>
+      <td>bool</td>
+      <td>True/<b>False</b></td>
+      <td>Determines whether lens flare effect can be  shown (based on user setting).</td>
+      <td> Cockpit( <b>ShowLensFlare=FALSE</b> )<br>
+        Spot( <b>ShowLensFlare=TRUE</b> ) </td>
+    </tr>
+    <tr>
+      <td>category<a name="category"></a></td>
+      <td>list</td>
+      <td><p>Aircraft<br>
+        AirTraffic<br>
+        <b>Cockpit</b><br>
+        Custom<br>
+        Outside<br>
+        Multiplayer<br>
+        Runway<br>
+        Scenery</p>
+      Tower</td>
+      <td><p>Every camera definition must include a category that defines  how the camera is exposed in the user interface. Categories define the view  cycling behavior (S and A keys) as well as the menu structure. Some categories  (AirTraffic, Runway, Multiplayer and Tower) can also be instance-based, meaning  new cameras are created automatically based on the object type.</p></td>
+      <td> Cockpit( <b>Category = Cockpit</b> )<br>
+        Spot( <b>Category = Outside</b> )<br>
+        Nearest Tower( <b>Category = Tower</b> )<br>
+        Facilities Runway( <b>Category = Runway</b> )<br>
+        AI Planes( <b>Category = AirTraffic</b> )<br>
+        Multiplayer Planes( <b>Category = MultiPlayer</b> ) </td>
+    </tr>
+    <tr>
+      <td>momentumeffect</td>
+      <td>bool</td>
+      <td>Yes/<b>No</b></td>
+      <td>Controls whether the camera exhibits momentum  effect. This is determined by the settings in the <a href="#DynamicHeadMovement">Dynamic Head Movement</a> section. </td>
+      <td> Virtual Cockpit( <b>MomentumEffect = Yes</b> ) </td>
+    </tr>
+    <tr>
+      <td>zoompanscalar</td>
+      <td>float</td>
+      <td><p>0.0 to 100.0 </p>
+      <p>&nbsp;</p>
+      <p>Default: 0.0 </p></td>
+      <td>One side effect of zooming in on an object is  that it becomes difficult to make fine camera panning adjustments because the  absolute movement of the camera around its position remains constant. The  ZoomPanScalar setting compensates for this by adjusting panning movements by  the given factor in relation to zoom level. Movement is scaled by dividing the  ZoomPanScalar value by the zoom level. For example, with a ZoomPanScalar  setting of 1, camera panning is reduced by half at 2x zoom (1 / 2). A setting  of 2, on the other hand, accelerates panning to twice the normal rate at 1x  zoom (2&nbsp;&nbsp; / 1) and is exactly the normal  rate at 2x zoom (2 / 2).</td>
+      <td> Virtual Cockpit( <b>ZoomPanScalar = 1.0</b> ) </td>
+    </tr>
+    <tr>
+      <td>pitchpanrate</td>
+      <td>float</td>
+      <td><p>0.0 to 100.0</p>
+      <p>&nbsp;</p>
+      <p>Default: 10.0 </p></td>
+      <td>Controls the rate at which pitch is changed in  degrees per second.</td>
+      <td> <p>Virtual Cockpit( <b>PitchPanRate=20</b> ) </p>
+      <p>&nbsp;</p>
+      <p>See <a href="#PanRateTest">PanRateTest</a> example. </p></td>
+    </tr>
+    <tr>
+      <td>headingpanrate</td>
+      <td>float</td>
+      <td><p>0.0 to 100.0 </p>
+      <p>&nbsp;</p>
+      <p>Default: 30.0 </p></td>
+      <td>Controls the rate at which heading is changed in  degrees per second.</td>
+      <td> <p>Virtual Cockpit( <b>HeadingPanRate=60</b> ) </p>
+      <p>&nbsp;</p>
+      <p>See <a href="#PanRateTest">PanRateTest</a> example. </p></td>
+    </tr>
+    <tr>
+      <td>panacceleratortime</td>
+      <td>float</td>
+      <td><p>0.0 to 30.0</p>
+      <p>&nbsp;</p>
+      <p>Default: 5.0 </p></td>
+      <td>Pan accelertion time in seconds. When panning the  camera,  an acceleration/deceleration effect is added over a  period of time. The larger this value is the longer  it takes for the pan movement to reach its full rate (as controlled by  PitchPanRate and HeadingPanRate), thus yielding smoother panning movement.  Lower numbers yield more abrupt panning.</td>
+      <td>No examples. </td>
+    </tr>
+    <tr>
+      <td>hotkeyselect</td>
+      <td>integer</td>
+      <td><p>1 to 10</p>
+      <p>&nbsp;</p>
+      <p>No default. </p></td>
+      <td>Links the camera to one of the 10 pre-defined  key events for activating cameras; see the Control Assignments dialog.</td>
+      <td> Virtual Cockpit( <b>HotKeySelect=1</b> )<br>
+        Spot( <b>HotKeySelect=2</b> )<br>
+        Nearest Tower( <b>HotKeySelect=3</b> ) </td>
+    </tr>
+    <tr>
+      <td>transition</td>
+      <td>bool</td>
+      <td>Yes/<b>No</b></td>
+      <td>When switching between camera views Flight  Simulator can provide a &ldquo;smooth&rdquo; transition by moving the camera in real time  from its old location to the new one. Note that this behavior is only applied  if the Transition settings for both cameras are set to yes. If either or both  are set to No then the view switch is instantaneous.</td>
+      <td> Spot( <b>Transition = Yes</b> )<br>
+        Top-Down( <b>Transition = No</b> ) </td>
+    </tr>
+    <tr>
+      <td>clipmode</td>
+      <td>string</td>
+      <td><p><b>Normal</b> <br>
+        Minimum<br>
+        Spot</p>
+      Tower</td>
+      <td><p>This setting is used to control how the clip planes are computed. Clip planes are used to set the minimum and maximum distances for rendering in a 3D graphics program. The relative location of these planes determines how precise the graphics engine can maintain the Z-order of objects. A discussion of clip plane management is beyond the scope of this document. However, the concept is relevant to the camera system because it determines whether the camera favors near or far objects in the view:</p>
+        <p><br>
+  &bull;	Normal &ndash; The near clip plane is scaled along with the zoom level. Useful for most views.<br>
+  &bull;	Minimum &ndash; Clamps the near clip plane at its absolute minimum value (1 meter). Useful for cameras where the camera is placed close to object geometry (e.g., aircraft cameras).<br>
+  &bull;	Spot &ndash; Favors distant objects by scaling the near clip plane with altitude and distance. Useful when the camera is positioned a reasonable distance away from the target object (e.g., spot view).<br>
+  &bull;	Tower &ndash; Favors near objects by scaling the near clip plane by one-half the zoom level and clamping the far plane based on visibility settings with an absolute limit of 20km. Useful when objects at the limits of visibility aren&rsquo;t important.</p></td>
+      <td> Spot( <b>ClipMode = Spot</b> )<br>
+        FlyBy( <b>ClipMode = Tower</b> ) </td>
+    </tr>
+    <tr>
+      <td>chasedistance</td>
+      <td>float</td>
+      <td><p>0.0 to 3000.0 </p>
+      <p>&nbsp;</p>
+      <p>Default: 0.0 </p></td>
+      <td>Initial distance in meters of the camera from the target  object in external views.</td>
+      <td> FlyBy( <b>ChaseDistance = 500</b> ) </td>
+    </tr>
+    <tr>
+      <td>chaseheading</td>
+      <td>float</td>
+      <td><p>-180.0 to 180.0 </p>
+      <p>&nbsp;</p>
+      <p>Default: 0.0 </p></td>
+      <td>Initial angular offset in degrees of the camera relative to  the target object in external views.</td>
+      <td> FlyBy( <b>ChaseHeading = 15</b> ) </td>
+    </tr>
+    <tr>
+      <td>chasealtitude</td>
+      <td>float</td>
+      <td><p>-1000.0 to 3000.0 </p>
+      <p>&nbsp;</p>
+      <p>Default: 0.0 </p></td>
+      <td>Initial altitude in feet of the camera relative to the  target object in external views.</td>
+      <td> FlyBy( <b>ChaseAltitude = 10</b> ) </td>
+    </tr>
+    <tr>
+      <td>chasetime</td>
+      <td>float</td>
+      <td><p>0.0 to 200.0 </p>
+      <p>&nbsp;</p>
+      <p>Default: 0.0 </p></td>
+      <td>Length of time in seconds an aircraft is kept in Fly-By  view before a new position is computed.</td>
+      <td> FlyBy( <b>ChaseTime = 20</b> ) </td>
+    </tr>
+    <tr>
+      <td>instancedbased</td>
+      <td>Bool</td>
+      <td>Yes/<b>No</b></td>
+      <td>If Yes, a new instance of the camera is created  for each instance of the object referenced by the TargetCategory setting.</td>
+      <td> Facilities Tower( <b>InstancedBased = Yes</b> ) </td>
+    </tr>
+    <tr>
+      <td>cyclehideradius</td>
+      <td>float</td>
+      <td><p>0.0 to 100.0 </p>
+      <p>&nbsp;</p>
+      <p>Default: 0.0 </p></td>
+      <td>For instance based cameras, sets the distance  (in nautical miles) beyond which the camera is skipped in the cycling order.</td>
+      <td> Facilities Tower( <b>CycleHideRadius = 7</b> ) </td>
+    </tr>
+    <tr>
+      <td>targetcategory</td>
+      <td>list</td>
+      <td><p><b>None</b><br>
+        AI Planes</p>
+      Fixed</td>
+      <td>Determines which object class, when a new instance  is created, triggers the creation of a new InstanceBased camera.</td>
+      <td> Facilities Runway( <b>TargetCategory = Fixed</b> )<br>
+        AI Planes( <b>TargetCategory = AI Planes</b> ) </td>
+    </tr>
+    <tr>
+      <td>cyclehidden</td>
+      <td>bool</td>
+      <td>Yes/<b>No</b></td>
+      <td>If Yes, the camera is hidden from view  cycling&mdash;it does not appear when cycling through views using the keyboard.</td>
+      <td> Facilities Runway( <b>CycleHidden=Yes</b> ) </td>
+    </tr>
+    <tr>
+      <td>FixedLatitude</td>
+      <td>latitude</td>
+      <td><p>-90.0 to 90.0</p>
+      <p>&nbsp;</p>
+      <p>Latitude values can be expressed in decimal (-90 to +90) or hemispheric (N90 to S90) notation.</p>
+      <p>&nbsp;</p>
+      <p>Default: 0.0 </p></td>
+      <td>For Fixed camera types, the latitude of the  cameras position.</td>
+      <td>See <a href="#FixedCameraTest">FixedCameraTest</a>.</td>
+    </tr>
+    <tr>
+      <td>FixedLongitude</td>
+      <td>longitude</td>
+      <td><p>-180.0 to 180.0</p>
+      <p>&nbsp;</p>
+      <p>Longitude values can be expressed in decimal (-180 to +180) or hemispheric (W180 to E180) notation.</p>
+      <p>&nbsp;</p>
+      <p>Default: 0.0 </p></td>
+      <td>For Fixed camera types, the longitude of the  cameras position.</td>
+      <td>See <a href="#FixedCameraTest">FixedCameraTest</a>.</td>
+    </tr>
+    <tr>
+      <td>FixedAltitude</td>
+      <td>float</td>
+      <td><p>-500.0 to 30,000,000.0 </p>
+      <p>&nbsp;</p>
+      <p>Default: 0.0 </p></td>
+      <td>For Fixed camera types, the altitude of the  cameras position in meters.</td>
+      <td>See <a href="#FixedCameraTest">FixedCameraTest</a>.</td>
+    </tr>
+  </tbody>
+</table>
+<p>&nbsp;</p>
+<h6>Notes<a name="FileFormatNotes"></a>:</h6>
+<ul>
+  <li>&ldquo;XYZ&rdquo;       value types denote a set of three numeric values expressed as a comma-separated       string in the configuration file (for example:
+    InitialPbh=0, 10, -40). 
+    Each value can be positive or negative and there <i>must be a space</i> between each comma and the following value.</li>
+  <li>Yes and No are interchangeable with True and False for boolean entries. </li>
+</ul>
+<h2>Dynamic Head Movement<a name="DynamicHeadMovement"></a></h2>
+<p>The <i>Flight Simulator X</i> camera system can compute  acceleration parameters to simulate head movement. The effect is controlled by  settings in the FSX.CFG file, which can be found in the <i>&lt;Drive:&gt;\Documents and Settings\&lt;alias&gt;\Application Data\Microsoft\FSX</i> folder. </p>
+<p>&nbsp;</p>
+<p>Flight Simulator uses these settings to compute how much  camera acceleration (pitch, roll, side-to-side, and fore-to-aft) is generated  in relation to aircraft accelerations. The table below describes each setting.  Note that negative numbers move the camera in the opposite direction to the acceleration.</p>
+<H4>[dynamicheadmovement]</H4>
+<TABLE cellSpacing="4" cellPadding="2">
+  <TBODY>
+    <TR>
+      <TD><H5>Property </H5></TD>
+      <TD><h5>Type</h5></TD>
+      <TD><h5>Default</h5></TD>
+      <TD><H5>Description </H5></TD>
+      <TD><H5>Examples</H5></TD>
+    </TR>
+    <TR>
+      <TD>lonaccelonheadlon</TD>
+      <TD>float</TD>
+      <TD>-0.02</TD>
+      <TD>Computes the camera&rsquo;s longitudinal  (fore-to-back) change generated by longitudinal acceleration of the aircraft.</TD>
+      <TD><B>LonAccelOnHeadLon=-0.020000</B></TD>
+    </TR>
+    <TR>
+      <TD>lonaccelonheadpitch</TD>
+      <TD>float</TD>
+      <TD>-0.01</TD>
+      <TD>Computes the camera&rsquo;s pitch change generated by  longitudinal acceleration of the aircraft.</TD>
+      <TD><B>LonAccelOnHeadPitch=-0.010000</B></TD>
+    </TR>
+    <TR>
+      <TD>rollaccelonheadlat</TD>
+      <TD>float</TD>
+      <TD>0.01</TD>
+      <TD>Computes the camera&rsquo;s lateral (side-to-side)  change generated by rolling acceleration of the aircraft.</TD>
+      <TD><B>RollAccelOnHeadLat=0.010000</B></TD>
+    </TR>
+    <TR>
+      <TD>yawaccelonheadlat</TD>
+      <TD>float</TD>
+      <TD>-0.1</TD>
+      <TD>Computes the camera&rsquo;s lateral (side-to-side)  change generated by yawing acceleration of the aircraft.</TD>
+      <TD><B>YawAccelOnHeadLat=-0.100000</B></TD>
+    </TR>
+    <TR>
+      <TD>rollaccelonheadroll</TD>
+      <TD>float</TD>
+      <TD>0.1</TD>
+      <TD>Computes the camera&rsquo;s rolling motion generated  by rolling acceleration of the aircraft.</TD>
+      <TD><B>RollAccelOnHeadRoll=0.100000</B></TD>
+    </TR>
+    <TR>
+      <TD>maxheadangle</TD>
+      <TD>float</TD>
+      <TD>5.0</TD>
+      <TD>Maximum allowed angular change in degrees.</TD>
+      <TD><B>MaxHeadAngle=5.000000</B></TD>
+    </TR>
+    <TR>
+      <TD>maxheadoffset</TD>
+      <TD>float</TD>
+      <TD>0.3</TD>
+      <TD>Maximum allowed lateral change in feet.</TD>
+      <TD><B>MaxHeadOffset=0.300000</B></TD>
+    </TR>
+    <TR>
+      <TD>headmovetimeconstant</TD>
+      <TD>float</TD>
+      <TD>1.0</TD>
+      <TD>Acceleration multiplier (higher numbers increase  responsiveness).</TD>
+      <TD><B>HeadMoveTimeConstant=1.000000</B></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<p>&nbsp;</p>
+<h2>Examples<a name="Examples"></a></h2>
+<p>The SDK includes several example files that you  can use to observe how changes to camera configuration settings affect  behavior. Copy the .FLT files to the <i>My Documents\Flight Simulator X Files</i>  folder and then load them in <i>Flight Simulator X</i></p>
+<p>&nbsp;</p>
+<table width="500" border="1" cellspacing="2" cellpadding="4">
+  <tr>
+    <td><h5>Example</h5></td>
+    <td><h5>Description</h5></td>
+  </tr>
+  <tr>
+    <td><p><a href="Images/PanRateTest-text.txt">PanRateTest</a><a name="PanRateTest"></a></p>    </td>
+    <td><p>This flight defines six cameras that appear in the  &ldquo;Custom&rdquo; category with different pan rate settings. Pan the view with the joystick hat switch or numeric keypad (with NumLock selected). </p>
+      <p>Click here to run the flight: <a href="Images/PanRateTest.FLT">PanRateTest.FLT</a></p></td>
+  </tr>
+  <tr>
+    <td><a href="Images/FixedCameraTest-text.txt">FixedCameraTest</a><a name="FixedCameraTest"></a></td>
+    <td><p>This flight defines four fixed cameras that surround the end of  runway 04 at Rochester (New York) International airport. The  positions are defined by these settings in the camera definitions of the flight  file:</p>
+      <p>FixedLatitude=N43.103570<br>
+        FixedLongitude=W77.690494<br>
+        FixedAltitude=230</p>
+    <p>These cameras also feature smooth transitions. Select one of  the cameras from the Views menu and then press the A key to cycle through each  position.</p>
+    <p>Click here to run the flight: <a href="Images/FixedCameraTest.FLT">FixedCameraTest.FLT</a></p></td>
+  </tr>
+  <tr>
+    <td><a href="Images/c172cameras-text.txt">C172-Cameras-text</a><a name="C172Cameras"></a></td>
+    <td><p>This file includes definitions that add two additional Virtual  Cockpit cameras to the Cessna 172, including rear seat right and rear seat left views.To use these cameras you must first copy the contents of the  file into the AIRCRAFT.CFG file located in the Cessna 172 folder. By default  this is <i>C:\Program Files\Microsoft Games\Microsoft Flight Simulator  X\SimObjects\Airplanes\C172</i>. After you save the file simply load the Cessna 172  in <i>Flight Simulator X</i>. These new views will be available from the Cockpit category. 
+The views were created by offsetting the default eye point  using the InitialXyz and InitialPbh settings. The views are 90 degrees out and 10 degrees down, and give images such as (rear seat right):</p>
+      <p>&nbsp;</p>
+      <p><img src="Images/RearSeatRight.JPG" width="768" height="599"> </p>
+      <p>&nbsp; </p>
+    <p>&nbsp;</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div align="center">
+  <p>&nbsp;</p>
+  <p>&copy; 2006 Microsoft Corporation. All rights reserved. </p>
+  <p align="center">~~@~~ </p>
+  <p align="center"></p>
+</div>
+</html>

@@ -1,0 +1,442 @@
+BODY
+{
+    FONT-SIZE: 8pt;
+    FONT-FAMILY: arial;
+}
+A:hover {
+    color:#FF0000
+}
+.TABS1 {
+	font-size: 10pt;
+	font-style: italic;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	color: #ffffff;
+	background: #8295B5;
+	text-align: left;
+	vertical-align: bottom;
+	display: table-cell;
+	list-style-type: none;
+	text-indent: 0pt;
+	word-spacing: normal;
+	clear: none;
+	float: none;
+	height: auto;
+	width: auto;
+	text-decoration: none;
+	margin: 0px;
+	padding-left: 5px;
+	border: none;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.TABS1:hover {
+    color:#000000
+}
+.TABS2:hover {
+    color:#000000
+}
+.TABS2 {
+	font-size: 10pt;
+	font-style: italic;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	color: #000000;
+	background: #ffffff;
+	text-align: left;
+	vertical-align: bottom;
+	display: table-cell;
+	list-style-type: none;
+	text-indent: 0pt;
+	word-spacing: normal;
+	clear: none;
+	float: none;
+	height: auto;
+	width: auto;
+	text-decoration: none;
+	margin: 0px;
+	padding-left: 5px;
+	border: none;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.Sitemaphead
+{
+	font-size: 12pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-align: left;
+	line-height: 12pt;
+    FONT-FAMILY: Arial; 
+}
+.SitemapIndentedCopy
+{
+	font-size: 8pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normmal;
+	font-variant: normal;
+	text-align: left;
+	margin-left: 10px;
+	line-height: 16pt;
+    FONT-FAMILY: Arial; 
+}
+.SitemapSubIndentedCopy
+{
+	font-size: 8pt;
+	margin-top: -5px;
+	font-style: italic;
+	line-height: 6pt;
+	font-weight: normmal;
+	font-variant: normal;
+	text-align: left;
+	margin-left: 10px;
+    FONT-FAMILY: Arial; 
+}
+.GSBlurb
+{
+	font-size: 11pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bolder;
+	font-variant: normal;
+	color: #5E7080;
+	text-align: Center;
+    FONT-FAMILY: Arial; 
+}
+.GSBullet
+{
+	font-size: 10pt;
+	font-style: italic;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	color: #5E7080;
+    FONT-FAMILY: Arial; 
+}
+.GSH1
+{
+	font-size: 14pt;
+	font-style: italic;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	color: #003366;
+	text-align: left;
+    FONT-FAMILY: Arial; 
+}
+.GSIndentedCopy
+{
+	font-size: 8pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normmal;
+	font-variant: normal;
+	color: #000000;
+	text-align: left;
+	margin-left:20;
+	margin-top:10;
+	margin-bottom:10;
+    FONT-FAMILY: Arial; 
+}
+.GSSideBar3
+{
+    FONT-SIZE: 8pt;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; 
+	background: #F6F7F9;
+	color: #5e6162;
+	border-bottom:1 outset #5e6162;
+	border-right:1 outset #5e6162;
+	border-left:1 outset #5e6162;
+	border-top:1 outset #5e6162;
+	padding-left:3;
+	padding-top:0;
+	padding-bottom:0;
+	padding-right:3;
+	font-weight: bold;
+	font-variant: normal;
+	text-decoration: none;
+}
+.GSButtonBox
+{
+	text-align: Center;
+	background: #D3D4E8;
+	border-bottom:1 outset #3A4863;
+	border-right:1 outset #3A4863;
+	border-left:1 outset #3A4863;
+	border-top:1 outset #3A4863;
+	padding-left:10;
+	padding-top:10;
+	padding-bottom:10;
+	padding-right:10;
+	width: 250;
+}
+.GSButton
+{
+    FONT-SIZE: 12pt;
+	font-style: normal;
+	color: #003366;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-decoration: underline;
+	text-align: Center;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; 
+}
+.GSButton:hover
+{
+	color: #FF0000;
+}
+.SubHead {
+	font-size: 12pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	color: #03355c;
+	text-align: left;
+	vertical-align: bottom;
+	display: table-cell;
+	list-style-type: none;
+	text-indent: 0pt;
+	word-spacing: normal;
+	clear: none;
+	float: none;
+	height: auto;
+	width: auto;
+	text-decoration: none;
+	margin-bottom: -11px;
+	border: none;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+.SubHead2 {
+	font-size: 10pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	color: #03355c;
+	text-align: left;
+	vertical-align: bottom;
+	display: table-cell;
+	list-style-type: none;
+	text-indent: 0pt;
+	word-spacing: normal;
+	clear: none;
+	float: none;
+	height: auto;
+	width: auto;
+	text-decoration: none;
+	margin-bottom: -11px;
+	border: none;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+.SubHead3 {
+	font-size: 8pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	color: #03355c;
+	text-align: left;
+	vertical-align: bottom;
+	display: table-cell;
+	list-style-type: none;
+	text-indent: 0pt;
+	word-spacing: normal;
+	clear: none;
+	float: none;
+	height: auto;
+	width: auto;
+	text-decoration: none;
+	margin-bottom: -11px;
+	border: none;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}.TopLink {
+	font-size: 8pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	color: #646a98;
+	text-align: right;
+	text-decoration: underline;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.TopLink:hover {
+	font-size: 8pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	color: #FF0000;
+	text-align: right;
+	text-decoration: underline;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.subheadnav {
+	font-size: 8pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	color: #646a98;
+	text-align: auto;
+	vertical-align: bottom;
+	display: table-cell;
+	list-style-type: none;
+	text-indent: 0pt;
+	word-spacing: normal;
+	clear: none;
+	float: none;
+	height: auto;
+	width: auto;
+	text-decoration: underline;
+	margin: 1px;
+	padding: 1px;
+	border: none;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.lc-keyconcept-hdr01 {
+	font-size: 8pt;
+	font-weight: bold;
+	color: #003366;
+	vertical-align: middle;
+	text-indent: 10px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+.article-bodycopy {
+	font-size: 8pt;
+	font-weight: normal;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.article-introcopy {
+	font-size: 8pt;
+	color: #808080;
+	font-weight: normal;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.articlecaptioncopy {
+	font-size: 8pt;
+	color: #808080;
+	font-style: italic;
+	font-weight: normal;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.articleDeck {
+	font-size: 10pt;
+	font-weight: bold;
+	font-style: normal;
+	font-variant: normal;
+	color: #333333;
+	font-family: Arial, Helvetica, sans-serif;
+	list-style-position: outside;
+	list-style-image: url(images/RelatedBullet.gif);
+	text-align: left;
+	list-style-type: circle;
+
+
+}
+.pullQuote {
+	font-size: 12pt;
+	font-weight: bold;
+	color: #03355c;
+	font-style: italic;
+	line-height: normal;
+	text-align: center;
+	width:375;
+	border-bottom: 1 solid #03355c;
+	border-top: 1 solid #03355c;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.LessonSubHead {
+	font-size: 12pt;
+	font-style: italic;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	color: #616683;
+	text-decoration: none;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.LessonSubHead2 {
+	font-size: 12pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	color: #7e82a5;
+	width: 100%;
+	border-bottom: 1 solid #7e82a5;
+	text-decoration: none;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.SideBarTable
+{
+	background: #C0CFE2;
+	width: 320px;
+	border: 1 solid #686D97;
+	padding-top: 5px;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	font-size: 8pt;
+	font-weight: normal;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.SideBar
+{
+	background: #DDE7F0;
+	width: 230px;
+	float: right;
+	border-top: 1 solid #686D97;
+	border-left: 1 solid #686D97;
+	padding-top: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-bottom: 10px;
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-bottom: 10px;
+	font-size: 8pt;
+	font-weight: normal;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.CATEGORY {
+
+	font-size: 10pt;
+	font-style: italic;
+	font-weight: bold;
+	font-variant: small-caps;
+	text-transform: uppercase;
+	color: #304774;
+	text-align: Automatic;
+	text-indent: 8pt;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.BRFbodycopy {
+
+	color: #000000;
+	font-size: 9pt;
+	font-weight: normal;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.BRF-KEYPoints {
+
+	font-size: 10pt;
+	font-weight: bold;
+	font-style: normal;
+	font-variant: normal;
+	color: #333333;
+	font-family: Arial, Helvetica, sans-serif;
+	list-style-position: outside;
+	list-style-image: url(images/RelatedBullet.gif);
+	text-align: left;
+	list-style-type: circle;
+}

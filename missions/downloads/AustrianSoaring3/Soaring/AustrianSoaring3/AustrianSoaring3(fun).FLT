@@ -1,0 +1,463 @@
+
+[Main]
+Title=Austrian Soaring - Day 3 - Demo Mode
+Description="Austrian Soaring - Day 3 - Demo Mode... PLEASE FLY THE PROPER MISSION FIRST. In case you didn't believe the other gliders were out there, here they are as jumbo jets, huge russion transports, and concordes.  Don't follow the Concordes - they land out!"
+AppVersion=10.0.60905
+FlightVersion=1
+
+[Options]
+Sound=True
+Pause=False
+Moonlight=True
+TextDisplayPage=3
+SlewDisplayPage=1
+AxisIndicator=Off
+Titles=False
+
+[Kneeboard]
+Visible=False
+Location=21, 376
+PageId=0
+Page0Scroll=0, 0
+Page1Scroll=0, 0
+Page2Scroll=0, 0
+Page3Scroll=0, 0
+Page4Scroll=0, 0
+Page5Scroll=0, 0
+Page6Scroll=0, 0
+
+[Atc_Menu]
+ScreenUniCoords=1942, 1218, 4300, 3114
+UndocCoords=0, 0, 0, 0
+Visible=False
+Undocked=False
+ShowMessages=True
+
+[Panels]
+Panel.On=True
+HUD.On=False
+
+[Window.1]
+Order=0
+Active=True
+Undocked=False
+Maximized=True
+ScreenUniCoords=0, 0, 8192, 6143
+UndocCoords=0, 0, 0, 0
+CurrentCamera={C95EAB58-9E4A-4E2A-A34C-D8D9D948F078}
+
+[Camera.1.1]
+Guid={B1386D92-4782-4682-A137-738E25D1BAB5}
+Zoom=1
+Translation=0, 0, 0
+Rotation=12.5, 0, 0
+
+[Camera.1.2]
+Guid={C95EAB58-9E4A-4E2A-A34C-D8D9D948F078}
+Zoom=0.69999998807907104
+Translation=0, 0, 0
+Rotation=3.932786226272583, 0.0026761535555124283, 0
+
+[Camera.1.3]
+Guid={BCA3FDD1-FB83-4BBA-8407-4922A7F0D00C}
+Zoom=1
+Translation=0, 0, 0
+ChaseDirection=90
+ChaseDistance=28.041599273681641
+ChaseAltitude=0.91439998149871826
+
+[Camera.1.4]
+Guid={BCA3FDD1-FB83-4BBA-8407-4922A7F0D00D}
+Zoom=1
+Translation=0, 0, 0
+ChaseDirection=-135
+ChaseDistance=37.5
+ChaseAltitude=0.80000001192092896
+
+[Camera.1.5]
+Guid={6B79DD49-9B4A-439D-BF40-ACBF157B0BA0}
+Zoom=10
+Translation=0, 0, 0
+Rotation=0, 0, 0
+
+[Camera.1.6]
+Guid={A2849229-938A-448F-8AC6-01EF2291C171}
+Zoom=80.300003051757813
+Translation=0, 0, 0
+Rotation=0, 0, 0
+
+[Camera.1.7]
+Guid={60BC0819-BD04-4AF6-8954-8FC8AA3545FF}
+Zoom=8
+Translation=0, 0, 0
+Rotation=0, 0, 0
+
+[Camera.1.8]
+Guid={AA8C80C0-9EE2-4284-A1C2-B20CD3F5F3D9}
+Zoom=8
+Translation=0, 0, 0
+Rotation=0, 0, 0
+
+[Camera.1.9]
+Guid={607C4520-CA6F-4135-AE10-8BF28838068F}
+Zoom=1
+Translation=0, 0, 0
+Rotation=0, 0, 0
+
+[Camera.1.10]
+Guid={5C1DF273-034B-4E7F-953A-9D5E26F1646C}
+Zoom=0.75
+Translation=0, 0, 0
+Rotation=0, 0, 0
+
+[Camera.1.11]
+Guid={C690EAFD-223A-42D0-99E0-681ADF93BB59}
+Zoom=0.5
+Translation=0, 0, 0
+Rotation=0, 0, 0
+
+[Camera.1.12]
+Guid={33320004-B71A-4F9F-9105-1EB674AB7F3C}
+Zoom=0.5
+Translation=0, 0, 0
+Rotation=0, 0, 0
+
+[Camera.1.13]
+Guid={75A8357E-AB58-4294-9416-90C73FAFDD90}
+Zoom=1
+Translation=0, 0, 0
+ChaseDirection=-135
+ChaseDistance=96
+ChaseAltitude=0.80000001192092896
+
+[EFIS]
+Active=False
+NavAid=VOR 1
+Type=Rectangles
+Density=Thin
+Range=Short
+Altitude=0
+Flags=0
+
+[ATC_AgentManager]
+NumberofAgents=0
+
+[ATC_Aircraft.0]
+ActiveFlightPlan=True
+RequestedFlightPlan=False
+AcState=ACSTATE_REQUEST_TAXI_CLEARANCE_OUT_VFR_ATIS
+Waypoint.0=, LOWZ, , LOWZ, A, N47° 17.48', E12° 47.21', +002470.00, 
+Waypoint.1=, , , START, U, N47° 17.48', E12° 47.21', +002470.00, 
+Waypoint.2=, , , WP1, U, N47° 7.42', E13° 8.11', +007500.00, 
+Waypoint.3=, , , WP2, U, N47° 27.99', E13° 11.95', +007500.00, 
+Waypoint.4=, , , WP3, U, N47° 21.47', E12° 18.47', +007500.00, 
+Waypoint.5=, LOWZ, , LOWZ, A, N47° 17.48', E12° 47.21', +002470.00, 
+NumberofWaypoints=6
+ClearanceFlags=80
+CtCur=CLEARANCE_NONE
+WaypointNext=1
+AltCleared=-1
+HdgAssigned=-1
+SquawkAssigned=1322193408
+LandingSequence=LANDING_NONE
+DepartureRequest=DEPARTURE_VFR_REQUEST_NONE
+ParkingRequest=PARKING_NAME_NONE
+ParkingTypeRequest=PARKING_TYPE_NONE
+PatternLeg=PATTERN_LEG_NONE
+ApproachIndex=-1
+ApproachTransitionIndex=-1
+ApproachRequestIndex=-1
+ApproachTransitionRequestIndex=-1
+RunwayIndex=-1
+RunwayRequestIndex=-1
+ParkingIndex=-1
+FlightFollowing=FLIGHT_FOLLOWING_NO
+AirspaceTransition=AIRSPACE_TRANSITION_NONE
+BVAirspaceTransition=BV_TYPE_NONE
+BVAirspaceTransitionReq=BV_TYPE_NONE
+TakeoffSequence=TAKEOFF_SEQUENCE_NONE
+LandingSequenceNumber=-1
+TaxiRouteCurrent=-1
+CruisingAltitude=7500
+RequestedCruisingAltitude=-1
+ExpectedAltitude=-1
+AircraftSignature=1,0
+
+[ATC_ActiveFlightPlan.0]
+title=LOWZ to LOWZ
+description=LOWZ, LOWZ
+type=VFR
+routetype=0
+cruising_altitude=7500
+departure_id=LOWZ, N47° 17.48', E12° 47.21', +002470.00
+departure_position=8
+destination_id=LOWZ, N47° 17.48', E12° 47.21', +002470.00
+departure_name=Zell Am See
+destination_name=Zell Am See
+waypoint.0=, LOWZ, , LOWZ, A, N47° 17.48', E12° 47.21', +002470.00, 
+waypoint.1=, , , START, U, N47° 17.48', E12° 47.21', +002470.00, 
+waypoint.2=, , , WP1, U, N47° 7.42', E13° 8.11', +007500.00, 
+waypoint.3=, , , WP2, U, N47° 27.99', E13° 11.95', +007500.00, 
+waypoint.4=, , , WP3, U, N47° 21.47', E12° 18.47', +007500.00, 
+waypoint.5=, LOWZ, , LOWZ, A, N47° 17.48', E12° 47.21', +002470.00, 
+
+[ATC_AircraftManager]
+NumberofAircraft=1
+
+[ATC_MessageSystem]
+FrequencyNodes=0
+
+[GPS_Engine]
+Filename=AustrianSoaring3
+position=N47° 14.72', E12° 40.76', +007568.88
+Time=38769
+TimeWP=38719
+ArriveTime=3382
+CountWP=6
+NextWP=1
+PlaneStarted=True
+WpInfo0=103, 0, 752, 0, 45919, 0.0, 0.0, 0.0
+WpInfo1=88, 0, 752, 0, 46388, 0.0, 0.0, 0.0
+WpInfo2=100, 0, 2286, 0, 47800, 0.0, 0.0, 0.0
+WpInfo3=87, 0, 2286, 0, 49483, 0.0, 0.0, 0.0
+WpInfo4=116, 0, 2286, 0, 52468, 0.0, 0.0, 0.0
+WpInfo5=92, 0, 752, 0, 54082, 0.0, 0.0, 0.0
+CountFP=8
+FP0=280ec4ad,09057355,280ece80,0905b746,280edb5c,09060754,280ede2f,090654d4
+FP1=280ed99b,09069d41,280ed5d6,0907015e,280e9db8,0903b625,280eacce,0903f808
+
+[DateTimeSeason]
+Season=Spring
+Year=2007
+Day=126
+Hours=12
+Minutes=46
+Seconds=10
+
+[Panel.1]
+ScreenUniCoords=0, 0, 0, 0
+UndocCoords=0, 0, 0, 0
+Visible=False
+Undocked=False
+HiddenOn=False
+ID=0
+ViewsOn=1
+
+[Panel.3]
+ScreenUniCoords=4096, 0, 4096, 2227
+UndocCoords=0, 0, 0, 0
+Visible=False
+Undocked=False
+HiddenOn=False
+ID=225
+ViewsOn=0
+
+[Panel.4]
+ScreenUniCoords=0, 0, 0, 0
+UndocCoords=0, 0, 0, 0
+Visible=False
+Undocked=False
+HiddenOn=False
+ID=2
+ViewsOn=0
+
+[Panel.5]
+ScreenUniCoords=0, 0, 0, 0
+UndocCoords=0, 0, 0, 0
+Visible=False
+Undocked=False
+HiddenOn=False
+ID=20000
+ViewsOn=1
+
+[Panel.6]
+ScreenUniCoords=0, 0, 0, 0
+UndocCoords=0, 0, 0, 0
+Visible=False
+Undocked=False
+HiddenOn=False
+ID=22001
+ViewsOn=0
+
+[Panel.7]
+ScreenUniCoords=0, 0, 0, 0
+UndocCoords=0, 0, 0, 0
+Visible=False
+Undocked=False
+HiddenOn=False
+ID=22002
+ViewsOn=0
+
+[Panel.8]
+ScreenUniCoords=0, 0, 0, 0
+UndocCoords=0, 0, 0, 0
+Visible=False
+Undocked=False
+HiddenOn=False
+ID=22003
+ViewsOn=0
+
+[User Tip Window]
+Undocked=False
+ScreenUniCoords=500, 400, 7192, 650
+UndocCoords=0, 0, 0, 0
+
+[Sim.0]
+Sim=DG808S Paint1
+
+[SimVars.0]
+Latitude=N47° 14' 43.50"
+Longitude=E12° 40' 46.28"
+Altitude=+007568.54
+Pitch=-4.1935841786787966
+Bank=-1.9626637474328903
+Heading=76.056960333609837
+PVelBodyAxis=0.0025862618958460513
+BVelBodyAxis=0.030413963655216664
+HVelBodyAxis=0.043744761492796436
+XVelBodyAxis=14.849595080861542
+YVelBodyAxis=-5.5266523595863912
+ZVelBodyAxis=72.958490240663338
+SimOnGround=False
+OnPlatformHeight=-9999999999
+
+[Avionics.0]
+Comm1Active=128.300
+Comm1Standby=128.250
+Comm2Active=127.800
+Comm2Standby=127.900
+Nav1Active=113.70
+Nav1Standby=117.20
+OBS1=340
+Nav2Active=110.60
+Nav2Standby=116.80
+OBS2=315
+Transponder=1200
+ADFActive=284
+ADF2Active=240
+DMESelected=1
+ComTransmit=1
+ComReceiveBoth=False
+AudioNav1Listen=False
+AudioNav2Listen=False
+AudioMarkerListen=False
+AudioDmeListen=False
+AudioAdfListen=False
+AudioAdf2Listen=False
+AvionicsSwitch=True
+
+[Slew.0]
+Active=False
+
+[Fuel.0]
+TankSelector=All
+TankSelector1=All
+Center=100
+LeftMain=100
+RightMain=100
+LeftAux=100
+RightAux=100
+LeftTip=100
+RightTip=100
+Center 2=100
+Center 3=100
+External 1=100
+External 2=100
+
+[Systems.0]
+BatterySwitch=True
+StructuralDeiceSwitch=False
+PropDeiceSwitch=False
+Autobrakes=0
+StandbyVacuum=False
+PropSync=False
+AutoFeatherSwitch=False
+FlightDirector=False
+PanelLights=False
+
+[Gauges.0]
+KollsmanSetting=29.919870376586914
+
+[Switches.0]
+PitotHeat=False
+BeaconLights=True
+LandingLights=False
+LogoLights=False
+NavLights=False
+PanelLights=False
+RecognitionLights=False
+StrobeLights=False
+TaxiLights=False
+WingLights=False
+CabinLights=False
+
+[AutoPilot.0]
+MasterSwitch=False
+WingLeveler=False
+Nav1Lock=False
+HeadingLock=False
+HeadingValue=0
+AltitudeLock=False
+AltitudeValue=0
+AttitudeHold=False
+AirspeedHold=False
+AirspeedValue=0
+MachHold=False
+MachValue=0
+VerticalSpeedHold=False
+VerticalSpeedValue=0
+RPMHold=False
+RPMValue=0
+GlideslopeHold=False
+ApproachHold=False
+BackCourseHold=False
+YawDamper=False
+ToGa=False
+AutoThrottleArm=False
+GPSdrivesNAV1=False
+IsUsedForLesson=False
+
+[Payload.0]
+PayloadList=-1
+
+[Controls.0]
+SpoilersHandle=000.57
+FlapsHandle=033.33
+LeftFlap=000.00
+RightFlap=000.00
+GearsHandle=000.00
+Gear1=000.00
+Gear2=100.00
+Gear3=100.00
+YokeY=048.37
+YokeX=042.17
+Rudder=050.00
+LeftBrake=000.00
+RightBrake=000.00
+ParkingBrake=000.00
+ElevatorTrim=043.89
+RudderTrimPct=0
+AileronTrimPct=0
+
+[SimScheduler]
+SimSpeed=001.00
+SimTime=1254.9654454656647
+
+[Weather]
+WeatherType=2
+
+[Message Window]
+Undocked=False
+ScreenUniCoords=64, 200, 8064, 271
+UndocCoords=0, 0, 0, 0
+
+[Flying Tip Window]
+Undocked=False
+ScreenUniCoords=500, 400, 7192, 650
+UndocCoords=0, 0, 0, 0
+
+[ResourcePath]
+Path=flights\other\
+
+[ObjectFile]
+File=AustrianSoaring3(fun)

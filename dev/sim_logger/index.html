@@ -1,0 +1,535 @@
+<html>
+<head>
+<title>Sim_logger</title>
+<style type="text/css">
+ body { font-family: Helvetica, sans-serif; }
+ ul {list-style-type: square;}
+</style>
+
+</head>
+<body background="../../images/clouds.jpg">
+
+<p>
+<a href="../../index.html">Soaring with FSX</a>&nbsp;&gt;&gt;&nbsp;
+sim_logger
+</p>
+
+<h1>Sim_logger</h1>
+
+<p>Sim_logger Version 2 is the freeware FSX add-on module that automatically 
+<b>records</b> and <b>replays</b> your flights using the industry standard
+<a href="http://carrier.csi.cam.ac.uk/forsterlewis/soaring/igc_file_format/">IGC tracklog file format</a>.
+</p>
+
+<h2><center><a href="sim_logger_231.zip">Download sim_logger Version 2 (2.31) here</a></center></h2>
+<h3><center>[ <a href="http://www.forum.aerosoft.com/index.php?showforum=233">and the SUPPORT forum is here</a> ]</center></h3> 
+(V1 still available <a href="sim_logger_118.zip">here</a>)</p>
+
+<h3><center>[ <a href="../downloads/CAI/CAI_Instl.exe">Cambridge Aero Explorer Plus for viewing IGC tracklog files can be downloaded here</a> ]</center></h3>
+
+<p>Update notes for this release: 2.31 is a BUGFIX release for non-English FSX users to allow save of un-verified IGC tracklogs (i.e. where the
+logging didn't start with the load of a saved flight). If you already have sim_logger versions 2.28 or newer, version 2.31 can be installed as
+an <i>upgrade</i> by dragging just <tt>sim_logger.exe</tt> from the <tt>Modules\sim_logger\exe</tt> in the zip into the matching folder in your
+FSX installation.
+</p>
+
+<p>(further release info see <a href="release_notes.html">Release notes</a>)</p>
+
+<h2>Overview</h2>
+
+<p>Sim_logger can both <b>save</b> and <b>automatically replay</b> IGC-format tracklog files in FSX. 
+Sim_logger is installed as an add-on module to FSX, and appears entirely under the 'Add-ons' menu within
+a flight. The installation of sim_logger is a simple drag-and-drop into the 'Modules' folder of FSX, plus a
+double-click on a command file to update FSX's 'exe.xml' startup config file.
+</p>
+
+<p>There are really <i>three</i> usage scenarios involving sim_logger:
+</p>
+<ol>
+<li><b>Using sim_logger to record a secure IGC-format GPS tracklog showing the timestamped route of the user aircraft.</b>
+</li>
+<li><b>Finding and analyzing IGC logs to check their security and confirm the route taken around waypoints, start/finish times, and
+other flight information.</b>
+</li>
+<li><b>Using sim_logger to replay IGC tracklog files within FSX.</b>
+</li>
+</ol>
+
+<p>After <a href="#installation">installing sim_logger</a>, FSX will have an "Add-on->Sim_logger" menu, on which
+the most important menu option is "SAVE an IGC tracklog file now...". This will save the tracklog up to the current point.
+</p>
+<p>Please note that sim_logger is <b>always</b> recording an internal log of your flight, right from the moment you
+first load a flight or start a mission. So you only need a menu option to <b>SAVE</b> your tracklog. Sim_logger restarts
+the tracklog every time it detects you load a new flight...
+</p>
+<p>To have a better understanding of what sim_logger is <a href="#advantages">good at</a> and 
+<a href="#limitations">not so good</a> at, it is worth noting that sim_logger
+only records the position of the user aircraft (latitude, longitude, altitude) every four seconds, which is consistent with
+writing an <a href="http://carrier.csi.cam.ac.uk/forsterlewis/soaring/igc_file_format/">IGC-format</a> tracklog file. The main
+pluses of this approach are:</p>
+<ul>
+<li>that the module imposes negligible workload on FSX and</li>
+<li> that the files are compatible with real-life
+tracklog software nothing to do with FSX (e.g. the website 
+<a href="http://www.everytrail.com/view_trip.php?trip_id=26915">www.everytrail.com</a>).</li>
+</ul>
+<p> The downside is a lot of information
+is <i>not</i> recorded, e.g. undercarriage position - if your goal is to make an animated movie showing up-close aircraft
+traffic, you should look at the excellent freeware <a href="http://www.fs-recorder.net">fs-recorder</a>.
+</p>
+
+<p>Here's the view from the cockpit when a few other tracklogs are being replayed:
+</p>
+
+<img src="images/pilot_view.jpg" alt="the view from the cockpit when other tracklogs are replaying"/>
+
+<h2>A sample flight to demonstrate the replay capability</h2>
+
+<p>Sim_logger V2 includes a sample flight "Schuylkill County Ridge Run" with a
+dozen associated IGC tracklog files. If you simply load that flight, select an aircraft
+while paused at the start (or stay with the default DG808S), unpause, and wait a couple
+of seconds, you will see the fleet of gliders take off in front of you.  Hit Control-Shift-Y
+for an aerotow to follow them, and try and complete the cross-country flight to
+Mifflintown yourself. Maximum launch height 3000 feet, then the basic trick is to dive for the
+ridge (follow the planes in front!) and ridge run to the Susquahanna River. You need to
+slow up before the river to gain enough height to make the upwind ridge on the way to
+Mifflintown. Here's the view during the aerotow:
+</p>
+<img src="images/schuylkill_start.png"/>
+
+<h3>Another sample, this time with <i>real</i> IGC tracklogs</h3>
+
+<p>I've created a <a href="wgc-lusse-day3">screenshot walkthrough of sim_logger replay of Day 3 of the 2008 World Gliding
+Championships</a> which will illustrate what the Version 2 replay capabilities are. The competition had 46 gliders all flying the
+same task, and I've included the real IGC files in the sim_logger version 2 zip file.
+</p>
+
+<h2>Usage</h2>
+
+<h3>Basics</h3>
+
+<p>Installation is simple (drag and drop of one folder) but you must <a href="#installation"><b>disable aircraft collisions</b></a> in the FSX
+menus or you will typically collide with a tracklog of your own previous saved flight the instant you start a new
+one...
+</p>
+
+<p>Once installed in FSX, usage of sim_logger both for record and replay of IGC tracklog files is fairly
+simple (i.e. the features are actually fairly basic).
+</p>
+
+<ol>
+<li>Load a flight of your choice, preferably (but not necessarily) with an associated flightplan.</li>
+<li>Fly around the task and land at the destination airport</li>
+<li><b>Before</b> you quit the flight in FSX, click "Addon->Sim_logger->SAVE IGC tracklog file now".</li>
+</ol>
+
+<p>A confirmation message will scroll across the top of the screen and
+your IGC tracklog will now be stored in a sub-folder of the folder the original flight file was loaded from.
+Now you can exit the flight, or indeed FSX, and the tracklog file will have been safely stored.
+</p>
+
+<p>By default, FSX stores flight files (e.g. "My Flight.FLT") in the<br/>
+ <tt>"My Documents\Flight Simulator X Files\"<br/></tt>
+folder. Hence by default, for that flight, sim_logger will store the IGC tracklog file in<br/>
+ <tt>"My Documents\Flight Simulator X Files\My Flight\&lt;id&gt;_My Flight_&lt;datetime&gt;.igc"</tt><br/>
+ where &lt;id&gt; is the tail number of the aircraft you're flying and &lt;datetime&gt; is YYYY-MM-DD_HHMM. E.g. a real
+ example from my computer is:<br/>
+ <tt>"My Documents\Flight Simulator X Files\Task 2\B21_Task 2_2009-11-11_1922.igc"</tt><br/>
+ </p>
+
+<h3>Explanation of the sim_logger Add-On menu</h3>
+
+<p><b>SAVE an IGC tracklog file now.</b>  This will store an IGC tracklog file of the recorded flight
+in your "Flight Simulator X Files" folder in a sub-folder with the same name as the currently loaded
+flight.
+</p>
+
+<p><b>RESTART tracklog from here.</b> This has the effect of trimming of your flight up until now in any
+tracklog you subsequently save. This is useful if you want to slew to a new position before the tracklog starts,
+and then start logging.  By default, sim_logger will be logging the position of your aircraft from the moment the
+flight loads.
+</p>
+
+<p><b>Manage tracklog files.</b> This is where you can see within FSX the tracklogs associated with the currently
+loaded flight.  If you open "My Documents\Flight Simulator X Files" in Windows Explorer and navigate to the sub-folder
+with the same name as the currently loaded flight, you will see the same files.  More information 
+with screenshots is given in the
+section following.
+</p>
+
+<p><b>ENABLE/DISABLE tracklog replay.</b> Thanks to Peter Luerkens for suggesting this menu option... this
+will turn off (or back on) the automatic replay of stored IGC tracklogs.
+</p>
+
+<h3>Managing tracklogs</h3>
+
+<p>If now or in the future you load the same flight (use the <i>Load...</i> button on the "Free Flight" menu),
+then sim_logger will <i>automatically</i> load any IGC tracklog files it finds in the named sub-folder, and 
+replay those logs in FSX.
+</p>
+
+<p><i>If</i> you find the automatic replay of previously saved IGC files annoying, or just not what you want,
+there are a few mechanisms that give you some control over what's happening.
+</p>
+
+<p>The <i>simplest</i> process to use to prevent a saved IGC file replaying is to use the 
+"Add-on->Sim_logger->Manage tracklogs for current flight" menu item, which will list the tracklogs
+that sim_logger is auto-loading <i>for the current flight</i>.</p>
+
+<img src="images/manage_tracklogs.jpg" alt="Manage your tracklogs for the current flight via FSX menus"/>
+
+<p>Here you can select the tracklog you want to manage - either click the keyboard key corresponding to the 
+tracklog file you want, or click on that row in the menu with your mouse. 
+</p>
+
+<h3>Viewing the properties of a tracklog (Tracklog Info)</h3>
+
+<p>When you've clicked on the filename in the "Select File to Manage" window, the following "Tracklog Info"
+menu will appear.
+</p>
+
+<img src="images/tracklog_detail.jpg" alt="Look at the summary data for a selected tracklog"/>
+
+<p>In this "Tracklog Info" page, you can see more information about that particular tracklog.</p>
+
+<p>For soaring use, the important lines are 3 & 4, and this isn't a great example because sim_logger is
+saying it "could not verify this tracklog" which means the file content does not match the general
+checksum, so you cannot rely on the content of the file in any way. (Apologies, that was me manually tweaking
+the file during testing). If line 3 says 'verified OK' and line 4 matches the overall checksum expected for
+the combination of files, then you don't have a need to look at 'DETAIL checksums' at all.
+</p>
+
+<p>To prevent the tracklog auto-loading when the current flight is loaded, choose option 
+'8 - DISABLE this tracklog from sim_logger replay'.  The tracklog will still appear in the list shown before, but
+will not auto-load. For the Windows-savvy amongst you, this feature is implemented simply by renaming the IGC file,
+embedding [X] before the '.igc', so a filename "B21_My Flight_2009-11-11_1233.igc" becomes 
+"B21_My Flight_2009-11-11_1233[X].igc".</p>
+
+<p>If a tracklog file is 'disabled' for replay, the disable menu option changes to 'ENABLE' which has
+the reverse effect to that described above.
+</p>
+
+<p>You can also remove the IGC tracklog from the 'auto-play' function by simply moving the file <i>out</i> of 
+the sub-folder using Windows Explorer.
+</p>
+
+<p>Note you can <i>add</i> additional IGC tracklog files to auto-play simply by dragging them <i>into</i>
+the log folder for that particular flight.
+</p>
+
+<h3>Checking the Checksums</h3>
+
+<p>Assuming you have "verified OK" on the previous page, you can see greater detail on the checksums of
+the various files involved via the Checksum Detail window.
+</p>
+
+<p>A significant feature of sim_logger is for gliding use, storing encrypted checksums in approved spaces
+within the IGC file. Option '7. - DETAIL checksums for this tracklog' displays the checksums and other
+status fields embedded within the IGC file, so you can be confident pilots within FSX are flying in
+the same conditions.</p>
+
+<img src="images/checksum_detail.jpg" alt="Look at the detail checksums embedded within a chosen tracklog"/>
+
+<p>Beyond the basic checksum concept that ensures the weather and aircraft performance files were as expected when
+the tracklog was saved, for soaring use an important record is line 5, <b>FSX Thermals Removed OK</b>. For soaring in
+FSX you should install <a href="http://luerkens.homepage.t-online.de/peter/">the freeware CumulusX! from Peter Luerkens</a>.
+</p>
+
+<h3>More detail, for sharing flights with others</h3>
+
+<p>If you download an IGC file from elsewhere, you can copy it to a suitable folder with the same
+name as a loadable flight (e.g. into a "My Documents\Flight Simulator X Files\&lt;flight name&gt;\" folder) and then when
+you load that flight the IGC file will be
+automatically loaded.
+</p>
+
+<p>If the IGC file was originally created by sim_logger, you can then check the validity of the various checksums via
+the FSX Add-ons menu as described above. </p>
+
+<p>If you are familiar with the Windows "Command Window", you can also <i>check the validity</i> of a sim_logger IGC file:
+</p>
+<ol>
+<li>open a command window, </li>
+<li>navigate to the FSXBASE\Modules\sim_logger folder (using the 'cd' command) and</li>
+<li>type 'sim_logger "igc file name"'.  E.g.
+
+<pre>
+<b>C:\Program Files\Microsoft Games\Microsoft Flight Simulator X\Modules\sim_logger></b><font color=green>sim_logger logs\B21_Task1_2009-10-09_1322.igc</font>
+</pre>
+</li>
+</ol>
+
+
+<h2><a name="advantages"></a>Advantages of sim_logger</h2>
+
+<p>Sim_logger is optimised for the use of FAI-standard 
+<a href="http://carrier.csi.cam.ac.uk/forsterlewis/soaring/igc_file_format/">IGC-format tracklog files</a>.
+</p>
+
+<p>This means saved tracklog files can be viewed in a variety of real-life soaring software packages out
+there, e.g. the comprehensive (payware) soaring analysis package SeeYou, or the (free) tracklog sharing website
+<a href="http://www.everytrail.com/view_trip.php?trip_id=26915">www.everytrail.com</a>.
+</p>
+
+<p>IGC files can also be converted for display in Google Earth either via the everytrail site mentioned
+above or with more functionality <a href="http://www.gpsvisualizer.com/map_input?form=googleearth">gpsvisualizer.com</a>.
+</p>
+
+<p>The fact that the IGC-format files only contain very limited data (time-latitude-longitude-altitude) and
+the sampling interval is expected to be quite long, e.g. every four seconds, the sampling and saving method is
+<i>very efficient</i>. This has the benefit that sim_logger is designed to <i>always</i> record an internal
+log of your flight, awaiting the pilot clicking the 'save' option to keep it for posterity. The background
+workload in making the recording is also insignificant which is helpful in getting the maximum framerate in FSX.
+Note that a multi-hour tracklog might only be 100KB or so.<p>
+
+<p>For replay, a similar efficient technique has been used, with the AI aircraft being updated once-per-second to be
+slewed (on a curved path) between the four-second sample intervals. This means <i>hundreds</i> of IGC tracklogs can potentially be
+replayed concurrently, e.g. the replay of the entire field of a real-life 60-entry competition soaring task. In my
+testing the performance limit comes from the graphics of the AI models displayed rather than the replay technique.</p>
+
+<p>In general other approaches to animating aircraft within FSX have assumed detailed position control of 
+each AI object on a
+<i>per-visual-frame</i> basis (e.g. 30 times each second) which can imply greater overhead in controlling the
+AI objects and potentially much larger tracklog storage requirements for the rapid lat-long-alt-pitch-bank-heading-velocity samples.
+</p>
+
+<h2><a name="limitations"></a>What sim_logger doesn't do</h2>
+
+<p>To understand the limitation of sim_logger, you just have to be aware that the information recorded during
+normal flight is Time-Latitude-Longitude-Altitude-EngineNoise, at four-second intervals.<p>
+
+<p>The top part of the IGC log file can record a load of ancilliary information, like flight plan, aircraft type and pilot
+name, but the regularly recorded time-series stuff is those five values only.</p>
+
+<p>This means that the IGC tracklog file is great for flight <i>verification</i> but is pretty limited if you want to
+replay the flight from that data.</p>
+
+<p>For flight <i>replay</i>, sim_logger necessarily <i>interpolates</i> beween the four-second lat/long/alt samples to move
+an AI aircraft along an estimation of the original flightpath, and sim_logger <i>calculates</i> suitable pitch/bank/heading
+values from the original position data.</p>
+
+<p>I hope it is clear from this approach that aerobatic manoevers like rolls or sideslips are <i>completely invisible</i> to sim_logger
+because bank and heading are simply not recorded in the IGC tracklog data. Your lat/long/alt values along a flightpath are the same whether
+you are doing a roll or not...
+</p>
+
+<p>There is a <i>great</i> solution for you if you want to record the exact motion of an aircraft, including the various animations of
+undercarriage, flaps etc. That is <a href="http://www.fs-recorder.net/">the freeware fs-recorder from Matthias Neusinger</a>.
+
+<h2><a name="installation"></a>Installation</h2>
+
+<h3>Installing the addon module</h3>
+
+<table>
+<tr>
+<td valign='top'>
+<p><b><font color='red'>WARNING!</font></b></p>
+</td>
+<td>
+  <p>If you use CumulusX, ignore this warning.</p>
+
+          <p>If you are *not* using CumulusX for your thermals (e.g. Active Sky):</p>
+
+          <p>Please be aware sim_logger will DISABLE FSX THERMALS by default, on the 
+          assumption that CumulusX is being used for thermals.  A sim_logger.ini
+          file setting (disable_fsx_thermals = false) (see step 6) will ensure
+          sim_logger leaves your FSX thermals in place. The default value
+          (disable_fsx_thermals = true) means sim_logger will rename your
+          "ThermalDescriptions.xml" to "ThermalDescriptions[X].xml", so
+          to reverse-out the change all you have to do is rename it back.
+          </p>
+</td>
+</tr>
+</table>
+
+<ol>
+
+<li>DOUBLE-CLICK on the zip file containing this readme so it opens in
+        Windows Explorer - as you're reading this you probably have done
+        this already.
+        </li>
+
+<li>DOUBLE-CLICK the vcredist_x86.exe in the ZIP file, or
+       download the file and run it from
+        <a href="http://www.microsoft.com/downloads/details.aspx?familyid=9B2DA534-3E03-4391-8A4D-074B9F2BC1BF&displaylang=en">
+        http://www.microsoft.com/downloads/details.aspx?familyid=9B2DA534-3E03-4391-8A4D-074B9F2BC1BF&displaylang=en</a><br/>
+       This will install the Microsoft VC++ Runtime needed for the module,
+       and is safe to install even if you already have it.
+</li>
+<li>DRAG the 'Modules' folder from this ZIP file into your FSXBASE
+        folder (e.g. C:\Program Files\Microsoft Games\Microsoft Flight Simulator X").<br/>
+        The 'Modules' folder should already exist but this will put the
+        new 'sim_logger' add-on module in there.
+</li>
+<li>DRAG the 'Flight Simulator X Files' folder from this ZIP into
+        your "My Documents" folder. The folder should already exist but
+        this step will put some new flights in that folder.
+</li>
+<li>OPEN Windows Explorer and navigate to the new "FSXBASE\Modules\sim_logger" folder.<br/>
+        DOUBLE-CLICK on the UPDATE_XML.cmd file.<br/>
+        This will create the appropriate entry in your "%APPDATA%\Microsoft\FSX\exe.xml"
+        file, to include the sim_logger add-on automatically at FSX startup
+        (<a href="images/UPDATE_XML_non_found.png">screenshot</a>).
+</li>
+<li>(optional). You can EDIT the 'Modules\sim_logger\sim_logger.ini' file to
+        change the language used for the menus (we currently have en, de, nl) and
+        to preset your 'Glider ID' (pick 3 letters or numbers) and 'Pilot Name'
+        (<a href="sim_logger_ini.txt">view sim_connect.ini file sample</a>).
+        </li>
+<li>Start FSX, and in "Settings->Realism" in the "Crashes and damage" section<br/>
+        UNCHECK "allow collisions with other aircraft" 
+        (<a href="images/allow_collisions.jpg">screenshot</a>).<br/>
+        If you don't do this, your user aircraft will IMMEDIATELY collide with any
+        aircraft loaded from a prior saved tracklog.<br/>
+        See screenshot in 'Configuring FSX' below.
+</li>
+<li>For soaring in
+FSX you should install <a href="http://luerkens.homepage.t-online.de/peter/">the freeware CumulusX! from Peter Luerkens</a>.
+</li>
+
+</ol>
+THAT'S IT!
+
+<p>To confirm sim_logger is installed simply start FSX and load any flight, and you
+should see a Add-Ons->Sim_logger sub-menu.
+</p>
+
+<h3>Configuring FSX</h3>
+
+<p>Go into your FSX 'Realism' settings and <i>uncheck</i> the box that says "allow collisions" as illustrated below. This
+will prevent a previously saved tracklog file from immediately colliding with you when you start the flight.
+</p>
+<img src="images/allow_collisions.jpg" alt="you need to turn OFF collisions if you replay tracklogs"/>
+
+<p>If you are going to replay IGC tracklog files from <i>other</i> pilots, it is worth going into your settings
+menu and adjusting the 'red' displayed information above the AI aircraft to show just the tail number. Note that sim_logger
+will embed the actual tail number of the original user into the IGC tracklog file, so you can more easily identify
+who is who when you're flying in this effective 'offline multi-player' mode.
+</p>
+
+<img src="images/aircraft_labels.jpg" alt="FSX can show aircraft labels, and these are stored in the tracklogs"/>
+
+<h2><a name="ini"></a>Modules\sim_logger\sim_logger.ini</h2>
+
+<p>The ini file included with sim_logger gives you a satisfactory working configuration. After you are comfortable that
+sim_logger is installed correctly you can edit this file with Notepad or something similar to set a few minor items such
+as a default "Pilot Name" to be included in the IGC tracklog files.</p>
+
+<p>Perhaps more importantly, if the constant replay of flight files by sim_logger is inconvenient for you, you
+can place entries in the sim_logger.ini file that stop the auto-replay of stored flights.</p>
+
+<p>Full instructions are included as comments within the sim_logger.ini file.
+</p>
+
+<h2>Sample IGC file</h2>
+<p>This will give you an idea of what's in the saved tracklog file, if you're interested.</p>
+
+<p>Good documentation on the format can be found on my 
+<a href="http://carrier.csi.cam.ac.uk/forsterlewis/soaring/igc_file_format/">IGC file format homepage</a>.</p>
+
+<tt>
+<pre>
+
+AXXX sim_logger v1.18
+HFDTE060507
+HFFXA035
+HFPLTPILOTINCHARGE: not recorded
+HFCM2CREW2: not recorded
+HFGTYGLIDERTYPE:DG808S Paint1
+HFGIDGLIDERID:B21
+HFDTM100GPSDATUM: WGS-1984
+HFRFWFIRMWAREVERSION: 1.18
+HFRHWHARDWAREVERSION: 2009
+HFFTYFRTYPE: sim_logger by Ian Forster-Lewis
+HFGPSGPS:Microsoft Flight Simulator
+HFPRSPRESSALTSENSOR: Microsoft Flight Simulator
+HFCIDCOMPETITIONID:B21
+HFCCLCOMPETITIONCLASS:Microsoft Flight Simulator
+I023638FXA3941ENL
+C091009123704000000000104Austrian Soaring
+C4717477N01247209EZell Am See   Start
+C4717477N01247209ELOWZ
+C4717477N01247209ESTART
+C4713910N01213830ETP1
+C4740520N01213110ETP2
+C4729290N01249440ETP3
+C4717477N01247209EFINISH
+C4717477N01247209EZell Am See   Finish
+L FSX date/time on users PC:  2009-10-09 12:37
+L FSX FLT checksum            19CJG7 (AustrianSoaring4\AustrianSoaring4.FLT)
+L FSX WX checksum             Q36FLC (AustrianSoaring4\AustrianSoaring4.WX)
+L FSX CMX checksum            QHQ81T (AustrianSoaring4\AustrianSoaring4.CMX)
+L FSX mission checksum        E36HJ4 (AustrianSoaring4\AustrianSoaring4.XML)
+L FSX aircraft.cfg checksum   NNBRGQ (DG808S\aircraft.cfg)
+L FSX AIR checksum            Y1PD66 (DG808S\DG808S.AIR)
+L FSX CumulusX status:        LOCKED OK
+L FSX WX status=              LOCKED OK
+L FSX ThermalDescriptions.xml REMOVED OK
+L FSX GENERAL CHECKSUM            LV2B5A  <---- CHECK THIS FIRST
+B1030574715622N01251250EA0253502535027000
+B1030594715633N01251183EA0252402524027000
+...snip.... a lot more 'B' records ...
+GE2EV0W
+</pre>
+</tt>
+
+<h2>Development notes</h2>
+
+<p>sim_logger replay uses a 'slew mode' AI following algorithm.</p>
+
+<p>The <a href="sim_logger_221.cpp">source code for a beta version (2.21) can be viewed here</a>. The entire
+program is written as a single visual c++ file, with the main sections being:
+</p>
+
+<ul>
+<li>Program startup and ini file handling.</li>
+<li>FSX simconnect message handling, in particular recognising file loads of FLT, PLN, WX files and
+receiving the position updates from the user aircraft and the replaying AI objects</li>
+<li>Writing the IGC file for the user aircraft.  The checksum formula has been removed to keep it
+secure.</li>
+<li>Reading the IGC files associated with the loaded flight, adding interpolated points if the sample rate
+is a bit low, and estimating values for pitch, bank and heading (these are not in the log).</li>
+<li>The AI movement algorithm, updating the slew rates of the AI objects once-per-second.</li>
+<li>The menu system using the FSX SimConnect_Text call</li>
+</ul>
+
+<p>If you <i>disable</i> the sim_logger load in your exe.xml (e.g. rename the Modules\sim_logger folder),
+you can start FSX, open a command window and type "sim_logger debug", and sim_logger will echo to the console 
+variety of debugging status information as it executes.
+</p>
+
+<h2>Links (all freeware)</h2>
+
+<p><a href="http://www.forum.aerosoft.com/index.php?showforum=161">The SOAR forums</a> are probably the best place to start
+if you have questions about sim soaring. Support for both sim_logger and CumulusX are there also.
+</p>
+
+<p><a href="../downloads/CAI/CAI_Instl.exe">Cambridge Aero Explorer Plus</a> (<a href="../downloads/CAI/aero_expV1.0.pdf">manual</a>). This seems
+to me to be far and away the best free Windows client for viewing and analysing IGC tracklog files. Plus multiple tracklog files can be
+animated together to see everyone flying around a task. The orginal exe can be found at <a href="http://www.gfbyars.com/winscore/">Guy Byar's 
+winscore site</a>.
+</p>
+
+<p><a href="http://www.fs-recorder.net">fs-recorder</a> - records and replays flights within FSX, including a large range
+of FSX detail features. fs-recorder uses a proprietary tracklog file storage format so you can't use the files for anything
+else, but the technique is optimised for use within FSX so the program is great for creating animated movies in FSX.
+</p>
+
+<p><a href="http://ywtw.de/igcsimen.html">IGC Replay</a> - replays the IGC tracklog flights (from any source including sim_logger)
+within Google Earth.
+</p>
+
+<p><a href="http://luerkens.homepage.t-online.de/peter/">CumulusX!</a> - adds thermals and ridgelift to FSX - freeware from Peter Luerkens.
+</p>
+
+<p><a href="http://www.gpsvisualizer.com/map_input?form=googleearth">gpsvisualizer.com</a> - convert an IGC file for display in
+Google Earth
+</p>
+
+<p><a href="http://www.everytrail.com/view_trip.php?trip_id=26915">www.everytrail.com</a> - view and share your tracklogs online.
+There is a formative <a href="http://www.everytrail.com/group/view?group_id=166">sim soaring group on everytrail</a> which anyone can
+join.
+</p>
+
+</body>
+</html>

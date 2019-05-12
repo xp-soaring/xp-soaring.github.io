@@ -1,0 +1,3290 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+
+<SimBase.Document Type="MissionFile" version="1,0">
+    <Descr>Fly the DG808S around a competition soaring course, starting at LOWZ.</Descr>
+    <Title>Austrian Soaring competition - day 3</Title>
+    <WorldBase.Flight>
+        <SimMission.DialogAction InstanceId="{D3A352A2-B6E9-417B-AFFA-1255E8288E71}">
+            <Descr>dialog_00_start_gate_open</Descr>
+            <Text>Zell am See to all competition gliders.  It&apos;s day 3, and the start gate is now open, height limit 8000.</Text>
+            <SoundFileName>dialog_00_start_gate_open.wav</SoundFileName>
+            <DelaySeconds>4.000</DelaySeconds>
+        </SimMission.DialogAction>
+        <SimMission.DialogAction InstanceId="{09394720-2196-4BBC-B828-00436B5F8B89}">
+            <Descr>dialog_01_bad_start</Descr>
+            <Text>Yankee-November, Yankee-November ground. Was that intended to be a start? It looked too high from here.</Text>
+            <SoundFileName>dialog_01_bad_start.wav</SoundFileName>
+        </SimMission.DialogAction>
+        <SimMission.DialogAction InstanceId="{530EA5DD-2BB6-4A66-A1E1-6242C1CED546}">
+            <Descr>dialog_02_good_start</Descr>
+            <Text>Yankee-November good start. All pilots, the wind from the North-East is still causing problems for pilots caught in the lee of the hills - watch out.</Text>
+            <SoundFileName>dialog_02_good_start.wav</SoundFileName>
+        </SimMission.DialogAction>
+        <SimMission.DialogAction InstanceId="{9241FA4E-F943-493B-AB17-1CDD4191F303}">
+            <Descr>dialog_03_height_reminder</Descr>
+            <Text>Zell am See all gliders remember the area height restriction of 9000 feet is still in effect today.  All gliders keep below 9000 feet.</Text>
+            <SoundFileName>dialog_03_height_reminder.wav</SoundFileName>
+            <DelaySeconds>20.000</DelaySeconds>
+        </SimMission.DialogAction>
+        <SimMission.DialogAction InstanceId="{5F124F2F-529B-46F4-A8FC-D883A3E65688}">
+            <Descr>dialog_10_tp1</Descr>
+            <Text>Yankee-November well done reaching turnpoint 1.  There&apos;s already been a landout on the high ground so it&apos;s good you avoided that.</Text>
+            <SoundFileName>dialog_10_tp1.wav</SoundFileName>
+            <DelaySeconds>4.000</DelaySeconds>
+        </SimMission.DialogAction>
+        <SimMission.DialogAction InstanceId="{01A657F7-555C-4549-BACF-269455788715}">
+            <Descr>dialog_20_tp2</Descr>
+            <Text>Yankee-November nice job getting round TP2. The high ground might be a bit tricky so take care.</Text>
+            <SoundFileName>dialog_20_tp2.wav</SoundFileName>
+        </SimMission.DialogAction>
+        <SimMission.DialogAction InstanceId="{4A1D0E7C-67F5-4E93-919A-F21CDD5C51E4}">
+            <Descr>dialog_25_mid_way</Descr>
+            <Text>Yankee-November we can see you passing North of the lake.  You&apos;re doing well. We&apos;re getting reports of pilots struggling a bit to the West so don&apos;t push it. The trailer&apos;s ready if you land out.</Text>
+            <SoundFileName>dialog_25_mid_way.wav</SoundFileName>
+        </SimMission.DialogAction>
+        <SimMission.DialogAction InstanceId="{567217B3-9DC4-4665-8DFA-0E1050D3C6BD}">
+            <Descr>dialog_30_tp3</Descr>
+            <Text>Yankee-November good job reaching TP3.  The ridge on the South side of the valley should be working, but I&apos;m not sure if you can reach it.</Text>
+            <SoundFileName>dialog_30_tp3.wav</SoundFileName>
+        </SimMission.DialogAction>
+        <SimMission.DialogAction InstanceId="{58C7D8BC-E80E-4AD0-990D-7292E05F0351}">
+            <Descr>dialog_35_curlover</Descr>
+            <Text>Yankee-November is that you in the lee of the ridge? The last guy that was there sank like a rock.</Text>
+            <SoundFileName>dialog_35_curlover.wav</SoundFileName>
+        </SimMission.DialogAction>
+        <SimMission.DialogAction InstanceId="{63FD5947-33C3-4A29-ACFF-9253156CD3F0}">
+            <Descr>dialog_40_final_glide</Descr>
+            <Text>Yankee-November we can see you coming in from the West.  Well done.</Text>
+            <SoundFileName>dialog_40_final_glide.wav</SoundFileName>
+        </SimMission.DialogAction>
+        <SimMission.DialogAction InstanceId="{0C3454A4-C90E-419E-B6C1-1FF6BB5EB615}">
+            <Descr>dialog_70_height_warning</Descr>
+            <Text>Yankee-November warning... you are approaching the altitude llimit</Text>
+            <SoundFileName>dialog_70_height_warning.wav</SoundFileName>
+        </SimMission.DialogAction>
+        <SimMission.DialogAction InstanceId="{2DDBF1F6-2BB2-43BD-A098-DDDE1CB10830}">
+            <Descr>dialog_71_height_limit</Descr>
+            <Text>Yankee-November you have been disqualified for breaching the height limit</Text>
+            <SoundFileName>dialog_71_height_limit.wav</SoundFileName>
+        </SimMission.DialogAction>
+        <SimMission.DialogAction InstanceId="{F3EB296B-FE0C-4F3A-AAB5-0834CEC2598C}">
+            <Descr>dialog_72_height_warning_2</Descr>
+            <Text>Yankee-November you&apos;re entering the upper airspace. Descend immediately below 9000 feet.</Text>
+            <SoundFileName>dialog_72_height_warning_2.wav</SoundFileName>
+        </SimMission.DialogAction>
+        <SimMission.DialogAction InstanceId="{2F081DAC-ECA9-4EDC-953E-B74516BA5097}">
+            <Descr>dialog_73_height_warning_3</Descr>
+            <Text>Yankee-November watch out! (airspace warning)</Text>
+            <SoundFileName>dialog_73_height_warning_3.wav</SoundFileName>
+            <DelaySeconds>10.000</DelaySeconds>
+        </SimMission.DialogAction>
+        <SimMission.DialogAction InstanceId="{7D3777EC-7565-45DE-8CD7-FE8035B3964F}">
+            <Descr>dialog_90_land_out</Descr>
+            <Text>Yankee-November we&apos;ve recorded a land-out. Please call in when you&apos;re ready.</Text>
+            <SoundFileName>dialog_90_land_out.wav</SoundFileName>
+            <DelaySeconds>4.000</DelaySeconds>
+        </SimMission.DialogAction>
+        <SimMission.DialogAction InstanceId="{E95B3B7D-3CE6-49E0-B657-C37DAAAA6574}">
+            <Descr>dialog_99_good_finish</Descr>
+            <Text>Yankee-November good finish! Absolutely fantastic. There&apos;s a cross-wind on landing but you should be ok.</Text>
+            <SoundFileName>dialog_99_good_finish.wav</SoundFileName>
+        </SimMission.DialogAction>
+        <SimMission.GoalResolutionAction InstanceId="{0D70BCFC-5885-4855-9494-A5AA1F7AC089}">
+            <Descr>GoalResAct_good_finish</Descr>
+            <Goals>
+                <ObjectReference id="Goal_good_finish" InstanceId="{6E284343-91B1-4AE9-8573-4401612CD8EC}">
+                </ObjectReference>
+            </Goals>
+        </SimMission.GoalResolutionAction>
+        <SimMission.GoalResolutionAction InstanceId="{597313E6-B7D2-47A1-B2B4-4BA6A3165D53}">
+            <Descr>GoalResAct_good_start</Descr>
+            <Goals>
+                <ObjectReference id="Goal_good_start" InstanceId="{EEF0E608-1B7A-4544-AED6-3EC6C25AE47A}">
+                </ObjectReference>
+            </Goals>
+        </SimMission.GoalResolutionAction>
+        <SimMission.GoalResolutionAction InstanceId="{8390F2E9-9608-4946-BD7E-082314811A3F}">
+            <Descr>GoalResAct_mission_fail</Descr>
+            <GoalResolution>failed</GoalResolution>
+            <Goals>
+                <ObjectReference id="Goal_good_finish" InstanceId="{6E284343-91B1-4AE9-8573-4401612CD8EC}">
+                </ObjectReference>
+            </Goals>
+        </SimMission.GoalResolutionAction>
+        <SimMission.GoalResolutionAction InstanceId="{E2B0931B-3DA4-4BB7-B022-6C03A18E2227}">
+            <Descr>GoalResAct_TP1</Descr>
+            <Goals>
+                <ObjectReference id="Goal_TP1" InstanceId="{04EACD37-CD3C-4B76-BCD5-677071CE6454}">
+                </ObjectReference>
+            </Goals>
+        </SimMission.GoalResolutionAction>
+        <SimMission.GoalResolutionAction InstanceId="{0880B66A-BC8B-4CD6-AAA7-70B7B987D333}">
+            <Descr>GoalResAct_TP2</Descr>
+            <Goals>
+                <ObjectReference id="Goal_TP2" InstanceId="{5450F91D-78A8-44F8-B0BD-94D23C7123A0}">
+                </ObjectReference>
+            </Goals>
+        </SimMission.GoalResolutionAction>
+        <SimMission.GoalResolutionAction InstanceId="{FBF02A58-74E3-40E1-BC2F-98C6830D7D45}">
+            <Descr>GoalResAct_TP3</Descr>
+            <Goals>
+                <ObjectReference id="Goal_TP3" InstanceId="{51492814-6794-4229-ACC0-95575C70B77F}">
+                </ObjectReference>
+            </Goals>
+        </SimMission.GoalResolutionAction>
+        <SimMission.ObjectActivationAction InstanceId="{AF0BF63D-7163-47FC-9EBE-7A949E8736C2}">
+            <Descr>ObjAct_AreaLandTrig_landout</Descr>
+            <ObjectReferenceList>
+                <ObjectReference id="AreaLandTrig_landout" InstanceId="{65905CD1-DACF-4CD9-A68A-66EF864C93CB}">
+                </ObjectReference>
+            </ObjectReferenceList>
+        </SimMission.ObjectActivationAction>
+        <SimMission.ObjectActivationAction InstanceId="{B3370A57-DCB5-4D9D-824C-96586ADDC589}">
+            <Descr>ObjAct_ProxTrig_final_glide</Descr>
+            <ObjectReferenceList>
+                <ObjectReference id="ProxTrig_final_glide" InstanceId="{6F1F7CF8-214F-421C-856D-FD2781527A59}">
+                </ObjectReference>
+            </ObjectReferenceList>
+        </SimMission.ObjectActivationAction>
+        <SimMission.ObjectActivationAction InstanceId="{90501C87-D6BC-4ED6-8A57-00CB92AA24A7}">
+            <Descr>ObjAct_ProxTrig_finish</Descr>
+            <ObjectReferenceList>
+                <ObjectReference id="ProxTrig_finish" InstanceId="{E07626A0-01A4-4273-8A62-941E261EFD3E}">
+                </ObjectReference>
+            </ObjectReferenceList>
+        </SimMission.ObjectActivationAction>
+        <SimMission.ObjectActivationAction InstanceId="{50B772AC-BA3D-41C7-B455-37E0C11D3431}">
+            <Descr>ObjAct_ProxTrig_LOWZ_landing</Descr>
+            <ObjectReferenceList>
+                <ObjectReference id="ProxTrig_LOWZ_landing" InstanceId="{D0BF867D-80BF-4300-B3C8-A67AD209C0EF}">
+                </ObjectReference>
+            </ObjectReferenceList>
+        </SimMission.ObjectActivationAction>
+        <SimMission.ObjectActivationAction InstanceId="{3C855C8F-3F5A-402F-A0EB-9B825E7B885B}">
+            <Descr>ObjAct_ProxTrig_mid_way</Descr>
+            <ObjectReferenceList>
+                <ObjectReference id="ProxTrig_mid_way" InstanceId="{9E6546E0-5037-40BD-8360-26BF820AD13D}">
+                </ObjectReference>
+            </ObjectReferenceList>
+        </SimMission.ObjectActivationAction>
+        <SimMission.ObjectActivationAction InstanceId="{245DC6B2-FE4A-46C9-8764-52DC8B8A4DAC}">
+            <Descr>ObjAct_ProxTrig_TP1</Descr>
+            <ObjectReferenceList>
+                <ObjectReference id="ProxTrig_TP1" InstanceId="{E3B4BFAB-BC23-467A-8133-D01C842437D7}">
+                </ObjectReference>
+            </ObjectReferenceList>
+        </SimMission.ObjectActivationAction>
+        <SimMission.ObjectActivationAction InstanceId="{3D398456-0899-4732-ACAF-18CF677FAA82}">
+            <Descr>ObjAct_ProxTrig_TP2</Descr>
+            <ObjectReferenceList>
+                <ObjectReference id="ProxTrig_TP2" InstanceId="{B9F70251-2992-4B94-9247-DBEAB1AF56A9}">
+                </ObjectReference>
+            </ObjectReferenceList>
+        </SimMission.ObjectActivationAction>
+        <SimMission.ObjectActivationAction InstanceId="{ACE9584D-C589-4B1F-B7A2-5BAE805FD6BE}">
+            <Descr>ObjAct_ProxTrig_TP3</Descr>
+            <ObjectReferenceList>
+                <ObjectReference id="ProxTrig_TP3" InstanceId="{19E1048B-A1F5-424B-8FF6-D328127E1FA6}">
+                </ObjectReference>
+            </ObjectReferenceList>
+        </SimMission.ObjectActivationAction>
+        <SimMission.ObjectActivationAction InstanceId="{0238B780-D70A-46F1-AAE1-3DFFDED20010}">
+            <Descr>ObjAct_task_timer</Descr>
+            <ObjectReferenceList>
+                <ObjectReference id="tmr_task_timer" InstanceId="{E6C39645-F88D-4963-9A9E-72E6A33A60B3}">
+                </ObjectReference>
+            </ObjectReferenceList>
+        </SimMission.ObjectActivationAction>
+        <SimMission.ObjectActivationAction InstanceId="{CE751F9E-F412-4CC4-A9F0-E4472C6ABD46}">
+            <Descr>ObjDeAct_AreaLandTrig_landout</Descr>
+            <NewObjectState>False</NewObjectState>
+            <ObjectReferenceList>
+                <ObjectReference id="AreaLandTrig_landout" InstanceId="{65905CD1-DACF-4CD9-A68A-66EF864C93CB}">
+                </ObjectReference>
+            </ObjectReferenceList>
+        </SimMission.ObjectActivationAction>
+        <SimMission.ObjectActivationAction InstanceId="{1DA40561-6BC9-489B-A461-FDB8915CEF9C}">
+            <Descr>ObjDeAct_task_timer</Descr>
+            <NewObjectState>False</NewObjectState>
+            <ObjectReferenceList>
+                <ObjectReference id="tmr_task_timer" InstanceId="{E6C39645-F88D-4963-9A9E-72E6A33A60B3}">
+                </ObjectReference>
+            </ObjectReferenceList>
+        </SimMission.ObjectActivationAction>
+        <SimMission.PointOfInterestActivationAction InstanceId="{836C5E3D-0BD8-4EC8-BD51-5CCD2E1CB648}">
+            <Descr>POI_Act_LOWZ</Descr>
+            <ObjectReferenceList>
+                <ObjectReference id="POI_LOWZ" InstanceId="{2048E59B-29C4-4229-8C92-AE2A4E77517F}">
+                </ObjectReference>
+            </ObjectReferenceList>
+        </SimMission.PointOfInterestActivationAction>
+        <SimMission.PointOfInterestActivationAction InstanceId="{AC7676ED-DD46-4759-838D-B2F3E737B8B1}">
+            <Descr>POI_Act_TP1</Descr>
+            <ObjectReferenceList>
+                <ObjectReference id="POI_TP1" InstanceId="{596E95ED-FE57-438B-A8DA-246DB24A9175}">
+                </ObjectReference>
+            </ObjectReferenceList>
+        </SimMission.PointOfInterestActivationAction>
+        <SimMission.PointOfInterestActivationAction InstanceId="{E33FE90F-7D94-4A1C-B0D7-16E69F2BF3C2}">
+            <Descr>POI_Act_TP2</Descr>
+            <ObjectReferenceList>
+                <ObjectReference id="POI_TP2" InstanceId="{5B8396F5-FBFF-4943-A7CD-AEE51B107E79}">
+                </ObjectReference>
+            </ObjectReferenceList>
+        </SimMission.PointOfInterestActivationAction>
+        <SimMission.PointOfInterestActivationAction InstanceId="{150273A3-B720-4F98-AB20-7DCC4DD473CD}">
+            <Descr>POI_Act_TP3</Descr>
+            <ObjectReferenceList>
+                <ObjectReference id="POI_TP3" InstanceId="{4FAE51F9-5F77-4ADF-99A4-CCB0C5F2F283}">
+                </ObjectReference>
+            </ObjectReferenceList>
+        </SimMission.PointOfInterestActivationAction>
+        <SimMission.PointOfInterestActivationAction InstanceId="{FC1C8685-AD5A-41B3-B98F-80313B065BCC}">
+            <Descr>POI_DeAct_LOWZ</Descr>
+            <NewObjectState>False</NewObjectState>
+            <ObjectReferenceList>
+                <ObjectReference id="POI_LOWZ" InstanceId="{2048E59B-29C4-4229-8C92-AE2A4E77517F}">
+                </ObjectReference>
+            </ObjectReferenceList>
+        </SimMission.PointOfInterestActivationAction>
+        <SimMission.PointOfInterestActivationAction InstanceId="{D9910D15-6A9E-40E0-BD0D-FE5B4FF0CCBE}">
+            <Descr>POI_DeAct_TP1</Descr>
+            <NewObjectState>False</NewObjectState>
+            <ObjectReferenceList>
+                <ObjectReference id="POI_TP1" InstanceId="{596E95ED-FE57-438B-A8DA-246DB24A9175}">
+                </ObjectReference>
+            </ObjectReferenceList>
+        </SimMission.PointOfInterestActivationAction>
+        <SimMission.PointOfInterestActivationAction InstanceId="{885815BD-3A7D-4BC0-856A-A4783B053BE0}">
+            <Descr>POI_DeAct_TP2</Descr>
+            <NewObjectState>False</NewObjectState>
+            <ObjectReferenceList>
+                <ObjectReference id="POI_TP2" InstanceId="{5B8396F5-FBFF-4943-A7CD-AEE51B107E79}">
+                </ObjectReference>
+            </ObjectReferenceList>
+        </SimMission.PointOfInterestActivationAction>
+        <SimMission.PointOfInterestActivationAction InstanceId="{3BE464F7-19B9-4C7C-B0A6-24798BFBE8E4}">
+            <Descr>POI_DeAct_TP3</Descr>
+            <NewObjectState>False</NewObjectState>
+            <ObjectReferenceList>
+                <ObjectReference id="POI_TP3" InstanceId="{4FAE51F9-5F77-4ADF-99A4-CCB0C5F2F283}">
+                </ObjectReference>
+            </ObjectReferenceList>
+        </SimMission.PointOfInterestActivationAction>
+        <SimMission.RectangleArea InstanceId="{D1441513-6601-46B9-A077-498D9FD12CBA}">
+            <Descr>area_final_glide</Descr>
+            <Width>8000.000</Width>
+            <Height>4000.000</Height>
+            <Orientation>0.000,0.000,0.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 17' 9.46",E12° 33' 52.80",+000000.00</WorldPosition>
+                <AltitudeIsAGL>True</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{427637A7-B5AD-4DBF-AF36-E166C176BF27}">
+            <Descr>area_lowz_2_north</Descr>
+            <Length>27000.000</Length>
+            <Width>3000.000</Width>
+            <Height>3000.000</Height>
+            <Orientation>0.000,0.000,0.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 16' 1.30",E12° 7' 51.79",-002000.00</WorldPosition>
+                <AltitudeIsAGL>True</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{13397C8E-5D11-4216-83FB-6F18A5A5D9E0}">
+            <Descr>area_lowz_east1</Descr>
+            <Length>13000.000</Length>
+            <Width>2000.000</Width>
+            <Height>3000.000</Height>
+            <Orientation>0.000,0.000,0.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 18' 56.93",E12° 57' 2.93",-002000.00</WorldPosition>
+                <AltitudeIsAGL>True</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{B73F6B06-2443-48D3-9208-8447B2B2015A}">
+            <Descr>area_lowz_east2</Descr>
+            <Length>9000.000</Length>
+            <Width>2000.000</Width>
+            <Height>3000.000</Height>
+            <Orientation>0.000,0.000,346.500</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 20' 6.13",E13° 6' 15.51",-002000.00</WorldPosition>
+                <AltitudeIsAGL>True</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{B33666D5-49B8-48BB-B2BF-F4679396F1B0}">
+            <Descr>area_LOWZ_landing</Descr>
+            <Orientation>0.000,0.000,345.600</Orientation>
+            <Length>1200.000</Length>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 17' 32.64",E12° 47' 27.55",+000000.00</WorldPosition>
+                <AltitudeIsAGL>True</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{89C49A0B-ABE0-4EB6-BEC5-DC2308BAFEC1}">
+            <Descr>area_lowz_north</Descr>
+            <Orientation>0.000,0.000,0.000</Orientation>
+            <Length>27000.000</Length>
+            <Width>3000.000</Width>
+            <Height>2000.000</Height>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 18' 56.59",E12° 36' 18.87",-002000.00</WorldPosition>
+                <AltitudeIsAGL>True</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{33DB83F0-E925-4F74-B665-62F63B4E0AE9}">
+            <Descr>area_mid_way</Descr>
+            <Orientation>0.000,0.000,0.000</Orientation>
+            <Width>12000.000</Width>
+            <Height>4000.000</Height>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 24' 46.58",E12° 48' 57.43",+000000.00</WorldPosition>
+                <AltitudeIsAGL>True</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{84F6BEA7-ECE9-420A-9DD1-7B0D813E9D8F}">
+            <Descr>area_ridge_000_4x2x1_lower</Descr>
+            <Length>4000.000</Length>
+            <Width>2000.000</Width>
+            <Height>1000.000</Height>
+            <Orientation>346.500,0.000,180.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 15' 36.30",E12° 52' 34.73",+004500.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{7667A9C0-3CC4-4784-BDF2-7C8AEB47B987}">
+            <Descr>area_ridge_000_4x2x1_upper</Descr>
+            <Orientation>0.000,0.000,180.000</Orientation>
+            <Length>4000.000</Length>
+            <Width>2000.000</Width>
+            <Height>1000.000</Height>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 14' 36.35",E12° 52' 38.06",-001700.00</WorldPosition>
+                <AltitudeIsAGL>True</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{5BCB319C-24DD-4219-99A7-DDAB1638D168}">
+            <Descr>area_ridge_001_4x2x1_lower</Descr>
+            <Length>4000.000</Length>
+            <Width>2700.000</Width>
+            <Height>1000.000</Height>
+            <Orientation>338.400,0.000,180.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 15' 57.69",E12° 47' 58.80",-000613.26</WorldPosition>
+                <AltitudeIsAGL>True</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{00B75894-14E8-4439-A470-4338C88DA9FD}">
+            <Descr>area_ridge_001_4x2x1_upper</Descr>
+            <Length>4000.000</Length>
+            <Width>2000.000</Width>
+            <Height>1000.000</Height>
+            <Orientation>0.000,0.000,180.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 14' 39.02",E12° 47' 4.78",-001700.00</WorldPosition>
+                <AltitudeIsAGL>True</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{B7A35824-EF6C-4304-9472-496B6E9DE675}">
+            <Descr>area_ridge_002_8x2x1_1low</Descr>
+            <Length>8000.000</Length>
+            <Width>2000.000</Width>
+            <Height>1000.000</Height>
+            <Orientation>338.400,0.000,180.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 14' 17.10",E12° 38' 40.19",+006000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{ACC89193-7BCA-4714-A7CA-40BEC65330C8}">
+            <Descr>area_ridge_002_8x2x1_2low</Descr>
+            <Length>8000.000</Length>
+            <Width>2000.000</Width>
+            <Height>1000.000</Height>
+            <Orientation>338.400,0.000,180.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 15' 15.56",E12° 38' 52.28",+004700.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{B3A42D20-8F05-45A8-B1CC-B16CA37CE4AF}">
+            <Descr>area_ridge_002_8x2x1_upper</Descr>
+            <Length>8000.000</Length>
+            <Width>2000.000</Width>
+            <Height>1000.000</Height>
+            <Orientation>0.000,0.000,180.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 13' 19.42",E12° 38' 37.17",+005500.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{1AE298DB-8AFB-474D-97A5-8C10384730B6}">
+            <Descr>area_ridge_003</Descr>
+            <Length>4000.000</Length>
+            <Width>6000.000</Width>
+            <Height>2000.000</Height>
+            <Orientation>348.300,0.000,180.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 14' 46.03",E12° 32' 8.50",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{515A092F-1E04-42C2-84A6-75F98CBCDF1C}">
+            <Descr>area_ridge_004</Descr>
+            <Length>4000.000</Length>
+            <Width>6000.000</Width>
+            <Height>2000.000</Height>
+            <Orientation>348.300,0.000,180.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 14' 27.41",E12° 27' 6.50",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{179BE469-BB9B-4036-A953-01117A554FDD}">
+            <Descr>area_ridge_005</Descr>
+            <Length>4000.000</Length>
+            <Width>8000.000</Width>
+            <Height>2000.000</Height>
+            <Orientation>348.300,0.000,180.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 13' 7.62",E12° 22' 53.25",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{64E865E4-AACB-4D39-A449-494E13EDFE6F}">
+            <Descr>area_ridge_005a</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2000.000</Height>
+            <Orientation>348.300,0.000,180.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 13' 28.39",E12° 18' 40.61",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{89840611-9CF2-4238-91EE-7ADA89F00493}">
+            <Descr>area_ridge_006</Descr>
+            <Length>4000.000</Length>
+            <Width>8000.000</Width>
+            <Height>2000.000</Height>
+            <Orientation>348.300,0.000,180.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 12' 13.09",E12° 13' 8.23",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{C7217EB7-982F-40AB-84A4-F12AD5539B50}">
+            <Descr>area_ridge_006a</Descr>
+            <Length>2000.000</Length>
+            <Width>4000.000</Width>
+            <Height>2000.000</Height>
+            <Orientation>348.300,0.000,180.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 12' 30.22",E12° 8' 7.32",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{FE21CA62-1657-46D3-A78F-6FC04C790A91}">
+            <Descr>area_ridge_007</Descr>
+            <Length>2000.000</Length>
+            <Width>4000.000</Width>
+            <Height>1500.000</Height>
+            <Orientation>348.300,0.000,180.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 12' 42.28",E12° 4' 57.87",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{AAD78270-5BA9-4867-A928-CD493564E67C}">
+            <Descr>area_ridge_008</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2000.000</Height>
+            <Orientation>348.300,0.000,180.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 12' 23.94",E12° 2' 54.86",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{C2D73964-0B89-4C89-91D8-C11AACEB0319}">
+            <Descr>area_ridge_009</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2000.000</Height>
+            <Orientation>348.300,0.000,180.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 11' 7.37",E12° 2' 51.10",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{145A86A3-2364-45A9-A052-437A4975BDEB}">
+            <Descr>area_ridge_009a</Descr>
+            <Length>2000.000</Length>
+            <Width>4000.000</Width>
+            <Height>2000.000</Height>
+            <Orientation>348.300,0.000,180.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 10' 39.63",E12° 0' 11.28",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{EE88BF0F-E502-413B-AF6D-D11FC84A35D6}">
+            <Descr>area_ridge_018</Descr>
+            <Length>4000.000</Length>
+            <Width>8000.000</Width>
+            <Height>2000.000</Height>
+            <Orientation>348.300,0.000,180.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 17' 46.93",E11° 41' 45.54",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{40F582DB-E70E-4C04-8125-B0DAEC295330}">
+            <Descr>area_ridge_018a</Descr>
+            <Length>4000.000</Length>
+            <Width>3000.000</Width>
+            <Height>1500.000</Height>
+            <Orientation>348.300,0.000,180.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 21' 18.66",E11° 46' 8.75",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{47E9919D-58A1-4F56-B8C2-D9A2CA7D727A}">
+            <Descr>area_ridge_019</Descr>
+            <Length>8000.000</Length>
+            <Width>8000.000</Width>
+            <Height>2000.000</Height>
+            <Orientation>348.300,0.000,180.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 15' 36.13",E11° 35' 1.50",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{F5C2AD73-0C5A-425F-8E26-CA77457988B8}">
+            <Descr>area_ridge_021</Descr>
+            <Length>14000.000</Length>
+            <Width>5000.000</Width>
+            <Height>2000.000</Height>
+            <Orientation>348.300,0.000,180.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 12' 39.47",E11° 18' 38.07",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{A7646ECC-CDFB-432E-B180-7B65C797F007}">
+            <Descr>area_ridge_801</Descr>
+            <Length>3000.000</Length>
+            <Width>4000.000</Width>
+            <Height>2000.000</Height>
+            <Orientation>355.300,0.000,180.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 13' 11.60",E13° 4' 3.73",+003000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{66F88F70-A25B-4647-9757-BB5BF3BC1ABE}">
+            <Descr>area_ridge_802</Descr>
+            <Length>2000.000</Length>
+            <Width>4000.000</Width>
+            <Height>2000.000</Height>
+            <Orientation>355.300,0.000,180.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 7' 18.30",E13° 6' 9.82",+003000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{BAD4D055-555A-4EA0-AEF1-58D488DC4CC5}">
+            <Descr>area_ridge_803</Descr>
+            <Length>3000.000</Length>
+            <Width>4000.000</Width>
+            <Height>2000.000</Height>
+            <Orientation>355.300,0.000,180.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 9' 40.21",E13° 3' 27.81",+003000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{A5312844-1037-4706-AD3D-0780A8C6C8ED}">
+            <Descr>area_ridge_804</Descr>
+            <Length>3000.000</Length>
+            <Width>4000.000</Width>
+            <Height>2000.000</Height>
+            <Orientation>355.300,0.000,180.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 6' 24.07",E13° 3' 15.71",+003000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{AC0C70AF-5264-476F-92BB-B1D9CF035488}">
+            <Descr>area_ridge_805</Descr>
+            <Length>3000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2000.000</Height>
+            <Orientation>355.300,0.000,180.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 12' 55.23",E12° 52' 49.64",+003000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{17043258-4244-43CB-B1D8-CAEC4E8CEC10}">
+            <Descr>area_ridge_806</Descr>
+            <Length>6000.000</Length>
+            <Width>4000.000</Width>
+            <Height>2000.000</Height>
+            <Orientation>355.300,0.000,180.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 26' 35.41",E13° 5' 26.06",+003000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{8241994D-EE4B-4F4B-8159-88ED1DD82C0D}">
+            <Descr>area_ridge_807</Descr>
+            <Length>6000.000</Length>
+            <Width>6000.000</Width>
+            <Height>2000.000</Height>
+            <Orientation>355.300,0.000,180.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 28' 37.62",E12° 58' 25.41",+003000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{5BE44701-E619-428E-96FC-603733300BE4}">
+            <Descr>area_ridge_901</Descr>
+            <Length>4000.000</Length>
+            <Width>4000.000</Width>
+            <Height>2000.000</Height>
+            <Orientation>355.300,0.000,180.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 16' 27.57",E13° 2' 44.92",+003000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{1A48AE2A-5392-4EDC-A2C6-3AF517B07F05}">
+            <Descr>area_ridge_902</Descr>
+            <Length>3000.000</Length>
+            <Width>2000.000</Width>
+            <Height>1500.000</Height>
+            <Orientation>348.300,0.000,180.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 17' 25.21",E13° 6' 16.44",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{10F258D3-4C74-4CFF-8610-7BFC22AAB6BD}">
+            <Descr>area_ridge_903</Descr>
+            <Length>4000.000</Length>
+            <Width>3000.000</Width>
+            <Height>2000.000</Height>
+            <Orientation>348.300,0.000,180.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 18' 7.38",E13° 9' 42.53",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{33AC137E-2F2B-4762-8510-FBE99D0FD2C0}">
+            <Descr>area_sink_851</Descr>
+            <Length>5000.000</Length>
+            <Width>9000.000</Width>
+            <Height>2000.000</Height>
+            <Orientation>355.300,0.000,180.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 11' 15.11",E13° 0' 4.00",+003000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{857D12E2-9E9F-48E9-A400-3E838171DE4F}">
+            <Descr>area_sink_852</Descr>
+            <Length>3000.000</Length>
+            <Width>12000.000</Width>
+            <Height>2000.000</Height>
+            <Orientation>355.300,0.000,180.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 13' 10.86",E13° 7' 50.60",+003000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{53FAFDA2-3485-41DE-8977-9D7CD36E5386}">
+            <Descr>area_sink_900</Descr>
+            <Length>7000.000</Length>
+            <Width>3000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>40.000,0.000,180.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 25' 30.16",E13° 5' 6.60",+002000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{EA8E266C-8914-4B23-BB41-CDF47DAED75E}">
+            <Descr>area_sink_901</Descr>
+            <Length>5000.000</Length>
+            <Width>3000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>40.000,0.000,180.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 26' 44.91",E12° 58' 19.34",+002000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{A57FFAAB-FA71-43C9-A1CA-12F39E9D61D2}">
+            <Descr>area_sink_902</Descr>
+            <Length>2500.000</Length>
+            <Width>2500.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>40.000,0.000,180.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 25' 56.70",E13° 1' 9.31",+002000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{7B3B736E-CDE6-4F4A-B0CB-BC4AECA293D9}">
+            <Descr>area_start_finish</Descr>
+            <Orientation>0.000,0.000,0.000</Orientation>
+            <Width>2000.000</Width>
+            <Height>1680.000</Height>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 17' 27.72",E12° 47' 23.56",+000000.00</WorldPosition>
+                <AltitudeIsAGL>True</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{2F3BE583-980A-414D-BB11-36BB1956BB04}">
+            <Descr>area_start_too_high</Descr>
+            <Width>2000.000</Width>
+            <Height>2000.000</Height>
+            <Orientation>0.000,0.000,0.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 17' 29.25",E12° 47' 22.96",+008000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{AE6CC832-D0C1-496E-AFA6-3B3095969783}">
+            <Descr>area_therm_000a</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 16' 3.08",E12° 54' 59.06",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{C4BB3BB8-87C8-4866-8067-2310909190B9}">
+            <Descr>area_therm_001a</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 15' 42.65",E12° 42' 56.97",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{5970DAAC-7103-4FBC-A69A-5AE5D01EDE61}">
+            <Descr>area_therm_003a</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 14' 47.11",E12° 30' 40.21",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{B4F438B3-14F9-43CC-B248-4AD3FF9BB8A1}">
+            <Descr>area_therm_005aa</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 14' 27.46",E12° 20' 56.78",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{5AF9D6E2-A157-4B9D-A22A-7BD87ADFC5AE}">
+            <Descr>area_therm_010</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 8' 58.58",E11° 55' 33.57",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{20C712A7-15E0-4B2C-B360-A0AA077287B4}">
+            <Descr>area_therm_011</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 12' 24.87",E11° 55' 5.49",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{00298064-28DC-420D-BF31-92AFBC93DA23}">
+            <Descr>area_therm_012</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 12' 12.99",E11° 50' 44.39",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{8CE867C9-B474-4476-87CF-1ECCB8D2C424}">
+            <Descr>area_therm_013</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 15' 39.99",E11° 53' 0.73",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{678B1E70-BE1C-468E-9F3E-B3996C003A9F}">
+            <Descr>area_therm_014</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 16' 39.29",E11° 49' 6.44",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{D2458CEF-5463-423F-A718-C86090248135}">
+            <Descr>area_therm_015</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 18' 25.52",E11° 52' 13.62",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{13226665-32D3-49D0-9818-0C910A9FD52D}">
+            <Descr>area_therm_016</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 21' 57.80",E11° 49' 43.85",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{BB500222-5EA4-4DB0-B214-7B9A6E75E650}">
+            <Descr>area_therm_017</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 19' 40.71",E11° 46' 22.04",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{B530E974-07EE-490F-A755-55515F4F559C}">
+            <Descr>area_therm_022</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 12' 2.56",E11° 46' 17.16",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{ED42A552-D5D0-43EC-BDFB-9B94A8EECFD0}">
+            <Descr>area_therm_023</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 12' 50.85",E11° 40' 51.31",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{4E80D09D-7354-4E3D-978D-7E527525D4D3}">
+            <Descr>area_therm_024</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 13' 41.44",E11° 29' 19.55",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{8F964331-31F6-4D42-BBA7-61EC71AC6D6C}">
+            <Descr>area_therm_025</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 14' 45.68",E11° 16' 49.91",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{B12994DC-9D24-49C6-903A-4222EC0E213F}">
+            <Descr>area_therm_026</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 17' 15.55",E11° 42' 37.54",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{18F4E63A-0891-4377-89A9-C8444E136B50}">
+            <Descr>area_therm_027</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 15' 50.97",E11° 38' 41.94",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{28550BC4-C8C9-4FCF-8AE8-FE80D43B5DB4}">
+            <Descr>area_therm_028</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 9' 39.93",E11° 29' 21.84",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{746902EB-7C95-49C2-96C0-FA28598CA600}">
+            <Descr>area_therm_029</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 6' 13.76",E11° 27' 7.08",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{E3E9E9CF-D844-43E0-B629-216685615D08}">
+            <Descr>area_therm_030</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 8' 56.89",E11° 36' 13.45",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{F293C04D-DC09-45B8-8122-88893B6EE7C4}">
+            <Descr>area_therm_031</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 11' 10.67",E11° 32' 51.40",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{A6AD3E09-6CDB-45D5-AA5B-85C43BA3EABB}">
+            <Descr>area_therm_032</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 24' 10.00",E11° 51' 36.34",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{6A741006-66B4-4EB9-9CE6-144D44A6A268}">
+            <Descr>area_therm_901a</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 16' 39.66",E12° 59' 39.09",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{9ED18A48-0AC3-4513-8F10-CFB557F7DD6A}">
+            <Descr>area_therm_903a</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 19' 20.86",E13° 11' 46.64",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{B3562DB7-6B3C-4244-B24A-51CDD90BCE27}">
+            <Descr>area_therm_904</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 22' 31.60",E13° 12' 13.54",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{4B94D5AA-0D47-4296-A476-C3F4C46C4E00}">
+            <Descr>area_therm_905</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 23' 6.76",E13° 16' 57.32",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{A7FC268C-1C68-4A74-8AEB-2D7C874E8780}">
+            <Descr>area_therm_906</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 25' 1.67",E13° 17' 18.47",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{899270D3-4560-4680-B4D5-F275477E7B65}">
+            <Descr>area_therm_907</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 26' 49.78",E13° 9' 19.04",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{CD65CF8A-142D-41F1-A2C5-ABC9153C29B5}">
+            <Descr>area_therm_908</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 27' 53.58",E13° 2' 29.94",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{CB21CE31-143B-489E-8EF2-3D8666B7F047}">
+            <Descr>area_therm_909</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 30' 30.12",E12° 55' 46.81",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{9CC260F7-B9AF-4C37-AAA4-DBB66DD5D38C}">
+            <Descr>area_therm_910</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 29' 53.06",E12° 46' 46.56",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{D8E92510-56F3-4671-8794-460D385451A1}">
+            <Descr>area_therm_911</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 32' 51.09",E12° 42' 43.23",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{094B78A5-86BF-42C7-B410-A46522B1C2F2}">
+            <Descr>area_therm_912</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 25' 50.03",E12° 48' 20.45",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{636E706C-C71A-489D-8567-1B6D14970DA9}">
+            <Descr>area_therm_913</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 22' 54.73",E13° 5' 5.52",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{BAB1D86A-417F-48E4-BC35-F612E899A264}">
+            <Descr>area_therm_914</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 22' 11.12",E13° 7' 50.49",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{C6BDA95D-97C7-4F7D-97C1-5F0DDC639999}">
+            <Descr>area_therm_915</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 21' 10.06",E12° 58' 21.58",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{AE8E651A-8285-4FAD-8E05-CD7A6116A6CA}">
+            <Descr>area_therm_916</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 22' 9.78",E12° 52' 52.64",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{BA66E3A0-C28B-4D15-A9C4-D1576F6E74E3}">
+            <Descr>area_therm_917</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 25' 45.52",E12° 42' 50.24",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{85D46D95-E1C1-4D19-85E6-92F9E3E57E66}">
+            <Descr>area_therm_918</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 26' 24.93",E12° 38' 25.13",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{3F9DB6F1-9957-4A7E-85C2-F62E1CB0871E}">
+            <Descr>area_therm_919</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 26' 54.88",E12° 32' 57.89",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{21F82CE7-42C5-473F-9DD5-13C3483C8A59}">
+            <Descr>area_therm_920</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 29' 5.15",E12° 28' 32.03",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{9E95CAFC-6003-499B-9A66-A855EA8C5D69}">
+            <Descr>area_therm_921</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 24' 58.33",E12° 17' 36.62",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{72F42E87-0566-4D40-A195-A1A971B3CDA0}">
+            <Descr>area_therm_922</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 23' 6.39",E12° 24' 21.24",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{5D1F3DF0-8DA2-4AE0-A9B5-CB3BBF7AFDF4}">
+            <Descr>area_therm_923</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 19' 41.68",E12° 15' 48.24",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{D74A881E-2DBE-4B75-80FE-F703753DB37C}">
+            <Descr>area_therm_924</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 22' 29.76",E12° 6' 27.71",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{71A6F04F-BF03-4ADE-B8F3-B4DEB62581BA}">
+            <Descr>area_therm_925</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 31' 19.81",E12° 10' 26.84",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{983CC837-3CC9-4DB6-883A-D9DF0020EF6B}">
+            <Descr>area_therm_926</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 23' 10.62",E12° 0' 21.22",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{3DB429D1-7F66-4CB1-B6CA-04DE9919753D}">
+            <Descr>area_therm_927</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 26' 7.74",E11° 58' 25.25",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{2445BE66-D351-4052-B5EF-F4FA77EE4E98}">
+            <Descr>area_therm_928</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 18' 48.48",E12° 8' 18.95",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{11A322BB-F82B-4494-B804-B49E8D30B297}">
+            <Descr>area_therm_929</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 21' 41.97",E12° 33' 26.78",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{3ADAC901-344F-4DBB-A6B7-9CE87C3B9B7A}">
+            <Descr>area_therm_930</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 19' 13.06",E12° 22' 26.99",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{FC6B6AD6-4D14-4249-8AC3-7A8218723E71}">
+            <Descr>area_therm_931</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 25' 36.39",E12° 23' 26.81",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{7C77DFF6-7267-4C8A-B4D5-FDEF4258A16B}">
+            <Descr>area_therm_932</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 23' 55.43",E12° 59' 57.75",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{3843C8CB-8B6C-4E40-90F3-452F1C193637}">
+            <Descr>area_therm_933</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 24' 4.34",E12° 53' 26.59",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{4E4CD32E-2739-47FD-AB43-80D3DDA4EAF4}">
+            <Descr>area_therm_934</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 28' 17.26",E12° 49' 40.88",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{35D8C6A2-325D-42DB-BE79-DA2919CDF342}">
+            <Descr>area_therm_935</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 21' 36.08",E12° 42' 44.19",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{D28C97B9-F0F0-4611-8C9E-1BABA1342CF9}">
+            <Descr>area_therm_936</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 20' 25.20",E12° 27' 46.07",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{638E2EF8-01D7-44A5-9067-0B18AF86F5FC}">
+            <Descr>area_therm_937</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 24' 22.77",E12° 31' 18.46",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{16A087D8-CA03-4627-9F88-BB000DC1478A}">
+            <Descr>area_therm_938</Descr>
+            <Length>2000.000</Length>
+            <Width>2000.000</Width>
+            <Height>2500.000</Height>
+            <Orientation>330.000,0.000,45.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 19' 59.26",E11° 58' 3.14",+004000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{7C3412AD-A6CA-431D-86BF-BF2FA7CA17F5}">
+            <Descr>area_TP1</Descr>
+            <Orientation>0.000,0.000,0.000</Orientation>
+            <Length>500.000</Length>
+            <Width>500.000</Width>
+            <Height>10000.000</Height>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 7' 25.17",E13° 8' 6.37",+000000.00</WorldPosition>
+                <AltitudeIsAGL>True</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{39CD309A-00AA-443B-8863-9B74F07FA9E6}">
+            <Descr>area_TP2</Descr>
+            <Length>500.000</Length>
+            <Width>500.000</Width>
+            <Height>10000.000</Height>
+            <Orientation>0.000,0.000,0.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 27' 59.66",E13° 11' 57.15",+000000.00</WorldPosition>
+                <AltitudeIsAGL>True</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{93E07453-C277-4553-843E-D0E429422627}">
+            <Descr>area_TP3</Descr>
+            <Length>500.000</Length>
+            <Width>500.000</Width>
+            <Height>10000.000</Height>
+            <Orientation>0.000,0.000,0.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 21' 28.40",E12° 18' 28.39",+000000.00</WorldPosition>
+                <AltitudeIsAGL>True</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{217B56D6-5A6E-4373-BD02-A7F7A87A05C7}">
+            <Descr>area_westend_north</Descr>
+            <Length>27000.000</Length>
+            <Width>6000.000</Width>
+            <Height>3000.000</Height>
+            <Orientation>0.000,0.000,339.300</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 21' 26.12",E11° 35' 36.59",-002000.00</WorldPosition>
+                <AltitudeIsAGL>True</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.AreaLandingTrigger InstanceId="{65905CD1-DACF-4CD9-A68A-66EF864C93CB}">
+            <Descr>AreaLandTrig_landout</Descr>
+            <Actions>
+                <ObjectReference id="dialog_90_land_out" InstanceId="{7D3777EC-7565-45DE-8CD7-FE8035B3964F}">
+                </ObjectReference>
+                <ObjectReference id="GoalResAct_mission_fail" InstanceId="{8390F2E9-9608-4946-BD7E-082314811A3F}">
+                </ObjectReference>
+            </Actions>
+        </SimMission.AreaLandingTrigger>
+        <SimMission.PropertyTrigger InstanceId="{295A31D8-ED45-4B20-ABEF-37280ACBC65C}">
+            <Descr>PropTrig_height_limit</Descr>
+            <Condition>
+                <And>
+                    <GreaterThan>
+                        <LHS>
+                            <Property>
+                                <Name>Simvar.AltitudeAMSL</Name>
+                                <Units>feet</Units>
+                                <PropertySource>User</PropertySource>
+                            </Property>
+                        </LHS>
+                        <RHS>
+                            <Constant>
+                                <Double>9400.000</Double>
+                            </Constant>
+                        </RHS>
+                    </GreaterThan>
+                </And>
+            </Condition>
+            <Actions>
+                <ObjectReference id="dialog_71_height_limit" InstanceId="{2DDBF1F6-2BB2-43BD-A098-DDDE1CB10830}">
+                </ObjectReference>
+                <ObjectReference id="GoalResAct_mission_fail" InstanceId="{8390F2E9-9608-4946-BD7E-082314811A3F}">
+                </ObjectReference>
+            </Actions>
+        </SimMission.PropertyTrigger>
+        <SimMission.PropertyTrigger InstanceId="{3DCDB290-B575-4F25-9D7B-BAB2A621F708}">
+            <Descr>PropTrig_height_warning</Descr>
+            <Condition>
+                <And>
+                    <GreaterThan>
+                        <LHS>
+                            <Property>
+                                <Name>Simvar.AltitudeAMSL</Name>
+                                <Units>feet</Units>
+                                <PropertySource>User</PropertySource>
+                            </Property>
+                        </LHS>
+                        <RHS>
+                            <Constant>
+                                <Double>8800.000</Double>
+                            </Constant>
+                        </RHS>
+                    </GreaterThan>
+                </And>
+            </Condition>
+            <Actions>
+                <ObjectReference id="dialog_70_height_warning" InstanceId="{0C3454A4-C90E-419E-B6C1-1FF6BB5EB615}">
+                </ObjectReference>
+            </Actions>
+        </SimMission.PropertyTrigger>
+        <SimMission.PropertyTrigger InstanceId="{E211DF78-3139-450F-A5F6-7FF4EBB7B59D}">
+            <Descr>PropTrig_height_warning_2</Descr>
+            <OneShot>False</OneShot>
+            <Condition>
+                <And>
+                    <GreaterThan>
+                        <LHS>
+                            <Property>
+                                <Name>Simvar.AltitudeAMSL</Name>
+                                <Units>feet</Units>
+                                <PropertySource>User</PropertySource>
+                            </Property>
+                        </LHS>
+                        <RHS>
+                            <Constant>
+                                <Double>9100.000</Double>
+                            </Constant>
+                        </RHS>
+                    </GreaterThan>
+                </And>
+            </Condition>
+            <Actions>
+                <ObjectReference id="dialog_72_height_warning_2" InstanceId="{F3EB296B-FE0C-4F3A-AAB5-0834CEC2598C}">
+                </ObjectReference>
+            </Actions>
+        </SimMission.PropertyTrigger>
+        <SimMission.PropertyTrigger InstanceId="{5CB4639A-83B9-465B-9ADC-CC7F0C45EA0A}">
+            <Descr>PropTrig_height_warning_3</Descr>
+            <OneShot>False</OneShot>
+            <Actions>
+                <ObjectReference id="dialog_73_height_warning_3" InstanceId="{2F081DAC-ECA9-4EDC-953E-B74516BA5097}">
+                </ObjectReference>
+            </Actions>
+            <Condition>
+                <And>
+                    <GreaterThan>
+                        <LHS>
+                            <Property>
+                                <Name>Simvar.AltitudeAMSL</Name>
+                                <Units>feet</Units>
+                                <PropertySource>User</PropertySource>
+                            </Property>
+                        </LHS>
+                        <RHS>
+                            <Constant>
+                                <Double>9000.000</Double>
+                            </Constant>
+                        </RHS>
+                    </GreaterThan>
+                </And>
+            </Condition>
+        </SimMission.PropertyTrigger>
+        <SimMission.ProximityTrigger InstanceId="{B105A372-CBED-42B5-BFF7-67453FA4B743}">
+            <Descr>ProxTrig_0_start_too_high</Descr>
+            <OnEnterActions>
+                <ObjectReference id="dialog_01_bad_start" InstanceId="{09394720-2196-4BBC-B828-00436B5F8B89}">
+                </ObjectReference>
+            </OnEnterActions>
+            <Areas>
+                <ObjectReference id="area_start_too_high" InstanceId="{2F3BE583-980A-414D-BB11-36BB1956BB04}">
+                </ObjectReference>
+            </Areas>
+            <OnExitActions>
+            </OnExitActions>
+        </SimMission.ProximityTrigger>
+        <SimMission.ProximityTrigger InstanceId="{16C72F51-3BEE-47FC-B41E-36D46F376B21}">
+            <Descr>ProxTrig_1_start</Descr>
+            <OnEnterActions>
+                <ObjectReference id="ObjAct_task_timer" InstanceId="{0238B780-D70A-46F1-AAE1-3DFFDED20010}">
+                </ObjectReference>
+                <ObjectReference id="POI_Act_TP1" InstanceId="{AC7676ED-DD46-4759-838D-B2F3E737B8B1}">
+                </ObjectReference>
+                <ObjectReference id="POI_DeAct_LOWZ" InstanceId="{FC1C8685-AD5A-41B3-B98F-80313B065BCC}">
+                </ObjectReference>
+                <ObjectReference id="GoalResAct_good_start" InstanceId="{597313E6-B7D2-47A1-B2B4-4BA6A3165D53}">
+                </ObjectReference>
+                <ObjectReference id="dialog_02_good_start" InstanceId="{530EA5DD-2BB6-4A66-A1E1-6242C1CED546}">
+                </ObjectReference>
+                <ObjectReference id="ObjAct_ProxTrig_TP1" InstanceId="{245DC6B2-FE4A-46C9-8764-52DC8B8A4DAC}">
+                </ObjectReference>
+            </OnEnterActions>
+            <OnExitActions>
+            </OnExitActions>
+            <Areas>
+                <ObjectReference id="area_start_finish" InstanceId="{7B3B736E-CDE6-4F4A-B0CB-BC4AECA293D9}">
+                </ObjectReference>
+            </Areas>
+        </SimMission.ProximityTrigger>
+        <SimMission.ProximityTrigger InstanceId="{2FD317F8-A183-4196-A932-A562F0E5A06B}">
+            <Descr>ProxTrig_curlover</Descr>
+            <OneShot>False</OneShot>
+            <Areas>
+                <ObjectReference id="area_lowz_2_north" InstanceId="{427637A7-B5AD-4DBF-AF36-E166C176BF27}">
+                </ObjectReference>
+                <ObjectReference id="area_lowz_north" InstanceId="{89C49A0B-ABE0-4EB6-BEC5-DC2308BAFEC1}">
+                </ObjectReference>
+                <ObjectReference id="area_sink_851" InstanceId="{33AC137E-2F2B-4762-8510-FBE99D0FD2C0}">
+                </ObjectReference>
+                <ObjectReference id="area_sink_852" InstanceId="{857D12E2-9E9F-48E9-A400-3E838171DE4F}">
+                </ObjectReference>
+                <ObjectReference id="area_sink_900" InstanceId="{53FAFDA2-3485-41DE-8977-9D7CD36E5386}">
+                </ObjectReference>
+                <ObjectReference id="area_sink_901" InstanceId="{EA8E266C-8914-4B23-BB41-CDF47DAED75E}">
+                </ObjectReference>
+                <ObjectReference id="area_sink_902" InstanceId="{A57FFAAB-FA71-43C9-A1CA-12F39E9D61D2}">
+                </ObjectReference>
+                <ObjectReference id="area_lowz_east1" InstanceId="{13397C8E-5D11-4216-83FB-6F18A5A5D9E0}">
+                </ObjectReference>
+                <ObjectReference id="area_lowz_east2" InstanceId="{B73F6B06-2443-48D3-9208-8447B2B2015A}">
+                </ObjectReference>
+            </Areas>
+            <OnEnterActions>
+                <ObjectReference id="dialog_35_curlover" InstanceId="{58C7D8BC-E80E-4AD0-990D-7292E05F0351}">
+                </ObjectReference>
+            </OnEnterActions>
+        </SimMission.ProximityTrigger>
+        <SimMission.ProximityTrigger InstanceId="{6F1F7CF8-214F-421C-856D-FD2781527A59}">
+            <Descr>ProxTrig_final_glide</Descr>
+            <Activated>False</Activated>
+            <Areas>
+                <ObjectReference id="area_final_glide" InstanceId="{D1441513-6601-46B9-A077-498D9FD12CBA}">
+                </ObjectReference>
+            </Areas>
+            <OnEnterActions>
+                <ObjectReference id="dialog_40_final_glide" InstanceId="{63FD5947-33C3-4A29-ACFF-9253156CD3F0}">
+                </ObjectReference>
+            </OnEnterActions>
+        </SimMission.ProximityTrigger>
+        <SimMission.ProximityTrigger InstanceId="{E07626A0-01A4-4273-8A62-941E261EFD3E}">
+            <Descr>ProxTrig_finish</Descr>
+            <Activated>False</Activated>
+            <OnEnterActions>
+                <ObjectReference id="ObjDeAct_task_timer" InstanceId="{1DA40561-6BC9-489B-A461-FDB8915CEF9C}">
+                </ObjectReference>
+                <ObjectReference id="GoalResAct_good_finish" InstanceId="{0D70BCFC-5885-4855-9494-A5AA1F7AC089}">
+                </ObjectReference>
+                <ObjectReference id="dialog_99_good_finish" InstanceId="{E95B3B7D-3CE6-49E0-B657-C37DAAAA6574}">
+                </ObjectReference>
+            </OnEnterActions>
+            <Areas>
+                <ObjectReference id="area_start_finish" InstanceId="{7B3B736E-CDE6-4F4A-B0CB-BC4AECA293D9}">
+                </ObjectReference>
+            </Areas>
+            <OnExitActions>
+            </OnExitActions>
+        </SimMission.ProximityTrigger>
+        <SimMission.ProximityTrigger InstanceId="{D0BF867D-80BF-4300-B3C8-A67AD209C0EF}">
+            <Descr>ProxTrig_LOWZ_landing</Descr>
+            <Activated>False</Activated>
+            <OnExitActions>
+                <ObjectReference id="ObjAct_AreaLandTrig_landout" InstanceId="{AF0BF63D-7163-47FC-9EBE-7A949E8736C2}">
+                </ObjectReference>
+            </OnExitActions>
+            <OnEnterActions>
+                <ObjectReference id="ObjDeAct_AreaLandTrig_landout" InstanceId="{CE751F9E-F412-4CC4-A9F0-E4472C6ABD46}">
+                </ObjectReference>
+            </OnEnterActions>
+            <Areas>
+                <ObjectReference id="area_LOWZ_landing" InstanceId="{B33666D5-49B8-48BB-B2BF-F4679396F1B0}">
+                </ObjectReference>
+            </Areas>
+        </SimMission.ProximityTrigger>
+        <SimMission.ProximityTrigger InstanceId="{9E6546E0-5037-40BD-8360-26BF820AD13D}">
+            <Descr>ProxTrig_mid_way</Descr>
+            <Activated>False</Activated>
+            <Areas>
+                <ObjectReference id="area_mid_way" InstanceId="{33DB83F0-E925-4F74-B665-62F63B4E0AE9}">
+                </ObjectReference>
+            </Areas>
+            <OnEnterActions>
+                <ObjectReference id="dialog_25_mid_way" InstanceId="{4A1D0E7C-67F5-4E93-919A-F21CDD5C51E4}">
+                </ObjectReference>
+            </OnEnterActions>
+        </SimMission.ProximityTrigger>
+        <SimMission.ProximityTrigger InstanceId="{E3B4BFAB-BC23-467A-8133-D01C842437D7}">
+            <Descr>ProxTrig_TP1</Descr>
+            <Activated>False</Activated>
+            <OnEnterActions>
+                <ObjectReference id="POI_Act_TP2" InstanceId="{E33FE90F-7D94-4A1C-B0D7-16E69F2BF3C2}">
+                </ObjectReference>
+                <ObjectReference id="POI_DeAct_TP1" InstanceId="{D9910D15-6A9E-40E0-BD0D-FE5B4FF0CCBE}">
+                </ObjectReference>
+                <ObjectReference id="GoalResAct_TP1" InstanceId="{E2B0931B-3DA4-4BB7-B022-6C03A18E2227}">
+                </ObjectReference>
+                <ObjectReference id="ObjAct_ProxTrig_TP2" InstanceId="{3D398456-0899-4732-ACAF-18CF677FAA82}">
+                </ObjectReference>
+                <ObjectReference id="dialog_10_tp1" InstanceId="{5F124F2F-529B-46F4-A8FC-D883A3E65688}">
+                </ObjectReference>
+            </OnEnterActions>
+            <Areas>
+                <ObjectReference id="area_TP1" InstanceId="{7C3412AD-A6CA-431D-86BF-BF2FA7CA17F5}">
+                </ObjectReference>
+            </Areas>
+        </SimMission.ProximityTrigger>
+        <SimMission.ProximityTrigger InstanceId="{B9F70251-2992-4B94-9247-DBEAB1AF56A9}">
+            <Descr>ProxTrig_TP2</Descr>
+            <Activated>False</Activated>
+            <OnEnterActions>
+                <ObjectReference id="GoalResAct_TP2" InstanceId="{0880B66A-BC8B-4CD6-AAA7-70B7B987D333}">
+                </ObjectReference>
+                <ObjectReference id="POI_DeAct_TP2" InstanceId="{885815BD-3A7D-4BC0-856A-A4783B053BE0}">
+                </ObjectReference>
+                <ObjectReference id="dialog_20_tp2" InstanceId="{01A657F7-555C-4549-BACF-269455788715}">
+                </ObjectReference>
+                <ObjectReference id="POI_Act_TP3" InstanceId="{150273A3-B720-4F98-AB20-7DCC4DD473CD}">
+                </ObjectReference>
+                <ObjectReference id="ObjAct_ProxTrig_TP3" InstanceId="{ACE9584D-C589-4B1F-B7A2-5BAE805FD6BE}">
+                </ObjectReference>
+                <ObjectReference id="ObjAct_ProxTrig_mid_way" InstanceId="{3C855C8F-3F5A-402F-A0EB-9B825E7B885B}">
+                </ObjectReference>
+            </OnEnterActions>
+            <Areas>
+                <ObjectReference id="area_TP2" InstanceId="{39CD309A-00AA-443B-8863-9B74F07FA9E6}">
+                </ObjectReference>
+            </Areas>
+        </SimMission.ProximityTrigger>
+        <SimMission.ProximityTrigger InstanceId="{19E1048B-A1F5-424B-8FF6-D328127E1FA6}">
+            <Descr>ProxTrig_TP3</Descr>
+            <Activated>False</Activated>
+            <OnEnterActions>
+                <ObjectReference id="ObjAct_ProxTrig_final_glide" InstanceId="{B3370A57-DCB5-4D9D-824C-96586ADDC589}">
+                </ObjectReference>
+                <ObjectReference id="ObjAct_ProxTrig_LOWZ_landing" InstanceId="{50B772AC-BA3D-41C7-B455-37E0C11D3431}">
+                </ObjectReference>
+                <ObjectReference id="ObjAct_ProxTrig_finish" InstanceId="{90501C87-D6BC-4ED6-8A57-00CB92AA24A7}">
+                </ObjectReference>
+                <ObjectReference id="POI_Act_LOWZ" InstanceId="{836C5E3D-0BD8-4EC8-BD51-5CCD2E1CB648}">
+                </ObjectReference>
+                <ObjectReference id="GoalResAct_TP3" InstanceId="{FBF02A58-74E3-40E1-BC2F-98C6830D7D45}">
+                </ObjectReference>
+                <ObjectReference id="dialog_30_tp3" InstanceId="{567217B3-9DC4-4665-8DFA-0E1050D3C6BD}">
+                </ObjectReference>
+                <ObjectReference id="POI_DeAct_TP3" InstanceId="{3BE464F7-19B9-4C7C-B0A6-24798BFBE8E4}">
+                </ObjectReference>
+            </OnEnterActions>
+            <Areas>
+                <ObjectReference id="area_TP3" InstanceId="{93E07453-C277-4553-843E-D0E429422627}">
+                </ObjectReference>
+            </Areas>
+        </SimMission.ProximityTrigger>
+        <SimMission.TimerTrigger InstanceId="{064DA5AA-5F37-4FC7-B5B2-83BEBC0BA5F5}">
+            <Descr>TimeTrig_20_mins</Descr>
+            <StopTime>1200.000</StopTime>
+            <Actions>
+                <ObjectReference id="dialog_03_height_reminder" InstanceId="{9241FA4E-F943-493B-AB17-1CDD4191F303}">
+                </ObjectReference>
+            </Actions>
+        </SimMission.TimerTrigger>
+        <SimMission.TimerTrigger InstanceId="{98F1B66C-46D8-4999-B7F3-9A13295B07E6}">
+            <Descr>TimeTrig_mission_start</Descr>
+            <StopTime>2.000</StopTime>
+            <Actions>
+                <ObjectReference id="dialog_00_start_gate_open" InstanceId="{D3A352A2-B6E9-417B-AFFA-1255E8288E71}">
+                </ObjectReference>
+                <ObjectReference id="dialog_03_height_reminder" InstanceId="{9241FA4E-F943-493B-AB17-1CDD4191F303}">
+                </ObjectReference>
+            </Actions>
+        </SimMission.TimerTrigger>
+        <SimMission.TimerTrigger InstanceId="{E6C39645-F88D-4963-9A9E-72E6A33A60B3}">
+            <Descr>tmr_task_timer</Descr>
+            <OnScreenTimer>True</OnScreenTimer>
+            <Activated>False</Activated>
+            <StopTime>10000.000</StopTime>
+        </SimMission.TimerTrigger>
+        <SceneryObjects.LibraryObject InstanceId="{9E0937DA-C720-4212-8D81-0A3C1DB6D81D}">
+            <Descr>Copy - Copy - Copy - Copy - Copy - gen_sailplane_trailer01</Descr>
+            <WorldPosition>N47° 17' 27.82",E12° 47' 22.52",+000000.00</WorldPosition>
+            <Orientation>0.000,0.000,81.900</Orientation>
+            <MDLGuid>{D0EBB246-92D9-46C7-8476-22758414F27F}</MDLGuid>
+            <AltitudeIsAGL>True</AltitudeIsAGL>
+            <Scale>1.000</Scale>
+        </SceneryObjects.LibraryObject>
+        <SceneryObjects.LibraryObject InstanceId="{BE07C3E9-379B-45BB-A7B3-51D8191FDDC1}">
+            <Descr>Copy - Copy - Copy - Copy - Copy - gen_sailplane_trailer02</Descr>
+            <WorldPosition>N47° 17' 27.79",E12° 47' 22.36",+000000.00</WorldPosition>
+            <Orientation>0.000,0.000,83.000</Orientation>
+            <MDLGuid>{7395556B-9997-4146-A28D-7A4C510F22ED}</MDLGuid>
+            <AltitudeIsAGL>True</AltitudeIsAGL>
+            <Scale>1.000</Scale>
+        </SceneryObjects.LibraryObject>
+        <SceneryObjects.LibraryObject InstanceId="{225C9077-17C9-4716-B8C2-86A164D132AB}">
+            <Descr>Copy - Copy - Copy - Copy - Copy - gen_sailplane_trailer03</Descr>
+            <WorldPosition>N47° 17' 27.77",E12° 47' 22.18",+000000.00</WorldPosition>
+            <Orientation>0.000,0.000,78.400</Orientation>
+            <MDLGuid>{274790E1-5A12-40E5-9FC3-5B256C7BD70F}</MDLGuid>
+            <AltitudeIsAGL>True</AltitudeIsAGL>
+            <Scale>1.000</Scale>
+        </SceneryObjects.LibraryObject>
+        <SceneryObjects.LibraryObject InstanceId="{3DD61209-8A16-4738-85FB-411C30FB611E}">
+            <Descr>Copy - Copy - Copy - Copy - gen_sailplane_trailer01</Descr>
+            <WorldPosition>N47° 17' 27.92",E12° 47' 23.04",+000000.00</WorldPosition>
+            <Orientation>0.000,0.000,81.900</Orientation>
+            <MDLGuid>{D0EBB246-92D9-46C7-8476-22758414F27F}</MDLGuid>
+            <AltitudeIsAGL>True</AltitudeIsAGL>
+            <Scale>1.000</Scale>
+        </SceneryObjects.LibraryObject>
+        <SceneryObjects.LibraryObject InstanceId="{B33104B3-863E-459E-B613-BBE1207A48AA}">
+            <Descr>Copy - Copy - Copy - Copy - gen_sailplane_trailer02</Descr>
+            <WorldPosition>N47° 17' 27.87",E12° 47' 22.84",+000000.00</WorldPosition>
+            <Orientation>0.000,0.000,74.000</Orientation>
+            <MDLGuid>{7395556B-9997-4146-A28D-7A4C510F22ED}</MDLGuid>
+            <AltitudeIsAGL>True</AltitudeIsAGL>
+            <Scale>1.000</Scale>
+        </SceneryObjects.LibraryObject>
+        <SceneryObjects.LibraryObject InstanceId="{62E8AE38-5E83-4982-AE70-C9DC2D961BA2}">
+            <Descr>Copy - Copy - Copy - Copy - gen_sailplane_trailer03</Descr>
+            <WorldPosition>N47° 17' 27.86",E12° 47' 22.69",+000000.00</WorldPosition>
+            <Orientation>0.000,0.000,78.400</Orientation>
+            <MDLGuid>{274790E1-5A12-40E5-9FC3-5B256C7BD70F}</MDLGuid>
+            <AltitudeIsAGL>True</AltitudeIsAGL>
+            <Scale>1.000</Scale>
+        </SceneryObjects.LibraryObject>
+        <SceneryObjects.LibraryObject InstanceId="{9F4E1B69-400F-44ED-9AEF-3788F91B1AFD}">
+            <Descr>Copy - Copy - Copy - gen_sailplane_trailer01</Descr>
+            <WorldPosition>N47° 17' 28.00",E12° 47' 23.53",+000000.00</WorldPosition>
+            <Orientation>0.000,0.000,81.900</Orientation>
+            <MDLGuid>{D0EBB246-92D9-46C7-8476-22758414F27F}</MDLGuid>
+            <AltitudeIsAGL>True</AltitudeIsAGL>
+            <Scale>1.000</Scale>
+        </SceneryObjects.LibraryObject>
+        <SceneryObjects.LibraryObject InstanceId="{60C26A85-75E4-4D76-8C62-505A1546788C}">
+            <Descr>Copy - Copy - Copy - gen_sailplane_trailer03</Descr>
+            <WorldPosition>N47° 17' 27.94",E12° 47' 23.19",+000000.00</WorldPosition>
+            <Orientation>0.000,0.000,78.400</Orientation>
+            <MDLGuid>{274790E1-5A12-40E5-9FC3-5B256C7BD70F}</MDLGuid>
+            <AltitudeIsAGL>True</AltitudeIsAGL>
+            <Scale>1.000</Scale>
+        </SceneryObjects.LibraryObject>
+        <SceneryObjects.LibraryObject InstanceId="{B47D0BBB-41EF-4554-BDD2-0EA6ED45FFE9}">
+            <Descr>Copy - Copy - gen_sailplane_trailer01</Descr>
+            <WorldPosition>N47° 17' 28.11",E12° 47' 24.08",+000000.00</WorldPosition>
+            <Orientation>0.000,0.000,81.900</Orientation>
+            <MDLGuid>{D0EBB246-92D9-46C7-8476-22758414F27F}</MDLGuid>
+            <AltitudeIsAGL>True</AltitudeIsAGL>
+            <Scale>1.000</Scale>
+        </SceneryObjects.LibraryObject>
+        <SceneryObjects.LibraryObject InstanceId="{53A9AD53-A5E2-40A6-B3E3-A1C73EFB6E5D}">
+            <Descr>Copy - Copy - gen_sailplane_trailer02</Descr>
+            <WorldPosition>N47° 17' 28.05",E12° 47' 23.90",+000000.00</WorldPosition>
+            <Orientation>0.000,0.000,74.000</Orientation>
+            <MDLGuid>{7395556B-9997-4146-A28D-7A4C510F22ED}</MDLGuid>
+            <AltitudeIsAGL>True</AltitudeIsAGL>
+            <Scale>1.000</Scale>
+        </SceneryObjects.LibraryObject>
+        <SceneryObjects.LibraryObject InstanceId="{83FC0CA8-D0CC-4BAB-96AB-784592086CE8}">
+            <Descr>Copy - Copy - gen_sailplane_trailer03</Descr>
+            <WorldPosition>N47° 17' 28.03",E12° 47' 23.71",+000000.00</WorldPosition>
+            <Orientation>0.000,0.000,78.400</Orientation>
+            <MDLGuid>{274790E1-5A12-40E5-9FC3-5B256C7BD70F}</MDLGuid>
+            <AltitudeIsAGL>True</AltitudeIsAGL>
+            <Scale>1.000</Scale>
+        </SceneryObjects.LibraryObject>
+        <SceneryObjects.LibraryObject InstanceId="{5B77B83B-664B-4B93-883F-B0A98FAC7D27}">
+            <Descr>Copy - GEN_Plane_Schweizer2_bluestripe</Descr>
+            <WorldPosition>N47° 17' 28.25",E12° 47' 21.97",+000000.00</WorldPosition>
+            <Orientation>0.000,0.000,170.000</Orientation>
+            <MDLGuid>{981A973C-C8E1-4DDD-8243-FAB2C25AF17A}</MDLGuid>
+            <AltitudeIsAGL>True</AltitudeIsAGL>
+            <Scale>1.000</Scale>
+        </SceneryObjects.LibraryObject>
+        <SceneryObjects.LibraryObject InstanceId="{18FF32AA-3D52-4D3C-BE87-D19599DF9A13}">
+            <Descr>Copy - GEN_Plane_Schweizer2_maroonstripe</Descr>
+            <WorldPosition>N47° 17' 27.99",E12° 47' 20.48",+000000.00</WorldPosition>
+            <Orientation>0.000,0.000,171.000</Orientation>
+            <MDLGuid>{85A91FAB-9172-4D73-A779-C7A7A7B9721A}</MDLGuid>
+            <AltitudeIsAGL>True</AltitudeIsAGL>
+            <Scale>1.000</Scale>
+        </SceneryObjects.LibraryObject>
+        <SceneryObjects.LibraryObject InstanceId="{6BB19A4D-FEA1-49AF-A7B2-FE47102A8213}">
+            <Descr>Copy - GEN_Plane_Schweizer2_orange</Descr>
+            <WorldPosition>N47° 17' 27.86",E12° 47' 19.50",+000000.00</WorldPosition>
+            <Orientation>0.000,0.000,173.000</Orientation>
+            <MDLGuid>{1BC5722F-4B5D-4013-8A01-E88955490E96}</MDLGuid>
+            <AltitudeIsAGL>True</AltitudeIsAGL>
+            <Scale>1.000</Scale>
+        </SceneryObjects.LibraryObject>
+        <SceneryObjects.LibraryObject InstanceId="{6B60EB45-9387-4B86-8955-193D05FE175B}">
+            <Descr>Copy - GEN_Plane_Schweizer2_yellstripe</Descr>
+            <WorldPosition>N47° 17' 28.38",E12° 47' 22.76",+000000.00</WorldPosition>
+            <Orientation>0.000,0.000,162.000</Orientation>
+            <MDLGuid>{6BBBAE83-689A-4DB8-99BF-FFD554EA66F9}</MDLGuid>
+            <AltitudeIsAGL>True</AltitudeIsAGL>
+            <Scale>1.000</Scale>
+        </SceneryObjects.LibraryObject>
+        <SceneryObjects.LibraryObject InstanceId="{750AA26F-6223-4570-8074-2E6DC5C92BCD}">
+            <Descr>Copy - gen_sailplane_trailer01</Descr>
+            <WorldPosition>N47° 17' 28.17",E12° 47' 24.58",+000000.00</WorldPosition>
+            <Orientation>0.000,0.000,81.900</Orientation>
+            <MDLGuid>{D0EBB246-92D9-46C7-8476-22758414F27F}</MDLGuid>
+            <AltitudeIsAGL>True</AltitudeIsAGL>
+            <Scale>1.000</Scale>
+        </SceneryObjects.LibraryObject>
+        <SceneryObjects.LibraryObject InstanceId="{4294271A-490B-4365-8486-B91B6F4C705A}">
+            <Descr>Copy - gen_sailplane_trailer02</Descr>
+            <WorldPosition>N47° 17' 28.14",E12° 47' 24.42",+000000.00</WorldPosition>
+            <Orientation>0.000,0.000,74.000</Orientation>
+            <MDLGuid>{7395556B-9997-4146-A28D-7A4C510F22ED}</MDLGuid>
+            <AltitudeIsAGL>True</AltitudeIsAGL>
+            <Scale>1.000</Scale>
+        </SceneryObjects.LibraryObject>
+        <SceneryObjects.LibraryObject InstanceId="{AA89D868-631C-46B8-9EB6-0B5AD4D6B3EA}">
+            <Descr>Copy - gen_sailplane_trailer03</Descr>
+            <WorldPosition>N47° 17' 28.12",E12° 47' 24.23",+000000.00</WorldPosition>
+            <Orientation>0.000,0.000,78.400</Orientation>
+            <MDLGuid>{274790E1-5A12-40E5-9FC3-5B256C7BD70F}</MDLGuid>
+            <AltitudeIsAGL>True</AltitudeIsAGL>
+            <Scale>1.000</Scale>
+        </SceneryObjects.LibraryObject>
+        <SceneryObjects.LibraryObject InstanceId="{DDCD3747-4405-4D2F-A024-CB1EA62D5F2B}">
+            <Descr>GEN_GliderClub_Sign_Aus</Descr>
+            <MDLGuid>{D9280F74-9993-4F5B-8F6F-7A6D192D6C6F}</MDLGuid>
+            <WorldPosition>N47° 17' 27.54",E12° 47' 20.17",+000000.00</WorldPosition>
+            <Orientation>0.000,0.000,340.000</Orientation>
+            <AltitudeIsAGL>True</AltitudeIsAGL>
+            <Scale>1.000</Scale>
+        </SceneryObjects.LibraryObject>
+        <SceneryObjects.LibraryObject InstanceId="{1E03AC43-D55E-46F8-9924-8E4B85CDC3D8}">
+            <Descr>GEN_Plane_C185_Wheeled</Descr>
+            <MDLGuid>{55A8D2DF-AD0B-4E74-B27E-51F038F631DC}</MDLGuid>
+            <WorldPosition>N47° 17' 28.08",E12° 47' 14.22",+000000.00</WorldPosition>
+            <Orientation>0.000,0.000,345.600</Orientation>
+            <AltitudeIsAGL>True</AltitudeIsAGL>
+            <Scale>1.000</Scale>
+            <ImageComplexity>Normal</ImageComplexity>
+        </SceneryObjects.LibraryObject>
+        <SceneryObjects.LibraryObject InstanceId="{385DAF80-5121-4DB0-B8B3-55D320A3A670}">
+            <Descr>GEN_Plane_HelioStallion</Descr>
+            <MDLGuid>{05A5597C-0BF7-47DC-B876-E94FB01ACD5E}</MDLGuid>
+            <WorldPosition>N47° 17' 28.14",E12° 47' 14.92",+000000.00</WorldPosition>
+            <Orientation>0.000,0.000,348.300</Orientation>
+            <AltitudeIsAGL>True</AltitudeIsAGL>
+            <Scale>1.000</Scale>
+        </SceneryObjects.LibraryObject>
+        <SceneryObjects.LibraryObject InstanceId="{30607684-794D-4C84-BEA7-A1DBF1CB9D07}">
+            <Descr>GEN_Plane_Schweizer2_bluestripe</Descr>
+            <MDLGuid>{981A973C-C8E1-4DDD-8243-FAB2C25AF17A}</MDLGuid>
+            <WorldPosition>N47° 17' 33.32",E12° 47' 43.81",+000000.00</WorldPosition>
+            <Orientation>0.000,0.000,98.000</Orientation>
+            <AltitudeIsAGL>True</AltitudeIsAGL>
+            <Scale>1.000</Scale>
+        </SceneryObjects.LibraryObject>
+        <SceneryObjects.LibraryObject InstanceId="{A513A43C-646B-498C-A216-3F5B1F5887D4}">
+            <Descr>GEN_Plane_Schweizer2_maroonstripe</Descr>
+            <MDLGuid>{85A91FAB-9172-4D73-A779-C7A7A7B9721A}</MDLGuid>
+            <WorldPosition>N47° 14' 59.21",E12° 32' 50.26",+000000.00</WorldPosition>
+            <Orientation>356.400,0.000,134.100</Orientation>
+            <AltitudeIsAGL>True</AltitudeIsAGL>
+            <Scale>1.000</Scale>
+        </SceneryObjects.LibraryObject>
+        <SceneryObjects.LibraryObject InstanceId="{158D734C-122E-4328-81A4-0D05CA65DC95}">
+            <Descr>GEN_Plane_Schweizer2_maroonstripe</Descr>
+            <MDLGuid>{85A91FAB-9172-4D73-A779-C7A7A7B9721A}</MDLGuid>
+            <WorldPosition>N47° 17' 33.40",E12° 47' 44.32",+000000.00</WorldPosition>
+            <Orientation>0.000,0.000,90.000</Orientation>
+            <AltitudeIsAGL>True</AltitudeIsAGL>
+            <Scale>1.000</Scale>
+        </SceneryObjects.LibraryObject>
+        <SceneryObjects.LibraryObject InstanceId="{B1DCB67D-B94A-41E3-84EB-4FEF3D6C6661}">
+            <Descr>GEN_Plane_Schweizer2_orange</Descr>
+            <MDLGuid>{1BC5722F-4B5D-4013-8A01-E88955490E96}</MDLGuid>
+            <WorldPosition>N47° 17' 33.50",E12° 47' 44.76",+000000.00</WorldPosition>
+            <Orientation>0.000,0.000,83.000</Orientation>
+            <AltitudeIsAGL>True</AltitudeIsAGL>
+            <Scale>1.000</Scale>
+        </SceneryObjects.LibraryObject>
+        <SceneryObjects.LibraryObject InstanceId="{B1A28DF3-C57D-4097-B599-45B2CD9460F7}">
+            <Descr>GEN_Plane_Schweizer2_orngstripe</Descr>
+            <MDLGuid>{81135244-A307-4B0C-809C-3D64068DF3DE}</MDLGuid>
+            <WorldPosition>N47° 17' 33.55",E12° 47' 45.18",+000000.00</WorldPosition>
+            <Orientation>0.000,0.000,78.000</Orientation>
+            <AltitudeIsAGL>True</AltitudeIsAGL>
+            <Scale>1.000</Scale>
+        </SceneryObjects.LibraryObject>
+        <SceneryObjects.LibraryObject InstanceId="{D48B3960-FC50-4656-87A5-544383ABF32D}">
+            <Descr>GEN_Plane_Schweizer2_redstripe</Descr>
+            <MDLGuid>{6E7D0E2F-A54D-4455-8537-C47CF9BC2244}</MDLGuid>
+            <WorldPosition>N47° 17' 33.64",E12° 47' 45.56",+000000.00</WorldPosition>
+            <Orientation>0.000,0.000,90.000</Orientation>
+            <AltitudeIsAGL>True</AltitudeIsAGL>
+            <Scale>1.000</Scale>
+        </SceneryObjects.LibraryObject>
+        <SceneryObjects.LibraryObject InstanceId="{6375FDA7-834A-4EDE-B26A-15064B65740C}">
+            <Descr>GEN_Plane_Schweizer2_redstripe</Descr>
+            <MDLGuid>{6E7D0E2F-A54D-4455-8537-C47CF9BC2244}</MDLGuid>
+            <WorldPosition>N47° 26' 37.96",E12° 42' 15.97",+000000.00</WorldPosition>
+            <Orientation>0.000,0.000,324.000</Orientation>
+            <AltitudeIsAGL>True</AltitudeIsAGL>
+            <Scale>1.000</Scale>
+        </SceneryObjects.LibraryObject>
+        <SceneryObjects.LibraryObject InstanceId="{FAEB764B-52F6-4AC1-A85E-EAD1D3B0F8B9}">
+            <Descr>GEN_Plane_Schweizer2_yellstripe</Descr>
+            <MDLGuid>{6BBBAE83-689A-4DB8-99BF-FFD554EA66F9}</MDLGuid>
+            <WorldPosition>N47° 17' 33.87",E12° 47' 45.94",+000000.00</WorldPosition>
+            <Orientation>0.000,0.000,65.000</Orientation>
+            <AltitudeIsAGL>True</AltitudeIsAGL>
+            <Scale>1.000</Scale>
+        </SceneryObjects.LibraryObject>
+        <SceneryObjects.LibraryObject InstanceId="{2F3BA938-AD4A-455A-9032-57D71916DD84}">
+            <Descr>gen_sailplane_trailer01</Descr>
+            <MDLGuid>{D0EBB246-92D9-46C7-8476-22758414F27F}</MDLGuid>
+            <WorldPosition>N47° 17' 28.27",E12° 47' 25.09",+000000.00</WorldPosition>
+            <Orientation>0.000,0.000,81.900</Orientation>
+            <AltitudeIsAGL>True</AltitudeIsAGL>
+            <Scale>1.000</Scale>
+        </SceneryObjects.LibraryObject>
+        <SceneryObjects.LibraryObject InstanceId="{09193140-0A51-49E0-8817-2766559228C0}">
+            <Descr>gen_sailplane_trailer02</Descr>
+            <MDLGuid>{7395556B-9997-4146-A28D-7A4C510F22ED}</MDLGuid>
+            <WorldPosition>N47° 17' 28.27",E12° 47' 24.88",+000000.00</WorldPosition>
+            <Orientation>0.000,0.000,74.000</Orientation>
+            <AltitudeIsAGL>True</AltitudeIsAGL>
+            <Scale>1.000</Scale>
+        </SceneryObjects.LibraryObject>
+        <SceneryObjects.LibraryObject InstanceId="{B2C3DDB5-9C54-405D-B99A-F57EE71AE98D}">
+            <Descr>gen_sailplane_trailer03</Descr>
+            <MDLGuid>{274790E1-5A12-40E5-9FC3-5B256C7BD70F}</MDLGuid>
+            <WorldPosition>N47° 17' 28.21",E12° 47' 24.75",+000000.00</WorldPosition>
+            <Orientation>0.000,0.000,78.400</Orientation>
+            <AltitudeIsAGL>True</AltitudeIsAGL>
+            <Scale>1.000</Scale>
+        </SceneryObjects.LibraryObject>
+        <SceneryObjects.LibraryObject InstanceId="{C157218D-D09A-4709-B650-EEF0C1590025}">
+            <Descr>VEH_Land_car_suv5_darkgreen</Descr>
+            <MDLGuid>{3913B44D-5F18-4130-84D0-A7A3CF4341E7}</MDLGuid>
+            <WorldPosition>N47° 16' 9.77",E12° 43' 51.26",+000000.00</WorldPosition>
+            <Orientation>0.000,0.000,0.000</Orientation>
+            <AltitudeIsAGL>True</AltitudeIsAGL>
+            <Scale>1.000</Scale>
+        </SceneryObjects.LibraryObject>
+        <SceneryObjects.LibraryObject InstanceId="{31A1E0F5-23C9-44D0-A0A7-5A98ED0AD76B}">
+            <Descr>veh_truck_logging</Descr>
+            <MDLGuid>{A5B5C279-A050-41F3-B49F-9F68253DF33F}</MDLGuid>
+            <WorldPosition>N47° 16' 9.93",E12° 43' 51.51",+000000.00</WorldPosition>
+            <Orientation>0.000,0.000,0.000</Orientation>
+            <AltitudeIsAGL>True</AltitudeIsAGL>
+            <Scale>1.000</Scale>
+        </SceneryObjects.LibraryObject>
+        <LivingWorld.MobileSceneryObject InstanceId="{6BBD4D21-02E9-4F2F-B1EE-BCAFCD2FD4D3}">
+            <Descr>glider1</Descr>
+            <ModelID>{4A7564FB-25A9-4EAD-BB60-7DCBF79FE0CC}</ModelID>
+            <WorldPosition>N47° 14' 28.80",E12° 40' 59.40",+007515.00</WorldPosition>
+            <Orientation>0.000,0.000,90.000</Orientation>
+            <IsOnGround>False</IsOnGround>
+            <SpeedKnots>70.000</SpeedKnots>
+            <MSOWaypointController>
+                <AccelKnots>3.000</AccelKnots>
+                <GroundCruiseSpeed>70.000</GroundCruiseSpeed>
+                <GroundTurnSpeed>70.000</GroundTurnSpeed>
+                <GroundTurnTime>7.000</GroundTurnTime>
+                <WaypointList>
+                    <WrapWaypoints>False</WrapWaypoints>
+                    <CurrentWaypoint>0</CurrentWaypoint>
+                    <BackupToFirst>False</BackupToFirst>
+                    <Waypoint InstanceId="{A7BFD984-8279-415C-B88D-2E657DE0C3DA}">
+                        <AltitudeIsAGL>False</AltitudeIsAGL>
+                        <WorldPosition>N47° 14' 28.80",E12° 40' 59.40",+007515.00</WorldPosition>
+                        <Descr>WP 1</Descr>
+                        <SpeedKnots>70.000</SpeedKnots>
+                        <WaypointID>1</WaypointID>
+                    </Waypoint>
+                    <Waypoint InstanceId="{425EB031-4532-4D18-919B-DE7CFE656B7C}">
+                        <AltitudeIsAGL>False</AltitudeIsAGL>
+                        <WorldPosition>N47° 14' 41.40",E12° 41' 52.20",+007530.00</WorldPosition>
+                        <Descr>WP 2</Descr>
+                        <SpeedKnots>80.000</SpeedKnots>
+                        <WaypointID>2</WaypointID>
+                    </Waypoint>
+                    <Waypoint InstanceId="{04349DEF-5798-4CBA-9A4C-7A0CF813E1B0}">
+                        <AltitudeIsAGL>False</AltitudeIsAGL>
+                        <WorldPosition>N47° 15' 19.20",E12° 42' 31.20",+007403.00</WorldPosition>
+                        <Descr>WP 3</Descr>
+                        <SpeedKnots>65.000</SpeedKnots>
+                        <WaypointID>3</WaypointID>
+                    </Waypoint>
+                    <Waypoint InstanceId="{6D1E959F-FEEC-4B2E-871D-509615770581}">
+                        <AltitudeIsAGL>False</AltitudeIsAGL>
+                        <WorldPosition>N47° 15' 51.60",E12° 43' 43.80",+008407.00</WorldPosition>
+                        <Descr>WP 4</Descr>
+                        <SpeedKnots>60.000</SpeedKnots>
+                        <WaypointID>4</WaypointID>
+                    </Waypoint>
+                    <Waypoint InstanceId="{E7F7D5C0-8942-4A49-91B9-9F1098B73B2A}">
+                        <AltitudeIsAGL>False</AltitudeIsAGL>
+                        <WorldPosition>N47° 17' 9.60",E12° 46' 49.80",+007490.00</WorldPosition>
+                        <Descr>WP 5</Descr>
+                        <SpeedKnots>80.000</SpeedKnots>
+                        <WaypointID>5</WaypointID>
+                    </Waypoint>
+                    <Waypoint InstanceId="{B1066AEA-F1C4-42DA-AF6D-6C2B55B7BF73}">
+                        <AltitudeIsAGL>False</AltitudeIsAGL>
+                        <WorldPosition>N47° 17' 27.00",E12° 47' 36.00",+007337.00</WorldPosition>
+                        <Descr>WP 6</Descr>
+                        <SpeedKnots>80.000</SpeedKnots>
+                        <WaypointID>6</WaypointID>
+                    </Waypoint>
+                    <Waypoint InstanceId="{6EDA0E17-2CAD-45D8-8C4D-7953EFF50888}">
+                        <AltitudeIsAGL>True</AltitudeIsAGL>
+                        <WorldPosition>N47° 15' 48.22",E12° 45' 38.16",+000000.00</WorldPosition>
+                        <Descr>WP 7</Descr>
+                        <WaypointID>7</WaypointID>
+                    </Waypoint>
+                    <Waypoint InstanceId="{1CA80D67-0CE9-40FC-B136-078578CB8B25}">
+                        <AltitudeIsAGL>True</AltitudeIsAGL>
+                        <WorldPosition>N47° 15' 48.22",E12° 45' 38.16",+000000.00</WorldPosition>
+                        <Descr>WP 8</Descr>
+                        <WaypointID>8</WaypointID>
+                    </Waypoint>
+                    <Waypoint InstanceId="{77AA2B8E-9E7F-4DBF-83FA-7B968DBE1EF1}">
+                        <AltitudeIsAGL>True</AltitudeIsAGL>
+                        <WorldPosition>N47° 15' 48.22",E12° 45' 38.16",+000000.00</WorldPosition>
+                        <Descr>WP 9</Descr>
+                        <WaypointID>9</WaypointID>
+                    </Waypoint>
+                    <Waypoint InstanceId="{63323FD5-E1E4-43EA-BEB7-E4FEE6A65D42}">
+                        <AltitudeIsAGL>True</AltitudeIsAGL>
+                        <WorldPosition>N47° 15' 48.22",E12° 45' 38.16",+000000.00</WorldPosition>
+                        <Descr>WP 10</Descr>
+                        <WaypointID>10</WaypointID>
+                    </Waypoint>
+                    <Waypoint InstanceId="{6C0A7D54-0482-4A36-A908-E89D3C0C3710}">
+                        <AltitudeIsAGL>True</AltitudeIsAGL>
+                        <WorldPosition>N47° 15' 48.22",E12° 45' 38.16",+000000.00</WorldPosition>
+                        <Descr>WP 11</Descr>
+                        <WaypointID>11</WaypointID>
+                    </Waypoint>
+                    <Waypoint InstanceId="{D5C820DA-3867-4844-AD89-EA99E5507D6E}">
+                        <AltitudeIsAGL>True</AltitudeIsAGL>
+                        <WorldPosition>N47° 15' 48.22",E12° 45' 38.16",+000000.00</WorldPosition>
+                        <Descr>WP 12</Descr>
+                        <WaypointID>12</WaypointID>
+                    </Waypoint>
+                    <Waypoint InstanceId="{F50F82C0-A548-4279-A276-403333883CE1}">
+                        <AltitudeIsAGL>True</AltitudeIsAGL>
+                        <WorldPosition>N47° 15' 48.22",E12° 45' 38.16",+000000.00</WorldPosition>
+                        <Descr>WP 13</Descr>
+                        <WaypointID>13</WaypointID>
+                    </Waypoint>
+                    <Waypoint InstanceId="{F3ABB665-2DF9-43B8-8768-6E9A4B7FC46A}">
+                        <AltitudeIsAGL>True</AltitudeIsAGL>
+                        <WorldPosition>N47° 15' 48.22",E12° 45' 38.16",+000000.00</WorldPosition>
+                        <Descr>WP 14</Descr>
+                        <WaypointID>14</WaypointID>
+                    </Waypoint>
+                    <Waypoint InstanceId="{AF8B9546-3A2B-4E20-8438-81EF251E39A3}">
+                        <AltitudeIsAGL>True</AltitudeIsAGL>
+                        <WorldPosition>N47° 15' 48.22",E12° 45' 38.16",+000000.00</WorldPosition>
+                        <Descr>WP 15</Descr>
+                        <WaypointID>15</WaypointID>
+                    </Waypoint>
+                    <Waypoint InstanceId="{C801485A-2AC9-4EAD-8320-73DA138FCC57}">
+                        <AltitudeIsAGL>True</AltitudeIsAGL>
+                        <WorldPosition>N47° 15' 48.22",E12° 45' 38.16",+000000.00</WorldPosition>
+                        <Descr>WP 16</Descr>
+                        <WaypointID>16</WaypointID>
+                    </Waypoint>
+                    <Waypoint InstanceId="{E0092EFB-C392-48C5-8674-428D6280FF47}">
+                        <AltitudeIsAGL>True</AltitudeIsAGL>
+                        <WorldPosition>N47° 15' 48.22",E12° 45' 38.16",+000000.00</WorldPosition>
+                        <Descr>WP 17</Descr>
+                        <WaypointID>17</WaypointID>
+                    </Waypoint>
+                    <Waypoint InstanceId="{65AC36C2-2346-4E20-A984-B565C51E1A6F}">
+                        <AltitudeIsAGL>True</AltitudeIsAGL>
+                        <WorldPosition>N47° 15' 48.22",E12° 45' 38.16",+000000.00</WorldPosition>
+                        <Descr>WP 18</Descr>
+                        <WaypointID>18</WaypointID>
+                    </Waypoint>
+                    <Waypoint InstanceId="{64C02C41-0996-47D5-BAF2-1862C7A5FCE7}">
+                        <AltitudeIsAGL>True</AltitudeIsAGL>
+                        <WorldPosition>N47° 15' 48.22",E12° 45' 38.16",+000000.00</WorldPosition>
+                        <Descr>WP 19</Descr>
+                        <WaypointID>19</WaypointID>
+                    </Waypoint>
+                    <Waypoint InstanceId="{AFBE2475-4E05-4C29-84E0-3E5213C9E403}">
+                        <AltitudeIsAGL>True</AltitudeIsAGL>
+                        <WorldPosition>N47° 15' 48.22",E12° 45' 38.16",+000000.00</WorldPosition>
+                        <Descr>WP 20</Descr>
+                        <WaypointID>20</WaypointID>
+                    </Waypoint>
+                    <Waypoint InstanceId="{A2371C35-DF14-4B2D-905B-02D2C7C67307}">
+                        <AltitudeIsAGL>True</AltitudeIsAGL>
+                        <WorldPosition>N47° 15' 48.22",E12° 45' 38.16",+000000.00</WorldPosition>
+                        <Descr>WP 21</Descr>
+                        <WaypointID>21</WaypointID>
+                    </Waypoint>
+                    <Waypoint InstanceId="{365EA940-5954-486A-A81A-23F5FC03DEDB}">
+                        <AltitudeIsAGL>True</AltitudeIsAGL>
+                        <WorldPosition>N47° 15' 48.22",E12° 45' 38.16",+000000.00</WorldPosition>
+                        <Descr>WP 22</Descr>
+                        <WaypointID>22</WaypointID>
+                    </Waypoint>
+                    <Waypoint InstanceId="{9A773446-9108-4676-BDD1-28C33EC704A9}">
+                        <AltitudeIsAGL>True</AltitudeIsAGL>
+                        <WorldPosition>N47° 15' 48.22",E12° 45' 38.16",+000000.00</WorldPosition>
+                        <Descr>WP 23</Descr>
+                        <WaypointID>23</WaypointID>
+                    </Waypoint>
+                    <Waypoint InstanceId="{0CE008B4-4AA7-4DE1-AFED-51F03E455E5E}">
+                        <AltitudeIsAGL>True</AltitudeIsAGL>
+                        <WorldPosition>N47° 15' 48.22",E12° 45' 38.16",+000000.00</WorldPosition>
+                        <Descr>WP 24</Descr>
+                        <WaypointID>24</WaypointID>
+                    </Waypoint>
+                    <Waypoint InstanceId="{C163FE3E-54C0-414F-9A35-BAA35B9A41D3}">
+                        <AltitudeIsAGL>True</AltitudeIsAGL>
+                        <WorldPosition>N47° 15' 48.22",E12° 45' 38.16",+000000.00</WorldPosition>
+                        <Descr>WP 25</Descr>
+                        <WaypointID>25</WaypointID>
+                    </Waypoint>
+                    <Waypoint InstanceId="{0CE5572D-1C55-4CEA-8789-19519DC1C47B}">
+                        <AltitudeIsAGL>True</AltitudeIsAGL>
+                        <WorldPosition>N47° 15' 48.22",E12° 45' 38.16",+000000.00</WorldPosition>
+                        <Descr>WP 26</Descr>
+                        <WaypointID>26</WaypointID>
+                    </Waypoint>
+                    <Waypoint InstanceId="{F6F80A34-7067-45F0-9AC0-DC2FC501CD9E}">
+                        <AltitudeIsAGL>True</AltitudeIsAGL>
+                        <WorldPosition>N47° 15' 48.22",E12° 45' 38.16",+000000.00</WorldPosition>
+                        <Descr>WP 27</Descr>
+                        <WaypointID>27</WaypointID>
+                    </Waypoint>
+                    <Waypoint InstanceId="{935B9524-4D70-4540-94A9-BE1984A5D990}">
+                        <AltitudeIsAGL>True</AltitudeIsAGL>
+                        <WorldPosition>N47° 15' 48.22",E12° 45' 38.16",+000000.00</WorldPosition>
+                        <Descr>WP 28</Descr>
+                        <WaypointID>28</WaypointID>
+                    </Waypoint>
+                </WaypointList>
+            </MSOWaypointController>
+        </LivingWorld.MobileSceneryObject>
+        <SimMission.PointOfInterest InstanceId="{2048E59B-29C4-4229-8C92-AE2A4E77517F}">
+            <Descr>POI_LOWZ</Descr>
+            <CurrentSelection>True</CurrentSelection>
+            <TargetName>LOWZ</TargetName>
+            <MinimumModelScale>0.250</MinimumModelScale>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 17' 27.86",E12° 47' 23.16",+000000.00</WorldPosition>
+                <AltitudeIsAGL>True</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.PointOfInterest>
+        <SimMission.PointOfInterest InstanceId="{596E95ED-FE57-438B-A8DA-246DB24A9175}">
+            <Descr>POI_TP1</Descr>
+            <CycleOrder>1</CycleOrder>
+            <TargetName>Turnpoint 1</TargetName>
+            <MinimumModelScale>0.250</MinimumModelScale>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 7' 25.36",E13° 8' 6.29",+000000.00</WorldPosition>
+                <AltitudeIsAGL>True</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.PointOfInterest>
+        <SimMission.PointOfInterest InstanceId="{5B8396F5-FBFF-4943-A7CD-AEE51B107E79}">
+            <Descr>POI_TP2</Descr>
+            <CycleOrder>2</CycleOrder>
+            <TargetName>Turnpoint 2</TargetName>
+            <MinimumModelScale>0.250</MinimumModelScale>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 27' 59.63",E13° 11' 57.53",+000000.00</WorldPosition>
+                <AltitudeIsAGL>True</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.PointOfInterest>
+        <SimMission.PointOfInterest InstanceId="{4FAE51F9-5F77-4ADF-99A4-CCB0C5F2F283}">
+            <Descr>POI_TP3</Descr>
+            <CycleOrder>3</CycleOrder>
+            <TargetName>Turnpoint 3</TargetName>
+            <MinimumModelScale>0.250</MinimumModelScale>
+            <AttachedWorldPosition>
+                <WorldPosition>N47° 21' 28.37",E12° 18' 28.58",+000000.00</WorldPosition>
+                <AltitudeIsAGL>True</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.PointOfInterest>
+        <SimMission.RidgeLift InstanceId="{EE6B9C89-B0C4-4667-98FF-BFCBE4C1BB9F}">
+            <Descr>ridge_000_lower</Descr>
+            <CoreRateScalar>0.700</CoreRateScalar>
+            <CoreTurbulence>0.000</CoreTurbulence>
+            <SinkRateScalar>-0.700</SinkRateScalar>
+            <SinkTurbulence>0.000</SinkTurbulence>
+            <ObjectReference id="area_ridge_000_4x2x1_lower" InstanceId="{84F6BEA7-ECE9-420A-9DD1-7B0D813E9D8F}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMission.RidgeLift InstanceId="{12657626-E156-4EF2-9014-29DB5C89C831}">
+            <Descr>ridge_000_upper</Descr>
+            <CoreRateScalar>0.800</CoreRateScalar>
+            <CoreTurbulence>0.000</CoreTurbulence>
+            <SinkRateScalar>0.800</SinkRateScalar>
+            <SinkTurbulence>0.000</SinkTurbulence>
+            <ObjectReference id="area_ridge_000_4x2x1_upper" InstanceId="{7667A9C0-3CC4-4784-BDF2-7C8AEB47B987}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMission.RidgeLift InstanceId="{73FA3091-C8C5-43F2-BA9C-65489BE21EAE}">
+            <Descr>ridge_001_lower</Descr>
+            <CoreRateScalar>0.800</CoreRateScalar>
+            <CoreTurbulence>0.000</CoreTurbulence>
+            <SinkRateScalar>-0.800</SinkRateScalar>
+            <SinkTurbulence>0.000</SinkTurbulence>
+            <ObjectReference id="area_ridge_001_4x2x1_lower" InstanceId="{5BCB319C-24DD-4219-99A7-DDAB1638D168}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMission.RidgeLift InstanceId="{FF0B478A-115C-4804-8249-A82460F205FE}">
+            <Descr>ridge_001_upper</Descr>
+            <CoreRateScalar>0.800</CoreRateScalar>
+            <CoreTurbulence>0.000</CoreTurbulence>
+            <SinkRateScalar>0.800</SinkRateScalar>
+            <SinkTurbulence>0.000</SinkTurbulence>
+            <ObjectReference id="area_ridge_001_4x2x1_upper" InstanceId="{00B75894-14E8-4439-A470-4338C88DA9FD}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMission.RidgeLift InstanceId="{54669688-E3F4-49BE-946E-64A7DCB9B36A}">
+            <Descr>ridge_002_1low</Descr>
+            <CoreRateScalar>0.800</CoreRateScalar>
+            <CoreTurbulence>0.000</CoreTurbulence>
+            <SinkRateScalar>-0.800</SinkRateScalar>
+            <SinkTurbulence>0.000</SinkTurbulence>
+            <ObjectReference id="area_ridge_002_4x2x1_1lower" InstanceId="{B7A35824-EF6C-4304-9472-496B6E9DE675}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMission.RidgeLift InstanceId="{F72486D7-9EB2-4137-9F64-B1D489B9E033}">
+            <Descr>ridge_002_2low</Descr>
+            <CoreRateScalar>0.800</CoreRateScalar>
+            <CoreTurbulence>0.000</CoreTurbulence>
+            <SinkRateScalar>-0.800</SinkRateScalar>
+            <SinkTurbulence>0.000</SinkTurbulence>
+            <ObjectReference id="area_ridge_002_4x2x1_2low" InstanceId="{ACC89193-7BCA-4714-A7CA-40BEC65330C8}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMission.RidgeLift InstanceId="{B83F149D-1ECC-42B2-B3EA-1EB6269052C7}">
+            <Descr>ridge_002_upper</Descr>
+            <CoreRateScalar>0.800</CoreRateScalar>
+            <CoreTurbulence>0.000</CoreTurbulence>
+            <SinkRateScalar>0.800</SinkRateScalar>
+            <SinkTurbulence>0.000</SinkTurbulence>
+            <ObjectReference id="area_ridge_002_8x2x1_upper" InstanceId="{B3A42D20-8F05-45A8-B1CC-B16CA37CE4AF}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMission.RidgeLift InstanceId="{3AD1DD0F-1C72-4F56-94D0-7C4C902A87B9}">
+            <Descr>ridge_003</Descr>
+            <CoreRateScalar>0.800</CoreRateScalar>
+            <CoreTurbulence>0.000</CoreTurbulence>
+            <SinkRateScalar>-0.800</SinkRateScalar>
+            <SinkTurbulence>0.000</SinkTurbulence>
+            <ObjectReference id="area_ridge_003" InstanceId="{1AE298DB-8AFB-474D-97A5-8C10384730B6}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMission.RidgeLift InstanceId="{5158E223-078A-4938-A812-906B13CB62C9}">
+            <Descr>ridge_004</Descr>
+            <CoreRateScalar>0.800</CoreRateScalar>
+            <CoreTurbulence>0.000</CoreTurbulence>
+            <SinkRateScalar>-0.800</SinkRateScalar>
+            <SinkTurbulence>0.000</SinkTurbulence>
+            <ObjectReference id="area_ridge_004" InstanceId="{515A092F-1E04-42C2-84A6-75F98CBCDF1C}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMission.RidgeLift InstanceId="{E3E97B4A-22F0-4C6C-826E-21EE273DE2CD}">
+            <Descr>ridge_005</Descr>
+            <CoreRateScalar>0.800</CoreRateScalar>
+            <CoreTurbulence>0.000</CoreTurbulence>
+            <SinkRateScalar>-0.800</SinkRateScalar>
+            <SinkTurbulence>0.000</SinkTurbulence>
+            <ObjectReference id="area_ridge_005" InstanceId="{179BE469-BB9B-4036-A953-01117A554FDD}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMission.RidgeLift InstanceId="{4B50C599-997A-4DFF-8FE8-78457B22046F}">
+            <Descr>ridge_005a</Descr>
+            <CoreRateScalar>0.800</CoreRateScalar>
+            <CoreTurbulence>0.000</CoreTurbulence>
+            <SinkRateScalar>-0.800</SinkRateScalar>
+            <SinkTurbulence>0.000</SinkTurbulence>
+            <ObjectReference id="area_ridge_005a" InstanceId="{64E865E4-AACB-4D39-A449-494E13EDFE6F}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMission.RidgeLift InstanceId="{69BE197F-91D8-4D05-B160-D69E30D7B1AC}">
+            <Descr>ridge_006</Descr>
+            <CoreRateScalar>0.800</CoreRateScalar>
+            <CoreTurbulence>0.000</CoreTurbulence>
+            <SinkRateScalar>-0.800</SinkRateScalar>
+            <SinkTurbulence>0.000</SinkTurbulence>
+            <ObjectReference id="area_ridge_006" InstanceId="{89840611-9CF2-4238-91EE-7ADA89F00493}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMission.RidgeLift InstanceId="{2CED4638-CF2A-4F4D-AEE9-D7C2968A9A3B}">
+            <Descr>ridge_006a</Descr>
+            <CoreRateScalar>0.800</CoreRateScalar>
+            <CoreTurbulence>0.000</CoreTurbulence>
+            <SinkRateScalar>-0.800</SinkRateScalar>
+            <SinkTurbulence>0.000</SinkTurbulence>
+            <ObjectReference id="area_ridge_006a" InstanceId="{C7217EB7-982F-40AB-84A4-F12AD5539B50}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMission.RidgeLift InstanceId="{A8223775-F5E7-4A35-A83D-83112A76D588}">
+            <Descr>ridge_007</Descr>
+            <CoreRateScalar>0.800</CoreRateScalar>
+            <CoreTurbulence>0.000</CoreTurbulence>
+            <SinkRateScalar>-0.800</SinkRateScalar>
+            <SinkTurbulence>0.000</SinkTurbulence>
+            <ObjectReference id="area_ridge_007" InstanceId="{FE21CA62-1657-46D3-A78F-6FC04C790A91}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMission.RidgeLift InstanceId="{9B153377-1AB3-4186-9F7C-4FFAEDFF0E31}">
+            <Descr>ridge_008</Descr>
+            <CoreRateScalar>0.800</CoreRateScalar>
+            <CoreTurbulence>0.000</CoreTurbulence>
+            <SinkRateScalar>-0.800</SinkRateScalar>
+            <SinkTurbulence>0.000</SinkTurbulence>
+            <ObjectReference id="area_ridge_008" InstanceId="{AAD78270-5BA9-4867-A928-CD493564E67C}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMission.RidgeLift InstanceId="{5B649AC2-842D-491A-9D35-4E4FD000C3E0}">
+            <Descr>ridge_009</Descr>
+            <CoreRateScalar>0.800</CoreRateScalar>
+            <CoreTurbulence>0.000</CoreTurbulence>
+            <SinkRateScalar>-0.800</SinkRateScalar>
+            <SinkTurbulence>0.000</SinkTurbulence>
+            <ObjectReference id="area_ridge_009" InstanceId="{C2D73964-0B89-4C89-91D8-C11AACEB0319}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMission.RidgeLift InstanceId="{0E4B7424-302C-4255-A687-C23964F39553}">
+            <Descr>ridge_009a</Descr>
+            <CoreRateScalar>0.800</CoreRateScalar>
+            <CoreTurbulence>0.000</CoreTurbulence>
+            <SinkRateScalar>-0.800</SinkRateScalar>
+            <SinkTurbulence>0.000</SinkTurbulence>
+            <ObjectReference id="area_ridge_009a" InstanceId="{145A86A3-2364-45A9-A052-437A4975BDEB}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMission.RidgeLift InstanceId="{E205ABBA-88E0-4E8F-B077-FED401F5698B}">
+            <Descr>ridge_018</Descr>
+            <CoreRateScalar>0.800</CoreRateScalar>
+            <CoreTurbulence>0.000</CoreTurbulence>
+            <SinkRateScalar>-0.800</SinkRateScalar>
+            <SinkTurbulence>0.000</SinkTurbulence>
+            <ObjectReference id="area_ridge_018" InstanceId="{EE88BF0F-E502-413B-AF6D-D11FC84A35D6}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMission.RidgeLift InstanceId="{BB3B7803-833E-4AD6-B7EF-1C1D4E1EF6FB}">
+            <Descr>ridge_018a</Descr>
+            <CoreRateScalar>0.800</CoreRateScalar>
+            <CoreTurbulence>0.000</CoreTurbulence>
+            <SinkRateScalar>-0.800</SinkRateScalar>
+            <SinkTurbulence>0.000</SinkTurbulence>
+            <ObjectReference id="area_ridge_018a" InstanceId="{40F582DB-E70E-4C04-8125-B0DAEC295330}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMission.RidgeLift InstanceId="{5C5C60AF-D12A-43AB-B6FD-F148460867F5}">
+            <Descr>ridge_019</Descr>
+            <CoreRateScalar>0.800</CoreRateScalar>
+            <CoreTurbulence>0.000</CoreTurbulence>
+            <SinkRateScalar>-0.800</SinkRateScalar>
+            <SinkTurbulence>0.000</SinkTurbulence>
+            <ObjectReference id="area_ridge_019" InstanceId="{47E9919D-58A1-4F56-B8C2-D9A2CA7D727A}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMission.RidgeLift InstanceId="{449D70C3-2CDF-4289-AF0F-8A7B93C62027}">
+            <Descr>ridge_021</Descr>
+            <CoreRateScalar>0.800</CoreRateScalar>
+            <CoreTurbulence>0.000</CoreTurbulence>
+            <SinkRateScalar>-0.800</SinkRateScalar>
+            <SinkTurbulence>0.000</SinkTurbulence>
+            <ObjectReference id="area_ridge_021" InstanceId="{F5C2AD73-0C5A-425F-8E26-CA77457988B8}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMission.RidgeLift InstanceId="{21AB61A3-E641-4103-9AEC-4B722BCD4D0E}">
+            <Descr>ridge_801</Descr>
+            <CoreRateScalar>0.800</CoreRateScalar>
+            <CoreTurbulence>0.000</CoreTurbulence>
+            <SinkRateScalar>-0.800</SinkRateScalar>
+            <SinkTurbulence>0.000</SinkTurbulence>
+            <ObjectReference id="area_ridge_801" InstanceId="{A7646ECC-CDFB-432E-B180-7B65C797F007}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMission.RidgeLift InstanceId="{5F7FFEB8-063C-4907-ADF6-E0EC6D8ACDFC}">
+            <Descr>ridge_802</Descr>
+            <CoreRateScalar>0.800</CoreRateScalar>
+            <CoreTurbulence>0.000</CoreTurbulence>
+            <SinkRateScalar>-0.800</SinkRateScalar>
+            <SinkTurbulence>0.000</SinkTurbulence>
+            <ObjectReference id="area_ridge_802" InstanceId="{66F88F70-A25B-4647-9757-BB5BF3BC1ABE}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMission.RidgeLift InstanceId="{E6885138-3DD3-49D5-835B-40C38F41BF92}">
+            <Descr>ridge_803</Descr>
+            <CoreRateScalar>0.800</CoreRateScalar>
+            <CoreTurbulence>0.000</CoreTurbulence>
+            <SinkRateScalar>-0.800</SinkRateScalar>
+            <SinkTurbulence>0.000</SinkTurbulence>
+            <ObjectReference id="area_ridge_803" InstanceId="{BAD4D055-555A-4EA0-AEF1-58D488DC4CC5}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMission.RidgeLift InstanceId="{3314D992-EFEC-45BB-8478-0EB86BDBB270}">
+            <Descr>ridge_804</Descr>
+            <CoreRateScalar>0.800</CoreRateScalar>
+            <CoreTurbulence>0.000</CoreTurbulence>
+            <SinkRateScalar>-0.800</SinkRateScalar>
+            <SinkTurbulence>0.000</SinkTurbulence>
+            <ObjectReference id="area_ridge_804" InstanceId="{A5312844-1037-4706-AD3D-0780A8C6C8ED}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMission.RidgeLift InstanceId="{45384F2C-ED71-4EBD-A0AD-F02BA227292E}">
+            <Descr>ridge_805</Descr>
+            <CoreRateScalar>0.800</CoreRateScalar>
+            <CoreTurbulence>0.000</CoreTurbulence>
+            <SinkRateScalar>-0.800</SinkRateScalar>
+            <SinkTurbulence>0.000</SinkTurbulence>
+            <ObjectReference id="area_ridge_805" InstanceId="{AC0C70AF-5264-476F-92BB-B1D9CF035488}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMission.RidgeLift InstanceId="{98C7A84E-82DA-4878-AB47-FE6FD0B92295}">
+            <Descr>ridge_806</Descr>
+            <CoreRateScalar>0.800</CoreRateScalar>
+            <CoreTurbulence>0.000</CoreTurbulence>
+            <SinkRateScalar>-0.800</SinkRateScalar>
+            <SinkTurbulence>0.000</SinkTurbulence>
+            <ObjectReference id="area_ridge_806" InstanceId="{17043258-4244-43CB-B1D8-CAEC4E8CEC10}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMission.RidgeLift InstanceId="{B70AEE20-208A-473C-9A6B-FB8D340FEE01}">
+            <Descr>ridge_807</Descr>
+            <CoreRateScalar>0.800</CoreRateScalar>
+            <CoreTurbulence>0.000</CoreTurbulence>
+            <SinkRateScalar>-0.800</SinkRateScalar>
+            <SinkTurbulence>0.000</SinkTurbulence>
+            <ObjectReference id="area_ridge_807" InstanceId="{8241994D-EE4B-4F4B-8159-88ED1DD82C0D}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMission.RidgeLift InstanceId="{0781EE65-29C7-41D2-9DA8-0107C1FD6B97}">
+            <Descr>ridge_901</Descr>
+            <CoreRateScalar>0.800</CoreRateScalar>
+            <CoreTurbulence>0.000</CoreTurbulence>
+            <SinkRateScalar>-0.800</SinkRateScalar>
+            <SinkTurbulence>0.000</SinkTurbulence>
+            <ObjectReference id="area_ridge_901" InstanceId="{5BE44701-E619-428E-96FC-603733300BE4}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMission.RidgeLift InstanceId="{CC6263AC-C64D-4D04-8AEE-0A203F5BA184}">
+            <Descr>ridge_902</Descr>
+            <CoreRateScalar>0.800</CoreRateScalar>
+            <CoreTurbulence>0.000</CoreTurbulence>
+            <SinkRateScalar>-0.800</SinkRateScalar>
+            <SinkTurbulence>0.000</SinkTurbulence>
+            <ObjectReference id="area_ridge_902" InstanceId="{1A48AE2A-5392-4EDC-A2C6-3AF517B07F05}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMission.RidgeLift InstanceId="{5DBDE3AE-09DA-49C5-AADB-1EE29129EAD9}">
+            <Descr>ridge_903</Descr>
+            <CoreRateScalar>0.800</CoreRateScalar>
+            <CoreTurbulence>0.000</CoreTurbulence>
+            <SinkRateScalar>-0.800</SinkRateScalar>
+            <SinkTurbulence>0.000</SinkTurbulence>
+            <ObjectReference id="area_ridge_903" InstanceId="{10F258D3-4C74-4CFF-8610-7BFC22AAB6BD}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMission.RidgeLift InstanceId="{4A465890-9A7A-4804-A0F0-A9D689A45CB3}">
+            <Descr>ridge_lowz_2north</Descr>
+            <CoreRateScalar>-2.000</CoreRateScalar>
+            <SinkRateScalar>2.000</SinkRateScalar>
+            <ObjectReference id="area_lowz_2_north" InstanceId="{427637A7-B5AD-4DBF-AF36-E166C176BF27}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMission.RidgeLift InstanceId="{C89636F8-0B71-4FD8-B00F-BF95E9852391}">
+            <Descr>ridge_lowz_east1</Descr>
+            <CoreRateScalar>-2.000</CoreRateScalar>
+            <SinkRateScalar>2.000</SinkRateScalar>
+            <ObjectReference id="area_lowz_east1" InstanceId="{13397C8E-5D11-4216-83FB-6F18A5A5D9E0}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMission.RidgeLift InstanceId="{0CA2246B-52A8-4E5C-A1A8-122A8ED73AF8}">
+            <Descr>ridge_lowz_east2</Descr>
+            <CoreRateScalar>-2.000</CoreRateScalar>
+            <SinkRateScalar>2.000</SinkRateScalar>
+            <ObjectReference id="area_lowz_east2" InstanceId="{B73F6B06-2443-48D3-9208-8447B2B2015A}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMission.RidgeLift InstanceId="{E17192A5-EB60-413B-A590-DF2A7360D998}">
+            <Descr>ridge_lowz_north</Descr>
+            <CoreRateScalar>-2.000</CoreRateScalar>
+            <SinkRateScalar>2.000</SinkRateScalar>
+            <ObjectReference id="area_lowz_north" InstanceId="{89C49A0B-ABE0-4EB6-BEC5-DC2308BAFEC1}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMission.RidgeLift InstanceId="{22FD9B84-5626-4568-BD91-D7E0C569DF55}">
+            <Descr>ridge_westend_north</Descr>
+            <CoreRateScalar>-2.000</CoreRateScalar>
+            <SinkRateScalar>2.000</SinkRateScalar>
+            <ObjectReference id="area_westend_north" InstanceId="{217B56D6-5A6E-4373-BD02-A7F7A87A05C7}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMissionUI.ScenarioMetadata InstanceId="{5F142889-7D64-46C3-B6FA-836C34E09B84}">
+            <Descr>ScenarioMetadata</Descr>
+            <ScenarioType>Mission</ScenarioType>
+            <SkillLevel>Intermediate</SkillLevel>
+            <LocationDescr>Zel Am See, Austria</LocationDescr>
+            <DifficultyLevel>40</DifficultyLevel>
+            <EstimatedTime>1:30</EstimatedTime>
+            <UncompletedImage>imgM_i.bmp</UncompletedImage>
+            <CompletedImage>imgM_c.bmp</CompletedImage>
+            <MissionBrief>Overview_Tab.htm</MissionBrief>
+            <AbbreviatedMissionBrief>austriansoaring3.htm</AbbreviatedMissionBrief>
+            <SuccessMessage>Success! You met the mission objectives.</SuccessMessage>
+            <FailureMessage>You failed the mission because you didn&apos;t meet the objectives.</FailureMessage>
+            <UserCrashMessage>You failed the mission because you crashed.</UserCrashMessage>
+            <CategoryRef>{CE1FC5F9-824F-45FB-89B7-CB699829A5A3}</CategoryRef>
+        </SimMissionUI.ScenarioMetadata>
+        <SimMission.RidgeLift InstanceId="{5403E587-0440-49CD-8331-60375B8CAD89}">
+            <Descr>sink_851</Descr>
+            <CoreRateScalar>-1.000</CoreRateScalar>
+            <ObjectReference id="area_sink_851" InstanceId="{33AC137E-2F2B-4762-8510-FBE99D0FD2C0}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMission.RidgeLift InstanceId="{35E23D0C-1448-49EA-BDFD-FB5C2387B7AB}">
+            <Descr>sink_852</Descr>
+            <CoreRateScalar>-1.000</CoreRateScalar>
+            <ObjectReference id="area_sink_852" InstanceId="{857D12E2-9E9F-48E9-A400-3E838171DE4F}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMission.RidgeLift InstanceId="{1291387F-0AF9-4D10-8953-E7B7986DC445}">
+            <Descr>sink_900</Descr>
+            <CoreRateScalar>-1.000</CoreRateScalar>
+            <ObjectReference id="area_sink_900" InstanceId="{53FAFDA2-3485-41DE-8977-9D7CD36E5386}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMission.RidgeLift InstanceId="{0E2D8EAB-714C-4C35-B1A9-E0C16BCCF4D2}">
+            <Descr>sink_901</Descr>
+            <CoreRateScalar>-1.000</CoreRateScalar>
+            <ObjectReference id="area_sink_901" InstanceId="{EA8E266C-8914-4B23-BB41-CDF47DAED75E}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMission.RidgeLift InstanceId="{1424F5DC-2F69-4717-A3ED-6552164E545B}">
+            <Descr>sink_902</Descr>
+            <CoreRateScalar>-1.000</CoreRateScalar>
+            <ObjectReference id="area_sink_902" InstanceId="{A57FFAAB-FA71-43C9-A1CA-12F39E9D61D2}">
+            </ObjectReference>
+        </SimMission.RidgeLift>
+        <SimMission.Thermal InstanceId="{1D6F8F08-D133-40AE-864E-36B407EE751E}">
+            <Descr>therm_000a</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_000a" InstanceId="{AE6CC832-D0C1-496E-AFA6-3B3095969783}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{730B0549-B548-40D8-9D2F-BB113506C0DC}">
+            <Descr>therm_001a</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_001a" InstanceId="{C4BB3BB8-87C8-4866-8067-2310909190B9}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{92249CFB-90C1-4CE5-9598-581C1CA51938}">
+            <Descr>therm_003a</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_003a" InstanceId="{5970DAAC-7103-4FBC-A69A-5AE5D01EDE61}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{23FE4C91-3668-4BEE-83F7-2A2874BF7947}">
+            <Descr>therm_005aa</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_005aa" InstanceId="{B4F438B3-14F9-43CC-B248-4AD3FF9BB8A1}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{02FCBE40-4A20-4F9F-8AA3-00F6AEEFC2C2}">
+            <Descr>therm_010</Descr>
+            <SinkRate>3.000</SinkRate>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <ObjectReference id="area_therm_010" InstanceId="{5AF9D6E2-A157-4B9D-A22A-7BD87ADFC5AE}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{A2711906-3133-45FA-8624-F4A1694373E4}">
+            <Descr>therm_011</Descr>
+            <SinkRate>3.000</SinkRate>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <ObjectReference id="area_therm_011" InstanceId="{20C712A7-15E0-4B2C-B360-A0AA077287B4}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{D4224623-7559-4D10-8F3F-38A1B878D6E2}">
+            <Descr>therm_012</Descr>
+            <SinkRate>3.000</SinkRate>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <ObjectReference id="area_therm_012" InstanceId="{00298064-28DC-420D-BF31-92AFBC93DA23}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{2F8A98E9-294E-425E-8BC6-F4D8480154E3}">
+            <Descr>therm_013</Descr>
+            <SinkRate>3.000</SinkRate>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <ObjectReference id="area_therm_013" InstanceId="{8CE867C9-B474-4476-87CF-1ECCB8D2C424}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{ABB36DD7-A649-49BB-B391-ED4171ACB11C}">
+            <Descr>therm_014</Descr>
+            <SinkRate>3.000</SinkRate>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <ObjectReference id="area_therm_014" InstanceId="{678B1E70-BE1C-468E-9F3E-B3996C003A9F}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{15E0131D-E7E2-43F4-8447-74FFA693987D}">
+            <Descr>therm_015</Descr>
+            <SinkRate>3.000</SinkRate>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <ObjectReference id="area_therm_015" InstanceId="{D2458CEF-5463-423F-A718-C86090248135}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{62C13283-5C17-4C7C-9FD8-51FDC153FFEB}">
+            <Descr>therm_016</Descr>
+            <SinkRate>3.000</SinkRate>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <ObjectReference id="area_therm_016" InstanceId="{13226665-32D3-49D0-9818-0C910A9FD52D}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{3CECE9C2-8CFF-41BA-8397-4FBECE4B39EC}">
+            <Descr>therm_017</Descr>
+            <SinkRate>3.000</SinkRate>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <ObjectReference id="area_therm_017" InstanceId="{BB500222-5EA4-4DB0-B214-7B9A6E75E650}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{DC558CDF-9805-42EE-834C-61D603D4F616}">
+            <Descr>therm_022</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_022" InstanceId="{B530E974-07EE-490F-A755-55515F4F559C}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{C2F99532-E2C7-4620-9DDF-705D786802AC}">
+            <Descr>therm_023</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_023" InstanceId="{ED42A552-D5D0-43EC-BDFB-9B94A8EECFD0}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{4A312123-8A78-4CE5-A482-E142BB1FD143}">
+            <Descr>therm_024</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_024" InstanceId="{4E80D09D-7354-4E3D-978D-7E527525D4D3}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{11570B3B-238A-4ABE-8C14-89640B9D76EA}">
+            <Descr>therm_025</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_025" InstanceId="{8F964331-31F6-4D42-BBA7-61EC71AC6D6C}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{9D95494B-6D03-4136-A3AC-ABA1E74726E2}">
+            <Descr>therm_026</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_026" InstanceId="{B12994DC-9D24-49C6-903A-4222EC0E213F}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{3BAB5F5D-F83D-4C22-907F-78E34D76CA57}">
+            <Descr>therm_027</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_027" InstanceId="{18F4E63A-0891-4377-89A9-C8444E136B50}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{967D6270-1CB7-416F-90EE-7D02020F304C}">
+            <Descr>therm_028</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_028" InstanceId="{28550BC4-C8C9-4FCF-8AE8-FE80D43B5DB4}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{7A2236A1-F3A5-410A-8576-F49172754F32}">
+            <Descr>therm_029</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_029" InstanceId="{746902EB-7C95-49C2-96C0-FA28598CA600}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{9C09539F-FE72-446F-8BFC-A27E6B85C262}">
+            <Descr>therm_030</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_030" InstanceId="{E3E9E9CF-D844-43E0-B629-216685615D08}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{CEF28094-50F7-4FF6-A50E-87CF8EE20A4D}">
+            <Descr>therm_031</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_031" InstanceId="{F293C04D-DC09-45B8-8122-88893B6EE7C4}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{0AD233A7-FBAC-4220-B1A2-81EBD4E154E6}">
+            <Descr>therm_032</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_032" InstanceId="{A6AD3E09-6CDB-45D5-AA5B-85C43BA3EABB}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{70711726-5792-4099-BA32-8173B50E9322}">
+            <Descr>therm_901a</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_901a" InstanceId="{6A741006-66B4-4EB9-9CE6-144D44A6A268}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{3545AFF5-BD12-4EA5-A95D-577136A72D56}">
+            <Descr>therm_903a</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_903a" InstanceId="{9ED18A48-0AC3-4513-8F10-CFB557F7DD6A}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{24D9050F-D1C8-4915-864C-7E61ECE66244}">
+            <Descr>therm_904</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_904" InstanceId="{B3562DB7-6B3C-4244-B24A-51CDD90BCE27}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{51288B8D-7753-4BD8-BEA8-E1E6CE8F0467}">
+            <Descr>therm_905</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_905" InstanceId="{4B94D5AA-0D47-4296-A476-C3F4C46C4E00}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{542E35B3-DFED-4ECB-88C4-F1B164833AEF}">
+            <Descr>therm_906</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_906" InstanceId="{A7FC268C-1C68-4A74-8AEB-2D7C874E8780}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{9708EA0A-1A35-47FC-A7E7-2A20A31EB25D}">
+            <Descr>therm_907</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_907" InstanceId="{899270D3-4560-4680-B4D5-F275477E7B65}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{C57DF287-6862-4423-8271-8F7290A7148B}">
+            <Descr>therm_908</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_908" InstanceId="{CD65CF8A-142D-41F1-A2C5-ABC9153C29B5}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{06B370AD-2C09-4FC1-941C-AD03D805C8EC}">
+            <Descr>therm_909</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_909" InstanceId="{CB21CE31-143B-489E-8EF2-3D8666B7F047}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{63DA4B4D-304C-42EA-A756-DE6ACEA20D22}">
+            <Descr>therm_910</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_910" InstanceId="{9CC260F7-B9AF-4C37-AAA4-DBB66DD5D38C}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{ED2F7FD8-5F4D-47AB-AA02-4ADAE19C94F5}">
+            <Descr>therm_911</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_911" InstanceId="{D8E92510-56F3-4671-8794-460D385451A1}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{292E75DC-025E-49E3-8A9D-AE455E876C94}">
+            <Descr>therm_912</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <CoreRate>4.000</CoreRate>
+            <ObjectReference id="area_therm_912" InstanceId="{094B78A5-86BF-42C7-B410-A46522B1C2F2}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{779EFEEE-1E6B-4BF0-BC27-2A2FE5AB9E2A}">
+            <Descr>therm_913</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_913" InstanceId="{636E706C-C71A-489D-8567-1B6D14970DA9}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{0C74E334-296D-47EE-9270-6C99C43C72E4}">
+            <Descr>therm_914</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_914" InstanceId="{BAB1D86A-417F-48E4-BC35-F612E899A264}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{B1D3B251-DB71-4EF5-B111-7CF3624403B9}">
+            <Descr>therm_915</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_915" InstanceId="{C6BDA95D-97C7-4F7D-97C1-5F0DDC639999}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{AF7C7912-4BE1-41D1-A49A-AD309A554713}">
+            <Descr>therm_916</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_916" InstanceId="{AE8E651A-8285-4FAD-8E05-CD7A6116A6CA}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{ED4C8209-83E2-4F4A-BBED-96D4271DEF21}">
+            <Descr>therm_917</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <CoreRate>4.000</CoreRate>
+            <ObjectReference id="area_therm_917" InstanceId="{BA66E3A0-C28B-4D15-A9C4-D1576F6E74E3}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{117F8984-E9B1-42A1-8B72-AC8E10A584C7}">
+            <Descr>therm_918</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <CoreRate>3.000</CoreRate>
+            <ObjectReference id="area_therm_918" InstanceId="{85D46D95-E1C1-4D19-85E6-92F9E3E57E66}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{C41291D5-84D7-4644-B546-4EA38C45FAEF}">
+            <Descr>therm_919</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <CoreRate>3.000</CoreRate>
+            <ObjectReference id="area_therm_919" InstanceId="{3F9DB6F1-9957-4A7E-85C2-F62E1CB0871E}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{5A93647F-E629-46E8-B23A-DF9010427912}">
+            <Descr>therm_920</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_920" InstanceId="{21F82CE7-42C5-473F-9DD5-13C3483C8A59}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{C9837785-4343-405F-A15D-0ACBB24C2824}">
+            <Descr>therm_921</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_921" InstanceId="{9E95CAFC-6003-499B-9A66-A855EA8C5D69}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{9ED61E7A-0480-401F-9720-3E2A7210E861}">
+            <Descr>therm_922</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <CoreRate>4.000</CoreRate>
+            <ObjectReference id="area_therm_922" InstanceId="{72F42E87-0566-4D40-A195-A1A971B3CDA0}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{7B7512BA-D1B6-446E-B4D4-C460CC8E563D}">
+            <Descr>therm_923</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_923" InstanceId="{5D1F3DF0-8DA2-4AE0-A9B5-CB3BBF7AFDF4}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{20B183C2-E7F8-46A1-AFDA-FE570F39AFEA}">
+            <Descr>therm_924</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_924" InstanceId="{D74A881E-2DBE-4B75-80FE-F703753DB37C}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{FD5EE4C6-0E07-4C9F-836C-ACF6918600A2}">
+            <Descr>therm_925</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_925" InstanceId="{71A6F04F-BF03-4ADE-B8F3-B4DEB62581BA}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{64BA0B33-517D-4D58-876F-7267E51B3115}">
+            <Descr>therm_926</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_926" InstanceId="{983CC837-3CC9-4DB6-883A-D9DF0020EF6B}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{51032A11-3615-455D-A98D-9543C3317D49}">
+            <Descr>therm_927</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_927" InstanceId="{3DB429D1-7F66-4CB1-B6CA-04DE9919753D}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{76777781-6ED5-497A-835E-02F69F5EAF45}">
+            <Descr>therm_928</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_928" InstanceId="{2445BE66-D351-4052-B5EF-F4FA77EE4E98}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{292E309B-5584-45BA-B0EA-662A2D702508}">
+            <Descr>therm_929</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_929" InstanceId="{11A322BB-F82B-4494-B804-B49E8D30B297}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{70E2BA6C-A208-4952-BF4A-0DB56742DBC9}">
+            <Descr>therm_930</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_930" InstanceId="{3ADAC901-344F-4DBB-A6B7-9CE87C3B9B7A}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{436F9FDA-E94C-43B1-BD08-3E41AD6D9B66}">
+            <Descr>therm_931</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_931" InstanceId="{FC6B6AD6-4D14-4249-8AC3-7A8218723E71}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{48F47ABF-1D17-48CE-A15F-7EC4A920A141}">
+            <Descr>therm_932</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_932" InstanceId="{7C77DFF6-7267-4C8A-B4D5-FDEF4258A16B}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{05220861-9F58-489A-A1F8-D04A79813C48}">
+            <Descr>therm_933</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_933" InstanceId="{3843C8CB-8B6C-4E40-90F3-452F1C193637}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{8A63F0B0-0E2F-4C27-9DD6-082F1AD9BC86}">
+            <Descr>therm_934</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_934" InstanceId="{4E4CD32E-2739-47FD-AB43-80D3DDA4EAF4}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{D7C32FAE-9C56-466D-9FC6-9289CA0E9771}">
+            <Descr>therm_935</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_935" InstanceId="{35D8C6A2-325D-42DB-BE79-DA2919CDF342}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{18BCD0F5-B75B-4319-9711-F8EE4E1EC073}">
+            <Descr>therm_936</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_936" InstanceId="{D28C97B9-F0F0-4611-8C9E-1BABA1342CF9}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{AC592A72-E28F-46C9-9ACE-A75F848844F9}">
+            <Descr>therm_937</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_937" InstanceId="{638E2EF8-01D7-44A5-9067-0B18AF86F5FC}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Thermal InstanceId="{98F513E7-A77D-4132-B164-0E60CC8A3C3E}">
+            <Descr>therm_938</Descr>
+            <SinkTransitionSize>50.000</SinkTransitionSize>
+            <SinkLayerSize>100.000</SinkLayerSize>
+            <CoreTransitionSize>50.000</CoreTransitionSize>
+            <CoreSize>400.000</CoreSize>
+            <SinkRate>3.000</SinkRate>
+            <ObjectReference id="area_therm_938" InstanceId="{16A087D8-CA03-4627-9F88-BB000DC1478A}">
+            </ObjectReference>
+        </SimMission.Thermal>
+        <SimMission.Goal InstanceId="{6E284343-91B1-4AE9-8573-4401612CD8EC}">
+            <Descr>Goal_good_finish</Descr>
+            <Text>Good finish at Zell am Zee</Text>
+            <Order>3</Order>
+        </SimMission.Goal>
+        <SimMission.Goal InstanceId="{EEF0E608-1B7A-4544-AED6-3EC6C25AE47A}">
+            <Descr>Goal_good_start</Descr>
+            <Text>Good start</Text>
+        </SimMission.Goal>
+        <SimMission.Goal InstanceId="{04EACD37-CD3C-4B76-BCD5-677071CE6454}">
+            <Descr>Goal_TP1</Descr>
+            <Text>Turnpoint 1</Text>
+            <Order>1</Order>
+        </SimMission.Goal>
+        <SimMission.Goal InstanceId="{5450F91D-78A8-44F8-B0BD-94D23C7123A0}">
+            <Descr>Goal_TP2</Descr>
+            <Text>Turnpoint 2</Text>
+            <Order>2</Order>
+        </SimMission.Goal>
+        <SimMission.Goal InstanceId="{51492814-6794-4229-ACC0-95575C70B77F}">
+            <Descr>Goal_TP3</Descr>
+            <Text>Turnpoint 3</Text>
+            <Order>3</Order>
+        </SimMission.Goal>
+    </WorldBase.Flight>
+    <MissionBuilder.MissionBuilder>
+    </MissionBuilder.MissionBuilder>
+</SimBase.Document>

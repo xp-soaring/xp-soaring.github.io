@@ -1,0 +1,74 @@
+<html>
+<head>
+<title>FSX SOAR DG808S</title>
+</head>
+<body background="../../images/clouds.jpg">
+<font face="Helvetica">
+<p><a href="../../index.html">Soaring with FSX</a>&nbsp;&gt;&gt;&nbsp;<a href="../index.html">SimObjects</a>&nbsp;&gt;&gt;&nbsp;SOAR DG808S
+</p>
+<h1>FSX SOAR DG808S</h1>
+
+<p>The SOAR DG808S updates the original Microsoft model for FSX with new instruments, sounds, and
+a more accurate flight model. <a href="../downloads/soardg_3.zip">DOWNLOAD HERE</a>
+</p>
+
+<p>The update was a team effort by members of <a href="http://www.forum.aerosoft.com/index.php?showforum=161">virtualsoaring.org</a>.
+</p>
+
+<img src="soar_dg808s.jpg"/>
+<img src="soar_dg808s_panel.jpg"/>
+
+<p>The instruments in the SOAR DG808S have been modified from the Microsoft original.
+</p>
+
+<h2>1. Airspeed Indication</h2>
+<p>no change</p>
+
+<h2>2. Winter Variometer</h2>
+<p>displays 'Total Energy' lift/sink, rather than vertical climb. CumulusX *also* provides this calculation 
+so if you have that there's little change. The basic principle is simple - add or subtract a 'compensating value' 
+to the displayed climb/sink rate if you are accelerating or decelerating. This has the effect of cancelling out 
+'stick thermals' based purely on the pilot pushing or pulling on the stick. At a steady speed, the TE vario 
+reading is *identical* to the uncompensated 'vertical climb' reading. Further information on the total energy 
+calculation can be found on the Wikipedia here. The tiny red needle you might have noticed is a backup display 
+of the FSX 'variometer rate' - if you have CumulusX running this will display pretty much the same as the main 
+TE needle, but if not you'll see it swing wildly as FSX just uses pure vertical climb.
+</p>
+
+<h2>3. 'Cambridge' LCD Variometer</h2>
+<p>this has major changes:</p>
+<ul>
+<li>The *needle* now reads 'NETTO', which is the TE climb/sink reading above adjusted again for the sink due to the aircraft glide ratio at the current airspeed. This means the needle is indicating what the outside air is doing, so long as the performance of the glider is exactly as calibrated. This is by *far* the most useful indication of lift to help your cross-country performance whether thermalling or ridge soaring. If you do something to change (worsen) the performance of the glider (open airbrakes, put wheel down, dump ballast) the netto instrument will recognise the glider is descending relative to the calibrate performance and interpret that as the air must be sinking outside the glider. (see Wikipedia here). In general in still air the Netto should read zero regardless of the steady speed you're flying. As you blast along a ridge at 100knots+, the netto gauge will correctly indicate strongly rising air - remember this does not mean you are actually climbing, you need the Winter TE indication for that. But the netto gauge accurately tells you you *could* climb if you slowed up, while at 100 knots the TE gauge is simply displaying your sink rate.
+</li>
+
+<li>The digital display shows "Arrival Height" in either feet or meters (displayed at 'b' in screenshot) depending on the FSX units setting. This is the height AGL you are expected to arrive at the next waypoint (either Mission Point-of-Interest, or GPS waypoint, or if neither is set then the display just shows current altitude MSL). This calculation takes into account the prevailing wind speed and direction, the distance and bearing to the waypoint, the altitude of the waypoint, and the polar of the glider. The calculation is dependent upon the Maccready Setting (displayed at 'a' in screenshot, see Wikipedia Speed to Fly) which is set by the (+) and (-) buttons on the rim of the vario. The simple principle is you set the rate of the next thermal expected (in knots or m/s depending on FSX units) and the vario will assume you are flying at the correct speed-to-fly given that expected climb rate. E.g. if you expect the next thermal to be 6 knots (maccready setting 6) you will be zooming around at an airspeed of 100knots, but a maccready setting of zero implies you will be flying much slower (in fact at max L/D, say 60 knots). So... as you crank up the maccready setting you will see the arrival height come *down* because if you fly faster you'll come down steeper and arrive lower. If you want this to be simple, set the Maccready to 4 and forget about it, but watch the 'arrival height' on your final glide, only start the final glide when the arrival height is (say) 200 feet, and if the arrival height decreases then slow up which will (should) get it back on track. If you fly through heavy sink, the arrival height will start sinking like a rock and speeding up or slowing down won't necessarily save you, i.e. the gauge is not a safe-arrival-teleportation-device.
+</li>
+
+<li>The current flap setting is indicated for convenience at 'c' in the screenshot. At 70 knots plus you should be in -1 then -2 flap, below that you feed in zero then +ve flap. Thermal on +3 and do the landing on +4. A reminder - don't forget to dump the water a couple of minutes before you land.
+</li>
+</ul>
+
+<h2>4. Altimeter</h2>
+<p>change except it is moved to this position, swapped with the Winter vario.
+</p>
+
+<h2>Additional features</h2>
+<p>This update to the Microsoft DG808S includes the <i>TrimWizard</i> utility, which adjusts your trim setting instantly to the current position
+of the joystick when you apply the brakes (defaulting to the 'trigger' position on the joystick).
+</p>
+
+<h2>Credits</h2>
+
+<p>3D glider and cockpit model by Microsoft/Aces Studio.</p>
+
+<p>FSX XML instruments by Ian Forster-Lewis.</p>
+
+<p>Flight model by Peter Luerkens, Ian Forster-Lewis, Bert de Bruin.</p>
+
+<p>TrimWizard by Peter Luerkens.</p>
+
+<p>(apologies to anyone omitted - these things are very collaborative and lots of people contribute, including testing.</p>
+
+</font>
+</body>
+</html>

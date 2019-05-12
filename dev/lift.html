@@ -1,0 +1,545 @@
+<html>
+<head>
+<title>FSX Ridge and Thermal development</title>
+</head>
+<body background="../images/clouds.jpg">
+<font face="Helvetica">
+<p>
+<a href="../index.html">Soaring with FSX</a>&nbsp;&gt;&gt;&nbsp;
+Lift
+</p>
+<h1>FSX Ridgelift and Thermal Development</h1>
+
+<h2>Contents</h2>
+<ul>
+ <li>Ridgelift and thermals
+     <ul>
+       <li><a href="#goal">What are we trying to achieve?</a></li>
+       <li><a href="#realism">Making your lift realistic</a></li>
+       <li><a href="#AreaDefinition">Defining the AreaDefinition box</a></li>
+       <li><a href="#Ridge">Ridge lift</a></li>
+       <li><a href="#Thermals">Thermals</a></li>
+       <li><a href="#LiftGotchas">typical problems in creating lift</a></li>
+     </ul>
+ </li>
+</ul>
+
+<h2><a name="goal"></a>What are we trying to achieve?</h2>
+
+<p>The simplest lift is <b>ridge lift</b>, where the wind blows against a slope and is forced upwards.
+Gliders (and birds) can fly in the area of updraft and stay aloft for hundreds of miles.  The great
+thing about ridge lift is if it starts somewhere near your home airfield you can fly along it and still
+get home, so long as the wind doesn't quit. The following pictures illustrate the ridge lift area
+adjacent to the ridge, and a photograph taken from a real glider ridge soaring.</p>
+<table align="center" border="0" cellspacing="4">
+<tr>
+  <td><img src="images/ridgelift_anim.gif"/></td>
+  <td><img src="images/ridgelift_real.jpg"/></td>
+</tr>
+</table>
+
+<p>FSX has great tools for the creation of ridge lift in the mission editor, so you can design
+ridgelift boxes working in a very realistic way.  Here's a screenshot within the Mission Editor
+using a development visualisation model:
+<table align="center" border="0" cellspacing="4">
+<tr>
+  <td><img src="images/ridgelift_fsx.jpg"/></td>
+</tr>
+</table>
+
+<p><b>Thermals</b> are a little more subtle.  The sun heats the ground, warms the air, which collects into
+a bubble and rises in a column.  The left picture gives you the overview, while the right is an FSX
+screenshot with the 'spiral' visual model enabled:
+</p>
+<table align="center" border="0" cellspacing="4">
+<tr>
+  <td><img src="images/thermals_overview.jpg"/></td>
+  <td><img src="images/thermals_fsx.jpg"/></td>
+</tr>
+</table>
+
+<h2><a name="realism"></a>Making your lift realistic</h2>
+
+<p>It is a source of frustration for real glider pilots (well, me anyway) that lift in FSX is
+usually so strong that every thermal would be in the Guinness Book of World Records.  The default
+FSX thermal is 10+ knots to maybe 24,000 feet, and half-a-mile in diameter.  Frankly, you could fly
+a surfboard in that kind of weather.</p>
+
+<p>Here's a list of rules to make your thermals and ridge lift move realistic:</p>
+<h4>Thermals:</h4>
+
+<ol>
+<li>A lift strength of 5-6 knots (2-3m/s)would be a good day in most of Europe or the eastern USA.</li>
+<li>Make them the kind of diameter you can circle in, but not much larger.  I'll try and quantify this...</li>
+<li>Thermals should <font color="red"><b>NOT</b></font> be designed to go above the cloudbase. Normal cross-country
+flights involve climbs to cloudbase and no further.  Typical cloudbase in Europe and NE USA is 6000 feet.</li>
+<li>Plant <b>more</b> thermals but make many of them weaker.  
+Real gliding involves sampling and rejecting many more thermals.</li>
+</ol>
+
+<h4>Ridge lift:</h4>
+
+<ol>
+<li>Wind of 16-24 knots is good for ridge lift</li>
+<li>Lift at ridgetop is typically 5 knots, so you can cruise at 100 knots without losing height.</li>
+<li>Lift extends to 1000-2000 feet above the ridge but reduces in strength.  At 2000 feet above the ridge
+you might be able to maintain height at best glide speed.</li>
+</ol>
+
+<h2><a name="AreaDefinition"></a>Defining the area for the ridgelift or the thermal in FSX</h2>
+<h4>Area Definition Object</h4>
+
+<p>Only one type of area definition is supported, RectangleArea, which
+defines a 3D box. The edges of the box will not appear when the mission is being played. 
+An Area Definition object contains the following properties:<br>
+</p>
+
+<table border="1" cellpadding="2" cellspacing="2">
+    <tr>
+      <td><span style="font-weight: bold;">Property</span></td>
+      <td><span style="font-weight: bold;">Description from the SDK</span></td>
+      <td><span style="font-weight: bold;">Comments</span></td>
+    </tr>
+    <tr>
+      <td>id</td>
+      <td>Reserved.
+Do not edit this field.</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Descr</td>
+      <td>The
+name of the object.
+The system will generate a name such as <span style="font-weight: bold;">RectangleArea1</span>, simply by
+appending the number of the next object
+to
+the type of the object. This name can be edited to help identify it
+further. Make sure though that the name is unique.</td>
+      <td>e.g.:<br/>area_therm_001a<br/>area_ridge_003b</td>
+    </tr>
+    
+    <tr>
+      <td>InstanceId</td>
+      <td>This is the GUID generated to ensure the object has a unique reference. Do not edit this field</td>
+      <td>&nbsp;</td>
+    </tr>
+    
+    <tr>
+      <td>Length</td>
+      <td>Length of the box in meters.</td>
+      <td>if the <b>orientation</b> of the box is 0,0,0 (i.e. heading zero), length runs <b>east-west</b></td>
+    </tr>
+    <tr>
+      <td>Width</td>
+      <td>Width of the box in meters.</td>
+      <td>if the <b>orientation</b> of the box is 0,0,0 (i.e. heading zero), width runs <b>north-south</b></td>
+    </tr>
+    <tr>
+      <td>Height</td>
+      <td>Height of the box in meters.</td>
+      <td>Height is the vertical extent of the box</td>
+    </tr>
+    <tr>
+      <td>Orientation</td>
+      <td>Heading, Pitch and Bank, or orientations about the three axis, in degrees.</td>
+      <td>SDK is confusing. Actually order is<br/>
+          <b>pitch, bank, heading</b><br/>
+          <font color="red"><b>Heading is the most important setting for a RectangleArea
+          containing RidgeLift.</b></font> The comparison of the heading of the RectangleArea with the
+          bearing of the wind gives the factor to be applied to the prevailing wind to calculate the
+          lift (or sink) affecting the aircraft. The RectangleArea should be aligned with
+          the slope of the adjacent ground.  For a south-<i>facing</i> slope this means a RectangleArea
+          heading of 0. For a west-facing slope, the RectangleArea would have a heading of 90.
+      </td>
+    </tr>
+    <tr>
+      <td>AttachedWorldPosition</td>
+      <td>
+<table border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td><span style="font-weight: bold;">Property</span></td>
+      <td><span style="font-weight: bold;">Description</span></td>
+    </tr>
+    <tr>
+      <td>WorldPosition<br>
+      </td>
+      <td>Latitude, longitude, and altitude in feet. For example:<br>
+      N22&deg;21' 44.68",E114&deg; 1' 15.01",+000000.00</td>
+    </tr>
+    <tr>
+      <td>AltitudeIsAGL<br>
+      </td>
+      <td>Set
+to <span style="font-weight: bold;">True</span> if
+the alititude is above ground level, set to <span style="font-weight: bold;">False</span> if the
+altitude is above mean sea level. </td>
+    </tr>
+  </tbody>
+</table>      
+    </td>
+    <td>AltitudeIsAgl generally <b>True</b> for thermals and ridge lift.<br/>
+        WorldPosition altitude positive for thermals (thermal lift starts at <b>200m</b> AGL).<br/>
+        WorldPosition altitude often <b>negative</b> for ridgelift to position the box correctly.<br/>
+        Editing this within the Object Placement tool is not intuitive. 
+        <a href="http://fsxmission.com/live/modules.php?name=Forums&file=viewtopic&t=260">See here for how to edit.</a>
+    </td>
+    </tr>
+    
+    <tr>
+      <td>AttachedWorldObject</td>
+      <td>An optional Attached
+World object. This enables the area definition to be attached to a moving object. 
+Leave the AttachedWorldPosition blank in this case.</td>
+      <td>not applicable for thermals or ridge lift</td>
+    </tr>
+</table>
+
+
+<h2><a name="Ridge"></a>Ridge lift</h2>
+
+<h4>Ridge Lift Mission Object<a name="Ridge_Lift_Mission_Object"></a></h4>
+<p>A RidgeLift object is used to simulate the effect of a hill slope on the wind.</p>
+<p>&nbsp;</p>
+<p>The image in the Mission SDK looks like this:
+  <img src="images/ridgelift.jpg">
+</p>
+<p>&nbsp; </p>
+
+<table border="1" cellpadding="2" cellspacing="2">
+    <tr>
+      <td><span style="font-weight: bold;">Property</span></td>
+      <td><span style="font-weight: bold;">Description from the SDK</span></td>
+      <td><span style="font-weight: bold;">Comments</span></td>
+    </tr>
+    <tr>
+      <td>id</td>
+      <td>Reserved.
+Do not edit this field.</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Descr</td>
+      <td>The name of the
+action.
+The system will generate a name such as <span style="font-weight: bold;">RidgeLift1</span>, simply by
+appending the number of the next action to the type of action. This
+name can be edited to help identifiy it further. Make sure though that
+the name is unique.</td>
+      <td>e.g.:<br/>
+          ridge_001a<br/>
+          ridge_001b<br/>
+          You can use the last letter or something like it to refer to different elements of a multi-box ridgelift area.
+      </td>
+    </tr>
+    <tr>
+      <td>InstanceId</td>
+      <td>This
+is the GUID generated to ensure the object has a unique reference. Do
+not edit this field</td>
+      <td>&nbsp;</td>
+    </tr> 
+    <tr>
+      <td>Activated</td>
+      <td>Set
+        to <span style="font-weight: bold;">True</span> or <span style="font-weight: bold;">False</span>. 
+        This can be
+        changed during a mission using the <b>Object Activation</b> action.</td>
+      <td>Generally <b>True</b> for RidgeLift.  Object activation presents possibilities for thermals though.</td>
+    </tr>
+    <tr>
+      <td>ObjectReference</td>
+
+      <td>A reference to an <a href="#AreaDefinition">AreaDefinition</a>
+       object that defines a box that is the bounding area of the ridge lift. 
+       It is very important that the heading setting of the AreaDefinition points 
+       in the same direction as the slope (to the left in the above diagram). </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>AirObjectModelGuid</td>
+      <td>An optional model GUID. The model will be rendered within the ridge lift box. </td>
+      <td>
+        During development, you can use the GUIDs for the <a href="#ridgebox">ridgebox</a>
+         (this must be installed first). Length x width x height in 000's meters:
+        <table>
+          <tr>
+            <td>1x1x1&nbsp;{a4f22592-22a4-4aa7-b91d-f5700ef8108e}
+            </td>
+          </tr>
+          <tr>
+            <td>4x2x1&nbsp;{3ae1e3ed-82aa-4d64-922e-e793a87030ed}
+            </td>
+          </tr>
+          <tr>
+            <td>8x2x1&nbsp;{dcde1e0f-4ca3-426e-b59d-6eda6b2701b0}
+            </td>
+          </tr>
+          <tr>
+            <td>2x2x2&nbsp;{ffa19965-be4d-42a7-8543-ca19878e9827}
+            </td>
+          </tr>
+          <tr>
+            <td>4x2x2&nbsp;{ab9a9a23-8ea1-4ae6-9ef8-2352eab2ad61}
+            </td>
+          </tr>
+          <tr>
+            <td>8x2x2&nbsp;{16b03fcb-975e-473f-8fc3-efa0f2f7b69e}
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+
+      <td>ScaleModel</td>
+      <td>Set to <b>True</b> to if the model should be scaled to match the size of the ridge 
+          lift box. Set to <b>False</b> to render the model to its own scale. </td>
+      <td>As of early 2007 there are bugs in FSX scaling.  If you want to use a visual model to
+          aid development, use <b>False</b> and set the RectangleArea to the same
+          size as an available ridgebox (see above).</td>
+    </tr>
+    <tr>
+      <td>CoreRateScalar</td>
+
+      <td>A scalar value that is applied to the wind in the Core area of the ridge lift. A positive value 
+          will provide an updraft, a negative value a downdraft. Typically a positive 
+          value such as <b>0.5</b> would be entered here. So if the wind speed was 8 m/s, 
+          an updraft of 4 m/s would be applied. </td>
+      <td>Set to 0.5 (or 0.8) <b>if</b> you create a <b>wind</b> in the mission of 16 knots at <b>45 degrees
+          clockwise from the optimal direction for the slope</b> (see <a href="#ridgebox">below</a>).
+          E.g. for a south-facing slope (RectangleArea heading=0) set the wind to 225 degrees 
+          (i.e. from the South-West).
+          After you get the ridgelift working, you can play about with the wind strength, direction, and
+          the CoreRateScalar value.</td>
+    </tr>
+    <tr>
+      <td>CoreTurbulence</td>
+      <td>A variation scalar that is applied to the wind speed. For example, if a value of 0.1 is entered, and the wind speed is 8 m/s, the wind speed in the ridge lift Core area will be randomly varying between 7.2 and 8.8 m/s. </td>
+      <td>Try <b>0</b> at first until you know the lift is working as you expect it.</td>
+    </tr>
+
+    <tr>
+      <td>SinkRateScalar</td>
+      <td>A scalar value that is applied to the wind in the Sink area of the ridge lift. A positive 
+      value will provide an updraft, a negative value a downdraft. Typically a negative 
+      value such as <b>0.5</b> would be entered here. So if the wind speed was 8 m/s, an 
+      downdraft of 4 m/s would be applied. </td>
+      <td>As of early 2007 the SDK document appears to be <b>wrong</b>. A positive SinkRateScalar 
+      generates Sink (and a negative SinkRateScalar generates Lift in this area).</td>
+    </tr>
+    <tr>
+      <td>SinkTurbulence</td>
+
+      <td>A variation scalar that is applied to the wind speed. For example, if a value of 0.1 is entered, and the wind speed is 8 m/s, the wind speed in the ridge lift Sink area will be randomly varying between 7.2 and 8.8 m/s. </td>
+      <td>Try <b>0</b> at first until you know the lift is working as you expect it.</td>
+    </tr>
+</table>
+
+<h2><a name="ridgebox"></a>Practical ridgelift usage</h2>
+<p>The simplest way to place ridgelift is to place the center over the apex of
+the ridge. The stock AustrianSoaring mission uses this technique:</p>
+  <img src="images/ridgelift2.jpg">
+
+  <p>  More detailed control can be achieved using negative values for SinkRateScalar for lift in the entire box,
+  and a similar technique to have the entire box produce sink on the leeward side:</p>
+  <img src="images/ridgelift3.jpg">
+
+<p>It is <b>crucial</b> that you understand the correct alignment of the RectangleArea with the
+ridge and the wind.</p>
+<img src="images/ridge_strength_wind_16_at_0.jpg"/>
+<img src="images/ridge_strength_wind_16_at_225.jpg"/>
+
+<h3>Ridgelift example</h3>
+
+<p>The image below shows ridgelift placed on the north-facing slopes at Zell am See airfield in 
+Austria (ICAO code LOWZ).</p>
+
+<p>The ridge areas in this example are all 1000 meters high, 4000 meters long (East-West), and
+2000 meters wide (North-South). The ridge areas all have a heading of 180, and on the lower slopes have been tilted upwards
+about 30 degrees (i.e. orientation 330,0,180). A ridgebox scenery object (see below) has been used to illustrate
+the position of the boxes.  Note that the lower ridgeboxes have <b>negative</b> SinkRateScalar values (-0.8), which with the
+<b>positive</b> CoreRateScalar values (+0.8) ensures the lower boxes entirely contain <b>lift</b>. The wind in the mission is set
+to 16 knots from 45 degrees, i.e. 45 degrees clockwise from the expected optimal to mitigate a current FSX bug.
+</p>
+<a href="images/mission_scenery_usage.jpg" border="0"><img src="images/mission_scenery_usage_thumb.jpg"/></a>
+
+<h3>Ridgebox visualisation object</h3>
+
+<a href="images/ridgebox.jpg" border="0"><img src="images/ridgebox_thumb.jpg"/></a>
+
+<p>This download contains a BGL library of ridgebox scenery objects that, once installed in an active
+scenery folder, can be used to render FSX ridgeboxes visible.  The zip contains README.txt which gives
+full installation instructions and lists the GUIDs.
+</p>
+<p><a href="downloads/ridge_v4.zip">Download the RidgeBox source here</a></p>
+
+<h3>Sample mission using the ridgebox visualisation object</h3>
+
+<a href="images/mission_scenery.jpg" border="0"><img src="images/mission_scenery_thumb.jpg"/></a>
+
+<p>This download contains a simple mission (with no waypoints or goal!) purely to allow you to slew and fly around
+a series of ridgeboxes to gain a better understanding of the way ridgelift in FSX works. If you check the 'allow changes'
+checkbox on the FSX missions page before loading the mission, you can change the wind strength and direction and see
+the effect.  This mission was used to calibrate the charts above.
+</p>
+
+<p><a href="downloads/RidgeTest.zip">Download the RidgeTest mission source here</a></p>
+
+<h2><a name="Thermals"></a>Thermals</h2>
+
+<h4>Thermal Mission Object<a name="Thermal_Mission_Object"></a></h4>
+<p>A thermal object can be used to simulate atmospheric effects, including thermals and downdrafts. Refer also to the <a href="../Environment Kit/Weather SDK/Weather Systems.html">Weather Systems</a> documentation. </p>
+<p>&nbsp;</p>
+<table cellspacing="2" cellpadding="4">
+  <tr>
+    <td><img src="images/thermal.jpg" width="385" height="355"></td>
+
+  </tr>
+</table>
+<p>&nbsp; </p>
+<p>&nbsp;</p>
+<table style="text-align: left; width: 640px; height: 101px;" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td><span style="font-weight: bold;">Property</span></td>
+      <td><span style="font-weight: bold;">Description</span></td>
+
+    </tr>
+    <tr>
+      <td>id</td>
+      <td>Reserved.
+Do not edit this field.</td>
+    </tr>
+    <tr>
+      <td>Descr</td>
+      <td>The name of the
+action.
+The system will generate a name such as <span style="font-weight: bold;">Thermal1</span>, simply by
+appending the number of the next action to the type of action. This
+name can be edited to help identifiy it further. Make sure though that
+the name is unique.</td>
+    </tr>
+    <tr>
+      <td>InstanceId</td>
+      <td>This
+is the GUID generated to ensure the object has a unique reference. Do
+not edit this field</td>
+    </tr> 
+    <tr>
+      <td>Activated<br>      </td>
+
+      <td>Set
+        to <span style="font-weight: bold;">True</span> or <span style="font-weight: bold;">False</span>. This can be
+        changed during a mission using the <i>Object Activation</i> action.</td>
+    </tr>
+    <tr>
+      <td>ObjectReference<br>      </td>
+
+      <td>A reference to an AreaDefinition object that defines a box that 
+      is the bounding area of the thermal. Note that this box defines the position of the thermal, including its starting height above the ground, and the height of the thermal.</td>
+    </tr>
+    <tr>
+      <td>AirObjectModelGuid</td>
+      <td>An optional model GUID. The model will be rendered within the thermal box. </td>
+    </tr>
+    <tr>
+
+      <td>ScaleModel</td>
+      <td>Set to <b>True</b> to if the model should be scaled to match 
+      the size of the thermal box. Set to <b>False</b> to render the model to its own scale. </td>
+    </tr>
+    <tr>
+      <td>SinkTransitionSize</td>
+
+      <td>The width in meters of the transition layer between the Sink 
+      and the atmosphere outside of the thermal. Half of the width of this transition will be outside the radius of the Sink layer, and half within. </td>
+    </tr>
+    <tr>
+      <td>SinkLayerSize</td>
+      <td>The width in meters of the Sink layer. </td>
+    </tr>
+    <tr>
+
+      <td>CoreTransitionSize</td>
+      <td>The width in meters of the transition layer between the Core and the 
+      Sink of the thermal. Half of the width of this transition will be outside the 
+      Core, and half within. </td>
+    </tr>
+    <tr>
+      <td>CoreSize</td>
+      <td>The radius in meters of the Core of the thermal. </td>
+    </tr>
+
+    <tr>
+      <td>BaseHeight</td>
+      <td>The size of the transition layer, in meters, at the base of the thermal. 
+      The default is 50m. This is not the height of the thermal above the ground. </td>
+    </tr>
+    <tr>
+      <td>TopHeight</td>
+      <td>The size of the transition layer, in meters, at the top of the thermal. 
+      The default is 50m. This is not the height of the thermal. </td>
+
+    </tr>
+    <tr>
+      <td>SinkRate</td>
+      <td>The lift value, in meters per second, within the Sink layer. A positive 
+      value will provide an updraft, a negative value a downdraft. </td>
+    </tr>
+    <tr>
+      <td>SinkTurbulence</td>
+
+      <td>A variation in meters per second that is applied to the SinkRate. 
+      For example, if a value of 1.5 is entered, and the SinkRate is -3 m/s, the actual sink rate applied  will be randomly varying between -1.5 m/s and -4.5 m/s.</td>
+    </tr>
+    <tr>
+      <td>CoreRate</td>
+      <td>The lift value, in meters per second, within the Core layer. A 
+      positive value will provide an updraft, a negative value a downdraft. </td>
+    </tr>
+    <tr>
+
+      <td>CoreTurbulence</td>
+      <td>A variation in meters per second that is applied to the CoreRate. For example, if a value 
+      of 1.5 is entered, and the CoreRate is 5 m/s, the actual core rate applied  
+      will be randomly varying between 3.5 m/s and 6.5 m/s.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2><a name="LiftGotchas"></a>Common problems creating lift in FSX</h2>
+
+<ul>
+  <li>set <b>wind</b> in the current weather. Otherwise there will be no ridge lift.  Real ridges are
+  generally good with 16-24 knots wind.<br/><br/></li>
+  
+  <li>Align the RectangleArea correctly relative to the wind. If the wind is from the North (heading 0), the 
+  RectangleArea heading would be 180 (but <b>see next item</b>), and you'd 
+  expect it to be on a north-facing slope (note FSX ridgelift is purely dependent upon the orientation
+  of the <i>RectangleArea</i>, the shape/slope of the nearby terrain is irrelevant.)<br/><br/></li>
+  
+  <li>As of Jan 07, an FSX bug rotates the required wind to generate maximum lift clockwise 90 degrees.  As
+  a workaround, set your wind to <b>45 degrees clockwise</b> to the expected perpendicular alignment to the 
+  slope/ridgebox.  I.e. on a north-facing slope, set the heading of the RectangleArea to 180 (so it correctly
+  points into the slope), and the wind to 45 degrees. This workaround will generate about three-quarters of
+  the expected lift, so the ridgeboxes will behave similarly if/when the bug is fixed.<br/><br/>
+  </li>
+
+  <li>Set the CoreRateScalar value correctly.  For wind 45 degrees clockwise from into the slope, the lift
+  will be 0.75 times the windspeed times the CoreRateScalar. (When the bug's fixed it should be simply
+  windspeed times CoreRateScalar).  So with <font color='green'><b>16 knots wind at 45 degrees</b></font>,
+   and a <font color='green'><b>RectangleArea with heading
+  180</b></font>, and an embedded RidgeLift object with a <font color='green'><b>CoreRateScalar of 0.8</b></font>
+  , the lift should be 0.75 x 16 x 0.8,
+  i.e. <font color='green'><b>7.2 knots</b></font>.<br/><br/>
+  </li>
+  
+</ul>
+
+
+<!-- end of body -->
+
+</font>
+</body>
+</html>

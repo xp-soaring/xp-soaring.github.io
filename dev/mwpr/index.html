@@ -1,0 +1,126 @@
+<html>
+<head>
+<title>FSX soaring mission development - mwpr mwpr.exe</title>
+</head>
+<body background="../../images/clouds.jpg">
+<font face="Helvetica">
+<p><a href="../../index.html">Soaring with FSX</a>&nbsp;&gt;&gt;&nbsp;
+mwpr
+</p>
+<h1>FSX Soaring Mission Development - Mission WayPoint Randomizer</h1>
+
+<h2>Introduction</h2>
+
+<p>Mission WayPoint Randomizer (mwpr.exe) reads IN a mission xml file (e.g. MyMission.xml), scans for the
+waypoints contained within Moving Scenery Objects, ADJUSTS them by random amounts within lat/long/altitude 
+ranges defined in mwpr.cfg and
+writes OUT a new mission xml file (MyMission_adj.xml).
+</p>
+
+<p>The point is to assist in the creation of large numbers of moving scenery objects, without them all robotically
+following the exact same path.</p>
+
+<h2>Usage</h2>
+
+<ol>
+<li>Create ONE moving scenery object in your mission</li>
+<li>Add all the waypoints you want this object to follow</li>
+<li>COPY that moving scenery object within the Object Placement Tool as many times as you wish</li>
+<li>SAVE the mission xml file (e.g. as MyMission.xml)</li>
+<li>Either from within the Object Placement Tool, or by manually editting the mission xml file, ADJUST
+the starting WorldPositions of each mobile scenery object.  If you don't do this, all your objects will start
+from exactly the same place, and follow exactly the same path, so in the next trial step you will only see one
+object.</li>
+<li>At this point if you re-run your mission in FSX you should see the multiple moving scenery objects, but
+all will be following the exact same path</li>
+<li>COPY the mwpr.cfg file from the mwpr folder into your mission folder containing your mission xml file</li>
+<li>EDIT this copy of the mwpr.cfg file with the lat/long/altitude ranges you want to allow</li>
+<li>DRAG AND DROP your mission xml file over the mwpr.exe icon in the mwpr folder</li>
+<li>mwpr will create a new mission xml file in &lt;yourname&gt;_adj.xml (e.g. MyMission_adj.xml),
+and a log file called mwpr.log in your mission source folder</li>
+<li>Rename your original mission xml file, e.g. MyMission_original.xml, and rename the adjusted file
+to MyMission.xml</li>
+<li>Reload your mission in FSX (i.e. you will be loading the adjusted xml file), and you should see the
+multiple mobile scenery objects following slightly different paths</li>
+</ol>
+
+<h2>Usage hints</h2>
+<ol>
+<li>The mwpr.exe tool is designed to be used 'drag and drop' within Windows Explorer, although it can be run
+from the command line, with the input file as the first parameter</li>
+<li>mwpr.exe looks in the mission folder first for a mwpr.cfg file.  If it doesn't find one there, it will use
+the mwpr.cfg from the folder containin mwpr.exe.</li>
+<li>mwpr.cfg contains the following parameters (in this example using MyMission.xml as the sample mission
+xml file name:
+  <ol>
+    <li><b>mode:</b> <tt>adjust</tt> or <tt>scan</tt>. With 'adjust', mwpr will write a MyMission_adj.xml
+    into the same folder as the original MyMission.xml.  The MyMission.xml file will not be altered. If
+    mode is set to 'scan', the MyMission_adj.xml will not be produced.  Instead, mwpr will output the list
+    of affected waypoints as comma-delimited floating-point values into mwpr.log suitable for importing into
+    Excel.  With mode set to 'scan', mwpr will simulate the application of the randomization factors onto the
+    lat/long/altitude values and include those in the mwpr.log file also.
+    </li>
+    <li><b>mso_descr:</b> this contains a string for a partial match with the Descr value of any 
+    moving scenery object (matching starts from the first char, and continues for the
+    length of the mso_descr value).  <i>Only</i> moving scenery objects which begin with these characters will be
+    selected to be scanned or adjusted.  Austrian Soaring - Day 3 contains gliders following three quite
+    different routes (pre-randomization).  The MSO Descr values are 'gliderA..', 'gliderB..' and 'gliderC..'
+    where the 20 gliders following route A are called 'gliderA01' to 'gliderA20', etc.  Thus you can
+    randomize the different routes by three passes of mwpr, using a different 'mso_descr' in mwpr.cfg each time.
+    If you want all MSO's adjusted the same, leave this blank.
+    </li>
+    <li><b>wp_descr:</b> Same idea as 'mso_descr', but this time <i>within those mso's selected</i> only
+    waypoints with a 'Descr' value partially matching this string will be included for scanning or adjusting.
+    In Austrian Soaring - Day 3, waypoints on the entrance or exit from a thermal have Descr values
+    beginning 'WPT ', whereas general cross-country waypoints are 'WP '.  With two passes of mwpr, the general
+    cross-country waypoints could be randomized across larger ranges than the thermal entry/exit. The image
+    below illustrates this, in particular where the routes cross Latitude 13 (where there's a thermal
+    in the mission). If you want all WP's adjusted
+    the same, leave this blank.
+    </li>
+    <li><b>lat_delta_max, lat_delta_min:</b> the acceptable adjustment <i>in degrees</i> of the latitude
+    value.  If the waypoints represent a glider flying along the North-facing slope, it is sensible to allow
+    a greater positive <i>max</i> value than negative <i>min</i> value of latitude.  I.e. some gliders will
+    fly further out from the slope, but you shouldn't get planes bumping into the ridge. A value of 
+    +/-0.015 gives approx a 1 minute adjustment either way, which works well for gliders.
+    </li>
+    <li><b>long_delta_max, long_delta_min:</b> as above, but for longitude</li>
+    <li><b>alt_delta_max, alt_delta_min:</b> as above, but for altitude in <i>feet</i></li>
+  </ol>
+</li>
+<li>Be careful to adjust the starting WorldPositions and current waypoint of each mobile scenery object
+correctly.  This will determine both their initial starting point and their relative timings along the
+common route (i.e. their separation at the first waypoint is determined by where they started from). This
+step is the <b>most significant part of the manual effort</b> in defining the mobile scenery.
+</li>
+<li>Note that you can and should adjust the <i>speeds</i> of your mobile scenery objects so they fly at
+slightly different speeds.
+</li>
+</ol>
+
+<h2>Download</h2>
+<p><a href="../downloads/mwpr.zip">mwpr.zip</a></p>
+
+<h2>Illustration of output</h2>
+<p>I used the following steps to create this Excel chart:</p>
+<ol>
+<li>Used mwpr to adjust the 50 mobile scenery objects (gliders) in Austrian Soaring - Day 3, using
+several passes with different WP filters and randomization ranges</li>
+<li>Changed mwpr.cfg to have mode=scan, deleted the existing mwpr.log, and dropped the new xml file onto mwpr.exe</li>
+again.  This generated a mwpr.log listing all the waypoint values ready for import into Excel</li>
+<li>In Excel, I used 'Data', 'Import External Data', to read mwpr.log as a comma-delimited text file, and then
+created an XY chart from the first LAT and LONG columns.</li>
+</ol>
+<p><i>Note: from this chart you can see that this example include a few glitches... this is indeed 
+the case in the
+final version of Austrian Soaring - Day 3, such that half-a-dozen of the gliders will head off in the wrong
+direction at some point on the course.  This doesn't affect the mission and I wasn't aware of the bugs until
+creating the 'scan' mode of the tool after shipping Day 3. The error was 
+from when I created the scenery objects, not
+from mwpr.</i></p>
+
+<img src="images/chart.jpg"/>
+
+</font>
+</body>
+</html>

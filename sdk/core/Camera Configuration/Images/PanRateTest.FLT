@@ -1,0 +1,571 @@
+[CameraDefinition.001]
+Title = Pan Rate Test (Heading 30)
+Guid = {195EAB58-9E4A-1E2A-A34C-D8D9D948F078}
+Description = This is the description of the virtual cockpit view.
+Origin = Virtual Cockpit
+MomentumEffect = Yes
+SnapPbhAdjust = Swivel
+SnapPbhReturn = False
+PanPbhAdjust = Swivel
+PanPbhReturn = False
+Track = None
+ShowAxis = YES
+AllowZoom = TRUE
+InitialZoom = 1.0
+SmoothZoomTime = 2.0
+ZoomPanScalar = 1.0
+ShowWeather = Yes
+XyzAdjust = TRUE
+ShowLensFlare=FALSE
+Category = Custom
+PitchPanRate=20
+HeadingPanRate=30
+
+[CameraDefinition.002]
+Title = Pan Rate Test (Heading 60)
+Guid = {295EAB58-9E4A-1E2A-A34C-D8D9D948F078}
+Description = This is the description of the virtual cockpit view.
+Origin = Virtual Cockpit
+MomentumEffect = Yes
+SnapPbhAdjust = Swivel
+SnapPbhReturn = False
+PanPbhAdjust = Swivel
+PanPbhReturn = False
+Track = None
+ShowAxis = YES
+AllowZoom = TRUE
+InitialZoom = 1.0
+SmoothZoomTime = 2.0
+ZoomPanScalar = 1.0
+ShowWeather = Yes
+XyzAdjust = TRUE
+ShowLensFlare=FALSE
+Category = Custom
+PitchPanRate=20
+HeadingPanRate=60
+
+[CameraDefinition.003]
+Title = Pan Rate Test (Heading 90)
+Guid = {395EAB58-9E4A-1E2A-A34C-D8D9D948F078}
+Description = This is the description of the virtual cockpit view.
+Origin = Virtual Cockpit
+MomentumEffect = Yes
+SnapPbhAdjust = Swivel
+SnapPbhReturn = False
+PanPbhAdjust = Swivel
+PanPbhReturn = False
+Track = None
+ShowAxis = YES
+AllowZoom = TRUE
+InitialZoom = 1.0
+SmoothZoomTime = 2.0
+ZoomPanScalar = 1.0
+ShowWeather = Yes
+XyzAdjust = TRUE
+ShowLensFlare=FALSE
+Category = Custom
+PitchPanRate=20
+HeadingPanRate=90
+
+[CameraDefinition.004]
+Title = Pan Rate Test (Pitch 10)
+Guid = {495EAB58-9E4A-1E2A-A34C-D8D9D948F078}
+Description = This is the description of the virtual cockpit view.
+Origin = Virtual Cockpit
+MomentumEffect = Yes
+SnapPbhAdjust = Swivel
+SnapPbhReturn = False
+PanPbhAdjust = Swivel
+PanPbhReturn = False
+Track = None
+ShowAxis = YES
+AllowZoom = TRUE
+InitialZoom = 1.0
+SmoothZoomTime = 2.0
+ZoomPanScalar = 1.0
+ShowWeather = Yes
+XyzAdjust = TRUE
+ShowLensFlare=FALSE
+Category = Custom
+PitchPanRate=10
+HeadingPanRate=60
+
+[CameraDefinition.005]
+Title = Pan Rate Test (Pitch 20)
+Guid = {595EAB58-9E4A-1E2A-A34C-D8D9D948F078}
+Description = This is the description of the virtual cockpit view.
+Origin = Virtual Cockpit
+MomentumEffect = Yes
+SnapPbhAdjust = Swivel
+SnapPbhReturn = False
+PanPbhAdjust = Swivel
+PanPbhReturn = False
+Track = None
+ShowAxis = YES
+AllowZoom = TRUE
+InitialZoom = 1.0
+SmoothZoomTime = 2.0
+ZoomPanScalar = 1.0
+ShowWeather = Yes
+XyzAdjust = TRUE
+ShowLensFlare=FALSE
+Category = Custom
+PitchPanRate=20
+HeadingPanRate=60
+
+[CameraDefinition.006]
+Title = Pan Rate Test (Pitch 30)
+Guid = {695EAB58-9E4A-1E2A-A34C-D8D9D948F078}
+Description = This is the description of the virtual cockpit view.
+Origin = Virtual Cockpit
+MomentumEffect = Yes
+SnapPbhAdjust = Swivel
+SnapPbhReturn = False
+PanPbhAdjust = Swivel
+PanPbhReturn = False
+Track = None
+ShowAxis = YES
+AllowZoom = TRUE
+InitialZoom = 1.0
+SmoothZoomTime = 2.0
+ZoomPanScalar = 1.0
+ShowWeather = Yes
+XyzAdjust = TRUE
+ShowLensFlare=FALSE
+Category = Custom
+PitchPanRate=30
+HeadingPanRate=60
+
+[Main]
+Title=RanRateTest
+Description=
+AppVersion=10.0.60515
+FlightVersion=1
+
+[Options]
+Sound=True
+Pause=False
+Moonlight=True
+CommConsoleOpen=False
+TextDisplayPage=0
+SlewDisplayPage=1
+AxisIndicator=Off
+Titles=False
+
+[Kneeboard]
+Visible=False
+Location=335, 265
+PageId=0
+Page0Scroll=0, 0
+Page1Scroll=0, 0
+Page2Scroll=0, 0
+Page3Scroll=0, 0
+Page4Scroll=0, 0
+Page5Scroll=0, 0
+Page6Scroll=0, 0
+
+[Panels]
+Panel.On=True
+HUD.On=False
+
+[Window.1]
+Order=0
+Active=True
+Undocked=False
+Maximized=False
+ScreenUniCoords=0, 0, 8192, 4000
+UndocCoords=0, 0, 0, 0
+CurrentCamera={B1386D92-4782-4682-A137-738E25D1BAB5}
+
+[Camera.1.1]
+Guid={B1386D92-4782-4682-A137-738E25D1BAB5}
+Zoom=1
+Translation=0, 0, 0
+Rotation=8, 0, 0
+
+[Camera.1.2]
+Guid={C95EAB58-9E4A-4E2A-A34C-D8D9D948F078}
+Zoom=1
+Translation=0, 0, 0
+Rotation=0, 0, 0
+
+[Camera.1.3]
+Guid={4D6E0979-AAC8-499F-AADB-F36877C4E8AA}
+Zoom=1
+Translation=0, 0, 0
+Rotation=0, 0, 0
+
+[Camera.1.4]
+Guid={BCA3FDD1-FB83-4BBA-8407-4922A7F0D00C}
+Zoom=1
+Translation=0, 0, 0
+ChaseDirection=90
+ChaseDistance=28.041599273681641
+ChaseAltitude=0.91439998149871826
+
+[Camera.1.5]
+Guid={BCA3FDD1-FB83-4BBA-8407-4922A7F0D00D}
+Zoom=1
+Translation=0, 0, 0
+ChaseDirection=-135
+ChaseDistance=37.5
+ChaseAltitude=0.80000001192092896
+
+[Camera.1.6]
+Guid={6B79DD49-9B4A-439D-BF40-ACBF157B0BA0}
+Zoom=10
+Translation=0, 0, 0
+Rotation=0, 0, 0
+
+[Camera.1.7]
+Guid={A2849229-938A-448F-8AC6-01EF2291C171}
+Zoom=80.300003051757813
+Translation=0, 0, 0
+Rotation=0, 0, 0
+
+[Camera.1.8]
+Guid={60BC0819-BD04-4AF6-8954-8FC8AA3545FF}
+Zoom=8
+Translation=0, 0, 0
+Rotation=0, 0, 0
+
+[Camera.1.9]
+Guid={AA8C80C0-9EE2-4284-A1C2-B20CD3F5F3D9}
+Zoom=8
+Translation=0, 0, 0
+Rotation=0, 0, 0
+
+[Camera.1.10]
+Guid={607C4520-CA6F-4135-AE10-8BF28838068F}
+Zoom=1
+Translation=0, 0, 0
+Rotation=0, 0, 0
+
+[Camera.1.11]
+Guid={C690EAFD-223A-42D0-99E0-681ADF93BB59}
+Zoom=1
+Translation=0, 0, 0
+Rotation=0, 0, 0
+
+[Camera.1.12]
+Guid={3A09FD6C-D406-4D8F-A5CD-FA4F5E0C12ED}
+Zoom=1
+Translation=0, 0, 0
+Rotation=0, 0, 0
+
+[Camera.1.13]
+Guid={D8D67955-2E9B-4E75-9D8B-8EFFBBFAC64A}
+Zoom=0.75
+Translation=0, 0, 0
+Rotation=0, 0, 0
+
+[EFIS]
+Active=False
+NavAid=VOR 1
+Type=Rectangles
+Density=Thin
+Range=Short
+Altitude=0
+Flags=0
+
+[ATC_AgentManager]
+NumberofAgents=0
+
+[ATC_Aircraft.0]
+ActiveFlightPlan=False
+RequestedFlightPlan=False
+AcState=ACSTATE_REQUEST_TAXI_CLEARANCE_OUT_VFR_ATIS
+NumberofWaypoints=0
+ClearanceFlags=80
+CtCur=CLEARANCE_NONE
+WaypointNext=0
+AltCleared=-1
+HdgAssigned=-1
+SquawkAssigned=4608
+LandingSequence=LANDING_NONE
+DepartureRequest=DEPARTURE_VFR_REQUEST_NONE
+ParkingRequest=PARKING_NAME_NONE
+ParkingTypeRequest=PARKING_TYPE_NONE
+PatternLeg=PATTERN_LEG_NONE
+ApproachIndex=-1
+ApproachTransitionIndex=-1
+ApproachRequestIndex=-1
+ApproachTransitionRequestIndex=-1
+RunwayIndex=-1
+RunwayRequestIndex=-1
+ParkingIndex=-1
+FlightFollowing=FLIGHT_FOLLOWING_NO
+AirspaceTransition=AIRSPACE_TRANSITION_NONE
+BVAirspaceTransition=BV_TYPE_NONE
+BVAirspaceTransitionReq=BV_TYPE_NONE
+TakeoffSequence=TAKEOFF_SEQUENCE_NONE
+LandingSequenceNumber=-1
+TaxiRouteCurrent=-1
+CruisingAltitude=-1
+RequestedCruisingAltitude=-1
+ExpectedAltitude=-1
+AircraftSignature=1,0
+
+[ATC_AircraftManager]
+NumberofAircraft=1
+
+[ATC_MessageSystem]
+FrequencyNodes=0
+
+[DateTimeSeason]
+Season=Spring
+Year=2006
+Day=139
+Hours=12
+Minutes=58
+Seconds=47
+
+[Panel.1]
+ScreenUniCoords=0, 0, 8192, 6144
+UndocCoords=0, 0, 0, 0
+Visible=True
+Undocked=False
+HiddenOn=False
+ID=0
+ViewsOn=1
+
+[Panel.2]
+ScreenUniCoords=0, 0, 0, 0
+UndocCoords=0, 0, 0, 0
+Visible=False
+Undocked=False
+HiddenOn=False
+ID=50
+ViewsOn=0
+
+[Panel.3]
+ScreenUniCoords=0, 0, 0, 0
+UndocCoords=0, 0, 0, 0
+Visible=False
+Undocked=False
+HiddenOn=False
+ID=225
+ViewsOn=0
+
+[Panel.4]
+ScreenUniCoords=0, 0, 0, 0
+UndocCoords=0, 0, 0, 0
+Visible=False
+Undocked=False
+HiddenOn=False
+ID=1
+ViewsOn=0
+
+[Panel.5]
+ScreenUniCoords=0, 0, 0, 0
+UndocCoords=0, 0, 0, 0
+Visible=False
+Undocked=False
+HiddenOn=False
+ID=2
+ViewsOn=0
+
+[Panel.6]
+ScreenUniCoords=0, 0, 0, 0
+UndocCoords=0, 0, 0, 0
+Visible=False
+Undocked=False
+HiddenOn=False
+ID=20000
+ViewsOn=1
+
+[Panel.7]
+ScreenUniCoords=0, 0, 0, 0
+UndocCoords=0, 0, 0, 0
+Visible=False
+Undocked=False
+HiddenOn=False
+ID=22001
+ViewsOn=0
+
+[Panel.8]
+ScreenUniCoords=0, 0, 0, 0
+UndocCoords=0, 0, 0, 0
+Visible=False
+Undocked=False
+HiddenOn=False
+ID=22002
+ViewsOn=0
+
+[Panel.9]
+ScreenUniCoords=0, 0, 0, 0
+UndocCoords=0, 0, 0, 0
+Visible=False
+Undocked=False
+HiddenOn=False
+ID=22003
+ViewsOn=0
+
+[User Tip Window]
+Undocked=False
+ScreenUniCoords=500, 400, 7192, 650
+UndocCoords=0, 0, 0, 0
+
+[Sim.0]
+Sim=Cessna Skyhawk 172SP
+
+[SimVars.0]
+Latitude=N43° 6' 25.872126"
+Longitude=W77° 41' 14.827541"
+Altitude=+000562.73
+Pitch=-1.6014593002106687
+Bank=-0
+Heading=31.600314772701925
+PVelBodyAxis=-0.0015984986752379336
+BVelBodyAxis=6.8023277925480057e-005
+HVelBodyAxis=9.3732020675277933e-006
+XVelBodyAxis=2.2511383143257947e-007
+YVelBodyAxis=-0.0017108517105813154
+ZVelBodyAxis=0.055672610861754387
+SimOnGround=True
+OnPlatformHeight=-9999999999
+
+[Avionics.0]
+Comm1Active=122.950
+Comm1Standby=118.000
+Comm2Active=119.900
+Comm2Standby=121.700
+Nav1Active=110.30
+Nav1Standby=110.60
+OBS1=340
+Nav2Active=116.80
+Nav2Standby=109.60
+OBS2=315
+Transponder=1200
+ADFActive=353
+ADF2Active=281
+DMESelected=1
+ComTransmit=1
+ComReceiveBoth=False
+AudioNav1Listen=False
+AudioNav2Listen=False
+AudioMarkerListen=False
+AudioDmeListen=False
+AudioAdfListen=False
+AudioAdf2Listen=False
+AvionicsSwitch=True
+
+[Slew.0]
+Active=False
+
+[Engine Parameters.1.0]
+ThrottleLeverPct=0.130340576171875
+PropellerLeverPct=1
+MixtureLeverPct=1
+Pct Engine RPM=0.39521461837225025
+MaxReachedEngineRPM=1488.6836592041809
+LeftMagneto=True
+RightMagneto=True
+GeneratorSwitch=True
+CowlFlapPct=0
+FuelPumpSwitch=False
+CarbHeat/DeiceSwitch=False
+
+[Fuel.0]
+TankSelector=All
+TankSelector1=All
+Center=100
+LeftMain=99.974861145019531
+RightMain=99.974861145019531
+LeftAux=100
+RightAux=100
+LeftTip=100
+RightTip=100
+Center 2=100
+Center 3=100
+External 1=100
+External 2=100
+
+[Systems.0]
+BatterySwitch=True
+StructuralDeiceSwitch=False
+PropDeiceSwitch=False
+Autobrakes=0
+StandbyVacuum=False
+PropSync=False
+AutoFeatherSwitch=False
+FlightDirector=False
+PanelLights=False
+
+[Gauges.0]
+KollsmanSetting=29.920000076293945
+
+[Switches.0]
+PitotHeat=False
+BeaconLights=True
+LandingLights=False
+LogoLights=False
+NavLights=False
+PanelLights=False
+RecognitionLights=False
+StrobeLights=False
+TaxiLights=False
+WingLights=False
+CabinLights=False
+
+[AutoPilot.0]
+MasterSwitch=False
+WingLeveler=False
+Nav1Lock=False
+HeadingLock=False
+HeadingValue=340
+AltitudeLock=False
+AltitudeValue=0
+AttitudeHold=False
+AirspeedHold=False
+AirspeedValue=0
+MachHold=False
+MachValue=0
+VerticalSpeedHold=False
+VerticalSpeedValue=0
+RPMHold=False
+RPMValue=0
+GlideslopeHold=False
+ApproachHold=False
+BackCourseHold=False
+YawDamper=False
+ToGa=False
+AutoThrottleArm=False
+GPSdrivesNAV1=False
+IsUsedForLesson=False
+
+[Payload.0]
+PayloadList=-1
+
+[Controls.0]
+SpoilersHandle=000.00
+FlapsHandle=000.00
+LeftFlap=000.00
+RightFlap=000.00
+GearsHandle=000.01
+Gear1=100.00
+Gear2=100.00
+Gear3=100.00
+YokeY=050.00
+YokeX=050.00
+Rudder=050.00
+LeftBrake=100.00
+RightBrake=100.00
+ParkingBrake=100.00
+ElevatorTrim=050.00
+RudderTrimPct=0
+AileronTrimPct=0
+
+[SimScheduler]
+SimSpeed=001.00
+SimTime=49.44140625
+
+[Weather]
+WeatherType=0
+ThemeName=
+ThemeTime=6
+
+[Flying Tip Window]
+Undocked=False
+ScreenUniCoords=500, 400, 7192, 650
+UndocCoords=0, 0, 0, 0

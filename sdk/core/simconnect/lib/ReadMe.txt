@@ -1,0 +1,8 @@
+This directory has the following files:
+
+Sample.exe.manifest - a sample manifest file. Place a copy of this in the same directory as a SimConnect client .exe and change that copy's name to the same name as the client .exe with ".manifest" appended to it. When the client is launched, the Windows OS side-by-side (SxS) assembly system will find the designated version of the SimConnect.dll to load into the client's process. You can use the manifest tool (mt.exe) that is provided in the Platform SDK to embed the manifest contents into the client .exe, eliminating the need to keep a copy of the .manifest file present with the .exe. See http://msdn.microsoft.com/library/default.asp?url=/library/en-us/sbscs/setup/mt_exe.asp for more details about the manifest tool. The use of SxS manifests avoids the management problems of having multiple copies of a shared DLL.
+
+SimConnect.lib - this is the import library that you can link with your code. It resolves the references to the SimConnect_* functions, causing your SimConnect client .exe to load-time dynamically link to the SimConnect client DLL. You can also use the LoadLibrary and GetProcAddress OS Win32 functions to access the SimConnect_* functions, if you prefer.
+
+SimConnect.msi - is the Microsoft Installer package to install a copy of the SimConnect client DLL on a system. The installation of Microsoft Flight Simulator X on a system will automatically install the SimConnect client DLL. This separate installer file is for use when you want to install a copy of the client DLL on other systems that will communicate remotely via SimConnect to the system running Microsoft Flight Simulator X.
+

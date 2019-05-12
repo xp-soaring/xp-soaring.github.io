@@ -1,0 +1,5762 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+  <style>
+<!--
+ /* Style Definitions */
+
+p,div
+	{mso-style-name:Text;
+	margin-top:0pt;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+li
+	{mso-style-name:Text;
+	margin-top:2pt;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.Link, div.link
+	{mso-style-name:Link;
+	margin-top:0pt;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:#3366FF;}
+li.Link
+	{mso-style-name:Link;
+	margin-top:0pt;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:#3366FF;}
+h1
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0pt;
+	margin-bottom:12.0pt;
+	margin-left:0pt;
+	text-align:left;
+	line-height:150%;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	font-size:20.0pt;
+	font-family:Arial;
+	color:black;
+	mso-bidi-font-style:italic;}
+h2
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0pt;
+	margin-bottom:12.0pt;
+	margin-left:0pt;
+	text-align:left;
+	line-height:150%;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	font-size:18.0pt;
+	font-family:Arial;
+	color:#000033;
+	mso-bidi-font-style:italic;}
+h3
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0pt;
+	margin-bottom:9.0pt;
+	margin-left:0pt;
+	text-align:left;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	font-size:16.0pt;
+	mso-bidi-font-size:13.0pt;
+	font-family:Arial;
+	color:#0000cc;}
+h4
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0pt;
+	margin-bottom:5.0pt;
+	margin-left:0pt;
+	text-align:left;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	font-size:13.0pt;
+	mso-bidi-font-size:13.0pt;
+	font-family:Arial;
+	color:#00aa00;}
+h5
+	{mso-style-next:Normal;
+	margin-top:3.0pt;
+	margin-right:0pt;
+	margin-bottom:3.0pt;
+	margin-left:0pt;
+	text-align:left;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	font-size:12.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:Arial;
+	color:#000000;}
+h6
+	{mso-style-next:Normal;
+	margin-top:3.0pt;
+	margin-right:0pt;
+	margin-bottom:3.0pt;
+	margin-left:0pt;
+	text-align:left;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	font-size:12.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:Arial;
+	color:#aa0000;}
+CODE
+	{mso-style-name:Code;
+	margin:0pt;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Courier New";
+	color:#000000;}
+A:Hover
+	{color:#00aa00;}
+BODY
+	{margin-left:30pt;
+	background:#f5f5f5;}
+@page Section1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;
+	mso-header-margin:36.0pt;
+	mso-footer-margin:36.0pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+
+table
+	{class:T1;
+	style:border:medium none;
+	border-collapse:collapse;
+	border:5;
+	background-color:#FFFF99;
+	border-color:#CC0000;
+	border-style:inset;
+	width:950;
+	text-align:left;}
+
+tr	{vertical-align:top;}
+
+-->
+  </style>
+</head>
+
+<body>
+
+<h2><img src="Images/fsx-bannerjet.jpg" width="800" height="200"></h2>
+<h1>Event IDs</h1>
+<h2>Overview</h2>
+<p>This document lists tables of Event IDs that are used by <a href="../../SimObject Creation Kit/Panels and Gauges SDK/Creating XML Gauges.html">XML gauges</a>, or from  <a href="../SimConnect SDK/SimConnect.htm">SimConnect</a>, in <i>Microsoft&reg; Flight Simulator X</i>. </p>
+<h6>&nbsp;</h6>
+<h6>See Also</h6>
+<ul>
+  <li><a href="../../sdk overview.html">SDK Overview</a></li>
+  <li><a href="Simulation Variables.html">Simulation Variables </a></li>
+</ul>
+<h2>Table of Contents </h2>
+<ul>
+
+  <li><a href="#NewEventIDsforFSX">New Event IDs for Flight Simulator X </a></li>
+
+  <li><a href="#AircraftEngineIDs">Aircraft Engine</a></li>
+  <li><a href="#AircraftFlightContolsIDs">Aircraft Flight Controls</a></li>
+
+  <li><a href="#AircraftAutopilotIDs">Aircraft Automatic Flight Controls / Autopilot</a></li>
+
+  <li><a href="#AircraftFuelSystemIDs">Aircraft Fuel System</a></li>
+
+  <li><a href="#AircraftAvionicsIDs">Aircraft Avionics</a></li>
+
+  <li><a href="#AircraftInstrumentsIDs">Aircraft Instruments</a></li>
+
+  <li><a href="#AircraftLightsIDs">Aircraft Lights</a></li>
+
+  <li><a href="#AircraftFailuresIDs">Aircraft Failures</a></li>
+
+  <li><a href="#HelicopterSpecificSystemsIDs">Aircraft Helicopter Specific</a></li>
+
+  <li><a href="#AircraftMiscellaneousSystemsIDs">Aircraft Miscellaneous</a></li>
+
+  <li><a href="#ViewSystemIDs">View System</a></li>
+
+  <li><a href="#AircraftSlewSystemIDs">Slew System</a></li>
+
+  <li><a href="#MiscellaneousEventsIDs">Miscellaneous Events</a></li>
+
+  <li><a href="#ATCIDs">ATC</a></li>
+
+  <li><a href="#MultiplayerIDs">Multiplayer</a></li>
+</ul>
+
+<h6>Notes: </h6>
+
+<ul>
+
+  <li>Use the SimConnect Name entries for <a href="../SimConnect SDK/SimConnect.htm">SimConnect</a> clients and XML authored gauges.</li>
+
+  <li>Not all events apply to all aircraft and all situations.</li>
+
+  <li>Events that require an argument have ranges or suggestions listed in parenthesis in the Description column. For SimConnect clients to set this value, it is passed in the <i>dwData</i> parameter of <b>SimConnect_TransmitClientEvent</b>, when getting the value it is returned in the <i>dwData</i> parameter of the <b>SIMCONNECT_RECV_EVENT</b> structure. </li>
+
+</ul>
+
+<h4>New Event IDs for Flight Simulator X <a name="NewEventIDsforFSX"></a></h4>
+<table class="T1" cellspacing="2" cellpadding="4">
+  <tr>
+    <td><h5>Event ID </h5></td>
+    <td><h5>SimConnect Name </h5></td>
+    <td><h5>Description</h5></td>
+  </tr>
+  <tr>
+    <td>KEY_REPAIR_AND_REFUEL</td>
+    <td>REPAIR_AND_REFUEL</td>
+    <td>Fully repair and refuel the user aircraft. Ignored if flight realism is enforced. </td>
+  </tr>
+  <tr>
+    <td>KEY_DME_SELECT</td>
+    <td>DME_SELECT</td>
+    <td>Selects one of the two DME systems (1,2). </td>
+  </tr>
+  
+  <tr>
+    <td>KEY_FUEL_DUMP_TOGGLE</td>
+    <td>FUEL_DUMP_TOGGLE</td>
+    <td>Turns on or off the fuel dump switch. </td>
+  </tr>
+  
+  <tr>
+    <td>KEY_VIEW_COCKPIT_FORWARD</td>
+    <td>VIEW_COCKPIT_FORWARD</td>
+    <td>Switch immediately to the foward view, in 2D mode. </td>
+  </tr>
+  <tr>
+    <td>KEY_VIEW_VIRTUAL_COCKPIT_FORWARD</td>
+    <td>VIEW_VIRTUAL_COCKPIT_FORWARD</td>
+    <td><p>Switch immediately to the forward view, in virtual cockpit mode. </p>    </td>
+  </tr>
+  
+  
+  <tr>
+    <td>KEY_TOW_PLANE_RELEASE</td>
+    <td>TOW_PLANE_RELEASE</td>
+    <td>Release a towed aircraft, usually a glider. </td>
+  </tr>
+  
+  <tr>
+    <td>KEY_REQUEST_TOW_PLANE</td>
+    <td>TOW_PLANE_REQUEST</td>
+    <td>Request a tow plane. The user aircraft must be towable, stationary, on the ground and not already attached for this to succeed. </td>
+  </tr>
+  <tr>
+    <td>KEY_REQUEST_FUEL</td>
+    <td>REQUEST_FUEL_KEY</td>
+    <td>Request a fuel truck. The aircraft must be in a parking spot for this to be successful. </td>
+  </tr>
+  <tr>
+    <td>KEY_RELEASE_DROPPABLE_OBJECTS</td>
+    <td>RELEASE_DROPPABLE_OBJECTS</td>
+    <td>Release one droppable object. Mutliple key events will release multiple objects. </td>
+  </tr>
+  
+  <tr>
+    <td>KEY_VIEW_PANEL_ALPHA_SET</td>
+    <td>VIEW_PANEL_ALPHA_SET</td>
+    <td>Sets the alpha-blending value for the panel. Takes a parameter in the range 0 to 255. The alpha-blending can be changed from the keyboard using Ctrl-Shift-T, and the plus and minus keys. </td>
+  </tr>
+  <tr>
+    <td>KEY_VIEW_PANEL_ALPHA_SELECT</td>
+    <td>VIEW_PANEL_ALPHA_SELECT</td>
+    <td>Sets the mode to change the alpha-blending, so the keys KEY_PLUS and KEY_MINUS increment and decrement the value. </td>
+  </tr>
+  <tr>
+    <td>KEY_VIEW_PANEL_ALPHA_INC</td>
+    <td>VIEW_PANEL_ALPHA_INC</td>
+    <td>Increment alpha-blending for the panel. </td>
+  </tr>
+  <tr>
+    <td>KEY_VIEW_PANEL_ALPHA_DEC</td>
+    <td>VIEW_PANEL_ALPHA_DEC</td>
+    <td>Decrement alpha-blending for the panel. </td>
+  </tr>
+  <tr>
+    <td>KEY_VIEW_LINKING_SET</td>
+    <td>VIEW_LINKING_SET</td>
+    <td>Links all the views from one camera together, so that panning the view will change the view of all the linked cameras. </td>
+  </tr>
+  <tr>
+    <td>KEY_VIEW_LINKING_TOGGLE</td>
+    <td>VIEW_LINKING_TOGGLE</td>
+    <td>Turns view linking on or off. </td>
+  </tr>
+  
+  <tr>
+    <td>KEY_RADIO_SELECTED_DME_IDENT_ENABLE </td>
+    <td>RADIO_SELECTED_DME_IDENT_ENABLE </td>
+    <td>Turns on the identification sound for the selected DME. </td>
+  </tr>
+  <tr>
+    <td>KEY_RADIO_SELECTED_DME_IDENT_DISABLE </td>
+    <td>RADIO_SELECTED_DME_IDENT_DISABLE</td>
+    <td>Turns off the identification sound for the selected DME. </td>
+  </tr>
+  <tr>
+    <td>KEY_RADIO_SELECTED_DME_IDENT_SET </td>
+    <td>RADIO_SELECTED_DME_IDENT_SET </td>
+    <td>Sets the DME idenfitication sound to the given filename. </td>
+  </tr>
+  <tr>
+    <td>KEY_RADIO_SELECTED_DME_IDENT_TOGGLE</td>
+    <td>RADIO_SELECTED_DME_IDENT_TOGGLE</td>
+    <td>Turns on or off the identification sound for the selected DME. </td>
+  </tr>
+  
+  <tr>
+    <td>KEY_GAUGE_KEYSTROKE</td>
+    <td>GAUGE_KEYSTROKE</td>
+    <td>Enables a keystroke to be sent to a gauge that is in focus. The keystrokes can only be in the range 0 to 9, A to Z, and the four keys: plus, minus, comma and period. This is typically used to allow some keyboard entry to a complex device such as a GPS to enter such things as ICAO codes using the keyboard, rather than turning dials. </td>
+  </tr>
+  
+  <tr>
+    <td>KEY_SIMUI_WINDOW_HIDESHOW</td>
+    <td>SIMUI_WINDOW_HIDESHOW</td>
+    <td>Display the ATC window. </td>
+  </tr>
+  
+  <tr>
+    <td>KEY_TOGGLE_VARIOMETER_SWITCH</td>
+    <td>TOGGLE_VARIOMETER_SWITCH </td>
+    <td>Turn the variometer on or off. </td>
+  </tr>
+  <tr>
+    <td>KEY_TOGGLE_TURN_INDICATOR_SWITCH</td>
+    <td>TOGGLE_TURN_INDICATOR_SWITCH</td>
+    <td>Turn the turn indicator on or off. </td>
+  </tr>
+  
+  <tr>
+    <td>KEY_WINDOW_TITLES_TOGGLE</td>
+    <td>VIEW_WINDOW_TITLES_TOGGLE</td>
+    <td>Turn window titles on or off. </td>
+  </tr>
+  
+  <tr>
+    <td>KEY_AXIS_PAN_PITCH</td>
+    <td>AXIS_PAN_PITCH</td>
+    <td>Sets the pitch of the axis. Requires an angle. </td>
+  </tr>
+  <tr>
+    <td>KEY_AXIS_PAN_HEADING</td>
+    <td>AXIS_PAN_HEADING</td>
+    <td>Sets the heading of the axis. Requires an angle. </td>
+  </tr>
+  <tr>
+    <td>KEY_AXIS_PAN_TILT</td>
+    <td>AXIS_PAN_TILT</td>
+    <td>Sets the tilt of the axis. Requires an angle. </td>
+  </tr>
+  <tr>
+    <td>KEY_AXIS_INDICATOR_CYCLE</td>
+    <td>VIEW_AXIS_INDICATOR_CYCLE</td>
+    <td>Step through the view axes. </td>
+  </tr>
+  <tr>
+    <td>	KEY_MAP_ORIENTATION_CYCLE</td>
+    <td>VIEW_MAP_ORIENTATION_CYCLE</td>
+    <td>Step through the map orienations. </td>
+  </tr>
+  
+  <tr>
+    <td>KEY_TOGGLE_JETWAY</td>
+    <td>TOGGLE_JETWAY</td>
+    <td>Requests a jetway, which will only be answered if the aircraft is at a parking spot. </td>
+  </tr>
+  
+  <tr>
+    <td>KEY_RETRACT_FLOAT_SWITCH_DEC</td>
+    <td>RETRACT_FLOAT_SWITCH_DEC</td>
+    <td>If the plane has retractable floats, moves the retract postion from Extend to Neutral, or Neutral to Retract. </td>
+  </tr>
+  <tr>
+    <td>KEY_RETRACT_FLOAT_SWITCH_INC</td>
+    <td>RETRACT_FLOAT_SWITCH_INC</td>
+    <td>If the plane has retractable floats, moves the retract postion from Retract to Neutral, or Neutral to Extend. </td>
+  </tr>
+  
+  <tr>
+    <td>KEY_TOGGLE_WATER_BALLAST_VALVE</td>
+    <td>TOGGLE_WATER_BALLAST_VALVE</td>
+    <td>Turn the water ballast valve on or off. </td>
+  </tr>
+  
+  <tr>
+    <td>KEY_VIEW_CHASE_DISTANCE_ADD</td>
+    <td>VIEW_CHASE_DISTANCE_ADD</td>
+    <td>Increments the distance of the view camera from the chase object (such as in Spot Plane view, or viewing an AI controlled aircraft). </td>
+  </tr>
+  <tr>
+    <td>KEY_VIEW_CHASE_DISTANCE_SUB</td>
+    <td>VIEW_CHASE_DISTANCE_SUB</td>
+    <td>Decrements the distance of the view camera from the chase object. </td>
+  </tr>
+  
+  <tr>
+    <td>KEY_APU_STARTER</td>
+    <td>APU_STARTER</td>
+    <td>Start up the auxiliary power unit (APU). </td>
+  </tr>
+  <tr>
+    <td>KEY_APU_OFF_SWITCH</td>
+    <td>APU_OFF_SWITCH</td>
+    <td>Turn the APU off. </td>
+  </tr>
+  <tr>
+    <td>KEY_APU_GENERATOR_SWITCH_TOGGLE</td>
+    <td>APU_GENERATOR_SWITCH_TOGGLE</td>
+    <td>Turn the auxiliary generator on or off. </td>
+  </tr>
+  <tr>
+    <td>KEY_APU_GENERATOR_SWITCH_SET</td>
+    <td>APU_GENERATOR_SWITCH_SET</td>
+    <td>Set the auxiliary generator switch (0,1). </td>
+  </tr>
+  
+  <tr>
+    <td>KEY_EXTINGUISH_ENGINE_FIRE</td>
+    <td>EXTINGUISH_ENGINE_FIRE</td>
+    <td>Extinguish all engine fires. </td>
+  </tr>
+  
+  <tr>
+    <td>KEY_AP_MAX_BANK_INC</td>
+    <td>AP_MAX_BANK_INC</td>
+    <td>Autopilot max bank angle increment. </td>
+  </tr>
+  <tr>
+    <td>KEY_AP_MAX_BANK_DEC</td>
+    <td>AP_MAX_BANK_DEC</td>
+    <td>Autopilot max bank angle decrement. </td>
+  </tr>
+  <tr>
+    <td>KEY_AP_N1_HOLD</td>
+    <td>AP_N1_HOLD</td>
+    <td>Autopilot, hold the N1 percentage at its current level. </td>
+  </tr>
+  <tr>
+    <td>KEY_AP_N1_REF_INC</td>
+    <td>AP_N1_REF_INC</td>
+    <td>Increment the autopilot N1 reference. </td>
+  </tr>
+  <tr>
+    <td>KEY_AP_N1_REF_DEC</td>
+    <td>AP_N1_REF_DEC</td>
+    <td>Decrement the autopilot N1 reference. </td>
+  </tr>
+  <tr>
+    <td>KEY_AP_N1_REF_SET</td>
+    <td>AP_N1_REF_SET</td>
+    <td>Sets the autopilot N1 reference. </td>
+  </tr>
+  <tr>
+    <td>KEY_HYDRAULIC_SWITCH_TOGGLE</td>
+    <td>HYDRAULIC_SWITCH_TOGGLE</td>
+    <td>Turn the hydraulic switch on or off. </td>
+  </tr>
+  
+  <tr>
+    <td>KEY_BLEED_AIR_SOURCE_CONTROL_INC</td>
+    <td>BLEED_AIR_SOURCE_CONTROL_INC</td>
+    <td>Increases the bleed air source control. </td>
+  </tr>
+  <tr>
+    <td>KEY_BLEED_AIR_SOURCE_CONTROL_DEC</td>
+    <td>BLEED_AIR_SOURCE_CONTROL_DEC</td>
+    <td>Decreases the bleed air source control. </td>
+  </tr>
+  
+  <tr>
+    <td>KEY_TURBINE_IGNITION_SWITCH_TOGGLE</td>
+    <td>TURBINE_IGNITION_SWITCH_TOGGLE</td>
+    <td>Turn the turbine ignition switch on or off. </td>
+  </tr>
+  
+  <tr>
+    <td>KEY_CABIN_NO_SMOKING_ALERT_<br>
+    SWITCH_TOGGLE</td>
+    <td>CABIN_NO_SMOKING_ALERT_<br>
+    SWITCH_TOGGLE</td>
+    <td>Turn the &quot;No smoking&quot; alert on or off. </td>
+  </tr>
+  <tr>
+    <td>KEY_CABIN_SEATBELTS_ALERT_<br>
+    SWITCH_TOGGLE</td>
+    <td>CABIN_SEATBELTS_ALERT_<br>
+    SWITCH_TOGGLE</td>
+    <td>Turn the &quot;Fasten seatbelts&quot; alert on or off. </td>
+  </tr>
+  <tr>
+    <td>KEY_ANTISKID_BRAKES_TOGGLE</td>
+    <td>ANTISKID_BRAKES_TOGGLE</td>
+    <td>Turn the anti-skid braking system on or off. </td>
+  </tr>
+  <tr>
+    <td>KEY_GPWS_SWITCH_TOGGLE</td>
+    <td>GPWS_SWITCH_TOGGLE</td>
+    <td>Turn the g round proximity warning system (GPWS) on or off. </td>
+  </tr>
+  <tr>
+    <td>KEY_VIDEO_RECORD_TOGGLE</td>
+    <td>VIDEO_RECORD_TOGGLE</td>
+    <td><p>Turn on or off the video recording feature. This records uncompressed AVI format files to:</p>
+    <p>My Documents\My Videos\  </p></td>
+  </tr>
+
+  <tr>
+    <td>KEY_TOGGLE_AIRPORT_NAME_DISPLAY</td>
+    <td>TOGGLE_AIRPORT_NAME_DISPLAY</td>
+    <td>Turn on or off the airport name.</td>
+  </tr>
+
+  <tr>
+    <td>KEY_CAPTURE_SCREENSHOT</td>
+    <td>CAPTURE_SCREENSHOT</td>
+    <td><p>Capture the current view as a screenshot. Which will be saved to a bmp file in:</p>
+    <p>My Documents\My Pictures\ </p></td>
+  </tr>
+
+  <tr>
+    <td>KEY_MOUSE_LOOK_TOGGLE</td>
+    <td>MOUSE_LOOK_TOGGLE</td>
+    <td>Switch Mouse Look mode on or off. Mouse Look mode enables a user to control their view using the mouse, and holding down the space bar. </td>
+  </tr>
+
+  <tr>
+    <td>KEY_YAXIS_INVERT_TOGGLE</td>
+    <td>YAXIS_INVERT_TOGGLE</td>
+    <td>Switch inversion of Y axis controls on or off. </td>
+  </tr>
+
+  <tr>
+    <td>KEY_AUTOCOORD_TOGGLE</td>
+    <td>AUTORUDDER_TOGGLE</td>
+    <td>Turn the automatic rudder control feature on or off. </td>
+  </tr>
+
+  <tr>
+    <td>KEY_FLY_BY_WIRE_ELAC_TOGGLE</td>
+    <td>FLY_BY_WIRE_ELAC_TOGGLE</td>
+    <td>Turn on or off the fly by wire Elevators and Ailerons computer.</td>
+  </tr>
+  <tr>
+    <td>KEY_FLY_BY_WIRE_FAC_TOGGLE</td>
+    <td>FLY_BY_WIRE_FAC_TOGGLE</td>
+    <td>Turn on or off the fly by wire Flight Augmentation computerl. </td>
+  </tr>
+  <tr>
+    <td>KEY_FLY_BY_WIRE_SEC_TOGGLE</td>
+    <td>FLY_BY_WIRE_SEC_TOGGLE</td>
+    <td>Turn on or off the fly by wire Spoilers and Elevators computer.</td>
+  </tr>
+
+  <tr>
+    <td>KEY_MANUAL_FUEL_PRESSURE_PUMP</td>
+    <td>MANUAL_FUEL_PRESSURE_PUMP</td>
+    <td>Activate the manual fuel pressure pump. </td>
+  </tr>
+  <tr>
+    <td><h6>Nose wheel steering </h6></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>KEY_STEERING_INC</td>
+    <td>STEERING_INC</td>
+    <td>Increments the nose wheel steering position by 5 percent. </td>
+  </tr>
+  <tr>
+    <td>KEY_STEERING_DEC</td>
+    <td>STEERING_DEC</td>
+    <td>Decrements the nose wheel steering position by 5 percent. </td>
+  </tr>
+  <tr>
+    <td>KEY_STEERING_SET</td>
+    <td>STEERING_SET</td>
+    <td>Sets the value of the nose wheel steering position. Zero is straight ahead (-16383, far left +16383, far right).</td>
+  </tr>
+  <tr>
+    <td><h6>Freezing position </h6></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>KEY_FREEZE_LATITUDE_LONGITUDE_TOGGLE</td>
+    <td>FREEZE_LATITUDE_LONGITUDE_TOGGLE</td>
+    <td>Turns the freezing of lat/lon position of the user aircraft on or off. </td>
+  </tr>
+  <tr>
+    <td>KEY_FREEZE_LATITUDE_LONGITUDE_SET</td>
+    <td>FREEZE_LATITUDE_LONGITUDE_SET</td>
+    <td>Freezes the lat/lon position of the aircraft at the current position. </td>
+  </tr>
+  <tr>
+    <td>KEY_FREEZE_ALTITUDE_TOGGLE</td>
+    <td>FREEZE_ALTITUDE_TOGGLE</td>
+    <td>Turns the freezing of the altitude of the user aircraft on or off. </td>
+  </tr>
+  <tr>
+    <td>KEY_FREEZE_ALTITUDE_SET</td>
+    <td>FREEZE_ALTITUDE_SET</td>
+    <td>Freezes the altitude of the user aircraft at the current altitude. </td>
+  </tr>
+  <tr>
+    <td><h6>Cabin pressurization </h6></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>KEY_PRESSURIZATION_PRESSURE_ALT_INC</td>
+    <td>KEY_PRESSURIZATION_PRESSURE_ALT_INC</td>
+    <td>Increases the altitude that the cabin is pressurized to. </td>
+  </tr>
+  <tr>
+    <td>KEY_PRESSURIZATION_PRESSURE_ALT_DEC</td>
+    <td>KEY_PRESSURIZATION_PRESSURE_ALT_DEC</td>
+    <td>Decreases the altitude that the cabin is pressurized to. </td>
+  </tr>
+  <tr>
+    <td>KEY_PRESSURIZATION_CLIMB_RATE_INC</td>
+    <td>PRESSURIZATION_CLIMB_RATE_INC</td>
+    <td>Sets the rate at which cabin pressurization is increased. </td>
+  </tr>
+  <tr>
+    <td>KEY_PRESSURIZATION_CLIMB_RATE_DEC</td>
+    <td>PRESSURIZATION_CLIMB_RATE_DEC</td>
+    <td>Sets the rate at which cabin pressurization is decreased. </td>
+  </tr>
+  <tr>
+    <td>KEY_PRESSURIZATION_PRESSURE_DUMP<br>
+    _SWTICH</td>
+    <td>PRESSURIZATION_PRESSURE_DUMP<br>
+    _SWTICH</td>
+    <td>Sets the cabin pressure to the outside air pressure. </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><h6>Fuel Selection Keys </h6></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>KEY_FUEL_SELECTOR_LEFT_MAIN</td>
+    <td>FUEL_SELECTOR_LEFT_MAIN</td>
+    <td>Sets the fuel selector. Fuel will be taken in the order left tip, left aux, then main fuel tanks. </td>
+  </tr>
+  <tr>
+    <td>KEY_FUEL_SELECTOR_2_LEFT_MAIN</td>
+    <td>FUEL_SELECTOR_2_LEFT_MAIN</td>
+    <td>Sets the fuel selector for engine 2. </td>
+  </tr>
+  <tr>
+    <td>KEY_FUEL_SELECTOR_3_LEFT_MAIN</td>
+    <td>FUEL_SELECTOR_3_LEFT_MAIN</td>
+    <td>Sets the fuel selector for engine 3. </td>
+  </tr>
+  <tr>
+    <td>KEY_FUEL_SELECTOR_4_LEFT_MAIN</td>
+    <td>FUEL_SELECTOR_4_LEFT_MAIN</td>
+    <td>Sets the fuel selector for engine 4. </td>
+  </tr>
+  <tr>
+    <td>KEY_FUEL_SELECTOR_RIGHT_MAIN</td>
+    <td>FUEL_SELECTOR_RIGHT_MAIN</td>
+    <td>Sets the fuel selector. Fuel will be taken in the order right tip, right aux, then main fuel tanks. </td>
+  </tr>
+  <tr>
+    <td>KEY_FUEL_SELECTOR_2_RIGHT_MAIN</td>
+    <td>FUEL_SELECTOR_2_RIGHT_MAIN</td>
+    <td>Sets the fuel selector for engine 2. </td>
+  </tr>
+  <tr>
+    <td>KEY_FUEL_SELECTOR_3_RIGHT_MAIN</td>
+    <td>FUEL_SELECTOR_3_RIGHT_MAIN</td>
+    <td>Sets the fuel selector for engine 3. </td>
+  </tr>
+  <tr>
+    <td>KEY_FUEL_SELECTOR_4_RIGHT_MAIN</td>
+    <td>FUEL_SELECTOR_4_RIGHT_MAIN</td>
+    <td>Sets the fuel selector for engine 4. </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><h6>Mission Keys </h6></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>KEY_POINT_OF_INTEREST_TOGGLE_POINTER</td>
+    <td>POINT_OF_INTEREST_TOGGLE_POINTER</td>
+    <td>Turn the point-of-interest indicator (often a light beam) on or off. Refer to the <a href="../../Mission Creation Kit/Mission Creation.html">Missions</a> system documentation. </td>
+  </tr>
+  <tr>
+    <td> KEY_POINT_OF_INTEREST_CYCLE_PREVIOUS</td>
+    <td>POINT_OF_INTEREST_CYCLE_PREVIOUS</td>
+    <td>Change the current point-of-interest to the previous point-of-interest. </td>
+  </tr>
+  <tr>
+    <td> KEY_POINT_OF_INTEREST_CYCLE_NEXT</td>
+    <td>POINT_OF_INTEREST_CYCLE_NEXT</td>
+    <td>Change the current point-of-interest to the next point-of-interest. </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+
+  <tr>
+    <td><h6>G1000 Keys (Primary Flight Display) </h6></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>KEY_G1000_PFD_FLIGHTPLAN_BUTTON</td>
+    <td>G1000_PFD_FLIGHTPLAN_BUTTON</td>
+    <td>The primary flight display (PFD) should display its current flight plan. </td>
+  </tr>
+  <tr>
+    <td>KEY_G1000_PFD_PROCEDURE_BUTTON</td>
+    <td>G1000_PFD_PROCEDURE_BUTTON</td>
+    <td>Turn  to the Procedure page. </td>
+  </tr>
+  <tr>
+    <td>KEY_G1000_PFD_ZOOMIN_BUTTON</td>
+    <td>G1000_PFD_ZOOMIN_BUTTON</td>
+    <td>Zoom in on the current map. </td>
+  </tr>
+  <tr>
+    <td>KEY_G1000_PFD_ZOOMOUT_BUTTON</td>
+    <td>G1000_PFD_ZOOMOUT_BUTTON</td>
+    <td>Zoom out on the current map. </td>
+  </tr>
+  <tr>
+    <td>KEY_G1000_PFD_DIRECTTO_BUTTON</td>
+    <td>G1000_PFD_DIRECTTO_BUTTON</td>
+    <td>Turn to the Direct To page. </td>
+  </tr>
+  <tr>
+    <td>KEY_G1000_PFD_MENU_BUTTON</td>
+    <td>G1000_PFD_MENU_BUTTON</td>
+    <td>If a segmented flight plan is highlighted, activates the associated menu. </td>
+  </tr>
+  <tr>
+    <td>KEY_G1000_PFD_CLEAR_BUTTON</td>
+    <td>G1000_PFD_CLEAR_BUTTON</td>
+    <td>Clears the current input. </td>
+  </tr>
+  <tr>
+    <td>KEY_G1000_PFD_ENTER_BUTTON</td>
+    <td>G1000_PFD_ENTER_BUTTON</td>
+    <td>Enters the current input. </td>
+  </tr>
+  <tr>
+    <td>KEY_G1000_PFD_CURSOR_BUTTON</td>
+    <td>G1000_PFD_CURSOR_BUTTON</td>
+    <td>Turns on or off a screen cursor. </td>
+  </tr>
+  <tr>
+    <td>KEY_G1000_PFD_GROUP_KNOB_INC</td>
+    <td>G1000_PFD_GROUP_KNOB_INC</td>
+    <td>Step up through the page groups. </td>
+  </tr>
+  <tr>
+    <td>KEY_G1000_PFD_GROUP_KNOB_DEC</td>
+    <td>G1000_PFD_GROUP_KNOB_DEC</td>
+    <td>Step down through the page groups. </td>
+  </tr>
+  <tr>
+    <td>KEY_G1000_PFD_PAGE_KNOB_INC</td>
+    <td>G1000_PFD_PAGE_KNOB_INC</td>
+    <td>Step up through the individual pages. </td>
+  </tr>
+  <tr>
+    <td>KEY_G1000_PFD_PAGE_KNOB_DEC</td>
+    <td>G1000_PFD_PAGE_KNOB_DEC</td>
+    <td>Step down through the individual pages. </td>
+  </tr>
+  <tr>
+    <td><p>KEY_G1000_PFD_SOFTKEY1, to </p>
+      <p>KEY_G1000_PFD_SOFTKEY12</p></td>
+    <td><p>G1000_PFD_SOFTKEY1, to</p>
+    <p>G1000_PFD_SOFTKEY12 </p></td>
+    <td>Initiate the action for the icon displayed in the softkey position. </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+
+  <tr>
+    <td><h6>G1000 (Multi-function Display) </h6></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>KEY_G1000_MFD_FLIGHTPLAN_BUTTON</td>
+    <td>G1000_MFD_FLIGHTPLAN_BUTTON</td>
+    <td>The multifunction  display (MFD) should display its current flight plan. </td>
+  </tr>
+  <tr>
+    <td>KEY_G1000_MFD_PROCEDURE_BUTTON</td>
+    <td>G1000_MFD_PROCEDURE_BUTTON</td>
+    <td>Turn  to the Procedure page. </td>
+  </tr>
+  <tr>
+    <td>KEY_G1000_MFD_ZOOMIN_BUTTON</td>
+    <td>G1000_MFD_ZOOMIN_BUTTON</td>
+    <td>Zoom in on the current map. </td>
+  </tr>
+  <tr>
+    <td>KEY_G1000_MFD_ZOOMOUT_BUTTON</td>
+    <td>G1000_MFD_ZOOMOUT_BUTTON</td>
+    <td>Zoom out on the current map. </td>
+  </tr>
+  <tr>
+    <td>KEY_G1000_MFD_DIRECTTO_BUTTON</td>
+    <td>G1000_MFD_DIRECTTO_BUTTON</td>
+    <td>Turn  to the Direct To page. </td>
+  </tr>
+  <tr>
+    <td>KEY_G1000_MFD_MENU_BUTTON</td>
+    <td>G1000_MFD_MENU_BUTTON</td>
+    <td>If a segmented flight plan is highlighted, activates the associated menu. </td>
+  </tr>
+  <tr>
+    <td>KEY_G1000_MFD_CLEAR_BUTTON</td>
+    <td>G1000_MFD_CLEAR_BUTTON</td>
+    <td>Clears the current input. </td>
+  </tr>
+  <tr>
+    <td>KEY_G1000_MFD_ENTER_BUTTON</td>
+    <td>G1000_MFD_ENTER_BUTTON</td>
+    <td>Enters the current input. </td>
+  </tr>
+  <tr>
+    <td>KEY_G1000_MFD_CURSOR_BUTTON</td>
+    <td>G1000_MFD_CURSOR_BUTTON</td>
+    <td>Turns on or off a screen cursor. </td>
+  </tr>
+  <tr>
+    <td>KEY_G1000_MFD_GROUP_KNOB_INC</td>
+    <td>G1000_MFD_GROUP_KNOB_INC</td>
+    <td>Step up through the page groups. </td>
+  </tr>
+  <tr>
+    <td>KEY_G1000_MFD_GROUP_KNOB_DEC</td>
+    <td>G1000_MFD_GROUP_KNOB_DEC</td>
+    <td>Step down through the page groups. </td>
+  </tr>
+  <tr>
+    <td>KEY_G1000_MFD_PAGE_KNOB_INC</td>
+    <td>G1000_MFD_PAGE_KNOB_INC</td>
+    <td>Step up through the individual pages. </td>
+  </tr>
+  <tr>
+    <td>KEY_G1000_MFD_PAGE_KNOB_DEC</td>
+    <td>G1000_MFD_PAGE_KNOB_DEC</td>
+    <td>Step down through the individual pages. </td>
+  </tr>
+  <tr>
+    <td><p>KEY_G1000_MFD_SOFTKEY1, to</p>
+    <p>KEY_G1000_MFD_SOFTKEY12</p></td>
+    <td><p>G1000_MFD_SOFTKEY1, to</p>
+    <p>G1000_MFD_SOFTKEY2</p></td>
+    <td>Initiate the action for the icon displayed in the softkey position. </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<h4>Aircraft Engine<a name="AircraftEngineIDs"></a></h4>
+
+<p>&nbsp;</p>
+
+<table class="T1" cellpadding="2" cellspacing="4">
+  <tbody>
+    <tr>
+      <td><h5>Event ID</h5></td>
+      <td><h5>SimConnect Name </h5></td>
+      <td><h5>Description</h5></td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE_FULL</td>
+      <td>&nbsp;THROTTLE_FULL</td>
+      <td>Set throttles max</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE_INCR</td>
+      <td>&nbsp;THROTTLE_INCR</td>
+      <td>Increment throttles</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE_INCR_SMALL</td>
+      <td>&nbsp;THROTTLE_INCR_SMALL</td>
+      <td>Increment throttles small</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE_DECR</td>
+      <td>THROTTLE_DECR</td>
+      <td>Decrement throttles</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE_DECR_SMALL </td>
+      <td>THROTTLE_DECR_SMALL</td>
+      <td>Decrease throttles small</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE_CUT</td>
+      <td>THROTTLE_CUT</td>
+      <td>Set throttles to idle</td>
+    </tr>
+    <tr>
+      <td>KEY_INCREASE_THROTTLE</td>
+      <td>INCREASE_THROTTLE</td>
+      <td>Increment throttles</td>
+    </tr>
+    <tr>
+      <td>KEY_DECREASE_THROTTLE</td>
+      <td>DECREASE_THROTTLE</td>
+      <td>Decrement throttles</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE_SET</td>
+      <td>THROTTLE_SET</td>
+      <td>Set throttles exactly (0- 16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_AXIS_THROTTLE_SET</td>
+      <td>AXIS_THROTTLE_SET</td>
+      <td>Set throttles (0- 16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE1_SET</td>
+      <td>THROTTLE1_SET</td>
+      <td>Set throttle 1 exactly (0 &ndash; 16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE2_SET</td>
+      <td>THROTTLE2_SET</td>
+      <td>Set throttle 2 exactly (0 &ndash; 16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE3_SET</td>
+      <td>THROTTLE3_SET</td>
+      <td>Set throttle 3 exactly (0 &ndash; 16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE4_SET</td>
+      <td>THROTTLE4_SET</td>
+      <td>Set throttle 4 exactly (0 &ndash; 16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE1_FULL</td>
+      <td>THROTTLE1_FULL</td>
+      <td>Set throttle 1 max</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE1_INCR</td>
+      <td>THROTTLE1_INCR</td>
+      <td>Increment throttle 1</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE1_INCR_SMALL</td>
+      <td>THROTTLE1_INCR_SMALL</td>
+      <td>Increment throttle 1 small</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE1_DECR</td>
+      <td>THROTTLE1_DECR</td>
+      <td>Decrement throttle 1</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE1_CUT</td>
+      <td>THROTTLE1_CUT</td>
+      <td>Set throttle 1 to idle</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE2_FULL</td>
+      <td>THROTTLE2_FULL</td>
+      <td>Set throttle 2 max</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE2_INCR</td>
+      <td>THROTTLE2_INCR</td>
+      <td>Increment throttle 2</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE2_INCR_SMALL</td>
+      <td>THROTTLE2_INCR_SMALL</td>
+      <td>Increment throttle 2 small</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE2_DECR</td>
+      <td>THROTTLE2_DECR</td>
+      <td>Decrement throttle 2</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE2_CUT</td>
+      <td>THROTTLE2_CUT</td>
+      <td>Set throttle 2 to idle</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE3_FULL</td>
+      <td>THROTTLE3_FULL</td>
+      <td>Set throttle 3 max</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE3_INCR</td>
+      <td>THROTTLE3_INCR</td>
+      <td>Increment throttle 3</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE3_INCR_SMALL</td>
+      <td>THROTTLE3_INCR_SMALL</td>
+      <td>Increment throttle 3 small</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE3_DECR</td>
+      <td>THROTTLE3_DECR</td>
+      <td>Decrement throttle 3</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE3_CUT</td>
+      <td>THROTTLE3_CUT</td>
+      <td>Set throttle 3 to idle</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE4_FULL</td>
+      <td>THROTTLE4_FULL</td>
+      <td>Set throttle 1 max</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE4_INCR</td>
+      <td>THROTTLE4_INCR</td>
+      <td>Increment throttle 4</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE4_INCR_SMALL</td>
+      <td>THROTTLE4_INCR_SMALL</td>
+      <td>Increment throttle 4 small</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE4_DECR</td>
+      <td>THROTTLE4_DECR</td>
+      <td>Decrement throttle 4</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE4_CUT</td>
+      <td>THROTTLE4_CUT</td>
+      <td>Set throttle 4 to idle</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE_10</td>
+      <td>THROTTLE_10</td>
+      <td>Set throttles to 10%</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE_20</td>
+      <td>THROTTLE_20</td>
+      <td>Set throttles to 20%</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE_30</td>
+      <td>THROTTLE_30</td>
+      <td>Set throttles to 30%</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE_40</td>
+      <td>THROTTLE_40</td>
+      <td>Set throttles to 40%</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE_50</td>
+      <td>THROTTLE_50</td>
+      <td>Set throttles to 50%</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE_60</td>
+      <td>THROTTLE_60</td>
+      <td>Set throttles to 60%</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE_70</td>
+      <td>THROTTLE_70</td>
+      <td>Set throttles to 70%</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE_80</td>
+      <td>THROTTLE_80</td>
+      <td>Set throttles to 80%</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE_90</td>
+      <td>THROTTLE_90</td>
+      <td>Set throttles to 90%</td>
+    </tr>
+    <tr>
+      <td>KEY_AXIS_THROTTLE1_SET</td>
+      <td>AXIS_THROTTLE1_SET</td>
+      <td>Set throttle 1 exactly  (-16383 - +16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_AXIS_THROTTLE2_SET</td>
+      <td>AXIS_THROTTLE2_SET</td>
+      <td>Set throttle 2 exactly  (-16383 - +16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_AXIS_THROTTLE3_SET</td>
+      <td>AXIS_THROTTLE3_SET</td>
+      <td>Set throttle 3 exactly  (-16383 - +16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_AXIS_THROTTLE4_SET</td>
+      <td>AXIS_THROTTLE4_SET</td>
+      <td>Set throttle 4 exactly  (-16383 - +16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE1_DECR_SMALL </td>
+      <td>THROTTLE1_DECR_SMALL</td>
+      <td>Decrease throttle 1 small</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE2_DECR_SMALL </td>
+      <td>THROTTLE2_DECR_SMALL</td>
+      <td>Decrease throttle 2 small</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE3_DECR_SMALL </td>
+      <td>THROTTLE3_DECR_SMALL</td>
+      <td>Decrease throttle 3 small</td>
+    </tr>
+    <tr>
+      <td>KEY_THROTTLE4_DECR_SMALL </td>
+      <td>THROTTLE4_DECR_SMALL</td>
+      <td>Decrease throttle 4 small</td>
+    </tr>
+    <tr>
+      <td>KEY_PROP_PITCH_DECR_SMALL </td>
+      <td>PROP_PITCH_DECR_SMALL</td>
+      <td>Decrease prop levers small</td>
+    </tr>
+    <tr>
+      <td>KEY_PROP_PITCH1_DECR_SMALL </td>
+      <td>PROP_PITCH1_DECR_SMALL</td>
+      <td>Decrease prop lever 1 small</td>
+    </tr>
+    <tr>
+      <td>KEY_PROP_PITCH2_DECR_SMALL </td>
+      <td>PROP_PITCH2_DECR_SMALL</td>
+      <td>Decrease prop lever 2 small</td>
+    </tr>
+    <tr>
+      <td>KEY_PROP_PITCH3_DECR_SMALL </td>
+      <td>PROP_PITCH3_DECR_SMALL</td>
+      <td>Decrease prop lever 3 small</td>
+    </tr>
+    <tr>
+      <td>KEY_PROP_PITCH4_DECR_SMALL </td>
+      <td>PROP_PITCH4_DECR_SMALL</td>
+      <td>Decrease prop lever 4 small</td>
+    </tr>
+    <tr>
+      <td>KEY_MIXTURE1_RICH</td>
+      <td>MIXTURE1_RICH</td>
+      <td>Set mixture lever 1 to max rich</td>
+    </tr>
+    <tr>
+      <td>KEY_MIXTURE1_INCR</td>
+      <td>MIXTURE1_INCR</td>
+      <td>Increment mixture lever 1 </td>
+    </tr>
+    <tr>
+      <td>KEY_MIXTURE1_INCR_SMALL</td>
+      <td>MIXTURE1_INCR_SMALL</td>
+      <td>Increment mixture lever 1 small</td>
+    </tr>
+    <tr>
+      <td>KEY_MIXTURE1_DECR</td>
+      <td>MIXTURE1_DECR</td>
+      <td>Decrement mixture lever 1 </td>
+    </tr>
+    <tr>
+      <td>KEY_MIXTURE1_LEAN</td>
+      <td>MIXTURE1_LEAN</td>
+      <td>Set mixture lever 1 to max lean</td>
+    </tr>
+    <tr>
+      <td>KEY_MIXTURE2_RICH</td>
+      <td>MIXTURE2_RICH</td>
+      <td>Set mixture lever 2 to max rich</td>
+    </tr>
+    <tr>
+      <td>KEY_MIXTURE2_INCR</td>
+      <td>MIXTURE2_INCR</td>
+      <td>Increment mixture lever 2 </td>
+    </tr>
+    <tr>
+      <td>KEY_MIXTURE2_INCR_SMALL</td>
+      <td>MIXTURE2_INCR_SMALL</td>
+      <td>Increment mixture lever 2 small</td>
+    </tr>
+    <tr>
+      <td>KEY_MIXTURE2_DECR</td>
+      <td>MIXTURE2_DECR</td>
+      <td>Decrement mixture lever 2 </td>
+    </tr>
+    <tr>
+      <td>KEY_MIXTURE2_LEAN</td>
+      <td>MIXTURE2_LEAN</td>
+      <td>Set mixture lever 2 to max lean</td>
+    </tr>
+    <tr>
+      <td>KEY_MIXTURE3_RICH</td>
+      <td>MIXTURE3_RICH</td>
+      <td>Set mixture lever 3 to max rich</td>
+    </tr>
+    <tr>
+      <td>KEY_MIXTURE3_INCR</td>
+      <td>MIXTURE3_INCR</td>
+      <td>Increment mixture lever 3 </td>
+    </tr>
+    <tr>
+      <td>KEY_MIXTURE3_INCR_SMALL</td>
+      <td>MIXTURE3_INCR_SMALL</td>
+      <td>Increment mixture lever 3 small</td>
+    </tr>
+    <tr>
+      <td>KEY_MIXTURE3_DECR</td>
+      <td>MIXTURE3_DECR</td>
+      <td>Decrement mixture lever 3 </td>
+    </tr>
+    <tr>
+      <td>KEY_MIXTURE3_LEAN</td>
+      <td>MIXTURE3_LEAN</td>
+      <td>Set mixture lever 3 to max lean</td>
+    </tr>
+    <tr>
+      <td>KEY_MIXTURE4_RICH</td>
+      <td>MIXTURE4_RICH</td>
+      <td>Set mixture lever 4 to max rich</td>
+    </tr>
+    <tr>
+      <td>KEY_MIXTURE4_INCR</td>
+      <td>MIXTURE4_INCR</td>
+      <td>Increment mixture lever 4</td>
+    </tr>
+    <tr>
+      <td>KEY_MIXTURE4_INCR_SMALL</td>
+      <td>MIXTURE4_INCR_SMALL</td>
+      <td>Increment mixture lever 4 small</td>
+    </tr>
+    <tr>
+      <td>KEY_MIXTURE4_DECR</td>
+      <td>MIXTURE4_DECR</td>
+      <td>Decrement mixture lever 4 </td>
+    </tr>
+    <tr>
+      <td>KEY_MIXTURE4_LEAN</td>
+      <td>MIXTURE4_LEAN</td>
+      <td>Set mixture lever 4 to max lean</td>
+    </tr>
+    <tr>
+      <td>KEY_MIXTURE_SET</td>
+      <td>MIXTURE_SET</td>
+      <td>Set mixture levers to exact value (0 &ndash; 16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_MIXTURE_RICH</td>
+      <td>MIXTURE_RICH</td>
+      <td>Set mixture levers to max rich </td>
+    </tr>
+    <tr>
+      <td>KEY_MIXTURE_INCR</td>
+      <td>MIXTURE_INCR</td>
+      <td>Increment mixture levers</td>
+    </tr>
+    <tr>
+      <td>KEY_MIXTURE_INCR_SMALL</td>
+      <td>MIXTURE_INCR_SMALL</td>
+      <td>Increment mixture levers small </td>
+    </tr>
+    <tr>
+      <td>KEY_MIXTURE_DECR</td>
+      <td>MIXTURE_DECR</td>
+      <td>Decrement mixture levers</td>
+    </tr>
+    <tr>
+      <td>KEY_MIXTURE_LEAN</td>
+      <td>MIXTURE_LEAN</td>
+      <td>Set mixture levers to max lean</td>
+    </tr>
+    <tr>
+      <td>KEY_MIXTURE1_SET</td>
+      <td>MIXTURE1_SET</td>
+      <td>Set mixture lever 1 exact value (0 &ndash; 16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_MIXTURE2_SET</td>
+      <td>MIXTURE2_SET</td>
+      <td>Set mixture lever 2 exact value (0 &ndash; 16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_MIXTURE3_SET</td>
+      <td>MIXTURE3_SET</td>
+      <td>Set mixture lever 3 exact value (0 &ndash; 16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_MIXTURE4_SET</td>
+      <td>MIXTURE4_SET</td>
+      <td>Set mixture lever 4 exact value (0 &ndash; 16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_AXIS_MIXTURE_SET</td>
+      <td>AXIS_MIXTURE_SET</td>
+      <td>Set mixture lever 1 exact value (-16383 &ndash; +16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_AXIS_MIXTURE1_SET</td>
+      <td>AXIS_MIXTURE1_SET</td>
+      <td>Set mixture lever 1 exact value (-16383 &ndash; +16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_AXIS_MIXTURE2_SET</td>
+      <td>AXIS_MIXTURE2_SET</td>
+      <td>Set mixture lever 2 exact value (-16383 &ndash; +16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_AXIS_MIXTURE3_SET</td>
+      <td>AXIS_MIXTURE3_SET</td>
+      <td>Set mixture lever 3 exact value (-16383 &ndash; +16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_AXIS_MIXTURE4_SET</td>
+      <td>AXIS_MIXTURE4_SET</td>
+      <td>Set mixture lever 4 exact value (-16383 &ndash; +16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_MIXTURE_SET_BEST </td>
+      <td>MIXTURE_SET_BEST</td>
+      <td>Set mixture levers to current best power setting</td>
+    </tr>
+    <tr>
+      <td>KEY_MIXTURE_DECR_SMALL </td>
+      <td>MIXTURE_DECR_SMALL</td>
+      <td>Decrement mixture levers small</td>
+    </tr>
+    <tr>
+      <td>KEY_MIXTURE1_DECR_SMALL </td>
+      <td>MIXTURE1_DECR_SMALL</td>
+      <td>Decrement mixture lever 1 small</td>
+    </tr>
+    <tr>
+      <td>KEY_MIXTURE2_DECR_SMALL </td>
+      <td>MIXTURE2_DECR_SMALL</td>
+      <td>Decrement mixture lever 4 small</td>
+    </tr>
+    <tr>
+      <td>KEY_MIXTURE3_DECR_SMALL </td>
+      <td>MIXTURE3_DECR_SMALL</td>
+      <td>Decrement mixture lever 4 small</td>
+    </tr>
+    <tr>
+      <td>KEY_MIXTURE4_DECR_SMALL </td>
+      <td>MIXTURE4_DECR_SMALL</td>
+      <td>Decrement mixture lever 4 small</td>
+    </tr>
+    <tr>
+      <td>KEY_PROP_PITCH_SET</td>
+      <td>PROP_PITCH_SET</td>
+      <td>Set prop pitch levers (0 &ndash; 16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_PROP_PITCH_LO</td>
+      <td>PROP_PITCH_LO</td>
+      <td>Set prop pitch levers max (lo pitch)</td>
+    </tr>
+    <tr>
+      <td>KEY_PROP_PITCH_INCR</td>
+      <td>PROP_PITCH_INCR</td>
+      <td>Increment prop pitch levers</td>
+    </tr>
+    <tr>
+      <td>KEY_PROP_PITCH_INCR_SMALL</td>
+      <td>PROP_PITCH_INCR_SMALL</td>
+      <td>Increment prop pitch levers small</td>
+    </tr>
+    <tr>
+      <td>KEY_PROP_PITCH_DECR</td>
+      <td>PROP_PITCH_DECR</td>
+      <td>Decrement prop pitch levers</td>
+    </tr>
+    <tr>
+      <td>KEY_PROP_PITCH_HI</td>
+      <td>PROP_PITCH_HI</td>
+      <td>Set prop pitch levers min (hi pitch)</td>
+    </tr>
+    <tr>
+      <td>KEY_PROP_PITCH1_SET</td>
+      <td>PROP_PITCH1_SET</td>
+      <td>Set prop pitch lever 1 exact value (0 &ndash; 16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_PROP_PITCH2_SET</td>
+      <td>PROP_PITCH2_SET</td>
+      <td>Set prop pitch lever 2 exact value (0 &ndash; 16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_PROP_PITCH3_SET</td>
+      <td>PROP_PITCH3_SET</td>
+      <td>Set prop pitch lever 3 exact value (0 &ndash; 16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_PROP_PITCH4_SET</td>
+      <td>PROP_PITCH4_SET</td>
+      <td>Set prop pitch lever 4 exact value (0 &ndash; 16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_PROP_PITCH1_LO</td>
+      <td>PROP_PITCH1_LO</td>
+      <td>Set prop pitch lever 1 max (lo pitch)</td>
+    </tr>
+    <tr>
+      <td>KEY_PROP_PITCH1_INCR</td>
+      <td>PROP_PITCH1_INCR</td>
+      <td>Increment prop pitch lever 1</td>
+    </tr>
+    <tr>
+      <td>KEY_PROP_PITCH1_INCR_SMALL</td>
+      <td>PROP_PITCH1_INCR_SMALL</td>
+      <td>Increment prop pitch lever 1 small</td>
+    </tr>
+    <tr>
+      <td>KEY_PROP_PITCH1_DECR</td>
+      <td>PROP_PITCH1_DECR</td>
+      <td>Decrement prop pitch lever 1</td>
+    </tr>
+    <tr>
+      <td>KEY_PROP_PITCH1_HI</td>
+      <td>PROP_PITCH1_HI</td>
+      <td>Set prop pitch lever 1 min (hi pitch)</td>
+    </tr>
+    <tr>
+      <td>KEY_PROP_PITCH2_LO</td>
+      <td>PROP_PITCH2_LO</td>
+      <td>Set prop pitch lever 2 max (lo pitch)</td>
+    </tr>
+    <tr>
+      <td>KEY_PROP_PITCH2_INCR</td>
+      <td>PROP_PITCH2_INCR</td>
+      <td>Increment prop pitch lever 2</td>
+    </tr>
+    <tr>
+      <td>KEY_PROP_PITCH2_INCR_SMALL</td>
+      <td>PROP_PITCH2_INCR_SMALL</td>
+      <td>Increment prop pitch lever 2 small</td>
+    </tr>
+    <tr>
+      <td>KEY_PROP_PITCH2_DECR</td>
+      <td>PROP_PITCH2_DECR</td>
+      <td>Decrement prop pitch lever 2</td>
+    </tr>
+    <tr>
+      <td>KEY_PROP_PITCH2_HI</td>
+      <td>PROP_PITCH2_HI</td>
+      <td>Set prop pitch lever 2 min (hi pitch)</td>
+    </tr>
+    <tr>
+      <td>KEY_PROP_PITCH3_LO</td>
+      <td>PROP_PITCH3_LO</td>
+      <td>Set prop pitch lever 3 max (lo pitch)</td>
+    </tr>
+    <tr>
+      <td>KEY_PROP_PITCH3_INCR</td>
+      <td>PROP_PITCH3_INCR</td>
+      <td>Increment prop pitch lever 3</td>
+    </tr>
+    <tr>
+      <td>KEY_PROP_PITCH3_INCR_SMALL</td>
+      <td>PROP_PITCH3_INCR_SMALL</td>
+      <td>Increment prop pitch lever 3 small</td>
+    </tr>
+    <tr>
+      <td>KEY_PROP_PITCH3_DECR</td>
+      <td>PROP_PITCH3_DECR</td>
+      <td>Decrement prop pitch lever 3</td>
+    </tr>
+    <tr>
+      <td>KEY_PROP_PITCH3_HI</td>
+      <td>PROP_PITCH3_HI</td>
+      <td>Set prop pitch lever 3 min (hi pitch)</td>
+    </tr>
+    <tr>
+      <td>KEY_PROP_PITCH4_LO</td>
+      <td>PROP_PITCH4_LO</td>
+      <td>Set prop pitch lever 4 max (lo pitch)</td>
+    </tr>
+    <tr>
+      <td>KEY_PROP_PITCH4_INCR</td>
+      <td>PROP_PITCH4_INCR</td>
+      <td>Increment prop pitch lever 4</td>
+    </tr>
+    <tr>
+      <td>KEY_PROP_PITCH4_INCR_SMALL</td>
+      <td>PROP_PITCH4_INCR_SMALL</td>
+      <td>Increment prop pitch lever 4 small</td>
+    </tr>
+    <tr>
+      <td>KEY_PROP_PITCH4_DECR</td>
+      <td>PROP_PITCH4_DECR</td>
+      <td>Decrement prop pitch lever 4</td>
+    </tr>
+    <tr>
+      <td>KEY_PROP_PITCH4_HI</td>
+      <td>PROP_PITCH4_HI</td>
+      <td>Set prop pitch lever 4 min (hi pitch)</td>
+    </tr>
+    <tr>
+      <td>KEY_AXIS_PROPELLER_SET</td>
+      <td>AXIS_PROPELLER_SET</td>
+      <td>Set propeller levers exact value (-16383 &ndash; +16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_AXIS_PROPELLER1_SET</td>
+      <td>AXIS_PROPELLER1_SET</td>
+      <td>Set propeller lever 1 exact value (-16383 &ndash; +16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_AXIS_PROPELLER2_SET</td>
+      <td>AXIS_PROPELLER2_SET</td>
+      <td>Set propeller lever 2 exact value (-16383 &ndash; +16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_AXIS_PROPELLER3_SET</td>
+      <td>AXIS_PROPELLER3_SET</td>
+      <td>Set propeller lever 3 exact value (-16383 &ndash; +16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_AXIS_PROPELLER4_SET</td>
+      <td>AXIS_PROPELLER4_SET</td>
+      <td>Set propeller lever 4 exact value (-16383 &ndash; +16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_JET_STARTER</td>
+      <td>JET_STARTER</td>
+      <td>Selects jet engine starter (for +/- sequence)</td>
+    </tr>
+    <tr>
+      <td>KEY_STARTER_SET</td>
+      <td>MAGNETO_SET</td>
+      <td>Sets magnetos (0,1)</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_STARTER1</td>
+      <td>TOGGLE_STARTER1</td>
+      <td>Toggle starter 1</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_STARTER2</td>
+      <td>TOGGLE_STARTER2</td>
+      <td>Toggle starter 2</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_STARTER3</td>
+      <td>TOGGLE_STARTER3</td>
+      <td>Toggle starter 3</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_STARTER4</td>
+      <td>TOGGLE_STARTER4</td>
+      <td>Toggle starter 4</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_ALL_STARTERS</td>
+      <td>TOGGLE_ALL_STARTERS</td>
+      <td>Toggle starters</td>
+    </tr>
+    <tr>
+      <td>KEY_ENGINE_AUTO_START</td>
+      <td>ENGINE_AUTO_START</td>
+      <td>Triggers auto-start</td>
+    </tr>
+    <tr>
+      <td>KEY_ENGINE_AUTO_SHUTDOWN</td>
+      <td>ENGINE_AUTO_SHUTDOWN</td>
+      <td>Triggers auto-shutdown</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO</td>
+      <td>MAGNETO</td>
+      <td>Selects magnetos (for +/- sequence)</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO_DECR</td>
+      <td>MAGNETO_DECR</td>
+      <td>Decrease magneto switches positions</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO_INCR</td>
+      <td>MAGNETO_INCR</td>
+      <td>Increase magneto switches positions</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO1_OFF</td>
+      <td>MAGNETO1_OFF</td>
+      <td>Set engine 1 magnetos off</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO1_RIGHT</td>
+      <td>MAGNETO1_RIGHT</td>
+      <td>Toggle engine 1 right magneto</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO1_LEFT</td>
+      <td>MAGNETO1_LEFT</td>
+      <td>Toggle engine 1 left magneto</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO1_BOTH</td>
+      <td>MAGNETO1_BOTH</td>
+      <td>Set engine 1 magnetos on</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO1_START</td>
+      <td>MAGNETO1_START</td>
+      <td>Set engine 1 magnetos on and toggle starter</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO2_OFF</td>
+      <td>MAGNETO2_OFF</td>
+      <td>Set engine 2 magnetos off</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO2_RIGHT</td>
+      <td>MAGNETO2_RIGHT</td>
+      <td>Toggle engine 2 right magneto</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO2_LEFT</td>
+      <td>MAGNETO2_LEFT</td>
+      <td>Toggle engine 2 left magneto</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO2_BOTH</td>
+      <td>MAGNETO2_BOTH</td>
+      <td>Set engine 2 magnetos on</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO2_START</td>
+      <td>MAGNETO2_START</td>
+      <td>Set engine 2 magnetos on and toggle starter</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO3_OFF</td>
+      <td>MAGNETO3_OFF</td>
+      <td>Set engine 3 magnetos off</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO3_RIGHT</td>
+      <td>MAGNETO3_RIGHT</td>
+      <td>Toggle engine 3 right magneto</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO3_LEFT</td>
+      <td>MAGNETO3_LEFT</td>
+      <td>Toggle engine 3 left magneto</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO3_BOTH</td>
+      <td>MAGNETO3_BOTH</td>
+      <td>Set engine 3 magnetos on</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO3_START</td>
+      <td>MAGNETO3_START</td>
+      <td>Set engine 3 magnetos on and toggle starter</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO4_OFF</td>
+      <td>MAGNETO4_OFF</td>
+      <td>Set engine 4 magnetos off</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO4_RIGHT</td>
+      <td>MAGNETO4_RIGHT</td>
+      <td>Toggle engine 4 right magneto</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO4_LEFT</td>
+      <td>MAGNETO4_LEFT</td>
+      <td>Toggle engine 4 left magneto</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO4_BOTH</td>
+      <td>MAGNETO4_BOTH</td>
+      <td>Set engine 4 magnetos on</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO4_START</td>
+      <td>MAGNETO4_START</td>
+      <td>Set engine 4 magnetos on and toggle starter</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO_OFF</td>
+      <td>MAGNETO_OFF</td>
+      <td>Set engine magnetos off</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO_RIGHT</td>
+      <td>MAGNETO_RIGHT</td>
+      <td>Set engine right magnetos on</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO_LEFT</td>
+      <td>MAGNETO_LEFT</td>
+      <td>Set engine left magnetos on</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO_BOTH</td>
+      <td>MAGNETO_BOTH</td>
+      <td>Set engine magnetos on</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO_START</td>
+      <td>MAGNETO_START</td>
+      <td>Set engine magnetos on and toggle starters</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO1_DECR</td>
+      <td>MAGNETO1_DECR</td>
+      <td>Decrease engine 1 magneto switch position</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO1_INCR</td>
+      <td>MAGNETO1_INCR</td>
+      <td>Increase engine 1 magneto switch position</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO2_DECR</td>
+      <td>MAGNETO2_DECR</td>
+      <td>Decrease engine 2 magneto switch position</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO2_INCR</td>
+      <td>MAGNETO2_INCR</td>
+      <td>Increase engine 2 magneto switch position</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO3_DECR</td>
+      <td>MAGNETO3_DECR</td>
+      <td>Decrease engine 3 magneto switch position</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO3_INCR</td>
+      <td>MAGNETO3_INCR</td>
+      <td>Increase engine 3 magneto switch position</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO4_DECR</td>
+      <td>MAGNETO4_DECR</td>
+      <td>Decrease engine 4 magneto switch position</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO4_INCR</td>
+      <td>MAGNETO4_INCR</td>
+      <td>Increase engine 4 magneto switch position</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO_SET</td>
+      <td>Not supported</td>
+      <td>Set engine magneto switches</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO1_SET</td>
+      <td>MAGNETO1_SET</td>
+      <td>Set engine 1 magneto switch</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO2_SET</td>
+      <td>MAGNETO2_SET</td>
+      <td>Set engine 2 magneto switch</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO3_SET</td>
+      <td>MAGNETO3_SET</td>
+      <td>Set engine 3 magneto switch</td>
+    </tr>
+    <tr>
+      <td>KEY_MAGNETO4_SET</td>
+      <td>MAGNETO4_SET</td>
+      <td>Set engine 4 magneto switch</td>
+    </tr>
+    <tr>
+      <td>KEY_ANTI_ICE_ON</td>
+      <td>ANTI_ICE_ON</td>
+      <td>Sets anti-ice switches on</td>
+    </tr>
+    <tr>
+      <td>KEY_ANTI_ICE_OFF</td>
+      <td>ANTI_ICE_OFF</td>
+      <td>Sets anti-ice switches off</td>
+    </tr>
+    <tr>
+      <td>KEY_ANTI_ICE_SET</td>
+      <td>ANTI_ICE_SET</td>
+      <td>Sets anti-ice switches from argument (0,1)</td>
+    </tr>
+    <tr>
+      <td>KEY_ANTI_ICE_TOGGLE</td>
+      <td>ANTI_ICE_TOGGLE</td>
+      <td>Toggle anti-ice switches</td>
+    </tr>
+    <tr>
+      <td>KEY_ANTI_ICE_TOGGLE_ENG1</td>
+      <td>ANTI_ICE_TOGGLE_ENG1</td>
+      <td>Toggle engine 1 anti-ice switch</td>
+    </tr>
+    <tr>
+      <td>KEY_ANTI_ICE_TOGGLE_ENG2</td>
+      <td>ANTI_ICE_TOGGLE_ENG2</td>
+      <td>Toggle engine 2 anti-ice switch</td>
+    </tr>
+    <tr>
+      <td>KEY_ANTI_ICE_TOGGLE_ENG3</td>
+      <td>ANTI_ICE_TOGGLE_ENG3</td>
+      <td>Toggle engine 3 anti-ice switch</td>
+    </tr>
+    <tr>
+      <td>KEY_ANTI_ICE_TOGGLE_ENG4</td>
+      <td>ANTI_ICE_TOGGLE_ENG4</td>
+      <td>Toggle engine 4 anti-ice switch</td>
+    </tr>
+    <tr>
+      <td>KEY_ANTI_ICE_SET_ENG1</td>
+      <td>ANTI_ICE_SET_ENG1</td>
+      <td>Sets engine 1 anti-ice switch (0,1)</td>
+    </tr>
+    <tr>
+      <td>KEY_ANTI_ICE_SET_ENG2</td>
+      <td>ANTI_ICE_SET_ENG2</td>
+      <td>Sets engine 2 anti-ice switch (0,1)</td>
+    </tr>
+    <tr>
+      <td>KEY_ANTI_ICE_SET_ENG3</td>
+      <td>ANTI_ICE_SET_ENG3</td>
+      <td>Sets engine 3 anti-ice switch (0,1)</td>
+    </tr>
+    <tr>
+      <td>KEY_ANTI_ICE_SET_ENG4</td>
+      <td>ANTI_ICE_SET_ENG4</td>
+      <td>Sets engine 4 anti-ice switch (0,1)</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_FUEL_VALVE_ALL</td>
+      <td>TOGGLE_FUEL_VALVE_ALL</td>
+      <td>Toggle engine fuel valves</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_FUEL_VALVE_ENG1</td>
+      <td>TOGGLE_FUEL_VALVE_ENG1</td>
+      <td>Toggle engine 1 fuel valve</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_FUEL_VALVE_ENG2</td>
+      <td>TOGGLE_FUEL_VALVE_ENG2</td>
+      <td>Toggle engine 2 fuel valve</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_FUEL_VALVE_ENG3</td>
+      <td>TOGGLE_FUEL_VALVE_ENG3</td>
+      <td>Toggle engine 3 fuel valve</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_FUEL_VALVE_ENG4</td>
+      <td>TOGGLE_FUEL_VALVE_ENG4</td>
+      <td>Toggle engine 4 fuel valve</td>
+    </tr>
+    <tr>
+      <td>KEY_COWLFLAP1_SET</td>
+      <td>COWLFLAP1_SET</td>
+      <td>Sets engine 1 cowl flap lever position (0 &ndash; 16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_COWLFLAP2_SET</td>
+      <td>COWLFLAP2_SET</td>
+      <td>Sets engine 2 cowl flap lever position (0 &ndash; 16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_COWLFLAP3_SET</td>
+      <td>COWLFLAP3_SET</td>
+      <td>Sets engine 3 cowl flap lever position (0 &ndash; 16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_COWLFLAP4_SET</td>
+      <td>COWLFLAP4_SET</td>
+      <td>Sets engine 4 cowl flap lever position (0 &ndash; 16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_INC_COWL_FLAPS</td>
+      <td>INC_COWL_FLAPS</td>
+      <td>Increment cowl flap levers</td>
+    </tr>
+    <tr>
+      <td>KEY_DEC_COWL_FLAPS</td>
+      <td>DEC_COWL_FLAPS</td>
+      <td>Decrement cowl flap levers</td>
+    </tr>
+    <tr>
+      <td>KEY_INC_COWL_FLAPS1</td>
+      <td>INC_COWL_FLAPS1</td>
+      <td>Increment engine 1 cowl flap lever</td>
+    </tr>
+    <tr>
+      <td>KEY_DEC_COWL_FLAPS1</td>
+      <td>DEC_COWL_FLAPS1</td>
+      <td>Decrement engine 1 cowl flap lever</td>
+    </tr>
+    <tr>
+      <td>KEY_INC_COWL_FLAPS2</td>
+      <td>INC_COWL_FLAPS2</td>
+      <td>Increment engine 2 cowl flap lever</td>
+    </tr>
+    <tr>
+      <td>KEY_DEC_COWL_FLAPS2</td>
+      <td>DEC_COWL_FLAPS2</td>
+      <td>Decrement engine 2 cowl flap lever</td>
+    </tr>
+    <tr>
+      <td>KEY_INC_COWL_FLAPS3</td>
+      <td>INC_COWL_FLAPS3</td>
+      <td>Increment engine 3 cowl flap lever</td>
+    </tr>
+    <tr>
+      <td>KEY_DEC_COWL_FLAPS3</td>
+      <td>DEC_COWL_FLAPS3</td>
+      <td>Decrement engine 3 cowl flap lever</td>
+    </tr>
+    <tr>
+      <td>KEY_INC_COWL_FLAPS4</td>
+      <td>INC_COWL_FLAPS4</td>
+      <td>Increment engine 4 cowl flap lever</td>
+    </tr>
+    <tr>
+      <td>KEY_DEC_COWL_FLAPS4</td>
+      <td>DEC_COWL_FLAPS4</td>
+      <td>Decrement engine 4 cowl flap lever</td>
+    </tr>
+    <tr>
+      <td>KEY_FUEL_PUMP</td>
+      <td>FUEL_PUMP</td>
+      <td>Toggle electric fuel pumps</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_ELECT_FUEL_PUMP</td>
+      <td>TOGGLE_ELECT_FUEL_PUMP</td>
+      <td>Toggle electric fuel pumps</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_ELECT_FUEL_PUMP1</td>
+      <td>TOGGLE_ELECT_FUEL_PUMP1</td>
+      <td>Toggle engine 1 electric fuel pump</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_ELECT_FUEL_PUMP2</td>
+      <td>TOGGLE_ELECT_FUEL_PUMP2</td>
+      <td>Toggle engine 2 electric fuel pump</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_ELECT_FUEL_PUMP3</td>
+      <td>TOGGLE_ELECT_FUEL_PUMP3</td>
+      <td>Toggle engine 3 electric fuel pump</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_ELECT_FUEL_PUMP4</td>
+      <td>TOGGLE_ELECT_FUEL_PUMP4</td>
+      <td>Toggle engine 4 electric fuel pump</td>
+    </tr>
+    <tr>
+      <td>KEY_ENGINE_PRIMER</td>
+      <td>ENGINE_PRIMER</td>
+      <td>Trigger engine primers</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_PRIMER</td>
+      <td>TOGGLE_PRIMER</td>
+      <td>Trigger engine primers</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_PRIMER1</td>
+      <td>TOGGLE_PRIMER1</td>
+      <td>Trigger engine 1 primer</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_PRIMER2</td>
+      <td>TOGGLE_PRIMER2</td>
+      <td>Trigger engine 2 primer</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_PRIMER3</td>
+      <td>TOGGLE_PRIMER3</td>
+      <td>Trigger engine 3 primer</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_PRIMER4</td>
+      <td>TOGGLE_PRIMER4</td>
+      <td>Trigger engine 4 primer</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_FEATHER_SWITCHES </td>
+      <td>TOGGLE_FEATHER_SWITCHES</td>
+      <td>Trigger propeller switches</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_FEATHER_SWITCH_1</td>
+      <td>TOGGLE_FEATHER_SWITCH_1</td>
+      <td>Trigger propeller 1 switch</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_FEATHER_SWITCH_2</td>
+      <td>TOGGLE_FEATHER_SWITCH_2</td>
+      <td>Trigger propeller 2 switch</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_FEATHER_SWITCH_3</td>
+      <td>TOGGLE_FEATHER_SWITCH_3</td>
+      <td>Trigger propeller 3 switch</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_FEATHER_SWITCH_4</td>
+      <td>TOGGLE_FEATHER_SWITCH_4</td>
+      <td>Trigger propeller 4 switch</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_PROP_SYNC</td>
+      <td>TOGGLE_PROPELLER_SYNC</td>
+      <td>Turns propeller synchronization switch on</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_ARM_AUTOFEATHER</td>
+      <td>TOGGLE_AUTOFEATHER_ARM</td>
+      <td>Turns auto-feather arming switch on.</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_AFTERBURNER</td>
+      <td>TOGGLE_AFTERBURNER</td>
+      <td>Toggles afterburners</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_AFTERBURNER1</td>
+      <td>TOGGLE_AFTERBURNER1</td>
+      <td>Toggles engine 1 afterburner</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_AFTERBURNER2</td>
+      <td>TOGGLE_AFTERBURNER2</td>
+      <td>Toggles engine 2 afterburner</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_AFTERBURNER3</td>
+      <td>TOGGLE_AFTERBURNER3</td>
+      <td>Toggles engine 3 afterburner</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_AFTERBURNER4</td>
+      <td>TOGGLE_AFTERBURNER4</td>
+      <td>Toggles engine 4 afterburner</td>
+    </tr>
+    <tr>
+      <td>KEY_ENGINE</td>
+      <td>ENGINE</td>
+      <td>Sets engines for 1,2,3,4 selection (to be followed by SELECT_n)</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+<h4>&nbsp;</h4>
+
+<h4>Aircraft Flight Controls<a name="AircraftFlightContolsIDs"></a></h4>
+
+<p>&nbsp;</p>
+
+<table class="T1" cellpadding="2" cellspacing="4">
+
+  <tbody>
+    <tr>
+      <td>
+      <h5>Event ID</h5>
+      </td>
+      <td>
+      <h5>String Name </h5>
+      </td>
+      <td>
+      <h5>Description</h5>
+      </td>
+    </tr>
+    <tr>
+      <td>KEY_SPOILERS_TOGGLE</td>
+      <td>SPOILERS_TOGGLE</td>
+      <td>Toggles spoiler handle&nbsp;</td>
+    </tr>
+    <tr>
+      <td>KEY_FLAPS_UP</td>
+      <td>FLAPS_UP</td>
+      <td>Sets flap handle to full retract postion</td>
+    </tr>
+    <tr>
+      <td>KEY_FLAPS_1</td>
+      <td>FLAPS_1</td>
+      <td>Sets flap handle to first extension position</td>
+    </tr>
+    <tr>
+      <td>KEY_FLAPS_2</td>
+      <td>FLAPS_2</td>
+      <td>Sets flap handle to second extension position</td>
+    </tr>
+    <tr>
+      <td>KEY_FLAPS_3</td>
+      <td>FLAPS_3</td>
+      <td>Sets flap handle to third extension position</td>
+    </tr>
+    <tr>
+      <td>KEY_FLAPS_DOWN</td>
+      <td>FLAPS_DOWN</td>
+      <td>Sets flap handle to full extension position</td>
+    </tr>
+    <tr>
+      <td>KEY_ELEV_TRIM_DN</td>
+      <td>ELEV_TRIM_DN</td>
+      <td>Increments elevator trim down</td>
+    </tr>
+    <tr>
+      <td>KEY_ELEV_DOWN</td>
+      <td>ELEV_DOWN</td>
+      <td>Increments elevator down</td>
+    </tr>
+    <tr>
+      <td>KEY_AILERONS_LEFT</td>
+      <td>AILERONS_LEFT</td>
+      <td>Increments ailerons left</td>
+    </tr>
+    <tr>
+      <td>KEY_CENTER_AILER_RUDDER</td>
+      <td>CENTER_AILER_RUDDER</td>
+      <td>Centers aileron and rudder positions</td>
+    </tr>
+    <tr>
+      <td>KEY_AILERONS_RIGHT</td>
+      <td>AILERONS_RIGHT</td>
+      <td>Increments ailerons right</td>
+    </tr>
+    <tr>
+      <td>KEY_ELEV_TRIM_UP</td>
+      <td>ELEV_TRIM_UP</td>
+      <td>Increment elevator trim up</td>
+    </tr>
+    <tr>
+      <td>KEY_ELEV_UP</td>
+      <td>ELEV_UP</td>
+      <td>Increments elevator up</td>
+    </tr>
+    <tr>
+      <td>KEY_ELEVATOR_DOWN</td>
+      <td>Unsupported</td>
+      <td>Increments elevator down</td>
+    </tr>
+    <tr>
+      <td>KEY_ELEVATOR_UP</td>
+      <td>Unsupported</td>
+      <td>Increments elevator up</td>
+    </tr>
+    <tr>
+      <td>KEY_AILERON_LEFT</td>
+      <td>Unsupported</td>
+      <td>Increments ailerons left</td>
+    </tr>
+    <tr>
+      <td>KEY_AILERON_CENTER</td>
+      <td>Unsupported</td>
+      <td>Centers aileron position</td>
+    </tr>
+    <tr>
+      <td>KEY_AILERON_RIGHT</td>
+      <td>Unsupported</td>
+      <td>Increments ailerons right</td>
+    </tr>
+    <tr>
+      <td>KEY_RUDDER_LEFT</td>
+      <td>RUDDER_LEFT</td>
+      <td>Increments rudder left</td>
+    </tr>
+    <tr>
+      <td>KEY_RUDDER_CENTER</td>
+      <td>RUDDER_CENTER</td>
+      <td>Centers rudder position</td>
+    </tr>
+    <tr>
+      <td>KEY_RUDDER_RIGHT</td>
+      <td>RUDDER_RIGHT</td>
+      <td>Increments rudder right</td>
+    </tr>
+    <tr>
+      <td>KEY_ELEVATOR_SET</td>
+      <td>ELEVATOR_SET</td>
+      <td>Sets elevator postion (-16383 - +16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_AILERON_SET</td>
+      <td>AILERON_SET</td>
+      <td>Sets aileron postion (-16383 - +16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_RUDDER_SET</td>
+      <td>RUDDER_SET</td>
+      <td>Sets rudder postion (-16383 - +16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_FLAPS_INCR</td>
+      <td>FLAPS_INCR</td>
+      <td>Increments flap handle position</td>
+    </tr>
+    <tr>
+      <td>KEY_FLAPS_DECR</td>
+      <td>FLAPS_DECR</td>
+      <td>Decrements flap handle position</td>
+    </tr>
+    <tr>
+      <td>KEY_AXIS_ELEVATOR_SET</td>
+      <td>AXIS_ELEVATOR_SET</td>
+      <td>Sets elevator postion (-16383 - +16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_AXIS_AILERONS_SET</td>
+      <td>AXIS_AILERONS_SET</td>
+      <td>Sets aileron postion (-16383 - +16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_AXIS_RUDDER_SET</td>
+      <td>AXIS_RUDDER_SET</td>
+      <td>Sets rudder postion (-16383 - +16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_AXIS_ELEV_TRIM_SET</td>
+      <td>AXIS_ELEV_TRIM_SET</td>
+      <td>Sets elevator trim postion (-16383 - +16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_SPOILERS_SET</td>
+      <td>SPOILERS_SET</td>
+      <td>Sets spoiler handle position (0 &ndash; 16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_SPOILERS_ARM_TOGGLE</td>
+      <td>SPOILERS_ARM_TOGGLE</td>
+      <td>Toggles arming of auto-spoilers </td>
+    </tr>
+    <tr>
+      <td>KEY_SPOILERS_ON</td>
+      <td>SPOILERS_ON</td>
+      <td>Sets spoiler handle to full extend position</td>
+    </tr>
+    <tr>
+      <td>KEY_SPOILERS_OFF</td>
+      <td>SPOILERS_OFF</td>
+      <td>Sets spoiler handle to full retract position</td>
+    </tr>
+    <tr>
+      <td>KEY_SPOILERS_ARM_ON</td>
+      <td>SPOILERS_ARM_ON</td>
+      <td>Sets auto-spoiler arming on</td>
+    </tr>
+    <tr>
+      <td>KEY_SPOILERS_ARM_OFF</td>
+      <td>SPOILERS_ARM_OFF</td>
+      <td>Sets auto-spoiler arming off</td>
+    </tr>
+    <tr>
+      <td>KEY_SPOILERS_ARM_SET</td>
+      <td>SPOILERS_ARM_SET</td>
+      <td>Sets auto-spoiler arming (0,1)</td>
+    </tr>
+    <tr>
+      <td>KEY_AILERON_TRIM_LEFT</td>
+      <td>AILERON_TRIM_LEFT</td>
+      <td>Increments aileron trim left</td>
+    </tr>
+    <tr>
+      <td>KEY_AILERON_TRIM_RIGHT</td>
+      <td>AILERON_TRIM_RIGHT</td>
+      <td>Increments aileron trim right</td>
+    </tr>
+    <tr>
+      <td>KEY_RUDDER_TRIM_LEFT</td>
+      <td>RUDDER_TRIM_LEFT</td>
+      <td>Increments rudder trim left</td>
+    </tr>
+    <tr>
+      <td>KEY_RUDDER_TRIM_RIGHT</td>
+      <td>RUDDER_TRIM_RIGHT</td>
+      <td>Increments aileron trim right</td>
+    </tr>
+    <tr>
+      <td>KEY_AXIS_SPOILER_SET</td>
+      <td>AXIS_SPOILER_SET</td>
+      <td>Sets spoiler handle position (-16383 - +16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_FLAPS_SET</td>
+      <td>FLAPS_SET</td>
+      <td>Sets flap handle to closest increment (0 &ndash; 16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_ELEVATOR_TRIM_SET</td>
+      <td>ELEVATOR_TRIM_SET</td>
+      <td>Sets elevator trim position (0 &ndash; 16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_AXIS_FLAPS_SET                </td>
+      <td>AXIS_FLAPS_SET</td>
+      <td>Sets flap handle to closest increment (-16383 - +16383)</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>&nbsp;</h4>
+
+<h4>Aircraft Automatic Flight Systems / Autopilot<a name="AircraftAutopilotIDs"></a></h4>
+
+<p>&nbsp;</p>
+
+<table class="T1" cellpadding="2" cellspacing="4">
+
+  <tbody>
+    <tr>
+      <td>
+      <h5>Event ID</h5>
+      </td>
+      <td>
+      <h5>String Name </h5>
+      </td>
+      <td>
+      <h5>Description</h5>
+      </td>
+    </tr>
+    <tr>
+      <td>KEY_AP_MASTER</td>
+      <td>AP_MASTER</td>
+      <td>Toggles AP on/off</td>
+    </tr>
+    <tr>
+      <td>KEY_AUTOPILOT_OFF</td>
+      <td>AUTOPILOT_OFF</td>
+      <td>Turns AP off</td>
+    </tr>
+    <tr>
+      <td>KEY_AUTOPILOT_ON</td>
+      <td>AUTOPILOT_ON</td>
+
+      <td>Turns AP on</td>
+
+    </tr>
+    <tr>
+      <td>KEY_YAW_DAMPER_TOGGLE</td>
+      <td>YAW_DAMPER_TOGGLE</td>
+      <td>Toggles yaw damper on/off</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_PANEL_HEADING_HOLD</td>
+      <td>AP_PANEL_HEADING_HOLD</td>
+      <td>Toggles heading hold mode on/off</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_PANEL_ALTITUDE_HOLD</td>
+      <td>AP_PANEL_ALTITUDE_HOLD</td>
+      <td>Toggles altitude hold mode on/off</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_ATT_HOLD_ON</td>
+      <td>AP_ATT_HOLD_ON</td>
+      <td>Turns on AP wing leveler and pitch hold mode</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_LOC_HOLD_ON</td>
+      <td>AP_LOC_HOLD_ON</td>
+      <td>Turns  AP localizer hold on/armed and glideslope hold mode off</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_APR_HOLD_ON</td>
+      <td>AP_APR_HOLD_ON</td>
+      <td>Turns both AP localizer and glideslope modes on/armed</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_HDG_HOLD_ON</td>
+      <td>AP_HDG_HOLD_ON</td>
+      <td>Turns heading hold mode on</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_ALT_HOLD_ON</td>
+      <td>AP_ALT_HOLD_ON</td>
+      <td>Turns altitude hold mode on</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_WING_LEVELER_ON</td>
+      <td>AP_WING_LEVELER_ON</td>
+      <td>Turns wing leveler mode on</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_BC_HOLD_ON</td>
+      <td>AP_BC_HOLD_ON</td>
+      <td>Turns localizer back course hold mode on/armed</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_NAV1_HOLD_ON</td>
+      <td>AP_NAV1_HOLD_ON</td>
+      <td>Turns lateral hold mode on </td>
+    </tr>
+    <tr>
+      <td>KEY_AP_ATT_HOLD_OFF</td>
+      <td>AP_ATT_HOLD_OFF</td>
+      <td>Turns off attitude hold mode</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_LOC_HOLD_OFF</td>
+      <td>AP_LOC_HOLD_OFF</td>
+      <td>Turns off localizer hold mode</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_APR_HOLD_OFF</td>
+      <td>AP_APR_HOLD_OFF</td>
+      <td>Turns off approach hold mode</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_HDG_HOLD_OFF</td>
+      <td>AP_HDG_HOLD_OFF</td>
+      <td>Turns off heading hold mode</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_ALT_HOLD_OFF</td>
+      <td>AP_ALT_HOLD_OFF</td>
+      <td>Turns off altitude hold mode</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_WING_LEVELER_OFF</td>
+      <td>AP_WING_LEVELER_OFF</td>
+      <td>Turns off wing leveler mode</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_BC_HOLD_OFF</td>
+      <td>AP_BC_HOLD_OFF</td>
+      <td>Turns off backcourse mode for localizer hold</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_NAV1_HOLD_OFF</td>
+      <td>AP_NAV1_HOLD_OFF</td>
+      <td>Turns off nav hold mode</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_AIRSPEED_HOLD</td>
+      <td>AP_AIRSPEED_HOLD</td>
+      <td>Toggles airspeed hold mode</td>
+    </tr>
+    <tr>
+      <td>KEY_AUTO_THROTTLE_ARM</td>
+      <td>AUTO_THROTTLE_ARM</td>
+      <td>Toggles autothrottle arming mode</td>
+    </tr>
+    <tr>
+      <td>KEY_AUTO_THROTTLE_TO_GA</td>
+      <td>AUTO_THROTTLE_TO_GA</td>
+      <td>Toggles Takeoff/Go Around mode</td>
+    </tr>
+    <tr>
+      <td>KEY_HEADING_BUG_INC</td>
+      <td>HEADING_BUG_INC</td>
+      <td>Increments heading hold reference bug</td>
+    </tr>
+    <tr>
+      <td>KEY_HEADING_BUG_DEC</td>
+      <td>HEADING_BUG_DEC</td>
+      <td>Decrements heading hold reference bug</td>
+    </tr>
+    <tr>
+      <td>KEY_HEADING_BUG_SET</td>
+      <td>HEADING_BUG_SET</td>
+      <td>Set heading hold reference bug (degrees)</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_PANEL_SPEED_HOLD</td>
+      <td>AP_PANEL_SPEED_HOLD</td>
+      <td>Toggles airspeed hold mode</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_ALT_VAR_INC</td>
+      <td>AP_ALT_VAR_INC</td>
+      <td>Increments reference altitude</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_ALT_VAR_DEC</td>
+      <td>AP_ALT_VAR_DEC</td>
+      <td>Decrements reference altitude</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_VS_VAR_INC</td>
+      <td>AP_VS_VAR_INC</td>
+      <td>Increments vertical speed reference</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_VS_VAR_DEC</td>
+      <td>AP_VS_VAR_DEC</td>
+      <td>Decrements vertical speed reference</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_SPD_VAR_INC</td>
+      <td>AP_SPD_VAR_INC</td>
+      <td>Increments airspeed hold reference</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_SPD_VAR_DEC</td>
+      <td>AP_SPD_VAR_DEC</td>
+      <td>Decrements airspeed hold reference</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_PANEL_MACH_HOLD</td>
+      <td>AP_PANEL_MACH_HOLD</td>
+      <td>Toggles mach hold</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_MACH_VAR_INC</td>
+      <td>AP_MACH_VAR_INC</td>
+      <td>Increments reference mach</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_MACH_VAR_DEC</td>
+      <td>AP_MACH_VAR_DEC</td>
+      <td>Decrements reference mach</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_MACH_HOLD</td>
+      <td>AP_MACH_HOLD</td>
+      <td>Toggles mach hold</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_ALT_VAR_SET_METRIC</td>
+      <td>AP_ALT_VAR_SET_METRIC</td>
+      <td>Sets reference altitude in meters</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_VS_VAR_SET_ENGLISH</td>
+      <td>AP_VS_VAR_SET_ENGLISH</td>
+      <td>Sets reference vertical speed in feet per minute</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_SPD_VAR_SET</td>
+      <td>AP_SPD_VAR_SET</td>
+      <td>Sets airspeed reference in knots</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_MACH_VAR_SET</td>
+      <td>AP_MACH_VAR_SET</td>
+      <td>Sets mach reference</td>
+    </tr>
+    <tr>
+      <td>KEY_YAW_DAMPER_ON</td>
+      <td>YAW_DAMPER_ON</td>
+      <td>Turns yaw damper on</td>
+    </tr>
+    <tr>
+      <td>KEY_YAW_DAMPER_OFF</td>
+      <td>YAW_DAMPER_OFF</td>
+      <td>Turns yaw damper off</td>
+    </tr>
+    <tr>
+      <td>KEY_YAW_DAMPER_SET</td>
+      <td>YAW_DAMPER_SET</td>
+      <td>Sets yaw damper on/off (1,0)</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_AIRSPEED_ON</td>
+      <td>AP_AIRSPEED_ON</td>
+      <td>Turns airspeed hold on </td>
+    </tr>
+    <tr>
+      <td>KEY_AP_AIRSPEED_OFF</td>
+      <td>AP_AIRSPEED_OFF</td>
+      <td>Turns airspeed hold off</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_AIRSPEED_SET</td>
+      <td>AP_AIRSPEED_SET</td>
+      <td>Sets airspeed hold on/off (1,0)</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_MACH_ON</td>
+      <td>AP_MACH_ON</td>
+      <td>Turns mach hold on</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_MACH_OFF</td>
+      <td>AP_MACH_OFF</td>
+      <td>Turns mach hold off</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_MACH_SET</td>
+      <td>AP_MACH_SET</td>
+      <td>Sets mach hold on/off (1,0)</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_PANEL_ALTITUDE_ON</td>
+      <td>AP_PANEL_ALTITUDE_ON</td>
+      <td>Turns altitude hold mode on (without capturing current altitude)</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_PANEL_ALTITUDE_OFF</td>
+      <td>AP_PANEL_ALTITUDE_OFF</td>
+      <td>Turns altitude hold mode off</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_PANEL_ALTITUDE_SET</td>
+      <td>AP_PANEL_ALTITUDE_SET</td>
+      <td>Sets altitude hold mode on/off (1,0)</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_PANEL_HEADING_ON</td>
+      <td>AP_PANEL_HEADING_ON</td>
+      <td>Turns heading mode on (without capturing current heading)</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_PANEL_HEADING_OFF</td>
+      <td>AP_PANEL_HEADING_OFF</td>
+      <td>Turns heading mode off</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_PANEL_HEADING_SET</td>
+      <td>AP_PANEL_HEADING_SET</td>
+      <td>Set heading mode on/off (1,0)</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_PANEL_MACH_ON</td>
+      <td>AP_PANEL_MACH_ON</td>
+      <td>Turns on mach hold</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_PANEL_MACH_OFF</td>
+      <td>AP_PANEL_MACH_OFF</td>
+      <td>&nbsp;Turns off mach hold</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_PANEL_MACH_SET</td>
+      <td>AP_PANEL_MACH_SET</td>
+      <td>Sets mach hold on/off (1,0)</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_PANEL_SPEED_ON</td>
+      <td>AP_PANEL_SPEED_ON</td>
+      <td>Turns on speed hold mode</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_PANEL_SPEED_OFF</td>
+      <td>AP_PANEL_SPEED_OFF</td>
+      <td>Turns off speed hold mode</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_PANEL_SPEED_SET</td>
+      <td>AP_PANEL_SPEED_SET</td>
+      <td>Set speed hold mode on/off (1,0)</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_ALT_VAR_SET_ENGLISH</td>
+      <td>AP_ALT_VAR_SET_ENGLISH</td>
+      <td>Sets altitude reference in feet</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_VS_VAR_SET_METRIC</td>
+      <td>AP_VS_VAR_SET_METRIC</td>
+      <td>Sets vertical speed reference in meters per minute</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_FLIGHT_DIRECTOR</td>
+      <td>TOGGLE_FLIGHT_DIRECTOR</td>
+      <td>Toggles flight director on/off</td>
+    </tr>
+    <tr>
+      <td>KEY_SYNC_FLIGHT_DIRECTOR_PITCH</td>
+      <td>SYNC_FLIGHT_DIRECTOR_PITCH</td>
+      <td>Synchronizes flight director pitch with current aircraft pitch</td>
+    </tr>
+    <tr>
+      <td>KEY_INC_AUTOBRAKE_CONTROL</td>
+      <td>INCREASE_AUTOBRAKE_CONTROL</td>
+      <td>Increments autobrake level</td>
+    </tr>
+    <tr>
+      <td>KEY_DEC_AUTOBRAKE_CONTROL</td>
+      <td>DECREASE_AUTOBRAKE_CONTROL</td>
+      <td>Decrements autobrake level</td>
+    </tr>
+    <tr>
+      <td>KEY_AUTOPILOT_AIRSPEED_HOLD_CURRENT</td>
+      <td>AP_PANEL_SPEED_HOLD_TOGGLE</td>
+      <td>Turns airspeed hold mode on with current airspeed</td>
+    </tr>
+    <tr>
+      <td>KEY_AUTOPILOT_PANEL_AIRSPEED_SET</td>
+      <td>Unsupported</td>
+      <td>Sets airspeed reference to current airspeed</td>
+    </tr>
+    <tr>
+      <td>KEY_AUTOPILOT_MACH_HOLD_CURRENT</td>
+      <td>AP_PANEL_MACH_HOLD_TOGGLE</td>
+      <td>Sets mach hold reference to current mach</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_NAV_SELECT_SET</td>
+      <td>AP_NAV_SELECT_SET</td>
+      <td>Sets the nav (1 or 2) which is used by the Nav hold modes</td>
+    </tr>
+    <tr>
+      <td>KEY_HEADING_BUG_SELECT</td>
+      <td>HEADING_BUG_SELECT</td>
+      <td>Selects the heading bug for use with +/-</td>
+    </tr>
+    <tr>
+      <td>KEY_ALTITUDE_BUG_SELECT</td>
+      <td>ALTITUDE_BUG_SELECT</td>
+      <td>Selects the altitude reference for use with +/-</td>
+    </tr>
+    <tr>
+      <td>KEY_VSI_BUG_SELECT</td>
+      <td>VSI_BUG_SELECT</td>
+      <td>Selects the vertical speed reference for use with +/-</td>
+    </tr>
+    <tr>
+      <td>KEY_AIRSPEED_BUG_SELECT</td>
+      <td>AIRSPEED_BUG_SELECT</td>
+      <td>Selects the airspeed reference for use with +/-</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_PITCH_REF_INC_UP</td>
+      <td>AP_PITCH_REF_INC_UP</td>
+      <td>Increments the pitch reference for pitch hold mode</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_PITCH_REF_INC_DN</td>
+      <td>AP_PITCH_REF_INC_DN</td>
+      <td>Decrements the pitch reference for pitch hold mode</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_PITCH_REF_SELECT</td>
+      <td>AP_PITCH_REF_SELECT</td>
+      <td>Selects pitch reference for use with +/-</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_ATT_HOLD</td>
+      <td>AP_ATT_HOLD</td>
+      <td>Toggle attitude hold mode</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_LOC_HOLD</td>
+      <td>AP_LOC_HOLD</td>
+      <td>Toggles localizer (only) hold mode</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_APR_HOLD</td>
+      <td>AP_APR_HOLD</td>
+      <td>Toggles approach hold (localizer and glideslope)</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_HDG_HOLD</td>
+      <td>AP_HDG_HOLD</td>
+      <td>Toggles heading hold mode</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_ALT_HOLD</td>
+      <td>AP_ALT_HOLD</td>
+      <td>Toggles altitude hold mode</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_WING_LEVELER</td>
+      <td>AP_WING_LEVELER</td>
+      <td>Toggles wing leveler mode</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_BC_HOLD</td>
+      <td>AP_BC_HOLD</td>
+      <td>Toggles the backcourse mode for the localizer hold</td>
+    </tr>
+    <tr>
+      <td>KEY_AP_NAV1_HOLD</td>
+      <td>AP_NAV1_HOLD</td>
+      <td>Toggles the nav hold mode</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>&nbsp;</h4>
+
+<h4>Aircraft Fuel System<a name="AircraftFuelSystemIDs"></a></h4>
+
+<p>&nbsp;</p>
+
+<table class="T1" cellpadding="2" cellspacing="4">
+
+  <tbody>
+    <tr>
+      <td>
+      <h5>Event ID</h5>
+      </td>
+      <td>
+      <h5>String Name </h5>
+      </td>
+      <td>
+      <h5>Description</h5>
+      </td>
+    </tr>
+    <tr>
+      <td>KEY_FUEL_SELECTOR_OFF</td>
+      <td>FUEL_SELECTOR_OFF</td>
+      <td>Turns selector 1 to OFF position</td>
+    </tr>
+    <tr>
+      <td>KEY_FUEL_SELECTOR_ALL</td>
+      <td>FUEL_SELECTOR_ALL</td>
+      <td>Turns selector 1 to ALL position</td>
+    </tr>
+    <tr>
+      <td>KEY_FUEL_SELECTOR_LEFT</td>
+      <td>FUEL_SELECTOR_LEFT</td>
+      <td>Turns selector 1 to LEFT position (burns from tip then aux then main)</td>
+    </tr>
+    <tr>
+      <td>KEY_FUEL_SELECTOR_RIGHT</td>
+      <td>FUEL_SELECTOR_RIGHT</td>
+      <td>Turns selector 1 to RIGHT position (burns from tip then aux then main)</td>
+    </tr>
+    <tr>
+      <td>KEY_FUEL_SELECTOR_LEFT_AUX</td>
+      <td>FUEL_SELECTOR_LEFT_AUX</td>
+      <td>Turns selector 1 to LEFT AUX position</td>
+    </tr>
+    <tr>
+      <td>KEY_FUEL_SELECTOR_RIGHT_AUX</td>
+      <td>FUEL_SELECTOR_RIGHT_AUX</td>
+      <td>Turns selector 1 to RIGHT AUX position</td>
+    </tr>
+    <tr>
+      <td>KEY_FUEL_SELECTOR_CENTER</td>
+      <td>FUEL_SELECTOR_CENTER</td>
+      <td>Turns selector 1 to CENTER position</td>
+    </tr>
+    <tr>
+      <td>KEY_FUEL_SELECTOR_SET</td>
+      <td>FUEL_SELECTOR_SET</td>
+      <td>Sets selector 1 postion (see code list below)</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>KEY_FUEL_SELECTOR_2_OFF</td>
+      <td>FUEL_SELECTOR_2_OFF</td>
+      <td>Turns selector 2 to OFF position</td>
+    </tr>
+    <tr>
+      <td>KEY_FUEL_SELECTOR_2_ALL</td>
+      <td>FUEL_SELECTOR_2_ALL</td>
+      <td>Turns selector 2 to ALL position</td>
+    </tr>
+    <tr>
+      <td>KEY_FUEL_SELECTOR_2_LEFT</td>
+      <td>FUEL_SELECTOR_2_LEFT</td>
+      <td>Turns selector 2 to LEFT position (burns from tip then aux then main)</td>
+    </tr>
+    <tr>
+      <td>KEY_FUEL_SELECTOR_2_RIGHT</td>
+      <td>FUEL_SELECTOR_2_RIGHT</td>
+      <td>Turns selector 2 to RIGHT position (burns from tip then aux then main)</td>
+    </tr>
+    <tr>
+      <td>KEY_FUEL_SELECTOR_2_LEFT_AUX</td>
+      <td>FUEL_SELECTOR_2_LEFT_AUX</td>
+      <td>Turns selector 2 to LEFT AUX position</td>
+    </tr>
+    <tr>
+      <td>KEY_FUEL_SELECTOR_2_RIGHT_AUX</td>
+      <td>FUEL_SELECTOR_2_RIGHT_AUX</td>
+      <td>Turns selector 2 to RIGHT AUX position</td>
+    </tr>
+    <tr>
+      <td>KEY_FUEL_SELECTOR_2_CENTER</td>
+      <td>FUEL_SELECTOR_2_CENTER</td>
+      <td>Turns selector 2 to CENTER position</td>
+    </tr>
+    <tr>
+      <td>KEY_FUEL_SELECTOR_2_SET</td>
+      <td>FUEL_SELECTOR_2_SET</td>
+      <td>Sets selector 2 postion (see code list below)</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>KEY_FUEL_SELECTOR_3_OFF         </td>
+      <td>FUEL_SELECTOR_3_OFF</td>
+      <td>Turns selector 3 to OFF position</td>
+    </tr>
+    <tr>
+      <td>KEY_FUEL_SELECTOR_3_ALL         </td>
+      <td>FUEL_SELECTOR_3_ALL</td>
+      <td>Turns selector 3 to ALL position</td>
+    </tr>
+    <tr>
+      <td>KEY_FUEL_SELECTOR_3_LEFT        </td>
+      <td>FUEL_SELECTOR_3_LEFT</td>
+      <td>Turns selector 3 to LEFT position (burns from tip then aux then main)</td>
+    </tr>
+    <tr>
+      <td>KEY_FUEL_SELECTOR_3_RIGHT       </td>
+      <td>FUEL_SELECTOR_3_RIGHT</td>
+      <td>Turns selector 3 to RIGHT position (burns from tip then aux then main)</td>
+    </tr>
+    <tr>
+      <td>KEY_FUEL_SELECTOR_3_LEFT_AUX    </td>
+      <td>FUEL_SELECTOR_3_LEFT_AUX</td>
+      <td>Turns selector 3 to LEFT AUX position</td>
+    </tr>
+    <tr>
+      <td>KEY_FUEL_SELECTOR_3_RIGHT_AUX   </td>
+      <td>FUEL_SELECTOR_3_RIGHT_AUX</td>
+      <td>Turns selector 3 to RIGHT AUX position</td>
+    </tr>
+    <tr>
+      <td>KEY_FUEL_SELECTOR_3_CENTER      </td>
+      <td>FUEL_SELECTOR_3_CENTER</td>
+      <td>Turns selector 3 to CENTER position</td>
+    </tr>
+    <tr>
+      <td>KEY_FUEL_SELECTOR_3_SET         </td>
+      <td>FUEL_SELECTOR_3_SET</td>
+      <td>Sets selector 3 postion (see code list below)</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>KEY_FUEL_SELECTOR_4_OFF         </td>
+      <td>FUEL_SELECTOR_4_OFF</td>
+      <td>Turns selector 4 to OFF position</td>
+    </tr>
+    <tr>
+      <td>KEY_FUEL_SELECTOR_4_ALL         </td>
+      <td>FUEL_SELECTOR_4_ALL</td>
+      <td>Turns selector 4 to ALL position</td>
+    </tr>
+    <tr>
+      <td>KEY_FUEL_SELECTOR_4_LEFT        </td>
+      <td>FUEL_SELECTOR_4_LEFT</td>
+      <td>Turns selector 4 to LEFT position (burns from tip then aux then main)</td>
+    </tr>
+    <tr>
+      <td>KEY_FUEL_SELECTOR_4_RIGHT       </td>
+      <td>FUEL_SELECTOR_4_RIGHT</td>
+      <td>Turns selector 4 to RIGHT position (burns from tip then aux then main)</td>
+    </tr>
+    <tr>
+      <td>KEY_FUEL_SELECTOR_4_LEFT_AUX    </td>
+      <td>FUEL_SELECTOR_4_LEFT_AUX</td>
+      <td>Turns selector 4 to LEFT AUX position</td>
+    </tr>
+    <tr>
+      <td>KEY_FUEL_SELECTOR_4_RIGHT_AUX   </td>
+      <td>FUEL_SELECTOR_4_RIGHT_AUX</td>
+      <td>Turns selector 4 to RIGHT AUX position</td>
+    </tr>
+    <tr>
+      <td>KEY_FUEL_SELECTOR_4_CENTER      </td>
+      <td>FUEL_SELECTOR_4_CENTER</td>
+      <td>Turns selector 4 to CENTER position</td>
+    </tr>
+    <tr>
+      <td>KEY_FUEL_SELECTOR_4_SET         </td>
+      <td>FUEL_SELECTOR_4_SET</td>
+      <td>Sets selector 4 postion (see code list below)</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>KEY_CROSS_FEED_OPEN             </td>
+      <td>CROSS_FEED_OPEN</td>
+      <td>Opens cross feed valve (when used in conjunction with &ldquo;isolate&rdquo; tank)</td>
+    </tr>
+    <tr>
+      <td>KEY_CROSS_FEED_TOGGLE           </td>
+      <td>CROSS_FEED_TOGGLE</td>
+      <td>Toggles crossfeed valve (when used in conjunction with &ldquo;isolate&rdquo; tank)</td>
+    </tr>
+    <tr>
+      <td>KEY_CROSS_FEED_OFF</td>
+      <td>CROSS_FEED_OFF</td>
+      <td>Closes crossfeed valve (when used in conjunction with &ldquo;isolate&rdquo; tank)</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>&nbsp;</h4>
+
+<h4>Fuel selector codes<a name="FuelSelectorCodes"></a></h4>
+
+<p>&nbsp;</p>
+
+<table class="T1" cellpadding="2" cellspacing="4">
+
+  <tbody>
+    <tr>
+      <td>FUEL_TANK_SELECTOR_OFF = 0           </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>FUEL_TANK_SELECTOR_ALL = 1           </td>
+    </tr>
+    <tr>
+      <td>FUEL_TANK_SELECTOR_LEFT = 2          </td>
+    </tr>
+    <tr>
+      <td>FUEL_TANK_SELECTOR_RIGHT = 3         </td>
+    </tr>
+    <tr>
+      <td>FUEL_TANK_SELECTOR_LEFT_AUX = 4      </td>
+    </tr>
+    <tr>
+      <td>FUEL_TANK_SELECTOR_RIGHT_AUX = 5     </td>
+    </tr>
+    <tr>
+      <td>FUEL_TANK_SELECTOR_CENTER = 6        </td>
+    </tr>
+    <tr>
+      <td>FUEL_TANK_SELECTOR_CENTER2 = 7       </td>
+    </tr>
+    <tr>
+      <td>FUEL_TANK_SELECTOR_CENTER3 = 8       </td>
+    </tr>
+    <tr>
+      <td>FUEL_TANK_SELECTOR_EXTERNAL1 = 9     </td>
+    </tr>
+    <tr>
+      <td>FUEL_TANK_SELECTOR_EXTERNAL2 = 10    </td>
+    </tr>
+    <tr>
+      <td>FUEL_TANK_SELECTOR_RIGHT_TIP = 11    </td>
+    </tr>
+    <tr>
+      <td>FUEL_TANK_SELECTOR_LEFT_TIP = 12     </td>
+    </tr>
+    <tr>
+      <td>FUEL_TANK_SELECTOR_CROSSFEED = 13    </td>
+    </tr>
+    <tr>
+      <td>FUEL_TANK_SELECTOR_CROSSFEED_L2R = 14</td>
+    </tr>
+    <tr>
+      <td>FUEL_TANK_SELECTOR_CROSSFEED_R2L = 15</td>
+    </tr>
+    <tr>
+      <td>FUEL_TANK_SELECTOR_BOTH = 16         </td>
+    </tr>
+    <tr>
+      <td>FUEL_TANK_SELECTOR_EXTERNAL_ALL = 17 </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>FUEL_TANK_SELECTOR_ISOLATE = 18      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>&nbsp;</h4>
+
+<h4>Aircraft Avionics<a name="AircraftAvionicsIDs"></a></h4>
+
+<p>&nbsp;</p>
+
+<table class="T1" cellpadding="2" cellspacing="4">
+
+  <tbody>
+    <tr>
+      <td>
+      <h5>Event ID</h5>      </td>
+      <td>
+      <h5>String Name </h5>      </td>
+      <td>
+      <h5>Description</h5>      </td>
+    </tr>
+    <tr>
+      <td>KEY_XPNDR</td>
+      <td>XPNDR</td>
+      <td>Sequentially selects the transponder digits for use with +/-. </td>
+    </tr>
+    <tr>
+      <td>KEY_ADF</td>
+      <td>ADF</td>
+      <td>Sequentially selects the ADF tuner digits for use with +/-. Follow by KEY_SELECT_2 for ADF 2.</td>
+    </tr>
+    <tr>
+      <td>KEY_DME</td>
+      <td>DME</td>
+      <td>Selects the DME for use with +/-</td>
+    </tr>
+    <tr>
+      <td>KEY_COM_RADIO</td>
+      <td>COM_RADIO</td>
+      <td>Sequentially selects the COM tuner digits for use with +/-. Follow by KEY_SELECT_2 for COM 2.</td>
+    </tr>
+    <tr>
+      <td>KEY_VOR_OBS</td>
+      <td>VOR_OBS</td>
+      <td>Sequentially selects the VOR OBS for use with +/-. Follow by KEY_SELECT_2 for VOR 2.</td>
+    </tr>
+    <tr>
+      <td>KEY_NAV_RADIO</td>
+      <td>NAV_RADIO</td>
+      <td>Sequentially selects the NAV tuner digits for use with +/-. Follow by KEY_SELECT_2 for NAV 2.</td>
+    </tr>
+    <tr>
+      <td>KEY_COM_RADIO_WHOLE_DEC</td>
+      <td>COM_RADIO_WHOLE_DEC</td>
+      <td>Decrements COM by one MHz</td>
+    </tr>
+    <tr>
+      <td>KEY_COM_RADIO_WHOLE_INC</td>
+      <td>COM_RADIO_WHOLE_INC</td>
+      <td>Increments COM by one MHz</td>
+    </tr>
+    <tr>
+      <td>KEY_COM_RADIO_FRACT_DEC</td>
+      <td>COM_RADIO_FRACT_DEC</td>
+      <td>Decrements COM by 25 KHz</td>
+    </tr>
+    <tr>
+      <td>KEY_COM_RADIO_FRACT_INC</td>
+      <td>COM_RADIO_FRACT_INC</td>
+      <td>Increments COM by 25 KHz</td>
+    </tr>
+    <tr>
+      <td>KEY_NAV1_RADIO_WHOLE_DEC</td>
+      <td>NAV1_RADIO_WHOLE_DEC</td>
+      <td>Decrements Nav 1 by one MHz</td>
+    </tr>
+    <tr>
+      <td>KEY_NAV1_RADIO_WHOLE_INC</td>
+      <td>NAV1_RADIO_WHOLE_INC</td>
+      <td>Increments Nav 1 by one MHz</td>
+    </tr>
+    <tr>
+      <td>KEY_NAV1_RADIO_FRACT_DEC</td>
+      <td>NAV1_RADIO_FRACT_DEC</td>
+      <td>Decrements Nav 1 by 25 KHz</td>
+    </tr>
+    <tr>
+      <td>KEY_NAV1_RADIO_FRACT_INC</td>
+      <td>NAV1_RADIO_FRACT_INC</td>
+      <td>Increments Nav 1 by 25 KHz</td>
+    </tr>
+    <tr>
+      <td>KEY_NAV2_RADIO_WHOLE_DEC</td>
+      <td>NAV2_RADIO_WHOLE_DEC</td>
+      <td>Decrements Nav 2 by one MHz</td>
+    </tr>
+    <tr>
+      <td>KEY_NAV2_RADIO_WHOLE_INC</td>
+      <td>NAV2_RADIO_WHOLE_INC</td>
+      <td>Increments Nav 2 by one MHz</td>
+    </tr>
+    <tr>
+      <td>KEY_NAV2_RADIO_FRACT_DEC</td>
+      <td>NAV2_RADIO_FRACT_DEC</td>
+      <td>Decrements Nav 2 by 25 KHz</td>
+    </tr>
+    <tr>
+      <td>KEY_NAV2_RADIO_FRACT_INC</td>
+      <td>NAV2_RADIO_FRACT_INC</td>
+      <td>Increments Nav 2 by 25 KHz</td>
+    </tr>
+    <tr>
+      <td>KEY_ADF_100_INC</td>
+      <td>ADF_100_INC</td>
+      <td>Increments ADF by 100 KHz</td>
+    </tr>
+    <tr>
+      <td>KEY_ADF_10_INC</td>
+      <td>ADF_10_INC</td>
+      <td>Increments ADF by 10 KHz</td>
+    </tr>
+    <tr>
+      <td>KEY_ADF_1_INC</td>
+      <td>ADF_1_INC</td>
+      <td>Increments ADF by 1 KHz</td>
+    </tr>
+    <tr>
+      <td>KEY_XPNDR_1000_INC</td>
+      <td>XPNDR_1000_INC</td>
+      <td>Increments first digit of transponder </td>
+    </tr>
+    <tr>
+      <td>KEY_XPNDR_100_INC</td>
+      <td>XPNDR_100_INC</td>
+      <td>Increments second digit of transponder </td>
+    </tr>
+    <tr>
+      <td>KEY_XPNDR_10_INC</td>
+      <td>XPNDR_10_INC</td>
+      <td>Increments third digit of transponder </td>
+    </tr>
+    <tr>
+      <td>KEY_XPNDR_1_INC</td>
+      <td>XPNDR_1_INC</td>
+      <td>Increments fourth digit of transponder </td>
+    </tr>
+    <tr>
+      <td>KEY_VOR1_OBI_DEC</td>
+      <td>VOR1_OBI_DEC</td>
+      <td>Decrements VOR 1&rsquo;s OBS setting</td>
+    </tr>
+    <tr>
+      <td>KEY_VOR1_OBI_INC</td>
+      <td>VOR1_OBI_INC</td>
+      <td>Increments VOR 1&rsquo;s OBS setting</td>
+    </tr>
+    <tr>
+      <td>KEY_VOR2_OBI_DEC</td>
+      <td>VOR2_OBI_DEC</td>
+      <td>Decrements VOR 2&rsquo;s OBS setting</td>
+    </tr>
+    <tr>
+      <td>KEY_VOR2_OBI_INC</td>
+      <td>VOR2_OBI_INC</td>
+      <td>Increments VOR 2&rsquo;s OBS setting</td>
+    </tr>
+    <tr>
+      <td>KEY_ADF_100_DEC</td>
+      <td>ADF_100_DEC</td>
+      <td>Decrements ADF by 100 KHz</td>
+    </tr>
+    <tr>
+      <td>KEY_ADF_10_DEC</td>
+      <td>ADF_10_DEC</td>
+      <td>Decrements ADF by 10 KHz</td>
+    </tr>
+    <tr>
+      <td>KEY_ADF_1_DEC</td>
+      <td>ADF_1_DEC</td>
+      <td>Decrements ADF by 1 KHz</td>
+    </tr>
+    <tr>
+      <td>KEY_COM_RADIO_SET</td>
+      <td>COM_RADIO_SET</td>
+      <td>Sets COM frequency (BCD Hz)</td>
+    </tr>
+    <tr>
+      <td>KEY_NAV1_RADIO_SET</td>
+      <td>NAV1_RADIO_SET</td>
+      <td>Sets NAV 1 frequency (BCD Hz)</td>
+    </tr>
+    <tr>
+      <td>KEY_NAV2_RADIO_SET</td>
+      <td>NAV2_RADIO_SET</td>
+      <td>Sets NAV 2 frequency (BCD Hz)</td>
+    </tr>
+    <tr>
+      <td>KEY_ADF_SET</td>
+      <td>ADF_SET</td>
+      <td>Sets ADF frequency (BCD Hz)</td>
+    </tr>
+    <tr>
+      <td>KEY_XPNDR_SET</td>
+      <td>XPNDR_SET</td>
+      <td>Sets transponder code (BCD)</td>
+    </tr>
+    <tr>
+      <td>KEY_VOR1_SET</td>
+      <td>VOR1_SET</td>
+      <td>Sets OBS 1 (0 &ndash; 360)</td>
+    </tr>
+    <tr>
+      <td>KEY_VOR2_SET</td>
+      <td>VOR2_SET</td>
+      <td>Sets OBS 2 (0 &ndash; 360)</td>
+    </tr>
+    <tr>
+      <td>KEY_DME1_TOGGLE</td>
+      <td>DME1_TOGGLE</td>
+      <td>Sets DME display to Nav 1</td>
+    </tr>
+    <tr>
+      <td>KEY_DME2_TOGGLE</td>
+      <td>DME2_TOGGLE</td>
+      <td>Sets DME display to Nav 2</td>
+    </tr>
+    <tr>
+      <td>KEY_RADIO_VOR1_IDENT_DISABLE</td>
+      <td>RADIO_VOR1_IDENT_DISABLE</td>
+      <td>Turns NAV 1 ID off</td>
+    </tr>
+    <tr>
+      <td>KEY_RADIO_VOR2_IDENT_DISABLE</td>
+      <td>RADIO_VOR2_IDENT_DISABLE</td>
+      <td>Turns NAV 2 ID off</td>
+    </tr>
+    <tr>
+      <td>KEY_RADIO_DME1_IDENT_DISABLE</td>
+      <td>RADIO_DME1_IDENT_DISABLE</td>
+      <td>Turns DME 1 ID off</td>
+    </tr>
+    <tr>
+      <td>KEY_RADIO_DME2_IDENT_DISABLE</td>
+      <td>RADIO_DME2_IDENT_DISABLE</td>
+      <td>Turns DME 1 ID off</td>
+    </tr>
+    <tr>
+      <td>KEY_RADIO_ADF_IDENT_DISABLE</td>
+      <td>RADIO_ADF_IDENT_DISABLE</td>
+      <td>Turns ADF 1 ID off</td>
+    </tr>
+    <tr>
+      <td>KEY_RADIO_VOR1_IDENT_ENABLE</td>
+      <td>RADIO_VOR1_IDENT_ENABLE</td>
+      <td>Turns NAV 1 ID on</td>
+    </tr>
+    <tr>
+      <td>KEY_RADIO_VOR2_IDENT_ENABLE</td>
+      <td>RADIO_VOR2_IDENT_ENABLE</td>
+      <td>Turns NAV 2 ID on</td>
+    </tr>
+    <tr>
+      <td>KEY_RADIO_DME1_IDENT_ENABLE</td>
+      <td>RADIO_DME1_IDENT_ENABLE</td>
+      <td>Turns DME 1 ID on</td>
+    </tr>
+    <tr>
+      <td>KEY_RADIO_DME2_IDENT_ENABLE</td>
+      <td>RADIO_DME2_IDENT_ENABLE</td>
+      <td>Turns DME 1 ID on</td>
+    </tr>
+    <tr>
+      <td>KEY_RADIO_ADF_IDENT_ENABLE</td>
+      <td>RADIO_ADF_IDENT_ENABLE</td>
+      <td>Turns ADF 1 ID on</td>
+    </tr>
+    <tr>
+      <td>KEY_RADIO_VOR1_IDENT_TOGGLE</td>
+      <td>RADIO_VOR1_IDENT_TOGGLE</td>
+      <td>Toggles NAV 1 ID</td>
+    </tr>
+    <tr>
+      <td>KEY_RADIO_VOR2_IDENT_TOGGLE</td>
+      <td>RADIO_VOR2_IDENT_TOGGLE</td>
+      <td>Toggles NAV 2 ID</td>
+    </tr>
+    <tr>
+      <td>KEY_RADIO_DME1_IDENT_TOGGLE</td>
+      <td>RADIO_DME1_IDENT_TOGGLE</td>
+      <td>Toggles DME 1 ID</td>
+    </tr>
+    <tr>
+      <td>KEY_RADIO_DME2_IDENT_TOGGLE</td>
+      <td>RADIO_DME2_IDENT_TOGGLE</td>
+      <td>Toggles DME 1 ID</td>
+    </tr>
+    <tr>
+      <td>KEY_RADIO_ADF_IDENT_TOGGLE</td>
+      <td>RADIO_ADF_IDENT_TOGGLE</td>
+      <td>Toggles ADF 1 ID </td>
+    </tr>
+    <tr>
+      <td>KEY_RADIO_VOR1_IDENT_SET</td>
+      <td>RADIO_VOR1_IDENT_SET</td>
+      <td>Sets NAV 1 ID (on/off)</td>
+    </tr>
+    <tr>
+      <td>KEY_RADIO_VOR2_IDENT_SET</td>
+      <td>RADIO_VOR2_IDENT_SET</td>
+      <td>Sets NAV 2 ID (on/off)</td>
+    </tr>
+    <tr>
+      <td>KEY_RADIO_DME1_IDENT_SET</td>
+      <td>RADIO_DME1_IDENT_SET</td>
+      <td>Sets DME 1 ID (on/off)</td>
+    </tr>
+    <tr>
+      <td>KEY_RADIO_DME2_IDENT_SET</td>
+      <td>RADIO_DME2_IDENT_SET</td>
+      <td>Sets DME 1 ID (on/off)</td>
+    </tr>
+    <tr>
+      <td>KEY_RADIO_ADF_IDENT_SET</td>
+      <td>RADIO_ADF_IDENT_SET</td>
+      <td>Sets ADF 1 ID (on/off)</td>
+    </tr>
+    <tr>
+      <td>KEY_ADF_CARD_INC</td>
+      <td>ADF_CARD_INC</td>
+      <td>Increments ADF card</td>
+    </tr>
+    <tr>
+      <td>KEY_ADF_CARD_DEC</td>
+      <td>ADF_CARD_DEC</td>
+      <td>Decrements ADF card</td>
+    </tr>
+    <tr>
+      <td>KEY_ADF_CARD_SET</td>
+      <td>ADF_CARD_SET</td>
+      <td>Sets ADF card (0-360)</td>
+    </tr>
+    <tr>
+      <td>KEY_DME_TOGGLE</td>
+      <td>TOGGLE_DME</td>
+      <td>Toggles between NAV 1 and NAV 2</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_AVIONICS_MASTER</td>
+      <td>TOGGLE_AVIONICS_MASTER</td>
+      <td>Toggles avionics switch</td>
+    </tr>
+    <tr>
+      <td>KEY_COM_STBY_RADIO_SET</td>
+      <td>COM_STBY_RADIO_SET</td>
+      <td>Sets COM 1 standby frequency (BCD Hz)</td>
+    </tr>
+    
+    <tr>
+      <td>KEY_COM_STBY_RADIO_SWITCH_TO</td>
+      <td>COM_STBY_RADIO_SWAP</td>
+      <td>Swaps COM 1 frequency with standby</td>
+    </tr>
+    <tr>
+      <td>KEY_COM_RADIO_FRACT_DEC_CARRY</td>
+      <td>COM_RADIO_FRACT_DEC_CARRY</td>
+      <td>Decrement COM 1 frequency by 25 KHz, and carry when digit wraps</td>
+    </tr>
+    <tr>
+      <td>KEY_COM_RADIO_FRACT_INC_CARRY</td>
+      <td>COM_RADIO_FRACT_INC_CARRY</td>
+      <td>Increment COM 1 frequency by 25 KHz, and carry when digit wraps</td>
+    </tr>
+    <tr>
+      <td>KEY_COM2_RADIO_WHOLE_DEC</td>
+      <td>COM2_RADIO_WHOLE_DEC</td>
+      <td>Decrement COM 2 frequency by 1 MHz, with no carry when digit wraps</td>
+    </tr>
+    <tr>
+      <td>KEY_COM2_RADIO_WHOLE_INC</td>
+      <td>COM2_RADIO_WHOLE_INC</td>
+      <td>Increment COM 2 frequency by 1 MHz, with no carry when digit wraps</td>
+    </tr>
+    <tr>
+      <td>KEY_COM2_RADIO_FRACT_DEC</td>
+      <td>COM2_RADIO_FRACT_DEC</td>
+      <td>Decrement COM 2 frequency by 25 KHz, with no carry when digit wraps</td>
+    </tr>
+    <tr>
+      <td>KEY_COM2_RADIO_FRACT_DEC_CARRY</td>
+      <td>COM2_RADIO_FRACT_DEC_CARRY</td>
+      <td>Decrement COM 2 frequency by 25 KHz, and carry when digit wraps</td>
+    </tr>
+    <tr>
+      <td>KEY_COM2_RADIO_FRACT_INC</td>
+      <td>COM2_RADIO_FRACT_INC</td>
+      <td>Increment COM 2 frequency by 25 KHz, with no carry when digit wraps</td>
+    </tr>
+    <tr>
+      <td>KEY_COM2_RADIO_FRACT_INC_CARRY</td>
+      <td>COM2_RADIO_FRACT_INC_CARRY</td>
+      <td>Increment COM 2 frequency by 25 KHz, and carry when digit wraps</td>
+    </tr>
+    <tr>
+      <td>KEY_COM2_RADIO_SET</td>
+      <td>COM2_RADIO_SET</td>
+      <td>Sets COM 2 frequency (BCD Hz)</td>
+    </tr>
+    <tr>
+      <td>KEY_COM2_STBY_RADIO_SET</td>
+      <td>COM2_STBY_RADIO_SET</td>
+      <td>Sets COM 2 standby frequency (BCD Hz)</td>
+    </tr>
+    <tr>
+      <td>KEY_COM2_RADIO_SWAP</td>
+      <td>COM2_RADIO_SWAP</td>
+      <td>Swaps COM 2 frequency with standby</td>
+    </tr>
+    <tr>
+      <td>KEY_NAV1_RADIO_FRACT_DEC_CARRY</td>
+      <td>NAV1_RADIO_FRACT_DEC_CARRY</td>
+      <td>Decrement NAV 1 frequency by 50 KHz, and carry when digit wraps</td>
+    </tr>
+    <tr>
+      <td>KEY_NAV1_RADIO_FRACT_INC_CARRY</td>
+      <td>NAV1_RADIO_FRACT_INC_CARRY</td>
+      <td>Increment NAV 1 frequency by 50 KHz, and carry when digit wraps</td>
+    </tr>
+    <tr>
+      <td>KEY_NAV1_STBY_SET</td>
+      <td>NAV1_STBY_SET</td>
+      <td>Sets NAV 1 standby frequency (BCD Hz)</td>
+    </tr>
+    <tr>
+      <td>KEY_NAV1_RADIO_SWAP</td>
+      <td>NAV1_RADIO_SWAP</td>
+      <td>Swaps NAV 1 frequency with standby</td>
+    </tr>
+    <tr>
+      <td>KEY_NAV2_RADIO_FRACT_DEC_CARRY</td>
+      <td>NAV2_RADIO_FRACT_DEC_CARRY</td>
+      <td>Decrement NAV 2 frequency by 50 KHz, and carry when digit wraps</td>
+    </tr>
+    <tr>
+      <td>KEY_NAV2_RADIO_FRACT_INC_CARRY</td>
+      <td>NAV2_RADIO_FRACT_INC_CARRY</td>
+      <td>Increment NAV 2 frequency by 50 KHz, and carry when digit wraps</td>
+    </tr>
+    <tr>
+      <td>KEY_NAV2_STBY_SET</td>
+      <td>NAV2_STBY_SET</td>
+      <td>Sets NAV 2 standby frequency (BCD Hz)</td>
+    </tr>
+    <tr>
+      <td>KEY_NAV2_RADIO_SWAP</td>
+      <td>NAV2_RADIO_SWAP</td>
+      <td>Swaps NAV 2 frequency with standby</td>
+    </tr>
+    <tr>
+      <td>KEY_ADF1_RADIO_TENTHS_DEC</td>
+      <td>ADF1_RADIO_TENTHS_DEC</td>
+      <td>Decrements ADF 1 by 0.1 KHz.</td>
+    </tr>
+    <tr>
+      <td>KEY_ADF1_RADIO_TENTHS_INC</td>
+      <td>ADF1_RADIO_TENTHS_INC</td>
+      <td>Increments ADF 1 by 0.1 KHz.</td>
+    </tr>
+    <tr>
+      <td>KEY_XPNDR_1000_DEC</td>
+      <td>XPNDR_1000_DEC</td>
+      <td>Decrements first digit of transponder </td>
+    </tr>
+    <tr>
+      <td>KEY_XPNDR_100_DEC</td>
+      <td>XPNDR_100_DEC</td>
+      <td>Decrements second digit of transponder </td>
+    </tr>
+    <tr>
+      <td>KEY_XPNDR_10_DEC</td>
+      <td>XPNDR_10_DEC</td>
+      <td>Decrements third digit of transponder </td>
+    </tr>
+    <tr>
+      <td>KEY_XPNDR_1_DEC</td>
+      <td>XPNDR_1_DEC</td>
+      <td>Decrements fourth digit of transponder </td>
+    </tr>
+    <tr>
+      <td>KEY_XPNDR_DEC_CARRY</td>
+      <td>XPNDR_DEC_CARRY</td>
+      <td>Decrements fourth digit of transponder, and with carry.</td>
+    </tr>
+    <tr>
+      <td>KEY_XPNDR_INC_CARRY</td>
+      <td>XPNDR_INC_CARRY</td>
+      <td>Increments fourth digit of transponder, and with carry.</td>
+    </tr>
+    <tr>
+      <td>KEY_ADF_FRACT_DEC_CARRY</td>
+      <td>ADF_FRACT_DEC_CARRY</td>
+      <td>Decrements ADF 1 frequency by 0.1 KHz, with carry</td>
+    </tr>
+    <tr>
+      <td>KEY_ADF_FRACT_INC_CARRY</td>
+      <td>ADF_FRACT_INC_CARRY</td>
+      <td>Increments ADF 1 frequency by 0.1 KHz, with carry</td>
+    </tr>
+    <tr>
+      <td>KEY_COM1_TRANSMIT_SELECT</td>
+      <td>COM1_TRANSMIT_SELECT</td>
+      <td>Selects COM 1 to transmit</td>
+    </tr>
+    <tr>
+      <td>KEY_COM2_TRANSMIT_SELECT</td>
+      <td>COM2_TRANSMIT_SELECT</td>
+      <td>Selects COM 2 to transmit</td>
+    </tr>
+    <tr>
+      <td>KEY_COM_RECEIVE_ALL_TOGGLE</td>
+      <td>COM_RECEIVE_ALL_TOGGLE</td>
+      <td>Toggles all COM radios to receive on</td>
+    </tr>
+    <tr>
+      <td>KEY_COM_RECEIVE_ALL_SET</td>
+      <td>COM_RECEIVE_ALL_SET</td>
+      <td>Sets whether to receive on all COM radios (1,0)</td>
+    </tr>
+    <tr>
+      <td>KEY_MARKER_SOUND_TOGGLE</td>
+      <td>MARKER_SOUND_TOGGLE</td>
+      <td>Toggles marker beacon sound on/off</td>
+    </tr>
+    <tr>
+      <td>KEY_MARKER_SOUND_SET</td>
+      <td>Unsupported</td>
+      <td>Sets marker beacon sound (1, 0)</td>
+    </tr>
+    <tr>
+      <td>KEY_ADF_COMPLETE_SET</td>
+      <td>ADF_COMPLETE_SET</td>
+      <td>Sets ADF 1 frequency (BCD Hz)</td>
+    </tr>
+    <tr>
+      <td>KEY_ADF_WHOLE_INC</td>
+      <td>ADF1_WHOLE_INC</td>
+      <td>Increments ADF 1 by 1 KHz, with carry as digits wrap.</td>
+    </tr>
+    <tr>
+      <td>KEY_ADF_WHOLE_DEC</td>
+      <td>ADF1_WHOLE_DEC</td>
+      <td>Decrements ADF 1 by 1 KHz, with carry as digits wrap.</td>
+    </tr>
+    <tr>
+      <td>KEY_ADF2_100_INC</td>
+      <td>ADF2_100_INC</td>
+      <td>Increments ADF 2 frequency 100&rsquo;s digit, with wrapping</td>
+    </tr>
+    <tr>
+      <td>KEY_ADF2_10_INC</td>
+      <td>ADF2_10_INC</td>
+      <td>Increments ADF 2 frequency 10&rsquo;s digit, with wrapping</td>
+    </tr>
+    <tr>
+      <td>KEY_ADF2_1_INC</td>
+      <td>ADF2_1_INC</td>
+      <td>Increments ADF 2 frequency 1&rsquo;s digit, with wrapping</td>
+    </tr>
+    <tr>
+      <td>KEY_ADF2_RADIO_TENTHS_INC</td>
+      <td>ADF2_RADIO_TENTHS_INC</td>
+      <td>Increments ADF 2 frequency 1/10 digit, with wrapping</td>
+    </tr>
+    <tr>
+      <td>KEY_ADF2_100_DEC</td>
+      <td>ADF2_100_DEC</td>
+      <td>Decrements ADF 2 frequency 100&rsquo;s digit, with wrapping</td>
+    </tr>
+    <tr>
+      <td>KEY_ADF2_10_DEC</td>
+      <td>ADF2_10_DEC</td>
+      <td>Decrements ADF 2 frequency 10&rsquo;s digit, with wrapping</td>
+    </tr>
+    <tr>
+      <td>KEY_ADF2_1_DEC</td>
+      <td>ADF2_1_DEC</td>
+      <td>Decrements ADF 2 frequency 1&rsquo;s digit, with wrapping</td>
+    </tr>
+    <tr>
+      <td>KEY_ADF2_RADIO_TENTHS_DEC</td>
+      <td>ADF2_RADIO_TENTHS_DEC</td>
+      <td>Decrements ADF 2 frequency 1/10 digit, with wrapping</td>
+    </tr>
+    <tr>
+      <td>KEY_ADF2_WHOLE_INC</td>
+      <td>ADF2_WHOLE_INC</td>
+      <td>Increments ADF 2 by 1 KHz, with carry as digits wrap.</td>
+    </tr>
+    <tr>
+      <td>KEY_ADF2_WHOLE_DEC</td>
+      <td>ADF2_WHOLE_DEC</td>
+      <td>Decrements ADF 2 by 1 KHz, with carry as digits wrap.</td>
+    </tr>
+    <tr>
+      <td>KEY_ADF2_FRACT_INC_CARRY</td>
+      <td>ADF2_FRACT_DEC_CARRY</td>
+      <td>Decrements ADF 2 frequency by 0.1 KHz, with carry</td>
+    </tr>
+    <tr>
+      <td>KEY_ADF2_FRACT_DEC_CARRY</td>
+      <td>ADF2_FRACT_INC_CARRY</td>
+      <td>Increments ADF 2 frequency by 0.1 KHz, with carry</td>
+    </tr>
+    <tr>
+      <td>KEY_ADF2_COMPLETE_SET</td>
+      <td>ADF2_COMPLETE_SET</td>
+      <td>Sets ADF 1 frequency (BCD Hz)</td>
+    </tr>
+    <tr>
+      <td>KEY_RADIO_ADF2_IDENT_DISABLE</td>
+      <td>RADIO_ADF2_IDENT_DISABLE</td>
+      <td>Turns ADF 2 ID off</td>
+    </tr>
+    <tr>
+      <td>KEY_RADIO_ADF2_IDENT_ENABLE</td>
+      <td>RADIO_ADF2_IDENT_ENABLE</td>
+      <td>Turns ADF 2 ID on</td>
+    </tr>
+    <tr>
+      <td>KEY_RADIO_ADF2_IDENT_TOGGLE</td>
+      <td>RADIO_ADF2_IDENT_TOGGLE</td>
+      <td>Toggles ADF 2 ID</td>
+    </tr>
+    <tr>
+      <td>KEY_RADIO_ADF2_IDENT_SET</td>
+      <td>RADIO_ADF2_IDENT_SET</td>
+      <td>Sets ADF 2 ID on/off (1,0)</td>
+    </tr>
+    <tr>
+      <td>KEY_FREQUENCY_SWAP</td>
+      <td>FREQUENCY_SWAP</td>
+      <td>Swaps frequency with standby on whichever NAV or COM radio is selected.</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_GPS_DRIVES_NAV1</td>
+      <td>TOGGLE_GPS_DRIVES_NAV1</td>
+      <td>Toggles between GPS and NAV 1 driving NAV 1 OBS display (and AP)</td>
+    </tr>
+    <tr>
+      <td>KEY_GPS_POWER_BUTTON      </td>
+      <td>GPS_POWER_BUTTON</td>
+      <td>Toggles power button</td>
+    </tr>
+    <tr>
+      <td>KEY_GPS_NEAREST_BUTTON      </td>
+      <td>GPS_NEAREST_BUTTON</td>
+      <td>Selects Nearest Airport Page</td>
+    </tr>
+    <tr>
+      <td>KEY_GPS_OBS_BUTTON      </td>
+      <td>GPS_OBS_BUTTON</td>
+      <td>Toggles automatic sequencing of waypoints</td>
+    </tr>
+    <tr>
+      <td>KEY_GPS_MSG_BUTTON      </td>
+      <td>GPS_MSG_BUTTON</td>
+      <td>Toggles the Message Page</td>
+    </tr>
+    <tr>
+      <td>KEY_GPS_MSG_BUTTON_DOWN  </td>
+      <td>GPS_MSG_BUTTON_DOWN</td>
+      <td>Triggers the pressing of the message button.</td>
+    </tr>
+    <tr>
+      <td>KEY_GPS_MSG_BUTTON_UP    </td>
+      <td>GPS_MSG_BUTTON_UP</td>
+      <td>Triggers the release of the message button</td>
+    </tr>
+    <tr>
+      <td>KEY_GPS_FLIGHTPLAN_BUTTON      </td>
+      <td>GPS_FLIGHTPLAN_BUTTON</td>
+      <td>Displays the programmed flightplan.</td>
+    </tr>
+    <tr>
+      <td>KEY_GPS_TERRAIN_BUTTON      </td>
+      <td>GPS_TERRAIN_BUTTON</td>
+      <td>Displays terrain information on default display</td>
+    </tr>
+    <tr>
+      <td>KEY_GPS_PROCEDURE_BUTTON    </td>
+      <td>GPS_PROCEDURE_BUTTON</td>
+      <td>Displays the approach procedure page.</td>
+    </tr>
+    <tr>
+      <td>KEY_GPS_ZOOMIN_BUTTON      </td>
+      <td>GPS_ZOOMIN_BUTTON</td>
+      <td>Zooms in default display</td>
+    </tr>
+    <tr>
+      <td>KEY_GPS_ZOOMOUT_BUTTON      </td>
+      <td>GPS_ZOOMOUT_BUTTON</td>
+      <td>Zooms out default display</td>
+    </tr>
+    <tr>
+      <td>KEY_GPS_DIRECTTO_BUTTON      </td>
+      <td>GPS_DIRECTTO_BUTTON</td>
+      <td>Brings up the &ldquo;Direct To&rdquo; page</td>
+    </tr>
+    <tr>
+      <td>KEY_GPS_MENU_BUTTON      </td>
+      <td>GPS_MENU_BUTTON</td>
+      <td>Brings up page to select active legs in a flightplan.</td>
+    </tr>
+    <tr>
+      <td>KEY_GPS_CLEAR_BUTTON      </td>
+      <td>GPS_CLEAR_BUTTON</td>
+      <td>Clears entered data on a page</td>
+    </tr>
+    <tr>
+      <td>KEY_GPS_CLEAR_ALL_BUTTON   </td>
+      <td>GPS_CLEAR_ALL_BUTTON</td>
+      <td>Clears all data immediately</td>
+    </tr>
+    <tr>
+      <td>KEY_GPS_CLEAR_BUTTON_DOWN  </td>
+      <td>GPS_CLEAR_BUTTON_DOWN</td>
+      <td>Triggers the pressing of the Clear button</td>
+    </tr>
+    <tr>
+      <td>KEY_GPS_CLEAR_BUTTON_UP    </td>
+      <td>GPS_CLEAR_BUTTON_UP</td>
+      <td>Triggers the release of the Clear button.</td>
+    </tr>
+    <tr>
+      <td>KEY_GPS_ENTER_BUTTON      </td>
+      <td>GPS_ENTER_BUTTON</td>
+      <td>Approves entered data.</td>
+    </tr>
+    <tr>
+      <td>KEY_GPS_CURSOR_BUTTON      </td>
+      <td>GPS_CURSOR_BUTTON</td>
+      <td>Selects GPS cursor</td>
+    </tr>
+    <tr>
+      <td>KEY_GPS_GROUP_KNOB_INC </td>
+      <td>GPS_GROUP_KNOB_INC</td>
+      <td>Increments cursor</td>
+    </tr>
+    <tr>
+      <td>KEY_GPS_GROUP_KNOB_DEC </td>
+      <td>GPS_GROUP_KNOB_DEC</td>
+      <td>Decrements cursor</td>
+    </tr>
+    <tr>
+      <td>KEY_GPS_PAGE_KNOB_INC  </td>
+      <td>GPS_PAGE_KNOB_INC</td>
+      <td>Increments through pages</td>
+    </tr>
+    <tr>
+      <td>KEY_GPS_PAGE_KNOB_DEC </td>
+      <td>GPS_PAGE_KNOB_DEC</td>
+      <td>Decrements through pages</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>&nbsp;</h4>
+
+<h4>Aircraft Instruments<a name="AircraftInstrumentsIDs"></a></h4>
+
+<p>&nbsp;</p>
+
+<table class="T1" cellpadding="2" cellspacing="4">
+
+  <tbody>
+    <tr>
+      <td>
+      <h5>Event ID</h5>
+      </td>
+      <td>
+      <h5>String Name </h5>
+      </td>
+      <td>
+      <h5>Description</h5>
+      </td>
+    </tr>
+    <tr>
+      <td>KEY_EGT</td>
+      <td>EGT</td>
+      <td>Selects EGT bug for +/-</td>
+    </tr>
+    <tr>
+      <td>KEY_EGT_INC</td>
+      <td>EGT_INC</td>
+      <td>Increments EGT bugs</td>
+    </tr>
+    <tr>
+      <td>KEY_EGT_DEC</td>
+      <td>EGT_DEC</td>
+      <td>Decrements EGT bugs</td>
+    </tr>
+    <tr>
+      <td>KEY_EGT_SET</td>
+      <td>EGT_SET</td>
+      <td>Sets EGT bugs (0 &ndash; 32767)</td>
+    </tr>
+    <tr>
+      <td>KEY_BAROMETRIC</td>
+      <td>BAROMETRIC</td>
+      <td>Syncs altimeter setting to sea level pressure, or 29.92 if above 18000 feet</td>
+    </tr>
+    <tr>
+      <td>KEY_GYRO_DRIFT_INC</td>
+      <td>GYRO_DRIFT_INC</td>
+      <td>Increments heading indicator</td>
+    </tr>
+    <tr>
+      <td>KEY_GYRO_DRIFT_DEC</td>
+      <td>GYRO_DRIFT_DEC</td>
+      <td>Decrements heading indicator</td>
+    </tr>
+    <tr>
+      <td>KEY_KOHLSMAN_INC</td>
+      <td>KOHLSMAN_INC</td>
+      <td>Increments altimeter setting</td>
+    </tr>
+    <tr>
+      <td>KEY_KOHLSMAN_DEC</td>
+      <td>KOHLSMAN_DEC</td>
+      <td>Decrements altimeter setting</td>
+    </tr>
+    <tr>
+      <td>KEY_KOHLSMAN_SET</td>
+      <td>KOHLSMAN_SET</td>
+      <td>Sets altimeter setting (Millibars * 16)</td>
+    </tr>
+    <tr>
+      <td>KEY_TRUE_AIRSPEED_CALIBRATE_INC</td>
+      <td>TRUE_AIRSPEED_CAL_INC</td>
+      <td>Increments airspeed indicators true airspeed reference card</td>
+    </tr>
+    <tr>
+      <td>KEY_TRUE_AIRSPEED_CALIBRATE_DEC</td>
+      <td>TRUE_AIRSPEED_CAL_DEC</td>
+      <td>Decrements airspeed indicators true airspeed reference card</td>
+    </tr>
+    <tr>
+      <td>KEY_TRUE_AIRSPEED_CAL_SET</td>
+      <td>TRUE_AIRSPEED_CAL_SET</td>
+      <td>Sets airspeed indicators true airspeed reference card (degrees, where 0 is standard sea level conditions)</td>
+    </tr>
+    <tr>
+      <td>KEY_EGT1_INC</td>
+      <td>EGT1_INC</td>
+      <td>Increments EGT bug 1</td>
+    </tr>
+    <tr>
+      <td>KEY_EGT1_DEC</td>
+      <td>EGT1_DEC</td>
+      <td>Decrements EGT bug 1</td>
+    </tr>
+    <tr>
+      <td>KEY_EGT1_SET</td>
+      <td>EGT1_SET</td>
+      <td>Sets EGT bug 1 (0 &ndash; 32767)</td>
+    </tr>
+    <tr>
+      <td>KEY_EGT2_INC</td>
+      <td>EGT2_INC</td>
+      <td>Increments EGT bug 2</td>
+    </tr>
+    <tr>
+      <td>KEY_EGT2_DEC</td>
+      <td>EGT2_DEC</td>
+      <td>Decrements EGT bug 2</td>
+    </tr>
+    <tr>
+      <td>KEY_EGT2_SET</td>
+      <td>EGT2_SET</td>
+      <td>Sets EGT bug 2 (0 &ndash; 32767)</td>
+    </tr>
+    <tr>
+      <td>KEY_EGT3_INC</td>
+      <td>EGT3_INC</td>
+      <td>Increments EGT bug 3</td>
+    </tr>
+    <tr>
+      <td>KEY_EGT3_DEC</td>
+      <td>EGT3_DEC</td>
+      <td>Decrements EGT bug 3</td>
+    </tr>
+    <tr>
+      <td>KEY_EGT3_SET</td>
+      <td>EGT3_SET</td>
+      <td>Sets EGT bug 3 (0 &ndash; 32767)</td>
+    </tr>
+    <tr>
+      <td>KEY_EGT4_INC</td>
+      <td>EGT4_INC</td>
+      <td>Increments EGT bug 4</td>
+    </tr>
+    <tr>
+      <td>KEY_EGT4_DEC</td>
+      <td>EGT4_DEC</td>
+      <td>Decrements EGT bug 4</td>
+    </tr>
+    <tr>
+      <td>KEY_EGT4_SET</td>
+      <td>EGT4_SET</td>
+      <td>Sets EGT bug 4 (0 &ndash; 32767)</td>
+    </tr>
+    <tr>
+      <td>KEY_ATTITUDE_BARS_POSITION_INC</td>
+      <td>ATTITUDE_BARS_POSITION_UP</td>
+      <td>Increments attitude indicator pitch reference bars</td>
+    </tr>
+    <tr>
+      <td>KEY_ATTITUDE_BARS_POSITION_DEC</td>
+      <td>ATTITUDE_BARS_POSITION_DOWN</td>
+      <td>Decrements attitude indicator pitch reference bars</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_ATTITUDE_CAGE</td>
+      <td>ATTITUDE_CAGE_BUTTON</td>
+      <td>Cages attitude indicator at 0 pitch and bank</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>KEY_RESET_G_FORCE_INDICATOR     </td>
+      <td>RESET_G_FORCE_INDICATOR</td>
+      <td>Resets max/min indicated G force to 1.0. </td>
+    </tr>
+    <tr>
+      <td>KEY_RESET_MAX_RPM_INDICATOR</td>
+      <td>RESET_MAX_RPM_INDICATOR</td>
+      <td>Reset max indicated engine rpm to 0.</td>
+    </tr>
+    <tr>
+      <td>KEY_HEADING_GYRO_SET</td>
+      <td>HEADING_GYRO_SET</td>
+      <td>Sets heading indicator to 0 drift error.</td>
+    </tr>
+    <tr>
+      <td>KEY_GYRO_DRIFT_SET</td>
+      <td>GYRO_DRIFT_SET</td>
+      <td>Sets heading indicator drift angle (degrees).</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>&nbsp;</h4>
+
+<h4>Aircraft Lights<a name="AircraftLightsIDs"></a></h4>
+
+<p>&nbsp;</p>
+
+<table class="T1" cellpadding="2" cellspacing="4">
+
+  <tbody>
+    <tr>
+      <td>
+      <h5>Event ID</h5>
+      </td>
+      <td>
+      <h5>String Name </h5>
+      </td>
+      <td>
+      <h5>Description</h5>
+      </td>
+    </tr>
+    <tr>
+      <td>KEY_STROBES_TOGGLE</td>
+      <td>STROBES_TOGGLE</td>
+      <td>Toggle strobe lights&nbsp;</td>
+    </tr>
+    <tr>
+      <td>KEY_ALL_LIGHTS_TOGGLE</td>
+      <td>ALL_LIGHTS_TOGGLE</td>
+      <td>Toggle all lights</td>
+    </tr>
+    <tr>
+      <td>KEY_PANEL_LIGHTS_TOGGLE</td>
+      <td>PANEL_LIGHTS_TOGGLE</td>
+      <td>Toggle panel lights</td>
+    </tr>
+    <tr>
+      <td>KEY_LANDING_LIGHTS_TOGGLE</td>
+      <td>LANDING_LIGHTS_TOGGLE</td>
+      <td>Toggle landing lights</td>
+    </tr>
+    <tr>
+      <td>KEY_LANDING_LIGHT_UP</td>
+      <td>LANDING_LIGHT_UP</td>
+      <td>Rotate landing light up</td>
+    </tr>
+    <tr>
+      <td>KEY_LANDING_LIGHT_DOWN</td>
+      <td>LANDING_LIGHT_DOWN</td>
+      <td>Rotate landing light down</td>
+    </tr>
+    <tr>
+      <td>KEY_LANDING_LIGHT_LEFT</td>
+      <td>LANDING_LIGHT_LEFT</td>
+      <td>Rotate landing light left</td>
+    </tr>
+    <tr>
+      <td>KEY_LANDING_LIGHT_RIGHT</td>
+      <td>LANDING_LIGHT_RIGHT</td>
+      <td>Rotate landing light right</td>
+    </tr>
+    <tr>
+      <td>KEY_LANDING_LIGHT_HOME</td>
+      <td>LANDING_LIGHT_HOME</td>
+      <td>Return landing light to default position</td>
+    </tr>
+    <tr>
+      <td>KEY_STROBES_ON</td>
+      <td>STROBES_ON</td>
+      <td>Turn strobe lights on</td>
+    </tr>
+    <tr>
+      <td>KEY_STROBES_OFF</td>
+      <td>STROBES_OFF</td>
+      <td>Turn strobe light off</td>
+    </tr>
+    <tr>
+      <td>KEY_STROBES_SET</td>
+      <td>STROBES_SET</td>
+      <td>Set strobe lights on/off (1,0)</td>
+    </tr>
+    <tr>
+      <td>KEY_PANEL_LIGHTS_ON</td>
+      <td>PANEL_LIGHTS_ON</td>
+      <td>Turn panel lights on</td>
+    </tr>
+    <tr>
+      <td>KEY_PANEL_LIGHTS_OFF</td>
+      <td>PANEL_LIGHTS_OFF</td>
+      <td>Turn panel lights off</td>
+    </tr>
+    <tr>
+      <td>KEY_PANEL_LIGHTS_SET</td>
+      <td>PANEL_LIGHTS_SET</td>
+      <td>Set panel lights on/off (1,0)</td>
+    </tr>
+    <tr>
+      <td>KEY_LANDING_LIGHTS_ON</td>
+      <td>LANDING_LIGHTS_ON</td>
+      <td>Turn landing lights on</td>
+    </tr>
+    <tr>
+      <td>KEY_LANDING_LIGHTS_OFF</td>
+      <td>LANDING_LIGHTS_OFF</td>
+      <td>Turn landing lights off</td>
+    </tr>
+    <tr>
+      <td>KEY_LANDING_LIGHTS_SET</td>
+      <td>LANDING_LIGHTS_SET</td>
+      <td>Set landing lights on/off (1,0)</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_BEACON_LIGHTS</td>
+      <td>TOGGLE_BEACON_LIGHTS</td>
+      <td>Toggle beacon lights</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_TAXI_LIGHTS</td>
+      <td>TOGGLE_TAXI_LIGHTS</td>
+      <td>Toggle taxi lights</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_LOGO_LIGHTS</td>
+      <td>TOGGLE_LOGO_LIGHTS</td>
+      <td>Toggle logo lights</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_RECOGNITION_LIGHTS</td>
+      <td>TOGGLE_RECOGNITION_LIGHTS</td>
+      <td>Toggle recognition lights</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_WING_LIGHTS</td>
+      <td>TOGGLE_WING_LIGHTS</td>
+      <td>Toggle wing lights</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_NAV_LIGHTS</td>
+      <td>TOGGLE_NAV_LIGHTS</td>
+      <td>Toggle navigation lights</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_CABIN_LIGHTS         </td>
+      <td>TOGGLE_CABIN_LIGHTS</td>
+      <td>Toggle cockpit/cabin lights</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>&nbsp;</h4>
+
+<h4>Aircraft Failures<a name="AircraftFailuresIDs"></a></h4>
+
+<p>&nbsp;</p>
+
+<table class="T1" cellpadding="2" cellspacing="4">
+
+  <tbody>
+    <tr>
+      <td>
+      <h5>Event ID</h5>
+      </td>
+      <td>
+      <h5>String Name </h5>
+      </td>
+      <td>
+      <h5>Description</h5>
+      </td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_VACUUM_FAILURE</td>
+      <td>TOGGLE_VACUUM_FAILURE</td>
+      <td>Toggle vacuum system failure</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_ELECTRICAL_FAILURE</td>
+      <td>TOGGLE_ELECTRICAL_FAILURE</td>
+      <td>Toggle electrical system failure</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_PITOT_BLOCKAGE</td>
+      <td>TOGGLE_PITOT_BLOCKAGE</td>
+      <td>Toggles blocked pitot tube</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_STATIC_PORT_BLOCKAGE</td>
+      <td>TOGGLE_STATIC_PORT_BLOCKAGE</td>
+      <td>&nbsp;Toggles blocked static port</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_HYDRAULIC_FAILURE</td>
+      <td>TOGGLE_HYDRAULIC_FAILURE</td>
+      <td>Toggles hydraulic system failure</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_TOTAL_BRAKE_FAILURE</td>
+      <td>TOGGLE_TOTAL_BRAKE_FAILURE</td>
+      <td>Toggles brake failure (both)</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_LEFT_BRAKE_FAILURE</td>
+      <td>TOGGLE_LEFT_BRAKE_FAILURE</td>
+      <td>Toggles left brake failure</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_RIGHT_BRAKE_FAILURE</td>
+      <td>TOGGLE_RIGHT_BRAKE_FAILURE</td>
+      <td>Toggles right brake failure</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_ENGINE1_FAILURE</td>
+      <td>TOGGLE_ENGINE1_FAILURE</td>
+      <td>Toggle engine 1 failure</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_ENGINE2_FAILURE</td>
+      <td>TOGGLE_ENGINE2_FAILURE</td>
+      <td>Toggle engine 2 failure</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_ENGINE3_FAILURE</td>
+      <td>TOGGLE_ENGINE3_FAILURE</td>
+      <td>Toggle engine 3 failure</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_ENGINE4_FAILURE</td>
+      <td>TOGGLE_ENGINE4_FAILURE</td>
+      <td>Toggle engine 4 failure</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>&nbsp;</h4>
+
+<h4>Aircraft Miscellaneous Systems<a name="AircraftMiscellaneousSystemsIDs"></a></h4>
+
+<p>&nbsp;</p>
+
+<table class="T1" cellpadding="2" cellspacing="4">
+
+  <tbody>
+    <tr>
+      <td>
+      <h5>Event ID</h5>
+      </td>
+      <td>
+      <h5>String Name </h5>
+      </td>
+      <td>
+      <h5>Description</h5>
+      </td>
+    </tr>
+    <tr>
+      <td>KEY_SMOKE_TOGGLE</td>
+      <td>SMOKE_TOGGLE</td>
+      <td>Toggle smoke system switch</td>
+    </tr>
+    <tr>
+      <td>KEY_GEAR_TOGGLE</td>
+      <td>GEAR_TOGGLE</td>
+      <td>Toggle gear handle</td>
+    </tr>
+    <tr>
+      <td>KEY_BRAKES</td>
+      <td>BRAKES</td>
+      <td>Increment brake pressure&nbsp;</td>
+    </tr>
+    <tr>
+      <td>KEY_GEAR_SET</td>
+      <td>GEAR_SET</td>
+      <td>Sets gear handle position up/down (0,1)</td>
+    </tr>
+    <tr>
+      <td>KEY_BRAKES_LEFT</td>
+      <td>BRAKES_LEFT</td>
+      <td>Increments left brake pressure</td>
+    </tr>
+    <tr>
+      <td>KEY_BRAKES_RIGHT</td>
+      <td>BRAKES_RIGHT</td>
+      <td>Increments right brake pressure</td>
+    </tr>
+    <tr>
+      <td>KEY_PARKING_BRAKES</td>
+      <td>PARKING_BRAKES</td>
+      <td>Toggles parking brake on/off</td>
+    </tr>
+    <tr>
+      <td>KEY_GEAR_PUMP</td>
+      <td>GEAR_PUMP</td>
+      <td>Increments emergency gear extension</td>
+    </tr>
+    <tr>
+      <td>KEY_PITOT_HEAT_TOGGLE</td>
+      <td>PITOT_HEAT_TOGGLE</td>
+      <td>Toggles pitot heat switch</td>
+    </tr>
+    <tr>
+      <td>KEY_SMOKE_ON</td>
+      <td>SMOKE_ON</td>
+      <td>Turns smoke system on</td>
+    </tr>
+    <tr>
+      <td>KEY_SMOKE_OFF</td>
+      <td>SMOKE_OFF</td>
+      <td>Turns smoke system off</td>
+    </tr>
+    <tr>
+      <td>KEY_SMOKE_SET</td>
+      <td>SMOKE_SET</td>
+      <td>Sets smoke system on/off (1,0)</td>
+    </tr>
+    <tr>
+      <td>KEY_PITOT_HEAT_ON</td>
+      <td>PITOT_HEAT_ON</td>
+      <td>Turns pitot heat switch on</td>
+    </tr>
+    <tr>
+      <td>KEY_PITOT_HEAT_OFF</td>
+      <td>PITOT_HEAT_OFF</td>
+      <td>Turns pitot heat switch off</td>
+    </tr>
+    <tr>
+      <td>KEY_PITOT_HEAT_SET</td>
+      <td>PITOT_HEAT_SET</td>
+      <td>Sets pitot heat switch on/off (1,0)</td>
+    </tr>
+    <tr>
+      <td>KEY_GEAR_UP</td>
+      <td>GEAR_UP</td>
+      <td>Sets gear handle in UP position</td>
+    </tr>
+    <tr>
+      <td>KEY_GEAR_DOWN</td>
+      <td>GEAR_DOWN</td>
+      <td>Sets gear handle in DOWN position</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_MASTER_BATTERY</td>
+      <td>TOGGLE_MASTER_BATTERY</td>
+      <td>Toggles main battery switch</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_MASTER_ALTERNATOR</td>
+      <td>TOGGLE_MASTER_ALTERNATOR</td>
+      <td>Toggles main alternator/generator switch</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_ELECTRIC_VACUUM_PUMP</td>
+      <td>TOGGLE_ELECTRIC_VACUUM_PUMP</td>
+      <td>Toggles backup electric vacuum pump</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_ALTERNATE_STATIC</td>
+      <td>TOGGLE_ALTERNATE_STATIC</td>
+      <td>Toggles alternate static pressure port</td>
+    </tr>
+    <tr>
+      <td>KEY_DECISION_HEIGHT_DEC</td>
+      <td>DECREASE_DECISION_HEIGHT</td>
+      <td>Decrements decision height reference</td>
+    </tr>
+    <tr>
+      <td>KEY_DECISION_HEIGHT_INC</td>
+      <td>INCREASE_DECISION_HEIGHT</td>
+      <td>Increments decision height reference</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_STRUCTURAL_DEICE</td>
+      <td>TOGGLE_STRUCTURAL_DEICE</td>
+      <td>Toggles structural deice switch</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_PROPELLER_DEICE</td>
+      <td>TOGGLE_PROPELLER_DEICE</td>
+      <td>Toggles propeller deice switch</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_ALTERNATOR1</td>
+      <td>TOGGLE_ALTERNATOR1</td>
+      <td>Toggles alternator/generator 1 switch</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_ALTERNATOR2</td>
+      <td>TOGGLE_ALTERNATOR2</td>
+      <td>Toggles alternator/generator 2 switch</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_ALTERNATOR3</td>
+      <td>TOGGLE_ALTERNATOR3</td>
+      <td>Toggles alternator/generator 3 switch</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_ALTERNATOR4</td>
+      <td>TOGGLE_ALTERNATOR4</td>
+      <td>Toggles alternator/generator 4 switch</td>
+    </tr>
+    <tr>
+      <td>
+    
+      <p style="width: 362px;">KEY_TOGGLE_MASTER_BATTERY_ALTERNATOR</p>
+      </td>
+      <td>
+      <p>TOGGLE_MASTER_BATTERY_</p>
+
+    
+      <p>ALTERNATOR</p>
+      </td>
+      <td>Toggles master battery and alternator switch</td>
+    </tr>
+    <tr>
+      <td>KEY_AXIS_LEFT_BRAKE_SET</td>
+      <td>AXIS_LEFT_BRAKE_SET</td>
+      <td>Sets left brake position from axis controller (e.g. joystick).  -16383 (0 brakes) to +16383 (max brakes)  </td>
+    </tr>
+    <tr>
+      <td>KEY_AXIS_RIGHT_BRAKE_SET</td>
+      <td>AXIS_RIGHT_BRAKE_SET</td>
+      <td>Sets right brake position from axis controller (e.g. joystick).  -16383 (0 brakes) to +16383 (max brakes)  </td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_AIRCRAFT_EXIT</td>
+      <td>TOGGLE_AIRCRAFT_EXIT</td>
+      <td>Toggles primary door open/close.  Follow by KEY_SELECT_2, etc for subsequent doors.</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_WING_FOLD</td>
+      <td>TOGGLE_WING_FOLD</td>
+      <td>Toggles wing folding</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_TAIL_HOOK_HANDLE</td>
+      <td>TOGGLE_TAIL_HOOK_HANDLE</td>
+      <td>Toggles tail hook</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_WATER_RUDDER</td>
+      <td>TOGGLE_WATER_RUDDER</td>
+      <td>Toggles water rudders</td>
+    </tr>
+    <tr>
+      <td>KEY_PUSHBACK_SET</td>
+      <td>TOGGLE_PUSHBACK</td>
+      <td>Toggles pushback.</td>
+    </tr>
+    <tr>
+      <td>KEY_TUG_HEADING</td>
+      <td>TUG_HEADING</td>
+      <td>Triggers tug and sets the desired heading.  0 &ndash; 65535 (0 &ndash; 360 degrees)</td>
+    </tr>
+    <tr>
+      <td>KEY_TUG_SPEED</td>
+      <td>TUG_SPEED</td>
+      <td>Triggers tug, and sets desired speed, in feet per second</td>
+    </tr>
+    <tr>
+      <td>KEY_TUG_DISABLE</td>
+      <td>TUG_DISABLE</td>
+      <td>Disables tug</td>
+    </tr>
+    <tr>
+      <td>
+        
+      <p>KEY_TOGGLE_MASTER_IGNITION_SWITCH </p>
+      </td>
+      <td>
+      <p>TOGGLE_MASTER_IGNITION_</p>
+
+        
+      <p>SWITCH</p>
+      </td>
+      <td>Toggles master ignition switch</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_TAILWHEEL_LOCK</td>
+      <td>TOGGLE_TAILWHEEL_LOCK</td>
+      <td>Toggles tail wheel lock</td>
+    </tr>
+    <tr>
+      <td>KEY_ADD_FUEL_QUANTITY      </td>
+      <td>ADD_FUEL_QUANTITY</td>
+      <td>Adds fuel to the aircraft, 25% of capacity by default.   0 &ndash; 65535 (max fuel) can be passed.</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>&nbsp;</h4>
+
+<h4>Helicopter Specific Systems<a name="HelicopterSpecificSystemsIDs"></a></h4>
+
+<p>&nbsp;</p>
+
+<table class="T1" cellpadding="2" cellspacing="4">
+		
+  <tbody>
+    <tr>
+      <td>
+      <h5>Event ID</h5>
+      </td>
+      <td>
+      <h5>String Name </h5>
+      </td>
+      <td>
+      <h5>Description</h5>
+      </td>
+    </tr>
+    <tr>
+      <td>KEY_ROTOR_BRAKE          </td>
+      <td>ROTOR_BRAKE</td>
+      <td>&nbsp;Triggers rotor braking input</td>
+    </tr>
+    <tr>
+      <td>
+            
+      <p>KEY_ROTOR_CLUTCH_SWITCH_TOGGLE</p>
+      </td>
+      <td>
+      <p>ROTOR_CLUTCH_SWITCH_</p>
+
+            
+      <p>TOGGLE</p>
+      </td>
+      <td>Toggles on electric rotor clutch switch</td>
+    </tr>
+    <tr>
+      <td>KEY_ROTOR_CLUTCH_SWITCH_SET </td>
+      <td>ROTOR_CLUTCH_SWITCH_SET</td>
+      <td>Sets electric rotor clutch switch on/off (1,0)</td>
+    </tr>
+    <tr>
+      <td>KEY_ROTOR_GOV_SWITCH_TOGGLE</td>
+      <td>ROTOR_GOV_SWITCH_TOGGLE</td>
+      <td>Toggles the electric rotor governor switch</td>
+    </tr>
+    <tr>
+      <td>KEY_ROTOR_GOV_SWITCH_SET   </td>
+      <td>ROTOR_GOV_SWITCH_SET</td>
+      <td>Sets the electric rotor governor switch on/off (1,0)</td>
+    </tr>
+    <tr>
+      <td>KEY_ROTOR_LATERAL_TRIM_INC </td>
+      <td>ROTOR_LATERAL_TRIM_INC</td>
+      <td>Increments the lateral (right) rotor trim</td>
+    </tr>
+    <tr>
+      <td>KEY_ROTOR_LATERAL_TRIM_DEC </td>
+      <td>ROTOR_LATERAL_TRIM_DEC</td>
+      <td>Decrements the lateral (right) rotor trim</td>
+    </tr>
+    <tr>
+      <td>KEY_ROTOR_LATERAL_TRIM_SET </td>
+      <td>ROTOR_LATERAL_TRIM_SET</td>
+      <td>Sets the lateral (right) rotor trim (0 &ndash; 16383)</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>&nbsp;</h4>
+
+<h4>Aircraft Slew System<a name="AircraftSlewSystemIDs"></a></h4>
+
+<p>&nbsp;</p>
+
+<table class="T1" cellpadding="2" cellspacing="4">
+	
+  <tbody>
+    <tr>
+      <td>
+      <h5>Event ID</h5>
+      </td>
+      <td>
+      <h5>String Name </h5>
+      </td>
+      <td>
+      <h5>Description</h5>
+      </td>
+    </tr>
+    <tr>
+      <td>KEY_SLEW_TOGGLE</td>
+      <td>SLEW_TOGGLE</td>
+      <td>Toggles slew on/off</td>
+    </tr>
+    <tr>
+      <td>KEY_SLEW_OFF</td>
+      <td>SLEW_OFF</td>
+      <td>Turns slew off</td>
+    </tr>
+    <tr>
+      <td>KEY_SLEW_ON</td>
+      <td>SLEW_ON</td>
+      <td>Turns slew on</td>
+    </tr>
+    <tr>
+      <td>KEY_SLEW_SET</td>
+      <td>SLEW_SET</td>
+      <td>Sets slew on/off (1,0)</td>
+    </tr>
+    <tr>
+      <td>KEY_SLEW_ALTIT_UP_FAST</td>
+      <td>SLEW_ALTIT_UP_FAST</td>
+      <td>Slew upward fast</td>
+    </tr>
+    <tr>
+      <td>KEY_SLEW_ALTIT_UP_SLOW</td>
+      <td>SLEW_ALTIT_UP_SLOW</td>
+      <td>Slew upward slow</td>
+    </tr>
+    <tr>
+      <td>KEY_SLEW_ALTIT_FREEZE</td>
+      <td>SLEW_ALTIT_FREEZE</td>
+      <td>Stop vertical slew</td>
+    </tr>
+    <tr>
+      <td>KEY_SLEW_ALTIT_DN_SLOW</td>
+      <td>SLEW_ALTIT_DN_SLOW</td>
+      <td>Slew downward slow</td>
+    </tr>
+    <tr>
+      <td>KEY_SLEW_ALTIT_DN_FAST</td>
+      <td>SLEW_ALTIT_DN_FAST</td>
+      <td>Slew downward fast</td>
+    </tr>
+    <tr>
+      <td>KEY_SLEW_ALTIT_PLUS</td>
+      <td>SLEW_ALTIT_PLUS</td>
+      <td>Increase upward slew</td>
+    </tr>
+    <tr>
+      <td>KEY_SLEW_ALTIT_MINUS</td>
+      <td>SLEW_ALTIT_MINUS</td>
+      <td>Decrease upward slew&nbsp;</td>
+    </tr>
+    <tr>
+      <td>KEY_SLEW_PITCH_DN_FAST</td>
+      <td>SLEW_PITCH_DN_FAST</td>
+      <td>Slew pitch downward fast</td>
+    </tr>
+    <tr>
+      <td>KEY_SLEW_PITCH_DN_SLOW</td>
+      <td>SLEW_PITCH_DN_SLOW</td>
+      <td>Slew pitch downward slow</td>
+    </tr>
+    <tr>
+      <td>KEY_SLEW_PITCH_FREEZE</td>
+      <td>SLEW_PITCH_FREEZE</td>
+      <td>Stop pitch slew</td>
+    </tr>
+    <tr>
+      <td>KEY_SLEW_PITCH_UP_SLOW</td>
+      <td>SLEW_PITCH_UP_SLOW</td>
+      <td>Slew pitch up slow</td>
+    </tr>
+    <tr>
+      <td>KEY_SLEW_PITCH_UP_FAST</td>
+      <td>SLEW_PITCH_UP_FAST</td>
+      <td>Slew pitch upward fast</td>
+    </tr>
+    <tr>
+      <td>KEY_SLEW_PITCH_PLUS</td>
+      <td>SLEW_PITCH_PLUS</td>
+      <td>Increase pitch up slew</td>
+    </tr>
+    <tr>
+      <td>KEY_SLEW_PITCH_MINUS</td>
+      <td>SLEW_PITCH_MINUS</td>
+      <td>Decrease pitch up slew</td>
+    </tr>
+    <tr>
+      <td>KEY_SLEW_BANK_MINUS</td>
+      <td>SLEW_BANK_MINUS</td>
+      <td>Increase left bank slew</td>
+    </tr>
+    <tr>
+      <td>KEY_SLEW_AHEAD_PLUS</td>
+      <td>SLEW_AHEAD_PLUS</td>
+      <td>Increase forward slew</td>
+    </tr>
+    <tr>
+      <td>KEY_SLEW_BANK_PLUS</td>
+      <td>SLEW_BANK_PLUS</td>
+      <td>Increase right bank slew</td>
+    </tr>
+    <tr>
+      <td>KEY_SLEW_LEFT</td>
+      <td>SLEW_LEFT</td>
+      <td>Slew to the left</td>
+    </tr>
+    <tr>
+      <td>KEY_SLEW_FREEZE</td>
+      <td>SLEW_FREEZE</td>
+      <td>Stop all slew</td>
+    </tr>
+    <tr>
+      <td>KEY_SLEW_RIGHT</td>
+      <td>SLEW_RIGHT</td>
+      <td>Slew to the right</td>
+    </tr>
+    <tr>
+      <td>KEY_SLEW_HEADING_MINUS</td>
+      <td>SLEW_HEADING_MINUS</td>
+      <td>Increase slew heading to the left</td>
+    </tr>
+    <tr>
+      <td>KEY_SLEW_AHEAD_MINUS</td>
+      <td>SLEW_AHEAD_MINUS</td>
+      <td>Decrease forward slew</td>
+    </tr>
+    <tr>
+      <td>KEY_SLEW_HEADING_PLUS</td>
+      <td>SLEW_HEADING_PLUS</td>
+      <td>Increase slew heading to the right</td>
+    </tr>
+    <tr>
+      <td>KEY_SLEW_RESET</td>
+      <td>SLEW_RESET</td>
+      <td>Stop slew and reset pitch, bank, and heading all  to zero.</td>
+    </tr>
+    <tr>
+      <td>KEY_AXIS_SLEW_AHEAD_SET</td>
+      <td>AXIS_SLEW_AHEAD_SET</td>
+      <td>Sets forward slew (+/- 16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_AXIS_SLEW_SIDEWAYS_SET</td>
+      <td>AXIS_SLEW_SIDEWAYS_SET</td>
+      <td>Sets sideways slew (+/- 16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_AXIS_SLEW_HEADING_SET</td>
+      <td>AXIS_SLEW_HEADING_SET</td>
+      <td>Sets heading slew (+/- 16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_AXIS_SLEW_ALT_SET</td>
+      <td>AXIS_SLEW_ALT_SET</td>
+      <td>Sets vertical slew (+/- 16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_AXIS_SLEW_BANK_SET</td>
+      <td>AXIS_SLEW_BANK_SET</td>
+      <td>Sets roll slew (+/- 16383)</td>
+    </tr>
+    <tr>
+      <td>KEY_AXIS_SLEW_PITCH_SET</td>
+      <td>AXIS_SLEW_PITCH_SET</td>
+      <td>Sets pitch slew (+/- 16383)</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>&nbsp;</h4>
+
+<h4>View System<a name="ViewSystemIDs"></a></h4>
+
+<p>&nbsp;</p>
+
+<table class="T1" cellpadding="2" cellspacing="4">
+  <tbody>
+    <tr>
+      <td>
+      <h5>Event ID</h5>      </td>
+      <td>
+      <h5>String Name </h5>      </td>
+      <td>
+      <h5>Description</h5>      </td>
+    </tr>
+    <tr>
+      <td>KEY_VIEW_MODE</td>
+      <td>VIEW_MODE</td>
+      <td>Selects next view</td>
+    </tr>
+    <tr>
+      <td>KEY_VIEW_WINDOW_TO_FRONT</td>
+      <td>VIEW_WINDOW_TO_FRONT</td>
+      <td>Sets active window to front</td>
+    </tr>
+    <tr>
+      <td>KEY_VIEW_RESET</td>
+      <td>VIEW_RESET</td>
+      <td>Resets the view to the default </td>
+    </tr>
+    <tr>
+      <td>KEY_VIEW_ALWAYS_PAN_UP</td>
+      <td>VIEW_ALWAYS_PAN_UP</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>KEY_VIEW_ALWAYS_PAN_DOWN</td>
+      <td>VIEW_ALWAYS_PAN_DOWN</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>KEY_NEXT_SUB_VIEW</td>
+      <td>NEXT_SUB_VIEW</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>KEY_PREV_SUB_VIEW</td>
+      <td>PREV_SUB_VIEW</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>KEY_VIEW_TRACK_PAN_TOGGLE</td>
+      <td>VIEW_TRACK_PAN_TOGGLE</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>KEY_VIEW_PREVIOUS_TOGGLE</td>
+      <td>VIEW_PREVIOUS_TOGGLE</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>KEY_VIEW_CAMERA_SELECT_STARTING</td>
+      <td>VIEW_CAMERA_SELECT_START</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>KEY_PANEL_HUD_NEXT</td>
+      <td>PANEL_HUD_NEXT</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>KEY_PANEL_HUD_PREVIOUS</td>
+      <td>PANEL_HUD_PREVIOUS</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>KEY_ZOOM_IN</td>
+      <td>ZOOM_IN</td>
+      <td>Zooms view in</td>
+    </tr>
+    <tr>
+      <td>KEY_ZOOM_OUT</td>
+      <td>ZOOM_OUT</td>
+      <td>Zooms view out</td>
+    </tr>
+    <tr>
+      <td>KEY_MAP_ZOOM_FINE_IN</td>
+      <td>MAP_ZOOM_FINE_IN</td>
+      <td>Fine zoom in map view</td>
+    </tr>
+    <tr>
+      <td>KEY_PAN_LEFT</td>
+      <td>PAN_LEFT</td>
+      <td>Pans view left</td>
+    </tr>
+    <tr>
+      <td>KEY_PAN_RIGHT</td>
+      <td>PAN_RIGHT</td>
+      <td>Pans view right</td>
+    </tr>
+    <tr>
+      <td>KEY_MAP_ZOOM_FINE_OUT</td>
+      <td>MAP_ZOOM_FINE_OUT</td>
+      <td>Fine zoom out in map view</td>
+    </tr>
+    <tr>
+      <td>KEY_VIEW_FORWARD</td>
+      <td>VIEW_FORWARD</td>
+      <td>Sets view direction forward</td>
+    </tr>
+    <tr>
+      <td>KEY_VIEW_FORWARD_RIGHT</td>
+      <td>VIEW_FORWARD_RIGHT</td>
+      <td>Sets view direction forward and right</td>
+    </tr>
+    <tr>
+      <td>KEY_VIEW_RIGHT</td>
+      <td>VIEW_RIGHT</td>
+      <td>Sets view direction to the right</td>
+    </tr>
+    <tr>
+      <td>KEY_VIEW_REAR_RIGHT</td>
+      <td>VIEW_REAR_RIGHT</td>
+      <td>Sets view direction to the rear and right</td>
+    </tr>
+    <tr>
+      <td>KEY_VIEW_REAR</td>
+      <td>VIEW_REAR</td>
+      <td>Sets view direction to the rear</td>
+    </tr>
+    <tr>
+      <td>KEY_VIEW_REAR_LEFT</td>
+      <td>VIEW_REAR_LEFT</td>
+      <td>Sets view direction to the rear and left</td>
+    </tr>
+    <tr>
+      <td>KEY_VIEW_LEFT</td>
+      <td>VIEW_LEFT</td>
+      <td>Sets view direction to the left</td>
+    </tr>
+    <tr>
+      <td>KEY_VIEW_FORWARD_LEFT</td>
+      <td>VIEW_FORWARD_LEFT</td>
+      <td>Sets view direction forward and left</td>
+    </tr>
+    <tr>
+      <td>KEY_VIEW_DOWN</td>
+      <td>VIEW_DOWN</td>
+      <td>Sets view direction down</td>
+    </tr>
+    <tr>
+      <td>KEY_ZOOM_MINUS</td>
+      <td>ZOOM_MINUS</td>
+      <td>Decreases zoom</td>
+    </tr>
+    <tr>
+      <td>KEY_ZOOM_PLUS</td>
+      <td>ZOOM_PLUS</td>
+      <td>Increase zoom</td>
+    </tr>
+    <tr>
+      <td>KEY_PAN_UP</td>
+      <td>PAN_UP</td>
+      <td>Pan view up</td>
+    </tr>
+    <tr>
+      <td>KEY_PAN_DOWN</td>
+      <td>PAN_DOWN</td>
+      <td>Pan view down</td>
+    </tr>
+    <tr>
+      <td>KEY_VIEW_MODE_REV</td>
+      <td>VIEW_MODE_REV</td>
+      <td>Reverse view cycle</td>
+    </tr>
+    <tr>
+      <td>KEY_ZOOM_IN_FINE</td>
+      <td>ZOOM_IN_FINE</td>
+      <td>Zoom in fine</td>
+    </tr>
+    <tr>
+      <td>KEY_ZOOM_OUT_FINE</td>
+      <td>ZOOM_OUT_FINE</td>
+      <td>Zoom out fine</td>
+    </tr>
+    <tr>
+      <td>KEY_CLOSE_VIEW</td>
+      <td>CLOSE_VIEW</td>
+      <td>Close current view</td>
+    </tr>
+    <tr>
+      <td>KEY_NEW_VIEW</td>
+      <td>NEW_VIEW</td>
+      <td>Open new view</td>
+    </tr>
+    <tr>
+      <td>KEY_NEXT_VIEW</td>
+      <td>NEXT_VIEW</td>
+      <td>Select next view</td>
+    </tr>
+    <tr>
+      <td>KEY_PREV_VIEW</td>
+      <td>PREV_VIEW</td>
+      <td>Select previous view</td>
+    </tr>
+    <tr>
+      <td>KEY_PAN_LEFT_UP</td>
+      <td>PAN_LEFT_UP</td>
+      <td>Pan view left</td>
+    </tr>
+    <tr>
+      <td>KEY_PAN_LEFT_DOWN</td>
+      <td>PAN_LEFT_DOWN</td>
+      <td>Pan view  left and down</td>
+    </tr>
+    <tr>
+      <td>KEY_PAN_RIGHT_UP</td>
+      <td>PAN_RIGHT_UP</td>
+      <td>Pan view right and up</td>
+    </tr>
+    <tr>
+      <td>KEY_PAN_RIGHT_DOWN</td>
+      <td>PAN_RIGHT_DOWN</td>
+      <td>Pan view right and down</td>
+    </tr>
+    <tr>
+      <td>KEY_PAN_TILT_LEFT</td>
+      <td>PAN_TILT_LEFT</td>
+      <td>Tilt view left</td>
+    </tr>
+    <tr>
+      <td>KEY_PAN_TILT_RIGHT</td>
+      <td>PAN_TILT_RIGHT</td>
+      <td>Tilt view right</td>
+    </tr>
+    <tr>
+      <td>KEY_PAN_RESET</td>
+      <td>PAN_RESET</td>
+      <td>Reset view to forward</td>
+    </tr>
+    <tr>
+      <td>KEY_VIEW_FORWARD_UP</td>
+      <td>VIEW_FORWARD_UP</td>
+      <td>Sets view forward and up</td>
+    </tr>
+    <tr>
+      <td>KEY_VIEW_FORWARD_RIGHT_UP</td>
+      <td>VIEW_FORWARD_RIGHT_UP</td>
+      <td>Sets view forward, right, and up</td>
+    </tr>
+    <tr>
+      <td>KEY_VIEW_RIGHT_UP</td>
+      <td>VIEW_RIGHT_UP</td>
+      <td>Sets view right and up</td>
+    </tr>
+    <tr>
+      <td>KEY_VIEW_REAR_RIGHT_UP</td>
+      <td>VIEW_REAR_RIGHT_UP</td>
+      <td>Sets view rear, right, and up</td>
+    </tr>
+    <tr>
+      <td>KEY_VIEW_REAR_UP</td>
+      <td>VIEW_REAR_UP</td>
+      <td>Sets view rear and up</td>
+    </tr>
+    <tr>
+      <td>KEY_VIEW_REAR_LEFT_UP</td>
+      <td>VIEW_REAR_LEFT_UP</td>
+      <td>Sets view rear left and up</td>
+    </tr>
+    <tr>
+      <td>KEY_VIEW_LEFT_UP</td>
+      <td>VIEW_LEFT_UP</td>
+      <td>Sets view left and up</td>
+    </tr>
+    <tr>
+      <td>KEY_VIEW_FORWARD_LEFT_UP</td>
+      <td>VIEW_FORWARD_LEFT_UP</td>
+      <td>Sets view forward left and up</td>
+    </tr>
+    <tr>
+      <td>KEY_VIEW_UP</td>
+      <td>VIEW_UP</td>
+      <td>Sets view up</td>
+    </tr>
+    <tr>
+      <td>KEY_VIEW_RESET</td>
+      <td>VIEW_RESET</td>
+      <td>Reset view forward</td>
+    </tr>
+    <tr>
+      <td>KEY_PAN_RESET_COCKPIT</td>
+      <td>PAN_RESET_COCKPIT</td>
+      <td>Reset panning to forward, if in cockpit view</td>
+    </tr>
+    <tr>
+      <td>KEY_CHASE_VIEW_NEXT</td>
+      <td>KEY_CHASE_VIEW_NEXT</td>
+      <td>Cycle view to next target</td>
+    </tr>
+    <tr>
+      <td>KEY_CHASE_VIEW_PREV</td>
+      <td>KEY_CHASE_VIEW_PREV</td>
+      <td>Cycle view to previous target</td>
+    </tr>
+    <tr>
+      <td>KEY_CHASE_VIEW_TOGGLE</td>
+      <td>CHASE_VIEW_TOGGLE</td>
+      <td>Toggles chase view on/off</td>
+    </tr>
+    <tr>
+      <td>KEY_EYEPOINT_UP</td>
+      <td>EYEPOINT_UP</td>
+      <td>Move eyepoint up</td>
+    </tr>
+    <tr>
+      <td>KEY_EYEPOINT_DOWN</td>
+      <td>EYEPOINT_DOWN</td>
+      <td>Move eyepoint down</td>
+    </tr>
+    <tr>
+      <td>KEY_EYEPOINT_RIGHT</td>
+      <td>EYEPOINT_RIGHT</td>
+      <td>Move eyepoint right</td>
+    </tr>
+    <tr>
+      <td>KEY_EYEPOINT_LEFT</td>
+      <td>EYEPOINT_LEFT</td>
+      <td>Move eyepoint left</td>
+    </tr>
+    <tr>
+      <td>KEY_EYEPOINT_FORWARD</td>
+      <td>EYEPOINT_FORWARD</td>
+      <td>Move eyepoint forward</td>
+    </tr>
+    <tr>
+      <td>KEY_EYEPOINT_BACK</td>
+      <td>EYEPOINT_BACK</td>
+      <td>Move eyepoint backward</td>
+    </tr>
+    <tr>
+      <td>KEY_EYEPOINT_RESET</td>
+      <td>EYEPOINT_RESET</td>
+      <td>Move eyepoint to default position</td>
+    </tr>
+    <tr>
+      <td>KEY_NEW_MAP</td>
+      <td>NEW_MAP</td>
+      <td>Opens new map view</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>&nbsp;</h4>
+
+<h4>Miscellaneous Events<a name="MiscellaneousEventsIDs"></a></h4>
+
+<p>&nbsp;</p>
+
+<table class="T1" cellpadding="2" cellspacing="4">
+			
+  <tbody>
+    <tr>
+      <td>
+      <h5>Event ID</h5>      </td>
+      <td>
+      <h5>String Name </h5>      </td>
+      <td>
+      <h5>Description</h5>      </td>
+    </tr>
+    <tr>
+      <td>KEY_DEMO_STOP</td>
+      <td>DEMO_STOP</td>
+      <td>Stops demo system playback</td>
+    </tr>
+    <tr>
+      <td>KEY_SELECT_1</td>
+      <td>SELECT_1</td>
+      <td>Sets &ldquo;selected&rdquo; index (for other events) to 1</td>
+    </tr>
+    <tr>
+      <td>KEY_SELECT_2</td>
+      <td>SELECT_2</td>
+      <td>Sets &ldquo;selected&rdquo; index (for other events) to 2</td>
+    </tr>
+    <tr>
+      <td>KEY_SELECT_3</td>
+      <td>SELECT_3</td>
+      <td>Sets &ldquo;selected&rdquo; index (for other events) to 3</td>
+    </tr>
+    <tr>
+      <td>KEY_SELECT_4</td>
+      <td>SELECT_4</td>
+      <td>Sets &ldquo;selected&rdquo; index (for other events) to 4</td>
+    </tr>
+    <tr>
+      <td>KEY_MINUS</td>
+      <td>MINUS</td>
+      <td>Used in conjunction with &ldquo;selected&rdquo; parameters to decrease their value (e.g., radio frequency)</td>
+    </tr>
+    <tr>
+      <td>KEY_PLUS</td>
+      <td>PLUS</td>
+      <td>Used in conjunction with &ldquo;selected&rdquo; parameters to increase their value (e.g., radio frequency)</td>
+    </tr>
+    <tr>
+      <td>KEY_ZOOM_1X</td>
+      <td>ZOOM_1X</td>
+      <td>Sets zoom level to 1</td>
+    </tr>
+    <tr>
+      <td>KEY_SOUND_TOGGLE</td>
+      <td>SOUND_TOGGLE</td>
+      <td>Toggles sound on/off</td>
+    </tr>
+    <tr>
+      <td>KEY_PAUSE_TOGGLE</td>
+      <td>PAUSE_TOGGLE</td>
+      <td>Toggles pause on/off</td>
+    </tr>
+    <tr>
+      <td>KEY_SIM_RATE</td>
+      <td>SIM_RATE</td>
+      <td>Selects simulation rate (use KEY_MINUS, KEY_PLUS to change)</td>
+    </tr>
+    <tr>
+      <td>KEY_JOYSTICK_CALIBRATE</td>
+      <td>JOYSTICK_CALIBRATE</td>
+      <td>Toggles joystick on/off</td>
+    </tr>
+    <tr>
+      <td>KEY_SITUATION_SAVE</td>
+      <td>SITUATION_SAVE</td>
+      <td>Saves flight situation</td>
+    </tr>
+    <tr>
+      <td>KEY_SITUATION_RESET</td>
+      <td>SITUATION_RESET</td>
+      <td>Resets flight situation</td>
+    </tr>
+    <tr>
+      <td>KEY_SOUND_SET</td>
+      <td>SOUND_SET</td>
+      <td>Sets sound on/off (1,0)</td>
+    </tr>
+    <tr>
+      <td>KEY_EXIT</td>
+      <td>EXIT</td>
+      <td>Quit <i>Flight Simulator </i>with a message </td>
+    </tr>
+    <tr>
+      <td>KEY_ABORT</td>
+      <td>ABORT</td>
+      <td>Quit <i>Flight Simulator </i>without a message </td>
+    </tr>
+    <tr>
+      <td>KEY_READOUTS_SLEW</td>
+      <td>READOUTS_SLEW</td>
+      <td>Cycle through information readouts while in slew</td>
+    </tr>
+    <tr>
+      <td>KEY_READOUTS_FLIGHT</td>
+      <td>READOUTS_FLIGHT</td>
+      <td>Cycle through information readouts</td>
+    </tr>
+    <tr>
+      <td>KEY_MINUS_SHIFT</td>
+      <td>MINUS_SHIFT</td>
+      <td>Used with other events</td>
+    </tr>
+    <tr>
+      <td>KEY_PLUS_SHIFT</td>
+      <td>PLUS_SHIFT</td>
+      <td>Used with other events</td>
+    </tr>
+    <tr>
+      <td>KEY_SIM_RATE_INCR</td>
+      <td>SIM_RATE_INCR</td>
+      <td>Increase sim rate</td>
+    </tr>
+    <tr>
+      <td>KEY_SIM_RATE_DECR</td>
+      <td>SIM_RATE_DECR</td>
+      <td>Decrease sim rate</td>
+    </tr>
+    <tr>
+      <td>KEY_PAUSE_ON</td>
+      <td>PAUSE_ON</td>
+      <td>Turns pause on</td>
+    </tr>
+    <tr>
+      <td>KEY_PAUSE_OFF</td>
+      <td>PAUSE_OFF</td>
+      <td>Turns pause off</td>
+    </tr>
+    <tr>
+      <td>KEY_KNEEBOARD</td>
+      <td>KNEEBOARD_VIEW</td>
+      <td>Toggles kneeboard</td>
+    </tr>
+    <tr>
+      <td>KEY_PANEL_1</td>
+      <td>PANEL_1</td>
+      <td>Toggles panel 1</td>
+    </tr>
+    <tr>
+      <td>KEY_PANEL_2</td>
+      <td>PANEL_2</td>
+      <td>Toggles panel 2</td>
+    </tr>
+    <tr>
+      <td>KEY_PANEL_3</td>
+      <td>PANEL_3</td>
+      <td>Toggles panel 3</td>
+    </tr>
+    <tr>
+      <td>KEY_PANEL_4</td>
+      <td>PANEL_4</td>
+      <td>Toggles panel 4</td>
+    </tr>
+    <tr>
+      <td>KEY_PANEL_5</td>
+      <td>PANEL_5</td>
+      <td>Toggles panel 5</td>
+    </tr>
+    <tr>
+      <td>KEY_PANEL_6</td>
+      <td>PANEL_6</td>
+      <td>Toggles panel 6</td>
+    </tr>
+    <tr>
+      <td>KEY_PANEL_7</td>
+      <td>PANEL_7</td>
+      <td>Toggles panel 7</td>
+    </tr>
+    <tr>
+      <td>KEY_PANEL_8</td>
+      <td>PANEL_8</td>
+      <td>Toggles panel 8</td>
+    </tr>
+    <tr>
+      <td>KEY_PANEL_9</td>
+      <td>PANEL_9</td>
+      <td>Toggles panel 9</td>
+    </tr>
+    
+    <tr>
+      <td>KEY_PAUSE_SET</td>
+      <td>PAUSE_SET</td>
+      <td>Sets pause on/off (1,0)</td>
+    </tr>
+    <tr>
+      <td>KEY_SOUND_ON</td>
+      <td>SOUND_ON</td>
+      <td>Turns sound on</td>
+    </tr>
+    <tr>
+      <td>KEY_SOUND_OFF</td>
+      <td>SOUND_OFF</td>
+      <td>Turns sound off</td>
+    </tr>
+    <tr>
+      <td>KEY_INVOKE_HELP</td>
+      <td>INVOKE_HELP</td>
+      <td>Brings up Help system</td>
+    </tr>
+    <tr>
+      <td>KEY_TOGGLE_AIRCRAFT_LABELS</td>
+      <td>TOGGLE_AIRCRAFT_LABELS</td>
+      <td>Toggles aircraft labels</td>
+    </tr>
+    <tr>
+      <td>KEY_FLIGHT_MAP</td>
+      <td>FLIGHT_MAP</td>
+      <td>Brings up flight map</td>
+    </tr>
+    <tr>
+      <td>KEY_RELOAD_PANELS</td>
+      <td>RELOAD_PANELS</td>
+      <td>Reload panel data</td>
+    </tr>
+    <tr>
+      <td>KEY_PANEL_ID_TOGGLE</td>
+      <td>PANEL_ID_TOGGLE</td>
+      <td>Toggles indexed panel (1 &ndash; 9)</td>
+    </tr>
+    <tr>
+      <td>KEY_PANEL_ID_OPEN</td>
+      <td>PANEL_ID_OPEN</td>
+      <td>Opens indexed panel (1 &ndash; 9)</td>
+    </tr>
+    <tr>
+      <td>KEY_PANEL_ID_CLOSE</td>
+      <td>PANEL_ID_CLOSE</td>
+      <td>Closes indexed panel (1 &ndash; 9)</td>
+    </tr>
+    <tr>
+      <td>KEY_CONTROL_RELOAD_USER_AIRCRAFT</td>
+      <td>RELOAD_USER_AIRCRAFT</td>
+      <td>Reloads the user aircraft data (from cache if same type loaded as an AI, otherwise from disk)</td>
+    </tr>
+    <tr>
+      <td>KEY_SIM_RESET</td>
+      <td>SIM_RESET</td>
+      <td>Resets aircraft state</td>
+    </tr>
+    <tr>
+      <td>KEY_VIRTUAL_COPILOT_TOGGLE</td>
+      <td>VIRTUAL_COPILOT_TOGGLE</td>
+      <td>Turns Flying Tips on/off</td>
+    </tr>
+    <tr>
+      <td>KEY_VIRTUAL_COPILOT_SET </td>
+      <td>VIRTUAL_COPILOT_SET</td>
+      <td>Sets Flying Tips on/off (1,0)</td>
+    </tr>
+    <tr>
+      <td>KEY_VIRTUAL_COPILOT_ACTION</td>
+      <td>VIRTUAL_COPILOT_ACTION</td>
+      <td>Triggers action noted in Flying Tips</td>
+    </tr>
+    <tr>
+      <td>KEY_REFRESH_SCENERY</td>
+      <td>REFRESH_SCENERY</td>
+      <td>Reloads scenery</td>
+    </tr>
+    <tr>
+      <td>KEY_CLOCK_HOURS_DEC</td>
+      <td>CLOCK_HOURS_DEC</td>
+      <td>Decrements time by hours</td>
+    </tr>
+    <tr>
+      <td>KEY_CLOCK_HOURS_INC</td>
+      <td>CLOCK_HOURS_INC</td>
+      <td>Increments time by hours</td>
+    </tr>
+    <tr>
+      <td>KEY_CLOCK_MINUTES_DEC</td>
+      <td>CLOCK_MINUTES_DEC</td>
+      <td>Decrements time by minutes</td>
+    </tr>
+    <tr>
+      <td>KEY_CLOCK_MINUTES_INC</td>
+      <td>CLOCK_MINUTES_INC</td>
+      <td>Increments time by minutes</td>
+    </tr>
+    <tr>
+      <td>KEY_CLOCK_SECONDS_ZERO</td>
+      <td>CLOCK_SECONDS_ZERO</td>
+      <td>Zeros seconds</td>
+    </tr>
+    <tr>
+      <td>KEY_CLOCK_HOURS_SET</td>
+      <td>CLOCK_HOURS_SET</td>
+      <td>Sets hour of day</td>
+    </tr>
+    <tr>
+      <td>KEY_CLOCK_MINUTES_SET</td>
+      <td>CLOCK_MINUTES_SET</td>
+      <td>Sets minutes of the hour</td>
+    </tr>
+    <tr>
+      <td>KEY_ZULU_HOURS_SET</td>
+      <td>ZULU_HOURS_SET</td>
+      <td>Sets hours,  zulu time</td>
+    </tr>
+    <tr>
+      <td>KEY_ZULU_MINUTES_SET</td>
+      <td>ZULU_MINUTES_SET</td>
+      <td>Sets minutes, in zulu time</td>
+    </tr>
+    <tr>
+      <td>KEY_ZULU_DAY_SET</td>
+      <td>ZULU_DAY_SET</td>
+      <td>Sets day, in zulu time</td>
+    </tr>
+    <tr>
+      <td>KEY_ZULU_YEAR_SET</td>
+      <td>ZULU_YEAR_SET</td>
+      <td>Sets year, in zulu time</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>&nbsp;</h4>
+
+<h4>ATC<a name="ATCIDs"></a></h4>
+
+<p>&nbsp;</p>
+
+<table class="T1" cellpadding="2" cellspacing="4">
+	
+  <tbody>
+    <tr>
+      <td>
+      <h5>Event ID</h5>
+      </td>
+      <td>
+      <h5>String Name </h5>
+      </td>
+      <td>
+      <h5>Description</h5>
+      </td>
+    </tr>
+    <tr>
+      <td>KEY_ATC</td>
+      <td>ATC</td>
+
+  <td>Activates ATC window</td>
+
+    </tr>
+    <tr>
+      <td>KEY_ATC_MENU_1</td>
+      <td>ATC_MENU_1</td>
+
+  <td>Selects ATC option 1</td>
+
+    </tr>
+    <tr>
+      <td>KEY_ATC_MENU_2</td>
+      <td>ATC_MENU_2</td>
+
+  <td>Selects ATC option 2</td>
+
+    </tr>
+    <tr>
+      <td>KEY_ATC_MENU_3</td>
+      <td>ATC_MENU_3</td>
+
+  <td>Selects ATC option 3</td>
+
+    </tr>
+    <tr>
+      <td>KEY_ATC_MENU_4</td>
+      <td>ATC_MENU_4</td>
+
+  <td>Selects ATC option 4</td>
+
+    </tr>
+    <tr>
+      <td>KEY_ATC_MENU_5</td>
+      <td>ATC_MENU_5</td>
+
+  <td>Selects ATC option 5</td>
+
+    </tr>
+    <tr>
+      <td>KEY_ATC_MENU_6</td>
+      <td>ATC_MENU_6</td>
+
+  <td>Selects ATC option 6</td>
+
+    </tr>
+    <tr>
+      <td>KEY_ATC_MENU_7</td>
+      <td>ATC_MENU_7</td>
+
+  <td>Selects ATC option 7</td>
+
+    </tr>
+    <tr>
+      <td>KEY_ATC_MENU_8</td>
+      <td>ATC_MENU_8</td>
+
+  <td>Selects ATC option 8</td>
+
+    </tr>
+    <tr>
+      <td>KEY_ATC_MENU_9</td>
+      <td>ATC_MENU_9</td>
+
+  <td>Selects ATC option 9</td>
+
+    </tr>
+    <tr>
+      <td>KEY_ATC_MENU_0</td>
+      <td>ATC_MENU_0</td>
+
+  <td>Selects ATC option 10</td>
+
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+
+  </tbody>
+</table>
+
+<h4>&nbsp;</h4>
+
+<h4>Multiplayer<a name="MultiplayerIDs"></a></h4>
+
+<p>&nbsp;</p>
+
+<table class="T1" cellpadding="2" cellspacing="4">
+
+  <tbody>
+    <tr>
+      <td>
+      <h5>Event ID</h5>      </td>
+      <td>
+      <h5>String Name </h5>      </td>
+      <td>
+      <h5>Description</h5>      </td>
+    </tr>
+    <tr>
+      <td>KEY_MULTIPLAYER_TRANSFER_CONTROL</td>
+      <td>MP_TRANSFER_CONTROL</td>
+      <td>Toggle to the next player to track</td>
+    </tr>
+    <tr>
+      <td>KEY_MULTIPLAYER_PLAYER_CYCLE</td>
+      <td>MP_PLAYER_CYCLE</td>
+      <td>Cycle through the current user aircraft. </td>
+    </tr>
+    <tr>
+      <td>KEY_MULTIPLAYER_PLAYER_FOLLOW</td>
+      <td>MP_PLAYER_FOLLOW</td>
+      <td>Set the view to follow the selected user aircraft. </td>
+    </tr>
+    <tr>
+      <td>KEY_MULTIPLAYER_CHAT</td>
+      <td>MP_CHAT</td>
+      <td>Toggles chat window visible/invisible</td>
+    </tr>
+    <tr>
+      <td>KEY_MULTIPLAYER_ACTIVATE_CHAT</td>
+      <td>MP_ACTIVATE_CHAT</td>
+      <td>Activates chat window</td>
+    </tr>
+    <tr>
+      <td>KEY_MULTIPLAYER_VOICE_CAPTURE_START</td>
+      <td>MP_VOICE_CAPTURE_START</td>
+      <td>Start capturing audio from the users computer and transmitting it to all other players in the multiplayer session who are turned to the same radio frequency. </td>
+    </tr>
+    <tr>
+      <td>KEY_MULTIPLAYER_VOICE_CAPTURE_STOP</td>
+      <td>MP_VOICE_CAPTURE_STOP</td>
+      <td>Stop capturing radio audio. </td>
+    </tr>
+    <tr>
+      <td>KEY_MULTIPLAYER_BROADCAST_VOICE_<br>
+        CAPTURE_START</td>
+      <td>MP_BROADCAST_VOICE_<br>
+        CAPTURE_START</td>
+      <td>Start capturing audio from the users computer and transmitting it to all other players in the multiplayer session. </td>
+    </tr>
+    <tr>
+      <td>KEY_MULTIPLAYER_BROADCAST_VOICE_<br>
+        CAPTURE_STOP</td>
+      <td>MP_BROADCAST_VOICE_<br>
+        CAPTURE_STOP</td>
+      <td>Stop capturing broadcast audio. </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+
+<p align="center">&nbsp;</p>
+
+<p>&nbsp;</p>
+<p align="center">&copy; 2006 Microsoft Corporation. All rights reserved. </p>
+<p align="center">~~@~~ </p>
+<p align="center"></p>
+<p align="center">&nbsp;</p>
+
+</body>
+</html>

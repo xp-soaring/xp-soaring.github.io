@@ -1,0 +1,121 @@
+
+# This is the ini file for sim_logger, the FSX simconnect module for saving and replaying IGC tracklog files
+# any line in this file beginning with a '#' is a comment ignored by sim_logger
+
+# note that you must have this [sim_logger] entry for the ini file to be recognized.
+[sim_logger]
+
+########################################################################################################
+###### FOR CONVENIENCE, HERE IS WHERE YOU CAN PRE-SET THE PILOT INFO IN THE TRACKLOG FILES  ############
+########################################################################################################
+
+# aircraft_id ####################################
+#
+# If you go into the FSX select aircraft/details menu, you can change the tail number for any aircraft
+# you are flying, and sim_logger will embed this in the appropriate field in the IGC file.
+# To make things easier, you can specify an 'override' ID in the field below, and sim_logger will
+# *always* write that value into any IGC tracklog file you save (the HFCIDCOMPETITIONID: record).
+#
+# (example: aircraft_id = B21)
+# (default: aircraft_id =)
+
+aircraft_id =
+
+# pilot_name  ####################################
+#
+# FSX doesn't have a field for pilot name, but the saved IGC tracklog does, so you can specify a value
+# here if you want one included. If you *don't* specify a pilot name, sim_logger uses "pilot <aircraft_id>"
+#
+# (example: pilot_name = Ian Forster-Lewis)
+# (default: pilot_name =)
+
+pilot_name =
+
+########################################################################################################
+##### Here is where you specify the title of the default aircraft                                  #####
+########################################################################################################
+
+# default_aircraft #############################
+#
+# Sim_logger will *write* the aircraft title into each saved IGC file, and try and re-load
+# the same aircraft when that IGC file is replayed.
+# If sim_logger cannot load the indicated aircraft, then this 'default_aircraft' will be used.
+# The title should match the required 'title=' value in the [fltsim.X] section of the file:
+#         FSXBASE\SimObjects\Airplanes\<chosen aircraft>\aircraft.cfg
+#
+# (example: default_aircraft = Cessna Skyhawk 172SP Paint1)
+# (default: default_aircraft = DG808S)
+
+default_aircraft = DG808S
+
+########################################################################################################
+##### Here is where you can change the language in the text used in the menus                      #####
+########################################################################################################
+
+# language #############################
+#
+# Sim_logger will look for a file language\lang_<language>.ini
+#
+# (example: language = de)
+# (default: language = en)
+
+language = en
+
+########################################################################################################
+##### Sim_logger will *disable* FSX thermals (assumes you have CumulusX), but you can stop it      #####
+########################################################################################################
+
+# disable_fsx_thermals #############################
+#
+# Sim_logger will look for a file called "ThermalDescriptions.xml" in the FSXBASE folder
+# (FSXBASE is something like "C:\Program Files\Microsoft Games\Microsoft Flight Simulator X") 
+# if (disable_fsx_thermals = true) then sim_logger will rename it to "ThermaDescriptions[X].xml"
+#
+# (example: disable_fsx_thermals = false)
+# (default: disable_fsx_thermals = true)
+
+disable_fsx_thermals = true
+
+########################################################################################################
+##### CHANGES BELOW HERE AFFECT THE REPLAY FUNCTION. ONLY CHANGE IF YOU'RE CLEAR ON THE EFFECT     #####
+########################################################################################################
+
+# enable_replay  ####################################
+#
+# Sim_logger defaults to replaying saved IGC tracklogs when you start a flight.
+# Changing this "enable_replay" setting to "false" will DISABLE the sim_logger replay function
+# NOTE: individual tracklog files can be disabled from replay via the FSX sim_logger add-on menu.
+# NOTE: changing the "log_directory" below has a similar effect and might be what you want
+#
+# e.g. set to "enable_replay = false" to prevent sim_logger loading and replaying IGC files
+#
+# (example: enable_replay = false)
+# (default: enable_replay = true)
+
+enable_replay = true
+
+# log_directory  ####################################
+#
+# If you set a log_directory, this will DISABLE the automatic replay of your tracklogs, but the tracklogs
+# can still be replayed if you COPY the files from your chosen folder to the one sim_logger expects as 
+# explained below.
+# By default, sim_logger will save IGC tracklog files right next to the loaded FLT (flight) file,
+# in a sub-folder with the same name.  Typically this will be in "My Documents\Flight Simulator X Files" or
+# in the mission folder if a mission was loaded.
+# E.g. if you load a flight 
+#         "My Documents\Flight Simulator X Files\Task 2.FLT", 
+# the saved IGC file will be saved into a folder\file called 
+#         "My Documents\Flight Simulator X Files\Task 2\<id>_<flt name>_datetime.IGC".
+# This is the folder sim_logger always looks in to see if there are any IGC tracklog files to *replay* when
+# the "Task 2.FLT" is loaded, so by changing the folder setting below sim_connect
+# will save the files somewhere else, and they will *not* be found by the replay function of sim_logger.
+# You should put in the full path to your chosen folder e.g. C:\personal\my files\trackslogs\
+# Please make sure you end the folder path with a '\', as in the example above
+#
+# (note if you had version 1 sim_logger installed: sim_logger v2 now ignores the log= parameter in exe.xml)
+#
+# (example: log_directory = C:\Documents and Settings\Fred Flintstone\My Documents\logs\)
+# (default: log_directory =)
+
+log_directory =
+

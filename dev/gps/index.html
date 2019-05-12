@@ -1,0 +1,215 @@
+<html>
+<head>
+<title>FSX development - Creating a GPS file for Missions.</title>
+</head>
+<body background="../../images/clouds.jpg">
+<font face="Helvetica">
+<p>
+<a href="../../index.html">Soaring with FSX</a>&nbsp;&gt;&gt;&nbsp;
+GPS
+</p>
+
+
+<h1>FSX development - Creating a GPS file for Missions.</h1>
+
+<p>This tutorial is to help you set up the GPS in the plane you use in your mission, so that
+it directs you to the waypoints you've set up.</p>
+
+<p>A particular issue with <i>soaring</i> missions is that they usually start and end at the same airport,
+and the intermediate waypoints are <i>not</i> airports but you want the lat/long of those waypoints
+to exactly match the mission waypoints.</p>
+
+<h2>A few points to make sure you understand about GPS waypoints in a FSX mission</h2>
+<ul>
+  <li>There is <b>no</b> system connection between the waypoints you define in the GPS and the
+  PointsOfInterest in the mission.  You probably want these to have the same lat/longs, but to
+  achieve this you will have to tweak the lat/longs of the waypoints defined in the GPS.</li>
+  <li>The implication of the above is you will often fly missions where the GPS coordinates are a 
+  little bit away from the locations of the PointOfInterest visible markers.  Such is life.  Also, the
+  Garmin GPS has its own algorithm<a href="#algorithm">*</a> for when to switch over to the next waypoint, and this seems to be
+  faithfully implemented in FSX, again nothing to do with your carefully crafted mission pointers.
+  Suffice it to say the GPS will switch enthusiastically to the next waypoint when possibly you're only half way down
+  the preceding leg.  On the real GPS you can fiddle around and reselect the desired waypoint, but not in 
+  FSX.</li>
+  <li>GPS waypoints are created and loaded by using the "Flight Planner" in the FSX "Free Flight" menu.</li>
+</ul>
+
+<h2>The basic sequence</h2>
+<ul>
+<li>load up a "Free Flight" set for the start of your mission (plane, location, weather)</li>
+<li>Click the "Flight Plan" menu option and create (and save) a flight plan.  You will have to choose some
+  other airfield as the 'destination' as FSX doesn't enable you to create circular flight plans.</li>
+<li>Open the Flight Plan file in Notepad and edit the lat/longs, and edit the 'destination' details to be
+  the same as the start airfield, discarding the details of the temporary destination airfield.</li>
+<li>load up the mission start flight as a "Free flight" again, and this time "Load" the flight plan.</li>
+<li>Start ("Fly") the free flight.</li> 
+<li>Quit out of the flight back to the Free Flight menu, and "Save" as the name of your mission.</li>
+<li>Copy the .FLT (flight), .WX (weather), and .PLN (flight plan) across to your mission folder.</li>
+<li>Edit the .FLT file in Notepad to correct the .PLN reference pointing to the wrong folder.</li>
+<li>Make sure the [ObjectFile] section is re-added to the end of the .FLT file to reference the 
+mission .xml file.</li>
+<li>Fly your mission.</li>
+</ul>
+
+<p>That process is described in more detail with screenshots below.</p>
+
+<h2>Step-by-step with screenshots</h2>
+
+<p><b>Step ZERO</b> Make sure you know the exact lat/longs of your start/finish points and each
+waypoint, either by inspecting WorldPositions in the Mission Object Placer, or looking at the 
+mission .xml file.
+</p>
+
+<hr/>
+<p><b>1.</b> Enter “Free Flight” in game. If you already have a mission you can just load
+    it from here and skip to <a href="#step3">Step 3</a>. If you are creating a new mission,
+    continue...
+</p>
+    
+<p><img src="Picture1.jpg"></p>
+
+<p><b>2.</b></p>
+<p>A. Select &quot;CURRENT AIRCRAFT&quot; and
+change to glider of choice.</p>
+<p>B. Select &quot;CURRENT WEATHER&quot; and edit as desired.</p>
+<p>C. Select &quot;CURRENT LOCATION&quot; and change to airport
+ you plan to fly from. (Example: TE71)</p>
+<p>D. Select &quot;CURRENT TIME AND SEASON&quot; change to what suits your fancy.</p>
+<p>All these variables can be changed later. This is just a starting point.</p>
+<p><a name="step3"></a><b>3.</b> Click on “Flight Planner”.</p>
+
+<p><img src="Picture2.jpg"></p>
+
+<p>a. <b>Choose “departure” airport</b>. It will be the same airport
+you initially selected in the first screen. E.g. we will set up a course from Texas airfield TE71.</p>
+
+<p><img src="Picture3.jpg"></p>
+
+<p><img src="Picture4.jpg"></p>
+<p>b. <b>Choose “destination” airport</b>. Since you can’t make waypoints in the 
+route builder while flying &quot;From
+and To&quot; the same airport, select a different airport that is not too far away.  You will
+delete this later anyway.</p>
+
+<p>In this example I’ll select TA97 since it’s
+the next closest airfield. Go ahead and select an airport.</p>
+
+<p>c. <b>Now, click on “Find Route”</b>. You will see a red, 
+straight line route between the two airports</p>
+
+<p><img src="Picture5.jpg"></p>
+
+<p>d. <b>Inserting your waypoints.</b> Grab the red line with your mouse (left click)
+and drag it close to the point you want the first waypoint. You can change the
+zoom of the map if you can’t see the are you want. Once you let go of the left
+mouse button it will create WP1.</p>
+
+<p><img src="Picture6.jpg"></p>
+
+<p>If you drop the waypoint over and airfield,
+intersection of airspace boundary, it will ask if this is what you want and make
+that the waypoint with it own identifier.</p>
+
+<p><img src="Picture7.jpg"></p>
+
+<p>If you don’t like this waypoint you can select
+it in the right column and delete it or change it in notepad later. If you have
+the correct Lat./Long., you can edit it in game at this time along with any
+other waypoints you create. Note it is probably easier to get the lat/longs correct 
+(i.e. the same as your mission POI's) by
+editting the waypoints here than by later editting the .PLN file in Notepad, but either
+approach works.</p>
+
+<p>e. <b>Now SAVE the route!</b> In this example it will default to save the
+route as “VFR Ghsa-Wallis Gliderport to White Wing Ranch.pln”. You will want
+to rename and save this to the name of your mission. I will choose
+“SWHouston”. Click “Okay”. It
+will ask if you want you plane moved to the departure airport (yes) and you will
+be back to the main “Free Flight” screen.</p>
+
+<p><img src="Picture8.jpg"></p>
+
+<p>f. Now that we're back to the main &quot;Free Flight screen&quot;, it’s
+time to save everything. Click “Save” and save this “flight” as the same
+name as the “plan” file you created. You don’t have to, but it makes it
+easier to keep track. You can add text in the description box at this time if
+you like.</p>
+
+<p><img src="Picture9.jpg"></p>
+
+<p><b>4.</b> Now we will do some editing
+in notepad. Browse to: C:\Documents and Settings\..xxx..\My
+Documents\Flight Simulator X files\</p>
+
+<p>Here you will
+find all your .FLT, FSSave, .WX and .PLN files.</p>
+
+<p><img src="Picture10.jpg"></p>
+
+<p>a. The first main file we need to edit is the .PLN file. Open it up
+with Notepad.</p>
+
+<p>b. Below is what the file looks like for this mission. I modified the screenshot to
+highlight all the destination airport data
+that needs to be changed for a Round Robin flight back to the departure
+airport. Just copy and paste all the identifier and lat./long. data from the
+departure to destination.  This is a fairly simple file when you look at it carefully, with an
+entry for each waypoint.  You are just modifying it to run from TE71 to TE71, instead of
+TE71 to TA97 and the required data for 'destination' is conveniently the same layout
+as the existing 'departure'.  Note that at this time you can also fix up the lat/longs of the 
+intermediate waypoints
+if you didn't do that when you created the route plan.</p>
+
+<p><img src="Picture11.jpg"></p>
+
+<p>c. Now it should have all destination data , in blue,
+as the same data as departure data like the image below.</p>
+
+<p><img src="Picture12.jpg"></p>
+
+<p>d. Close the file and save changes.</p>
+
+<p><b>5.</b> Now we check our work. Open the game back up and go
+to “Free Flight” and load the flight (Mine is SWHouston).</p>
+
+<p><b>6.</b> Click on “Flight Planner” and you should see the
+departure and destination airports being the same. <font size="4" color="#FF0000">DO
+NOT click on “Find Route”!</font> If you do you won’t see your flight
+plan. You can reload it again though. Instead, click on the “Edit” tab on
+the top. We now see our flight plan departing and returning to the same airport.
+You can edit the waypoints again if you want, or add more at this time. You
+cannot edit waypoints that are airports or intersections. Only waypoints that
+are named WP1, WP2, etc.. Just be sure to <font color="#FF0000" size="4">save</font>
+the file to the same name again.</p>
+
+<p><img src="Picture13.jpg"></p>
+
+<p><b>7.</b> Exit out and be sure SAVE the “flight” AGAIN to
+the same name. This will make a change to the .FLT file so it will see the
+correct GPS data and it will sync to the .FLT file.</p>
+
+<p>Copy the .FLT, .WX, .PLN files across from your "My Documents/Flight Simulator Files X/" folder
+into your mission folder.</p>
+
+<p>Edit the .FLT file so that the GPS directory reference to "My Documents/Flight Simulator Files X/" is
+deleted.  I.e. in a GPS section a reference to "My Documents/Flight Simulator Files X/SWHouston" should be
+changed to "SWHouston" i.e. the name of the .PLN file <i>without</i> the .PLN suffix.  While you're in the
+.FLT file, make sure you put the [ObjectFile] reference to the mission in there - presumably 
+you know about this
+is you're creating missions...
+</p>
+
+<p>You might want to go ahead and actually fly the mission just to make sure it’s all
+loaded and synchronized properly.</p>
+
+<p><b>8.</b> You now have the .FLT and .PLN files matched with the GPS.</p>
+
+<p><a name="algorithm"></a>*<small>The Garmin switches to the next waypoint 
+when you cross the bisector of the inbound
+and outbound legs to/from that waypoint.</small></p>
+<hr/>
+<p>Brought to you by <font color="green"><b>Beeg</b></font>, vast amout of secretarial editting by B21.</p>
+</font>
+</body>
+
+</html>

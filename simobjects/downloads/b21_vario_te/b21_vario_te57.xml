@@ -1,0 +1,126 @@
+
+<SimBase.Document Type="AceXML" version="1,0" id="b21_vario_te57">
+    <Filename>b21_vario_te57.xml</Filename>
+    <SimGauge.Gauge id="b21_vario_te57">
+        <FloatPosition>0.000,0.000</FloatPosition>
+        <Size>84,84</Size>
+        <Image id="b21_vario_te57.bmp" Name="b21_vario_te57.bmp">
+            <Transparent>True</Transparent>
+        </Image>
+        <!-- small needle showing vertical speed -->
+        <Element id="Element">
+            <FloatPosition>42.417,41.582</FloatPosition>
+            <Image id="b21_vario_te57_needle_small.bmp" Name="b21_vario_te57_needle_small.bmp">
+                <Transparent>True</Transparent>
+                <Axis>41.417,1.582</Axis>
+            </Image>
+            <Rotation id="Rotation">
+                <PointsTo>WEST</PointsTo>
+                <NonlinearityTable id="NonlinearityTable">
+                    <NonlinearityEntry id="-10">
+                        <ExpressionResult>-10</ExpressionResult>
+                        <FloatPosition>72.000,70.000</FloatPosition>
+                    </NonlinearityEntry>
+                    <NonlinearityEntry id="0">
+                        <ExpressionResult>0</ExpressionResult>
+                        <FloatPosition>1.000,42.000</FloatPosition>
+                    </NonlinearityEntry>
+                    <NonlinearityEntry id="10">
+                        <ExpressionResult>10</ExpressionResult>
+                        <FloatPosition>72.000,12.000</FloatPosition>
+                    </NonlinearityEntry>
+                </NonlinearityTable>
+                <Expression id="Expression">
+                    <Minimum>-10.000</Minimum>
+                    <Maximum>10.000</Maximum>
+                    <Script>(A:Variometer rate,feet per minute) 0.00988 *</Script>
+                </Expression>
+                <Delay id="Delay">
+                    <DelayValue>180.000</DelayValue>
+                    <DelayUnits>DEGREES_PER_SECOND</DelayUnits>
+                </Delay>
+                <FailureTable id="FailureTable">
+                    <Failure id="Static Port">
+                        <Fail_Key>SYSTEM_PITOT_STATIC</Fail_Key>
+                        <Fail_Action>Zero</Fail_Action>
+                    </Failure>
+                    <Failure id="Gauge">
+                        <Fail_Key>GAUGE_VERTICAL_SPEED</Fail_Key>
+                        <Fail_Action>Freeze</Fail_Action>
+                    </Failure>
+                </FailureTable>
+            </Rotation>
+        </Element>
+        <!-- TE needle -->
+        <Element id="Element2">
+            <FloatPosition>42.417,41.582</FloatPosition>
+            <Image id="b21_vario_te57_needle.bmp" Name="b21_vario_te57_needle.bmp">
+                <Transparent>True</Transparent>
+                <Axis>41.417,1.582</Axis>
+            </Image>
+            <Rotation id="Rotation">
+                <PointsTo>WEST</PointsTo>
+                <NonlinearityTable id="NonlinearityTable">
+                    <NonlinearityEntry id="-5">
+                        <ExpressionResult>-5</ExpressionResult>
+                        <FloatPosition>72.000,70.000</FloatPosition>
+                    </NonlinearityEntry>
+                    <NonlinearityEntry id="0">
+                        <ExpressionResult>0</ExpressionResult>
+                        <FloatPosition>1.000,42.000</FloatPosition>
+                    </NonlinearityEntry>
+                    <NonlinearityEntry id="5">
+                        <ExpressionResult>5</ExpressionResult>
+                        <FloatPosition>72.000,12.000</FloatPosition>
+                    </NonlinearityEntry>
+                </NonlinearityTable>
+                <Expression id="Expression">
+                    <Minimum>-5.000</Minimum>
+                    <Maximum>5.000</Maximum>
+                    <Script>
+                            <!-- G:Var1 = Time now (seconds) -->
+        					<!-- G:Var2 = Time previous (seconds) -->
+        					<!-- G:Var3 = Airspeed now (meters per second) -->        
+        					<!-- G:Var4 = Airspeed previous (meters per second) -->        
+        					<!-- G:Var5 = Airspeed now squared -->        
+        					<!-- G:Var6 = Airspeed previous squared -->        
+        					<!-- G:Var7 = Airspeed now squared minus Airspeed previous squared, i.e. delta in squared airspeed in m/s -->        
+        					<!-- G:Var8 = Time delta (seconds) -->        
+        
+                        (P:ABSOLUTE TIME, seconds) (&gt;G:Var1) 
+        	            (G:Var1) (G:Var2) - (&gt;G:Var8) 
+                        (G:Var1) (&gt;G:Var2)
+                        (A:AIRSPEED TRUE, meters per second) (&gt;G:Var3)
+                        (G:Var3) (G:Var3) * (&gt;G:Var5)
+                        (G:Var4) (G:Var4) * (&gt;G:Var6)
+                        (G:Var5) (G:Var6) - (&gt;G:Var7)
+                        (G:Var3) (&gt;G:Var4)
+                        (G:Var7) (G:Var8) / 19.62 / (A:VERTICAL SPEED, meters per second) +
+
+                    </Script>
+                </Expression>
+                <Delay id="Delay">
+                    <DelayValue>60.000</DelayValue>
+                    <DelayUnits>DEGREES_PER_SECOND</DelayUnits>
+                </Delay>
+                <FailureTable id="FailureTable">
+                    <Failure id="Static Port">
+                        <Fail_Key>SYSTEM_PITOT_STATIC</Fail_Key>
+                        <Fail_Action>Zero</Fail_Action>
+                    </Failure>
+                    <Failure id="Gauge">
+                        <Fail_Key>GAUGE_VERTICAL_SPEED</Fail_Key>
+                        <Fail_Action>Freeze</Fail_Action>
+                    </Failure>
+                </FailureTable>
+            </Rotation>
+        </Element>
+        <MouseArea id="MouseArea">
+            <FloatPosition>0.000,0.000</FloatPosition>
+            <Size>84,88</Size>
+            <Tooltip id="Tooltip">
+                <DefaultId>TOOLTIPTEXT_VERTICAL_SPEED_KTS</DefaultId>
+            </Tooltip>
+        </MouseArea>
+    </SimGauge.Gauge>
+</SimBase.Document>
