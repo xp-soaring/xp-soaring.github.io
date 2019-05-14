@@ -1,0 +1,38 @@
+<SimBase.Document Type="AceXML" version="1,0" id="ballast valve">
+    <Filename>ballast.xml</Filename>
+    <SimGauge.Gauge id="ballast" ArtDirectory="">
+        <FloatPosition>0.000,0.000</FloatPosition>
+        <Size>50,149</Size>
+        <Element id="Element">
+            <FloatPosition>0.000,0.000</FloatPosition>
+            <Select id="Select">
+                <Expression id="Expression">
+                    <Script>(A:WATER BALLAST VALVE:1,number)</Script>
+                </Expression>
+                <Case id="Closed">
+                    <ExpressionResult>0</ExpressionResult>
+                    <Image id="ballast_closed.bmp" Name="ballast_closed.bmp">
+                        <Transparent>True</Transparent>
+                    </Image>
+                </Case>
+                <Case id="Open">
+                    <ExpressionResult>1</ExpressionResult>
+                    <Image id="ballast_open.bmp" Name="ballast_open.bmp">
+                        <Transparent>True</Transparent>
+                    </Image>
+                </Case>
+            </Select>
+        </Element>
+        <MouseArea id="MouseArea">
+            <FloatPosition>0.000,0.000</FloatPosition>
+            <Size>50,149</Size>
+            <CursorType>Hand</CursorType>
+            <MouseClick id="MouseClick">
+                <KeyEvent>TOGGLE_WATER_BALLAST_VALVE</KeyEvent>
+            </MouseClick>
+            <Tooltip id="Tooltip">
+                <DefaultId>TOOLTIPTEXT_WATER_BALLAST_DRAIN_VALVE</DefaultId>
+            </Tooltip>
+        </MouseArea>
+    </SimGauge.Gauge>
+</SimBase.Document>

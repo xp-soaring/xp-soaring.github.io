@@ -1,0 +1,88 @@
+
+<SimBase.Document Type="AceXML" version="1,0" id="b21_vario_te57">
+    <Filename>b21_vario_te57.xml</Filename>
+    <!-- THIS GAUGE IS PROGRAMMED AS A SLAVE OF THE 302 v2 -->
+    <SimGauge.Gauge id="b21_vario_te57">
+        <FloatPosition>0.000,0.000</FloatPosition>
+        <Size>200,200</Size>
+        <Image id="b21_vario_te57_k.bmp" Name="b21_vario_te57_k.bmp">
+            <Transparent>True</Transparent>
+        </Image>
+       <Element>
+          <Select id="select_background">
+             <Expression>
+               <Minimum>0</Minimum>
+               <Maximum>2</Maximum>
+               <Script>(P:Units of measure, enum)</Script>
+             </Expression>
+             <Case id="case0">
+                <ExpressionResult>0</ExpressionResult>
+                <Image id="b21_vario_te57_k.bmp" Name="b21_vario_te57_k.bmp">
+                    <Transparent>True</Transparent>
+                </Image>
+             </Case>
+             <Case id="case1">
+                <ExpressionResult>1</ExpressionResult>
+                <Image id="b21_vario_te57_k.bmp" Name="b21_vario_te57_k.bmp">
+                    <Transparent>True</Transparent>
+                </Image>
+             </Case>
+             <Case id="case2">
+                <ExpressionResult>2</ExpressionResult>
+                <Image id="b21_vario_te57_m.bmp" Name="b21_vario_te57_m.bmp">
+                    <Transparent>True</Transparent>
+                </Image>
+             </Case>
+          </Select>
+       </Element>
+        <!-- TE needle -->
+        <Element id="Element2">
+            <FloatPosition>100.0,100.0</FloatPosition>
+            <Image id="b21_vario_te57_needle.bmp" Name="b21_vario_te57_needle.bmp">
+                <Transparent>True</Transparent>
+                <Axis>74,6</Axis>
+            </Image>
+            <Rotation id="Rotation">
+                <PointsTo>WEST</PointsTo>
+                <Expression id="Expression">
+                    <Minimum>-5.000</Minimum>
+                    <Maximum>5.000</Maximum>
+                    <Script>
+                       (L:B21_302_netto, meters per second)
+                    </Script>
+                </Expression>
+                <NonlinearityTable id="NonlinearityTable">
+                    <NonlinearityEntry id="-5">
+                        <ExpressionResult>-5</ExpressionResult>
+                        <Degrees>-127</Degrees>
+                    </NonlinearityEntry>
+                    <NonlinearityEntry id="0">
+                        <ExpressionResult>0</ExpressionResult>
+                        <Degrees>0</Degrees>
+                    </NonlinearityEntry>
+                    <NonlinearityEntry id="5">
+                        <ExpressionResult>5</ExpressionResult>
+                        <Degrees>+127</Degrees>
+                    </NonlinearityEntry>
+                </NonlinearityTable>
+                <FailureTable id="FailureTable">
+                    <Failure id="Static Port">
+                        <Fail_Key>SYSTEM_PITOT_STATIC</Fail_Key>
+                        <Fail_Action>Zero</Fail_Action>
+                    </Failure>
+                    <Failure id="Gauge">
+                        <Fail_Key>GAUGE_VERTICAL_SPEED</Fail_Key>
+                        <Fail_Action>Freeze</Fail_Action>
+                    </Failure>
+                </FailureTable>
+            </Rotation>
+        </Element>
+        <MouseArea id="MouseArea">
+            <FloatPosition>0.000,0.000</FloatPosition>
+            <Size>200,100</Size>
+            <Tooltip id="Tooltip">
+                <DefaultId>TOOLTIPTEXT_VERTICAL_SPEED_KTS</DefaultId>
+            </Tooltip>
+        </MouseArea>
+    </SimGauge.Gauge>
+</SimBase.Document>

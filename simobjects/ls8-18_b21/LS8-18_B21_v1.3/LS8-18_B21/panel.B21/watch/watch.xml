@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Gauge Name="Watch" Version="1.0" Copyright="P. WALLAERT 2008/05/03">
+  <Image Name="watch_background.bmp"/>
+  <Element>
+    <Position X="74" Y="74.5" />
+    <Image Name="Clock_Needle_H.bmp">
+      <Axis X="7" Y="30" />
+    </Image>
+    <Rotate>
+      <Value>(P:Local time,hours)</Value>
+      <Failures>
+        <SYSTEM_ELECTRICAL_PANELS Action="Freeze" />
+      </Failures>
+      <Nonlinearity>
+        <Item Value="0" Degrees="0" />
+        <Item Value="3" Degrees="90" />
+        <Item Value="6" Degrees="180" />
+        <Item Value="9" Degrees="270" />
+        <Item Value="12" Degrees="360" />
+      </Nonlinearity>
+    </Rotate>
+  </Element>
+  <Element>
+    <Position X="74" Y="74.5" />
+    <Image Name="Clock_Needle_M.bmp">
+      <Axis X="7" Y="47" />
+    </Image>
+    <Rotate>
+      <Value>(P:Local time,minutes) flr 60 % </Value>
+      <Failures>
+        <SYSTEM_ELECTRICAL_PANELS Action="Freeze" />
+      </Failures>
+      <Nonlinearity>
+        <Item Value="0" Degrees="0" />
+        <Item Value="15" Degrees="90" />
+        <Item Value="30" Degrees="180" />
+        <Item Value="45" Degrees="270" />
+      </Nonlinearity>
+    </Rotate>
+  </Element>
+  <Element>
+    <Position X="74" Y="74.5" />
+    <Image Name="Clock_Needle_S.bmp">
+      <Axis X="7" Y="47" />
+    </Image>
+    <Rotate>
+      <Value>(P:Local time,seconds) flr 60 % </Value>
+      <Failures>
+        <SYSTEM_ELECTRICAL_PANELS Action="Freeze" />
+      </Failures>
+      <Nonlinearity>
+        <Item Value="0" Degrees="0" />
+        <Item Value="15" Degrees="90" />
+        <Item Value="30" Degrees="180" />
+        <Item Value="45" Degrees="270" />
+      </Nonlinearity>
+    </Rotate>
+  </Element>
+</Gauge>

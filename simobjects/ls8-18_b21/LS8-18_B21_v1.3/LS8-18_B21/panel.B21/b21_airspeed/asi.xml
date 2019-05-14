@@ -1,0 +1,198 @@
+<SimBase.Document Type="AceXML" version="1,0" id="b21_vario_te57">
+    <Filename>asi.xml</Filename>
+    <!-- THIS GAUGE IS PROGRAMMED AS A SLAVE OF THE 302 v2 -->
+    <SimGauge.Gauge id="asi">
+        <FloatPosition>0.000,0.000</FloatPosition>
+        <Size>315,315</Size>
+        <Image id="Airspeed_Background_knots.bmp" Name="Airspeed_Background_knots.bmp">
+            <Transparent>True</Transparent>
+        </Image>
+       <Element>
+          <Select id="select_background">
+             <Expression>
+               <Minimum>0</Minimum>
+               <Maximum>2</Maximum>
+               <Script>(P:Units of measure, enum)</Script>
+             </Expression>
+             <Case id="case0">
+                <ExpressionResult>0</ExpressionResult>
+                <Image id="Airspeed_Background_knots.bmp" Name="Airspeed_Background_knots.bmp">
+                    <Transparent>True</Transparent>
+                </Image>
+             </Case>
+             <Case id="case1">
+                <ExpressionResult>1</ExpressionResult>
+                <Image id="Airspeed_Background_knots.bmp" Name="Airspeed_Background_knots.bmp">
+                    <Transparent>True</Transparent>
+                </Image>
+             </Case>
+             <Case id="case2">
+                <ExpressionResult>2</ExpressionResult>
+                <Image id="Airspeed_Background_kmh.bmp" Name="Airspeed_Background_kmh.bmp">
+                    <Transparent>True</Transparent>
+                </Image>
+             </Case>
+          </Select>
+       </Element>
+        <!-- STF needle -->
+        <Element id="Element2">
+            <FloatPosition>155.0,157.0</FloatPosition>
+            <Visibility>(L:B21_airspeed_STF_visibility, number)</Visibility>
+            <Image id="Airspeed_STF_Needle.bmp" Name="Airspeed_STF_Needle.bmp">
+                <Transparent>True</Transparent>
+                <Axis>46,10</Axis>
+            </Image>
+            <Rotation id="Rotation">
+                <PointsTo>EAST</PointsTo>
+                <Expression id="Expression">
+                    <Minimum>0.000</Minimum>
+                    <Maximum>300.000</Maximum>
+                    <Script>
+                       (L:B21_302_stf,kilometers per hour)
+                    </Script>
+                </Expression>
+                <NonlinearityTable id="NonlinearityTable">
+                    <NonlinearityEntry id="0">
+                        <ExpressionResult>0</ExpressionResult>
+                        <FloatPosition>155.000,274.000</FloatPosition>
+                    </NonlinearityEntry>
+                    <NonlinearityEntry id="40">
+                        <ExpressionResult>40</ExpressionResult>
+                        <FloatPosition>110.000,265.000</FloatPosition>
+                    </NonlinearityEntry>
+                    <NonlinearityEntry id="60">
+                        <ExpressionResult>60</ExpressionResult>
+                        <FloatPosition>45.000,197.000</FloatPosition>
+                    </NonlinearityEntry>
+                    <NonlinearityEntry id="80">
+                        <ExpressionResult>40</ExpressionResult>
+                        <FloatPosition>62.000,87.000</FloatPosition>
+                    </NonlinearityEntry>
+                    <NonlinearityEntry id="100">
+                        <ExpressionResult>100</ExpressionResult>
+                        <FloatPosition>150.000,40.000</FloatPosition>
+                    </NonlinearityEntry>
+                    <NonlinearityEntry id="120">
+                        <ExpressionResult>120</ExpressionResult>
+                        <FloatPosition>235.000,69.000</FloatPosition>
+                    </NonlinearityEntry>
+                    <NonlinearityEntry id="150">
+                        <ExpressionResult>150</ExpressionResult>
+                        <FloatPosition>255.000,175.000</FloatPosition>
+                    </NonlinearityEntry>
+                    <NonlinearityEntry id="200">
+                        <ExpressionResult>200</ExpressionResult>
+                        <FloatPosition>152.000,237.000</FloatPosition>
+                    </NonlinearityEntry>
+                    <NonlinearityEntry id="250">
+                        <ExpressionResult>250</ExpressionResult>
+                        <FloatPosition>78.000,179.000</FloatPosition>
+                    </NonlinearityEntry>
+                    <NonlinearityEntry id="300">
+                        <ExpressionResult>300</ExpressionResult>
+                        <FloatPosition>103.000,99.000</FloatPosition>
+                    </NonlinearityEntry>
+                </NonlinearityTable>
+                <FailureTable id="FailureTable">
+                    <Failure id="Static Port">
+                        <Fail_Key>SYSTEM_PITOT_STATIC</Fail_Key>
+                        <Fail_Action>Zero</Fail_Action>
+                    </Failure>
+                </FailureTable>
+            </Rotation>
+        </Element>
+        <!-- Airspeed needle -->
+        <Element id="airspeed_needle">
+            <FloatPosition>155.0,157.0</FloatPosition>
+            <Visibility>1</Visibility>
+            <Image id="Airspeed_Needle.bmp" Name="Airspeed_Needle.bmp">
+                <Transparent>True</Transparent>
+                <Axis>46,10</Axis>
+            </Image>
+            <Rotation id="Rotation">
+                <PointsTo>EAST</PointsTo>
+                <Expression id="Expression">
+                    <Minimum>0.000</Minimum>
+                    <Maximum>300.000</Maximum>
+                    <Script>
+                       (A:Airspeed select indicated or true,kilometers per hour)
+                    </Script>
+                </Expression>
+                <NonlinearityTable id="NonlinearityTable">
+                    <NonlinearityEntry id="0">
+                        <ExpressionResult>0</ExpressionResult>
+                        <FloatPosition>155.000,274.000</FloatPosition>
+                    </NonlinearityEntry>
+                    <NonlinearityEntry id="40">
+                        <ExpressionResult>40</ExpressionResult>
+                        <FloatPosition>110.000,265.000</FloatPosition>
+                    </NonlinearityEntry>
+                    <NonlinearityEntry id="60">
+                        <ExpressionResult>60</ExpressionResult>
+                        <FloatPosition>45.000,197.000</FloatPosition>
+                    </NonlinearityEntry>
+                    <NonlinearityEntry id="80">
+                        <ExpressionResult>40</ExpressionResult>
+                        <FloatPosition>62.000,87.000</FloatPosition>
+                    </NonlinearityEntry>
+                    <NonlinearityEntry id="100">
+                        <ExpressionResult>100</ExpressionResult>
+                        <FloatPosition>150.000,40.000</FloatPosition>
+                    </NonlinearityEntry>
+                    <NonlinearityEntry id="120">
+                        <ExpressionResult>120</ExpressionResult>
+                        <FloatPosition>235.000,69.000</FloatPosition>
+                    </NonlinearityEntry>
+                    <NonlinearityEntry id="150">
+                        <ExpressionResult>150</ExpressionResult>
+                        <FloatPosition>255.000,175.000</FloatPosition>
+                    </NonlinearityEntry>
+                    <NonlinearityEntry id="200">
+                        <ExpressionResult>200</ExpressionResult>
+                        <FloatPosition>152.000,237.000</FloatPosition>
+                    </NonlinearityEntry>
+                    <NonlinearityEntry id="250">
+                        <ExpressionResult>250</ExpressionResult>
+                        <FloatPosition>78.000,179.000</FloatPosition>
+                    </NonlinearityEntry>
+                    <NonlinearityEntry id="300">
+                        <ExpressionResult>300</ExpressionResult>
+                        <FloatPosition>103.000,99.000</FloatPosition>
+                    </NonlinearityEntry>
+                </NonlinearityTable>
+                <FailureTable id="FailureTable">
+                    <Failure id="Static Port">
+                        <Fail_Key>SYSTEM_PITOT_STATIC</Fail_Key>
+                        <Fail_Action>Zero</Fail_Action>
+                    </Failure>
+                </FailureTable>
+            </Rotation>
+        </Element>
+
+        <Comment><Value>*******************************************************
+         **********************************************************************
+                    MOUSEAREA
+         **********************************************************************
+         **********************************************************************
+         </Value></Comment>
+        <MouseArea id="MouseArea all">
+            <FloatPosition>0.000,0.000</FloatPosition>
+            <Size>315,315</Size>
+            <MouseArea>
+                <FloatPosition>20,20</FloatPosition>
+                <Size>275,275</Size>
+                <CursorType>Hand</CursorType>
+                <MouseClick id="STFvis">
+                    <Script>
+                    (L:B21_airspeed_STF_visibility, number) 0 == if{ 
+                        1 (&gt;L:B21_airspeed_STF_visibility, number)
+                    } els{
+                        0 (&gt;L:B21_airspeed_STF_visibility, number)
+                    }
+                    </Script>
+                    <ClickType>LeftSingle</ClickType>
+                </MouseClick>
+            </MouseArea>
+        </MouseArea>
+    </SimGauge.Gauge>
+</SimBase.Document>

@@ -1,0 +1,101 @@
+<Gauge Name="Altimeter" Version="1.0">
+   <Image Name="Altimeter_BG.bmp" ImageSizes="315,315,0,0"/>
+   <Element>
+      <Select>
+         <Value>(P:Units of measure, enum) 2 == </Value>
+         <Case Value="0">
+            <Image Name="Altimeter_BG_feet.bmp"  ImageSizes="315,315,0,0"/>
+         </Case>
+         <Case Value="1">
+            <Image Name="Altimeter_BG.bmp"   ImageSizes="315,315,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+     <Position X="157.5" Y="157.5"/> 
+      <Image Name="Altimeter_Ring.bmp">
+         <Axis X="157.5" Y="157.5"/>
+      </Image>
+      <Rotate>
+         <Value>(G:Var1) dgrd</Value>
+         <Delay DegreesPerSecond="360"/>
+      </Rotate>
+   </Element>
+   <Element>
+      <Position X="82" Y="36"/>
+      <MaskImage Name="Altimeter_Mask.bmp" ImageSizes="140,71,0,0">
+         <Axis X="72" Y="137"/>
+      </MaskImage>
+      <Image Name="Altimeter_Card.bmp" ImageSizes="256,256,256,256">
+         <Axis X="128" Y="128"/>
+      </Image>
+      <Rotate>
+         <Value Minimum="28.1" Maximum="31.5">(A:Kohlsman setting hg, inHg)</Value>
+         <Nonlinearity>
+            <Item Value="30.84" Degrees="90"/>
+            <Item Value="29.95" Degrees="180"/>
+            <Item Value="29.07" Degrees="270"/>
+            <Item Value="28.18" Degrees="0"/>
+         </Nonlinearity>
+      </Rotate>
+   </Element>
+   <Element>
+      <Position X="156" Y="159"/>
+      <Image Name="Altimeter_Needle1000.bmp"   ImageSizes="98,30,0,0">
+         <Axis X="33" Y="14" PointsTo="East"/>
+      </Image>
+      <Rotate>
+         <Value>(P:Units of measure, enum) 2 == if{ (A:Indicated Altitude, meters) } els{ (A:Indicated Altitude, feet) } 10000% </Value>
+         <Failures>
+            <GAUGE_ALTIMETER Action="Freeze"/>
+            <SYSTEM_PITOT_STATIC Action="Freeze"/>
+         </Failures>
+         <Nonlinearity>
+            <Item Value="0" X="156" Y="252"/>
+            <Item Value="5000" X="156" Y="47"/>
+         </Nonlinearity>
+      </Rotate>
+   </Element>
+   <Element>
+      <Position X="159" Y="159"/>
+      <Image Name="Altimeter_Needle100.bmp"   ImageSizes="160,22,0,0">
+         <Axis X="53" Y="10" PointsTo="East"/>
+      </Image>
+      <Rotate>
+         <Value>(P:Units of measure, enum) 2 == if{ (A:Indicated Altitude, meters) } els{ (A:Indicated Altitude, feet) } 1000% </Value>
+         <Failures>
+            <GAUGE_ALTIMETER Action="Freeze"/>
+            <SYSTEM_PITOT_STATIC Action="Freeze"/>
+         </Failures>
+         <Nonlinearity>
+            <Item Value="0" X="156" Y="252"/>
+            <Item Value="500" X="156" Y="47"/>
+         </Nonlinearity>
+      </Rotate>
+   </Element>
+   <Mouse>
+      <Tooltip ID="TOOLTIPTEXT_HEADING_INDICATOR_HEADING"/>
+      <Area Left="5" Width="45" Top="75" Height="150">
+         <Cursor Type="DownArrow"/>
+         <Click Repeat="Yes">0 (&gt;K:GYRO_DRIFT_DEC)           (G:Var1)           2 -            360 %         (&gt;G:Var1)         </Click>
+      </Area>
+      <Area Left="250" Width="45" Top="75" Height="150">
+         <Cursor Type="UpArrow"/>
+         <Click Repeat="Yes">0 (&gt;K:GYRO_DRIFT_INC)           (G:Var1)           2 +            360 %           (&gt;G:Var1)         </Click>
+      </Area>
+      <Help ID="HELPID_GAUGE_ALTIMETER"/>
+      <Tooltip ID="TOOLTIPTEXT_ALTIMETER_FEET" MetricID="TOOLTIPTEXT_ALTIMETER_FEET_METERS_SPECIAL"/>
+      <Area Left="6" Top="256" Width="46" Height="46">
+         <Help ID="HELPID_GAUGE_TAS_CALIBRATION"/>
+         <Tooltip ID="TOOLTIPTEXT_ALTIMETER_KOHLSMAN_INHG" MetricID="TOOLTIPTEXT_ALTIMETER_KOHLSMAN_MBAR"/>
+         <Area Right="35">
+            <Cursor Type="DownArrow"/>
+            <Click Event="KOHLSMAN_DEC" Repeat="Yes"/>
+         </Area>
+         <Area Left="35">
+            <Cursor Type="UpArrow"/>
+            <Click Event="KOHLSMAN_INC" Repeat="Yes"/>
+         </Area>
+      </Area>
+   </Mouse>
+</Gauge>

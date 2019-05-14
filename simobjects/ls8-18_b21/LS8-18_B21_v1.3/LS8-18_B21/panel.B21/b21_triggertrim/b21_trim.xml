@@ -1,0 +1,38 @@
+﻿<SimBase.Document Type="AceXML" version="1,0" id="b21_vario_te57">
+    <Filename>b21_trim.xml</Filename>
+    <SimGauge.Gauge id="b21_trim">
+        <FloatPosition>0.000,0.000</FloatPosition>
+        <Size>256,32</Size>
+        <Element>
+            <Select id="Select">
+                <Expression id="Expression2">
+                    <Minimum>-5.000</Minimum>
+                    <Maximum>5.000</Maximum>
+                    <Script>
+                        (L:b21_trim_triggered, number) 0 == if{
+                            (A:BRAKE LEFT POSITION, number) 0.1 &gt; if{
+                                (A:ELEVATOR POSITION, number) 8000 * neg (&gt;K:AXIS_ELEV_TRIM_SET)
+                                1 (&gt;L:b21_trim_triggered, number)
+                            }
+                        }
+                        (A:BRAKE LEFT POSITION, number) 0.05 &lt; if{
+                            0 (&gt;L:b21_trim_triggered, number)
+                        }
+                    </Script>
+                </Expression>
+            </Select>
+        </Element>
+        <Element id="Element">
+            <FloatPosition>0.000,0.000</FloatPosition>
+            <Visibility>0</Visibility>
+            <GaugeText id="GaugeText">
+                <FontColor>gold</FontColor>
+                <FontHeight>32</FontHeight>
+                <GaugeString>%((A:BRAKE LEFT POSITION, number))%!5.1f!</GaugeString>
+                <HorizontalAlign>CENTER</HorizontalAlign>
+                <Size>256,32</Size>
+                <Transparent>True</Transparent>
+            </GaugeText>
+        </Element>
+    </SimGauge.Gauge>
+</SimBase.Document>

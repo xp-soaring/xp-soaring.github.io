@@ -1,0 +1,187 @@
+ 
+    Rolladen-Schneider LS8-18 for FSX
+    Version 2d, August 2010
+ 
+    T/O Weight:         525 kg max., 285 kg empty
+    Length:             6.74 m
+    Wing span:          18 m  
+    Top cruise speed:   280 km/h 
+    Glide ratio:        49:1 at 110 km/h at 525 kg (46 kg/m²)
+    Minimum sinkrate:   0.65 m/s at 100 km/h  at 525 kg (46 kg/m²)
+
+    Aircraft and panel design by Wolfgang Piper
+    Panel picture by Jacob Thomsen
+    Aircraft pictures by Thomas Stolze.
+    CAISet and yawstring gauges by Max Roodveldt 
+    TrimWizzard by Peter Lürkens  
+    Relative Wind gauge by Real Brousseau 
+
+ 
+    =============================== Installation for FSX ==================================================== 
+
+ 
+    English
+    -------
+    Copy the folder LS8-18 include the subfolders MODEL , PANEL , SOUND and TEXTURE
+    under your \FSX\SIMOBJECTS\AIRPLANES folder.
+ 
+
+ 
+    There is a file named 'gps-nav.dat', a file with waypoints for the gps unit. This
+    file must be in the main FSX folder, otherwise FSX shuts down while you
+    switch on the GPS unit.
+    Copy this file to this folder, only if there is no  'gps-nav.dat' file.
+  
+    For the function of the Caiset instruments the following is to be done: 
+
+    1.) Install FSUIPC4 for FSX.
+        to receive on 
+        http://www.schiratti.com/dowson.html 
+        the installation produces the file FSUIPC.dll in the FSX\Modules folder
+
+    2.) In the main FSX folder the following files must be:
+        FSSound.dll and SOARRec.dll 
+        to receive on my site at
+        http://www.fsglider.de/fsdll1.zip
+ 
+        VISTA-users pay attention: to have the caiset running errorfree, 
+        FSX.exe has to be opened with administrator-rights !
+        
+
+
+
+
+    Deutsch
+    ------- 
+ 
+    Kopiere den  Ordner LS8-18 einschließlich dessen Unterordner 
+    MODEL , PANEL , SOUND und TEXTURE  in den \FSX\SIMOBJECTS\AIRPLANES - Ordner. 
+ 
+
+     
+    Dieses Paket enthält eine Datei namens 'gps-nav.dat', eine Textdatei mit Wegpunkten für das 
+    GPS-Instrument. Diese Datei muß im Hauptordner des FSX vorhanden sein, anderenfalls
+    stürzt der FS ab, sobald das GPS eingeschaltet wird. Kopiere 'gps-nav.dat' in diesen Ordner,
+    falls sich dort noch  k e i n e  'gps-nav.dat' befindet.
+ 
+    Für die Funktion der Caiset-Instrumente ist folgendes zu tun :
+
+    1.)  FSUIPC4 für FSX installieren.
+         zu erhalten unter
+         http://www.schiratti.com/dowson.html
+         Die Installation erzeugt im FSX\Modules-Ordner die Datei FSUIPC.dll
+
+
+   2.)  Im Hauptordner des FSX müssen sich folgende Dateien befinden:
+        FSSound.dll und SOARRec.dll 
+        zu erhalten auf meiner Seite unter
+        http://www.fsglider.de/fsdll1.zip
+
+        Achtung VISTA-Benutzer: Um Caiset Error-frei zu halten,
+        muß FSX.exe mit Administratorrechten geöffnet sein !
+
+
+
+   Français
+   --------
+ 
+   Copier le dossier LS8-18 (y compris les sous-dossiers Model, Panel, Sound et Texture)
+   dans le répertoire \FSX\SIMOBJECTS\AIRPLANES 
+
+  
+   Il y a un dossier appelé 'gps-nav.dat '. Ce dossier doit être dans le répertoire principale de FSX,
+   autrement FSX s'arrête tandis que vous alimentez l'unité de GPS. Copier ce dossier à ce répertoire,
+   seulement s'il n'y a aucun dossier de'gps-nav.dat '.
+
+   Pour la fonction, ce qui suit est nécessaire :
+
+   1.) Installer FSUIPC4 pour FSX.
+       Ce programme peut téléchargé à : 
+       http://www.schiratti.com/dowson.html 
+       l'installation produit le fichier FSUIPC.dll dans le répertoire FSX\Modules
+
+   2.) Vérifier que les fichiers suivants sont présents dans le répertoire principale du FSX :
+       FSSound.dll et SOARRec.dll 
+       Ces fichiers peuvent téléchargés de ma site
+       http://www.fsglider.de/fsdll1.zip
+
+       Attention VISTA-utilisateurs : FSX.exe doit être ouvert avec des droits d'administrateur !
+
+
+
+                                  =========================================
+
+     Notes:
+
+     Use SHIFT + E for open/close the canopy
+     Use SHIFT + E + 2 for open/close the canopy window
+
+     SHIFT + E öffnet/schließt die Haube
+     SHIFT + E + 2 öffnet/schließt das Haubenfenster
+
+     Utilisez MAJ + E pour ouvir/fermer la verrière
+     Utilisez MAJ + E + 2 pour ouvir/fermer la fenêtre de la verrière
+
+
+                                  =========================================
+
+
+ 
+    These files are FREEWARE, so don't make money with this, please. Copyright © Wolfgang Piper.
+    No commercial distribution on any sampler CD-ROM or other data carriers without the 
+    written permission of the author. I don't accept any liability for damages or misfunction
+    happens to your system.
+    Comments are welcome. You are free to upload this package into other services as long as 
+    this package or his contents aren't modified.
+    Repaints of this model only for personal use, a publication of repaints requires the written 
+    permission of the author.
+
+  
+    Diese Files sind FREEWARE, machen Sie bitte kein Geld damit. Copyright © Wolfgang Piper.
+    Keine kommerzielle Nutzung und Verbreitung, weder auf CD-ROM-Sammlungen
+    noch sonstwie ohne die ausdrückliche schriftliche Genehmigung des Autors.
+    Eine Haftung für eventuelle Störungen auf dem Nutzer-System wird absolut und rechtlich
+    nicht übernommen. 
+    Kommentare sind willkommen. Es steht Ihnen frei, dieses Paket in andere Dienste
+    hochzuladen, solange dies Paket oder sein Inhalt nicht modifiziert wird.
+    Repaints von diesem Modell nur für den persönlichen Gebrauch, eine Veröffentlichung
+    von Repaints dieses Modells erfordert die schriftliche Erlaubnis des Autors. 
+
+ 
+
+                                  =========================================
+
+
+
+
+   ----------------------------------------------------------------------------------------------
+ 
+    Holm und Rippenbruch and have fun!
+  
+
+    March     2006:   Version 1
+    April     2006:   Version 1a : New canopy window, nose texture in higher resolution
+    October   2006:   Version 1c : Update  model for FSX
+    January   2007:              : Bugfix outer view
+    February  2007:              : Bugfix screw in cockpit  
+    November  2007:   Version 1d : Compiled for FSX and FS2004
+    December  2007:   Version 1e : Bugfix canopy and canopy window
+    February  2008:   Version 1f : Caiset instruments, new compass and radio gauge, corrected documents
+    November  2008:   Version 2  : compiled with xtomdl, suited for Windows Vista and DirectX 10-Preview    
+    November  2008:              : Tow release lever, Gear damping
+    December  2008:              : New Pilot
+    December  2008:   Version 2a : Added water ballast system
+    August    2009:   Version 2b : Added TrimWizzard, Polars checked in FSX at 525 kg (=46 kg/m²), and flightdynamics
+    April     2010:   Version 2c : Instrument modifications  
+    August    2010:   Version 2d : Bugfix: stick position 
+ 
+   Wolfgang Piper, Hamburg, Germany
+    
+    E-mail:
+    w.piper@online.de
+
+    Visit my home page (other gliders and newest versions) at
+    
+    www.fsglider.de
+
+

@@ -1,0 +1,58 @@
+<SimBase.Document Type="AceXML" version="1,0" id="ballast indicator">
+    <Filename>ballast_indicator.xml</Filename>
+    <SimGauge.Gauge id="ballast" ArtDirectory="">
+        <FloatPosition>0.000,0.000</FloatPosition>
+        <Size>43,26</Size>
+        <Image id="background" name="indicator_background.bmp">
+            <Transparent>True</Transparent>
+        </Image>
+        
+        <Element id="ballast proportion">
+            <FloatPosition>6,2</FloatPosition>
+            <Visibility>(L:B21_ballast_weight_visibility, number) 0 ==</Visibility>
+            <GaugeText id="B21_mc">
+                <Size>30,20</Size>
+                <FontFace>Quartz</FontFace>
+                <FontColor>#ffffff</FontColor>
+                <FontHeight>20</FontHeight>
+                <Length>1</Length>
+                <Transparent>True</Transparent>
+                <VerticalAlign>CENTER</VerticalAlign>
+                <HorizontalAlign>RIGHT</HorizontalAlign>
+                <GaugeString>%( (A:TOTAL WEIGHT, kilograms) (L:B21_polar_weight_empty, kilograms) - 
+                                (L:B21_polar_weight_full, kilograms) (L:B21_polar_weight_empty, kilograms) - 100 / 
+                                / int )%!3.0f!</GaugeString>
+            </GaugeText>
+        </Element>
+        <Element id="weight kg">
+            <FloatPosition>6,2</FloatPosition>
+            <Visibility>(L:B21_ballast_weight_visibility, number)</Visibility>
+            <GaugeText id="B21_mc">
+                <Size>30,20</Size>
+                <FontFace>Quartz</FontFace>
+                <FontColor>#ffffff</FontColor>
+                <FontHeight>20</FontHeight>
+                <Length>1</Length>
+                <Transparent>True</Transparent>
+                <VerticalAlign>CENTER</VerticalAlign>
+                <HorizontalAlign>RIGHT</HorizontalAlign>
+                <GaugeString>%( (A:TOTAL WEIGHT, kilograms) int )%!3.0f!</GaugeString>
+            </GaugeText>
+        </Element>
+        <MouseArea id="MouseArea all">
+            <FloatPosition>0.000,0.000</FloatPosition>
+            <Size>43,26</Size>
+            <CursorType>Hand</CursorType>
+            <MouseClick id="LDvis">
+                <Script>
+                (L:B21_ballast_weight_visibility, number) 0 == if{ 
+                    1 (&gt;L:B21_ballast_weight_visibility, number)
+                } els{
+                    0 (&gt;L:B21_ballast_weight_visibility, number)
+                }
+                </Script>
+                <ClickType>LeftSingle</ClickType>
+            </MouseClick>
+        </MouseArea>
+    </SimGauge.Gauge>
+</SimBase.Document>

@@ -1,0 +1,8 @@
+Plane and Panel by Wolfgang Piper.
+Panel picture by Jacob Thomsen.
+Aircraft pictures by Thomas Stolze.
+CAISet and yawstring gauges programmed by Max Roodveldt
+XML gauges modified from Hauke Keitel's Kedigau set
+and FS Standard gauges.
+TrimWizzard by Peter Lürkens
+

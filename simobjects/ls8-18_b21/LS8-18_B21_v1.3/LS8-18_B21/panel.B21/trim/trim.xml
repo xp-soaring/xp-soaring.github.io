@@ -1,0 +1,30 @@
+<Gauge Name="trim knob" Version="1.0">
+   <Image Name="trim_background.bmp"/>
+   <Element>
+      <Position X="7" Y="20"/>
+      <Image Name="trim_knob.bmp"/>
+      <Shift>
+         <Value Minimum="-20" Maximum="20">(A:Elevator Trim Position,degrees)</Value>
+         <Nonlinearity>
+            <Item Value="-20" X="7" Y="7"/>
+            <Item Value="0" X="7" Y="52"/>
+            <Item Value="+20" X="7" Y="98"/>
+         </Nonlinearity>
+         <Delay PixelsPerSecond="300"/>
+      </Shift>
+   </Element>
+   <Mouse>
+      <Area Left="0" Top="0" Width="50" Height="149">
+         <Help ID="HELPID_GAUGE_PITCH_TRIM"/>
+         <Tooltip ID="TOOLTIPTEXT_PITCH_TRIM_PCT"/>
+         <Area Bottom="74">
+            <Click Event="ELEV_TRIM_DN" Repeat="Yes" MouseWheelFlip="Yes"/>
+            <Cursor Type="DownArrow" Repeat="Yes"/>
+         </Area>
+         <Area Top="75">
+            <Click Event="ELEV_TRIM_UP" Repeat="Yes" MouseWheelFlip="Yes"/>
+            <Cursor Type="UpArrow" Repeat="Yes"/>
+         </Area>
+      </Area>
+   </Mouse>
+</Gauge>

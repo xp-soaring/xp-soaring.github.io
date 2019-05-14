@@ -1,0 +1,51 @@
+<Gauge Name="Becker AR 4201" Version="1.0">
+   <Image Name="Becker-AR4201.bmp" ImageSizes="300,300"/>
+   <Element>
+      <Visible>(A:COM1 STATUS, bool) !</Visible>
+   </Element>
+   <Element>
+      <Position X="75" Y="83"/>
+      <Text X="150" Y="55" Length="6" Fixed="Yes" Font="Quartz" FontHeight="0" FontWeight="200" Charset="Default" Attributes="Normal" Adjust="Center" VerticalAdjust="Center" Multiline="No" Color="Black" BackgroundColor="transparent" Bright="Yes" UseTransparency="Yes">
+         <String>%((A:Com1 active frequency, MHz))%!6.2f!</String>
+         <Failures>
+            <SYSTEM_ELECTRICAL_PANELS Action="0"/>
+         </Failures>
+      </Text>
+   </Element>
+   <Element>
+      <Position X="85" Y="135"/>
+      <Text X="135" Y="37" Length="6" Fixed="Yes" Font="Quartz" FontHeight="0" FontWeight="200" Charset="Default" Attributes="Normal" Adjust="Center" VerticalAdjust="Center" Multiline="No" Color="Black" BackgroundColor="transparent" Bright="Yes" UseTransparency="Yes">
+         <String>%((A:Com1 standby frequency, MHz))%!6.2f!</String>
+         <Failures>
+            <SYSTEM_ELECTRICAL_PANELS Action="0"/>
+         </Failures>
+      </Text>
+   </Element>
+   <Mouse>
+      <Help ID="HELPID_RADIO_COMM1"/>
+      <Area Left="245" Top="95" Right="280" Bottom="177">
+         <Click Event="COM_STBY_RADIO_SWAP"/>
+         <Cursor Type="Hand"/>
+       </Area>
+      <Area Left="165" Top="185" Right="207" Bottom="224">
+         <Click Event="COM_RADIO_WHOLE_INC" Repeat="Yes"/>
+         <Cursor Type="UpArrow"/>
+      </Area>
+      <Area Left="165" Top="224" Right="207" Bottom="264">
+         <Click Event="COM_RADIO_WHOLE_DEC" Repeat="Yes"/>
+         <Cursor Type="DownArrow"/>
+      </Area>
+      <Area Left="207" Top="185" Right="260" Bottom="224">
+         <Click Event="COM_RADIO_FRACT_INC" Repeat="Yes"/>
+         <Cursor Type="UpArrow"/>
+      </Area>
+      <Area Left="207" Top="224" Right="260" Bottom="264">
+         <Click Event="COM_RADIO_FRACT_DEC" Repeat="Yes"/>
+         <Cursor Type="DownArrow"/>
+      </Area>
+      <Area Left="80" Top="15" Right="220" Bottom="70">
+         <Click Event="ATC"/>
+         <Cursor Type="Hand"/>
+      </Area>
+   </Mouse>
+</Gauge>

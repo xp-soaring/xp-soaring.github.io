@@ -1,0 +1,169 @@
+<SimBase.Document Type="AceXML" version="1,0" id="winter">
+    <Filename>winter.xml</Filename>
+    <SimGauge.Gauge id="winter_gauge">
+        <FloatPosition>0.000,0.000</FloatPosition>
+        <Size>315,315</Size>
+        <Image id="MCVario_LS7k.bmp" Name="MCVario_LS7k.bmp">
+            <Transparent>True</Transparent>
+        </Image>
+   <Element>
+      <Select id="select_background">
+         <Expression>
+		   <Minimum>0</Minimum>
+		   <Maximum>2</Maximum>
+		   <Script>(P:Units of measure, enum)</Script>
+		 </Expression>
+         <Case id="case0">
+			<ExpressionResult>0</ExpressionResult>
+			<Image id="MCVario_LS7k.bmp" Name="MCVario_LS7k.bmp">
+				<Transparent>True</Transparent>
+			</Image>
+         </Case>
+         <Case id="case1">
+			<ExpressionResult>1</ExpressionResult>
+			<Image id="MCVario_LS7k.bmp" Name="MCVario_LS7k.bmp">
+				<Transparent>True</Transparent>
+			</Image>
+         </Case>
+         <Case id="case2">
+			<ExpressionResult>2</ExpressionResult>
+			<Image id="MCVario_LS7.bmp" Name="MCVario_LS7.bmp">
+				<Transparent>True</Transparent>
+			</Image>
+         </Case>
+      </Select>
+   </Element>
+    <Element>
+        <Select id="Select">
+            <Expression id="Expression2">
+                <Minimum>-5.000</Minimum>
+                <Maximum>5.000</Maximum>
+                <Script>
+                    (A:AIRSPEED TRUE, meters per second) d * 
+                    19.62 /  			
+                    (A:PLANE ALTITUDE, meters) + 
+                    0.25 * (G:Var2) 0.75 * +	
+                    d (G:Var2) -			
+                    (E:ABSOLUTE TIME, seconds)
+                    0.25 * (G:Var1) 0.75 * +			
+                    d (G:Var1) -			
+                    r (&gt;G:Var1)	
+                    /			
+                    r (&gt;G:Var2)				
+                    0.05 * (L:B21_winter_te, meters per second) 0.95 * + 
+                    (&gt;L:B21_winter_te, meters per second)
+                </Script>
+            </Expression>
+        </Select>
+    </Element>
+	<Element id="ring_element">
+		<FloatPosition>157,157</FloatPosition>
+		<Image id="ring" Name="MCVario_LS7_ring.bmp">
+			<Axis>157,157</Axis>
+			<Transparent>True</Transparent>
+		</Image>
+		<Rotation id="ring_rotate">
+			<Expression>
+				<Minimum>-5</Minimum>
+				<Maximum>5</Maximum>
+				<Script>(G:Var3) dgrd</Script>
+			</Expression>
+            <PointsTo>EAST</PointsTo>
+            <FailureTable id="FailureTable">
+                    <Failure id="Static Port">
+                        <Fail_Key>SYSTEM_PITOT_STATIC</Fail_Key>
+                        <Fail_Action>Zero</Fail_Action>
+                    </Failure>
+                    <Failure id="Gauge">
+                        <Fail_Key>GAUGE_VERTICAL_SPEED</Fail_Key>
+                        <Fail_Action>Freeze</Fail_Action>
+                    </Failure>
+            </FailureTable>
+		</Rotation>
+	</Element>
+	<Element id="needle element">
+		<FloatPosition>157,157</FloatPosition>
+		<Image id="needle" Name="MCVario_LS7_needle.bmp">
+			<Axis>114,16</Axis>
+			<Transparent>True</Transparent>
+		</Image>
+		<Rotation id="needle_rotate">
+			<Expression>
+				<Minimum>-5</Minimum>
+				<Maximum>5</Maximum>
+				<Script>(L:B21_winter_te, meters per second)</Script>
+			</Expression>
+            <PointsTo>WEST</PointsTo>
+            <NonlinearityTable id="NonlinearityTable">
+                <NonlinearityEntry id="-5">
+                    <ExpressionResult>-5</ExpressionResult>
+                    <Degrees>-135</Degrees>
+                </NonlinearityEntry>
+                <NonlinearityEntry id="0">
+                    <ExpressionResult>0</ExpressionResult>
+                    <Degrees>0</Degrees>
+                </NonlinearityEntry>
+                <NonlinearityEntry id="5">
+                    <ExpressionResult>5</ExpressionResult>
+                    <Degrees>+135</Degrees>
+                </NonlinearityEntry>
+            </NonlinearityTable>
+            <FailureTable id="FailureTable">
+                    <Failure id="Static Port">
+                        <Fail_Key>SYSTEM_PITOT_STATIC</Fail_Key>
+                        <Fail_Action>Zero</Fail_Action>
+                    </Failure>
+                    <Failure id="Gauge">
+                        <Fail_Key>GAUGE_VERTICAL_SPEED</Fail_Key>
+                        <Fail_Action>Freeze</Fail_Action>
+                    </Failure>
+            </FailureTable>
+		</Rotation>
+	</Element>
+	<MouseArea id="gauge_mouse">
+        <Visibility>1</Visibility>
+        <FloatPosition>0,0</FloatPosition>
+        <Size>315,315</Size>
+        <CursorType>Hand</CursorType>
+        <Tooltip ID="ring_tooltip" 
+            DefaultId="TOOLTIPTEXT_VSI_FEET_PER_MIN" 
+            EnglishId="TOOLTIPTEXT_VSI_FEET_PER_MIN" 
+            MetricId="TOOLTIPTEXT_VSI_METERS_PER_SEC"/>
+        <MouseArea>
+            <FloatPosition>5,75</FloatPosition>
+            <Size>45,150</Size>
+            <CursorType>DownArrow</CursorType>
+            <MouseClick id="ring_down">
+                <ClickRepeat>True</ClickRepeat>
+                <ClickType>LeftAll</ClickType>
+                <Script>
+                      0 (&gt;K:GYRO_DRIFT_DEC)
+                      (G:Var3)
+                      2 - 
+                      360 %
+                    (&gt;G:Var3)
+                </Script>
+            </MouseClick>
+        </MouseArea>
+        <MouseArea>
+            <FloatPosition>250,75</FloatPosition>
+            <Size>45,150</Size>
+            <CursorType>UpArrow</CursorType>
+            <MouseClick id="ring_up">
+                <ClickRepeat>True</ClickRepeat>
+                <ClickType>LeftAll</ClickType>
+                <Script>
+                  0 (&gt;K:GYRO_DRIFT_INC)
+                  (G:Var3)
+                  2 + 
+                  360 %
+                  (&gt;G:Var3)
+                </Script>
+            </MouseClick>
+        </MouseArea>
+    </MouseArea>
+    </SimGauge.Gauge>
+</SimBase.Document>
+
+
+

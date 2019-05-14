@@ -1,0 +1,348 @@
+<SimBase.Document Type="AceXML" version="1,0" id="gps_map">
+    <Filename>gps_map.xml</Filename>
+    <SimGauge.Gauge id="ballast" ArtDirectory="">
+        <FloatPosition>0.000,0.000</FloatPosition>
+        <Size>203,123</Size>
+        <Image id="background" name="gps_map_background.bmp">
+            <Transparent>True</Transparent>
+        </Image>
+        <Update id="Update">
+            <Frequency>1</Frequency>
+            <Script>
+                (L:B21_map_init) 0 == 
+                if{
+                    8 (&gt;L:B21_map_zoom, number)
+                    1 (&gt;L:B21_map_init)
+                }
+            </Script>
+        </Update>
+        
+        <Macro id="g" Name="g">
+            <MacroValue>C:fs9gps:1</MacroValue>
+        </Macro>
+        <Macro id="MapWidth" Name="MapWidth">
+            <MacroValue>170</MacroValue>
+        </Macro>
+        <Macro id="MapHeight" Name="MapHeight">
+            <MacroValue>100</MacroValue>
+        </Macro>
+        <Macro id="ZoomFactor" Name="ZoomFactor">
+			<MacroValue>300 400 520 700 950 1300 1700 2300 
+			            3000 4000 5200 7000 9500 13000 17000 23000
+			            30000 40000 52000 70000 95000 130000
+			 (L:B21_map_zoom, number) case</MacroValue>
+        </Macro>
+        <Element id="Map">
+            <FloatPosition>19,13.000</FloatPosition>
+            <CustomDraw id="CustomDraw" Name="fs9gps:1:map">
+                <Size>170,100</Size>
+                <Bright>True</Bright>
+                <CustomDrawParam id="UpdateAlways" Name="UpdateAlways">
+                    <Value>1</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="Heading" Name="Heading">
+                    <Value>(A:Plane heading degrees true, radians)
+                    </Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="CenterX" Name="CenterX">
+                    <Value>85</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="CenterY" Name="CenterY">
+                    <Value>(L:B21_map_track, number) 0 == if{ 49 } els{ 70 } </Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="Bright" Name="Bright">
+                    <Value>1</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="Zoom" Name="Zoom">
+                    <Value>@ZoomFactor</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="Latitude" Name="Latitude">
+                    <Value>(A:GPS POSITION LAT, Radians)</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="Longitude" Name="Longitude">
+                    <Value>(A:GPS POSITION LON, Radians)</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="LayerAirports" Name="LayerAirports">
+                    <Value>1</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="LayerAirspaces" Name="LayerAirspaces">
+                    <Value>0</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="LayerVehicles" Name="LayerVehicles">
+                    <Value>1</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="LayerTerrain" Name="LayerTerrain">
+                    <Value>1</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="LayerBorders" Name="LayerBorders">
+                    <Value>1</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="LayerVORs" Name="LayerVORs">
+                    <Value>0</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="LayerILSs" Name="LayerILSs">
+                    <Value>0</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="LayerNDBs" Name="LayerNDBs">
+                    <Value>0</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="LayerIntersections" Name="LayerIntersections">
+                    <Value>0</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="LayerAirways" Name="LayerAirways">
+                    <Value>0</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="LayerRangeRings" Name="LayerRangeRings">
+                    <Value>0</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="ObjectDetailLayerAirports" Name="ObjectDetailLayerAirports">
+                    <Value>0 0 0 0 0 0 0 0x5 0x7 0x7 0x4F 0x4F 0x4F 0x4F 0x4F 0x4F 0x4F 0x4F 0x4F 0x4F 0x4F 0x4F 0x4F 0x4F 24 (@g:map_ZoomStep) case</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="ObjectDetailLayerAirways" Name="ObjectDetailLayerAirways">
+                    <Value>0</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="ObjectDetailLayerRangeRings" Name="ObjectDetailLayerRangeRings">
+                    <Value>0</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="ObjectDetailLayerILSs" Name="ObjectDetailLayerILSs">
+                    <Value>0</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="DetailLayerVehicles" Name="DetailLayerVehicles">
+                    <Value>0</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="TextDetailLayerAirports" Name="TextDetailLayerAirports">
+                    <Value>0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 24 (@g:map_ZoomStep) case (L:LayerAirports) 2 == and</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="TextDetailLayerVORs" Name="TextDetailLayerVORs">
+                    <Value>0</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="TextDetailLayerNDBs" Name="TextDetailLayerNDBs">
+                    <Value>0</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="TextDetailLayerIntersections" Name="TextDetailLayerIntersections">
+                    <Value>0</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="TextDetailLayerVehicles" Name="TextDetailLayerVehicles">
+                    <Value>0</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="TextDetailLayerAirways" Name="TextDetailLayerAirways">
+                    <Value>0</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="ColorLayerAirspaces" Name="ColorLayerAirspaces">
+                    <Value>0x505050</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="ColorLayerBorders" Name="ColorLayerBorders">
+                    <Value>0x800000</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="ColorLayerVehicles" Name="ColorLayerVehicles">
+                    <Value>0x00F0F0</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="ColorLayerVehiclesSelected" Name="ColorLayerVehiclesSelected">
+                    <Value>0x0000F0</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="ColorLayerAirportsTowered" Name="ColorLayerAirportsTowered">
+                    <Value>0xA0A0A0</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="ColorLayerAirportsUntowered" Name="ColorLayerAirportsUntowered">
+                    <Value>0x808080</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="ColorLayerIntersectionsEnroute" Name="ColorLayerIntersectionsEnroute">
+                    <Value>0x606060</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="ColorLayerIntersectionsTerminal" Name="ColorLayerIntersectionsTerminal">
+                    <Value>0xA0A0A0</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="ColorLayerAirwaysVictor" Name="ColorLayerAirwaysVictor">
+                    <Value>0x804040</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="ColorLayerAirwaysJet" Name="ColorLayerAirwaysJet">
+                    <Value>0x404080</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="ColorLayerVORs" Name="ColorLayerVORs">
+                    <Value>0x505050</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="ColorLayerNDBs" Name="ColorLayerNDBs">
+                    <Value>0xC0C0C0</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="ColorLayerILSs" Name="ColorLayerILSs">
+                    <Value>0x606060</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="ColorLayerRangeRings" Name="ColorLayerRangeRings">
+                    <Value>0x006000</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="TextColorLayerVehicles" Name="TextColorLayerVehicles">
+                    <Value>0x00FF00</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="PanHorizontal" Name="PanHorizontal">
+                    <Value>(L:PanHorizontal)</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="PanVertical" Name="PanVertical">
+                    <Value>(L:PanVertical)</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="TrackUp" Name="TrackUp">
+                    <Value>(L:B21_map_track, number)</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="PanReset" Name="PanReset">
+                    <Value>(L:PanReset)</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="ObjectDetailLayerVehicles" Name="ObjectDetailLayerVehicles">
+                    <Value>0</Value>
+                </CustomDrawParam>
+                <CustomDrawParam id="ColorLayerVehicles" Name="ColorLayerVehicles">
+                    <Value>0x0000FF</Value>
+                </CustomDrawParam>
+				<CustomDrawParam id="LayerFlightPlan" Name="LayerFlightPlan">
+					<Value>1</Value>
+				</CustomDrawParam>
+				<CustomDrawParam id="ColorLayerFlightPlan" Name="ColorLayerFlightPlan">
+					<Value>0x0000AA</Value>
+				</CustomDrawParam>
+				<CustomDrawParam id="PastColorLayerFlightPlan" Name="PastColorLayerFlightPlan">
+					<Value>0x888888</Value>
+				</CustomDrawParam>
+				<CustomDrawParam id="ActiveColorLayerFlightPlan" Name="ActiveColorLayerFlightPlan">
+					<Value>0x00AA00</Value>
+				</CustomDrawParam>
+				<CustomDrawParam id="ObjectDetailLayerFlightPlan" Name="ObjectDetailLayerFlightPlan">
+					<Value>0x15</Value>
+				</CustomDrawParam>
+				<CustomDrawParam id="FlightPlanLineWidth" Name="FlightPlanLineWidth">
+					<Value>3</Value>
+				</CustomDrawParam>
+                <CustomDrawParam id="DetailLayerTerrain" name="DetailLayerTerrain">
+                    <Value>3</Value>
+				</CustomDrawParam>
+                <CustomDrawParam id="DetailLayerAirports" name="DetailLayerAirports">
+                    <Value>3</Value>
+				</CustomDrawParam>
+                <CustomDrawParam id="TerrainShadow" name="TerrainShadow">
+                    <Value>True</Value>
+				</CustomDrawParam>
+                    
+            </CustomDraw>
+        </Element>
+		<Element id="North symbol">
+            <Visibility>(L:B21_map_track, number) 0 ==</Visibility>
+			<FloatPosition>95,17</FloatPosition>
+			<Image id="n.bmp" Name="n.bmp">
+				<Transparent>True</Transparent>
+            </Image>
+		</Element>
+		<Element id="User Aircraft - North Up">
+            <Visibility>(L:B21_map_track, number) 0 ==</Visibility>
+			<FloatPosition>104,64</FloatPosition>
+			<Image id="aircraft.bmp" Name="aircraft.bmp">
+				<Transparent>True</Transparent>
+                <Axis>24.000,11.00</Axis>
+            </Image>
+            <Rotation id="Rotation">
+                <PointsTo>NORTH</PointsTo>
+                <Expression id="Expression">
+                    <Minimum>0.000</Minimum>
+                    <Maximum>7.000</Maximum>
+                    <Script>(A:PLANE HEADING DEGREES TRUE, radians)
+                    </Script>
+                </Expression>
+            </Rotation>
+		</Element>
+		<Element id="User Aircraft - Track Up">
+            <Visibility>(L:B21_map_track, number)</Visibility>
+			<FloatPosition>76,75</FloatPosition>
+			<Image id="aircraft.bmp" Name="aircraft.bmp">
+				<Transparent>True</Transparent>
+            </Image>
+		</Element>
+		<Element id="zoom in">
+   		    <Visibility>(L:B21_map_zoom, number) 17 !=</Visibility>
+			<FloatPosition>162,15</FloatPosition>
+			<Image id="plus.bmp" Name="plus.bmp">
+				<Transparent>True</Transparent>
+			</Image>
+		</Element>
+		<Element id="zoom out">
+   		    <Visibility>(L:B21_map_zoom, number) 0 !=</Visibility>
+			<FloatPosition>162,82</FloatPosition>
+			<Image id="minus.bmp" Name="minus.bmp">
+				<Transparent>True</Transparent>
+			</Image>
+		</Element>
+		<Element id="track">
+   		    <Visibility>1</Visibility>
+			<FloatPosition>162,48</FloatPosition>
+			<Image id="track.bmp" Name="track.bmp">
+				<Transparent>True</Transparent>
+			</Image>
+		</Element>
+        <Element id="debug zoom">
+            <FloatPosition>145,50</FloatPosition>
+            <Visibility>0</Visibility>
+            <GaugeText id="debug">
+                <Size>40,25</Size>
+                <FontFace>Quartz</FontFace>
+                <FontColor>#111111</FontColor>
+                <FontHeight>25</FontHeight>
+                <Length>3</Length>
+                <Transparent>True</Transparent>
+                <VerticalAlign>CENTER</VerticalAlign>
+                <HorizontalAlign>RIGHT</HorizontalAlign>
+                <GaugeString>%( (L:B21_map_zoom, number) )%!3.0f!</GaugeString>
+            </GaugeText>
+        </Element>
+        <MouseArea id="MouseArea">
+            <FloatPosition>0.000,0.000</FloatPosition>
+            <Size>203,123</Size>
+    		<MouseArea id="Map Zoom In">	
+    		    <Visibility>(L:B21_map_zoom, number) 17 !=</Visibility>
+    			<FloatPosition>162,15</FloatPosition>
+    			<Size>25,29</Size>
+    			<CursorType>Hand</CursorType>
+    			<Tooltip id="Tooltip"> 
+    				<DefaultScript>Zoom in</DefaultScript> 
+    			</Tooltip>
+    			<MouseClick id="MouseClick_zoom_in">
+    				<Script>(L:B21_map_zoom, number) 1 + (&gt;L:B21_map_zoom, number)
+    				        (L:B21_map_zoom, number) 17 &gt;
+    				        if{
+    				            17 (&gt;L:B21_map_zoom, number)
+    				        }
+    				</Script>
+    			</MouseClick>
+    		</MouseArea>        
+    		<MouseArea id="Map Zoom Out">
+    		    <Visibility>(L:B21_map_zoom, number) 0 !=</Visibility>
+    			<FloatPosition>162,82</FloatPosition>
+    			<Size>25,29</Size>
+    			<CursorType>Hand</CursorType>
+    			<Tooltip id="Tooltip"> 
+    				<DefaultScript>Zoom out</DefaultScript> 
+    			</Tooltip>
+    			<MouseClick id="MouseClick_zoom_out">
+    				<Script>(L:B21_map_zoom, number) 1 - (&gt;L:B21_map_zoom, number)
+    				        (L:B21_map_zoom, number) 0 &lt;
+    				        if{
+    				            0 (&gt;L:B21_map_zoom, number)
+    				        }
+    				</Script>
+    			</MouseClick>
+    		</MouseArea>
+            <MouseArea>
+                <FloatPosition>162, 48</FloatPosition>
+                <Size>25,29</Size>
+                <CursorType>Hand</CursorType>
+    			<Tooltip id="Tooltip"> 
+    				<DefaultScript>Track/North Up</DefaultScript> 
+    			</Tooltip>
+                <MouseClick id="stf_audio">
+                        <Script>
+                        (L:B21_map_track, number) 0 == if{ 
+                            1 (&gt;L:B21_map_track, number)
+                        } els{
+                            0 (&gt;L:B21_map_track, number)
+                        }
+                        </Script>
+                        <ClickType>LeftSingle</ClickType>
+                </MouseClick>
+            </MouseArea>
+        </MouseArea>
+    </SimGauge.Gauge>
+</SimBase.Document>

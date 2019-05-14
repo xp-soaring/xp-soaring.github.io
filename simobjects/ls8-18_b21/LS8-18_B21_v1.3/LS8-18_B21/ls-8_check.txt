@@ -1,0 +1,8 @@
+Use SHIFT + E for open/close the canopy
+Use SHIFT + E + 2 for open/close the canopy window
+
+SHIFT + E öffnet/schließt die Haube
+SHIFT + E + 2 öffnet/schließt das Haubenfenster
+
+Utilisez MAJ + E pour ouvir/fermer la verrière
+Utilisez MAJ + E + 2 pour ouvir/fermer la fenêtre de la verrière

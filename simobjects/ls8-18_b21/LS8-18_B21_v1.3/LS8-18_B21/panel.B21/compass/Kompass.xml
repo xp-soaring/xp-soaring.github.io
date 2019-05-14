@@ -1,0 +1,25 @@
+<Gauge Name="magnetic_compass" Version="1.0">
+   <Image Name="magnetic_compass_background.bmp"/>
+   <Element>
+      <Position X="60" Y="88"/>
+      <MaskImage Name="magnetic_compass_window.bmp">
+         <Axis X="90" Y="0"/>
+      </MaskImage>
+      <Image Name="magnetic_compass_strip.bmp">
+         <Nonlinearity>
+            <Item Value="0" X="941" Y="0"/>
+            <Item Value="360" X="105" Y="0"/>
+         </Nonlinearity>
+      </Image>
+      <Shift>
+         <Value>(A:Wiskey compass indication degrees,degrees) dnor</Value>
+      </Shift>
+   </Element>
+   <Element>
+      <Position X="147" Y="75"/>
+      <Image Name="magnetic_compass_line.bmp"/>
+   </Element>
+   <Mouse>
+      <Tooltip ID="TOOLTIPTEXT_WHISKEY_COMPASS"/>
+   </Mouse>
+</Gauge>

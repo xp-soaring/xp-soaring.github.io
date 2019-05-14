@@ -1,0 +1,66 @@
+
+<SimBase.Document Type="AceXML" version="1,0" id="302">
+    <Filename>stf_te_switch.xml</Filename>
+    <SimGauge.Gauge id="302">
+        <FloatPosition>0.000,0.000</FloatPosition>
+        <Size>83,134</Size>
+        <Image id="switch_background.bmp" Name="switch_background.bmp">
+            <Transparent>True</Transparent>
+        </Image>
+        <Comment><Value>*******************************************************
+         **********************************************************************
+         </Value></Comment>
+        <Comment><Value>*******************************************************
+                    SWITCH UP
+         **********************************************************************
+         </Value></Comment>
+        <Element id="Element">
+            <FloatPosition>0,36</FloatPosition>
+            <Visibility>(L:B21_302_mode_stf, number) 0 ==
+            </Visibility>
+            <Image id="switch_up.bmp" Name="switch_up.bmp">
+                <Transparent>True</Transparent>
+            </Image>
+        </Element>
+        <Comment><Value>*******************************************************
+                    SWITCH DOWN
+         **********************************************************************
+         </Value></Comment>
+        <Element id="Element">
+            <FloatPosition>0,36</FloatPosition>
+            <Visibility>(L:B21_302_mode_stf, number) 1 ==
+            </Visibility>
+            <Image id="switch_down.bmp" Name="switch_down.bmp">
+                <Transparent>True</Transparent>
+            </Image>
+        </Element>
+        <Comment><Value>*******************************************************
+         **********************************************************************
+                    MOUSEAREA
+         **********************************************************************
+         **********************************************************************
+         </Value></Comment>
+        <MouseArea id="MouseArea all">
+            <FloatPosition>0.000,0.000</FloatPosition>
+            <Size>83,134</Size>
+            <MouseArea>
+                <FloatPosition>0.0, 0.0</FloatPosition>
+                <Size>83,134</Size>
+                <CursorType>Hand</CursorType>
+    			<Tooltip id="Tooltip"> 
+    				<DefaultScript>302 STF/TE</DefaultScript> 
+    			</Tooltip>
+                    <MouseClick id="stf_audio">
+                        <Script>
+                        (L:B21_302_mode_stf, number) 0 == if{ 
+                            1 (&gt;L:B21_302_mode_stf, number)
+                        } els{
+                            0 (&gt;L:B21_302_mode_stf, number)
+                        }
+                        </Script>
+                        <ClickType>LeftSingle</ClickType>
+                    </MouseClick>
+            </MouseArea>
+        </MouseArea>
+    </SimGauge.Gauge>
+</SimBase.Document>

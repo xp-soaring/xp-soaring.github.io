@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SimBase.Document Type="AceXML" version="1,0">
+    <Descr>AceXML Document</Descr>
+    <Filename>yawstring.xml</Filename>
+    <SimGauge.Gauge id="Gauge">
+        <FloatPosition>0.000,0.000</FloatPosition>
+        <Size>200,200</Size>
+        <Element id="string">
+            <FloatPosition>90.000,172.000</FloatPosition>
+            <Select id="select">
+                <Expression><Script>(E:ABSOLUTE TIME, Seconds) 10 * 2 % int</Script></Expression>
+                <Case>
+                    <ExpressionResult>0</ExpressionResult>
+                    <Image id="string1b.bmp" Name="string1b.bmp">
+                        <Transparent>True</Transparent>
+                        <Axis>32,170</Axis>
+                    </Image>
+                </Case>
+                <Case>
+                    <ExpressionResult>1</ExpressionResult>
+                    <Image id="string2b.bmp" Name="string2b.bmp">
+                        <Transparent>True</Transparent>
+                        <Axis>32,170</Axis>
+                    </Image>
+                </Case>
+            </Select>
+            <Rotation id="Rotation">
+                <Expression id="Expression">
+                    <Minimum>-1.000</Minimum>
+                    <Maximum>1.000</Maximum>
+                    <Script>(A:Turn coordinator ball,position) neg </Script>
+                </Expression>
+            </Rotation>
+        </Element>             
+        <Element id="string_base">
+            <FloatPosition>68.000,170.000</FloatPosition>
+            <Image id="string_base.bmp" Name="string_base.bmp">
+                <Transparent>True</Transparent>
+                <Bilinear>True</Bilinear>
+            </Image>
+        </Element>
+    </SimGauge.Gauge>
+</SimBase.Document>
