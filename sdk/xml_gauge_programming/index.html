@@ -1,0 +1,8132 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+
+ <LINK REL=StyleSheet HREF="sdk_style.css" TYPE="text/css" MEDIA=screen>
+
+  <title>Creating XML Gauges</title>
+
+
+</head>
+
+
+<body>
+
+<center>
+<img src="../../Images/Prepar3DBanner.jpg" width="650" height="200"/>
+</center>
+
+<h1><a name="Creating XML Gauges"></a>Creating XML Gauges</h1>
+
+<h2>Overview</h2>
+
+<p>
+The ACE resource tool can be used to build a number of components for 
+<i>Prepar3D</i>, this document explains how to use the tool to help build 
+gauges. The term <span style="font-style: italic;">gauge</span> is used to 
+describe all the instruments in an aircraft's cockpit.
+<br>
+<br>
+The document is divided into two sections, a tutorial for new users of
+the gauge system, and a reference containing information on all the
+options available.
+</p>
+
+<h6>See Also</h6>
+<ul>
+  <li><a href="../../sdk overview.html">SDK Overview</a></li>
+  <li><a href="helpids.html">HelpIDs</a></li>
+  <li><a href="gps variables.html">GPS Variables </a></li>
+  <li><a href="Panel and gauge artwork.html">Panel and Gauge Artwork</a></li>
+  <li> <a href="Panel Configuration Files.htm">Panel Configuration Files</a></li>
+  <li><a href="programmable gauges.html">Programmable Gauges</a></li>
+  <li> <a href="tooltips.html">Tooltips</a></li>
+    <li> <a href="XML Gauge Maps.html">XML Gauge Maps</a></li>
+</ul>
+<h2>Table of Contents</h2>
+
+<ul>
+	<li><a href="#XML Gauge Tutorial"><b>XML Gauge Tutorial</b></a>
+    <ul>
+        <li><a href="#Step 1: Setup">Step 1: Setup</a></li>
+        <li><a href="#Step 2: Specify the Gauges">Step 2: Specify the Gauges</a></li>
+        <li><a href="#Step 3: Add the new Panel">Step 3: Add the new Panel</a></li>
+        <li><a href="#Step 4: Create a simple Fuel Pressure">Step 4: Create a simple Fuel Pressure Gauge</a>
+		<ul>
+			<li><a href="#Add Background Art to the Fuel Pressure Gauge">Add Background Art to the Fuel Pressure Gauge</a></li>
+			<li><a href="#Add Elements to the Fuel Pressure Gauge">Add Elements to the Fuel Pressure Gauge</a></li>
+			<li><a href="#Previewing the Fuel Pressure Gauge">Previewing the Fuel Pressure Gauge</a></li>
+		</ul>
+        </li>
+        <li><a href="#Step 5: Create a Stopwatch Gauge">Step 5: Create a Stopwatch Gauge</a>
+        <ul>
+			<li><a href="#The Stopwatch Elements">The Stopwatch Elements</a></li>
+			<li><a href="#The Stopwatch Expression Logic">The Stopwatch Expression Logic</a></li>
+			<li><a href="#Previewing the Stopwatch">Previewing the Stopwatch</a></li>
+		</ul>
+        </li>
+
+        <li><a href="#Step 6: Create a Cabinet file">Step 6: Create a Cabinet file</a></li>
+
+        <li><a href="#Step 7: Testing the new Gauges">Step 7: Testing the new Gauges</a></li>
+
+        <li><a href="#Step 8: Adding Artwork to the Stopwatch">Step 8: Adding Artwork to the Stopwatch</a></li>
+    </ul>
+    </li>
+
+    <li><a href="#XML Gauge Reference"><b>XML Gauge Reference</b></a>
+    <ul>
+        <li><a href="#Expression Evaluation">Expression Evaluation</a>
+        <ul>
+            <li><a href="#Expression Parameters">Expression Parameters</a></li>
+            <li><a href="#Reverse Polish Notation">Reverse Polish Notation</a>
+			</li>
+            <li><a href="#Expression Operators">Expression Operators</a></li>
+            <li><a href="#Expression Evaluation Examples">
+				Expression Evaluation Examples</a></li>
+            <li><a href="#The Infix2Postfix Tool">The Infix2Postfix Tool</a>
+			</li>
+        </ul>
+        </li>
+        <li><a href="#Gauge Objects">Gauge Objects</a></li>
+        <li><a href="#Comment Objects">Comment Objects</a></li>
+        <li><a href="#Element Objects">Element Objects</a>
+        <ul>
+            <li><a href="#Arc Objects">Arc Objects</a></li>
+            <li><a href="#Gauge Colors">Gauge Colors</a></li>
+            <li><a href="#Circle Objects">Circle Objects</a></li>
+            <li><a href="#CustomDraw Objects">CustomDraw Objects</a></li>
+            <li><a href="#Ellipse Objects">Ellipse Objects</a></li>
+            <li><a href="#GaugeText Objects">GaugeText Objects</a></li>
+            <li><a href="#HorizontalLine Objects">HorizontalLine Objects</a>
+			</li>
+            <li><a href="#MaskImage Objects">MaskImage Objects</a></li>
+            <li><a href="#Pie Objects">Pie Objects</a></li>
+            <li><a href="#Polygon Objects">Polygon Objects</a></li>
+            <li><a href="#Polyline Objects">Polyline Objects</a></li>
+            <li><a href="#Rectangle Objects">Rectangle Objects</a></li>
+            <li><a href="#Rotation Objects">Rotation Objects</a></li>
+            <li><a href="#Select Objects">Select Objects</a></li>
+            <li><a href="#Shift Objects">Shift Objects</a></li>
+            <li><a href="#VerticalLine Objects">VerticalLine Objects</a></li>
+        </ul>
+		</li>
+        <li><a href="#Image Objects">Image Objects</a></li>
+        <li><a href="#Macro Objects">Macro Objects</a></li>
+        <li><a href="#MouseArea Objects">MouseArea Objects</a>
+        <ul>
+            <li><a href="#Tooltip Objects">Tooltip Objects</a></li>
+            <li><a href="#MouseClick Objects">MouseClick Objects</a></li>
+        </ul>
+		</li>
+		<li><a href="#Update Objects">Update Objects</a></li>
+	</ul>
+	<li><b><a href="#Creating an SPB file">Creating an SPB File </a></b></li>
+</li>
+</ul>
+
+
+<hr/>
+
+<h2><a name="XML Gauge Tutorial"></a>XML Gauge Tutorial</h2>
+
+<p>
+This tutorial goes through all the steps required to add a panel to an
+aircraft, and add existing and new gauges to that panel. The tutorial
+also covers creating a cabinet file for the gauges, and finally testing them.
+</p>
+
+<ul>
+  <li><a href="#Step 1: Setup">
+				Step 1: Setup</a></li>
+  <li><a href="#Step 2: Specify the Gauges">
+				Step 2: Specify the Gauges</a></li>
+  <li><a href="#Step 3: Add the new Panel">
+				Step 3: Add the new Panel</a></li>
+  <li><a href="#Step 4: Create a simple Fuel Pressure">
+				Step 4: Create a simple Fuel Pressure Gauge</a></li>
+  <li><a href="#Step 5: Create a Stopwatch Gauge">
+				Step 5: Create a Stopwatch Gauge</a></li>
+  <li><a href="#Step 6: Create a Cabinet file">
+				Step 6: Creating a Cabinet File</a></li>
+  <li><a href="#Step 7: Testing the new Gauges">
+				Step 7: Testing the new Gauges</a></li>
+  <li><a href="#Step 8: Adding Artwork to the Stopwatch">
+				Step 8: Adding Artwork to the Stopwatch</a></li>
+
+</ul>
+
+
+
+<hr><h3><a name="Step 1: Setup"/a>Step 1: Setup</h3>
+<p>
+The building and testing of gauges requires a lot of trial and error,
+so it is a good idea to set up the tools required to be very convenient
+for frequent. use. You will find that you will be building gauges, testing 
+them in the simulation, finding many errors, then repeating this process 
+for some time. The following set up makes this process reasonably quick.
+</p>
+
+<ol>
+  <li>Check the ACE.exe tool runs from the <i>Panels and Gauges SDK</i> 
+  folder. It requires the simpropace.dll, which should be in the same folder, 
+  and the latest version of the DirectX 9 runtime (install this from the 
+  <a href="http://www.microsoft.com/downloads/en/resultsForProduct.aspx
+  ?displaylang=en&productID=9C954C37-1ED1-4846-8A7D-85FC422D1388">
+  Microsoft DirectX</a>  website if necessary). Close the tool for 
+  now, it is not needed until Step 4.</li> 
+  <li>Create a directory, under <i>My Documents</i>, called something 
+  appropriate like New Gauges.</li>
+  <li>Create a subdirectory of New Gauges, with the name of&nbsp;the cabinet 
+  file you will eventually create containing the gauges and their artwork, 
+  for this tutorial call this subdirectory Test Gauges. Place the cabbing 
+  tools handy (see the <a href="../Cabdir SDK/creating cabinet files.html">
+  Creating Cabinet Files</a> documentation), perhaps under New Gauges, but 
+  not under Test Gauges.</li>
+  <li>Have your artwork creation tools handy, though for this tutorial Paint 
+  will suffice.</li>
+  <li>In order to receive run-time error messages on gauge scripts add the 
+  following line to the [Panels] section of the Prepar3D.cfg file (found in 
+  the <i>C:\Users\&lt;username&gt;\Application Data\Lockheed Martin\Prepar3D
+  </i> folder on Windows 7 or Vista and 
+  <i>C:\Documents and Settings\&lt;username&gt;\Application Data\Lockheed 
+  Martin\Prepar3D</i> on Windows XP): 
+  <br>
+  <code><b>
+    [Panels]<br>
+    GaugeDevDebug=1<br>
+	</b></code>
+  </li>
+</ol>
+
+<hr/>
+
+<h3><a name="Step 2: Specify the Gauges"></a>Step 2: Specify the Gauges</h3>
+
+For this tutorial we are going to implement the following, for the
+basic Mooney Bravo aircraft:<br>
+
+<ul>
+  <li>A new panel that is to appear on the Instrument Panel menu,
+	called Test Panel, that can be selected to be visible or not.</li>
+  <li>The panel will contain one existing gauge, the airspeed
+	indicator.</li>
+  <li>The panel will contain two new gauges, a fuel pressure
+	indicator, and a stopwatch.</li>
+  <li>The fuel pressure indicator will do no more than display
+	the current fuel pressure.</li>
+  <li>The stopwatch will show a rotary dial of seconds, and have
+	an active start/stop toggle button, and an active reset button.</li>
+</ul>
+
+<p>
+The artwork for these gauges is not going to look great. One method of
+approaching gauge development is to complete the gauge mechanics first,
+using simple rectangles and circles as artwork, and then when the gauge
+works correctly, replace the simple art with carefully drawn images.
+</p>
+
+
+<hr/>
+<h3>
+<a name="Step 3: Add the new Panel"/>
+Step 3: Add the new Panel
+</h3>
+
+<p>
+Unlike gauges, panels are particular to an aircraft. Go into the
+<i>SimObjects\Aircraft</i> folder, then find the
+Mooney Bravo, then in the panel directory, open up the panel
+configuration file (panel.cfg) in a text editor (Notepad is quite
+sufficient for this).&nbsp;For full details of the panel
+configuration file refer to the <a href="Panel Configuration Files.htm">
+Panel Configuration Files</a> document (though you will not need to for 
+this tutorial).
+</p>
+
+<p>
+In order to add a new panel we must first make a single entry under
+Window Titles, so add the line shown in bold below, so that the first
+lines of the configuration file now look like this:<br>
+</p>
+
+<p class=file>
+    // Panel Configuration file
+    <br />
+    // Mooney Bravo <br>
+
+// Copyright (c) 2009-2010 Lockheed Martin Corporation.&nbsp; All rights
+reserved.<br>
+
+      <br>
+
+    <br />
+    [Window Titles]
+    <br />
+    Window00=Main Panel
+    <br />
+    Window01=Radio Stack
+    <br />
+    Window02=GPS
+    <br />
+    Window03=Annunciator
+    <br />
+    Window04=Overhead Panel
+    <br />
+    Window05=Mini Panel<br />
+    <b>Window06=Test Panel</b><br />
+    <br />
+    [VIEWS]
+    <br />
+    VIEW_FORWARD_DIR=2.000, 0.000, 0.000</p>
+
+<br>
+
+The name <b>Test Panel</b> will now appear in <i>Prepar3D</i>. To add the panel itself , find the entry for
+Mini Panel, and add the lines shown in bold below:<br>
+
+<br>
+
+<p class=file>
+    [Window05]<br />
+    Background_color=0,0,0
+    <br />
+    size_mm=550,90
+    <br />
+    windowsize_ratio=1.6
+    <br />
+    position=7
+    <br />
+    visible=1 ident=MINIPANEL
+    <br />
+    no_luminous=1 child_3d=1
+    <br />
+    <br />
+    gauge00=Mooney_Bravo!Airspeed, 0,6, 81,78 
+    <br />
+    gauge01=Mooney_Bravo!Turn Coordinator, 90, 6, 78,76<br />
+    gauge02=Mooney_Bravo!Attitude, 180, 0, 93,87
+    <br />
+    gauge03=Mooney_Bravo!HSI, 283,0, 91,85
+    <br />
+    gauge04=Mooney_Bravo!Altimeter, 386,5, 73,76
+    <br />
+    gauge05=Mooney_Bravo!Vertical Speed, 470,6,77,77<br>
+
+      <br>
+
+      <span style="font-weight: bold;">[Window06]</span><br style="font-weight: bold;">
+
+      <span style="font-weight: bold;">file=Test_Panel_Background.bmp</span><br style="font-weight: bold;">
+
+      <span style="font-weight: bold;">position=6</span><br style="font-weight: bold;">
+
+      <span style="font-weight: bold;"size_mm=240,240</span><br style="font-weight: bold;">
+
+      <span style="font-weight: bold;">visible=00</span><br style="font-weight: bold;">
+
+      <span style="font-weight: bold;"ident=10001</span><br style="font-weight: bold;">
+
+      <b>gauge00=Mooney_Bravo!Airspeed, 5, 5, 81,78 </b>
+
+      <br style="font-weight: bold;">
+
+      <span style="font-weight: bold;">gauge01=TestGauges!FuelPressure,&nbsp;&nbsp;&nbsp;&nbsp; 
+    100, 5</span><br style="font-weight: bold;">
+
+      <span style="font-weight: bold;">gauge02=TestGauges!Stopwatch,&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; 75,95</span><br>
+
+      <br>
+[VCockpit01]]<br>
+
+    ffile=Mooney_Panel_G1000_Decals_Gray.bmp
+    <br />
+    size_mm=1024,1024</p>
+
+<br>
+
+The position simply refers to the default position where the panel will
+appear on the screen (6 is bottom left). The size_mm field is a
+misnomer, it does not represent millimeters, but arbitrary design units.
+However as it is so much easier to create panels where these units are
+identical to the size of the elements in pixels, it  is recommended
+that this entry is the pixel size of the panel background bitmap (240
+by 240 for our tutorial). With visible set to 0 the panel will not
+appear until the user requests it, and the ident code can either be one
+of the preset panels (such as MAIN_PANEL, or THROTTLE_PANEL) or be any
+number above
+10000. Lower codes are reserved for use by the simulation itself.<br>
+
+<br>
+
+The three gauge entries give the gauge number, cabinet file, gauge
+name, and then x and y co-ordinates relative to the top left hand
+corner of the panel, and optional width and height parameters (which
+will scale the gauge if they are not identical to the gauge sizes).<br>
+
+<br>
+
+This completes the changes to the configuration file, so save it off.<br>
+
+<br>
+
+Artwork needs to be created that fits the entries we have just made in
+the panel configuration file, namely a file called
+Test_Panel_Background.bmp, with a size of 240 by 240 pixels. For this
+tutorial, create a colored square using Paint, and save it to the same
+directory as the panel configuration file.<br>
+
+<br>
+
+This is all that is necessary to add a panel for the 2D cockpit view.<br>
+
+<br>
+
+<h5Note</h5>
+
+
+
+  <dd>Comment marks ("//") work in the panel configuration files.
+You
+could test the panel we have just created by commenting out the two
+lines beginning with gauge01 and gauge02, and then running <i>Prepar3D</i>. You should be able to turn the panel on and off, and notice
+that the airspeed indicator responds exactly as the one in the main
+panel. If this does not happen, carefully go over this step again.</dd>
+
+
+<hr><h3><a name="Step 4: Create a simple Fuel Pressure"></a>Step 4: Create a simple Fuel Pressure Gauge</h3>
+
+<p>The fuel pressure gauge is certainly the simplest of the two we plan to
+  build. All it is doing is displaying a single reading that is readily
+  available in the simulator.<br>
+  Start up the ACE tool, and select New Document. Right click on the new
+  entry in the Property Sets column, and select Insert. An Insert dialog
+  should appear, and select SimGauge in the Namespace box. Then scroll
+  down and click on Gauge in the long list of properties. A gauge icon
+  should now appear in the Property Sets column. Clicking on one
+of these entries will bring up all the object's properties. However, first save off the file, calling it FuelPressure.xml, to the folder: <i>My Documents\New Gauges\Test
+Gauges. </i>If you then re-open it, you will see that the parent node properties includes  Filename and  id. Change the id to any string that helps identify the gauge, such as &quot;Fuel Pressure Gauge&quot; in this case. </p>
+
+<p> In the properties for the Gauge entry,
+  change the ArtDirectory to the location <i>My Documents\New Gauges\Test
+  Gauges</i> for this tutorial. This is the location of the artwork for the
+  tool, not for <i>Prepar3D</i> (which requires the art to be cabbed up with
+  the XML gauge). However, if you set this location to be <i>My Documents\New Gauges\Test
+  Gauges</i>
+  &nbsp;then the artwork is in the right location, both for the ACE tool
+  and
+  for creating the cabinet files (which we do as the penultimate step).</p>
+<h4><a name="Add Background Art to the Fuel Pressure Gauge"></a>Add Background Art to the Fuel Pressure Gauge</h4>
+
+Next, right click on the Gauge and select Image. This will be the
+background image for the gauge. Open up the properties for this image,
+and make an entry for Name (the filename), such as
+FuelPressureBackground.bmp.<br>
+
+We need to create artwork for this background, so open up Paint again,
+and save off a solid rectangular block of color, 100 pixels wide by 80
+pixels in height. Call this file, FuelPressureBackground.bmp, and save
+it in the Test Gauges directory.<br>
+
+<h4><a name="Add Elements to the Fuel Pressure Gauge"></a>Add Elements to the Fuel Pressure Gauge</h4>
+
+Right click on the Gauge node again, and add an <a href="#Element Objects">Element</a>. Do this three
+times to add three elements. Click on the first element to bring up its
+properties. You will notice that the id entry for each element is
+simply "Element". Click on these and change the ids to <span style="font-weight: bold;">Fixed Text</span> for the
+first element, <span style="font-weight: bold;">Output box</span>
+for the second element, and <span style="font-weight: bold;">Display</span>
+<span style="font-weight: bold;">text</span>
+for the third element. This text is simply there to help in gauge
+development, and does not appear anywhere in the simulator. It is good
+to get into the practice of changing the ids to meaningful names, as
+some gauges will contain many elements. Each element is used to
+describe a small area of functionality of the gauge.<br>
+
+<br>
+
+<h5>Properties of &nbsp;the Fixed Text element</h5>
+
+The location of elements is relative to their parent object in the
+design of the gauge. So for the Fixed Text element, change
+FloatPosition to <span style="font-weight: bold;">5,10</span>.
+This will start the text 5 pixels in, 10 pixels down, on the gauge
+background.<br>
+
+This element describes no more than the words "Fuel Pressure" on the
+gauge. To do this right click on the&nbsp;element, select Insert
+then
+<a href="#GaugeText Objects">GaugeText</a>, and then
+change just a few properties of the GaugeText
+object.:<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+
+      <td><span style="font-weight: bold;">Entry</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>FontFace</b></td>
+
+      <td>Arial</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>FontColor</b></td>
+
+      <td>gold</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>FontHeight</b></td>
+
+      <td>13</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>GaugeString</b></td>
+
+      <td>Fuel
+Pressure</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Size</b></td>
+
+      <td>90,
+15</td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<h5>Properties of the Output box element</h5>
+
+The output box is simply a rectangle where the display text is to
+appear within. Change its FloatPosition to <span style="font-weight: bold;">5, 40</span>. Then insert a
+<a href="#Rectangle Objects">Rectangle</a> object as
+a child of this element. Change the Rectangle properties to those shown
+below:<br>
+
+<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+
+      <td><span style="font-weight: bold;">Entry</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>LineWidth</b></td>
+
+      <td>1</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Width</b></td>
+
+      <td>90</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Height</b></td>
+
+      <td>24</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>LineColor</b></td>
+
+      <td>darkslateblue</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>FillColor</b></td>
+
+      <td>black</td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+
+The colors for text, lines and shapes can be entered either as names,
+or as hex RGB values (in the format 0xBBGGRR). The document <a href="Gauge Colors.html">XML Gauge Colors</a> contains the full list.<br>
+
+<br>
+
+<h5>Properties of the Display text element</h5>
+
+This is the third and final element in the gauge. Set its FloatPosition
+to <span style="font-weight: bold;">10, 44</span>.
+Then insert another&nbsp;<a href="#GaugeText Objects">GaugeText</a>
+object as a child of this element. There
+is one important difference between this text and that for the first
+element, in that for this element we need to display the value of a
+simulation variable, not fixed text. Make the following entries in the
+new GaugeText object:<br>
+
+<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+
+      <td><span style="font-weight: bold;">Entry</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>FontFace</b></td>
+
+      <td>Courier</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>FontColor</b></td>
+
+      <td>red</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>FontHeight</b></td>
+
+      <td>16</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>GaugeString</b></td>
+
+      <td>%(
+(A:GENERAL ENG FUEL PRESSURE:1, psi) )%!09d!</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>HorizontalAlign</b></td>
+
+      <td>LEFT</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Size</b></td>
+
+      <td>90,
+16</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>VerticalAlign</b></td>
+
+      <td>CENTER</td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<p>
+
+The key here is the GaugeString. The <span style="font-weight: bold;">A:GENERAL ENG FUEL PRESSURE</span>,
+is a simulation variable (there are many hundreds of these, listed in
+the <a href="../../Core Utilities Kit/Variables/Simulation Variables.html">Simulation Variables</a> document). The index <span style="font-weight: bold;">:1</span>
+is necessary as the fuel pressure is measured per engine, and psi
+requests that the result be returned as pounds per square inch.
+Simulation variables must be enclosed by parentheses. The<span style="font-weight: bold;"> %</span> signs indicate
+that the
+contents should be evaluated rather than output as a string. The <span style="font-weight: bold;">%!09d!</span>
+indicate that nine digits should be output, that leading 0s should be
+included (up to nine of them!), and that the result should be treated
+as a decimal integer. &nbsp;The section <a href="#Expression Evaluation">Expression Evaluation</a>
+goes over
+the full process for evaluating gauge scripts, which can be quite long
+and complex. Be very careful to enter the text exactly as shown
+(perhaps cut and paste it from this document), as a wrong space or
+missing parentheses can cause the expression evaluation to fail (it is
+not very flexible or forgiving in this regard).</p>
+
+<h4><a name="Previewing the Fuel Pressure Gauge"></a>Previewing the Fuel Pressure Gauge</h4>
+
+The fuel pressure gauge is now complete and ready for testing. The tree
+structure of the gauge, when fully expanded, should look like this:<br>
+
+<br>
+
+<p class=file>
+<img style="width: 284px; height: 260px;" alt="" src="Images/Fuel_Pressure_Gauge.jpg"></p>
+
+<br>
+
+In the View menu, select Preview, then click on one of the gauge
+elements to view a preview in the right pane. It should look something
+like this.<br>
+
+<br>
+<p class=file>
+<img style="width: 158px; height: 120px;" alt="" src="Images/Fuel_Pressure_Preview.jpg"></p>
+
+
+<p>Make sure to save off the XML document reasonably frequently. Before we
+test the fuel pressure gauge, we will build the stopwatch.</p>
+
+<hr><h3><a name="Step 5: Create a Stopwatch Gauge"></a>Step 5: Create a Stopwatch Gauge</h3>
+
+<p>The specification of our panel requires: "<span style="font-style: italic;">The stopwatch will show a rotary
+dial of seconds, and have an active start/stop toggle button, and an
+active reset button".</span>
+This makes the gauge considerably more complex than the simple text
+display of our fuel pressure gauge. The stopwatch will require handling
+of a rotation (the seconds needle), active mouse clicks (the two
+buttons), but also the task of persisting information about the gauge
+from one mouse click to the next, this is necessary in the simplest
+case for the toggle button -- its state must be recorded in order for
+it to be changed from start to stop, or vice versa.</p>
+
+<p>In order to keep things a little bit simpler, we are not going to use
+prepared artwork, but will build the stopwatch from simple graphics
+primitives, and the stopwatch will have a single second hand.</p>
+
+<h4><a name="The Stopwatch Elements"></a>The Stopwatch Elements</h4>
+
+Create the following stopwatch <a href="#Element Objects">elements</a>.<br>
+
+<br>
+
+<h5>The Stopwatch Rim</h5>
+
+Insert an element, change the id to <span style="font-weight: bold;">Rim</span>,
+and give it a FloatPosition of <span style="font-weight: bold;">50,
+60</span>. Then insert a <a href="#Circle Objects">Circle</a>
+object with the following properties.<br>
+
+<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+
+      <td><span style="font-weight: bold;">Entry</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Axis</b></td>
+
+      <td>50,
+50</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Radius</b></td>
+
+      <td>50</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>FillColor</b></td>
+
+      <td>black</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>LineWidth</b></td>
+
+      <td>3</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>LineColor</b></td>
+
+      <td>steelblue</td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+
+<h5>The Stopwatch numerals</h5>
+
+For our tutorial we will limit the stopwatch to 4 numerals: <span style="font-weight: bold;">60</span>, <span style="font-weight: bold;">30</span>, <span style="font-weight: bold;">45</span> and <span style="font-weight: bold;">15</span>.
+If you want to develop the stopwatch fully, you would probably want to
+replace these elements with background art, with the numerals appearing
+on that art.<br>
+
+Create four elements, change their ids to 60, &nbsp;30, 45 and 15,
+and give them FloatPositions of :<br>
+
+<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Numeral</span></b></td>
+
+      <td><span style="font-weight: bold;">FloatPosition</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>60</b></td>
+
+      <td>40,
+14</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>30</b></td>
+
+      <td>40,
+96</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>45</b></td>
+
+      <td>4, 55</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>15</b></td>
+
+      <td>84,
+55</td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+
+Next, insert <a href="#GaugeText Objects">GaugeText</a>
+entries for all four elements, with the following properties:<br>
+
+<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+
+      <td><span style="font-weight: bold;">Entry</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>FontFace</b></td>
+
+      <td>Arial</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>FontColor</b></td>
+
+      <td>gold</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>FontHeight</b></td>
+
+      <td>12</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>GaugeString</b></td>
+
+      <td>15,
+30, 45 and 60 (appropriately for each gauge element)</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>HorizontalAlign</b></td>
+
+      <td>CENTER</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Size</b></td>
+
+      <td>20,
+20</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>VerticalAlign</b></td>
+
+      <td>CENTER</td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+
+<h5>The Start/Stop button</h5>
+
+Add another element, change its id to <span style="font-weight: bold;">Start/Stop button</span>,
+and give it a FloatPosition of &nbsp;<span style="font-weight: bold;">44, 1</span>. Then insert a
+<a href="#Rectangle Objects">Rectangle</a> object
+with the following properties:<br>
+
+<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+
+      <td><span style="font-weight: bold;">Entry</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>LineWidth</b></td>
+
+      <td>1</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Width</b></td>
+
+      <td>12</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Height</b></td>
+
+      <td>10</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>LineColor</b></td>
+
+      <td>silver</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>FillColor</b></td>
+
+      <td>silver</td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+
+<h5>The Reset button</h5>
+
+Add another element, change its id to <span style="font-weight: bold;">Reset button</span>, and
+give it a FloatPosition of &nbsp;<span style="font-weight: bold;">17,17</span>.
+Then insert a <a href="#Rectangle Objects">Rectangle</a>
+object with the following properties:<br>
+
+<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+
+      <td><span style="font-weight: bold;">Entry</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Axis</b></td>
+
+      <td>5, 5</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>LineWidth</b></td>
+
+      <td>1</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Width</b></td>
+
+      <td>10</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Height</b></td>
+
+      <td>10</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>LineColor</b></td>
+
+      <td>silver</td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+
+Note the entry in the Axis property, so that the rectangle will rotate
+about its center. As we need the button to look as if it is attached to
+the stopwatch rim, insert a <a href="#Rotation Objects">Rotation</a>
+object as a child of the Reset
+button element, and delete the automatically created sub-objects,
+except Expression. Do not change any of the Rotation objects
+properties, and simply add the number <span style="font-weight: bold;">-0.7</span>
+as the entry for the Script property of the expression (this will
+rotate the rectangle minus 0.7 radians, which is about right).<br>
+
+<br>
+
+<h5>The Needle</h5>
+
+Add another element, change its id to <span style="font-weight: bold;">Needle</span>, and give it
+a FloatPosition of <span style="font-weight: bold;">50,60</span>.
+The insert a <a href="#Polygon Objects">Polygon</a>
+object, and give it the following properties:<br>
+
+<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+
+      <td><span style="font-weight: bold;">Entry</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Axis</b></td>
+
+      <td>50,
+60</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>FillColor</b></td>
+
+      <td>red</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>LineWidth</b></td>
+
+      <td>1</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>LineColor</b></td>
+
+      <td>red</td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+
+A polygon consists of a list of <a href="#Point Objects">Points</a>,
+so insert three points with the
+following FloatPosition entries (to define a simple triangle):<br>
+
+<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Point</span></b></td>
+
+      <td><span style="font-weight: bold;">FloatPosition</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>1</b></td>
+
+      <td>48,
+62</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>2</b></td>
+
+      <td>50,
+12</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>3</b></td>
+
+      <td>52,
+62</td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+
+The needle will also need a rotation object, so insert a <a href="#Rotation Objects">Rotation</a>, and
+entries for <a href="#Rotation Objects">Rotation</a>,
+<a href="#Expression Objects">Expression</a>, <a href="#FailureTable Objects">FailureTable</a> and <a href="#Failure Objects">Failure</a>, will all
+appear. Leave this objects for now, except change the following in the
+Failure object (this indicates that if the user fails the electrical
+system, the stopwatch should freeze).<br>
+
+<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+
+      <td><span style="font-weight: bold;">Entry</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Fail_Key</b></td>
+
+      <td>SYSTEM_ELETRICAL_PANELS</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Fail_Action</b></td>
+
+      <td>Freeze</td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+
+We will come back to the all-important expression object, after first
+creating the MouseArea and MouseClick objects, as the logic of the
+expressions are all connected and complicated.<br>
+
+<br>
+
+<h5>The Main MouseArea</h5>
+
+There can only be one main mouse area for a gauge, so insert a
+<a href="#MouseArea Objects">MouseArea</a> object,
+and give it the following properties (which simply
+indicate it covers the full area of the stopwatch, with a normal
+cursor).<br>
+
+<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+
+      <td><span style="font-weight: bold;">Entry</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>id<br>
+
+      </b></td>
+
+      <td>MouseArea
+all<br>
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>FloatPosition<br>
+
+      </b></td>
+
+      <td>0, 0<br>
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Size</b></td>
+
+      <td>100,
+110</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>CursorType</b></td>
+
+      <td>normal</td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+
+<h5>The start/stop MouseArea</h5>
+
+Insert another <a href="#MouseArea Objects">MouseArea</a>
+as a child of the main mouse area. This area is to be active, and
+related to a mouse click.<br>
+
+<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+
+      <td><span style="font-weight: bold;">Entry</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>id<br>
+
+      </b></td>
+
+      <td>start/stop<br>
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>FloatPosition<br>
+
+      </b></td>
+
+      <td>41, 1<br>
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Size</b></td>
+
+      <td>12,
+10</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>CursorType</b></td>
+
+      <td>Hand</td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+
+<h5>The reset MouseArea</h5>
+
+Insert yet another <a href="#MouseArea Objects">MouseArea</a>
+as a child of the main mouse area, and a
+peer of the start/stop area. This area is also to be active, and
+related to a mouse click.<br>
+
+<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+
+      <td><span style="font-weight: bold;">Entry</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>id<br>
+
+      </b></td>
+
+      <td>reset<br>
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>FloatPosition<br>
+
+      </b></td>
+
+      <td>14,
+14<br>
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Size</b></td>
+
+      <td>10,
+10</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>CursorType</b></td>
+
+      <td>Hand</td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+
+<h5>The MouseClick objects</h5><a name="MouseClick Objects"></a>
+
+<p>MouseClick objects should be inserted for both the start/stop and reset
+mouse areas. Both should have their ClickType properties set to:<br>
+
+<b>LeftSingle+LeftRelease</b></p>
+<p>The only other property to change is the Script, which is complex and
+explained next.</p>
+
+<h4><a name="The Stopwatch Expression Logic"></a>The Stopwatch Expression Logic</h4>
+
+Now comes the hard part, entering expression logic for both the mouse
+clicks and the needle rotation. Expression logic is entered using
+reverse polish notation (though refer to <a href="#The Infix2Postfix Tool">the Infix2Postfix tool</a> that can assist in creating and understanding this notation). <br>
+<br>
+
+Starting with the reset button, enter the following text for the mouse
+click Script:<br>
+
+<br>
+
+<span style="font-weight: bold;">(M:Event) 'LeftSingle'
+scmp 0 == if{ 1
+(&gt;L:RST Pressed,bool) 0 (&gt;L:TotalRunning,seconds) 0
+(&gt;L:Running,bool) } (M:Event) 'LeftRelease' scmp 0 == if{ 0
+(&gt;L:RST Pressed,bool) }<br>
+
+</span><br>
+
+The logic here is based around local variables, three of which have
+been used here:<br>
+
+<ul>
+
+  <li><span style="font-weight: bold;">L:TotalRunning</span>
+holds the
+time the stopwatch has run, in seconds, since the last time start was
+pressed. As the user has pressed the reset button, this is set back to
+0. The entry <span style="font-weight: bold;">0
+(&gt;L:TotalRunning, seconds)</span> does the assignment.
+Greater than signs preceding variables indicate an assignment.</li>
+
+  <li><span style="font-weight: bold;">L:Running</span>
+is simply a boolean indicating whether the stopwatch is running or not.
+The assignment <span style="font-weight: bold;">0
+(&gt;L:Running, bool)</span> sets this to false.</li>
+
+  <li><span style="font-weight: bold;">L:RST Pressed</span>
+is a
+boolean we do not use in this implementation of a stopwatch, but will
+be used if you add graphical images to the stopwatch, showing the reset
+button being pressed when the mouse area is clicked. This local
+variable can be checked, and a different image drawn, with the use of a
+    <a href="#Select Objects">Select</a> object.</li>
+
+</ul>
+
+<p>Note also the use of the <span style="font-weight: bold;">M:Event</span>
+mouse variable. The <span style="font-weight: bold;">(M:Event)
+'LeftSingle' scmp 0 == if{ </span>entry
+is processed as if the mouse event and the text string 'LeftSingle' are
+compared, and are equal, then the contents of the if statement block is
+processed. Similarly for the mouse button release.</p>
+
+<p>The full range of variables and statements that can make up
+expressions, and&nbsp;Reverse polish notation is explained in more
+detail in the section on <a href="#Expression Evaluation">Evaluating
+Expressions</a>. </p>
+
+<p>Next enter the Script for the mouse click of the start/stop
+button.
+This is a bit more complicated as the button has two functions,
+starting or stopping the stopwatch depending on its current state.</p>
+
+<p style="font-weight: bold;">(M:Event) 'LeftSingle' scmp
+0 == if{ 1
+(&gt;L:STSTP Pressed,bool) (L:Running,bool) !
+(&gt;L:Running,bool) }
+(L:Running, bool) ! if{ (P:Absolute time, seconds) (&gt;L:Offset,
+seconds) } (M:Event) 'LeftRelease' scmp 0 == if{ 0 (&gt;L:STSTP
+Pressed,bool) }</p>
+
+<p>Notice how the first if statement toggles the <span style="font-weight: bold;">L:Running</span> local
+variable: <span style="font-weight: bold;">(L:Running,bool)
+! (&gt;L:Running,bool)</span> assigns the NOT value of the
+boolean back to the variable. The second if statement then tests the
+value of <span style="font-weight: bold;">L:Running</span>
+and if it is false (the stopwatch is not running) the absolute time in
+seconds is assigned to another local variable <span style="font-weight: bold;">L:Offset</span>. This
+variable is used to calculate the rotation of the needle. The variable <span style="font-weight: bold;">P:Absolute time</span> can be found along with all the other program variables,
+in the <a href="../../Core Utilities Kit/Variables/Simulation Variables.html">Simulation Variables</a> document.</p>
+
+
+
+<p>Again there is a local variable <span style="font-weight: bold;">L:STSTP Pressed</span> to
+handle different graphic images for the button, should you wish to
+implement them.</p>
+
+<br>
+
+<p>Finally, we need to enter the Expression for the needle
+element's rotation, enter:</p>
+
+
+
+<span style="font-weight: bold;">(L:Running,bool) if{
+(P:Absolute time,
+seconds) (L:Offset,seconds) - (&gt;L:TotalRunning,seconds) } els{
+(P:Absolute time, seconds) (L:TotalRunning,seconds) -
+(&gt;L:Offset,seconds) } (L:TotalRunning, seconds) 0.104719 *</span>
+
+
+<p>The logic here is that if the stopwatch is running (<span style="font-weight: bold;">L:Running</span>
+is true) then the total running time is the absolute time in seconds,
+minus the offset (the absolute time when the stopwatch was last
+stopped). If the stopwatch is not running then the absolute time in
+seconds, minus the running time in seconds, is assigned to the offset.
+Finally the value of <span style="font-weight: bold;">L:TotalRunning</span> is
+applied to the rotation. To do this, this value (in seconds) is
+converted to radians by multiplying by 0.104719 (which is 2 * pi -- one
+full circle -- divided by 60, or the number of radians per sixtieth of a
+full rotation).</p>
+
+<p>The stopwatch is now ready for testing, but first preview it
+to ensure the various elements are in the right place.</p>
+
+<h4><a name="Previewing the Stopwatch"></a>Previewing the Stopwatch</h4>
+
+When completed, the stopwatch component tree should look like this:<br>
+
+<p class=file>
+<img style="width: 271px; height: 655px;" alt="" src="Images/Stopwatch_elements.jpg"></p>
+
+<br>
+
+And in the Preview window the stopwatch should appear.<br>
+
+<br>
+<p class=file>
+<img style="width: 102px; height: 110px;" alt="" src="Images/Stopwatch_Preview.jpg"></p>
+
+<br>
+
+<h5>Testing the Stopwatch in Preview mode</h5>
+
+It is possible to do some limited testing within the tool by overriding
+the complex scripts we have entered. For example, to test the rotation
+of the needle select the Expression of the Rotation of the Needle
+element -- this expression begins with <span style="font-weight: bold;">(L:Running,bool).....</span><br>
+
+We do not want to delete any of the text we have entered, but we can
+add some text to the beginning of the script, to test the rotation, and
+then delete it. Change the expression by adding the following text:<br>
+
+<span style="font-weight: bold;"><br>
+
+pi quit&nbsp;(L:Running,bool)....</span><br>
+
+<br>
+
+The <span style="font-weight: bold;">quit</span>
+entry forces all evaluation to stop, so the value <span style="font-weight: bold;">pi</span>
+is used for the rotation. The stopwatch in the preview screen should
+show the needle hand pointing at 30 (pi radians is 180 degrees). Next
+change the entry to:<br>
+
+<br>
+
+<span style="font-weight: bold;">1.5 pi * quit
+(L:Running,bool)<br>
+
+</span><br>
+
+The needle should now point at 45. If you get this, all is well so
+delete the testing text. If not, re-examine all the entries for the
+Needle element, checking you have entered them correctly.<br>
+
+<br>
+
+Both the new gauges are now complete, the next steps are to cab them up
+and test them in <i>Prepar3D</i>.<br>
+
+
+
+<hr><h3><a name="Step 6: Create a Cabinet file"></a>Step 6: Create a Cabinet file</h3>
+
+<br>
+
+Run the cabdir tool on the New Gauges/TestGauges directory. This will
+compress the three files, FuelPressure.xml, Stopwatch.xml and
+FuelPressureBackground.xml into one .cab file, called TestGauges.cab.
+You can run the cabdir tool in a number of ways:<br>
+
+<ol>
+
+  <li>Drag the TestGauges directory and drop it onto the Cabdir
+icon
+(in the Cabdir_SDK folder in the SDK installation). This is the
+simplest way, but does not allow you to change any of cabdir's
+parameters (which in most cases is fine). The cab file will be located
+in the root directory of the TestGauges directory.</li>
+
+  <li>Go to the Cabdir SDK folder in the command line, and run
+cabdir from the command line  (see the <a href="../Cabdir SDK/creating cabinet files.html">Creating Cabinet Files </a> documentation).</li>
+</ol>
+
+Copy the cab file (which has a cabinet style icon) into the <i>../Prepar3D/Gauges</i>
+directory. These gauges are independent of the simulation aircraft, so
+can be used in any panel of any of the aircraft. For this tutorial
+though, we have simply added them to the Mooney Bravo.<br>
+
+The process of creating a panel, new gauges and adding them to the
+simulation is now complete. The
+next stage is to test them.
+      <br />
+      <br />
+      Note:&nbsp; This step is included in the tutorial because cab files are 
+        reccommended for final release and distribution.&nbsp; While developing and 
+        debugging, the uncompressed foler can be placed in the <i>
+        Prepar3D/Gauges</i> directory.&nbsp;&nbsp; If a gauge is not inteded to be shared between 
+        aircraft, the folder or cab file can also be placed in the same folder as tha 
+        panels.cfg file that refferences it.<br>
+
+
+
+<hr><h3><a name="Step 7: Testing the new Gauges"></a>Step 7: Testing the new Gauges</h3>
+
+Run <i>Prepar3D</i>, and select the Mooney_Bravo (which is the default aircraft) to load up your new gauges. You should be able to
+select the panel from the Instrument Panel menu, and then watch the
+fuel pressure gauge rise slowly as you increase speed, and be able to
+click on the stopwatch
+buttons and watch the needle rotate.<br>
+
+If all goes perfectly, which it rarely does, you will have completed
+your project. However, it is far more common for the gauges not to
+appear, be positioned, or work quite as you intended, so this is simply
+the start of an iterative process in getting the gauges just right.<br>
+
+
+
+<hr><h3><a name="Step 8: Adding Artwork to the Stopwatch"></a>Step 8: Adding Artwork to the Stopwatch</h3>
+
+The stopwatch includes local variables that indicate the status of the
+start/stop and reset buttons. This allows you to extend this gauge so
+that you can see these button being depressed as you select them. This
+involves a new gauge element we have not yet used, the <a href="#Select Objects">Select</a> element,
+with two child <a href="#Case Objects">Case</a>
+objects ( representing the buttons in an
+up and down state).<span style="font-style: italic;"></span>
+<br>
+
+For this tutorial, we will replace the start/stop rectangle with one of
+two small images, which one depending on whether the button is being
+pressed or not. The first thing to do is to create these two images.
+Using any appropriate image editing tool, create two bitmaps 12 pixels
+wide by 10 pixels in height, which look like a button extended and
+depressed. For example:<br>
+
+<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Extended Image<br>
+
+StartStopUpGraphic.jpg</span></b></td>
+
+      <td><span style="font-weight: bold;">Depressed Image<br>
+
+StartStopDownGraphic.jpg</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b><img style="width: 60px; height: 50px;" alt="" src="Images/StartStopUpGraphic.jpg"></b></td>
+
+      <td><img style="width: 60px; height: 50px;" alt="" src="Images/StartStopDownGraphic.jpg"></td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+
+Note that pure black is the transparent color. Make sure both these
+images are saved to the TestGauges directory.<br>
+
+<br>
+
+Next delete the rectangle of the Start/Stop button element, and then
+insert a Select element. This will automatically add an Expression and
+two Case objects to the gauge. Now edit the objects as follows:<br>
+
+<ul>
+
+  <li>The Select object should be left unchanged.</li>
+
+  <li>The expression object should have its script entered: <span style="font-weight: bold;">(L:STSTP Pressed, bool)</span>.
+Remember we entered the local variable STSTP Pressed, that is set to
+true if the button is being pressed (clicked on with the mouse), or
+false otherwise.</li>
+
+  <li>The first case object should have its id changed to <span style="font-weight: bold;">Case 0</span> and its
+expression should be entered as <span style="font-weight: bold;">0</span>.
+With this case object selected click on Insert, and add an image.
+Insert the image name, StartStopUpGraphic.jpg.</li>
+
+  <li>The second case object should have its id changed to <span style="font-weight: bold;">Case 1</span> and its
+expression should be entered as <span style="font-weight: bold;">1</span>.
+With this case object selected click on Insert, and add an image.
+Insert the image name, StartStopDownGraphic.jpg.</li>
+
+</ul>
+
+The Select element in the tree view of the gauge should now look like
+this:<br>
+
+<br>
+<p class=file>
+<img style="width: 285px; height: 144px;" alt="" src="Images/Select_Element.jpg"></p>
+
+<p>Now, go back to <a href="#Step 6: Create a Cabinet file">step 6</a>, update the gauges, and test the new action. You could replace all the simple art with images, and slowly build a
+great looking stopwatch!</p>
+
+<p>When you have the images working correctly, you have finished the
+tutorial. Good work!</p>
+
+<hr>
+<h2><a name="XML Gauge Reference"></a>XML Gauge Reference</h2>
+
+This section lists all the elements and objects that can make up a
+gauge, and describes all the operators that can be used in scripts and
+expressions when dynamic calculations are needed.<br>
+
+<br>
+
+<ul>
+
+  <li><a href="#Expression Evaluation">Expression Evaluation</a></li>
+<ul>
+  <li><a href="#Expression Parameters">Expression Parameters</a></li>
+  <li><a href="#Reverse Polish Notation">Reverse Polisth Notation</a></li>
+  <li><a href="#Expression Operators">Expression Operators</a></li>
+  <li><a href="#Expression Evaluation Examples">Expression Evaluation Examples</a></li>
+  <li><a href="#The Infix2Postfix Tool">The Infix2Postfix Tool </a></li>
+  </ul>
+  <li><a href="#Gauge Objects">Gauge Objects</a></li>
+
+  <li><a href="#Comment Objects">Comment Objects</a></li>
+
+  <li><a href="#Element Objects">Element Objects</a></li>
+
+  <li><a href="#Image Objects">Image Objects</a></li>
+
+  <li><a href="#Macro Objects">Macro Objects</a></li>
+
+  <li><a href="#MouseArea Objects">MouseArea Objects</a></li>
+
+  <li><a href="#Update Objects">Update Objects</a></li>
+</ul>
+
+<hr>
+<h3><a name="Expression Evaluation"></a>Expression Evaluation</h3>
+Values of some elements require&nbsp;calculated expressions, or
+scripts. Typically these expressions define what a needle or numeric
+display shows. In their simple form, these expressions are the names of
+simulation parameters and the units in which the element requires the
+value, enclosed in parentheses. In the following example the expression
+returns the value of the INDICATED ALTITUDE parameter, in feet:<br>
+
+<span style="font-weight: bold;"><br>
+
+(A:INDICATED ALTITUDE, feet)</span><br>
+
+<br>
+
+The &ldquo;A&rdquo; before the semicolon indicates that this
+parameter
+is an aircraft parameter.&nbsp;INDICATED ALTITUDE is a simulation
+variable (see the  <a href="../../Core Utilities Kit/Variables/Simulation Variables.html">Simulation Variables</a> document for a full list of variables) and feet are
+the units of measure in which the aircraft parameter will display.<br>
+
+
+
+<hr><h4><a name="Expression Parameters"></a>Expression Parameters</h4>
+
+<br>
+
+The following table describes all the types of parameters.<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Parameter</span></b></td>
+
+      <td><span style="font-weight: bold;">Stands for...</span></td>
+
+      <td><span style="font-weight: bold;">Description</span></td>
+    </tr>
+
+    <tr>
+
+      <td><b>A</b></td>
+
+      <td>Aircraft,
+including helicopters</td>
+
+      <td>Gets
+the specified parameter of the aircraft.</td>
+    </tr>
+    <tr>
+      <td><b>C</b></td>
+      <td>Custom
+        parameter</td>
+      <td>Custom
+        variable created for <i>Prepar3D</i>.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>E</b></td>
+
+      <td>Environment</td>
+
+      <td>Gets
+environment variables, such as current time.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>G</b></td>
+
+      <td>Gauge parameter
+</td>
+
+      <td>Gets
+a variable that is local to the gauge</td>
+    </tr>
+    <tr>
+      <td><b>K</b></td>
+      <td>Key
+        code</td>
+      <td>Variables
+        of this kind are key codes that are sent from gauges to <i>Prepar3D</i>.</td>   </tr>
+
+    <tr>
+
+      <td><b>L</b></td>
+
+      <td>Local parameter
+</td>
+
+      <td>Gets
+a variable that is defined by the developer</td>
+    </tr>
+    <tr>
+      <td><b>M</b></td>
+      <td>Mouse
+        parameter</td>
+      <td>Gets
+        the state of the mouse for use in mouse click handlers.</td>
+    </tr>
+    <tr>
+      <td><b>P</b></td>
+      <td>Program
+        related</td>
+      <td>Gets
+        program variables, such as simulation rate</td>
+    </tr>
+
+
+    <tr>
+
+      <td><b>R</b></td>
+
+      <td>Resource
+strings</td>
+
+      <td>Retrieves
+a string from the resource file.</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+For more information on possible parameters for
+&ldquo;A&rdquo;, &ldquo;E&rdquo; and
+&ldquo;P&rdquo; see the <a href="../../Core Utilities Kit/Variables/Simulation Variables.html">Simulation
+Variables</a>
+document. A unit name (feet, meters, inHg etc.) is required after the
+parameter name. For the list of recognizable unit names refer to the <a href="../../Core Utilities Kit/Variables/Simulation Variables.html">Units
+of Measurement</a> section.
+
+
+<hr><a name="Custom Parameters"></a><h4>Custom Parameters (C:)</h4>
+
+<p>The following table lists all the defined custom parameters that can be used within XML gauges:</p>
+
+<table class="T1" cellspacing="2" cellpadding="4">
+  <tr>
+    <td><h5>Module</h5></td>
+    <td><h5>Variable</h5></td>
+    <td><h5>Units</h5></td>
+    <td><h5>Settable</h5></td>
+    <td><h5>Description</h5></td>
+  </tr>
+  <tr>
+    <td><b>&nbsp;</b></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b>Mission</b></td>
+    <td><b>OnScreenTimerValue</b></td>
+    <td>seconds</td>
+    <td>No</td>
+    <td>The on screen timer used in the mission system. </td>
+  </tr>
+  <tr>
+    <td><b><font color="#000000"><b>Mission</b></font></b></td>
+    <td><font color="#000000"><b>RaceUserCurrentLapNumber</b></font></td>
+    <td>number</td>
+    <td>No</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b><font color="#000000"><b>Mission</b></font></b></td>
+    <td><font color="#000000"><b>RaceTotalLaps</b></font></td>
+    <td>number</td>
+    <td>No</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b><font color="#000000"><b>Mission</b></font></b></td>
+    <td><font color="#000000"><b>RaceUserLastLapSpeed</b></font></td>
+    <td>mph</td>
+    <td>No</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b><font color="#000000"><b>Mission</b></font></b></td>
+    <td><font color="#000000"><b>RaceUserDeltaToLeader</b></font></td>
+    <td>seconds</td>
+    <td>No</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b><font color="#000000"><b>Mission</b></font></b></td>
+    <td><font color="#000000"><b>RaceUserCurrentLapTime</b></font></td>
+    <td>seconds</td>
+    <td>No</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b><font color="#000000"><b>Mission</b></font></b></td>
+    <td><font color="#000000"><b>RaceUserLastLapTime</b></font></td>
+    <td>seconds</td>
+    <td>No</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b><font color="#000000"><b>Mission</b></font></b></td>
+    <td><font color="#000000"><b>RaceTotalTime</b></font></td>
+    <td>seconds</td>
+    <td>No</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b><font color="#000000"><b>Mission</b></font></b></td>
+    <td><font color="#000000"><b>RaceUserTotalPenalties</b></font></td>
+    <td>seconds</td>
+    <td>No</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b><font color="#000000"><b>Mission</b></font></b></td>
+    <td><font color="#000000"><b>RaceMapInitialZoomLevel</b></font></td>
+    <td>number</td>
+    <td>No</td>
+    <td>A value from 0 to 23. 23 is maximum zoom. </td>
+  </tr>
+  <tr>
+    <td><b><font color="#000000"><b>Mission</b></font></b></td>
+    <td><font color="#000000"><b>RaceNextManeuver</b></font></td>
+    <td>enum</td>
+    <td>No</td>
+    <td>One of the following:<br>
+      NONE<br>
+      HALFCUBAN8<br>
+      VERTICAL<br>
+      VERTICAL180<br>
+      VERTICAL360<br>
+      INSIDELOOP<br>
+      CLOVERLEAF<br>
+      TURN15LEFT<br>
+      TURN15RIGHT<br>
+      TURN45LEFT<br>
+      TURN45RIGHT<br>
+      TURN90LEFT<br>
+      TURN90RIGHT<br>
+      TURN135LEFT<br>
+      TURN135RIGHT<br>
+      TURN180LEFT<br>
+      TURN180RIGHT<br>
+      TURN270LEFT<br>
+      TURN270RIGHT<br>
+      SPIN<br>
+      AVALANCHE<br>
+      OUTSIDELOOP<br>
+      TAILSIDE<br>
+      LAZYEIGHT<br>
+      WINGOVER<br>
+      HAMMERHEAD<br>
+      IMMELMAN<br>
+      INVERTEDFLIGHT<br>
+      KNIFEEDGE<br>
+      TAKEOFF<br>
+      LAND<br>
+      TOUCHANDGO<br>
+      SLOWROLL<br>
+      SNAPROLL<br>
+      SPLIT_S<br>
+      2POINTROLL<br>
+      4POINTROLL<br>
+      6POINTROLL<br>
+      8POINTROLL<br>
+      STRAIGHT<br>
+    </td>
+  </tr>
+  <tr>
+    <td><b><font color="#000000"><b>Mission</b></font></b></td>
+    <td><font color="#000000"><b>RaceUserDisqualified</b></font></td>
+    <td>bool</td>
+    <td>No</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b><font color="#000000"><b>Mission</b></font></b></td>
+    <td><font color="#000000"><b>RaceUserFinished</b></font></td>
+    <td>bool</td>
+    <td>No</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b>&nbsp;</b></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b>POI</b></td>
+    <td><b>SelectedTargetMSLAltitude</b></td>
+    <td>meters</td>
+    <td>No</td>
+    <td>The current Point of Interest. </td>
+  </tr>
+  <tr>
+    <td><b>POI</b></td>
+    <td><b>SelectedTargetName</b></td>
+    <td>string</td>
+    <td>No</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b>POI</b></td>
+    <td><b>SelectedTargetDistance</b></td>
+    <td>meters</td>
+    <td>No</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b>POI</b></td>
+    <td><b>SelectedTargetBearing</b></td>
+    <td>degrees</td>
+    <td>No</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b>POI</b></td>
+    <td><b>NumberOfTargets</b></td>
+    <td>number</td>
+    <td>No</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b>&nbsp;</b></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b>ITrafficInfo</b></td>
+    <td><b>Radius</b></td>
+    <td>meters</td>
+    <td>Yes</td>
+    <td>The radius from the user aircraft (or tower) to use to collect data on nearby aircraft or vehicles. </td>
+  </tr>
+  <tr>
+    <td><b>ITrafficInfo</b></td>
+    <td><b>Filter</b></td>
+    <td>enum</td>
+    <td>Yes</td>
+    <td>One or more of the following values combined:<br>
+      
+          TRAFFIC_FILTER_AIRCRAFT             = 1,<br>
+          TRAFFIC_FILTER_GROUND_VEHICLES      = 2,<br>
+          TRAFFIC_FILTER_TOWER_CONTROLLERS    = 4,<br>
+          TRAFFIC_FILTER_ON_GROUND            = 8,<br>
+          TRAFFIC_FILTER_IN_AIR               = 16,<br>
+          TRAFFIC_FILTER_SLEEPING             = 32,<br>
+          TRAFFIC_FILTER_AWAKE                = 64</td>
+  </tr>
+  <tr>
+    <td><b>ITrafficInfo</b></td>
+    <td><b>Latitude</b></td>
+    <td>radians</td>
+    <td>Yes</td>
+    <td>The latitude of the point the search is to be made from.</td>
+  </tr>
+  <tr>
+    <td><b>ITrafficInfo</b></td>
+    <td><b>Longitude</b></td>
+    <td>radians</td>
+    <td>Yes</td>
+    <td>The longitude of the point the search is to be made from.</td>
+  </tr>
+  <tr>
+    <td><b>ITrafficInfo</b></td>
+    <td><b>SortOrder</b></td>
+    <td>enum</td>
+    <td>n/a</td>
+    <td>Not implemented. </td>
+  </tr>
+  <tr>
+    <td><b>ITrafficInfo</b></td>
+    <td><b>CurrentVehicle</b></td>
+    <td>number</td>
+    <td>Yes</td>
+    <td>An index number into the list of aircraft/vehicles.</td>
+  </tr>
+  <tr>
+    <td><b>ITrafficInfo</b></td>
+    <td><b>SelectedVehicle</b></td>
+    <td>number</td>
+    <td>Yes</td>
+    <td>An index number into the list of aircraft/vehicles.</td>
+  </tr>
+  <tr>
+    <td><b>ITrafficInfo</b></td>
+    <td><b>SelectedVehicleID</b></td>
+    <td>number</td>
+    <td>No</td>
+    <td>The internal ID of the SelectedVehicle. This could be passed, for example, to the SelectedVehicle variable of the GPS system to display specific information on this aircraft. Refer to the <a href="XML Gauge Maps.html">XML Gauge Maps</a> document.</td>
+  </tr>
+  <tr>
+    <td><b>ITrafficInfo</b></td>
+    <td><b>CurrentPlayerName</b></td>
+    <td>string</td>
+    <td>No</td>
+    <td>Multiplayer only. The player's name if the CurrentVehicle is being piloted by a user, or the empty string if not.</td>
+  </tr>
+  <tr>
+    <td><b>ITrafficInfo</b></td>
+    <td><b>SelectedPlayerName</b></td>
+    <td>string</td>
+    <td>No</td>
+    <td>Multiplayer only. The player's name if the SelectedVehicle is being piloted by a user, or the empty string if not.</td>
+  </tr>
+  <tr>
+    <td><b>ITrafficInfo</b></td>
+    <td><b>ListSize</b></td>
+    <td>number</td>
+    <td>No</td>
+    <td>The length of the list of vehicles returned after a search. The index numbers of the returned list will be from 0 to ListSize - 1.</td>
+  </tr>
+  <tr>
+    <td><b>ITrafficInfo</b></td>
+    <td><b>MaxVehicles</b></td>
+    <td>number</td>
+    <td>Yes</td>
+    <td>The maximum length of the list of vehicles requested for a search.</td>
+  </tr>
+  <tr>
+    <td><b>ITrafficInfo</b></td>
+    <td><b>CurrentDistance</b></td>
+    <td>meters</td>
+    <td>No</td>
+    <td>The distance the CurrentVehicle is away from the center of the search.</td>
+  </tr>
+  <tr>
+    <td><b>ITrafficInfo</b></td>
+    <td><b>SelectedFlightPlan</b></td>
+    <td>string</td>
+    <td>No</td>
+    <td>The flight plan of the SelectedVehicle. If the flight plan consists of one to three waypoints, the string returned will be in the format "A", "A,B" or "A, B, C" -- where A, B and C are ICAO waypoints. If the flight plan consists of four or more waypoints, the format will be "A, B, ... Z", where Z is the last waypoint of the flightplan.</td>
+  </tr>
+  <tr>
+    <td><b>&nbsp;</b></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b>FS9VIEW</b></td>
+    <td><b>On</b></td>
+    <td>bool</td>
+    <td>Yes</td>
+    <td>Turn an auxiliary view on or off. </td>
+  </tr>
+  <tr>
+    <td><b>FS9VIEW</b></td>
+    <td><b>Zoom</b></td>
+    <td>float</td>
+    <td>Yes</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b>FS9VIEW</b></td>
+    <td><b>Pitch</b></td>
+    <td>float</td>
+    <td>Yes</td>
+    <td>Pitch of the view in degrees. </td>
+  </tr>
+  <tr>
+    <td><b>FS9VIEW</b></td>
+    <td><b>Bank</b></td>
+    <td>float</td>
+    <td>Yes</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b>FS9VIEW</b></td>
+    <td><b>Heading</b></td>
+    <td>float</td>
+    <td>Yes</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b>FS9VIEW</b></td>
+    <td><b>OffsetRight</b></td>
+    <td>float</td>
+    <td>Yes</td>
+    <td>Offsets in meters from the normal viewpoint. </td>
+  </tr>
+  <tr>
+    <td><b>FS9VIEW</b></td>
+    <td><b>OffsetUp</b></td>
+    <td>float</td>
+    <td>Yes</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b>FS9VIEW</b></td>
+    <td><b>OffsetForward</b></td>
+    <td>float</td>
+    <td>Yes</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b>&nbsp;</b></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+
+<p>To use a custom variable, precede it with<b> C:&lt;<i>module name</i>&gt;: </b>, for example:</p>
+
+<p><b>C:POI:SelectedTargetName</b></p>
+<p><br />
+  There is a special use of the <b>ITrafficInfo</b> module custom variables. These can be followed by any of the variables above, or any <a href="../../Core Utilities Kit/Variables/Simulation Variables.html">Simulation Variable</a>, preceded by the code <b>C </b>(for current aircraft) or <b>S</b> (for selected aircraft), for example: </p>
+<p><br />
+    <b>C:ITrafficInfo:S:ATC FLIGHT NUMBER, string<br />
+C:ITrafficInfo:C:ATC AIRLINE, string</b></p>
+
+<p>To set the current or selected aircraft, use a statement such as:</p>
+
+<p><b>&gt;C:ITrafficInfo:CurrentVehicle <i>N</i> </b></p>
+<p>where N is a value between 0 and <b>ListSize</b>-1.<br />
+</p>
+<p>For the units, the <a href="../../Core Utilities Kit/Variables/Simulation Variables.html">Simulation Variables</a> are all treated as <b>number</b>, except the following, which are <b>string</b>:</p>
+<p>ATC ID, ATC MODEL, ATC TYPE, ATC AIRLINE, ADF NAME, 
+  NAV NAME, 
+  ATC FLIGHT NUMBER, 
+  and PAYLOAD STATION NAME.<br>
+</p>
+
+<hr>
+<h4><a name="Gauge Parameters"></a>Gauge Parameters (G:)</h4>
+Parameters of the &ldquo;G&rdquo; kind have names from&nbsp;<span style="font-weight: bold;">Var1</span> to<span style="font-weight: bold;">&nbsp;Var9</span>.
+These are used by gauge developers to store and retrieve variables
+across gauge elements. These values are unitless so do not put unit
+names after them. The default value of a gauge parameter is 0.<br>
+
+To get a gauge variable:<br>
+
+<span style="font-weight: bold;">(G:Var1)</span><br>
+
+To set a gauge variable (to 5 in this example):<br>
+
+<span style="font-weight: bold;">5 (&gt;G:Var1)</span><br>
+
+<hr>
+
+<h4><a name="Key Parameters"></a>Key Parameters (K:)</h4>
+
+Key parameters can be used to trigger key events. Key parameters must
+be used if a value needs to be sent with the key event. For example, to
+set the ADF card to a specific value of 200, use the following syntax:<br>
+
+<span style="font-weight: bold;">200
+(&gt;K:KEY_ADF_CARD_SET)</span><br>
+
+For more a list of events that can be used with Key Parameters see the <a href="../../Core Utilities Kit/Variables/Event IDs.htm">Event IDs</a> document. Note that&nbsp;unit names are not used with these
+parameters,
+however the &gt; is still required even it the key event does not
+take
+a numeric parameter.<br>
+
+Key events can also be triggered by setting the KeyEvent parameter of <a href="#MouseClick Objects">MouseClick</a> objects.<br>
+
+<br>
+
+<h6>Note</h6>
+<dd>The &gt; sign is not a legal character in XML, and will
+appear as &amp;gt in XML documents.</dd>
+<hr />
+
+  <h4><a name="Local Parameters"></a>Local Parameters (L:))</h4>
+When a local parameter is first referenced, it is created and its value is set to zero. Use your
+own names for these parameters, but care should be taken that these
+names are unique. Use unit names when referencing them, for example:<br>
+<br>
+<span style="font-weight: bold;">(L:Stopwatch Toggle
+Position: bool)</span>
+
+<br /><br />
+
+
+    <h6>Note</h6>
+
+  <dd>When <i>Prepar3D</i> is running in the shared cockpit scenario of multi-player 
+      mode, local (L:) and gauge (G:) parameters are synchronized between&nbsp; aircraft. Note also that local and gauge parameters are available to all other gauges in an aircraft panel, so information can be shared among gauges, though care should be taken to name each variable uniquely and clearly. </dd>
+<hr />
+
+<h4><a name="Mouse Parameters"></a>Mouse Parameters (M:)</h4>
+  <p>Parameters of the &ldquo;M&rdquo; kind are:<br>
+
+&bull;&nbsp;&nbsp;&nbsp; &ldquo;X&rdquo;
+&mdash; the X coordinate of the mouse pointer.<br>
+
+&bull;&nbsp;&nbsp;&nbsp; &ldquo;Y&rdquo;
+&mdash; the Y coordinate of the mouse pointer.<br>
+
+&bull;&nbsp;&nbsp;&nbsp; &ldquo;Event&rdquo;
+&mdash; the string representation of the event which triggered the
+mouse handler, such as &ldquo;LeftSingle&rdquo; or
+&ldquo;RightDouble&rdquo;. The table below gives the full list
+of mouse events.<br>
+
+For the most part, you will not need to use mouse parameters, as the
+ACE tool handles these for you with <a href="#MouseArea Objects">MouseArea</a>
+and <a href="#MouseClick Objects">MouseClick</a>
+objects.</p>
+
+
+
+<table class="T1" cellpadding="4" cellspacing="4">
+
+  <tbody>
+
+    <tr>
+
+      <td><b>Event Name </b></td>
+
+      <td><b>User action </b></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>RightSingle</b></td>
+
+      <td>Single-clicks right mouse button</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>MiddleSingle</b></td>
+
+      <td>Single-clicks middle mouse button</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>LeftSingle</b></td>
+
+      <td>Single-clicks left mouse button </td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>RightDouble</b></td>
+
+      <td>Double-clicks right mouse button</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>MiddleDouble</b></td>
+
+      <td>Double-clicks middle mouse button</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>LeftDouble</b></td>
+
+      <td>Double-clicks left mouse button </td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>RightDrag</b></td>
+
+      <td>Moves mouse while holding down right mouse button</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>MiddleDrag</b></td>
+
+      <td>Moves mouse while holding down middle mouse button</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>LeftDrag</b></td>
+
+      <td>Moves mouse while holding down left mouse button</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Move</b></td>
+
+      <td>Moves mouse</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Down_Repeat </b></td>
+
+      <td>Holds down mouse button</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>RightRelease</b></td>
+
+      <td>Releases right mouse button</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>MiddleRelease</b></td>
+
+      <td>Releases middle mouse button</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>LeftRelease</b></td>
+
+      <td>Releases left mouse button</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Wheel_Flip</b></td>
+
+      <td>Changes the direction the mouse wheel is rotating</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Wheel_Skip</b></td>
+
+      <td>Indicates that the two statements following the one containing the &quot;Wheel_Skip&quot; specify the mouse wheel events.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Wheel_Up</b></td>
+
+      <td>Rolls the mouse wheel &ldquo;up&rdquo;</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Wheel_Down</b></td>
+
+      <td>Rolls the mouse wheel &ldquo;down&rdquo;</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Move_Repeat</b></td>
+
+      <td>Called repeatedly during click and drag mouse movements.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Leave</b></td>
+
+      <td>Triggers the event when the mouse leaves the mouserect.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>GetAll</b></td>
+
+      <td>Triggers any mouse event</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>LeftAll</b></td>
+
+      <td>Either single-clicks the left button, releases the left
+button, or moves the mouse while holding down the left mouse button</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>RightAll</b></td>
+
+      <td>Either single-clicks the right button, releases the
+right button, or moves the mouse while holding down the right mouse
+button</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>MiddleAll</b></td>
+
+      <td>Either single-clicks the middle button, releases the
+middle button, or moves the mouse while holding down the middle mouse
+button</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Wheel</b></td>
+
+      <td>Scrolls wheel up or down</td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<hr>
+<h4><a name="Resource Strings"></a>Resource strings (R:)</h4>
+
+<p>The R parameter is used to retrieve strings from the resource file.
+These strings will be localized into the selected language of the user.
+For example, <span style="font-weight: bold;"><br>
+
+(R: HELPID_AUTOPILOT_AUTOTHROTTLE)</span> will result in the text
+"Autothrottle switch" if English is the selected language.<br>
+
+Refer to the document, <a href="HelpIDs.html">HelpIDs</a>, for a full list of the names of
+resource variables.</p>
+
+<hr>
+<h4><a name="Reverse Polish Notation"></a>Reverse Polish Notation</h4>
+
+The evaluation of scripts is done using a stack and reverse polish
+notation. For example, if you want a gauge to show altitude in
+thousands of feet, divide the value of INDICATED ALTITUDE by 1000.<br>
+
+<br>
+
+<span style="font-weight: bold;">(A:INDICATD ALTITUDE,
+feet) 1000 /&nbsp;</span><br>
+
+<br>
+
+To execute an arithmetic operation, put both operands first in the
+script and then include the symbol of operation (the divide symbol in
+this case). This is how some programmable calculators performed
+arithmetic operations in the past. <br>
+
+<br>
+
+This convention works the following way: When the script parser comes
+across a value, it pushes it onto the top of the stack. When the script
+parser comes across an operator, it pops from the stack the number of
+operands that the operator works on (usually one or two values).<br>
+
+<br>
+
+Whatever value is left on top of the stack at the end of the execution
+is the result of the calculated expression. The <a href="#Expression Evaluation Examples">Expression Evaluation
+Examples</a> section provides a list of simple and more complex
+script examples.<br>
+
+<hr>
+
+<h4><a name="Expression Operators"></a>Expression Operators</h4>
+
+<p>There is a long list of operators that can be done within scripts.</p>
+<p><br>
+  
+</p>
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Operator</span></b></td>
+
+      <td><span style="font-weight: bold;">Operation</span></td>
+
+      <td><span style="font-weight: bold;">Arguments</span></td>
+
+      <td><span style="font-weight: bold;">Example</span> </td>
+
+      <td><span style="font-weight: bold;">Result</span> </td>
+    </tr>
+
+    <tr>
+
+      <td><b>Common Operator </b></td>
+
+      <td><b><br>
+
+      </b></td>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+    </tr>
+
+    <tr>
+
+      <td><b>+ </b></td>
+
+      <td>addition</td>
+
+      <td>2</td>
+
+      <td><b>3 5 +</b></td>
+
+      <td>8</td>
+    </tr>
+
+    <tr>
+
+      <td><b>- </b></td>
+
+      <td>subtraction. If the stack contains <span style="font-weight: bold;">A B -</span>, then the
+calculation is A - B.</td>
+
+      <td>2</td>
+
+      <td><b>(L:Value)&nbsp;90
+-</b></td>
+
+      <td>The
+local value minus 90.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>/ </b></td>
+
+      <td>division. If the stack contains <span style="font-weight: bold;">A B /</span>, then the
+calculation is A / B.</td>
+
+      <td>2</td>
+
+      <td><b>5 2 /</b></td>
+
+      <td>2.5</td>
+    </tr>
+
+    <tr>
+
+      <td><b>* </b></td>
+
+      <td>multiplication</td>
+
+      <td>2</td>
+
+      <td><b>pi 2
+*</b></td>
+
+      <td>2 pi</td>
+    </tr>
+
+    <tr>
+
+      <td><b>% </b></td>
+
+      <td>taking modulo</td>
+
+      <td>1</td>
+
+      <td><b>5.3 %</b></td>
+
+      <td>5</td>
+    </tr>
+
+    <tr>
+
+      <td><b>++</b></td>
+
+      <td>increment</td>
+
+      <td>1</td>
+
+      <td><b>4 ++</b></td>
+
+      <td>5</td>
+    </tr>
+
+    <tr>
+
+      <td><b>--</b></td>
+
+      <td>decrement</td>
+
+      <td>1</td>
+
+      <td><b>4 --</b></td>
+
+      <td>3</td>
+    </tr>
+
+    <tr>
+
+      <td><b>/-/<br>
+
+neg</b></td>
+
+      <td>negates
+a number</td>
+
+      <td>1</td>
+
+      <td><b>4 /-/</b></td>
+
+      <td>-4</td>
+    </tr>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Comparison</span>
+      <span style="font-weight: bold;">Operators</span>      </b></td>
+
+      <td><br>      </td>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+    </tr>
+
+    <tr>
+
+      <td><b>== </b></td>
+
+      <td>true if equal</td>
+
+      <td>2</td>
+
+      <td><b>(L:Value)&nbsp;0
+== if{ A }</b></td>
+
+      <td>Operation
+A is carried out if Value is 0.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>!= </b></td>
+
+      <td>true if not equal</td>
+
+      <td>2</td>
+
+      <td><b>(L:Value)&nbsp;0
+!= if{ A }</b></td>
+
+      <td>Operation
+A is carried out if Value is not 0.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>&gt; </b></td>
+
+      <td>true if greater than</td>
+
+      <td>2</td>
+
+      <td><b>(L:Value1)
+(L:Value2) &gt; if{ A } els{ B }</b></td>
+
+      <td>If
+Value1 is greater than Value2, operation A is carried out, otherwise
+operation B is carried out.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>&lt; </b></td>
+
+      <td>true if less</td>
+
+      <td>2</td>
+
+      <td><b>(L:Value1)
+(L:Value2) &lt; if{ A } els{ B }</b></td>
+
+      <td>If
+Value1 is less than Value2, operation A is carried out, otherwise
+operation B is carried out.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>&gt;= </b></td>
+
+      <td>true greater than or equal</td>
+
+      <td>2</td>
+
+      <td><b>(L:Value1)
+(L:Value2) &gt;= if{ A } els{ B }</b></td>
+
+      <td>If
+Value1 is greater than or equal to Value2, operation A is carried out,
+otherwise operation B is carried out.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>&lt;=</b></td>
+
+      <td>true
+if less than or equal</td>
+
+      <td>2</td>
+
+      <td><b>(L:Value1)
+(L:Value2) &lt;= if{ A } els{ B }</b></td>
+
+      <td>If
+Value1 is less than or equal to Value2, operation A is carried out,
+otherwise operation B is carried out.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>?</b></td>
+
+      <td>The
+third operand determines whether the first (True) or second (False) is
+selected.</td>
+
+      <td>3</td>
+
+      <td><b>A
+B True ?</b></td>
+
+      <td>This
+evaluates to A.</td>
+    </tr>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Bit
+Operators</span> </b></td>
+
+      <td><br>      </td>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+    </tr>
+
+    <tr>
+
+      <td><b>&amp; </b></td>
+
+      <td>bitwise AND</td>
+
+      <td>2</td>
+
+      <td><b>5 3
+&amp;</b></td>
+
+      <td>1</td>
+    </tr>
+
+    <tr>
+
+      <td><b>| </b></td>
+
+      <td>bitwise OR</td>
+
+      <td>2</td>
+
+      <td><b>5 3 |</b></td>
+
+      <td>7</td>
+    </tr>
+
+    <tr>
+
+      <td><b>^ </b></td>
+
+      <td>bitwise XOR</td>
+
+      <td>2</td>
+
+      <td><b>5 3 ^</b></td>
+
+      <td>6</td>
+    </tr>
+
+    <tr>
+
+      <td><b>~ </b></td>
+
+      <td>bitwise NOT</td>
+
+      <td>1</td>
+
+      <td><b>5 ~</b></td>
+
+      <td>-6</td>
+    </tr>
+
+    <tr>
+
+      <td><b>&gt;&gt; </b></td>
+
+      <td>shift right operand number of bits</td>
+
+      <td>2</td>
+
+      <td><b>5 3
+&gt;&gt;</b></td>
+
+      <td>0</td>
+    </tr>
+
+    <tr>
+
+      <td><b>&lt;&lt; </b></td>
+
+      <td>shift left operand number of&nbsp;bits</td>
+
+      <td>2</td>
+
+      <td><b>5 3
+&lt;&lt;</b></td>
+
+      <td>40</td>
+    </tr>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Logical
+Operators</span> </b></td>
+
+      <td><br>      </td>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+    </tr>
+
+    <tr>
+
+      <td><b>!, NOT </b></td>
+
+      <td>NOT</td>
+
+      <td>1</td>
+
+      <td><b>(L:Local)
+! (&gt;L:Local)</b></td>
+
+      <td>Toggles
+the variable Local</td>
+    </tr>
+
+    <tr>
+
+      <td><b>&amp;&amp;, AND </b></td>
+
+      <td>AND</td>
+
+      <td>2</td>
+
+      <td><b>(L:Local)
+0xFF00 &amp;&amp; (&gt;L:Local)</b></td>
+
+      <td>The
+variable Local is ANDed with hex 0xFF00</td>
+    </tr>
+
+    <tr>
+
+      <td><b>||, OR </b></td>
+
+      <td>OR</td>
+
+      <td>2</td>
+
+      <td><b>(L:Local)
+07777 OR (&gt;L:Local)</b></td>
+
+      <td>The
+variable Local is ORed with octal 7777.</td>
+    </tr>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Numerical
+Operators</span> </b></td>
+
+      <td><br>      </td>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+    </tr>
+
+    <tr>
+
+      <td><b>abs </b></td>
+
+      <td>Absolute value</td>
+
+      <td>1</td>
+
+      <td><b>-5
+abs</b></td>
+
+      <td>5</td>
+    </tr>
+
+    <tr>
+
+      <td><b>int<br>
+
+flr</b></td>
+
+      <td>Calculates
+nearest integer number which is less than
+the source number</td>
+
+      <td>1</td>
+
+      <td><b>5.98
+flr</b></td>
+
+      <td>5</td>
+    </tr>
+
+    <tr>
+
+      <td><b>rng</b></td>
+
+      <td>Range;
+returns <span style="font-weight: bold;">True</span>
+if the third operand lies between values one and two.</td>
+
+      <td>3</td>
+
+      <td><b>4 7
+6 rng</b></td>
+
+      <td>True</td>
+    </tr>
+
+    <tr>
+
+      <td><b>cos </b></td>
+
+      <td>Cosine (input in radians)</td>
+
+      <td>1</td>
+
+      <td><b>pi
+cos</b></td>
+
+      <td>-1</td>
+    </tr>
+
+    <tr>
+
+      <td><b>lg </b></td>
+
+      <td>Logarithm to base 10</td>
+
+      <td>1</td>
+
+      <td><b>10 lg</b></td>
+
+      <td>1</td>
+    </tr>
+
+    <tr>
+
+      <td><b>min </b></td>
+
+      <td>Minimum</td>
+
+      <td>2</td>
+
+      <td><b>5 2
+min</b></td>
+
+      <td>2</td>
+    </tr>
+
+    <tr>
+
+      <td><b>sin </b></td>
+
+      <td>Sine (input in radians)</td>
+
+      <td>1</td>
+
+      <td><b>pi
+sin</b></td>
+
+      <td>0</td>
+    </tr>
+
+    <tr>
+
+      <td><b>acos </b></td>
+
+      <td>Arc cosine (returns radians)</td>
+
+      <td>1</td>
+
+      <td><b>pi
+acos</b></td>
+
+      <td></td>
+    </tr>
+
+    <tr>
+
+      <td><b>ctg </b></td>
+
+      <td>cotangent (input in radians)</td>
+
+      <td>1</td>
+
+      <td><b>pi
+ctg</b></td>
+
+      <td></td>
+    </tr>
+
+    <tr>
+
+      <td><b>ln </b></td>
+
+      <td>Natural logarithm</td>
+
+      <td>1</td>
+
+      <td><b>2.718282
+ln</b></td>
+
+      <td>1</td>
+    </tr>
+
+    <tr>
+
+      <td><b>sqr </b></td>
+
+      <td>Square</td>
+
+      <td>1</td>
+
+      <td><b>5 sqr</b></td>
+
+      <td>25</td>
+    </tr>
+
+    <tr>
+
+      <td><b>asin </b></td>
+
+      <td>arc sine</td>
+
+      <td>1</td>
+
+      <td><b>pi
+asin</b></td>
+
+      <td></td>
+    </tr>
+
+    <tr>
+
+      <td><b>eps </b></td>
+
+      <td>Floating-point relative accuracy</td>
+
+      <td>1</td>
+
+      <td><b>1 eps </b></td>
+
+      <td>2^(-52) </td>
+    </tr>
+
+    <tr>
+
+      <td><b>log </b></td>
+
+      <td>Logarithm of operand one, to the base of operand two.</td>
+
+      <td>2</td>
+
+      <td><b>8 2
+log</b></td>
+
+      <td>3</td>
+    </tr>
+
+    <tr>
+
+      <td><b>pi </b></td>
+
+      <td>Pi = 3.14159; puts pi on the stack</td>
+
+      <td>0</td>
+
+      <td><b>pi</b></td>
+
+      <td>3.14159</td>
+    </tr>
+
+    <tr>
+
+      <td><b>sqrt </b></td>
+
+      <td>Square root</td>
+
+      <td>1</td>
+
+      <td><b>25
+sqrt</b></td>
+
+      <td>5</td>
+    </tr>
+
+    <tr>
+
+      <td><b>atg2 </b></td>
+
+      <td>arc tangent with two inputs (input in radians)</td>
+
+      <td>2</td>
+
+      <td></td>
+
+      <td></td>
+    </tr>
+
+    <tr>
+
+      <td><b>exp </b></td>
+
+      <td>Exponent; e to the power of the operand</td>
+
+      <td>1</td>
+
+      <td><b>1 exp</b></td>
+
+      <td>2.718282</td>
+    </tr>
+
+    <tr>
+
+      <td><b>max </b></td>
+
+      <td>Maximum</td>
+
+      <td>2</td>
+
+      <td><b>5 2
+max</b></td>
+
+      <td>5</td>
+    </tr>
+
+    <tr>
+
+      <td><b>pow </b></td>
+
+      <td>Power of;&nbsp;the first value to the power of the
+second</td>
+
+      <td>2</td>
+
+      <td><b>2 5
+pow</b></td>
+
+      <td>32</td>
+    </tr>
+
+    <tr>
+
+      <td><b>tg </b></td>
+
+      <td>Tangent (input in radians)</td>
+
+      <td>1</td>
+
+      <td><b>pi tg</b></td>
+
+      <td>0</td>
+    </tr>
+
+    <tr>
+
+      <td><b>atg </b></td>
+
+      <td>arc tangent with one input </td>
+
+      <td>1</td>
+
+      <td><b>pi
+atg</b></td>
+
+      <td></td>
+    </tr>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Special
+Operators</span> </b></td>
+
+      <td><br>      </td>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+    </tr>
+
+    <tr>
+
+      <td><b>div </b></td>
+
+      <td>Divides integers; its result is always an integer</td>
+
+      <td>2</td>
+
+      <td><b>5 3
+div</b></td>
+
+      <td>1</td>
+    </tr>
+
+    <tr>
+
+      <td><b>ceil </b></td>
+
+      <td>Calculates nearest integer number which is bigger than
+the source</td>
+
+      <td>1</td>
+
+      <td><b>4.3
+ceil</b></td>
+
+      <td>5</td>
+    </tr>
+
+    <tr>
+
+      <td><b>near </b></td>
+
+      <td>Calculates the nearest integer number, rounding .5 up.</td>
+
+      <td>1</td>
+
+      <td><b>4.5
+near</b></td>
+
+      <td>5</td>
+    </tr>
+
+    <tr>
+
+      <td><b>dnor<br>
+
+d360<br>
+
+rdeg</b></td>
+
+      <td>Normalizes
+an angle expressed in degrees. The result in an value between 0 and 360.</td>
+
+      <td>1</td>
+
+      <td><b>-15
+dnor</b></td>
+
+      <td>345</td>
+    </tr>
+
+    <tr>
+
+      <td><b>rddg </b></td>
+
+      <td>Converts radians to degrees</td>
+
+      <td>1</td>
+
+      <td><b>pi
+rddg</b></td>
+
+      <td>180</td>
+    </tr>
+
+    <tr>
+
+      <td><b>dgrd </b></td>
+
+      <td>Converts degrees to radians</td>
+
+      <td>1</td>
+
+      <td><b>180
+dgrd</b></td>
+
+      <td>pi</td>
+    </tr>
+
+    <tr>
+
+      <td><b>rnor </b></td>
+
+      <td>Normalizes an angle expressed in radians, the result of
+this operation is between 0 and 2 pi</td>
+
+      <td>1</td>
+
+      <td><b>5 pi      </b></td>
+
+      <td>1.8584</td>
+    </tr>
+
+    <tr>
+
+      <td><b>if{
+.... }</b></td>
+
+      <td>If
+statement, note there is no space between the if and the {</td>
+
+      <td>1</td>
+
+      <td><b>(L:Value)&nbsp;0
+== if{ A }</b></td>
+
+      <td>Operation
+A is carried out if Value is 0.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>els{
+.... }</b></td>
+
+      <td>Else
+statement, note there is no space between the els and the {</td>
+
+      <td>1</td>
+
+      <td><b>(L:Value1)
+(L:Value2) &lt;= if{ A } els{ B }</b></td>
+
+      <td>If
+Value1 is less than or equal to Value2, operation A is carried out,
+otherwise operation B is carried out.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>quit</b></td>
+
+      <td>The
+quit statement allows expression evaluation to stop completely, and
+avoid the use of nesting if{ statements.</td>
+
+      <td>0</td>
+
+      <td><b>pi
+quit (L:Value1) (L:Value2) &lt;= if{ A } els{ B }</b></td>
+
+      <td>pi.
+The rest of the script is ignored.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>g0...gn</b></td>
+
+      <td>Goto
+label. Execution will jump to the specified label. Labels are set by
+entering a colon followed by the label number.</td>
+
+      <td>0</td>
+
+      <td><b>g4</b></td>
+
+      <td>Execution
+jump to <span style="font-weight: bold;">:4</span></td>
+    </tr>
+
+    <tr>
+
+      <td><b>case</b></td>
+
+      <td>Case
+statement</td>
+
+      <td></td>
+
+      <td><b>50 40 30 20 10 5 (L:value) case </b></td>
+
+      <td>The &quot;<b>5</b>&quot; indicates there are five case values, which are selected depending on the evaluation of (L:value).<br>
+      If the evaluation is equal to or greater than 0, but less than 1, the result is 10. If the evaluation is equal to or greater than 1, but less than 2, the result is 20, and so on. </td>
+    </tr>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">String
+Operators</span> </b></td>
+
+      <td><br>      </td>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+    </tr>
+
+    <tr>
+
+      <td><b>lc </b></td>
+
+      <td>Converts a string to lowercase</td>
+
+      <td>1</td>
+
+      <td><b>'ABcd10'
+lc</b></td>
+
+      <td>'abcd10'</td>
+    </tr>
+
+    <tr>
+
+      <td><b>uc<br>
+
+cap </b></td>
+
+      <td>Converts a string to uppercase</td>
+
+      <td>1</td>
+
+      <td><b>'ABcd10'
+uc</b></td>
+
+      <td>'ABCD10'</td>
+    </tr>
+
+    <tr>
+
+      <td><b>chr </b></td>
+
+      <td>Converts a number to a symbol</td>
+
+      <td>1</td>
+
+      <td><b>65
+chr</b></td>
+
+      <td>'A'</td>
+    </tr>
+
+    <tr>
+
+      <td><b>ord </b></td>
+
+      <td>Converts a symbol to an integer</td>
+
+      <td>1</td>
+
+      <td><b>'A'
+ord</b></td>
+
+      <td>65</td>
+    </tr>
+
+    <tr>
+
+      <td><b>scat </b></td>
+
+      <td>Concatenates strings</td>
+
+      <td>2</td>
+
+      <td><b>'abc'
+'red' scat</b></td>
+
+      <td>'abcred'</td>
+    </tr>
+
+    <tr>
+
+      <td><b>schr </b></td>
+
+      <td>Finds a symbol in a string</td>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+    </tr>
+
+    <tr>
+
+      <td><b>scmp </b></td>
+
+      <td>Compares strings, case sensitive</td>
+
+      <td>2</td>
+
+      <td><b>(M:Event)
+'LeftSingle' scmp 0 == if{ A }els{ B }</b></td>
+
+      <td>Performs
+A if the left mouse button has been pressed, otherwisse performs B</td>
+    </tr>
+
+    <tr>
+
+      <td><b>scmi </b></td>
+
+      <td>Compares strings, ignoring case</td>
+
+      <td>2</td>
+
+      <td><b>'left'
+'Left' scmi 0 == if{ 'yes' }</b></td>
+
+      <td>'yes'</td>
+    </tr>
+
+    <tr>
+
+      <td><b>sstr </b></td>
+
+      <td>Finds a substring</td>
+
+      <td>2</td>
+
+      <td><b>'cd' 'abcde' sstr </b></td>
+
+      <td>2</td>
+    </tr>
+
+    <tr>
+
+      <td><b>ssub </b></td>
+
+      <td>Extracts a substring</td>
+
+      <td>2</td>
+
+      <td><b>'ab' 'abcde' ssub </b></td>
+
+      <td>'cde'</td>
+    </tr>
+
+    <tr>
+
+      <td><b>symb </b></td>
+
+      <td>Extracts a single character</td>
+
+      <td>2</td>
+
+      <td><b>'abc'
+1 symb</b></td>
+
+      <td>'b'</td>
+    </tr>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Stack
+Operators</span> </b></td>
+
+      <td><br>      </td>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+    </tr>
+
+    <tr>
+
+      <td><b>b</b></td>
+
+      <td>Backup
+the stack</td>
+
+      <td>0</td>
+
+      <td></td>
+
+      <td></td>
+    </tr>
+
+    <tr>
+
+      <td><b>c </b></td>
+
+      <td>Clears the stack</td>
+
+      <td>0</td>
+
+      <td>stack:
+1 2 3 c</td>
+
+      <td>stack:</td>
+    </tr>
+
+    <tr>
+
+      <td><b>d </b></td>
+
+      <td>Duplicates the value that is on the top of the stack</td>
+
+      <td>1</td>
+
+      <td>stack:
+5 d</td>
+
+      <td>stack:
+5 5</td>
+    </tr>
+
+    <tr>
+
+      <td><b>p </b></td>
+
+      <td>Pops and discards the top value on the stack</td>
+
+      <td>1</td>
+
+      <td>stack:
+1 2 3 p</td>
+
+      <td>stack:
+1 2</td>
+    </tr>
+
+    <tr>
+
+      <td><b>r </b></td>
+
+      <td>Reverses the top and second values on the stack</td>
+
+      <td>2</td>
+
+      <td>stack:
+1 2 3 r</td>
+
+      <td>stack:
+1 3 2</td>
+    </tr>
+
+    <tr>
+
+      <td><b>s0, s1, &hellip; s49 </b></td>
+
+      <td>Stores the top value in an internal register, but does
+not pop it from the stack.</td>
+
+      <td>1</td>
+
+      <td>stack:
+1 2 3 s0</td>
+
+      <td>stack:
+1 2 3<br>
+
+s0: 3</td>
+    </tr>
+
+    <tr>
+
+      <td><b>l0, l1, &hellip; l49 </b></td>
+
+      <td>Loads a value from a register to the top of the stack</td>
+
+      <td>1</td>
+
+      <td>stack:
+1 2 3 s0 l0</td>
+
+      <td>stack:
+1 2 3 3</td>
+    </tr>
+
+    <tr>
+
+      <td><b>sp0, sp1, &hellip; sp49 </b></td>
+
+      <td>Stores the top value and pops it from the stack</td>
+
+      <td>1</td>
+
+      <td>stack:
+1 2 3 sp0</td>
+
+      <td>stack:
+1 2<br>
+
+sp0: 3</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<h5>
+Notes</h5>
+
+<ul>
+
+  <li>Formatted strings use a similar but slightly different syntax, see <a href="#Examples of GaugeStrings">Example of
+Gauge Strings</a>.</li>
+
+  <li>Strings should be entered using single quotes, for example:
+    'abcd'.</li>
+  <li>Hexadecimal numbers can be entered using the 0xf or 0xF
+convention (for example, 0xff or 0xFF00FF00)</li>
+
+  <li>Octal numbers can be entered by using a leading zero. For
+example, 022 is octal 18. Be careful not to enter leading zeros on
+decimal numbers.</li>
+
+  <li>Scientific notation can be used: 5E2 represents 5 x 10
+squared (500), 5E-2 is 0.005</li>
+</ul>
+
+<hr>
+
+<h4><a name="Expression Evaluation Examples"></a>Expression Evaluation Examples</h4>
+
+<br>
+
+The table below gives a range of script examples that can be used for
+aircraft. See also the examples for the <a href="#GaugeText Objects">GaugeText</a>
+object, and a few examples in the <a href="#Gauge Color Scripts">Gauge Color Scripts</a>
+section.<br>
+
+<br>
+
+<h5><a name="Aircraft Script Examples"></a>Aircraft Script Examples</h5>
+
+<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b>#</b></td>
+
+      <td><span style="font-weight: bold;">Expression</span></td>
+
+      <td><span style="font-weight: bold;">Gauge</span></td>
+
+      <td><span style="font-weight: bold;">Description</span></td>
+    </tr>
+
+    <tr>
+
+      <td><b>1</b></td>
+
+      <td><b>(A:LIGHT
+NAV, bool)</b></td>
+
+      <td>Navigation
+Lights</td>
+
+      <td>Returns
+      <span style="font-weight: bold;">True</span>
+(1) if the navigation light switch is on, <span style="font-weight: bold;">False</span> (0) otherwise.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>2</b></td>
+
+      <td><b>(A:TRAILING
+EDGE FLAPS LEFT ANGLE, radians) 1.1 *</b></td>
+
+      <td>Flaps</td>
+
+      <td>Returns
+the left flaps
+angle in radians, multiplied by 1.1. Multiplications like this can help
+reduce rounding errors when making comparisons with integer settings.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>3</b></td>
+
+      <td><b>(A:PARTIAL
+PANEL ELECTRICAL,enum) !</b></td>
+
+      <td>Electrical
+gauges</td>
+
+      <td>The
+enum for this variable is (0 = OK, 1= fail, 2 = blank), so in this
+case the result is inverted by the "!" operator to give 1 = OK and 0 =
+fail.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>4</b></td>
+
+      <td><b>(A:PLANE
+HEADING DEGREES GYRO, degrees) /-/ dgrd</b></td>
+
+      <td>HSI
+Compass ring</td>
+
+      <td>Returns
+the aircraft heading negated and converted to radians.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>5</b></td>
+
+      <td><b>(A:NAV
+GSI:1,percent) 250 /</b></td>
+
+      <td>HSI
+Glideslope deflection</td>
+
+      <td>Returns
+the percentage for the GSI (Glideslope deviation indicator) for Nav1,
+divided by 250. </td>
+    </tr>
+
+    <tr>
+
+      <td><b>6</b></td>
+
+      <td><b>(P:Units
+of measure, enum) 2 == if{ (A:RADIO HEIGHT, meters) } els{ (RADIO
+HEIGHT, feet) }</b></td>
+
+      <td>Radio
+Height (or Radar Altitude)&nbsp; needle</td>
+
+      <td>The
+Units of measure enum is:<br>
+
+      0 = English<br>
+
+      1 = Metric (with altitude in feet)<br>
+
+      2 = Metric (with altitude in meters)<br>
+
+So if this enum value is 2, the <span style="font-weight: bold;">If</span>
+statement is evaluated, otherwise the <span style="font-weight: bold;">Els</span> statement is
+evaluated.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>7</b></td>
+
+      <td><b>(A:PARTIAL
+PANEL ELECTRICAL,enum)! if{ 25 (A:GENERAL ENG FUEL PRESSURE:1, psi) - }
+els{ 25.5 }</b></td>
+
+      <td>Fuel
+Pressure</td>
+
+      <td>If
+the Partial Panel
+Electrical is OK (see Example 3 above) then 25 minus the fuel reading
+for engine 1&nbsp;is returned, if not the fixed value of 25.5 is
+returned.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>8</b></td>
+
+      <td><b>(A:FUEL
+TANK SELECTOR 1, enum) 0 == <br>
+
+(A:FUEL TANK SELECTOR 1, enum) 3 == or<br>
+
+if { pi 2 / } els{ 0 }<br>
+
+      </b></td>
+
+      <td>Right
+Valve of Fuel Gauge</td>
+
+      <td>If
+all the fuel tanks
+are selected (FUEL TANK SELECTOR enum value is 0) or the right fuel
+tank is selected (the enum value is 3) then the fuel valve is set at
+pi/2, otherwise it is set at zero.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>9</b></td>
+
+      <td><b>(A:NAV1
+OBS, degrees) d
+(A:PARTIAL PANEL HEADING, bool) (A:PARTIAL PANEL ELECTRICAL, bool) or 0
+== <br>
+
+if{ (A:PLANE HEADING DEGREES GYRO, degrees) 90 - - } dgrd</b></td>
+
+      <td>GPS
+element of HSI</td>
+
+      <td>If
+the
+PARTIAL PANEL HEADING is false and the PARTIAL PANEL ELECTIRCAL is
+false, then this expression returns the NAV1 OBS reading
+&nbsp;minus
+the (PLANE HEADING DEGREES GYRO reading minus 90), converted to radians.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>10</b></td>
+
+      <td><b>(P:Units
+of measure, enum) 2 == <br>
+
+if{ (A:INDICATED ALTITUDE, meters) } els{
+(A:INDICATED ALTITUDE, feet) } 100000 / 360 * dgrd</b></td>
+
+      <td>Altimeter
+ten thousand foot needle</td>
+
+      <td>Divides
+the altitude by one hundred thousand, then multiplies by 360, and
+converts the result from degrees to radians.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>11</b></td>
+
+      <td><b>(L:Show
+Volts 1,bool) <br>
+&nbsp;&nbsp;&nbsp; if{&nbsp; (A:ELECTRICAL GENALT BUS
+VOLTAGE:1, volts) 2 *<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } els{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(A:ELECTRICAL GENALT BUS AMPS:1, amps) }<br>
+
+      </b></td>
+
+      <td>Amps/Volts&nbsp;</td>
+
+      <td>If
+the local
+variable Show Volts 1 is true, the bus voltage for engine 1, multiplied
+by 2, is returned. Otherwise the bus amps for engine 1 is returned.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>12</b></td>
+
+      <td><b>(A:ADF
+Radial:1,degrees) 360 + <br>
+
+d360 dgrd</b></td>
+
+      <td>ADF</td>
+
+      <td>The
+ADF
+radial value in degrees is added to 360 and then normalized to a value
+between 0 and 360. It is then converted to radians.</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<h6>Notes</h6>
+
+<ul>
+
+  <li>Simulation variables are not case-sensitive, they can be
+all upper, all lower or a mix of upper and lower case in your scripts.</li>
+
+</ul>
+
+<hr>
+<h4>The Infix2Postfix Tool <a name="The Infix2Postfix Tool"></a></h4>
+<p>The Infix2Postfix tool makes it easier to both understand the logic of existing postfix (often called reverse Polish) notation, and enables the writing of scripts in the more normal infix notation familiar to all programmers. The Infix2Posfix tool is in the <i>Panels and Gauges SDK </i>folder. Click on it to run it. The following screen shots show a conversion from infix to postfix, and vice versa. Use the <i>Copy</i> button to copy the postfix notation to the clipboard, so that it can be pasted into a gauge script. Alternatively use the <i>File</i> menu to select an existing XML gauge file, and you can then step through the scripts in the file, and examine the conversion to infix. The syntax for the infix notation is similar to C# or C++, and is available in a text file through an option in the <i>Help</i> menu.</p>
+
+<h6>Note</h6>
+<p>This tool is for educational purposes only, there are some scripts that it will not convert correctly. </p>
+
+<table class="T1" cellspacing="2" cellpadding="4">
+  <tr>
+    <td><h5>Converting from infix to postfix </h5></td>
+  </tr>
+  <tr>
+    <td><b><img src="Images/Infix1.JPG" width="707" height="570"></b></td>
+  </tr>
+  <tr>
+    <td><h5>Converting from postfix to infix </h5></td>
+  </tr>
+  <tr>
+    <td><b><img src="Images/Infix2.JPG" width="707" height="570"></b></td>
+  </tr>
+</table>
+<hr>
+<h3><a name="Gauge Objects"></a>Gauge Objects</h3>
+<p>Gauge objects are used to specify a complete gauge, including the relevant bitmaps, background, mouse
+areas, tooltips, and the math to calculate the readings that the gauge
+should be showing. The actual position of a gauge on the screen is
+determined in the panel.cfg file.</p>
+<table class="T1" cellpadding="4" cellspacing="2">
+  <tbody>
+    <tr>
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+      <td><span style="font-weight: bold;">Description</span></td>
+    </tr>
+    <tr>
+      <td><b>id</b></td>
+      <td>A
+        string that can be edited to help identify the object.</td>
+    </tr>
+    <tr>
+      <td><b>ArtDirectory</b></td>
+      <td>The
+        absolute or relative path to the directory containing all the images
+        for the gauge. Note that this is just for the purposes of the tool, not the simulation. The art should be cabbed up along with the XML files
+        when completed.</td>
+    </tr>
+    <tr>
+      <td><b>Element</b></td>
+      <td>A
+        list of <a href="#Element Objects">Elements</a>.</td>
+    </tr>
+    <tr>
+      <td><b>FloatPosition</b></td>
+      <td>Unused.</td>
+    </tr>
+    <tr>
+      <td><b>Image</b></td>
+      <td>A
+        list of <a href="#Image Objects">Images</a>.</td>
+    </tr>
+    <tr>
+      <td><b>KeyMap</b></td>
+      <td>A list of <a href="#KeyMap Objects">KeyMaps</a>. </td>
+    </tr>
+    <tr>
+      <td><b>Macro</b></td>
+      <td>A
+        list of <a href="#Macro Objects">Macros</a>.</td>
+    </tr>
+    <tr>
+      <td><b>MouseArea</b></td>
+      <td>A
+        list of <a href="#MouseArea Objects">Mouse areas</a>.</td>
+    </tr>
+    <tr>
+      <td><b>Size</b></td>
+      <td>Two
+        integers, giving the width and height of the gauge in pixels. This is
+        often the exact size of the background image loaded directly using an <a href="#Image Objects">Image</a> object.</td>
+    </tr>
+    <tr>
+      <td><b>Update</b></td>
+      <td>A
+        list of <a href="#Update Objects">Updates</a>.</td>
+    </tr>
+    <tr>
+      <td><b>Update_When_Hidden</b></td>
+      <td>Set
+        to <span style="font-weight: bold;">True</span> if
+        the gauge should be updated even if it is hidden from view.</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+Gauge objects can be the parent of <a href="#Comment Objects">Comment</a>
+objects, <a href="#Element Objects">Element</a>
+objects, <a href="#Image Objects">Image</a>
+objects, <a href="#Macro Objects">Macro</a>
+objects, <a href="#MouseArea Objects">MouseArea</a>
+objects and <a href="#Update Objects">Update</a>
+objects.<br>
+
+<br>
+
+<hr>
+
+<h3><a name="Comment Objects"></a>Comment Objects</h3>
+
+Comment objects are used to add information to the design of the gauge,
+&nbsp;to help in the design or maintenance of that gauge, the text
+will not appear anywhere to a user.<br>
+
+<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+
+      <td><span style="font-weight: bold;">Description</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>id</b></td>
+
+      <td>A
+string that can be edited to help identify the object.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Value</b></td>
+
+      <td>The
+comment string.</td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+
+Comment objects cannot be the parent of any other object.<br>
+
+<br>
+
+<hr>
+
+<h3><a name="Element Objects"></a>Element Objects</h3>
+
+Element objects are the most important sub-objects of gauges, and are
+used to specify all the components of the gauge. <br>
+
+<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+
+      <td><span style="font-weight: bold;">Description</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>id</b></td>
+
+      <td>A
+string that can be edited to help identify the object.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>FloatPosition</b></td>
+
+      <td>Two
+floating point numbers, giving the top left hand position of the
+element relative to the top left hand position (0,0) of the gauge, in
+pixels.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>LeftScript</b></td>
+
+      <td>An
+optional&nbsp;<a href="#Expression Evaluation">script</a>
+that evaluates the top left hand X position of the element, and
+overrides the FloatPosition. (Only called when the gauge is first loaded)</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>TopScript</b></td>
+
+      <td>An
+optional&nbsp;<a href="#Expression Evaluation">script</a>
+that evaluates the top left hand Y position of the element, and
+overrides the FloatPosition. (Only called when the gauge is first loaded)</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Visibility</b></td>
+
+      <td>An
+optional <a href="#Expression Evaluation">script</a>
+to evaluate the visibility. For example:<br>
+
+      <span style="font-weight: bold;">(A:PARTIAL PANEL
+ELECTRICAL, enum)!</span><br>
+
+The enum for this variable is (0 = OK, 1= fail, 2 = blank), so in this
+case the result is inverted by the "!" operator to give 1 = OK and 0 =
+fail. See the <a href="../../Core Utilities Kit/Variables/Simulation Variables.html">Simulation
+Variables</a> document for details of all the variables. </td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>SizeScale</b></td>
+
+      <td>Float
+value to scale the size of the element, default is 1.000.</td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+
+Element objects can be the parent of &nbsp;<a href="#Comment Objects">Comment</a> objects, <a href="#Arc Objects">Arc</a>
+objects, <a href="#Circle Objects">Circle</a>
+objects, <a href="#ClipRect Objects">ClipRect</a> objects, <a href="#CustomDraw Objects">CustomDraw</a>
+objects, <a href="#Element Objects">Element</a>
+objects, <a href="#Ellipse Objects">Ellipse</a>
+objects, <a href="#Image Objects">Image</a>
+objects, <a href="#GaugeText Objects">GaugeText</a>
+objects,
+<a href="#HorizontalLine Objects">HorizontalLine</a>
+objects, <a href="#MaskImage Objects">MaskImage</a>
+objects, <a href="#Pie Objects">Pie</a> objects, <a href="#Polygon Objects">Polygon</a>
+objects, <a href="#Polyline Objects">PolyLine</a>
+objects, <a href="#Rectangle Objects">Rectangle</a>
+objects, <a href="#Rotation Objects">Rotation</a>
+objects, <a href="#Select Objects">Select</a>
+objects, <a href="#Shift Objects">Shift</a>
+objects, and <a href="#VerticalLine Objects">VerticalLine</a>
+objects.<br>
+
+
+
+<hr><h4><a name="Arc Objects"></a>Arc Objects</h4>
+
+Arc objects are used to draw arcs (curved lines) as part of the gauge.<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+
+      <td><span style="font-weight: bold;">Description</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>id</b></td>
+
+      <td>A
+string that can be edited to help identify the object.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Axis<br>
+
+      </b></td>
+
+      <td>The
+x and y co-ordinates of the center of the arc, in pixels.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Bright</b></td>
+
+      <td>Set
+to <span style="font-weight: bold;">True</span> if
+the graphic remains at its normal color at night, otherwise it will be
+darkened.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Radius</b></td>
+
+      <td>Integer
+radius of the arc, in pixels.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>LineWidth</b></td>
+
+      <td>Integer
+line width, in pixels.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>LineColor</b></td>
+
+      <td>See <a href="#Gauge Colors">Gauge Colors</a>.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>LineColorScript</b></td>
+
+      <td>If
+used, this overrides LineColor. See <a href="#Gauge Color Scripts">Gauge
+Color Scripts</a>.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>StartAngle</b></td>
+
+      <td>The
+integer start angle of the arc, in degrees.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>EndAngle</b></td>
+
+      <td>The
+integer end angle of the arc, in degrees.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>StartAngleScript</b></td>
+
+      <td>Optional
+      <a href="#Expression Evaluation">script</a>
+to evaluate the start angle, overriding StartAngle.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>EndAngleScript</b></td>
+
+      <td>Optional
+      <a href="#Expression Evaluation">script</a>
+to evaluate the end angle, overriding EndAngle.</td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+
+<p>Arc objects can be the parent of <a href="#Comment Objects">Comment</a>
+objects.</p>
+
+
+
+<hr><h4><a name="Gauge Colors"></a>Gauge Colors</h4>
+
+<p>Simple line, text and fill colors can be entered as RGB hex values
+(such as 0xFFFFFF) or text strings. Do not use quotes. See the <a href="Gauge Colors.html">XML Gauge Colors</a> file for a
+full list of colors. Note that colors are entered in the format 0xBBGGRR. </p>
+
+<h5><a name="Gauge Color Scripts"></a>Gauge Color Scripts</h5>
+
+Scripts can be used to evaluate a color. The same expression evaluation
+is used as for numerical values, but in this case the script must
+evaluate to a string containing either the name of the color, or the
+RGB hex value of the color. In this case strings must be enclosed in
+single quotes.&nbsp;<br>
+
+<br>
+
+For example, the following scripts evaluate to red if the indicated
+airspeed is greater than 300 knots, otherwise to blue.<br>
+
+<ul>
+
+  <li><span style="font-weight: bold;">'red' 'blue'
+(A:AIRSPEED INDICATED, knots) 300 &gt; ?</span></li>
+
+  <li><span style="font-weight: bold;"> '0x0000ff' '0xff0000' (A:AIRSPEED INDICATED, knots) 300 &gt; ?</span></li>
+
+  <li><span style="font-weight: bold;">0x0000ff 0xff0000&nbsp;(A:AIRSPEED INDICATED, knots) 300 &gt; ?</span></li>
+</ul>
+
+<p>See the <a href="Gauge Colors.html">XML Gauge Colors</a> file for a
+full list of colors. And refer to <a href="#Expression Evaluation">Expression
+Evaluation</a> for full details on writing scripts.</p>
+
+
+
+<hr><h4><a name="Circle Objects"></a>Circle Objects</h4>
+
+Circle objects are used to draw circles as part of the gauge.
+<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+
+      <td><span style="font-weight: bold;">Description</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>id</b></td>
+
+      <td>A
+string that can be edited to help identify the object.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Axis<br>
+
+      </b></td>
+
+      <td>The
+x and y co-ordinates of the center of the circle, in pixels.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Bright</b></td>
+
+      <td>Set
+to <span style="font-weight: bold;">True</span> if
+this component is not to be dimmed at night time.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Radius</b></td>
+
+      <td>Integer
+radius of the circle, in pixels.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>FillColor</b></td>
+
+      <td>See <a href="#Gauge Colors">Gauge Colors</a>.
+If no fill color is set, only the outline of the circle will be drawn.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>FillColorScript</b></td>
+
+      <td>If
+used, this overrides FillColor. See <a href="#Gauge Color Scripts">Gauge
+Color Scripts</a>.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>LineWidth</b></td>
+
+      <td>Integer
+line width, in pixels.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>LineColor</b></td>
+
+      <td>See <a href="#Gauge Colors">Gauge Colors</a>.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>LineColorScript</b></td>
+
+      <td>If
+used, this overrides LineColor. See <a href="#Gauge Color Scripts">Gauge
+Color Scripts</a>.</td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<p>Circle objects can be the parent of <a href="#Comment Objects">Comment</a>
+  objects.</p>
+<hr><h4>ClipRect Objects<a name="ClipRect Objects"></a></h4>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+  <tbody>
+    <tr>
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+      <td><span style="font-weight: bold;">Description</span></td>
+    </tr>
+    <tr>
+      <td><b>id</b></td>
+      <td>A
+        string that can be edited to help identify the object.</td>
+    </tr>
+    <tr>
+      <td><b>FloatPosition<br>
+      </b></td>
+      <td>      Two
+floating point numbers, giving the top left hand position of the
+rectangle relative to the top left hand position (0,0) of the parent object, in
+pixels.</td>
+    </tr>
+    <tr>
+      <td><b>Size</b></td>
+      <td>Two
+integers, the width and height of the  box in pixels.</td>
+    </tr>
+  </tbody>
+</table>
+<hr><h4><a name="CustomDraw Objects"></a>CustomDraw Objects</h4>
+
+CustomDraw objects are used to provide input to specially written
+library code (a C or C++ dll) that is to calculate the updating of the
+gauge element. The GPS system is an example of a complex instrument that requires many CustomDraw objects.
+<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+
+      <td><span style="font-weight: bold;">Description</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>id</b></td>
+
+      <td>A
+string that can be edited to help identify the object.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Size</b></td>
+
+      <td></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Name<br>
+
+      </b></td>
+
+      <td></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>CustomDrawParam</b></td>
+
+      <td>List
+of <a href="#CustomDrawParam Objects">CustomDrawParam</a>
+objects.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Bright</b></td>
+
+      <td>Set
+to <span style="font-weight: bold;">True</span> if
+this component is not to be dimmed at night time.</td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<p>CustomDraw objects can be the parent of <a href="#Comment Objects">Comment</a>
+objects and <a href="#CustomDrawParam Objects">CustomDrawParam</a>
+objects.</p>
+
+<hr><h5><a name="CustomDrawParam Objects"></a>CustomDrawParam Objects</h5>
+
+CustomDrawParam objects provide name-value pairs to be provided as
+input to&nbsp;custom gauge library code.
+<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+
+      <td><span style="font-weight: bold;">Description</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>id</b></td>
+
+      <td>A
+string that can be edited to help identify the object.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Name<br>
+
+      </b></td>
+
+      <td><br>
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Value</b></td>
+
+      <td></td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+
+CustomDraw objects can be the parent of <a href="#Comment Objects">Comment</a>
+objects.<br>
+
+
+<hr><h4><a name="Ellipse Objects"></a>Ellipse Objects</h4>
+
+<p>Ellipse objects are used to draw ellipses as part of the gauge.
+  
+</p>
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+
+      <td><span style="font-weight: bold;">Description</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>id</b></td>
+
+      <td>A
+string that can be edited to help identify the object.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Axis<br>
+
+      </b></td>
+
+      <td>The
+x and y co-ordinates of the center of the ellipse, &nbsp;in pixels.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Bright</b></td>
+
+      <td>Set
+to <span style="font-weight: bold;">True</span> if
+this component is not to be dimmed at night time.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Height</b></td>
+
+      <td>The
+height of the ellipse in pixels.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Width</b></td>
+
+      <td>The
+width of the ellipse in pixels.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>FillColor</b></td>
+
+      <td>See <a href="#Gauge Colors">Gauge Colors</a>.&nbsp;
+If no fill color is set, only the outline of the ellipse will be drawn.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>FillColorScript</b></td>
+
+      <td>If
+used, this overrides FillColor. See <a href="#Gauge Color Scripts">Gauge
+Color Scripts</a>.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>LineWidth</b></td>
+
+      <td>The
+line width in pixels.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>LineColor</b></td>
+
+      <td>See <a href="#Gauge Colors">Gauge Colors</a>.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>LineColorScript</b></td>
+
+      <td>If
+used, this overrides LineColor. See <a href="#Gauge Color Scripts">Gauge
+Color Scripts</a>.</td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+
+Ellipse objects can be the parent of <a href="#Comment Objects">Comment
+objects.</a><br>
+
+
+
+<hr><h4><a name="GaugeText Objects"></a>GaugeText Objects</h4>
+
+<p>GaugeText objects are used to write specific text to appear as a
+  reading on the gauge. This is used, for example, with the selected
+  frequency for Com and Nav, with the selected font being Digital.</p>
+<p><br>
+  
+</p>
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+
+      <td><span style="font-weight: bold;">Description</span></td>
+    </tr>
+
+    <tr>
+
+      <td><b>id</b></td>
+
+      <td>A
+string that can be edited to help identify the object.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>Alpha</b></td>
+
+      <td>Set
+to <span style="font-weight: bold;">True</span> if
+the image should be interpreted as having an alpha channel.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>Axis</b></td>
+
+      <td>The
+x
+and y co-ordinates of the center of the text, in pixels. If rotation is
+applied to the text, then this is the point that it will rotate around.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>BackgroundColor</b></td>
+
+      <td>See <a href="#Gauge Colors">Gauge Colors</a>.
+If a background color is not set, and Transparent is  set to <span style="font-weight: bold;">True</span>, then the text
+will be drawn without any surrounding rectangle. The default background
+color is black.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>BackgroundColorScript</b></td>
+
+      <td>If
+used, this overrides BackgroundColor. See <a href="#Gauge Color Scripts">Gauge
+Color Scripts</a>.</td>
+    </tr>
+
+
+    <tr>
+
+      <td><b>BlinkCode</b></td>
+
+      <td><a href="#Expression Evaluation">Script</a>
+that evaluates how the text should blink. Note that the blinking will
+not occur in the tool.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>Bold</b></td>
+
+      <td>Set
+to <span style="font-weight: bold;">True</span> for
+bold text.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>Bright</b></td>
+
+      <td>Set
+to <span style="font-weight: bold;">True</span> if
+this component is not to be dimmed at night time.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>Caption</b></td>
+
+      <td>Unused.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>Charset</b></td>
+
+      <td>One of: DEFAULT, ANSI, SYMBOL or OEM. </td>
+    </tr>
+
+    <tr>
+
+      <td><b>DegreesPointsTo</b></td>
+
+      <td>The
+starting value for a rotation, in degrees.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>Fixed</b></td>
+
+      <td>Set
+to <span style="font-weight: bold;">True</span> if
+all text should be on a single line.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>FontFace</b></td>
+
+      <td>Text
+font to use, for example: ARIAL, HELVETICA, COURIER NEW, TIMES NEW
+ROMAN.</td>
+    </tr>
+
+    <tr>
+      <td><b>FontFaceLocalize</b></td>
+      <td>Set to True to indicate that a localized (local language) font should be searched for. </td>
+    </tr>
+    <tr>
+
+      <td><b>FontColor</b></td>
+
+      <td>See <a href="#Gauge Colors">Gauge Colors</a>.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>FontColorScript</b></td>
+
+      <td>If
+used, this overrides FontColor. See <a href="#Gauge Color Scripts">Gauge
+Color Scripts</a>.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>FontHeight</b></td>
+
+      <td>Height
+of the characters in pixels.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>FontHeightScript</b></td>
+
+      <td>If
+used, overrides FontHeight. Script to evaluate the font height.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>FontWeight</b></td>
+
+      <td>Integer,
+0 for normal text. Increase for bolder text.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>GaugeString</b></td>
+
+      <td>The
+text to be displayed. If the text is to be shown as-is, do not put it
+in quotes, just enter the text. This can also be a <a href="#Expression Evaluation">script</a>,
+in which case precede the script with a&nbsp; % mark to indicate
+that the
+contained text should be evaluated as a normal script. For example,<br>
+
+      <span style="font-weight: bold;">%(A:GENERAL ENG
+RMP:1, rpm)%!d!<br>
+      </span>The<span style="font-weight: bold;">
+%!d!</span>
+at the end specifies that the result should be interpreted as a decimal
+number. There should not be a space between the % and the !.<br>
+
+The other options are <span style="font-weight: bold;">!f!</span>
+for a float and <span style="font-weight: bold;">!s!</span>
+for a string. Decimal and floating point numbers can be formatted
+further, see the <a href="#Examples of Number Formatting">examples</a>
+below.<br>
+
+The standard escape codes, such as <span style="font-weight: bold;">\n</span>
+for newline and<span style="font-weight: bold;"> \t</span>
+for tab, work in gauge strings, along with a number of special <a href="#Escape Codes">escape codes</a>. <br>
+
+See the table of <a href="#Examples of GaugeStrings">GaugeString</a>
+examples below. <span style="font-weight: bold;"></span></td>
+    </tr>
+
+    <tr>
+
+      <td><b>HilightColor</b></td>
+
+      <td>The
+color to use when the text is highlighted. See <a href="#Gauge Colors">Gauge Colors</a>.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>HorizontalAlign</b></td>
+
+      <td>One
+of:<br>
+
+      <span style="font-weight: bold;">LEFT</span><br style="font-weight: bold;">
+
+      <span style="font-weight: bold;">CENTER</span><br style="font-weight: bold;">
+
+      <span style="font-weight: bold;">RIGHT</span></td>
+    </tr>
+
+    <tr>
+
+      <td><b>Italic</b></td>
+
+      <td>Set
+to <span style="font-weight: bold;">True</span> for
+italic text.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>Length</b></td>
+
+      <td>The
+maximum number of characters in the string to display.</td>
+    </tr>
+
+    <tr>
+      <td><b>LineSpacing</b></td>
+      <td>Line spacing in pixels. </td>
+    </tr>
+    <tr>
+
+      <td><b>Luminous</b></td>
+
+      <td>Set
+to <span style="font-weight: bold;">True</span> if
+the text illuminates at night.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>Multiline</b></td>
+
+      <td>Set
+to <span style="font-weight: bold;">True</span> if
+there can be more than one line of text.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>PointsTo</b></td>
+
+      <td>One
+of:<br>
+
+      <span style="font-weight: bold;">NORTH</span><br style="font-weight: bold;">
+
+      <span style="font-weight: bold;">EAST</span><br style="font-weight: bold;">
+
+      <span style="font-weight: bold;">SOUTH</span><br style="font-weight: bold;">
+
+      <span style="font-weight: bold;">WEST</span></td>
+    </tr>
+
+    <tr>
+
+      <td><b>ScrollY</b></td>
+
+      <td>An
+optional <a href="#Expression Evaluation">script</a>
+that is used to determine by how many pixels the text should be
+scrolled.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>Size</b></td>
+
+      <td>Two
+integers, the width and height of the text box in pixels.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>HeightScript</b></td>
+
+      <td>Optional
+      <a href="#Expression Evaluation">script</a>
+that overrides Size, calculating the height of the&nbsp;text box.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>WidthScript</b></td>
+
+      <td>Optional
+      <a href="#Expression Evaluation">script</a>
+that overrides Size, calculating the width of the&nbsp;text box.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>StrikeThrough</b></td>
+
+      <td>Set
+to <span style="font-weight: bold;">True</span> for
+strikethrough text, for example <span style="text-decoration: line-through;">STRIKETHROUGH</span></td>
+    </tr>
+
+    <tr>
+
+      <td><b>Tabs</b></td>
+
+      <td>Describes
+the location of tab stops for the string.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>Transparent</b></td>
+
+      <td>Set
+to <span style="font-weight: bold;">True</span> if
+the text is not to be displayed with a surrounding rectangle of the
+background color.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>Underline</b></td>
+
+      <td>Set
+to <span style="font-weight: bold;">True</span> for
+underlined text.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>VerticalAlign</b></td>
+
+      <td>One
+of:<br>
+
+      <span style="font-weight: bold;">TOP</span><br style="font-weight: bold;">
+
+      <span style="font-weight: bold;">CENTER</span><br style="font-weight: bold;">
+
+      <span style="font-weight: bold;">BOTTOM</span></td>
+    </tr>
+
+    <tr>
+
+      <td><b>WidthFit</b></td>
+
+      <td>Set
+to <span style="font-weight: bold;">True</span> if
+the text should be expanded to fit the width of the text box.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+  
+  GaugeText objects can be the parent of <a href="#AlternateColor">AlternateColor</a> and <a href="#AlternateFont">AlternateFont</a> objects, and <a href="#Comment Objects">Comment</a>
+  and <a href="#Image Objects">Image</a>
+objects.</p>
+
+<hr><h5>AlternateColor<a name="AlternateColor"></a></h5>
+<p>Changes a section of the text to a different color. Refer to the <a href="#Escape Codes">Escape Codes</a> section on the codes to use to turn an alternate font color on and off. <br>
+</p>
+<table class="T1" cellpadding="4" cellspacing="2">
+  <tbody>
+    <tr>
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+      <td><span style="font-weight: bold;">Description</span></td>
+    </tr>
+    <tr>
+      <td><b>id</b></td>
+      <td>A
+        string that can be edited to help identify the object.</td>
+    </tr>
+    
+    <tr>
+      <td><b>FontColor</b></td>
+      <td>New color for the text.  See <a href="#Gauge Colors">Gauge Colors</a>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>AlternateColor objects can be the parent of <a href="#Comment Objects">Comment objects.</a>
+
+<hr><h5>AlternateFont<a name="AlternateFont"></a></h5>
+<p>Changes a section of the text to a different font. Refer to the <a href="#Escape Codes">Escape Codes</a> section on the codes to use to turn an alternate font  on and off. Note that there can be several alternate fonts. <br>
+</p>
+<table class="T1" cellpadding="4" cellspacing="2">
+  <tbody>
+    <tr>
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+      <td><span style="font-weight: bold;">Description</span></td>
+    </tr>
+    <tr>
+      <td><b>id</b></td>
+      <td>A
+        string that can be edited to help identify the object.</td>
+    </tr>
+    <tr>
+      <td><b>Charset</b></td>
+      <td>One of: DEFAULT, ANSI, SYMBOL or OEM. </td>
+    </tr>
+    <tr>
+      <td><b>FontFace</b></td>
+      <td>Text
+font to use, for example: ARIAL, HELVETICA, COURIER NEW, TIMES NEW
+ROMAN.</td>
+    </tr>
+    <tr>
+      <td><b>FontFaceLocalize</b></td>
+      <td>Set to True to indicate that a localized (local language) font should be searched for. </td>
+    </tr>
+    <tr>
+      <td><b>FontHeight</b></td>
+      <td>Height
+of the characters in pixels.</td>
+    </tr>
+    <tr>
+      <td><b>FontWeight</b></td>
+      <td>Integer,
+0 for normal text. Increase for bolder text.</td>
+    </tr>
+	<tr><td><b>Bold</b></td><td>Set to True for bold text.</td></tr>
+	<tr><td><b>Ital</b></td><td>Set to True for italic text.</td></tr>
+  </tbody>
+</table>
+
+<p>AlternateFont objects can be the parent of <a href="#Comment Objects">Comment objects.</a></p>
+
+<hr><h5><a name="Formatting Numbers"></a>Formatting Numbers</h5>
+
+The format for numbers is contained within the !...! marks.<br>
+
+The last letter is required and is case-sensitive, is the formatting of
+the variable, where:<br>
+
+<ul>
+
+  <li>s = string.&nbsp; </li>
+
+  <li>d = decimal number (integer).&nbsp; If the number is
+not an
+integer, it is rounded to the nearest integer.&nbsp; Note that
+rounding, not truncation occurs. </li>
+
+  <li>f = number (floating point)</li>
+
+</ul>
+
+The formatting letter can be preceded by a number, which is the minimum
+number of digits to display, and is optional. For decimal
+numbers&nbsp;the following rules apply:
+<ul>
+
+  <li>If d is preceded by the digit &quot;0&quot;, then
+leading zeros are added if necessary.</li>
+
+  <li>If d is preceded by &quot;-&quot;, text is
+left-aligned.</li>
+
+  <li>If d is preceded by &quot;+&quot;,&nbsp; a
+&quot;+&quot;
+symbol is indicated in front of the number when the number is greater
+than 0 (a &quot;-&quot; is always used to indicate numbers
+less than
+0).</li>
+
+  <li>If d is preceded by &quot; &quot; (space),
+leading spaces are added if necessary.</li>
+
+</ul>
+
+For floating point numbers, the following rule applies:<br>
+
+<ul>
+
+  <li>If a decimal point is used in the formatting number, the
+digit
+after the decimal point specifies the number of digits to display after
+the decimal point.</li>
+
+</ul>
+
+<h6><a name="Examples of Number Formatting"></a>Examples of Number Formatting</h6>
+
+
+
+<table class="T1" cellpadding="4" cellspacing="4">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">String</span></b></td>
+
+      <td><span style="font-weight: bold;">Result</span> </td>
+
+      <td><span style="font-weight: bold;">Description</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td style="font-weight: bold;"><b>%( 12.34 )%!4.3f!</b></td>
+
+      <td>12.340</td>
+
+      <td>The 4 in 4.3 is ignored.</td>
+
+    </tr>
+
+    <tr>
+
+      <td style="font-weight: bold;"><b>%( 12.34 )%!04.3f!</b></td>
+
+      <td>12.340</td>
+
+      <td>Leading &quot;0&quot;s are not added to
+floating point numbers.</td>
+
+    </tr>
+
+    <tr>
+
+      <td style="font-weight: bold;"><b>%( 12345.6789 )%!4.3f!</b></td>
+
+      <td>12345.679</td>
+
+      <td>The number before decimal point does not limit the
+number of digits displayed before decimal point.</td>
+
+    </tr>
+
+    <tr>
+
+      <td style="font-weight: bold;"><b>%( 34.56 )%!+d!</b></td>
+
+      <td>+35</td>
+
+      <td>Rounding, not truncation, has occurred.</td>
+
+    </tr>
+
+    <tr>
+
+      <td style="font-weight: bold;"><b>%(234)%!5d!</b></td>
+
+      <td>&nbsp;
+234</td>
+
+      <td> Two leading&nbsp;spaces have been prefixed to the
+number.</td>
+
+    </tr>
+
+    <tr>
+
+      <td style="font-weight: bold;"><b>%(
+&quot;foo&quot; )%!5s!</b></td>
+
+      <td>&nbsp;foo</td>
+
+      <td> Two leading spaces have been prefixed to the string</td>
+
+    </tr>
+
+    <tr>
+
+      <td style="font-weight: bold;"><b>%( 234 )%!3s!</b></td>
+
+      <td>234</td>
+
+      <td>The number is output as a string, with a minimum of
+three digits.</td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+
+<hr><h5><a name="Conditional Gauge Strings"></a>Conditional Gauge Strings</h5>
+<p>The format of conditions (if, then, else, and case statements) in gauge strings is different from that in other scripts. In gauge strings use the<b> %{if}</b>, <b>%{else}</b>,   and<b> %{end}</b> constructs to choose which text to display. &nbsp;Note that these keywords are case-sensitive and   must be typed in lowercase. Also, there must not be a space   between the &quot;<b>%</b>&quot; and the &quot;<b>{</b>&quot;. An if statement can be used without a corresponding else, in which case nothing is displayed if the result of the condition is false. The syntax   for usage is one of the following:</p>
+<ul>
+  <li><b>%(CONDITIONAL)%{if}TEXT TO DISPLAY IF TRUE%{else}TEXT TO DISPLAY IF   FALSE%{end}</b></li>
+  <li><b>%(CONDITIONAL)%{if}TEXT TO DISPLAY IF TRUE%{end}</b></li>
+</ul>
+<p>For example: <b>%( 1   )%{if}ON%{else}OFF%{end}</b> would give the    output ON. Whereas<b> %( 0   )%{if}The value is true%{else}The value is false%{end}</b> would give the    output <b>:The   value is false</b>. </p>
+
+<p>In the <a href="#Examples of GaugeStrings">Example of Gauge Strings</a> below, note also the case and loop statements. </p>
+
+<h5>Escape Codes<a name="Escape Codes"></a></h5>
+<p>It is also possible to insert escape code sequences into gauge strings. <br>
+</p>
+<table class="T1" cellspacing="2" cellpadding="4">
+  <tr>
+    <td><h5>Escape code</h5></td>
+    <td><h5>Translation</h5></td>
+  </tr>
+  <tr>
+    <td><b>\{tabs=50R,60C, 244L}</b></td>
+    <td>Set 3 tab stops; the first is right-aligned, the second is centered, and last is left-aligned.</td>
+  </tr>
+  <tr>
+    <td><b>\{fnt1}</b></td>
+    <td>Switch to the first alternate font specified as a child of the gauge text element </td>
+  </tr>
+  <tr>
+    <td><b>\{fnt}</b></td>
+    <td>Return to the default font</td>
+  </tr>
+  <tr>
+    <td><b>\{up}</b></td>
+    <td>Superscript</td>
+  </tr>
+  <tr>
+    <td><b>\{dn}</b></td>
+    <td>Subscript</td>
+  </tr>
+  <tr>
+    <td><b>\{md}</b></td>
+    <td>Normal (neither superscript nor subscript)</td>
+  </tr>
+  <tr>
+    <td><b>\{bo}</b></td>
+    <td>Bold</td>
+  </tr>
+  <tr>
+    <td><b>\{ul}</b></td>
+    <td>Underline</td>
+  </tr>
+  <tr>
+    <td><b>\{itl}</b></td>
+    <td>Italic</td>
+  </tr>
+  <tr>
+    <td><b>\{strk}</b></td>
+    <td>Strikeout</td>
+  </tr>
+  <tr>
+    <td><b>\{blnk}</b></td>
+    <td>Blink</td>
+  </tr>
+  <tr>
+    <td><b>\{rev}</b></td>
+    <td>Reverse background/foreground color for text</td>
+  </tr>
+  <tr>
+    <td><b>\{nr}</b></td>
+    <td>Normal -- clear all properties previously set.</td>
+  </tr>
+  <tr>
+    <td><b>\{lcl}</b></td>
+    <td>Line color</td>
+  </tr>
+  <tr>
+    <td><b>\{blc}</b></td>
+    <td>Background line color</td>
+  </tr>
+  <tr>
+    <td><b>\{clr}</b></td>
+    <td>Color</td>
+  </tr>
+  <tr>
+    <td><b>\{bck}</b></td>
+    <td>Background color</td>
+  </tr>
+  <tr>
+    <td><b>\{dplo=X}</b></td>
+    <td>Put a degrees symbol above the next character after the ?=?</td>
+  </tr>
+  <tr>
+    <td><b>\{dpl=XY}</b></td>
+    <td>Make X superscript and Y subscript</td>
+  </tr>
+  <tr>
+    <td><b>\{lsp=23}</b></td>
+    <td>Set line spacing to 23</td>
+  </tr>
+  <tr>
+    <td><b>\{lsp}</b></td>
+    <td>Set line spacing to default</td>
+  </tr>
+  <tr>
+    <td><b>\{ladj=L}</b></td>
+    <td>Set horizontal text alignment to left.  (use ?C? for center or ?R? for right)</td>
+  </tr>
+  <tr>
+    <td><b>\{line=240}</b></td>
+    <td>Draw a horizontal line with width 240</td>
+  </tr>
+  <tr>
+    <td><b>\{lmrg=20}</b></td>
+    <td>Set the left margin to 20</td>
+  </tr>
+  <tr>
+    <td><b>\{rmrg=30}</b></td>
+    <td>Set the right margin to 30</td>
+  </tr>
+  <tr>
+    <td><b>\{img1}</b></td>
+    <td>Insert image #1 (a text element can have image children)</td>
+  </tr>
+</table>
+
+
+<h5><a name="Examples of GaugeStrings"></a>Examples of GaugeStrings</h5>
+
+<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Gauge string</span></b></td>
+
+      <td><span style="font-weight: bold;">Description</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Fuel Pressure</span></b></td>
+
+      <td>The
+text will appear exactly as entered: <span style="font-weight: bold;">Fuel Pressure</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td style="font-weight: bold;"><b>Fuel Capacity: %(A:FUEL TOTAL
+CAPACITY)%!1.2f!</b></td>
+
+      <td>The
+fuel
+capacity of the aircraft will be given as a floating point number
+accurate to two decimal places, following the initial string, such as:<br>
+
+      <span style="font-weight: bold;">Fuel Capacity: 80.55</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td style="font-weight: bold;"><b>%(A:ENG ON FIRE:1 A:ENG ON FIRE:2 ! if{
+'Warning: Engine Fire' } )</b></td>
+
+      <td>The
+text string "<span style="font-weight: bold;">Warning:
+Engine Fire</span>" will appear if either or both of the engines
+are on fire.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">%( 1 )%{if}ON%{else}OFF%{end} </span></b></td>
+
+      <td>The
+text <span style="font-weight: bold;">ON</span>
+would be rendered. If there is no <span style="font-weight: bold;">{else}</span>
+statement, then no text will be displayed if the condition evaluates to
+false.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">%( 3 )%{case}%{ :0 }AIRPORT%{ :1
+}INTERSECTION%{ :2 }NDB%{ :3 }VOR%{ :4 }MARKER%{end}</span></b></td>
+
+      <td>A
+case
+statement can be used to select a text string from a group of strings.
+The case numbers do not have to be sequential. The example would
+produce the result:<br>
+
+      <span style="font-weight: bold;">VOR</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">%((C:Mission:OnScreenTimerValue)
+60 / 60 / flr )%!02d!:</span><br style="font-weight: bold;">
+
+      <span style="font-weight: bold;">%((C:Mission:OnScreenTimerValue)
+60 / flr 60 %)%!02d!:</span><br style="font-weight: bold;">
+
+      <span style="font-weight: bold;">%((C:Mission:OnScreenTimerValue)
+flr 60 %)%!02d!.</span><br style="font-weight: bold;">
+
+      <span style="font-weight: bold;">%((C:Mission:OnScreenTimerValue)
+10 * flr 10 % )%!01d!</span></b></td>
+
+      <td>Takes
+the custom on-screen timer value and displays the time in hours,
+minutes,&nbsp;seconds and tenths of a second.<br>
+
+The <span style="font-weight: bold;">!02d! </span>indicates
+that the text output should be displayed with two digits (for example,
+06). The <span style="font-weight: bold;">%</span>
+signs inside the string refer to the modulus operator, and the colons
+and period between the statements will appear on the screen as text, for
+example:<br>
+
+      <span style="font-weight: bold;">01 : 14: 08 . 2</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">85 %%</span></b></td>
+
+      <td>To
+output the percent character, use two percent signs in the script:<br>
+
+      <span style="font-weight: bold;">85 %</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">%(10 s2 1 s1)%{loop}%( l1 )%!s!
+%( l1 ++ s1 l2 &lt;)%{next}</span></b></td>
+
+      <td>This
+statement sets up two registers s1 and s2, with the numbers 1 and 10,
+then loops to print out:<br>
+
+      <span style="font-weight: bold;">1 2 3 4 5 6 7 8 9<br>
+
+      </span>Whatever value is on top of the stack when the <span style="font-weight: bold;">%(next)</span> statement is
+reached is evaluated as a boolean to determine if execution of the loop
+should continue.<span style="font-weight: bold;"></span></td>
+
+    </tr>
+    <tr> <td>\b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Indented Text</td>
+        <td> The parser will strip leading whitespace.&nbsp; A backspace '\b' can be used to 
+            override this behavior if indented text is required.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<hr><h4><a name="HorizontalLine Objects"></a>HorizontalLine Objects</h4>
+
+<br>
+
+HorizontalLine objects are&nbsp;used to draw horizontal lines as
+part of the gauge.<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+
+      <td><span style="font-weight: bold;">Description</span></td>
+    </tr>
+
+    <tr>
+
+      <td><b>id</b></td>
+
+      <td>A
+string that can be edited to help identify the object.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>Axis<br>      </b></td>
+
+      <td>The
+x and y co-ordinates of the center of the line, in pixels. If
+rotation is applied to the line, then this is the point that it will
+rotate around.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>Bright</b></td>
+
+      <td>Set
+to <span style="font-weight: bold;">True</span> if
+this component is not to be dimmed at night time.</td>
+    </tr>
+
+    <tr>
+      <td><b>Width</b></td>
+      <td>Width of the line in pixels. </td>
+    </tr>
+    <tr>
+
+      <td><b>LineWidth</b></td>
+
+      <td>Line
+thickness in pixels.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>LineColor</b></td>
+
+      <td>See <a href="#Gauge Colors">Gauge Colors</a>.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>LineColorScript</b></td>
+
+      <td>If
+used, this overrides LineColor. See <a href="#Gauge Color Scripts">Gauge
+Color Scripts</a>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+HorizontalLine objects can be the parent of <a href="#Comment Objects">Comment objects</a>.<br>
+
+
+
+<hr><h4><a name="MaskImage Objects"></a>MaskImage Objects</h4>
+
+<br>
+
+MaskImage objects are used to provide see-through effects. If the pixel
+within a mask image is set to 0x000000 then the background image pixel
+will be displayed. If the pixel of the mask image is set to 0x010101
+then the pixel from the associated image will be displayed. If the
+pixel of the mask image is set to anything else, then it will be the
+pixel displayed (in the format 0xRRGGBB, not the 0xBBGGRR format used for gauge color scripts). <br>
+
+<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+
+      <td><span style="font-weight: bold;">Description</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>id</b></td>
+
+      <td>A
+string that can be edited to help identify the object.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Axis</b></td>
+
+      <td>The
+x and y co-ordinates of the center of the mask, in pixels. If
+rotation is applied to the mask, then this is the point that it will
+rotate around.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Name</b></td>
+
+      <td>Filename
+of the image to use as the mask</td>
+
+    </tr>
+    <tr>
+
+      <td><b>Transparent</b></td>
+
+      <td>Set
+to <span style="font-weight: bold;">True</span> if
+the color black (0x000000) is to be treated as transparent.</td>
+
+    </tr>
+  </tbody>
+</table>
+
+<p>MaskImage objects can be the parent of <a href="#Comment Objects">Comment objects.</a><br>
+<p>
+Mask images allow a gauge designer to create a hole in a layer so that a piece of the gauge can be seen through another piece.&nbsp; Through the window in the gauge background the rotating airspeed card is visible. There are two ways to generate the hole:</p>
+
+    <ol>
+      <li>Specify a transparent area in a static image that also displays other things (for example, tick marks and other graphics associated with a gauge)</li>
+      <li>Create a mask image that is used purely to specify which area of its associated element to display.&nbsp; This is similar to specifying a transparent area in a static image, except that no visible graphics need to be associated with        this type of mask. For example (note black is transparent in all images):<br>
+        <br>
+         <table class="T1" cellspacing="2" cellpadding="4">
+            <tr>
+              <td><b><img src="Images/MaskImageExample.JPG" width="670" height="348"></b></td>
+            </tr>
+          </table>
+    </ol>
+    <p>
+Note that the magenta used in the Mask Image is actually of RGB value 1,1,1 (which is very close to black). When you see these images in drawing programs, they appear completely black. The apparent advantage of using method 2 is size savings.  A monochrome bitmap can be used to generate the two color mask image.</p>
+    
+    <p> The following shows a simple example of the XML generated by including a mask image. The &lt;MaskImage&gt; element is used as a sub-element of a gauge &lt;Element&gt;.  In other words, the &lt;MaskImage&gt; and &lt;Image&gt; elements are siblings.<br>
+    </p>
+   <p class=file>
+   &lt;Element&gt;<br>
+&nbsp;&nbsp;&lt;Position X=&quot;18&quot; Y=&quot;18&quot;/&gt; <br>
+&nbsp;&nbsp;&lt;MaskImage Name=&quot;ap_ahi_window.bmp&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;Axis X=&quot;61.5&quot; Y=&quot;61.5&quot;/&gt;<br>
+&nbsp;&nbsp;&lt;/MaskImage&gt;<br>
+&nbsp;&nbsp;&lt;Image Name=&quot;ap_ahi_dial.bmp&quot; PointsTo=&quot;North&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;Axis X=&quot;59&quot; Y=&quot;59&quot;/&gt;<br>
+&nbsp;&nbsp;&lt;/Image&gt;<br>
+&nbsp;&nbsp;&lt;Rotate&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;Value Minimum=&quot;-90&quot; Maximum=&quot;90&quot;&gt;(A:Attitude indicator bank degrees:1,degrees) -90 max 90 min&lt;/Value&gt; <br>
+&nbsp;&nbsp;&lt;/Rotate&gt;<br>
+&lt;/Element&gt;</p>
+
+    <hr><h4><a name="Pie Objects"></a>Pie Objects</h4>
+
+Pie objects are used to draw pies as part of the gauge.
+<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+
+      <td><span style="font-weight: bold;">Description</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>id</b></td>
+
+      <td>A
+string that can be edited to help identify the object.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Axis<br>
+
+      </b></td>
+
+      <td>The
+x and y co-ordinates of the center of the pie, in pixels.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Bright</b></td>
+
+      <td>Set
+to <span style="font-weight: bold;">True</span> if
+this component is not to be dimmed at night time.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Radius</b></td>
+
+      <td>Radius
+of the pie in pixels.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>LineWidth</b></td>
+
+      <td>Width
+of the line in pixels.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>FillColor</b></td>
+
+      <td>See <a href="#Gauge Colors">Gauge Colors</a>.&nbsp;If
+no fill color is set, only the outline of the pie will be drawn.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>FillColorScript</b></td>
+
+      <td>If
+used, this overrides FillColor. See <a href="#Gauge Color Scripts">Gauge
+Color Scripts</a>.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>LineColor</b></td>
+
+      <td>See <a href="#Gauge Colors">Gauge Colors</a>.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>LineColorScript</b></td>
+
+      <td>If
+used, this overrides LineColor. See <a href="#Gauge Color Scripts">Gauge
+Color Scripts</a>.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>StartAngle</b></td>
+
+      <td>The
+integer start angle of the arc, in degrees.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>EndAngle</b></td>
+
+      <td>The
+integer end angle of the arc, in degrees.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>StartAngleScript</b></td>
+
+      <td>Optional
+      <a href="#Expression Evaluation">script</a>
+to evaluate the start angle, overriding StartAngle.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>EndAngleScript</b></td>
+
+      <td>Optional
+      <a href="#Expression Evaluation">script</a>
+to evaluate the end angle, overriding EndAngle.</td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+
+Pie objects can be the parent of <a href="#Comment Objects">Comment
+objects.</a><br>
+
+<br>
+
+<hr><h4><a name="Polygon Objects"></a>Polygon Objects</h4>
+
+Polygon objects are used to draw polygons as part of the gauge. The
+shape of the polygon is determined by any number of <a href="#Point Objects">Points</a>.&nbsp;<br>
+
+<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+
+      <td><span style="font-weight: bold;">Description</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>id</b></td>
+
+      <td>A
+string that can be edited to help identify the object.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Axis<br>
+
+      </b></td>
+
+      <td>The
+x and y co-ordinates of the center of the polygon, in pixels. If
+rotation is applied to the polygon, then this is the point that it will
+rotate around.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Bright</b></td>
+
+      <td>Set
+to <span style="font-weight: bold;">True</span> if
+this component is not to be dimmed at night time.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Point</b></td>
+
+      <td>List
+of <a href="#Point Objects">Points</a>.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>FillColor</b></td>
+
+      <td>See <a href="#Gauge Colors">Gauge Colors</a>.
+If no fill color is set, only the outline of the polygon will be drawn.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>FillColorScript</b></td>
+
+      <td>If
+used, this overrides FillColor. See <a href="#Gauge Color Scripts">Gauge
+Color Scripts</a>.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>LineWidth</b></td>
+
+      <td>Line
+width in pixels.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>LineColor</b></td>
+
+      <td>See <a href="#Gauge Colors">Gauge Colors</a>.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>LineColorScript</b></td>
+
+      <td>If
+used, this overrides LineColor. See <a href="#Gauge Color Scripts">Gauge
+Color Scripts</a>.</td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+
+Polygon objects can be the parent of <a href="#Comment Objects">Comment</a>
+objects, and <a href="#Point Objects">Point</a>
+objects.<br>
+
+<br>
+
+<hr><h5><a name="Point Objects"></a>Point Objects</h5>
+
+<br>
+
+Point objects are used to specify the outline of a <a href="#Polygon Objects">Polygon</a> or <a href="#Polyline Objects">Polyline</a> object.<br>
+
+<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+
+      <td><span style="font-weight: bold;">Description</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>id</b></td>
+
+      <td>A
+string that can be edited to help identify the object.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>FloatPosition</b></td>
+
+      <td>Two
+floating point numbers identifying the point relative to the top left
+hand corner of the parent object.</td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+
+Point objects can be the parent of <a href="#Comment Objects">Comment
+objects.</a><br>
+
+<br>
+
+<hr><h4><a name="Polyline Objects"></a>Polyline Objects</h4>
+
+Polyline objects are used to draw polylines as part of the gauge. The
+shape of the polyline is determined by any number of <a href="#Point Objects">Points</a>.
+The polyline is not filled in with the fill color. If&nbsp; filling
+is required, use a <a href="#Polygon Objects">Polygon</a>
+object.<br>
+
+<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+
+      <td><span style="font-weight: bold;">Description</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>id</b></td>
+
+      <td>A
+string that can be edited to help identify the object.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Axis<br>
+
+      </b></td>
+
+      <td>The
+x and y co-ordinates of the center of the polyline, in pixels. If
+rotation is applied to the polyline, then this is the point that it
+will
+rotate around.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Bright</b></td>
+
+      <td>Set
+to <span style="font-weight: bold;">True</span> if
+this component is not to be dimmed at night time.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Point</b></td>
+
+      <td>List
+of <a href="#Point Objects">Points</a>.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>LineWidth</b></td>
+
+      <td>Line
+width in pixels.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>LineColor</b></td>
+
+      <td>See <a href="#Gauge Colors">Gauge Colors</a>.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>LineColorScript</b></td>
+
+      <td>If
+used, this overrides LineColor. See <a href="#Gauge Color Scripts">Gauge
+Color Scripts</a>.</td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+
+Polyline objects can be the parent of <a href="#Comment Objects">Comment</a>
+objects, and <a href="#Point Objects">Point</a>
+objects.<br>
+
+<hr><h4><a name="Rectangle Objects"></a>Rectangle Objects</h4>
+
+Rectangle objects are used to draw rectangles as part of the gauge.<br>
+
+<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+
+      <td><span style="font-weight: bold;">Description</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>id</b></td>
+
+      <td>A
+string that can be edited to help identify the object.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Axis<br>
+
+      </b></td>
+
+      <td>The
+x and y co-ordinates of the center of the rectangle, in pixels. If
+rotation is applied to the rectangle, then this is the point that it
+will
+rotate around.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>LineWidth</b></td>
+
+      <td>Line
+width in pixels.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Bright</b></td>
+
+      <td>Set
+to <span style="font-weight: bold;">True</span> if
+this component is not to be dimmed at night time.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Width</b></td>
+
+      <td>Width
+of the rectangle in pixels.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>WidthScript</b></td>
+
+      <td>Optional
+      <a href="#Expression Evaluation">script</a> to
+calculate the width of the rectangle, overriding Width.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Height</b></td>
+
+      <td>Height
+of the rectangle in pixels.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>HeightScript</b></td>
+
+      <td>Optional
+      <a href="#Expression Evaluation">script</a>
+to calculate the height of the rectangle, overriding Height.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>LineColor</b></td>
+
+      <td>See <a href="#Gauge Colors">Gauge Colors</a>.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>LineColorScript</b></td>
+
+      <td>If
+used, this overrides LineColor. See <a href="#Gauge Color Scripts">Gauge
+Color Scripts</a>.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>FillColor</b></td>
+
+      <td>See <a href="#Gauge Colors">Gauge Colors</a>.&nbsp;
+If no fill color is set, only the outline of the rectangle will be
+drawn.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>FillColorScript</b></td>
+
+      <td>If
+used, this overrides FillColor. See <a href="#Gauge Color Scripts">Gauge
+Color Scripts</a>.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Transparency</b></td>
+
+      <td>A valuue between 0 and 1, used for alpha-blending. </td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+
+Rectangle objects can be the parent of <a href="#Comment Objects">Comment
+</a>objects.<br>
+
+<br>
+
+<hr><h4><a name="Rotation Objects"></a>Rotation Objects</h4>
+
+<br>
+
+Rotation objects are used to display readings that rotate in nature,
+such as dials. If the movement of the needle of the dial is not linear,
+then add a <a href="#NonLinearityTable Objects">NonlinearityTable</a>
+object as a child of this object.<br>
+
+<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+
+      <td><span style="font-weight: bold;">Description</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>id</b></td>
+
+      <td>A
+string that can be edited to help identify the object.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Expression</b></td>
+
+      <td>One <a href="#Expression Objects">Expression</a>. This
+evaluates to the number of <span style="font-style: italic;">radians</span>
+to rotate the element.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>FailureTable</b></td>
+
+      <td>Optional
+      <a href="#FailureTable Objects">FailureTable</a>.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>PointsTo<br>
+
+      </b></td>
+
+      <td>The
+        starting position, often of a needle.<br>
+        
+        One of:<br>
+        
+        <span style="font-weight: bold;">NORTH</span><br style="font-weight: bold;">
+        
+        <span style="font-weight: bold;">EAST</span><br style="font-weight: bold;">
+        
+        <span style="font-weight: bold;">SOUTH</span><br style="font-weight: bold;">
+        
+      <span style="font-weight: bold;">WEST</span><br>
+      DegreesPointsTo should not be used if this is specified. </td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>DegreesPointsTo</b></td>
+
+      <td>If PointsTo is not specified, this gives the
+starting point for the rotation, in degrees.</td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+
+Rotation objects can be the parent of <a href="#Comment Objects">Comment</a>
+objects, <a href="#Delay Objects">Delay</a>
+objects,
+<a href="#Expression Objects">Expression</a>
+objects, <a href="#FailureTable Objects">FailureTable</a>
+objects, and <a href="#NonLinearityTable Objects">NonlinearityTable</a>
+objects.<br>
+
+<br>
+
+<hr><h5><a name="Delay Objects"></a>Delay Objects</h5>
+
+<br>
+
+Delay objects are used to ensure the movement of a needle (or other
+indicator) is smooth, and does not jump. The DelayValue in effect
+represents the maximum speed of the movement. For example, if
+DelayValue is set to <span style="font-weight: bold;">120</span>,
+and DelayUnits to <span style="font-weight: bold;">DEGREES_PER_SECON</span>D,
+then a needle can only move 120 degrees per second (or 4 degrees per
+frame at a frame rate of 30 fps), even if the evaluated value jumps
+from 0 to 180 in one calculation.<br>
+
+<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+
+      <td><span style="font-weight: bold;">Description</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>id</b></td>
+
+      <td>A
+string that can be edited to help identify the object.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>DelayValue</b></td>
+
+      <td>The
+length of the delay.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>DelayUnits</b></td>
+
+      <td>One
+of:<br>
+
+      <span style="font-weight: bold;">PIXELS_PER_SECOND</span><br style="font-weight: bold;">
+
+      <span style="font-weight: bold;">VALUE_PER_SECOND</span><br style="font-weight: bold;">
+
+      <span style="font-weight: bold;">DEGREES_PER_SECOND</span><br style="font-weight: bold;">
+
+      <span style="font-weight: bold;">RADIANS_PER_SECOND</span></td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+
+Delay objects can be the parent of <a href="#Comment Objects">Comment
+</a>objects.<br>
+
+<br>
+
+<hr><h5><a name="Expression Objects"></a>Expression Objects</h5>
+
+<br>
+
+Expression objects are used to evaluate expressions, often giving the
+actual reading that should be displayed. Simple instruments like the
+altimeter require very simple evaluation scripts, but complex
+instruments like a GPS system will require complex scripts and a very
+good understanding of &nbsp;the scripting syntax and semantics,
+described in <a href="#Expression Evaluation">Expression
+Evaluation</a>.<br>
+
+<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+
+      <td><span style="font-weight: bold;">Description</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>id</b></td>
+
+      <td>A
+string that can be edited to help identify the object.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Minimum</b></td>
+
+      <td>A
+fixed minimum value, which will be the result if the script evaluates to
+a lower value than this. The default value of -9999999 indicates that
+this values is not being used.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Maximum</b></td>
+
+      <td>A
+fixed maximum value, which will be the result if the script evaluations
+to a higher value than this.&nbsp;The default value of -9999999
+indicates that this values is not being used.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Script<br>
+
+      </b></td>
+
+      <td>The
+evaluation script. See <a href="#Expression Evaluation">Expression
+Evaluation</a>, and <a href="#Expression Evaluation Examples">Expression
+Evaluation Examples</a> for a full explanation of how to write
+scripts. A full list of variables names
+that can be used within scripts can be found in the <a href="../../Core Utilities Kit/Variables/Simulation Variables.html">Simulation
+Variables</a> document.</td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+
+Expression objects can be the parent of <a href="#Comment Objects">Comment
+</a>objects.<br>
+
+<br>
+
+
+
+<hr><h5><a name="FailureTable Objects"></a>FailureTable Objects</h5>
+
+<br>
+
+FailureTable objects are used to contain the list of failures, with the
+appropriate actions, that apply to an element of the gauge.<br>
+
+<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+
+      <td><span style="font-weight: bold;">Description</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>id</b></td>
+
+      <td>A
+string that can be edited to help identify the object.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Failure</b></td>
+
+      <td>List
+of <a href="#Failure Objects">Failures</a>.</td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+
+FailureTable objects can be the parent of <a href="#Failure Objects">Failure</a>
+objects.<br>
+
+<br>
+
+<hr><h5><a name="Failure Objects"></a>Failure Objects</h5>
+
+<br>
+
+Failure objects are used to link failure keys with a certain action.
+Failures can be initiated by the user through the Failures dialogs of <i>Prepar3D</i>, or can
+come from actions set by Missions (see the Mission creation document).<br>
+
+<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+
+      <td><span style="font-weight: bold;">Description</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>id</b></td>
+
+      <td>A
+string that can be edited to help identify the object.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Fail_Key<br>
+
+      </b></td>
+
+      <td>One
+of:<br>
+
+      <span style="font-weight: bold;">NONE</span><span style="font-weight: bold;"><br>
+
+SYSTEM_ENGINE</span><span style="font-weight: bold;"><br>
+
+SYSTEM_PITOT_STATIC</span><br>
+
+      <span style="font-weight: bold;">SYSTEM_VACUUM</span><span style="font-weight: bold;"><br>
+
+GAUGE_ADF</span><span style="font-weight: bold;"><br>
+
+GAUGE_AIRSPEED</span><br>
+
+      <span style="font-weight: bold;">GAUGE_ALTIMETER</span>,<span style="font-weight: bold;"><br>
+
+GAUGE_COMMUNICATIONS</span><span style="font-weight: bold;"><br>
+
+GAUGE_FUEL_INDICATORS</span><br>
+
+      <span style="font-weight: bold;">GAUGE_GYRO_HEADING</span><br>
+
+      <span style="font-weight: bold;">GAUGE_MAGNETIC_COMPASS</span><br>
+
+      <span style="font-weight: bold;">GAUGE_NAVIGATION_VOR1</span><span style="font-weight: bold;"><br>
+
+GAUGE_NAVIGATION_VOR2</span><br>
+
+      <span style="font-weight: bold;">GAUGE_TRANSPONDER</span><br>
+
+      <span style="font-weight: bold;">GAUGE_TURN_COORDINATOR</span><br>
+
+      <span style="font-weight: bold;">GAUGE_VERTICAL_SPEED</span><br>
+
+      <span style="font-weight: bold;">GAUGE_ELECTRICAL_PANEL</span><br>
+
+      <span style="font-weight: bold;">GAUGE_ELECTRICAL_AVIONICS</span><br>
+
+      <span style="font-weight: bold;">GAUGE_COMMUNICATIONS</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Fail_Action<br>
+
+      </b></td>
+
+      <td>One
+of:<br>
+
+      <span style="font-weight: bold;">None</span><br>
+
+      <span style="font-weight: bold;">Freeze</span>,<br>
+
+      <span style="font-weight: bold;">Zero</span><br>
+
+      <span style="font-weight: bold;">Cover</span> <br>
+
+      <span style="font-weight: bold;">NoDraw</span></td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+
+Failure objects cannot be the parent of other objects.<br>
+
+<br>
+
+<hr><h5><a name="NonLinearityTable Objects"></a>NonLinearityTable Objects</h5>
+
+<br>
+
+NonLinearityTable objects are used to describe the readings from
+instruments where there is not a linear relationship between the value
+and the display. For example, higher speeds on airspeed indicators are
+often much closer together on the dial than lower speeds. Nonlinearity
+tables can apply to both <a href="#Rotation Objects">Rotation</a>
+objects and <a href="#Shift Objects">Shift</a>
+objects.<br>
+
+<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+
+      <td><span style="font-weight: bold;">Description</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>id</b></td>
+
+      <td>A
+string that can be edited to help identify the object.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>NonLinearityEntry<br>
+
+      </b></td>
+
+      <td>List
+of <a href="#NonLinearityEntry Objects">NonlinearityEntry</a>
+objects.</td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+
+NonLinearityTable&nbsp;objects can be the parent of
+<a href="#NonLinearityEntry Objects">NonlinearityEntry</a>
+objects.<br>
+
+<br>
+
+<hr><h5><a name="NonLinearityEntry Objects"></a>NonlinearityEntry Objects</h5>
+
+<br>
+
+NonLinearityEntry objects are used to link one value of the related
+expression to one position of the element (for example, the airspeed
+indicator needle). If the expression result falls exactly on the
+ExpressionResult, then the position from this entry object is taken. If
+the expression result falls between the results for two
+NonlinearityEntry objects then the position of the needle is calculated
+linearly between these two positions. For this reason, to get the most
+accurate needle positioning, enter a good number of NonlinearityEntry
+objects.<br>
+
+Non-linearity values should be listed as they appear on the gauge,
+clockwise around the face, or left to right. If gauge values increase
+when rotating clockwise (or moving left to right), values in the
+non-linearity table should start at the minimum and increase. If gauge
+values decrease when rotating clockwise, then values in the table
+should start with the maximum and decrease.<br>
+
+Only one of Degrees, Radians or FloatPosition should be used.<br>
+
+<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+
+      <td><span style="font-weight: bold;">Description</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>id</b></td>
+
+      <td>A
+string that can be edited to help identify the object.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>ExpressionResult</b></td>
+
+      <td>The
+value of the related <a href="#Expression Objects">Expression</a>.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Degrees</b></td>
+
+      <td>Rotation
+of the element in degrees, or -99999.00 if this is not used.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Radians<br>
+
+      </b></td>
+
+      <td>Rotation
+of the element in radians, or -99999.00 if this is not used.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>FloatPosition</b></td>
+
+      <td>The
+X and Y offset, that defines the slope for the indicator to take, or
+0,0 if this is not used.</td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+
+NonLinearityEntry objects can be the parent of <a href="#Comment Objects">Comment objects</a>.<br>
+
+<br>
+
+<hr><h4><a name="Select Objects"></a>Select Objects</h4>
+
+<br>
+
+Select objects are used to select one from a range of cases, depending
+on
+the evaluation of the expression. A simple example of this are displays
+that change when a setting is on or off (the image used for a light
+switch, for example).<br>
+
+<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+
+      <td><span style="font-weight: bold;">Description</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>id</b></td>
+
+      <td>A
+string that can be edited to help identify the object.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Expression</b></td>
+
+      <td>The <a href="#Expression Objects">Expression</a> to evaluate.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Case</b></td>
+
+      <td>A
+list of usually two or more <a href="#Case Objects">Case</a>
+objects.</td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+
+Select objects can be the parent of <a href="#Comment Objects">Comment</a>, <a href="#Expression Objects">Expression</a>, <a href="#FailureTable Objects">FailureTable</a>
+and <a href="#Case Objects">Case</a> objects.<br>
+
+<br>
+
+<hr><h5><a name="Case Objects"></a>Case Objects</h5>
+
+<br>
+
+Case objects are used to provide the individual cases to the parent <a href="#Select Objects">Select</a> object. Each Case
+object will usually have an associated <a href="#Image Objects">Image</a>
+or <a href="#GaugeText Objects">GaugeText</a>
+object, to be displayed if this particular case applies.<br>
+
+<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+
+      <td><span style="font-weight: bold;">Description</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>id</b></td>
+
+      <td>A
+string that can be edited to help identify the object.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>ExpressionResult</b></td>
+
+      <td>The
+value of the related <a href="#Expression Objects">Expression</a>.
+Can be as simple as 0 or 1, for off and on.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Minimum</b></td>
+
+      <td>&nbsp;</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Maximum<br>
+
+      </b></td>
+
+      <td></td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+
+Case objects can be the parent of <a href="#Comment Objects">Comment</a>
+objects, <a href="#Image Objects">Image</a>
+objects and
+<a href="#GaugeText Objects">GaugeText</a> objects.<br>
+
+<br>
+
+<hr><h4><a name="Shift Objects"></a>Shift Objects</h4>
+
+<br>
+
+Shift objects are used to display readings that are linear in nature, the bounds being set by the Minimum and Maximum values for the Expression. <br>
+
+<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+
+      <td><span style="font-weight: bold;">Description</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>id</b></td>
+
+      <td>A
+string that can be edited to help identify the object.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Minimum</b></td>
+
+      <td>The minimum value that the Expression can evaluate to.</td>
+
+    </tr>
+    <tr>
+
+      <td><b>Maximum</b></td>
+
+      <td>The maximum value that the Expression can evaluate to.</td>
+
+    </tr>
+    <tr>
+
+      <td><b>Script</b></td>
+
+      <td>The script to be used to calculate the shift value. </td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+
+Shift objects can be the parent of <a href="#Comment Objects">Comment</a>
+objects, <a href="#Delay Objects">Delay</a>
+objects,
+<a href="#NonLinearityTable Objects">NonlinearityTable</a>
+objects, <a href="#Expression Objects">Expression</a>
+objects, and <a href="#FailureTable Objects">FailureTable</a>
+objects.<br>
+
+<br>
+
+<hr><h4><a name="VerticalLine Objects"></a>VerticalLine Objects</h4>
+
+VerticalLine objects are used to draw vertical lines as part of the
+gauge.<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+
+      <td><span style="font-weight: bold;">Description</span></td>
+    </tr>
+
+    <tr>
+
+      <td><b>id</b></td>
+
+      <td>A
+string that can be edited to help identify the object.</td>
+    </tr>
+    <tr>
+      <td><b>Axis</b></td>
+      <td>If rotation is
+        applied  this is the point that it will rotate around.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>Height<br>      </b></td>
+
+      <td>Height
+of the line in pixels.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>LineWidth</b></td>
+
+      <td>Width
+of the line in pixels.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>LineColor</b></td>
+
+      <td>See <a href="#Gauge Colors">Gauge Colors</a>.</td>
+    </tr>
+
+    <tr>
+
+      <td><b>LineColorScript</b></td>
+
+      <td>If
+used, this overrides LineColor. See <a href="#Gauge Color Scripts">Gauge
+Color Scripts</a>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+VerticalLine objects can be the parent of <a href="#Comment Objects">Comment</a>
+objects.<br>
+
+<br>
+
+<hr>
+<h3><a name="Image Objects"></a>Image Objects</h3>
+
+Image objects are used to add graphics from image files to the gauge.<br>
+
+<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+
+      <td><span style="font-weight: bold;">Description</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>id</b></td>
+
+      <td>A
+string that can be edited to help identify the object.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Transparent</b></td>
+
+      <td>Set
+to <span style="font-weight: bold;">True</span> if
+the color black (0x000000) is to be treated as transparent.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Alpha</b></td>
+
+      <td>Set
+to <span style="font-weight: bold;">True</span> if
+the image has an alpha channel.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Axis</b></td>
+
+      <td>The
+x and y co-ordinates of the center of the image, in pixels. If
+rotation is applied to the image, then this is the point that it will
+rotate around.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Bright</b></td>
+
+      <td>Set
+to <span style="font-weight: bold;">True</span> if
+this component is not to be dimmed at night time.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Luminous</b></td>
+
+      <td>Set
+to <span style="font-weight: bold;">True</span> if
+a luminosity factor is to be applied to the image. The alpha channel of the image is  used, in this case, to determine what section of the  image is to be illuminated when panel lights are on. An alpha value of 0 gives the maximum luminosity. To clarify, lighting  effects are applied to the entire panel, but the luminous color is applied to the  section of the gauges specified by this alpha channel. The luminous colors are specified in the panel.cfg file, see the <a href="Panel Configuration Files.htm">Panel Configuration File</a> document ([color] section) for more details and an example of luminous colors. </td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Bilinear</b></td>
+
+      <td>Set
+to <span style="font-weight: bold;">True</span> if
+a bilinear algorithm is to be applied to the image (this is similar to
+anti-aliasing).</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Name</b></td>
+
+      <td>The
+filename for the image (which should be in the ArtDirectory specified
+by the <a href="#Gauge Objects">Gauge</a> object).</td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<p><br>
+  
+  Image objects can be the parent of <a href="#Comment Objects">Comment</a>
+objects.</p>
+<hr>
+<h3>KeyMap Objects<a name="KeyMap Objects"></a></h3>
+<p>Key map objects contain a number of Trigger objects, mapping key strokes or key events to scripts. <br>
+</p>
+<table class="T1" cellpadding="4" cellspacing="2">
+  <tbody>
+    <tr>
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+      <td><span style="font-weight: bold;">Description</span></td>
+    </tr>
+    <tr>
+      <td><b>id</b></td>
+      <td>A
+        string that can be edited to help identify the object.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>KeyMap objects can be the parent of one or more Trigger objects.</p>
+
+<hr><h4>Trigger Objects  <a name="Trigger Objects"></a></h4>
+<p>Trigger objects activate a script if a certain key is pressed or key event occurs. Typically only one of KeyEvent or KeyboardKey would be specified. </p>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+  <tbody>
+    <tr>
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+      <td><span style="font-weight: bold;">Description</span></td>
+    </tr>
+    <tr>
+      <td><b>id</b></td>
+      <td>A
+        string that can be edited to help identify the object.</td>
+    </tr>
+    <tr>
+      <td><b>KeyEvent</b></td>
+      <td>One of the <b>KEY_</b>.... events defined in gauges.h. </td>
+    </tr>
+    <tr>
+      <td><b>KeyboardKey</b></td>
+      <td>Can be one of <b>ASCII</b> or <b>AlphaNumeric</b>, or any of of the keys defined in <a href="../../Core Utilities Kit/SimConnect SDK/key strings.html">Key Strings</a>.</td>
+    </tr>
+    <tr>
+      <td><b>Visibility</b></td>
+      <td>An expression that should evaluate to True or False. </td>
+    </tr>
+    <tr>
+      <td><b>Script</b></td>
+      <td>The script to be run when the key event occurs. </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Trigger objects cannot be the parent of any other object. </p>
+<hr>
+<h3><a name="Macro Objects"></a>Macro Objects</h3>
+Macro objects are used to provide an efficient method of re-using
+common scripts. They are particularly useful in complex instruments
+such as a GPS system.<br>
+
+<br>
+
+<table class="T1" cellpadding="4" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><b><span style="font-weight: bold;">Property</span></b></td>
+
+      <td><span style="font-weight: bold;">Description</span></td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>id</b></td>
+
+      <td>A
+string that can be edited to help identify the object.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>Name</b></td>
+
+      <td>The
+name of the macro to be used within scripts. This name can be used
+within evaluated expressions, and should be unique.</td>
+
+    </tr>
+
+    <tr>
+
+      <td><b>MacroValue</b></td>
+
+      <td>The <a href="#Expression Evaluation">script</a> of the macro.</td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+
+Macro objects can be the parent of Macro objects and <a href="#Comment Objects">Comment</a> objects.<br>
+
+<br>
+
+<h5>Macro Examples</h5>
+
+<br>
+
+
+      The following example defines a template for a generic switch by uses a macro.&nbsp; 
+      This switch toggles the engine primer for engine one, but by simply changing the 
+      MacroValue line, this XML could be reused to toggle any Gauge, Local, or 
+      Simulation Variable.
+      
+      <br>
+
+<p class=file>
+        &lt;?xml&nbsp;version="1.0"&nbsp;encoding="UTF-8"?&gt;<br />
+        &lt;SimBase.Document&nbsp;Type="AceXML"&nbsp;version="1,0"&nbsp;id="MSwitch"&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;Descr&gt;AceXML&nbsp;Document&lt;/Descr&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;Filename&gt;Switch.xml&lt;/Filename&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;SimGauge.Gauge&nbsp;id="Gauge"&nbsp;Name="Switch"&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Size&gt;25,25&lt;/Size&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Macro&nbsp;Name="SWITCH_FLIPPED"&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MacroValue&gt;A:RECIP&nbsp;ENG&nbsp;PRIMER:1,bool&lt;/MacroValue&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/Macro&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Element&nbsp;id="Element"&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Select&nbsp;id="Select"&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Expression&nbsp;id="Expression"&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Script&gt;(@SWITCH_FLIPPED)&lt;/Script&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/Expression&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Case&nbsp;id="Case"&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ExpressionResult&gt;0.000&lt;/ExpressionResult&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Image&nbsp;id="sw_down.bmp"&nbsp;Name="sw_down.bmp"&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Transparent&gt;True&lt;/Transparent&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/Image&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/Case&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Case&nbsp;id="Case"&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ExpressionResult&gt;1.000&lt;/ExpressionResult&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Image&nbsp;id="sw_up.bmp"&nbsp;Name="sw_up.bmp"&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Transparent&gt;True&lt;/Transparent&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/Image&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/Case&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/Select&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/Element&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MouseArea&nbsp;id="MouseArea"&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;FloatPosition&gt;0.000,0.000&lt;/FloatPosition&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;CursorType&gt;Hand&lt;/CursorType&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;HelpId&gt;HELPID_GAUGE_AVIONICS_SWITCH&lt;/HelpId&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MouseClick&nbsp;id="MouseClick"&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Script&gt;(@SWITCH_FLIPPED)&nbsp;!&nbsp;(&gt;@SWITCH_FLIPPED)&lt;/Script&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/MouseClick&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/MouseArea&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;/SimGauge.Gauge&gt;<br />
+        &lt;/SimBase.Document&gt;<br />
+</p>
+
+Macros can also take parameters and can be nested within macros:
+        <p class=file>
+      &lt;Macro id="Macro" Name="Var1"&gt; <br />
+      &nbsp;&nbsp;&nbsp;&lt;MacroValue&gt; L:Var1, number &lt;/MacroValue&gt;<br />
+      &lt;/Macro&gt;<br />
+      &lt;Macro id="Macro" Name="Var2"&gt; <br /> 
+      &nbsp;&nbsp;&nbsp;&lt;MacroValue&gt; L:Var2, number &lt;/MacroValue&gt; <br />
+      &lt;/Macro&gt;<br />
+      &lt;Macro id="Macro" Name="Var3"&gt; <br />
+      &nbsp;&nbsp;&nbsp;&lt;MacroValue&gt; L:Var3, number &lt;/MacroValue&gt; <br />
+      &lt;/Macro&gt;<br />
+      &lt;Macro id="Macro" Name="MAX"&gt; <br />
+      &nbsp;&nbsp;&nbsp;&lt;MacroValue> @1 @2 > if { @1 quit } @2&nbsp; &lt;/MacroValue&gt; <br />
+      &lt;/Macro&gt; <br />
+       &lt;Macro id="Macro" Name="STORE_MAX_INTO_VAR3"&gt; <br />
+       &nbsp;&nbsp;&nbsp;&lt;MacroValue> @MAX((@Var1),(@Var2))(>@Var3)) &lt;/MacroValue&gt; <br />
+        &lt;/Macro&gt;
+        </p>
+        <br>
+<hr>
+        <h3>
+            <a name="MouseArea Objects"></a>MouseArea Objects</h3>
+        <br>MouseArea objects are used to define a rectangular area where the mouse
+button can be used to link to an event through a <a href="#MouseClick Objects">MouseClick 
+        </a>object.
+MouseArea objects can be the parent of other MouseArea objects,
+so it can be useful to define a large area for the help ID text to
+appear, and smaller areas that cover the use of controls of the gauge.
+There should be only one high level MouseArea for a gauge.<br>
+        <br>
+        <table class="T1" cellpadding="4" cellspacing="2">
+            <tbody>
+                <tr>
+                    <td>
+                        <b><span style="font-weight: bold;">Property</span></b></td>
+                    <td>
+                        <span style="font-weight: bold;">Description</span></td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>id</b></td>
+                    <td>
+                        A string that can be edited to help identify the object.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Visibility</b></td>
+                    <td>
+                        Expression that evaluates to True or False, determining the visibility of the element. 
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>FloatPosition</b></td>
+                    <td>
+                        The
+x any y position
+of the top left hand corner of the mouse area, relative to the top left
+hand corner of the mouse area's parent object.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Size</b></td>
+                    <td>
+                        The
+width and height of the mouse area, in pixels.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>CursorType</b></td>
+                    <td>
+                        The
+cursor image to display when the user's mouse cursor is within the
+area. One of:<br><span style="font-weight: bold;">None</span><br style="font-weight: bold;">
+                        <span style="font-weight: bold;">Normal</span><br style="font-weight: bold;">
+                        <span style="font-weight: bold;">UpArrow</span><br style="font-weight: bold;">
+                        <span style="font-weight: bold;">DownArrow</span><br style="font-weight: bold;">
+                        <span style="font-weight: bold;">LeftArrow</span><br style="font-weight: bold;">
+                        <span style="font-weight: bold;">RightArrow</span><br style="font-weight: bold;">
+                        <span style="font-weight: bold;">Hand</span><br style="font-weight: bold;">
+                        <span style="font-weight: bold;">Crosshair</span><br style="font-weight: bold;">
+                        <span style="font-weight: bold;">Grab</span></td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>HelpId</b></td>
+                    <td>
+                        The
+ID string that identifies the help text to display when the user's
+mouse cursor is within the area. For example, <span style="font-weight: bold;">HELPID_GAUGE_KOHLSMAN_KNOB</span>.
+See the <a href="HelpIDs.html">Help IDs</a> document
+for a full list of IDs and details on the strings displayed.</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>MouseArea objects can be the parent of <a href="#Comment Objects">Comment</a>
+objects, <a href="#MouseArea Objects">MouseArea</a>
+objects, <a href="#Tooltip Objects">Tooltip</a>
+objects and <a href="#MouseClick Objects">MouseClick</a>
+objects.<br>
+        <br>
+        <hr>
+        <h4>
+            <a name="Tooltip Objects"></a>Tooltip Objects</h4>
+        <br>Tooltip objects are used to display text to help the user when they
+mouse over certain areas.<br>
+        <br>
+        <table class="T1" cellpadding="4" cellspacing="2">
+            <tbody>
+                <tr>
+                    <td>
+                        <b><span style="font-weight: bold;">Property</span></b></td>
+                    <td>
+                        <span style="font-weight: bold;">Description</span></td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>id</b></td>
+                    <td>
+                        A
+string that can be edited to help identify the object.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>DefaultId<br></b>
+                    </td>
+                    <td>
+                        The
+ID of the tooltip text when the user has not selected a units of
+measure preference. For example: <span style="font-weight: bold;">TOOLTIPTEXT_ALTIMETER_FEET</span>.
+A full list of tooltip text IDs can be found in the <a href="Tooltips.html">Tooltips</a> document, along with
+details of the strings that are displayed.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>MetricId<br></b>
+                    </td>
+                    <td>
+                        The
+ID of the tooltip text when the user has selected a preference for
+Metric measurements. For example, <span style="font-weight: bold;">TOOLTIPTEXT_ALTIMETER_METERS</span>.
+If this is left blank the DefaultID applies.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>EnglishId<br></b>
+                    </td>
+                    <td>
+                        The
+ID of the tooltip text when the user has selected a preference for
+Imperial measurements. For example, <span style="font-weight: bold;">TOOLTIPTEXT_ALTIMETER_FEET</span>.
+If this is left blank the DefaultID applies.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>DefaultScript</b></td>
+                    <td>
+                        A default script to use for the tooltip, if DefaultID is not defined.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>EnglishScript</b></td>
+                    <td>
+                        Tooltip script, if user has selected English units.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>MetricScript</b></td>
+                    <td>
+                        Tooltip script, if user has selected Metric units.</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>Tooltip objects can be the parent of <a href="#Comment Objects">Comment</a>
+objects.<br>
+        <br>
+        <hr>
+        <h4>
+            <a name="MouseClick Objects"></a>MouseClick Objects</h4>
+        <p>
+            MouseClick objects are used to link mouse clicks with simulation key
+events, so enabling a user to control the instrument.</p>
+        <table class="T1" cellpadding="4" cellspacing="2">
+            <tbody>
+                <tr>
+                    <td>
+                        <b><span style="font-weight: bold;">Property</span></b></td>
+                    <td>
+                        <span style="font-weight: bold;">Description</span></td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>id</b></td>
+                    <td>
+                        A
+string that can be edited to help identify the object.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>KeyEvent</b></td>
+                    <td>
+                        The
+key event that is to occur when the mouse is clicked. For example, <span style="font-weight: bold;">KOHLSMAN_DEC</span> or 
+                        <span style="font-weight: bold;">KOHLSMAN_INC</span>. For a
+full list of key events, see the String name column in the 
+                        <a href="../../Core Utilities Kit/Variables/Event IDs.htm">Event IDs</a> document.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Script</b></td>
+                    <td>
+                        If
+used, overrides KeyEvent. A <a href="#Expression Evaluation">script</a>
+that evaluates to a single key event. </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>ClickType</b></td>
+                    <td>
+                        One of:<br><b>LeftAll</b><br><b>RightAll</b><br><b>MiddleAll</b><br><b>RightSingle</b><br>
+                        <b>MiddleSingle</b><br><b>LeftSingle</b><br><b>RightDouble</b><br><b>MiddleDouble</b><br>
+                        <b>LeftDouble</b><br><b>RightDrag</b><br><b>MiddleDrag</b><br><b>LeftDrag</b><br>
+                        <b>Move</b><br><b>RightRelease</b><br><b>MiddleRelease</b><br><b>LeftRelease</b><br>
+                        <b>WheelUp</b><br><b>WheelDown</b><br><b>Leave</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>MouseWheelFlip</b></td>
+                    <td>
+                        Set
+to <span style="font-weight: bold;">True</span> if flipping the mouse wheel will trigger the event.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>ClickRepeat</b></td>
+                    <td>
+                        Set
+to <span style="font-weight: bold;">True</span> if
+holding the mouse button down will repeat the key event.  When <b>ClickRepeat</b> is <b>False</b>, <b>Leave</b> events won't fire until the mouse is released.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            MouseClick objects can be the parent of <a href="#Comment Objects">Comment</a> objects.  
+            MouseClick events and scripts will be fired for all applicable MouseAreas regardless of nesting order.</p>
+        <hr>
+        <h3>
+            <a name="Update Objects"></a>Update Objects</h3>
+        <p>
+            Update objects are used to provide time based updates to a gauge. The GPS system is an example of a complex instrument requiring the use of
+Update objects.</p>
+        <table class="T1" cellpadding="4" cellspacing="2">
+            <tbody>
+                <tr>
+                    <td>
+                        <b><span style="font-weight: bold;">Property</span></b></td>
+                    <td>
+                        <span style="font-weight: bold;">Description</span></td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>id</b></td>
+                    <td>
+                        A
+string that can be edited to help identify the object.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Frequency</b></td>
+                    <td>
+                        Integer
+value indicating how often the update should be run, in updates per
+second. Enter 1 for the slowest frequency of updates (one per second).</td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Script</b></td>
+                    <td>
+                        The
+expression <a href="#Expression Evaluation">script</a>
+to be evaluated at the time of the update. This
+script might examine the status of various switches, for example, that
+change how the instrument works.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            Update objects can be the parent of Update objects and 
+            <a href="#Comment Objects">Comment</a> objects.</p>
+        <hr/>
+        <h2>
+Creating an SPB file
+<a name="Creating an SPB file"/>
+        </h2>
+        <p>
+            XML gauges, <a href="../../Mission Creation Kit/Mission Creation.html">Missions</a> and some 
+            <a href="../../Environment Kit/Autogen SDK/autogen.html">Autogen</a> files can either be in XML or SPB (Sim-Prop Binary) format. If an XML version of a file is found in the same folder as an SPB file, the SPB file will be loaded in preference to the XML file as the binary format is faster to load that its XML equivalent. Because of this it makes sense to move an SPB file out of the folder where editing work is being done on its XML equivalent. 
+        </p>
+        <p>
+            To  create an SPB file, run the simpropcompiler.exe tool, which is in the <i>SDK\Core Utilities Kit\SimProp</i> folder. This is a command-line tool, so open a command window and navigate to the 
+            <i>SDK\Core Utilities Kit\SimProp</i> folder. If <i>Prepar3D</i> is installed, then enter the following command:</p>
+        <code><b>&gt; Simpropcompiler 2spb   &ndash;symbols C:\Program Files\Lockheed Martin\Prepar3D\propdefs\*.xml 
+        <i>yourFile</i>.xml <i>yourFile</i>.spb</b></code>
+        <p>
+            If <i>Prepar3D</i> is not installed, then enter the following command:</p>
+        <p>
+            <code><b>&gt; Simpropcompiler 2spb   &ndash;symbols C:\Program Files\Lockheed Martin\Prepar3D\SDK\SimObject Creation Kit\Panels and Gauges SDK\propdefs\*.xml 
+            <i>yourFile</i>.xml <i>yourFile</i>.spb</b></code></p>
+        <p>
+            Note that the full path to the symbols files in the <i>propdefs</i> folder is required (the above examples assume that 
+            <i>Prepar3D</i> and the SDK are installed to their default folders), and as the &quot;*.xml&quot; wildcard is used no other XML files should be moved to or created in the 
+            <i>propdefs</i> folder. File extensions are required for both the input and output filenames as they can be entered in any order.</p>
+        <p>
+            To simply validate an XML file without creating an output file, change the keyword 
+            <b>2spb</b> to <b>validate</b>. 
+        </p>
+        <center><img src="../../Images/LMcpy.jpg"/></center>
+
+</body>
+</html>
