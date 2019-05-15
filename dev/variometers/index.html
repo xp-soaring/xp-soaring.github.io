@@ -1,0 +1,132 @@
+<html>
+    <head>
+        <title>Variometers</title>
+        <link rel="stylesheet" type="text/css" href="../../xp-soaring.css"/>
+    </head>
+    <body>
+        <h1><a class="breadcrumb" href="../../index.html">xp-soaring</a> &gt; 
+            <a class="breadcrumb" href="../index.html">Development</a> &gt;
+            Glider Variometers</h1>
+
+        <p>Glider varios are all derivatives (pun intended) of the original
+            aviation <b>vertical speed indicator</b>, also known as the "rate
+            of climb" instrument. The basic VSI is a simple instrument, connected
+            <i>only</i> to the aircraft external static pressure source which
+            provides a reading proportional to altitude above sea level, and 
+            give the reading you'd expect, i.e. how fast you are climbing or
+            descending.
+        </p>
+        <p>The basic vertical speed indicator is pretty much useless for soaring as
+            the absolute up and down movements of the plane are dominated by your
+            movement of the joystick so effectively you're watching a gauge that
+            tells you how far forwards or back you've pulled the stick. For thermal
+            air movement you want to somehow <i>subtract</i> your short-term movement
+            of the controls, and that is what the <i>compensation</i> in glider varios
+            is designed to do. Nevertheless, the default 'vario' in aviation simulators
+            has a long history of having zero or broken compensation.
+        </p>
+
+        <div class="center"><img src="../images/vertical_speed_indicator.jpg"/></div>
+
+        <p>A comment on <i>units</i>: Aircraft speed display is usually <i>knots</i>
+            (i.e. nautical miles per hour) or <i>kilometers per hour</i>. For
+            vertical speed the instrument may use <i>knots</i>, <i>100's of feet
+            per minute</i>, or <i>meters per second</i>. I.e. the subtlety here is
+            that <i>different</i> units may be used for speeds in different directions,
+            although conveniently 100 feet per minute is ~1 knot or ~.5 meter/second.
+            </p>
+            <p>
+            IMHO, if you <i>program</i> instrument software, the <i>only</i> sensible
+            approach is <b>use SI units thoughout</b>, i.e. <i>meters per second</i> for
+            speed, <i>meters</i> for distances including height, and <i>seconds</i> for 
+            time.
+        </p>
+<h2 id="te">Total Energy vario</h2>
+    <p>This section is the key concept of glider variometers - the extensions below for
+        'netto' and 'speed-to-fly' are relatively simple if you understand total energy.
+    </p>
+    <div class="center"><img src="../images/winter_vario.png"/></div>
+    <p>For a glider in still air flying at a steady speed a basic VSI will show some descent
+        rate, e.g. at 50 knots the VSI might show a sink rate of 1 knot. For a glider pilot
+        that steady sink rate is a crucial indication of <i>energy loss</i>. 
+    </p>
+    <p>Note that a glider contains <i>two</i> forms of energy:
+        <ol>
+            <li><i>Potential Energy</i> based on how high it is above the ground.
+            </li>
+            <li><i>Kinetic Energy</i> based on how fast it is moving.
+            </li>
+        </ol>
+        These forms of energy are partially interchangeable in that if you dive you are
+        converting potential energy into kinetic energy, and if you pull up then the
+        reverse.
+    </p>
+    <p>For a soaring pilot that <i>exchange of energy</i> is <b>totally irrelevant</b>. It is
+        only the actual energy <b>losses</b> that the pilot cares about. In the absence of drag
+        a pilot could dive from 2000 feet to 1000 feet, then back up to 2000 feet and be back
+        at the same speed and height they were before.
+    </p>
+    <p>A pilot is familiar with interpreting the steady-state sink rate as an indication of
+        energy loss (to the extent they don't even think about it). So here is the key concept:
+    </p>
+    <p><b>Can the VSI be designed in a way such that <i>total energy losses</i> during diving 
+        or climbing can be represented on the needle in an exactly proportional way to the
+        energy losses being shown as sink rate during steady flight?
+        </b>
+    </p>
+    <p>The answer is of course "yes" and the method is to add an adjustment (or <i>compensation</i>)
+        to the rate-of-climb needle if the glider's speed is changing. I.e. if the glider is
+        accelerating that represents an increase in energy which can be <i>added</i> to the needle,
+        and vice-versa if it's decelerating.
+    </p>
+    <p>A glider in still air will <i>only</i> accelerate when it's descending (and vice-versa) so
+    this positive acceleration compensation will act to move the sinking needle back towards zero.
+    A TE indication in still air should <i>always</i> be negative (think about it). The most 
+    dramatic effect of the compensation is the needle no longer swings up and down wildly as you
+    push-pull the stick, as mostly the short-term height losses will be compensated for by an
+    increase in the speed of the glider, and vice versa.
+    </p>
+    <h3>Total Energy math</h3>
+
+    <p>Potential energy due to height of glider = m * g * h</p>
+    <p>&nbsp;&nbsp;&nbsp; where m = mass of glider (kg), g = gravitational constant (9.81), h = height (meters)</p>
+    <p>Kinetic energy = m * v<sup>2</sup>/2</p>
+    <p>&nbsp;&nbsp;&nbsp; where v = speed of glider (m/s)</p>
+    <p>Rate of potential energy change during ascent/descent = m * g * (h<sub>1</sub> - h<sub>2</sub>) / t</p>
+    <p>&nbsp;&nbsp;&nbsp; where h<sub>1</sub> = start height (m), h<sub>2</sub> = end height (m), 
+        t = time (seconds beween glider at h<sub>1</sub> and h<sub>2</sub>)
+    </p>
+    <p>Similarly rate of energy change during acceleration/deceleration = 
+        m * (v<sub>2</sub><sup>2</sup> - v<sub>1</sub><sup>2</sup>)/(2 * t)
+    </p>
+    <p>So total energy change is m * g * (h<sub>1</sub> - h<sub>2</sub>) / t +
+        m * (v<sub>2</sub><sup>2</sup> - v<sub>1</sub><sup>2</sup>)/(2 * t)
+    </p>
+    <p>Now assume steady flying in still air (i.e. no change of speed) then the second term
+        will be zero and the energy loss is resulting from the height change only i.e. 
+        m * g * (h<sub>1</sub> - h<sub>2</sub>) / t. Note that is m * g * (basic climb rate).
+    </p>
+    <p>This tells you that the VSI needle showing "basic climb rate" can also be interpreted as
+        showing "(rate of potential energy change) / (m * g)".  If we divide "rate of kinetic 
+        energy change"
+        by the same amount, then this energy change can be represented on the needle in the same
+        proportion as the potential energy change such that the needle now displays <i>both</i>
+        energy changes represented as an <i>equivalent</i> sink rate.
+    </p>
+    <p>Hence the "total energy" sink rate to display on the instrument is (basic sink rate) +
+        (rate of kinetic energy change divided by (m * g)). I.e.
+    </p>
+    <p>TE vario reading = (h<sub>1</sub> - h<sub>2</sub>) / t + 
+        m * (v<sub>2</sub><sup>2</sup> - v<sub>1</sub><sup>2</sup>)/(2 * t * m * g), simplified to
+    </p>
+    <p><b>TE reading = ((h<sub>1</sub> - h<sub>2</sub>) + (v<sub>2</sub><sup>2</sup> - v<sub>1</sub><sup>2</sup>)/(2 * g)) / t</b>,
+     where g = 9.81, h in meters, v in m/s, TE reading in m/s. 
+    </p>
+<h2 id="netto">Netto vario<h2>
+
+<h2 id="stf">Speed-to-Fly vario<h2>
+
+<h2 id="arrival_height">Arrival height calculation</h2>
+        
+    </body>
+</html>

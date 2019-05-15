@@ -1,2 +1,7 @@
 body { font-family: sans-serif;
 }
+
+.center {
+    margin: 0 auto;
+    text-align: center;
+}
