@@ -1,0 +1,218 @@
+<html>
+    <head>
+            <meta charset="UTF-8">
+            <title>X-plane xLua overview</title>
+            <link rel="stylesheet" type="text/css" href="../../xp-soaring.css"/>
+    </head>
+    <body>
+
+<h1><a href="../index.html">xp-soaring</a> &gt; xLua programming overview</h1>
+
+<h2>Script packaging and basic structure</h2>
+
+<p>XLua scripts are organized into "modules". ­ Each module is a fully independent 
+    script that runs inside your aircraft.
+    </p>
+<ul>
+
+<li>Modules are completely independent of each other and do not share data. They are designed for isolation.
+    </li>
+<li>You do not need to use more than one module. Multiple modules are provided to let work be copied 
+    as a whole from one
+     aircraft to each other.
+    </li>
+<li>Each module can use one .lua script file or more than one .lua script file, depending on author’s preferences.
+    </li>
+</ul>
+<p>
+So, here are two methods you can use for this:
+    </p>
+<ol>
+<li>As you described, place each script in its own directory (module) with the script 
+    name matching the folder name. See the default 747 for examples.
+</li>
+<li>
+You can also place multiple scripts in one directory (module). The "main" script file 
+is loaded and run automatically. The other scripts in a directory will 
+load and run based on naming convention used. If the script names include the 
+directory name, they will load and run automatically (see the default C90 for examples), 
+otherwise you will need to use <tt>dofile(script_name)</tt> to load and run the other scripts.
+</ol>
+<p>
+Sub­folders in the scripts folder are not allowed. All modules must be within "scripts".
+</p>
+<p>
+The file init.lua is part of the XLua plugin itself and should not be edited or removed.
+</p>
+
+<h2></h2>How a module script runs</h2>
+
+<p>When your aircraft is loaded (before the .acf and art files are loaded) the XLua plugin 
+    is loaded, and it loads and runs each of your module scripts.
+    </p>
+<p>When your module’s script is run, all Lua code that is outside of any function 
+    is run immediately. Your script should use this immediate execution only to:
+    </p>
+<ul>
+<li>Create new datarefs and commands specific to your module and
+    </li>
+<li>Find built­-in datarefs and commands from the sim. All other work should be 
+    deferred until you receive additional callbacks.
+    </li>
+    </ul>
+
+<p>Once the aircraft itself has been loaded, your script will receive a number of major 
+    callbacks. These callbacks run a function in your script if a function with the matching name is 
+    found. You do not have to implement a function for every major callback, but you will almost 
+    certainly want to implement at least some of them.
+</p>
+
+<p>Besides major callbacks, one other type of function in your script will run: when you create or 
+    modify commands and when you create writeable datarefs, 
+    you provide a Lua function that is called when the command is run by the user or 
+    when the dataref is written (e.g. by the panel or a manipulator).
+</p>
+
+<p>The <tt>create_dataref("name", "type")</tt> API creates a read-only dataref.  
+    Note that this dataref can be changed by your script, e.g. with <tt>x = 5</tt>.  It cannot be changed 
+        by X­plane or other plugins.
+    </p>
+
+<p>The <tt>create_dataref("name", "type", my_func)</tt> API creates a writeable dataref.  The function 
+    is called each time a plugin other than your script writes to the dataref.  
+    It is OK to have the function do nothing.
+</p>
+ 
+<h2>The API includes the following Major callbacks</h2>
+
+<p><tt>aircraft_load()</tt> - run once
+     when your aircraft is loaded. This is run after the aircraft is initialized enough to set overrides.
+</p>
+<p><tt>aircraft_unload()</tt> - run once when your aircraft is unloaded.
+</p>
+<p><tt>flight_start()</tt> - run once each time a flight is started. The aircraft is already initialized 
+    and can thus be customized. This is always called after aircraft_load has been run at least once.
+</p>
+<p><tt>flight_crash()</tt> - called if X­Plane detects that the user has crashed the airplane.
+</p>
+<p><tt>before_physics()</tt> - called every frame that the sim is not paused and not in replay, before 
+    physics are calculated
+</p>    
+<p><tt>after_physics()</tt> - called every frame that the sim is not paused and not in replay, after 
+    physics are calculated
+</p>
+<p><tt>after_replay()</tt> - called every frame that the sim is in replay mode, regardless of pause status.
+</p>
+
+<h2>Global variables provided by XLua</h2>
+
+<p>
+<tt>SIM_PERIOD</tt> contains the duration of the current frame in seconds (so it is always a fraction). 
+Use this to normalize rates, e.g. to add 3 units of fuel per second in a per­frame callback you’d 
+do <tt>fuel = fuel + 3 * SIM_PERIOD</tt>
+</p>
+<p>
+<tt>IN_REPLAY</tt> ­ evaluates to 0 if replay is off, 1 if replay mode is on.
+</p>
+
+<h2>Datarefs</h2>
+
+<p><tt>create_dataref("name", "type")</tt>
+</p>
+<p><tt>create_dataref("name", "type", my_func)</tt>
+</p>
+ 
+
+<h2>Commands</h2>
+
+<p><tt>find_command("sim/operation/pause_toggle")</tt>
+</p>
+<p><tt>create_command(name, description, function)</tt>
+</p>
+<p><tt>replace_command(name, handler)</tt>
+</p>
+<p><tt>wrap_command(name, before_handler, after_handler)</tt>
+</p>
+
+Command objects have three methods:
+<p><tt>once()</tt> ­ runs the command exactly once.
+</p>
+<p><tt>start()</tt> ­ starts holding down the command.
+</p>
+<p><tt>stop()</tt> ­ stops holding down the command.
+</p>
+
+<p>Custom Command Function (when using create_command)
+</p>
+
+<p><tt>function command_handler(phase, duration)</tt>
+</p>
+
+<p>The phase is an integer that will be 0 when the command is first pressed, 1 while it is being 
+    held down, and 2 when it is released. For any command invocation, 
+    you are guaranteed exactly one begin and one end, with one or 
+    more “held down” in the middle. But note that if the user has 
+    multiple joysticks mapped to the command you could get a second down 
+    while the first one is running.
+</p>
+
+<p>The duration is how long the command has been held down in seconds, starting at 0.
+</p>
+
+<p><tt>create_command</tt> returns a command object but you can ignore 
+    that object if you just need to make a command and not run it yourself.
+</p>
+ 
+<h2>Customizing commands</h2>
+
+<p><tt>replace_command</tt> and <tt>wrap_command</tt> are used to customize existing (sim) commands:
+</p>
+
+<p><tt>replace_command(name, handler)</tt>
+</p>
+<p>This takes an existing command (e.g. one of X­Plane’s commands) and replaces 
+    the action the command does with your handler. The handler has the same 
+    syntax as the custom command handler; ­ it takes a phase and duration.
+</p>
+
+<p><tt>wrap_command(name, before_handler, after_handler)</tt>
+</p>
+<p>This takes an existing command (e.g. one of X­Plane’s commands) and installs 
+    two new handlers the before handler runs before X­Plane, and the after 
+    handler runs after. You can use this to “listen” for a command and 
+    do extra stuff without losing X­Plane’s capabilities. You must provide 
+    both functions even if one does nothing.
+</p>
+
+<h2>Timers</h2>
+
+<p>You can create a timer out of any function. Timer functions take no arguments.
+</p>
+
+<p><tt>run_at_interval(func, interval)</tt>
+</p>
+<p>Runs func every interval seconds, starting interval seconds from the call.
+</p>
+
+<p><tt>run_after_time(func, delay)</tt>
+</p>
+<p>Runs func once after delay seconds, then timer stops.
+</p>
+
+<p><tt>run_timer(func, delay, interval)</tt>
+</p>
+<p>Runs func after delay seconds, then every interval seconds after that.
+</p>
+
+<p><tt>stop_timer(func)</tt>
+</p>
+<p>This ensures that func does not run again until you re­schedule it; any scheduled 
+    runs from previous calls are canceled.
+</p>
+<p><tt>is_timer_scheduled(func)</tt>
+</p>
+<p>This returns true if the timer function will run at any time in the future. It 
+    returns false if the timer isn’t scheduled or if func has never been used as a timer.
+</p>
+</body>
+</html>
