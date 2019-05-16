@@ -1,4 +1,22 @@
-body { font-family: sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+body { 
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.breadcrumbs {
+    display: inline;
+    font-size: 1.5em;
+}
+
+.page_heading {
+    display: inline;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.h1 { font-weight: bold;
+    font-size: 2em;
 }
 
 .center {
