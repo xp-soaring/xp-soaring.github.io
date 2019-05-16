@@ -1,0 +1,1885 @@
+<html>
+<head>
+<title>IGC FILE FORMAT REFERENCE AND DEVELOPERS' GUIDE - Ian Forster-Lewis</title>
+<style>
+body {font-family: Helvetica}
+ul {list-style-type: none;}
+</style>
+
+</head>
+<body>
+<p>
+    <a href="../index.html">x-plane</a>
+    &nbsp;&gt;&nbsp;<a href="index.html">igc file format homepage</a>
+    &nbsp;&gt;&nbsp;reference and guide
+</p>
+
+
+<h1>IGC FILE FORMAT REFERENCE AND DEVELOPERS' GUIDE - Ian Forster-Lewis</h1>
+
+<p>These are notes created for my personal use to try and make the FAI documentation more useful to me as a logger
+developer. I have taken the 2008 version of the 
+<a href="http://www.fai.org/gliding/gnss/tech_spec_gnss.asp" target="_blank">FAI documentation</a> as a starting point and
+added links and other information to make it more usable by a developer that is either writing or reading these
+lof files.
+</p>
+
+<p><i>Ian Forster-Lewis, Sept 2009.</i></p>
+
+<p>This is essentially a modified version of the 'igc file format' Appendix 1 of 
+<a href="http://www.fai.org/gliding/gnss/tech_spec_gnss.asp" target="_blank">the original IGC document available on www.fai.org.</a>.
+I have kept the FAI chapter/section numbers but added to some of the sections.
+</p>
+
+<h2>Contents</h2>
+
+<ul>
+<li>Preface: <a href="#link_preface">ANNOTATED SAMPLE</a>
+</li>
+
+<li>1. <a href="#link_1">INTRODUCTION</a><br/>
+  <ul>
+    <li>1.1 <a href="#link_1.1">Background, and IGC file production</a></li>
+    <li>1.2 <a href="#link_1.2">Revision control</a></li>
+  </ul>
+</li>
+
+<li>2. <a href="#link_2">GENERAL</a><br/>
+  <ul>
+    <li>2.1 <a href="#link_2.1">File structure</a></li>
+    <li>2.2 <a href="#link_2.2">Record Types</a></li>
+    <li>2.3 <a href="#link_2.3">Record order</a></li>
+    <li>2.4 <a href="#link_2.4">Units</a></li>
+    <li>2.5 <a href="#link_2.5">File naming</a></li>
+  </ul>
+</li>
+
+<li>3. <a href="#link_3">SINGLE INSTANCE DATA RECORDS</a><br/>
+  <ul>
+    <li>3.1 <a href="#link_3.1">A record - FR ID number</a></li>
+    <li>3.2 <a href="#link_3.2">G record - Security</a></li>
+    <li>3.3 <a href="#link_3.3">H record - File header</a></li>
+    <li>3.4 <a href="#link_3.4">I record - Extension to the fix (B) record</a></li>
+    <li>3.5 <a href="#link_3.5">J record - Extension to the K record</a></li>
+    <li>3.6 <a href="#link_3.6">C record - Task</a></li>
+  </ul>
+</li>
+
+<li>4. <a href="#link_4">MULTIPLE INSTANCE DATA RECORDS</a><br/>
+  <ul>
+    <li>4.1 <a href="#link_4.1">B record - Fix</a></li>
+    <li>4.2 <a href="#link_4.2">E record - Events</a></li>
+    <li>4.3 <a href="#link_4.3">F record - Satellite constellation</a></li>
+    <li>4.4 <a href="#link_4.4">K record - Data needed less frequently than fixes</a></li>
+    <li>4.5 <a href="#link_4.5">L record - Log book / comments</a></li>
+    <li>4.6 <a href="#link_4.6">D record - Differential GPS</a></li>
+  </ul>
+</li>
+
+<li>5. <a href="#link_5">DEFINITIONS</a><br/>
+<li>6. <a href="#link_6">VALID CHARACTERS</a></li>
+<li>7. <a href="#link_7">THREE-LETTER CODES (TLC)</a></li>
+<li>8. <a href="#link_8">GNSS GEODETIC DATUMS</a></li>
+<li>9. <a href="#link_9">EXAMPLE IGC-FORMAT FILE</a></li>
+</ul>
+
+<h2><a name="link_preface"></a>Preface: ANNOTATED SAMPLE</h2>
+
+<p>Here's a 'walk-through' of a valid IGC file, this is not in the original FAI document.
+ 'Space' characters have been inserted for legibility, if you
+want to cut-and-paste this file as a starting point for your development, you could use the version of the same
+file in <a href="#link_9">section 9</a> without the inserted spaces. Free text is in italics meaning you can enter pretty much anything, otherwise the exact number
+of characters must match the example. Each 'record' in an IGC file fits on a single line and the first few characters
+determine the record <i>type</i>.  I have linked those initial chars in the sample below to the corresponding 
+section of the specification. </p>
+
+<div style="{margin-left: 20px;}">
+<table>
+<tr><td valign="top"><a href="#link_A">A</a>&nbsp;XXX&nbsp;ABC<i>&nbsp;FLIGHT:1</i></td>
+    <td><a href="#link_2.5.6">Manufacturer code</a>, use XXX if you don't have one. 
+    ABC is the unique code for this logger (serial no.?), rest of line can be anything you like</td>
+</tr>    
+<tr><td valign="top"><a href="#link_HFFXA">HFFXA</a>&nbsp;035</td>
+    <td>Typical fix accuracy, here 35 meters. FXA field can also be added to each <a href="#link_B">B record</a></td>
+</tr>    
+<tr><td valign="top"><a href="#link_HFDTE">HFDTE</a>&nbsp;160701</td>
+    <td>UTC date of flight, here 16th July 2001</td>
+</tr>    
+<tr><td valign="top"><a href="#link_HFPLT">HFPLT</a>&nbsp;PILOTINCHARGE:<i>&nbsp;Bloggs&nbsp;Bill&nbsp;D</i></td>
+    <td>Free-text name of the pilot</td>
+</tr>    
+<tr><td valign="top"><a href="#link_HFCM2">HFCM2</a>&nbsp;CREW2:<i>&nbsp;Smith-Barry&nbsp;John&nbsp;A</i></td>
+    <td>Free-text name of the second pilot in a two seater</td>
+</tr>    
+<tr><td valign="top"><a href="#link_HFGTY">HFGTY</a>&nbsp;GLIDERTYPE:<i>&nbsp;Schleicher&nbsp;ASH-25</i></td>
+    <td>Free-text glider type</td>
+</tr>    
+<tr><td valign="top"><a href="#link_HFGID">HFGID</a>&nbsp;GLIDERID:<i>&nbsp;N116&nbsp;EL</i></td>
+    <td>Free-text aircraft registration number or code, e.g. N-number in USA. 
+     Or the number on the fin - it doesn't really matter</td>
+</tr>    
+<tr><td valign="top"><a href="#link_HFDTM">HFDTM</a>100&nbsp;GPSDATUM:&nbsp;WGS-1984</td>
+    <td>Which GPS datum is the logger using. Always 100 in my experience but see the
+        <a href="http://www.fai.org/gliding/gnss/tech_spec_gnss.asp" target="_blank">original FAI document</a>
+         if you want do something unusual.</td>
+</tr>    
+<tr><td valign="top"><a href="#link_HFRFW">HFRFW</a>&nbsp;FIRMWAREVERSION:<i>6.4</i></td>
+    <td>Firmware (i.e. software) version of the logger - anything you like</td>
+</tr>    
+<tr><td valign="top"><a href="#link_HFRHW">HFRHW</a>&nbsp;HARDWAREVERSION:<i>3.0</i></td>
+    <td>Hardware version of the logger - any text that is appropriate</td>
+</tr>    
+<tr><td valign="top"><a href="#link_HFFTY">HFFTY</a>&nbsp;FRTYPE:<i>&nbsp;Calibri,FunkyLogger&nbsp;77</i></td>
+    <td>Flight Recorded Type - any text is ok</td>
+</tr>    
+<tr><td valign="top"><a href="#link_HFGPS">HFGPS</a><i>&nbsp;Marconi,Superstar,12ch,10000m</i></td>
+    <td>Manufacturer of the GPS receiver inside the logger. Do we really care? Any text will work</td>
+</tr>    
+<tr><td valign="top"><a href="#link_HFPRS">HFPRS</a>&nbsp;PRESSALTSENSOR:<i>&nbsp;Sensyn,XYZ11,11000m</i></td>
+    <td>Manufacturer of the pressure sensor in the logger. Any text.</td>
+</tr>    
+<tr><td valign="top"><a href="#link_HFCID">HFCID</a>&nbsp;COMPETITIONID:<i>&nbsp;B21</i></td>
+    <td>Tail fin number of the glider.  IGC logger analysis software (e.g. SeeYou) will typically use this
+    value to label the log that you upload, helpful when animating multiple logs. Free text but keep it
+    short.</td>
+</tr>    
+<tr><td valign="top"><a href="#link_HFCCL">HFCCL</a>&nbsp;COMPETITIONCLASS:<i>15m&nbsp;Motor&nbsp;Glider</i></td>
+    <td>Free text describing the glider class, e.g. Standard, 15m.  No standard for the values though.</td>
+</tr>    
+<tr><td valign="top"><a href="#link_I">I&nbsp;</a>03
+      &nbsp;36&nbsp;38&nbsp;<a href="#link_FXA">FXA</a>
+      &nbsp;39&nbsp;40&nbsp;<a href="#link_SIU">SIU</a>
+      &nbsp;41&nbsp;43&nbsp;<a href="#link_ENL">ENL</a></td>
+    <td>(only the FXA extension is 'mandatory' as of 2009). 
+    This is the 'extension' header record, describing <i>additional</i> fields that can be appended
+    to every <a href="#link_B">B record</a>. The B record is the basic timeseries 'fix' data that is pretty much
+    all analysis programs look at (you'd be surprised how much of this 'H' stuff they simply throw away...).
+    So with the <a href="#link_I">I&nbsp;record</a> you can include, say, engine noise level, with every
+    fix point. The sample here says engine noise level (<a href="#link_ENL">ENL</a>) will be 
+    added as bytes 41 to 43 to each B record, similarly for FXA, and SIU.  The "03" after the "I" is the
+    number of extensions given, i.e. three.</td>
+</tr>    
+<tr><td valign="top"><a href="#link_J">J</a>&nbsp;01&nbsp;08&nbsp;12&nbsp;<a href="#link_HDT">HDT</a></td>
+    <td>(Optional) As the <a href="#link_I">I&nbsp;record</a> above extends the <a href="#link_B">B record</a>,
+    so the <a href="#link_J">J&nbsp;record</a> extends the <a href="#link_K">K&nbsp;record</a>. The
+    K record is basically "K-timestamp-values" where the values are entirely defined by this J record, and the
+    K records
+    can then be embedded anywhere between the B records with the idea that they're used for less frequent
+    updates than the frequent B record. This example gives Heading True (<a href="#link_HDT">HDT</a>) as
+    the piece of information occassionally placed into the log using K records.</td>
+</tr>    
+<tr><td valign="top"><a href="#link_C">C</a>&nbsp;150701&nbsp;213841&nbsp;160701&nbsp;0001&nbsp;02<i>&nbsp;500K&nbsp;Tri</i></td>
+    <td>(Optional)
+     (The following example of a C (Declaration) record is for a 500 km triangle to be flown from Lasham gliding
+      centre in the UK)<br/>
+      This first line contains the date/time of the declaration (15/Jul/2001), 21:38 (9:38pm) and 14 seconds, 
+      the date of
+      the intended flight (16/Jul/2001), a four-digit task id (0001), number of turnpoints (02) 
+      not including start/finish, and then free text describing the task.
+    </td>
+</tr>    
+<tr><td valign="top"><a href="#link_C">C</a>&nbsp;5111359N&nbsp;00101899W<i>&nbsp;Lasham&nbsp;Clubhouse</i></td>
+    <td>C latitude as DDMMmmmN, longitude as DDDMMmmmE, description</td>
+</tr>    
+<tr><td valign="top"><a href="#link_C">C</a>&nbsp;5110179N&nbsp;00102644W<i>&nbsp;Lasham&nbsp;Start&nbsp;S,&nbsp;Start</i></td>
+    <td>&nbsp;</td>
+</tr>    
+<tr><td valign="top"><a href="#link_C">C</a>&nbsp;5209092N&nbsp;00255227W<i>&nbsp;Sarnesfield,&nbsp;TP1</i></td>
+    <td>&nbsp;</td>
+</tr>    
+<tr><td valign="top"><a href="#link_C">C</a>&nbsp;5230147N&nbsp;00017612W<i>&nbsp;Norman&nbsp;Cross,&nbsp;TP2</i></td>
+    <td>&nbsp;</td>
+</tr>    
+<tr><td valign="top"><a href="#link_C">C</a>&nbsp;5110179N&nbsp;00102644W<i>&nbsp;Lasham&nbsp;Start&nbsp;S,&nbsp;Finish</i></td>
+    <td>C record the same format as the others above, but this is the <i>point of takeoff</i> and not formally
+       part of the task declaration. Typically just put th location of the home airfield.</td>
+</tr>    
+<tr><td valign="top"><a href="#link_C">C</a>&nbsp;5111359N&nbsp;00101899W<i>&nbsp;Lasham&nbsp;Clubhouse</i></td>
+    <td>C record as above, this time for the <i>landing</i> location. Again, not formally part of the
+    task declaration and will typically be the home airfield.</td>
+</tr>    
+</tr>    
+<tr><td valign="top"><a href="#link_F">F</a>160240&nbsp;04&nbsp;06&nbsp;09&nbsp;12&nbsp;36&nbsp;24&nbsp;22&nbsp;18&nbsp;21</td>
+    <td>
+      This gives the ID's of the satellites visible, in the format "F-timestamp-ID-ID-ID..." where timestamp is
+      HHMMSS and each id a two-byte pair. In this example at 16:02:40 the logger could see nine satellites.
+      
+    </td>
+</tr>    
+<tr><td valign="top"><a href="#link_B">B</a>160240&nbsp;5407121N&nbsp;00249342W&nbsp;A&nbsp;00280&nbsp;00421&nbsp;205&nbsp;09&nbsp;950</td>
+    <td>Great, we've finally got to the log points we are interested in. The format is
+    "B-timestamp-latitude-longitude-AVflag-pressure&nbsp;alt-GPS alt-extensions". As mentioned above, the first
+    35 bytes of the B record have a fixed definition, then after that the fields are determined by the
+    <a href="#link_I">I&nbsp;record</a>.  This B record has timestamp <i>16:02:40</i>, 
+    lat <i>54 degrees 7.121 mins North</i>, long
+    <i>2 deg 49.342 mins West</i>, AVflag (3D validity) <i>A</i>, 280m altitude from pressure sensor, 421m altitude from GPS,
+     and <a href="#link_FXA">FXA</a> (accuracy) 205m, 
+     <a href="#link_SIU">SIU</a> (satellite count) 09 and 
+     <a href="#link_ENL">ENL</a> (engine noise) 950 (suggesting the engine is running...). </td>
+</tr>    
+<tr><td valign="top"><a href="#link_D">D</a>&nbsp;20331</td>
+    <td>(Optional) This gives the ID of a "Differential GPS" station being 
+    used, format "D2xxxx" where xxxx is the ID.</td>
+</tr>    
+<tr><td valign="top"><a href="#link_E">E</a>160245&nbsp;<a&nbsp;href="#link_PEV">PEV</a></td>
+    <td>(Optional) This record records an <i>event</i>, format "timestamp-code", with the permissible
+    3-letter codes given in <a href="#link_7">section 7</a>. In this example the code is a generic "Pilot Event" which
+    will typically be used to cause the logger to temporarily speed up its logging rate. The 
+    <a href="#link_E">E&nbsp;record</a> must be followed by a <a href="#link_B">B&nbsp;record</a>
+    giving the location.</td>
+</tr>    
+<tr><td valign="top"><a href="#link_B">B</a>160245&nbsp;5107126N&nbsp;00149300W&nbsp;A&nbsp;00288&nbsp;00429&nbsp;195&nbsp;09&nbsp;020</td>
+    <td>This <a href="#link_B">B&nbsp;record</a> matches the <a href="#link_E">E record above</a>, 
+    i.e. has the same timestamp. The eagle-eyed amongst you will notice the engine noise level has fallen from 950
+    in the previous B record to 020, i.e. the engine has stopped in 5 seconds beween these fixes.</td>
+</tr>    
+<tr><td valign="top"><a href="#link_B">B</a>160250&nbsp;5107134N&nbsp;00149283W&nbsp;A&nbsp;00290&nbsp;00432&nbsp;210&nbsp;09&nbsp;015</td>
+    <td>continue logging at 5-second intervals (any period is ok)</td>
+</tr>    
+<tr><td valign="top"><a href="#link_B">B</a>160255&nbsp;5107140N&nbsp;00149221W&nbsp;A&nbsp;00290&nbsp;00430&nbsp;200&nbsp;09&nbsp;012</td>
+    <td>still logging at 5-second intervals... normally the file would be almost entirely made up of these records.</td>
+</tr>    
+    <td><a href="#link_F">F</a> 160300 06 09 12 36 24 22 18 21</td>
+    <td>satellites in use reduce from 9 to 8 as ID 04 is no longer received</td>
+</tr>    
+</tr>    
+<tr><td valign="top"><a href="#link_B">B</a>160300&nbsp;5107150N&nbsp;00149202W&nbsp;A&nbsp;00291&nbsp;00432&nbsp;256&nbsp;08&nbsp;009</td>
+    <td>here is a fix record (B) providing a location for the F record above.</td>
+</tr>    
+    <td><a href="#link_E">E</a>160305&nbsp;<a href="#link_PEV">PEV</a></td>
+    <td>a "Pilot Event", e.g. he/she pushed a button to speed up the logging rate</td> 
+</tr>    
+<tr><td valign="top"><a href="#link_B">B</a>160305&nbsp;5107180N&nbsp;00149185W&nbsp;A&nbsp;00291&nbsp;00435&nbsp;210&nbsp;08&nbsp;015</td>
+    <td>A fix record giving the lat/long of the PEV event above.</td>
+</tr>    
+<tr><td valign="top"><a href="#link_B">B</a>160310&nbsp;5107212N&nbsp;00149174W&nbsp;A&nbsp;00293&nbsp;00435&nbsp;196&nbsp;08&nbsp;024</td>
+    <td>another fix</td>
+</tr>    
+<tr><td valign="top"><a href="#link_K">K</a>&nbsp;160248&nbsp;00090</td>
+    <td>This <a href="#link_K">K record</a> is general-purpose placeholder for periodic values selected from
+    the list that can be defined in the single <a href="#link_J">J record</a> in the header. In this example the
+    J record at the top of this logger file says bytes 8 to 12 will be True Heading (<a href="#link_HDT")HDT</a>).
+    Here the value for True Heading at 16:02:48 is 90 degrees.
+      (<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al7.pdf" target=_blank>
+       <small>AL7</small></a>)</td>
+</tr>    
+<tr><td valign="top"><a href="#link_B">B</a>160248&nbsp;5107220N&nbsp;00149150W&nbsp;A&nbsp;00494&nbsp;00436&nbsp;190&nbsp;08&nbsp;018</td>
+    <td>here is a fix (B) record giving the location for the K record above (note same timestamp).</td>
+</tr>    
+<tr><td valign="top"><a href="#link_B">B</a>160252&nbsp;5107330N&nbsp;00149127W&nbsp;A&nbsp;00496&nbsp;00439&nbsp;195&nbsp;08&nbsp;015</td>
+    <td>another general fix record</td>
+</tr>    
+<tr><td valign="top"><a href="#link_L">L</a>&nbsp;XXX&nbsp;<i>RURITANIAN&nbsp;STANDARD&nbsp;NATIONALS&nbsp;DAY&nbsp;1</i></td>
+    <td>this is a general 'comment' record.  The three characters after the 'L' can be manufacturer code
+     (XXX in this example), 'PLT' (pilot comment), 'OOI' (observer comment) or 'PFC' (post flight comment). After
+     that, any free text is fine.</td>
+</tr>    
+<tr><td valign="top"><a href="#link_L">L</a>&nbsp;XXX&nbsp;FLIGHT&nbsp;TIME:&nbsp;4:14:25,&nbsp;TASK&nbsp;SPEED:58.48KT</td>
+    <td>Another comment record</td>
+</tr>    
+<tr><td valign="top"><a href="#link_G">G</a>&nbsp;REJNGJERJKNJKRE31895478537H43982FJN9248F942389T433T</td>
+    <td>Security key calculated by the logger from the content above. The only point is that a seperate program should be
+    available to check this key so you know the log file is kosher...</td>
+</tr>    
+<tr><td valign="top"><a href="#link_G">G</a>&nbsp;JNJK2489IERGNV3089IVJE9GO398535J3894N358954983O0934</td>
+    <td>multiple <a href="#link_G">G records</a> are allowed, whatever the logger software needs</td>
+</tr>    
+<tr><td valign="top"><a href="#link_G">G</a>&nbsp;SKTO5427FGTNUT5621WKTC6714FT8957FGMKJ134527FGTR6751</td>
+    <td>&nbsp;</td>
+</tr>    
+<tr><td valign="top"><a href="#link_G">G</a>&nbsp;K2489IERGNV3089IVJE39GO398535J3894N358954983FTGY546</td>
+    <td>&nbsp;</td>
+</tr>    
+<tr><td valign="top"><a href="#link_G">G</a>&nbsp;12560DJUWT28719GTAOL5628FGWNIST78154INWTOLP7815FITN</td>
+    <td>&nbsp;</td>
+</tr>    
+</table>
+</div>
+
+<h2><a name="link_1"></a>1. INTRODUCTION</h2>
+<p><b><a name="link_1.1"></a>1.1 Background, and IGC file production.</b> The IGC Data File Standard was 
+initially developed by a group
+consisting of representatives of IGC, glider FR manufacturers and a number of independent software developers
+mainly concerned with flight data analysis programs. After discussion and development during 1993 and 1994 it
+was initially defined in December 1994 and became part of official IGC/FAI documents after approval by IGC
+in March 1995. It has been refined and developed afterwards, through regular amendments. It provides a
+common world standard data format for the verification of badge, record, and competition flights to FAI/IGC
+criteria. The Standard may also be used by other FAI sports and activities.</p>
+<p><a name="link_1.1.1"></a><b>1.1.1</b> Production of Flight Data File. It must be possible to produce a 
+separate and complete IGC flight
+data file for each flight including all record types (<a href="#link_2.2">para 2.2</a> following) 
+relevant to the flight such as header
+records, flight declaration, etc. Two ways of achieving this are by continuous recording of fixes between
+the times that the FR was switched on and off, or, for FRs that have a "standby" state on switch-on, only
+recording fixes after pre-set movement and pressure-change thresholds are exceeded (ceasing recording
+when changes are below the thresholds, but see <a href="#link_1.1.1.2">1.1.1.2</a> on short periods without external power).(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al3.pdf" target=_blank><small>AL3</small></a>)
+<p><a name="link_1.1.1.1"></a>1.1.1.1 Thresholds for starting and stopping recording, also Power-on Protocol for creating new IGC
+files. The following thresholds before fixes are recorded have been found suitable in the past: lat/long
+change, 10-15 km/hr; pressure altitude change, 1 metre per second for 5 seconds. Pre-takeoff and
+after-landing baselines of at least 20 fixes must be provided. For the pre-takeoff baseline, a small
+memory circuit can be used that continuously stores the appropriate number of previous fixes and,
+when movement is detected, puts them into the flight data record. After landing, this can be achieved
+by a time delay before stopping the recording of fixes. This condition may also apply to a period in
+wave or ridge lift with little or no vertical or horizontal movement. Therefore, a new IGC file must not
+be started while external power is still connected and the recorder is still switched on, even when no
+movement is being detected and no fixes are being recorded. Note that this "power-on protocol" is also
+needed for barograph calibrations so that a new file is not produced while the calibrator is making small
+adjustments to the pressure at each level of the calibration. A new IGC file is produced under the
+"Power-off Protocol" that is described under <a href="#link_1.1.1.2">1.1.1.2</a> below.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al5.pdf" target=_blank><small>AL5</small></a>), modified by (<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al9.pdf" target=_blank><small>AL9</small></a>)
+<p><a name="link_1.1.1.2"></a>1.1.1.2 Loss of external power for short periods - Power-off Protocol for creating new IGC files. To
+allow for events such as changing or switching batteries in flight, a period of 5 minutes with no external
+power shall be allowed to elapse before a new Flight Data File is created on powering up again. After
+this period has elapsed a new IGC file must be produced, so that if several flights are made on one day,
+each has a complete IGC data file of its own.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al3.pdf" target=_blank><small>AL3</small></a>)
+<p><a name="link_1.1.1.3"></a>1.1.1.3 Data transfer to a PC. If the data for several flights is held in the FR memory, it must be
+ensured that when the data is transferred, all record types in IGC files that are subsequent to the first
+file are those relevant to each subsequent individual flight. If any record types are changed between
+flights (such as declaration, pilot name, etc.) the changes must be included in the subsequent (but not
+previous) flight data files.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al3.pdf" target=_blank><small>AL3</small></a>)
+<p><a name="link_1.1.1.4"></a>1.1.1.4 Recorders operating on internal power. Some recorders are designed so that all of their
+functions are available on internal power. For these recorders, external power is used for charging and
+as a backup for long flights. When operating on internal power it must be ensured that under flight
+conditions of little horizontal or vertical movement (such as in ridge or wave flying), the IGC file
+continues be able to record data and is not ended while flight continues. The IGC file shall be ended
+after one of the following three conditions: (1) if no horizontal or vertical movement has been detected
+for 10 minutes (thresholds as in <a href="#link_1.1.1.1">1.1.1.1</a> above); (2) after the recorder is switched off by deliberate
+action, or; (3) if the recorder is still powered after the flight, when the user establishes a connection for
+purposes of downloading from the recorder.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al10.pdf" target=_blank><small>AL10</small></a>)
+<p><b><a name="link_1.2"></a>1.2 REVISION CONTROL.</b> The IGC flight data file format is revised through the normal amendment
+process for this document. See amendment procedures and list of amendment on page (i).
+</p>
+<h2><a name="link_2"></a>2. GENERAL</h2>
+<p><b><a name="link_2.1"></a>2.1 FILE STRUCTURE.</b> An IGC-format file consists of lines of characters, each line giving a set of data
+such as for a GNSS fix. Each line starts with an upper-case letter denoting one of the Record types listed in
+para 2.2., and ends with CRLF (Carriage Return Line Feed). Each line is limited to 76 characters in length,
+excluding the CRLF which is hidden and does not appear in text form. Some Record types take up only
+one line, some such as task and header take up several lines. For instance, the task/declaration (C) Record
+includes a line for each Waypoint, and the Header (H) Record includes separate lines for GNSS FR type,
+pilot name, glider identification, etc. The order of Record types within an IGC file is given in para 2.3.
+Some Record types occur only in only one place in the file (single instance Records), others such as fixes
+re-occur as time progresses (multiple instance Records). Only characters listed as valid in para 6 shall be
+used in the file. If others such as accented characters (acutes, hatcheks, umlauts, etc) in names of airfields
+and turn points, are used in a manufacturer's proprietary (original) file format, such characters shall be
+converted to a valid character as part of the conversion to the IGC format. This is so that analysis programs
+designed for the IGC format do not have to recognise non-standard characters.</p>
+<p><b><a name="link_2.2"></a>2.2 RECORD TYPES.</b> The Record types are prefixed by upper case letters as follows:</p>
+<pre>
+IGC DATA FILE FORMAT - RECORD TYPE IDENTIFICATION LETTERS
+A - FR manufacturer and identification
+B - Fix
+C - Task/declaration
+D - Differential GPS
+E - Event
+F - Constellation
+G - Security
+H - File header
+I - List of extension data included at end of each fix <a href="#link_B">B record</a>
+J - List of data included in each extension (K) Record
+K - Extension data
+L - Logbook/comments
+M, N, etc. - Spare
+</pre>
+<p><b><a name="link_2.3"></a>2.3 RECORD ORDER.</b> The FR I/D (A) Record is always the first in the file and the last is the Security
+(G) Record. After the single-line <a href="#link_A">A record</a> is the multi-line Header (H) Record, followed by the I and J
+Records that list extension data which applies to later Record types in the file. These are followed by other
+Record types indicating that certain data is recorded in the file, including the task/declaration (C) Record,
+and the initial Satellite Constellation (F). Time-specific Records follow, placed in the file in time order
+using either GNSS fix-time (if the GNSS is locked on) or the FR Real Time Clock (RTC); these are B (fix),
+E (event), F (constellation change) & K (extension data). The logbook/comments (L) Record data may be
+placed anywhere after the H, I and <a href="#link_J">J records</a> and can have several lines throughout the file depending on
+the nature of the comments included.</p>
+The following sequence of Record types is typical, although in a real flight data file there will be many
+more fix <a href="#link_B">B record</a> lines than shown here:
+<pre>
+IGC DATA FILE FORMAT - ORDER OF RECORD TYPES IN AN IGC FILE
+A - FR manufacturer and identification (always first)
+H - File header
+I - Fix extension list, of data added at end of each B
+record
+J - Extension list of data in each K record line
+C - Task/declaration (if used)
+L - Logbook/comments (if used)
+D - Differential GPS (if used)
+F - Initial Satellite Constellation
+B - Fix plus any extension data listed in <a href="#link_I">I Record</a>
+B - Fix plus any extension data listed in <a href="#link_I">I Record</a>
+E - Pilot Event (PEV)
+B - Fix plus any extension data listed in <a href="#link_I">I Record</a>
+K - Extension data as defined in J Record
+B - Fix plus any extension data listed in <a href="#link_I">I Record</a>
+B - Fix plus any extension data listed in <a href="#link_I">I Record</a>
+F - Constellation change
+B - Fix plus any extension data listed in <a href="#link_I">I Record</a>
+K - Extension data as defined in <a href="#link_J">J Record</a>
+B - Fix plus any extension data listed in <a href="#link_I">I Record</a>
+E - Pilot Event (PEV)
+B - Fix plus any extension data listed in <a href="#link_I">I Record</a>
+B - Fix plus any extension data listed in <a href="#link_I">I Record</a>
+B - Fix plus any extension data listed in <a href="#link_I">I Record</a>
+K - Extension data as defined in <a href="#link_J">J Record</a>
+L - Logbook/comments (if used)
+G - Security record (always last)
+</pre>
+
+<p><b><a name="link_2.4"></a>2.4 UNITS.</b> 
+<p>Data in the IGC file shall use the following unit system:</p>
+Time - UTC, obtained from the same GNSS data package from which the recorded lat/long and GPS altitude are
+also obtained, or, if GPS is not locked on, from the Real-Time Clock in the recorder. Note that UTC is not the
+same as GPS internal system time that is different by 14 seconds in 2006 due to the addition of 'leap seconds'
+since the GPS system first became operational in January 1980. The correction to UTC available within the GPS
+system must be applied to time recorded in IGC files.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al9.pdf" target=_blank><small>AL9</small></a>)</p>
+<pre>
+Distance - Kilometres and decimal kilometres. For FAI/IGC conversions from feet and miles, see para 2.6.8
+(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al6.pdf" target=_blank><small>AL6</small></a>)
+Speed - Kilometres per hour. For FAI/IGC conversions from nautical miles per hour (knots) and statute miles
+per hour (mph), see para <a href="#link_2.6.8">2.6.8</a>(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al6.pdf" target=_blank><small>AL6</small></a>)
+Date (of the first line in the <a href="#link_B">B record</a>) - UTC DDMMYY (day, month, year). See para <a href="#link_2.5.4">2.5.4</a>(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al6.pdf" target=_blank><small>AL6</small></a>)
+Direction - degrees True, clockwise from 000 (North)
+Latitude and Longitude - Degrees, minutes and decimal minutes with N,S,E,W designators
+Altitude - Metres, separate records for GNSS and pressure altitudes.
+Pressure - Hectopascals (the same as millibars) to two decimal places, for instance altimeter subscale setting, but
+see * below under PPPPpp
+</pre>
+
+The above items shall be recorded in the flight log as follows:
+<ul>
+<li>Time - HHMMSSsss (UTC)<br/>
+HH- Hours fixed to 2 digits with leading 0 where necessary<br/>
+MM - Minutes fixed to 2 digits with leading 0 where necessary<br/>
+SS - Seconds fixed to 2 digits with leading 0 whre necessary<br/>
+sss - number of decimal seconds are those available in the Record concerned, less fields already used for
+HHMMSS.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</li>
+<li>
+Distance - DDDDddd, kilometres up to 9999 with leading zeros as required and then three decimal places (that
+is, the last figure is metres)
+</li>
+<li>
+Speed - SSSsss.<br/>
+ SSS - fixed to 3 digits with leading 0<br/>
+sss - number of speed decimals (the number of fields recorded are those available for speed in the Record
+concerned, less fields already used for SSS)
+</li>
+<li>
+Date - DDMMYY<br/>
+DD- number of the day in the month, fixed to 2 digits with leading 0 where necessary<br/>
+MM - number of the month in year, fixed to 2 digits with leading 0 where necessary<br/>
+YY- number of the year modulo 100, fixed to 2 digits with leading 0 where necessary
+</li>
+<li>
+Direction DDDddd.<br/>
+ DDD - fixed to 3 digits with leading 0 where necessary<br/>
+ddd - number of direction decimals (the number of fields recorded are those available for direction in the Record
+concerned, less fields already used for DDD)
+</li>
+Lat/Long - D D M Mm m m N D D D M M m m m E<br/>
+DD- Latitude degrees with leading 0 where necessary<br/>
+DDD - Longitude degrees with leading 0 or 00 where necessary<br/>
+MMmmmNSEW - Lat/Long minutes with leading 0 where necessary, 3 decimal places of minutes (mandatory,
+not optional), followed by North, South, East or West letter as appropriate<br/>
+</li>
+<li>
+Altitude - AAAAAaaa<br/>
+AAAAA - fixed to 5 digits with leading 0<br/>
+aaa - number of altitude decimals (the number of fields recorded are those available for altitude in the Record
+concerned, less fields already used for AAAAA)
+</li>
+<li>
+PPPPpp - Pressure in hPa (mb) with two decimal places, PPPPpp fixed to 6 digits with leading zero for settings
+in the 900 range). For altimeter subscale settings, 1013.25 mb (ISA Sea Level) has an PPPPpp code of 101325,
+and 980 mb has a code of 098000.<br/>
+* An altimeter setting (and any change to it) may be recorded, for instance where the FR feeds a cockpit display
+(three-letter code ATS, see <a href="#link_7">para 7</a>). However, it must not be used to change the pressure altitude recorded with
+each fix in the IGC file, which must remain with respect to the ISA sea level datum (1013.25 mb) at all times.
+</li>
+<li>
+GNSS Altitude. Where GNSS altitude is not available from GNSS position-lines such as in the case of a 2D fix
+(altitude drop-out), it shall be recorded in the IGC format file as zero so that the lack of valid GNSS altitude can
+be clearly seen during post-flight analysis.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al3.pdf" target=_blank><small>AL3</small></a>)
+</li>
+</ul>
+
+<p><b><a name="link_2.5"></a>2.5 FILE NAMING</b></p>
+<p><a name="link_2.5.1"></a><b>2.5.1</b> Short file name style: YMDCXXXF.IGC<br/>
+Y&nbsp;=&nbsp;Year; value 0 to 9, cycling every 10 years<br/>
+M&nbsp;=&nbsp;Month; value 1 to 9 then A for 10, B=11, C=12.<br/>
+D&nbsp;=&nbsp;Day; value 1 to 9 then A=10, B=11, C=12, D=13, E=14, F=15, G=16, H=17, I=18, J=19, K=20, L=21,
+M=22, N=23, O=24, P=25, Q=26, R=27, S=28, T=29, U=30, V=31.<br/>
+C&nbsp;=&nbsp;manufacturer's IGC code letter (see table below)<br/>
+XXX&nbsp;=&nbsp;unique FR Serial Number (S/N); 3 alphanumeric characters<br/>
+F&nbsp;=&nbsp;Flight number of the day; 1 to 9 then, if needed, A=10 through to Z=35<br/>
+<p><a name="link_2.5.2"></a><b>2.5.2</b> Long file name style. This uses a full set of characters in each field, a hyphen separating each field,
+the field order being the same as in the short file name. For instance, if the short name for a file from
+manufacturer X is 36HXABC2.IGC, the equivalent long file name is 2003-06-17-XXX-ABC-02.IGC.
+Long file names may be generated by software that is compatible with long file names, although the DOS
+versions of the DATA, CONV and VALI programs must continue to generate and use short file names.
+(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al3.pdf" target=_blank><small>AL3</small></a>)
+<p><a name="link_2.5.3"></a><b>2.5.3</b> FR Serial Number (S/N). The three-character FR S/N must be used in the <a href="#link_A">A record</a> and be imprinted
+on the case of the recorder unless there is an easily-accessible electronic display which includes the S/N.
+<p><a name="link_2.5.3.1"></a>2.5.3.1 Existing FRs using serial numbers with coded systems where the XXX translates to a different
+five-number numerical code which is used in the <a href="#link_A">A record</a>, have "Grandfather Rights" and do not need
+to be changed. New FRs must use the three-alphanumeric system described above.
+<p>2.5.4. Date of flight - the date used in the file name and in the <a href="#link_H">H record</a> (DTE code) is the UTC date of the
+first valid fix in the flight log transferred after flight. That is, the date applicable to the time in the first line
+in the B (fix) record, not the date at the time of switching on, or of take-off. This is particularly important
+for recorders operated in time zones where they are switched on close to midnight UTC.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al6.pdf" target=_blank><small>AL6</small></a>)
+<p>2.5.5. Security of file name. The file name is not protected by the electronic security system, which only
+applies to data within the file itself (see chapter 2, para 2.8). File names may be changed for specific
+purposes such as competitions, where it may be found more convenient to change from the IGC name
+system in which the file is originally transferred from the FR (para 2.5), to a system using glider
+competition number or pilot name. No loss of data or security occurs, since all of the data in the IGC file
+name is repeated in the file itself in the A and <a href="#link_H">H records</a>. (AL2) Example:
+16AFXYZ2.IGC = 10 June 2001, Filser FR number XYZ, Flight 2 of the day.
+<p><a name="link_2.5.6"></a><b>2.5.6</b> Manufacturer codes. Single- and three-character codes are tabulated below. Manufacturers applying
+and paying the fee for IGC-approval who are not listed should apply to the Chairman of GFAC for
+allocation of codes. Manufacturers using the IGC file format but not applying for IGC-approval should use
+the X and XXX codes, see note 2 at the end.
+<p><a name="link_2.5.6.1"></a>2.5.6.1 Name of Intermediate Format file. If a manufacturer chooses a system where data is
+download from the recorder in an intermediate format such as binary, the file name for the
+intermediate format shall be as for the IGC file but with the Manufacturer's three letter code used
+instead of the "IGC" after the dot. It shall then be possible to convert the intermediate format to the
+IGC ASCII format through the Conversion utility that is part of the manufacturer's IGC-XXX.DLL
+file or, for earlier systems, through the CONV-XXX.EXE program.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+<table border="1">
+<tr>
+    <td colspan="6">
+    
+    IGC DATA FILE FORMAT - CODES FOR MANUFACTURERS
+    OF IGC-APPROVED FLIGHT RECORDERS(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al5.pdf" target=_blank><small>AL5</small></a>)
+    </td>
+</tr>
+<tr>
+<th>
+Single
+Char.
+Code
+</th>
+<th>
+Three
+Char.
+Code
+</th>
+<th>
+Manufacturer's
+Name
+</th>
+<th>
+Single
+Char.
+Code
+</th>
+<th>
+Three
+Char.
+Code
+</th>
+<th>
+Manufacturer's
+Name
+</th>
+</tr>
+
+<tr><td>A</td><td> GCS</td><td> Garrecht   </td><td> S</td><td> SDI</td><td> Streamline Data Instruments</td></tr>
+<tr><td>B</td><td>    </td><td>            </td><td> T</td><td> TRI</td><td> Triadis Engineering GmbH</td></tr>
+<tr><td>C</td><td> CAM</td><td> Cambridge Aero Instruments</td>    <td> U</td><td></td><td></td></tr>
+<tr><td>D</td><td> DSX</td><td> Data Swan/DSX</td><td> V</td><td></td><td></td></tr>
+<tr><td>E</td><td> EWA</td><td> EW Avionics</td><td> W</td><td> WES</td><td> Westerboer</td></tr>
+<tr><td>F</td><td> FIL</td><td> Filser     </td><td>X</td><td> XXX</td><td> Other manufacturers, see note below</td></tr>
+<tr><td>G</td><td> FLA</td><td> Flarm (Flight Alarm)</td><td> Y<td></td><td></td></tr>
+<tr><td>H</td><td> SCH</td><td> Scheffel   </td><td> Z</td><td> ZAN</td><td> Zander</td></tr>
+<tr><td>I</td><td> ACT</td><td> Aircotec   </td><td> 0</td><td></td><td></td></tr>
+<tr><td>J</td><td>    </td><td>            </td><td> 1</td><td></td><td></td></tr>
+<tr><td>K</td><td>    </td><td>            </td><td> 2</td><td></td><td></td></tr>
+<tr><td>L</td><td> LXN</td><td> LX Navigation</td><td> 3</td><td></td><td></td></tr>
+<tr><td>M</td><td> IMI</td><td> IMI Gliding Equipment</td><td> 4</td><td></td><td></td></tr>
+<tr><td>N</td><td> NTE</td><td> New Technologies s.r.l.</td><td> 5</td><td></td><td></td></tr>
+<tr><td>O</td><td>    </td><td>            </td>nbsp;</td><td> 6</td><td></td><td></td></tr>
+<tr><td>P</td><td> PES</td><td> Peschges   </td><td> 7</td><td></td><td></td></tr>
+<tr><td>Q</td><td>    </td><td>            </td><td> 8</td><td></td><td></td></tr>
+<tr><td>R</td><td> PRT</td><td> Print Technik</td><td> 9</td><td></td><td></td></tr>
+</table>
+
+<p>Notes:</p>
+<ol>
+<li>Where possible, the initial letter of a manufacturer's name will be allocated for the single-character code.
+Where this letter is already allocated, generally, the next letter in the manufacturer's name will be used, etc.
+</li>
+<li>X and XXX are general designations for IGC format files from manufacturers who do not produce an
+IGC-approved recorder. Such recorders will not have been tested and evaluated by GFAC and may not fulfil
+certain aspects of the IGC Specification such as security protections, recording of pressure altitude, ENL or
+other variables. There is no guarantee that the file will conform exactly to the IGC format, although specimen
+files will be checked for compliance with the IGC format if emailed to the GFAC chairman for evaluation.
+Even after this procedure, no compliance guarantee can be made because the type of recorder will not have
+completed a full GFAC evaluation. It should be noted that although the file name will not contain the
+information, the details of the manufacturer and the recorder model concerned will be identifiable (if the file
+conforms to the IGC standard) because they will be included in the H (Header) record, see below under H
+Record in the line: HFFTYFRTYPE:MANUFACTURERSNAME,FRMODELNUMBER CRLF
+</li>
+<li>The three-letter codes PFC, PLT and OOI will not be used since they could cause confusion in the <a href="#link_L">L record</a>.
+</li>
+</ol>
+
+<p><a name="link_2.5.7"></a><b>2.5.7 Mandatory Records.</b> Certain records are mandatory for any IGC file. They are summarised as
+follows:</p>
+<table border="1">
+<tr>
+<th>
+Record
+type in file
+order
+</th>
+<th>
+Appendix 1
+reference
+</th>
+<th>
+Remarks
+</th>
+</tr>
+<tr><td>A</td><td><a href="#link_3.1">3.1</a></td><td>Manufacturer and unique ID for FR</td></tr>
+<tr><td><a href="#link_H">H</a></td><td><a href="#link_3.3.1">3.3.1</a></td><td>Header record</td></tr>
+<tr><td>I</td><td><a href="#link_3.4">3.4</a></td><td><a href="#link_FXA">FXA</a> extension is mandatory</td></tr>
+<tr><td>B</td><td><a href="#link_4.1">4.1</a></td><td>Fix record (lat/long/alt etc.)</td></tr>
+<tr><td>F</td><td><a href="#link_4.2">4.2</a></td><td>Satellites used in <a href="#link_B">B records</a></td></tr>
+<tr><td>G</td><td><a href="#link_3.2">3.2</a></td><td>Security record</td></tr>
+</table>
+
+<h2><a name="link_3"></a>3. SINGLE INSTANCE DATA RECORDS</h2>
+<p>These records only occur once in each IGC-format data file, but
+each record type may contain several lines prefixed with its type letter.</p>
+<p><b><a name="link_3.1"></a><a name="link_A"></a>3.1 A RECORD - FR ID NUMBER.</b> The A Record must be the first record in an FR Data File, and
+includes the three-character GNSS FR Serial Number (S/N) unique to the manufacturer of the FR that
+recorded the flight(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al3.pdf" target=_blank><small>AL3</small></a>). Format of the A Record:</p>
+<pre>
+A M M M N N N T E X T S T R I N G CR LF
+</pre>
+<table border="1">
+<tr><th>A record - Description</th><th>Size</th><th>Element</th><th>Remarks</th></tr>
+<tr><td>Manufacturer</td><td>3&nbsp;bytes</td><td>MMM</td><td>Alphanumeric, see para <a href="#link_2.5.6">2.5.6</a></td></tr>
+<tr><td>Unique ID</td><td>3&nbsp;bytes</td><td>NNN</td><td>Valid characters alphanumeric(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al3.pdf" target=_blank><small>AL3</small></a>)</td></tr>
+<tr><td>ID extension</td><td>Optional</td><td>TEXT STRING</td><td>Valid characters alphanumeric</td></tr>
+</table>
+
+<p><b><a name="link_3.2"></a><a name="link_G"></a>3.2 G RECORD - SECURITY.</b> The G Record verifies that the data has not been altered during or following
+the flight. The FR manufacturer must provide a VALI program (see para 2.9.3.4 in the main body of this
+document) to check the integrity of the file with the security code. The security code must be generated by the
+FR, not by the computer extracting the flight data. Flight analysis software from sources other than the
+manufacturer should ignore the detailed data in this record, but can use the G record as a marker for the position
+of other data and records in the IGC file. All records must be included in the security mechanism, except the H
+records which have the O or P source, and any <a href="#link_L">L records</a> which do not have the Manufacturer ID (because some
+L records may be put in by the pilot).</p>
+<pre>
+Format of G Record:
+G S S S S S S S S S S S S S S S S S S S S S S S S S S S S S CR LF
+G S S S S S S S S S S S S S S S S S S S S S S S S S S S S S CR LF
+etc
+</pre>
+
+<table border="1">
+<tr><th>G record - Description</th><th>Size</th><th>Element</th><th>Remarks</th></tr>
+<tr><td>Security code</td><td>Up to 75&nbsp;bytes
+per line</td><td>
+SSSSS</td><td>Valid characters alphanumeric, see Chapter 2,
+para 2.8.3.1 on security key length.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al3.pdf" target=_blank><small>AL3</small></a>)
+</td></tr>
+</table>
+
+<p>The G Record must not use any non-printing character, because whitespace is often removed when ASCII files
+are transmitted across data communication networks.</p>
+
+<p><b><a name="link_3.3"></a><a name="link_H"></a>3.3 H RECORD - FILEHEADER</b></p>
+<p>The H-Record is used to store data such as the date on which fixes are first
+recorded in the B-Record of the IGC file (that is, the day of a flight unless made in a time zone many hours from
+UTC), the name of the pilot, glider, the type of FR used, the type of GNSS receiver and pressure altitude
+sensor, amongst other things. There are several different subtypes of the H-Record which are recorded on
+separate lines prefixed H. All Three Letter Codes (CCC) that bear the H flag in section 7 are possible subtypes
+of the H-Record.</p>
+<p>The line entries in the H-record may be created by the FR (source code F), or, for items such as pilot and glider
+names, by the Pilot or OO (P and O source records) after flight (see the line "Data Source" in the table below).
+Only H-Record data with source code F is covered by the security code and VALI check system.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al10.pdf" target=_blank><small>AL10</small></a>)</p>
+
+<p>Appendix 1, Para 3.3, second paragraph. The words at the end to read
+The general format of the H-Record is: record identifier, source of information (S), record subtype identifer
+(CCC), long name of the record subtype, colon, actual information (TEXTSTRING). The long name is intended
+as an aid for people reading the file. For official purposes only the source of information, the record subtype
+(CCC) and the actual information are definitive.</p>
+
+<p>GNSS Geodetic Datum. The long name, a colon and the name of the Geodetic Datum set (WGS84 = IGC
+number 100, see para 8) come after the IGC-assigned number for the GPS-Datum, which is located directly
+behind the record subtype identifer DTM.</p>
+<p><a name="link_3.3.1"></a><b>3.3.1</b> Required records. The following <a href="#link_H">H records</a> are required, in the order given below:</p>
+<pre>
+HFDTEDDMMYY
+HFFXAAAA
+HFPLTPILOTINCHARGE:TEXTSTRING
+HFCM2CREW2:TEXTSTRING
+HFGTYGLIDERTYPE:TEXTSTRING
+HFGIDGLIDERID:TEXTSTRING
+HFDTMNNNGPSDATUM:TEXTSTRING
+HFRFWFIRMWAREVERSION:TEXTSTRING
+HFRHWHARDWAREVERSION:TEXTSTRING
+HFFTYFRTYPE:MANUFACTURERSNAME,FRMODELNUMBER
+HFGPS:MANUFACTURERSNAME,MODEL,CHANNELS,MAXALT(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al3.pdf" target=_blank><small>AL3</small></a>)
+HFPRSPRESSALTSENSOR:MANUFACTURERSNAME,MODEL,MAXALT(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al3.pdf" target=_blank><small>AL3</small></a>)
+</pre>
+<p>plus you can have the following optional records:
+</p>
+<pre>
+HFCIDCOMPETITIONID: TEXTSTRING glider fin number
+HFCCLCOMPETITIONCLASS: TEXTSTRING e.g. Standard, 15m, 18m, Open
+</pre>
+
+<table border="1">
+<tr><th>Record</th><th>Format</th><th>Sample</th><th>Summary</th></tr>
+<tr>
+  <td><a name="link_HFDTE"></a><b>HFDTE</b></td>
+  <td><pre>HFDTEDDMMYY</pre></td>
+  <td><pre>HFDTE280709</pre><br/>for 28th July 2009</td>
+  <td>UTC date this file was recorded</td>
+</tr>
+
+<tr>
+  <td><a name="link_HFFXA"></a><b>HFFXA</b></td>
+  <td><pre>HFFXAAAA</pre></td>
+  <td><pre>HFFXA035</pre><br/>fix accuracy 35 meters</td>
+  <td>Fix accuracy in meters, see also <a href="#link_FXA">FXA three-letter-code reference</a></td>
+</tr>
+
+<tr>
+  <td><a name="link_HFPLT"></a><b>HFPLT</b></td>
+  <td><pre>HFPLTPILOTINCHARGE:TEXTSTRING</pre></td>
+  <td><pre>HFPLTPILOTINCHARGE: Bloggs, Bill D</pre></td>
+  <td>Name of the competing pilot</td>
+</tr>
+
+<tr>
+  <td><a name="link_HFCM2"></a><b>HFCM2</b></td>
+  <td><pre>HFCM2CREW2:TEXTSTRING</pre></td>
+  <td><pre>HFCM2CREW2: Smith-Barry John A</pre></td>
+  <td>Name of the second pilot in a two-seater</td>
+</tr>
+
+<tr>
+  <td><a name="link_HFGTY"></a><b>HFGTY</b></td>
+  <td><pre>HFGTYGLIDERTYPE:TEXTSTRING</pre></td>
+  <td><pre>HFGTYGLIDERTYPE: Schleicher ASH-25</pre></td>
+  <td>Free-text name of the glider model</td>
+</tr>
+
+<tr>
+  <td><a name="link_HFGID"></a><b>HFGID</b></td>
+  <td><pre>HFGIDGLIDERID:TEXTSTRING</pre></td>
+  <td><pre>HFGIDGLIDERID: N116 EL</pre></td>
+  <td>Glider registration number, e.g. N-number</td>
+</tr>
+
+<tr>
+  <td><a name="link_HFDTM"></a><b>HFDTM</b></td>
+  <td><pre>HFDTMNNNGPSDATUM:TEXTSTRING</pre></td>
+  <td><pre>HFDTM100GPSDATUM: WGS-1984</pre></td>
+  <td>GPS datum used for the log points - use igc code 100 / WGS84 unless you are insane.</td>
+</tr>
+
+<tr>
+  <td><a name="link_HFRFW"></a><b>HFRFW</b></td>
+  <td><pre>HFRFWFIRMWAREVERSION:TEXTSTRING</pre></td>
+  <td><pre>HFRFWFIRMWAREVERSION:6.4</pre></td>
+  <td>Any free-text string descibing the firmware revision of the logger</td>
+</tr>
+
+<tr>
+  <td><a name="link_HFRHW"></a><b>HFRHW</b></td>
+  <td><pre>HFRHWHARDWAREVERSION:TEXTSTRING</pre></td>
+  <td><pre>HFRHWHARDWAREVERSION:3.0</pre></td>
+  <td>Any free-text string giving the hardware revision number of the logger</td>
+</tr>
+
+<tr>
+  <td><a name="link_HFFTY"></a><b>HFFTY</b></td>
+  <td><pre>HFFTYFRTYPE:MANUFACTURERSNAME,FRMODELNUMBER</pre></td>
+  <td><pre>HFFTYFRTYPE: Cambridge, FunkyLogger 77</pre></td>
+  <td>Logger free-text manufacturer and model</td>
+</tr>
+
+<tr>
+  <td><a name="link_HFGPS"></a><b>HFGPS</b></td>
+  <td><pre>HFGPSMANUFACTURER,MODEL,CHANNELS,MAXALT</pre></td>
+  <td><pre>HFGPSMarconi,SuperX,12ch,10000m</pre></td>
+  <td>Manufacturer and model of the GPS receiver used in the logger. <i>I think there's a TYPO
+  in this section of the <a href="http://www.fai.org/gliding/gnss/tech_spec_gnss.asp" target="_blank">FAI document</a> (2008),
+   suggesting a colon is needed.</i></td>
+</tr>
+
+<tr>
+  <td><a name="link_HFPRS"></a><b>HFPRS</b></td>
+  <td><pre>HFPRSPRESSALTSENSOR:MANUFACTURER,MODEL,MAXALT</pre></td>
+  <td><pre>HFPRSPRESSALTSENSOR: Sensyn,A32,11000m</pre></td>
+  <td>Free-text (separated by commas) description of the pressure sensor used in the logger</td>
+</tr>
+
+<tr>
+  <td><a name="link_HFCID"></a><b>HFCID</b></td>
+  <td><pre>HFCIDCOMPETITIONID: TEXTSTRING</pre></td>
+  <td><pre>HFCIDCOMPETITIONID: B21</pre></td>
+  <td>The fin-number by which the glider is generally recognised</td>
+</tr>
+
+<tr>
+  <td><a name="link_HFCCL"></a><b>HFCCL</b></td>
+  <td><pre>HFCCLCOMPETITIONCLASS: TEXTSTRING</pre></td>
+  <td><pre>HFCCLCOMPETITIONCLASS:15m Motor Glider</pre></td>
+  <td>Any free-text description of the class this glider is in, e.g. Standard, 15m, 18m, Open.</td>
+</tr>
+
+</table>
+
+<p>And here's the field descriptions from the 
+<a href="http://www.fai.org/gliding/gnss/tech_spec_gnss.asp" target="_blank">original FAI document</a>.</p>
+
+<table border="1">
+<tr><th>H record - Description</th><th>Size</th><th>Element</th><th>Remarks</th></tr>
+<tr><td>Data source</td><td>1 byte</td><td>F, O or P</td><td>Placed after leading H: F=FR,O=OO, P=Pilot. Use F if
+the data is transferred from the FR even though it was
+originally entered by a pilot or OO. This is to ensure that
+data that is entered before flight is protected by the
+security system in the recorder, and if it is changed after
+flight it will fail the VALI check.</td></tr>
+<tr><td>Record subtype</td><td>3&nbsp;bytes</td><td>CCC</td><td>Alphanumeric, placed after data source, see <a href="#link_7">para 7</a> for
+TLCs</td></tr>
+<tr><td>UTC Date</td><td>6&nbsp;bytes</td><td>DDMMYY</td><td>Valid characters 0-9</td></tr>
+<tr><td><a href="#link_FXA">FXA</a> accuracy category, metres</td><td>
+3&nbsp;bytes</td><td>AAA</td><td>Valid characters 0-9 (Default 500)</td></tr>
+<tr><td>Lines on Glider
+Pilot in Charge and
+Crew Member 2</td><td>
+At least 30
+characters</td><td>
+Text String</td><td>After relevant TLC. PLT for name of Pilot in Charge,
+CM2 for name of Crew Member 2, if any(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al11.pdf" target=_blank><small>AL11</small></a>)</td></tr>
+<tr><td>GPS Datum</td><td>3&nbsp;bytes</td><td>NNN</td><td>WGS 84 must be used, 100 =WGS84 (see para 8)</td></tr>
+
+<tr><td>Lines on FR name,
+firmware, hardware</td><td>
+As
+required</td><td>
+Text String</td><td>After relevant TLC (eg FTY for FR type) Para 3.3.1</td></tr>
+<tr><td>FR Type line</td><td>As
+required</td><td>
+F</td><td>Includes detailed model data including sub-types. For
+instance, not only Model XXX 1 but 1a,1b, etc.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al9.pdf" target=_blank><small>AL9</small></a>)</td></tr>
+<tr><td>HFGPS line</td><td>As
+required</td><td>
+Text String</td><td>Gives the GPS engine manufacturer and type, number of
+channels, and the maximum GNSS altitude in metres that
+could be recorded in the IGC file. Use comma separators
+between each piece of information. For the Russian
+GLONASS system use the code GLO instead of GPS and
+for the European Galileo system use GAL (GLO and GAL
+are listed in <a href="#link_7">para 7</a>). If another GNSS system is used,
+apply to GFAC for an appropriate three-letter code. For
+equipment that receives data from more than one GNSS
+system, put the receiver maker and type first and then the
+three-letter code for the first GNSS system followed by
+the number of channels and the maximum GNSS altitude
+in metres, then the same data for the second GNSS
+system, and so forth for other systems.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al11.pdf" target=_blank><small>AL11</small></a>)</td></tr>
+<tr><td>HFPRS line</td><td>As
+required</td><td>
+Text String</td><td>Gives the pressure altitude sensor (Manufacturer and type)
+and maximum pressure altitude in metres that could be
+recorded in the IGC file. Use comma separators between
+each piece of information.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al3.pdf" target=_blank><small>AL3</small></a>)</td></tr>
+<tr><td>HF FRS line</td><td>As
+required</td><td>
+Text String</td><td>Format: HF FRS SECURITY SUSPECT USE VALI
+PROGRAM: TEXTSTRING
+Must be used where security is suspect, for instance if the
+recorder�s physical security system (microswitch) has
+operated. The words before the colon are mandatory.
+The reason for referring to the VALI program is that this
+is the only complete way of carrying out a full security
+check. This must not be seen as a replacement for the full
+VALI check, which also detects any changes after data
+transfer. The text string shall be a description of the likely
+fault, such as: "Security Microswitch operated, recorder
+needs to be re-set"(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al6.pdf" target=_blank><small>AL6</small></a>)</td></tr>
+</table>
+<a name="#link_HFCID"></a>
+<a name="#link_HFCCL"></a>
+<p><a name="link_3.3.2"></a><b>3.3.2</b> Additional <a href="#link_H">H records</a>. These are optional. Additional data may be appended after the mandatory
+records. Two additional records (Comp ID and class) are shown below.</p>
+<pre>
+H S C I D C O M P E T I T I O N I D : T E X T S T R I N G CR LF
+H S C C L C O M P E T I T I O N C L A S S : T E X T S T R I N G CR LF
+</pre>
+
+<p><i>Note - Ian Forster-Lewis: I think this is a TYPO: H</i><b>S</b>CID<i> would not be valid format. The
+correct record should be </i>H<b>F</b>CID.<i> Same for HFCCL.</i></p>
+
+<p><a name="link_3.3.3"></a><b>3.3.3</b> Names and identifications.</p>
+
+<p>Similar names. Where there may be people with names which are similar or the same (Smith/Schmidt), full
+initials or other names should be used. In addition, a TLC of DOB for Date-of-Birth is available, and if
+used, this must be in the line following the pilot's name in the format DDMMYY (the same format as used
+for date of flight in the <a href="#link_H">H record</a>).</p>
+<p>Name of Crew Member 2 (code CM2), family name first then other names or initials without punctuation
+but separated by spaces (for instance, SMITH B S, or SMITH BERNALD)</p>
+
+<p>Sufficient characters should be made available to allow for long names and identifications. Such as, for
+glider registration, allow for a registration such as XXXX-AAAA (where XXXX is the designator of the
+Nation or National Airsport Body), requiring at least 9 characters to be available in this field.
+Manufacturers should provide for more rather than less characters in these fields so that flight declarations
+are easily made in full(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al3.pdf" target=_blank><small>AL3</small></a>).</p>
+
+<p>Club or organisation from which flown or operated (code CLB), with nation (for instance LASHAM UK,
+ELMIRA US). Where there is not space to put the Nation in full, the two-letter codes from the ISO 3166
+list of National designators should be used (these are also used for Nations in Internet addresses). Some
+ISO 3166 two-letter National Codes are as follows(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al3.pdf" target=_blank><small>AL3</small></a>):</p>
+
+<table border="1">
+<tr><th colspan="3">ISO 3166 TWO-LETTER NATIONAL CODES</th></tr>
+<tr>
+<td>
+AR - ARGENTINA<br/>
+AT - AUSTRIA<br/>
+AU - AUSTRALIA<br/>
+BE - BELGIUM<br/>
+BR - BRAZIL<br/>
+CA - CANADA<br/>
+CH - SWITZERLAND<br/>
+CL - CHILE<br/>
+CN - CHINA<br/>
+CO - COLOMBIA<br/>
+CZ - CZECH REPUBLIC<br/>
+DE - GERMANY<br/>
+DK - DENMARK<br/>
+EC - ECUADOREE - ESTONIA<br/>
+EG - EGYPT<br/>
+ES - SPAIN<br/>
+</td>
+<td>
+FI - FINLAND<br/>
+FR - FRANCE<br/>
+GR - GREECE<br/>
+HR - CROATIA (HRVATSKA)<br/>
+HU - HUNGARY<br/>
+ID - INDONESIA<br/>
+IE - IRELAND<br/>
+IL � ISRAEL<br/>
+IN � INDIA<br/>
+IS � ICELAND<br/>
+IT � ITALY<br/>
+JP � JAPAN<br/>
+KR � KOREA (S)<br/>
+LT � LITHUANIALV - LATVIA<br/>
+MX � MEXICO<br/>
+MY � MALAYSIA<br/>
+</td>
+<td>
+NL - NETHERLANDS<br/>
+NO - NORWAY<br/>
+NZ - NEW ZEALAND<br/>
+PL - POLAND<br/>
+PT - PORTUGAL<br/>
+RU - RUSSIA<br/>
+SE - SWEDEN<br/>
+SI - SLOVENIA<br/>
+SK - SLOVAKIA<br/>
+TR - TURKEY<br/>
+TW- TAIWAN<br/>
+UK - UNITED KINGDOM<br/>
+US - UNITED STATES<br/>
+UY - URUGUAYVE - VENEZUELA<br/>
+ZA - SOUTH AFRICA<br/>
+</td>
+</tr>
+</table>
+
+<p><b><a name="link_3.4"></a><a name="link_I"></a>3.4 I RECORD - EXTENSIONS TO THE FIX <a href="#link_B">B record</a>.</b> The I record defines any extensions to the fix
+<a href="#link_B">B record</a> in the form of a list of the appropriate Three-Letter Codes (CCC), data for which will appear at the
+end of subsequent B Records. Only one I-Record line is included in each file, located after the <a href="#link_H">H record</a> and
+before the first B Record. The Fix Accuracy (<a href="#link_FXA">FXA</a>) must be included, in the form of the Estimated Position
+Error figure (see Glossary under EPE). This shall be followed by SIU, ENL and RPM, if these are recorded in
+the FR concerned. Note that although the SIU number is optional in the B record, the F Record (satellite
+constellation used) is mandatory, see para <a href="#link_4.3">4.3</a>. 
+
+The format of the I Record is as follows:(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al11.pdf" target=_blank><small>AL11</small></a>)</p>
+<pre>
+I N N S S F F C C C S S F F C C C CR LF
+</pre>
+
+<table border="1">
+<tr><th>I record - Description</th><th>Size</th><th>Element</th><th>Remarks</th></tr>
+<tr><td>Number of extensions</td><td>2&nbsp;bytes</td><td>NN</td><td>Valid characters 0-9</td></tr>
+<tr><td>Start byte number</td><td>2&nbsp;bytes</td><td>SS</td><td>Valid characters 0-9</td></tr>
+<tr><td>Finish byte number</td><td>2&nbsp;bytes</td><td>FF</td><td>Valid characters 0-9</td></tr>
+<tr><td>3-letter Code</td><td>3&nbsp;bytes</td><td>CCC</td><td>Alphanumeric, see <a href="#link_7">para 7</a> for list of codes</td></tr>
+</table>
+
+<p> The first byte of the extension data always begins at
+    byte position 36, because that's where the basic lat/long/alt stuff of the B record ends.
+</p>
+    
+<p>The byte count starts from the beginning of the B Record, taking the first B in the line as byte one. Example:</p>
+<pre>
+I 01 36 40 FXA CR LF
+</pre>
+<p>This shows that Fix Accuracy (<a href="#link_FXA">FXA</a>) is recorded between&nbsp;bytes 36 and 40 on each B-record line. And, for a
+device that also records Satellites In Use (SIU) and Engine Noise Level (ENL):</p>
+<pre>
+I 04 3638 FXA 3940 SIU 4143 ENL 4446 RPM CR LF
+</pre>
+<p>This shows that on each B-record line, Fix Accuracy (<a href="#link_FXA">FXA</a>) is recorded between&nbsp;bytes 36 and 38, Satellites In
+Use (SIU) between&nbsp;bytes 39 and 40, Engine Noise Level (ENL) between&nbsp;bytes 41 and 43 and RPM between
+bytes 44 and 46. To aid clarity, some spaces have been inserted in the example line above, these should not be
+used in the actual B record in the IGC file.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al11.pdf" target=_blank><small>AL11</small></a>)
+</p>
+
+<p><b><a name="link_3.5"></a><a name="link_J"></a>3.5 J RECORD - EXTENSIONS TO THE K RECORD.</b> The K record is used for data that needs to be
+updated as a flight progresses but is not required as often as fix <a href="#link_B">B records</a>. The J record is a single line that
+defines what data will be in subsequent K-record lines. It fulfils the same function for the K Record as the I
+Record (3.4 above) does for the fix <a href="#link_B">B record</a>, and operates in the same way. It is placed in the file
+immediately after the I record line, before the first B Record. The format of the J Record is as follows:</p>
+<pre>
+J N N S S F F C C C S S F F C C C CR LF
+</pre>
+<table border="1">
+<tr><th>J record - Description</th><th>Size</th><th>Element</th><th>Remarks</th></tr>
+<tr><td>Number of extensions</td><td>2&nbsp;bytes</td><td>NN</td><td>Valid characters 0-9</td></tr>
+<tr><td>Start byte number</td><td>2&nbsp;bytes</td><td>SS</td><td>Valid characters 0-9 (from start of K Record)</td></tr>
+<tr><td>Finish byte number</td><td>2&nbsp;bytes</td><td>FF</td><td>Valid characters 0-9</td></tr>
+<tr><td>3-letter Code</td><td>3&nbsp;bytes</td><td>CCC</td><td>Alphanumeric, see <a href="#link_7">para 7</a></td></tr>
+</table>
+<p>Example:</p>
+<pre>
+J 0 1 0 8 1 2 H D T CR LF
+</pre>
+
+<p>This shows that True Heading (HDT) is recorded between&nbsp;bytes 8 and 12 on each K-record line.</p>
+
+<p><b><a name="link_3.6"></a><a name="link_C"></a>3.6 C RECORD - TASK.</b> (Pre-flight Declaration) </p>
+<p>The C Record is used to specify tasks and to make preflight
+declarations. It is placed in the IGC file before the first fix <a href="#link_B">B record</a> and after the H, I and J records.</p>
+
+<p><a name="link_3.6.1"></a><b>3.6.1</b> Lines in the C Record. The first line contains the UTC-date and UTC-time of the declaration, the
+local date of the intended day of flight, the task ID, the number of turn points of the task and a textstring
+which can be used to describe the task (500k triangle, etc). Optionally, the recorder may be configured so
+that a pilot can enter the intended flight date in local time, not the UTC date which will be different in
+countries with large time offsets from UTC (The Three-Letter Code for Time Zone Offset is TZN, see the
+list in <a href="#link_7">para 7</a>). The other lines contain the WGS84 lat/long coordinates and a textstring for the place or
+point concerned. These include the take-off airfield, start point, turn points, finish point and landing
+airfield. After the first line, the other lines contain the WGS84 lat/long co-ordinates of the point followed
+by a text string for the place or point concerned. The text describing the type of point (see example below)
+is mandatory so that the nature of the points can be clearly seen by viewing the IGC file.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al6.pdf" target=_blank><small>AL6</small></a>) & 11)
+
+<p><a name="link_3.6.2"></a><b>3.6.2</b> IGC terminology. "Waypoint or way point " refers to a either a start-, turn- or finish-point. The
+term "Turn Point" refers to a point in a measured course between the start and finish point. The points that
+must be specified exactly in an official IGC flight declaration are the intended start-, turn- and finish-points
+(Sporting Code Section 3, para 4.2). The number of turn points will be nil for a straight goal flight, one for
+an out-and-return, two for a triangle, three for 3-TP distance, more for some competition tasks.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al6.pdf" target=_blank><small>AL6</small></a>)
+
+<p><a name="link_3.6.3"></a><b>3.6.3</b> Takeoff and Landing. The two lines in the C-record format for takeoff airfield and landing airfield
+(or out-landing location if this applies), are for general information rather than being part of the official
+IGC Flight Declaration. They can be entered approximately or, if the co-ordinates are difficult to obtain or
+are not entered, the recorder shall default to 00000000N000000000E for these two lines.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al6.pdf" target=_blank><small>AL6</small></a>)
+
+<p><a name="link_3.6.4"></a><b>3.6.4</b> Number of Turn points and C-Record lines. From the above it can be seen that the number of turn
+points will be four less than the number of lines after line 1 (that is, those lines that contain lat/long data).
+These four non-turn point data lines are for takeoff airfield, exact start, exact finish, and landing
+airfield/location. The number of turn points is included as a sub-field in line 1 of the C-record and is
+placed immediately before the optional text string at the end of the line (in the form TT in the illustration
+below).(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al6.pdf" target=_blank><small>AL6</small></a>)
+
+<p><a name="link_3.6.5"></a><b>3.6.5</b> Area Tasks. The incorporation of this facility in a Flight Recorder is optional. In some
+competitions, an area to be reached is specified with respect to a Waypoint in terms of distances and true
+bearings (radials) from the point. If a recorder has a facility to enter this in the C record, the following
+system shall be followed in the IGC file: At the end of the relevant Waypoint line in the C record,
+minimum and maximum distances follow in kilometers from the WP, followed by bearing 1 and bearing 2
+in degrees true from the WP and then the word AREA after the type of point. In the case of competitions
+using units other than kilometres (such as statute or international nautical miles), a conversion must be
+made so that the IGC file continues to be in kilometres (and decimal kilometres as necessary). The area is
+clockwise from bearing 1 to 2. In the case of circular areas round a point the two bearings used shall be
+000 to 360 and the minimum distance will be zero. Where an area referenced to a Waypoint is to be
+specified, after the C record line that defines the Waypoint but before CRLF at the end of the line, add:</p>
+<pre>
+"DDDDdddDDDDdddBBBbbbBBBbbbAREA"
+</pre>
+
+<p>The two distances Dd are first minimum distance from the WP in km and decimal kilometres, then
+maximum distance. The two bearings Bb are in degrees and decimal degrees true from the WP, the task
+area extending clockwise from bearing 1 to 2.</p>
+
+<p>For instance: "C....0012000 0032000 122000 182000TURN AREA" would be an area from 12 to 32 km
+from the WP between the bearings 122 and 182 from the Point.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al6.pdf" target=_blank><small>AL6</small></a>)</p>
+
+<p>The format of C Record is as follows, using N latitude and E longitude for the example:</p>
+<pre>
+C DD MM YY HH MM SS F D F M F Y IIII TT TEXT STRING CR LF
+C DD MM MMM N DDD MMMMM E TAKEOFF TEXT STRING CR LF
+C DD MM MMM N DDD MMMMM E START TEXT STRING CR LF
+C DD MM MMM N DDD MM MMM E TURN TEXT STRING CR LF
+C DD MM MMM N DDD MM MMM E TURN TEXT STRING CR LF
+C DD MM MMM N DDD MM MMM E FINISH TEXT STRING CR LF
+C DD MM MMM N DDD MM MMM E LANDING TEXT STRING CR LF
+</pre>
+
+<p>Spaces have been added between data fields in this example to aid clarity.</p>
+<p>The Text String is intended to be the name and short description of the Point
+For an area referenced to a Turn Point:</p>
+<pre>
+C DD MMMMMN DDD MMMMME 0012000 0032000 122000 182000TURN AREA CR LF(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al6.pdf" target=_blank><small>AL6</small></a>)
+</pre>
+
+<table border="1">
+<tr><th>C record - Description</th><th>Size</th><th>Element</th><th>Remarks</th></tr>
+<tr><td>Date UTC</td><td>6&nbsp;bytes</td><td>DDMMYY</td><td>Valid characters 0-9</td></tr>
+<tr><td>Time UTC</td><td>6&nbsp;bytes</td><td>HHMMSS</td><td>Valid characters 0-9</td></tr>
+<tr><td>Flight date</td><td>6&nbsp;bytes</td><td>FDFMFY</td><td>Valid characters 0-9. If not used, fill with zeros (AL2)</td></tr>
+<tr><td>Task number
+on the day</td><td>
+4&nbsp;bytes</td><td>IIII</td><td>Valid characters alphanumeric, may be an ID reference
+or a 1-2-3 sequence. ; if not used, the default is 0001.
+The last declaration before takeoff is the definitive
+declaration (a task need not be declared on the day of
+the flight, an electronic declaration is valid until
+superseded by another valid declaration).</td></tr>
+<tr><td>Number of
+Task TPs</td><td>
+2&nbsp;bytes</td><td>TT</td><td>Valid characters 0-9. 1 for an out-and-return, two for a
+triangle, etc.</td></tr>
+<tr><td>TO or A/F LatLon</td>
+<td rowspan="6">17&nbsp;bytes</td>
+<td rowspan="6">DDMMmmmN<br/>
+DDDMMmmmE<br/>
+to the WGS84
+Geodetic Datum</td>
+<td rowspan="6">
+The exact declared point is defined by the latitude and
+longitude.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al11.pdf" target=_blank><small>AL11</small></a>) Plus textstring for any local turn
+point code numbers, letters, name or brief description.
+The declared start point, turn points, and the finish
+point with their Latitude and Longitude are mandatory;
+the takeoff/landing or airfield data are not part of the
+IGC declaration requirement given in the Sporting
+Code for Gliding (SC3) but are useful extra data
+particularly where remote starts or finishes are used. If
+the coordinates of a point which is not part of the
+official task are difficult to include beforehand (such as
+takeoff, landing, or the fields for takeoff and landing),
+they should be set to 00000000N000000000E.</td></tr>
+
+<tr><td>Start LatLon</tr>
+<tr><td>T/P LatLon</tr>
+<tr><td>T/P LatLon</tr>
+<tr><td>Finish LatLon</tr>
+<tr><td>Land or A/F LatLon</tr>
+</table>
+
+<h2><a name="link_4"></a>4.MULTIPLE INSTANCE DATA RECORDS</h2>
+
+<p>These are record types that can re-occur at different times in
+the course of the IGC file, unlike single instance records that occur in each file only in one place.</p>
+
+<p><b><a name="link_4.1"></a><a name="link_B"></a>4.1 B RECORD - FIX.</b> Not counting the last CRLF, this includes 35&nbsp;bytes for its basic data plus those for
+characters that are defined in the <a href="#link_I">I Record</a>. Such as Fix Accuracy (<a href="#link_FXA">FXA</a>, in the form of the Estimated
+Position Error figure, see Glossary under EPE), Satellites In Use (SIU), Engine Noise Level (ENL for all
+motor gliders), RPM (additional for motor gliders with quiet engines). The required basic data is: UTC,
+WGS84latitude,WGS84 longitude, fix validity, Fix Accuracy, pressure altitude and GNSS-altitude. All of
+the information within each B-record must have a data issue time within 0.1 seconds of the time given in the
+B-record. Where NMEA data is used within the FR, fix data should be taken either from the GGA or GNS
+sentences. GGA is specific to the US GPS system. GNS is intended for all GNSS systems (GPS,
+GLONASS, Galileo and future systems), and should be used if it is available from the GNSS board installed.
+In the B Record <a href="#link_FXA">FXA</a> should be recorded as a three-figure group in metres and SIU as a two group number.
+SIU is an optional record and may be used to back up the more detailed satellite data in the mandatory
+<a href="#link_F">F record</a>. Leading zeros should be included as necessary. Because earlier IGC-approved GNSS FRs may
+not have <a href="#link_FXA">FXA</a> and SIU in their B-records, the position of this data in each B record line must be indicated
+(for instance to analysis programs) by including them in the <a href="#link_I">I record</a> which designates the positions of
+additional fields in the B record. <a href="#link_FXA">FXA</a> should be placed after the two groups for altitude, followed by
+optional fields such as SIU and then ENL for Motor Gliders. In each B-record line, <a href="#link_FXA">FXA</a> would therefore
+normally occupy&nbsp;bytes 36, 37 and 38, SIU&nbsp;bytes 39 and 40, ENL either 39-41 or 41-43 depending whether
+SIU is used. The format of the basic data is:(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al11.pdf" target=_blank><small>AL11</small></a>)</p>
+<pre>
+B H H M M S S D D M MM MM N D D D M MM MM E V P P P P P G G G G G CR LF
+</pre>
+
+<table border="1">
+<tr><th>B record - Description</th><th>Size</th><th>Element</th><th>Remarks</th></tr>
+<tr><td>Time UTC</td><td>6&nbsp;bytes</td><td>HHMMSS</td><td>Valid characters 0-9. When a valid GNSS fix is received,
+the UTC time in a B-record line must be obtained directly
+from the same GNSS data package that was the source of
+the Lat/long and GNSS altitude that is recorded in the same
+B-record line. Other sources for the time in a B-record line
+(such as the Real-Time Clock in the recorder) must only be
+used to provide time-continuity where GNSS fixes are not
+available(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al9.pdf" target=_blank><small>AL9</small></a>)</td></tr>
+<tr><td>Latitude</td><td>8&nbsp;bytes</td><td>DDMMmmmN/S</td><td>Valid characters N, S, 0-9. Obtained directly from the same
+GPS data package that was the source of the UTC time that
+is recorded in the same B-record line. If no latitude is
+obtained from satellite data, pressure altitude fixing must
+continue, using times from the RTC. In this case, in B
+record lines must repeat the last latitude that was obtained
+from satellite data, until GPS fixing is regained.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al11.pdf" target=_blank><small>AL11</small></a>)</td></tr>
+<tr><td>Longitude</td><td>9&nbsp;bytes</td><td>DDDMMmmmE/W</td><td>Valid characters E,W, 0-9. Obtained directly from the same
+GPS data package that was the source of UTC time that is
+recorded in the same B-record line. If no longitude is
+obtained from satellite data, pressure altitude fixing must
+continue, using times from the RTC. In this case, in B
+record lines must repeat the last longitude that was obtained
+from satellite data, until GPS fixing is regained.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al11.pdf" target=_blank><small>AL11</small></a>)</td></tr>
+<tr><td>Fix validity</td><td>1 byte.</td><td>A or V</td><td>Use A for a 3D fix and V for a 2D fix (no GPS altitude) or
+for no GPS data (pressure altitude data must continue to be
+recorded using times from the RTC) .(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al11.pdf" target=_blank><small>AL11</small></a>)</td></tr>
+<tr><td>Press Alt.</td><td>5&nbsp;bytes</td><td>PPPPP</td><td>Altitude to the ICAO ISA above the 1013.25 HPa sea level
+datum, valid characters 0-9 and negative sign "-". Negative
+values to have negative sign instead of leading zero</td></tr>
+<tr><td>GNSS Alt.</td><td>5&nbsp;bytes</td><td>GGGGG</td><td>Altitude above the WGS84 ellipsoid, valid characters 0-9</td></tr>
+
+</table>
+
+<p>To append the Fix Accuracy (<a href="#link_FXA">FXA</a>, mandatory), Satellites in Use (SIU), Engine Noise Level (ENL) and RPM
+(RPM) or any other variable to each fix, these have to be defined earlier in the <a href="#link_I">I Record</a> (so that, for instance,
+they will be recognised by analysis programs). For instance:</p>
+<pre>
+I 04 3638 FXA 3940 SIU 4143 ENL 4446 RPM CR LF
+</pre>
+<p>This shows that on each <a href="#link_B">B record</a> line, Fix Accuracy is recorded between&nbsp;bytes 36 and 38, Satellites In Use
+between&nbsp;bytes 39 and 40, Engine Noise Level between&nbsp;bytes 41 and 43, and engine RPM between&nbsp;bytes 44 and
+46.</p>
+<p>The resulting <a href="#link_B">B Record</a> becomes (with spaces for clarity in this example):</p>
+<pre>
+BHH MM SS DD MMMMM N DDD MMMMM E V PPPPP GGGGG AAA SS NNN RRR CR LF"
+</pre>
+
+<table border="1">
+<tr><th>B record - Description</th><th>Code</th><th>Size</th><th>Element</th><th>Remarks</th></tr>
+<tr><td>Fix Accuracy</td><td><a href="#link_FXA">FXA</a></td><td>3&nbsp;bytes</td><td>AAA</td><td>Valid characters 0-9, metres, mandatory parameter
+after Amendment 4</td></tr>
+<tr><td>Satellites in Use</td><td>SIU</td><td>2&nbsp;bytes</td><td>S S</td><td>Valid characters 0-9</td></tr>
+<tr><td>Engine noise</td><td>ENL</td><td>3&nbsp;bytes</td><td>NNN</td><td>Valid characters 0-9</td></tr>
+
+</table>
+
+<p><i>Note (Ian Forster-Lewis): This section of the document looks to be in error - this <a href="#link_B">B record</a> should contain RPM</i></p>
+
+<p><b><a name="link_4.2"></a><a name="link_E"></a>4.2 E RECORD - EVENTS.</b></p>
+<p>The E-record is used to record specific events on the IGC file that occur at
+irregular intervals. Such events include a pilot-initiated event (PEV code) or, for recorders fitted with proximity
+sensing devices, a proximity event using one of the appropriate Three-Letter Codes followed by the appropriate
+data as defined under the appropriate TLC in <a href="#link_7">section 7</a>. The E Record is placed before the individual fix 
+<a href="#link_B">B&nbsp;record</a> for the same time that shows where and when the event occurred. Events must have a Three Letter Code
+(TLC) from <a href="#link_7">section 7</a>. More than one event record may be used at the same time, but Events initiated within the
+FR (as opposed to by the pilot) are only expected to be occasional in the time-history of the flight file and
+should not be used for making additional records with every fix. This may confuse the analysis programs
+designed for use with this file format, which often search for and highlight event records. If a FR manufacturer
+wishes to insert additional information with each fix, this should be through an extension to the <a href="#link_B">B record</a>, first
+listing the information Code (CCC) in the <a href="#link_I">I record</a>. (amended (<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al9.pdf" target=_blank><small>AL9</small></a>)</p>
+
+<p>If a manufacturer wants to add a new type of event, a new Three Letter Code (<a href="#link_7">para 7</a>) should be requested from
+GFAC. The manufacturer must provide an exact definition of the event and a proposed coding. GFAC may
+decide that the proposal should not be treated as an event but that the information should be incorporated into
+the B- or <a href="#link_K">K record</a> in the normal way for these records by listing in the I and <a href="#link_J">J records</a>.</p>
+
+<p>The form of the E-Record is record identifer, time, TLC, textstring. Some examples follow:</p>
+<pre>
+E 1 0 4 5 3 3 P E V CR LF
+B 1 0 4 5 3 3 4 9 4 5 3 3 3 N 0 1 1 3 2 4 4 4 E A 0 1 3 5 7 0 1 5 0 1 CR LF
+</pre>
+
+<p>This indicates a pilot initiated event (PEV) at 10:45:33 UTC, and the associated <a href="#link_B">B record</a> shows the location
+49:45.333 N 11:32.444 E, at the pressure altitude 1357 metres and GNSS altitude 1501 metres.</p>
+
+<p>Some events require more than just the TLC for interpretation:</p>
+<pre>
+E 1 0 4 5 4 4 A T S 1 0 2 3 1 2 CR LF
+</pre>
+
+<p>The altimeter setting in a display device connected to the FR was changed to 1023.12 hPa at the time 10:45:44</p>
+<pre>
+E 1 0 4 5 5 5 E O N CR LF
+B 1 0 4 5 5 5 4 9 4 5 3 3 3 N 0 1 1 3 2 4 4 4 E A 0 1 3 3 7 0 1 5 6 7 CR LF
+</pre>
+<p>The engine was turned on (EON) at 10:45:55 UTC, and the <a href="#link_B">B record</a> shows the location 49:45.333 N 11:32.444
+E, at the pressure altitude 1337 metres and GNSS altitude 1567 metres.</p>
+<pre>
+E 1 0 4 7 3 3 C G D 1 0 3 CR LF
+</pre>
+<p>The geodetic datum was changed to Bessel (IGC number 103, see para 8) at 10:47:33 UTC.
+This would invalidate the recording for IGC purposes, for which WGS84 must be used.</p>
+
+<p><b><a name="link_4.3"></a><a name="link_F"></a>4.3 F RECORD - SATELLITE CONSTELLATION.</b></p>
+
+<p>This is a <b>mandatory record</b>. However, there is no requirement to update the F-record at intervals of less than 5
+minutes, so that transient changes of satellites received due to changing angles of bank, flying in valleys, etc do
+not lead to frequent F-record lines. For the US GPS system, the satellite ID for each satellite is the PRN of the
+satellite in question, for other satellite systems the ID will be assigned by GFAC as the need arises. Where
+NMEA data is used within the FR, the ID should be taken from the GSA sentence that lists the IDs of those
+satellites used in the fixes which are recorded in the <a href="#link_B">B record</a>. The F Record is not recorded continuously but at
+the start of fixing and then only when a change in satellites used is detected.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al4.pdf" target=_blank><small>AL4</small></a>)</p>
+<pre>
+Format of F Record:
+F HH MM SS AA BB CC DD EE FF GG CR LF
+</pre>
+
+<table border="1">
+<tr><th>F record - Description</th><th>Size</th><th>Element</th><th>Remarks</th></tr>
+<tr><td>Time UTC</td><td>6&nbsp;bytes</td><td>HHMMSS</td><td>Valid characters 0-9</td></tr>
+<tr><td>Satellite ID</td><td>2&nbsp;bytes for each
+satellite used</td><td>
+AABBCC
+Or 01, 02 etc</td><td>
+Valid characters alphanumeric</td></tr>
+</table>
+
+<p><b><a name="link_4.4"></a><a name="link_K"></a>4.4 K RECORD - DATA NEEDED LESS FREQUENTLY THAN FIXES.</b></p>
+<p>The K record is for data that
+may be needed less frequently than fix <a href="#link_B">B records</a>. The K record should have a default interval of 20 seconds.
+As an example, if the <a href="#link_B">B record</a> records every 5 seconds, the K-record could be set to record every 20 seconds,
+for instance containing true heading (HDT). The contents of the K record are listed in the <a href="#link_J">J record</a>. The
+following <a href="#link_J">J Record</a> specifies the information in the K Record in the next line:</p>
+<pre>
+J 0 8 1 2 H D T CR LF
+K H H M M S S 0 0 0 9 0 CR LF
+</pre>
+<p>This K Record states that the true heading (TLC = HDT) is 090 (East).</p>
+
+<p><b><a name="link_4.5"></a><a name="link_L"></a>4.5 L RECORD - LOG BOOK/COMMENTS.</b> L-Records can be placed anywhere in the file after H, I and J
+records but before the <a href="#link_G">G record</a>. The L-Record allows multiple free format text lines to be added to the flight
+data records at any time in the time-sequence, although this record is not itself time-stamped. It can be initiated
+by a program in the FR, by pilots or official observers, and the term "comment record" may be more descriptive
+rather than "logbook". The FR Manufacturer three-letter ID (para 2.5) should be used in the case of data
+initiated by the FR, and in this case the manufacturer should state how to interpret this type of L-Record for the
+benefit of writers of software for the IGC format. In other cases this field (MMM below) will also be three
+spaces, initiated by the pilot (code PLT) or OO (OOI) as required. In the case of Free Flights where waypoints
+are claimed post-flight by the pilot, the PFC (Post-Flight Claim) code shall be used followed by the Waypoints
+in the same format as the <a href="#link_C">C Record</a> (Pre-flight declaration). It is expected that this data will be inserted by a
+software program (for instance, after transfer of the flight data to a PC immediately after flight, by a program
+outside the FR) rather than added manually, so that it is in the correct format and can be recognised by analysis
+programs that are designed to read Post-Flight Claim data and present the flight on screen together with the PFC
+waypoints. Note that L records when originated by a pilot or OO must not affect the VALI check for the rest of
+the file data. The format of the L Record is as follows:(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al5.pdf" target=_blank><small>AL5</small></a>)</p>
+<pre>
+L MMM T E X T S T R I N G CR LF
+L PLT T E X T S T R I N G CR LF
+L PFC TEXT AS C RECORD CR LF
+</pre>
+
+<table border="1">
+<tr><th>L record - Description</th><th>Size</th><th>Element</th><th>Remarks</th></tr>
+<tr><td>Manufacturer input</td><td>3&nbsp;bytes</td><td>MMM</td><td>Manufacturer's code, see <a href="#link_2.5">para 2.5</a></td></tr>
+<tr><td>Pilot input</td><td>3&nbsp;bytes</td><td>PLT</td><td>Text string after PLT</td></tr>
+<tr><td>OO input</td><td>3&nbsp;bytes</td><td>OOI</td><td>Text string after OOI</td></tr>
+<tr><td>After flight pilot input</td><td>3&nbsp;bytes</td><td>PFC</td><td>For free flight after-flight choice of course</td></tr>
+</table>
+
+<p>The L records which have the FR Manufacturer's ID MMM must be included in the digital signature (security
+system) for the file. Other L records (eg those put in by the pilot (PLT) or an OO (OOI)) will not be covered by
+the digital signature for the file, see para 3.2. Examples of pilot inputs:</p>
+<pre>
+LPLT This flight was my second 1000km attempt
+LPLT from Eagle Field
+</pre>
+
+<p><b><a name="link_4.6"></a><a name="link_D"></a>4.6 D RECORD - DIFFERENTIAL GPS.</b></p>
+
+<p>This indicates that differential GPS is being used and can be a
+multiple-instance record if, during the flight, more than one differential beacon is used. It is placed in the IGC
+file before the first fix <a href="#link_B">B record</a> after the <a href="#link_H">H</a>,
+<a href="#link_I">I</a>, <a href="#link_J">J</a> and <a href="#link_C">C records</a>. The format of the D Record is as follows.
+(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)</p>
+<pre>
+D Q S S S S CR LF
+</pre>
+
+<table border="1">
+<tr><th>L record - Description</th><th>Size</th><th>Element</th><th>Remarks</th></tr>
+<tr><td>GPS Qualifier</td><td>1 byte</td><td>Q</td><td>Use 1=GPS, 2=DGPS</td></tr>
+<tr><td>DGPS Station ID</td><td>4&nbsp;bytes</td><td>SSSS</td><td>&nbsp;</td></tr>
+</table>
+
+<p>These parameters correspond to the NMEA GGA GPS quality indication. The absence of a <a href="#link_D">D Record</a> indicates
+that differential GPS was not used. Any use of DGPS is subject to GFAC approval, and it must be shown that
+the use of GPS preserves the integrity of basic lat/long and other flight data.</p>
+
+<h2><a name="link_5"></a>5. DEFINITIONS</h2>
+<table border="1">
+<tr>
+<td valign="top">
+<br/><b>airspeed </b> - The true airspeed of the aircraft in kph, for systems with air data input.
+<br/><b>Alphnumeric</b> - Valid alpha and/or numeric character from the list of valid characters (para 6).
+<br/><b>competition class </b> - The IGC/FAI competition class of the aircraft.
+<br/><b>constellation </b> - The precise satellites from which data was used to determine the GNSS fix. This may be used to
+verify the validity of the flight data.
+<br/><b>course </b> - The direction between two points expressed as degrees magnetic or true.
+<br/><b>datum</b> - The GNSS datum (co-ordinate system) in use.
+<br/><b>engine down </b> - The Means of Propulsion (MoP) (eg engine and propeller) is stowed and not in a position to
+generate thrust.
+<br/>Engine Noise Level (ENL) - Ambient noise at the FR expressed as three numbers, maximum 999. This
+continuously-recorded active parameter registers a positive baseline level (ie not a zero level) even when the
+MoP is not in operation, and so produces a continuous check of the integrity of the MoP-recording system.
+<br/><b>engine off </b> - The Means of Propulsion (MoP) is in a condition where thrust cannot be generated.
+<br/><b>engine on </b> - The Means of Propulsion (MoP) is in a condition when thrust could be generated.
+<br/><b>engine rpm</b> - This is a parameter related to engine RPM, see the Three-Letter Code RPM.
+<br/><b>engine up </b> - The propulsion unit pylon is extended or the engine or propeller doors are open, in a condition in
+which thrust can be generated on starting the engine.
+<br/><b>equipment events </b> - These are events generated solely by the FR (such as detecting takeoff), as opposed to
+events generated after flight by the analysis of the FR flight data (such as establishing presence in a Turn Point
+Observation Zone or crossing a start or finish line).
+</td>
+<td valign="top">
+<br/><b>finish </b> - The end of a task, such as crossing a finish line, entering a finish observation zone, or (for some
+distance flights) landing. Definitions, Sporting Code (SC3) main volume.
+<br/><b>fix accuracy </b> - The accuracy of the fix concerned expressed as EPE in metres, normally to a 2-sigma (95.45%)
+probability. See EPE in the Glossary.
+<br/><b>fr serial number </b> - a three-character alphanumeric which is unique within all FRs of all types from that
+manufacturer, and is allocated by the manufacturer to identify an individual FR. It is used in the first (A) record
+(see this appendix, para 3.1) and in the IGC file name (para 2.5).
+<br/><b>glider id </b> - The unique registration alphanumeric of the individual aircraft.
+<br/><b>glider type </b> - The manufacturer and precise model number of the aircraft.
+<br/><b>gnss altitude </b> - A five numeric character group indicating the GNSS altitude in metres above the ellipsoid.
+<br/><b>gnss connect </b> - Where a separate GNSS unit is used, indicates GNSS connection to the FR module
+<br/><b>gnss disconnect </b> - Where a separate GNSS unit is used, indicates GNSS disconnection from the FR module.
+
+<br/><b>ground speed </b> - The speed over the ground in kph.
+<br/><b>heading </b> - The direction in which the aircraft is pointed (the longitudinal axis) in degrees true or magnetic.
+<br/><b>latitude </b> - A seven character alphanumeric group expressed as two figures for the degrees, two figures for the
+minutes and three figures representing tenths, hundredths and thousandths of minutes followed by the N or S
+character. Where this is inserted into a FR such as part of a flight declaration, the N/S character must be capable
+of being entered in either upper or lower case. For IGC purposes lat/long must be referenced to the WGS84
+Geodetic Datum.
+<br/><b>longitude </b> - An eight character alphanumeric group expressed as three figures for the degrees, two figures for
+the minutes and three figures representing tenths, hundredths and thousandths of minutes followed by the E or
+W character. Where this is inserted into a FR such as part of a flight declaration, the N/S character must be
+capable of being entered in either upper or lower case. For IGC purposes lat/long must be referenced to the
+WGS84 Geodetic Datum.
+</td>
+<td valign="top">
+<br/><b>on task </b> - The pilot is attempting a Task.
+<br/><b>oo id </b> - A series of alphanumerics that is entered by an OO into the FR before flight. It consists of a minimum
+of four characters and is confidential to the OO.
+<br/><b>photo </b> - A photograph has been taken, such as of a turn point.
+<br/>Pilot Event (PEV code) � Where the pilot has marked a particular time. This may represent a number of
+different occurrences or events such as crossing a start line (or marking the intention to cross shortly) or arriving
+at a point. A sequence of fast fixes follows (para 2.6.7.3).(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+<br/><b>pressure altitude </b> - A five numeric group indicating the pressure altitude in metres above the 1013.25 HPa sea
+level datum and the ICAO ISA above.
+<br/><b>raim</b> - Receiver Autonomous Integrity Monitoring (when used) - This is used to indicate the quality of GNSS
+navigation data, see the Glossary section.
+<br/><b>record extension </b> - This allows extra information to be added to the fix (B) and extension (K) data records.
+<br/>Security data (Digital Signature) - This is used to verify that the flight data has not be altered during or since the
+flight.
+<br/><b>start </b> - The start of an official soaring performance. For definitions, see the Sporting Code (SC3).
+<br/><b>supplemental data fix </b> - The use of external non-satellite data to assist the GNSS unit determine the position,
+such as a ground.-based beacon
+<br/><b>task </b> - The main points of an intended flight. Normally an intended start, turn points and finish.
+<br/><b>total energy altitude </b> - The combination of the gliders potential and kinetic energy expressed in metres of
+effective altitude.
+<br/><b>track </b> - The true track (flight path) over the ground that the aircraft has achieved.
+<br/><b>turn point validation </b> - Proof of presence in the relevant Observation Zone for the point concerned.
+</td>
+</tr>
+</table>
+
+<h2><a name="link_6"></a>6. VALID CHARACTERS</h2>
+<p>
+ These consist of all printable ASCII characters from Hex&nbsp;20 to Hex&nbsp;7E, except
+those tabulated below as reserved. A text string is a sequence of valid characters. The following table shows
+the character first and then the hexadecimal code, and the second table presents the same information in hex
+order:</p>
+
+<table border="1" cellpadding="10">
+<tr>
+  <th rowspan="2">NUMBERS</th>
+  <th colspan="4">LETTERS</th>
+  <th colspan="2" rowspan="2">SYMBOLS<br/>Res&nbsp;=&nbsp;reserved</th>
+  <th rowspan="2">RESERVED<br/>CHARACTERS</th>
+</tr>
+<tr>
+  <th colspan="2">Upper Case</th>
+  <th colspan="2">Lower Case</th>
+</tr>
+<tr>
+<td>
+<br/>0&nbsp;=&nbsp;Hex&nbsp;30
+<br/>1&nbsp;=&nbsp;31
+<br/>2&nbsp;=&nbsp;32
+<br/>3&nbsp;=&nbsp;33
+<br/>4&nbsp;=&nbsp;34
+<br/>5&nbsp;=&nbsp;35
+<br/>6&nbsp;=&nbsp;36
+<br/>7&nbsp;=&nbsp;37
+<br/>8&nbsp;=&nbsp;38
+<br/>9&nbsp;=&nbsp;39
+</td>
+<td>
+<br/>A&nbsp;=&nbsp;Hex&nbsp;41
+<br/>B&nbsp;=&nbsp;42
+<br/>C&nbsp;=&nbsp;43
+<br/>D&nbsp;=&nbsp;44
+<br/>E&nbsp;=&nbsp;45
+<br/>F&nbsp;=&nbsp;46
+<br/>G&nbsp;=&nbsp;47
+<br/>H&nbsp;=&nbsp;48
+<br/>I&nbsp;=&nbsp;49
+<br/>J&nbsp;=&nbsp;4A
+<br/>K&nbsp;=&nbsp;4B
+<br/>L&nbsp;=&nbsp;4C
+<br/>M&nbsp;=&nbsp;4D
+</td>
+<td>
+<br/>N&nbsp;=&nbsp;4E
+<br/>O&nbsp;=&nbsp;4F
+<br/>P&nbsp;=&nbsp;50
+<br/>Q&nbsp;=&nbsp;51
+<br/>R&nbsp;=&nbsp;52
+<br/>S&nbsp;=&nbsp;53
+<br/>T&nbsp;=&nbsp;54
+<br/>U&nbsp;=&nbsp;55
+<br/>V&nbsp;=&nbsp;56
+<br/>W&nbsp;=&nbsp;57
+<br/>X&nbsp;=&nbsp;58
+<br/>Y&nbsp;=&nbsp;59
+<br/>Z&nbsp;=&nbsp;5A
+</td>
+<td>
+<br/>a&nbsp;=&nbsp;Hex&nbsp;61
+<br/>b&nbsp;=&nbsp;62
+<br/>c&nbsp;=&nbsp;63
+<br/>d&nbsp;=&nbsp;64
+<br/>e&nbsp;=&nbsp;65
+<br/>f&nbsp;=&nbsp;66
+<br/>g&nbsp;=&nbsp;67
+<br/>h&nbsp;=&nbsp;68
+<br/>i&nbsp;=&nbsp;69
+<br/>j&nbsp;=&nbsp;6A
+<br/>k&nbsp;=&nbsp;6B
+<br/>l&nbsp;=&nbsp;6C
+<br/>m&nbsp;=&nbsp;6D
+</td>
+<td>
+<br/>n&nbsp;=&nbsp;6E
+<br/>o&nbsp;=&nbsp;6F
+<br/>p&nbsp;=&nbsp;70
+<br/>q&nbsp;=&nbsp;71
+<br/>r&nbsp;=&nbsp;72
+<br/>s&nbsp;=&nbsp;73
+<br/>t&nbsp;=&nbsp;74
+<br/>u&nbsp;=&nbsp;75
+<br/>v&nbsp;=&nbsp;76
+<br/>w&nbsp;=&nbsp;77
+<br/>x&nbsp;=&nbsp;78
+<br/>y&nbsp;=&nbsp;79
+<br/>z&nbsp;=&nbsp;7A
+</td>
+<td>
+<br/>Space&nbsp;=&nbsp;Hex&nbsp;20
+<br/>Res&nbsp;=&nbsp;21
+<br/>"&nbsp;=&nbsp;22
+<br/>#&nbsp;=&nbsp;23
+<br/>Res&nbsp;=&nbsp;24
+<br/>%&nbsp;=&nbsp;25
+<br/>&&nbsp;=&nbsp;26
+<br/>'&nbsp;=&nbsp;27
+<br/>(&nbsp;=&nbsp;28
+<br/>)&nbsp;=&nbsp;29
+<br/>@&nbsp;=&nbsp;40
+<br/>`&nbsp;=&nbsp;60
+<br/>Res&nbsp;=&nbsp;2A
+<br/>+&nbsp;=&nbsp;2B
+<br/>Res&nbsp;=&nbsp;2C
+<br/>-&nbsp;=&nbsp;2D
+<br/>.&nbsp;=&nbsp;2E
+</td>
+<td>
+<br/>,&nbsp;=&nbsp;2C
+<br/>/&nbsp;=&nbsp;2F
+<br/>:&nbsp;=&nbsp;3A
+<br/>;&nbsp;=&nbsp;3B
+<br/><&nbsp;=&nbsp;3C
+<br/>=&nbsp;=&nbsp;3D
+<br/>>&nbsp;=&nbsp;3E
+<br/>?&nbsp;=&nbsp;3F
+<br/>[&nbsp;=&nbsp;5B
+<br/>Res&nbsp;=&nbsp;5C
+<br/>]&nbsp;=&nbsp;5D
+<br/>Res&nbsp;=&nbsp;5E
+<br/>_&nbsp;=&nbsp;5F
+<br/>{&nbsp;=&nbsp;7B
+<br/>|&nbsp;=&nbsp;7C
+<br/>}&nbsp;=&nbsp;7D
+<br/>Res&nbsp;=&nbsp;7E
+</td>
+<td>
+<br/>CR&nbsp;=&nbsp;0D
+<br/>LF&nbsp;=&nbsp;0A
+<br/>$&nbsp;=&nbsp;24
+<br/>*&nbsp;=&nbsp;2A
+<br/>!&nbsp;=&nbsp;21
+<br/>\&nbsp;=&nbsp;5C
+<br/>^&nbsp;=&nbsp;5E
+<br/>~&nbsp;=&nbsp;7E
+<br/><small><i>These characters
+are reserved (not
+to be used) because
+they could be
+confusing if used in
+a text string, for
+instance due to
+other meanings or
+alternative
+keystrokes</i>
+</small>
+</td>
+</tr>
+</table>
+<h2><a name="link_7"></a>7. THREE-LETTER CODES (TLC)</h2>
+
+<p> These are shown as CCC in the formats earlier in this appendix. Their
+meanings are listed below together with the Records in the IGC file in which they can be used. If a
+manufacturer wants to add a new type of event, a new TLC should be requested from GFAC. The manufacturer
+should provide an exact definition of the event and a proposed coding.</p>
+
+<table border="1" cellpadding="6">
+<tr><th>CODE</th><th>Record Letter(s) TLC is used with</th><th>TLC meaning, notes on how it is to be used</th></tr>
+
+<tr><td><a name="link_ATS"></a>ATS</td><td><a href="#link_H">H</a>,<a href="#link_E">E</a></td><td>Altimeter pressure setting in hectoPascals with 4 numbers and one decimal point (for
+instance, 1013.2, 0995.7). Although an altimeter pressure setting may be recorded
+(for instance where the FR feeds a cockpit display), it must not be used to change the
+pressure altitude recorded with each fix, which must remain with respect to the ISA
+sea level datum of 1013.25 mb at all times(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)</td></tr>
+<tr><td><a name="link_CCL"></a>CCL</td><td><a href="#link_H">H</a></td><td>Competition class
+</td></tr><tr><td><a name="link_CCN"></a>CCN</td><td><a href="#link_E">E</a></td><td>Camera Connect
+</td></tr><tr><td><a name="link_CCO"></a>CCO</td><td><a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Compass course (from the aircraft compass sensor). Three numbers based on
+degrees clockwise from 000 for north.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td><a name="link_CDC"></a>CDC</td><td><a href="#link_E">E</a></td><td>Camera Disconnect
+</td></tr><tr><td><a name="link_CGD"></a>CGD</td><td><a href="#link_E">E</a></td><td>Change of geodetic datum
+</td></tr><tr><td><a name="link_CID"></a>CID</td><td><a href="#link_H">H</a></td><td>Competition ID
+</td></tr><tr><td><a name="link_CLB"></a>CLB</td><td><a href="#link_H">H</a></td><td>Club or organisation, and country, from which flown or operated (eg Elmira US,
+Lasham UK). For Nation, use the ISO 3166 two-letter codes, some of which are
+given in para <a href="#link_3.3.3">3.3.3</a> of Appendix A
+</td></tr><tr><td><a name="link_CM2"></a>CM2</td><td><a href="#link_H">H</a></td><td>Second Crew Member's Name, family name first then given name(s) as required
+(same format as PLT for pilot-in-charge). For aircraft with more than two crew, use CM3 and so forth if required.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td><a name="link_DAE"></a>DAE</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Displacement east, metres. For West use negative sign
+</td></tr><tr><td><a name="link_DAN"></a>DAN</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Displacement north, metres. For South use negative sign
+</td></tr><tr><td><a name="link_DB1"></a>DB1</td><td><a href="#link_H">H</a></td><td>Date of Birth of the pilot-in-charge (aircraft commander) in the previous line of the
+<a href="#link_H">H record</a> (DDMMYY)(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+
+</td></tr><tr><td><a name="link_DB2"></a>DB2</td><td><a href="#link_H">H</a></td><td>Date of Birth of second crew member in format DDMMYY. For aircraft with more
+than two crew, use DB3 and so forth if required.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td><a name="link_DOB"></a>DOB</td><td><a href="#link_H">H</a></td><td>Obsolete code, now use DB1. Was Date of Birth of the pilot in the previous line of
+the <a href="#link_H">H record</a> (DDMMYY)(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td><a name="link_DTE"></a>DTE</td><td><a href="#link_H">H</a></td><td>Date, expressed as DDMMYY
+DTM H Geodetic Datum in use for lat/long records (for IGC purposes this must be set to
+WGS84)
+</td></tr><tr><td><a name="link_EDN"></a>EDN</td><td><a href="#link_E">E</a></td><td>Engine down. See note on line for EON
+</td></tr><tr><td><a name="link_ENL"></a>ENL</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a></td><td>Engine Noise Level, recorded from 000 to 999. This is the preferred MoP recording
+method because it requires no cables or sensors external to the FR, and is selfvalidating,
+recording a positive value with each fix.
+</td></tr><tr><td><a name="link_EOF"></a>EOF</td><td><a href="#link_E">E</a></td><td>Engine off. See note on line for EON
+</td></tr><tr><td><a name="link_EON"></a>EON</td><td><a href="#link_E">E</a></td><td>Engine on. Note: Where ENL or RPM are not used as the primary indicator of MoP
+operation, event records and the EON/EOF or EUP/EDN codes shall be used. A
+combination of the two methods may be used, eg EON/EOF based on a parameter
+such as ignition ON/OFF, a minimum generator output, EUP/EDN for engine bay
+doors open/closed or pylon up/down; plus RPM based on prop or engine rpm, or <a href="#link_ENL">ENL</a> for noise level at the FR.
+</td></tr><tr><td><a name="link_EUP"></a>EUP</td><td><a href="#link_E">E</a></td><td>Engine up. See note on line for EON
+</td></tr><tr><td><a name="link_FIN"></a>FIN</td><td><a href="#link_E">E</a></td><td>Finish
+</td></tr><tr><td><a name="link_FLP"></a>FLP</td><td><a href="#link_E">E</a></td><td>Flap position, three characters such as FLP060 for 60 degrees of positive flap. If
+negative, use a negative sign before the numbers, such as FLP-20 for minus 20
+degrees flap.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td><a name="link_FRS"></a>FRS</td><td><a href="#link_H">H</a></td><td>Flight Recorder Security. To be used where a security fault has been detected such
+as the recorder internal security system (microswitch) having operated.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al6.pdf" target=_blank><small>AL6</small></a>)
+</td></tr><tr><td><a name="link_FTY"></a>FTY</td><td><a href="#link_H">H</a></td><td>FR Type (Manufacturer's name, FR Model Number)
+</td></tr><tr><td><a name="link_FXA"></a>FXA</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td><i>Fix accuracy. When used in the B (fix) record</i>. This is the EPE (Estimated Position
+Error) figure in metres (MMMM) for the individual fix concerned, to a 2-Sigma
+(95.45%) probability(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td>FXA</td><td><a href="#link_H">H</a></td><td>Fix Data Accuracy Category. When used in the header record, this is a general
+indication of potential fix accuracy and indicates a category of receiver capability
+rather than an exact figure such as applies to each recorded fix in the B, I, J or K
+records, see above. If in doubt, use a three figure group in metres that refers to a
+typical EPE radius achieved by the receiver in good reception conditions.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al3.pdf" target=_blank><small>AL3</small></a>)
+</td></tr><tr><td><a name="link_GAL"></a>GAL</td><td><a href="#link_H">H</a></td><td>Galileo (European GNSS system), followed by receiver maker, type & version
+letter/number. See <a href="#link_3.3.1">3.3.1</a> above.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al11.pdf" target=_blank><small>AL11</small></a>)
+</td></tr><tr><td><a name="link_GCN"></a>GCN</td><td><a href="#link_E">E</a></td><td>GNSS (Separate module) Connect
+</td></tr><tr><td><a name="link_GDC"></a>GDC</td><td><a href="#link_E">E</a></td><td>GNSS (Separate module) Disconnect
+</td></tr><tr><td><a name="link_GID"></a>GID</td><td><a href="#link_H">H</a></td><td>Glider ID
+</td></tr><tr><td><a name="link_GLO"></a>GLO</td><td><a href="#link_H">H</a></td><td>GLONASS (Russian GNSS system), followed by receiver maker, type & version
+letter/number. See <a href="#link_3.3.1">3.3.1</a> above(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al11.pdf" target=_blank><small>AL11</small></a>)
+</td></tr><tr><td><a name="link_GPS"></a>GPS</td><td><a href="#link_H">H</a></td><td>GPS (US GNSS system), followed by receiver maker, type & version letter/number.
+See <a href="#link_3.3.1">3.3.1</a> above.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al11.pdf" target=_blank><small>AL11</small></a>)
+</td></tr><tr><td><a name="link_GSP"></a>GSP</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Groundspeed, three numbers in kilometres per hour(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td><a name="link_GTY"></a>GTY</td><td><a href="#link_H">H</a></td><td>Glider type, manufacturer, model
+</td></tr><tr><td><a name="link_HDM"></a>HDM</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Heading Magnetic, three numbers based on degrees clockwise from 000 for north
+(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td><a name="link_HDT"></a>HDT</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Heading True, three numbers based on degrees clockwise from 000 for north(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td><a name="link_IAS"></a>IAS</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Airspeed, three numbers in kilometres per hour(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td><a name="link_LAD"></a>LAD</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a></td><td>The last places of decimal minutes of latitude, where latitude is recorded to a greater
+precision than the three decimal minutes that are in the main body of the <a href="#link_B">B record</a>.
+The fourth and any further decimal places of minutes are recorded as an extension to
+the <a href="#link_B">B record</a>, their position in each <a href="#link_B">B record</a> line being specified in the <a href="#link_I">I record</a>.
+(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+
+</td></tr><tr><td><a name="link_LOD"></a>LOD</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a></td><td>The last places of decimal minutes of longitude, where longitude is recorded to a
+greater precision than the three decimal minutes that are in the main body of the Brecord.
+The fourth and any further decimal places of minutes are recorded as an
+extension to the <a href="#link_B">B record</a>, their position in each <a href="#link_B">B record</a> line being specified in the
+<a href="#link_I">I record</a>.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td><a name="link_LOV"></a>LOV</td><td><a href="#link_E">E</a></td><td>Low voltage. Must be set for each FR at the lowest voltage at which the FR will
+operate without the possibility of recorded data being degraded by the voltage level.
+Not to be used to invalidate a flight if the flight data appears correct when checked
+in the normal way, but a warning to check fix data particularly carefully. (AL1)
+</td></tr><tr><td><a name="link_MAC"></a>MAC</td><td><a href="#link_E">E</a></td><td>MacCready setting for rate of climb/speed-to-fly (m/sec)(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td><a name="link_OA1"></a>OA1 OA2 OA3 Etc</td><td><a href="#link_E">E</a></td><td>Position of other aircraft (if this is recorded by the system), data fields after the
+Codes being separated by colons. Format after the Three Letter Code is the
+identification of the aircraft concerned (if this is recorded by the system, otherwise
+insert NK for not known) followed by a colon, letter P for polar or C for Cartesian
+followed by the co-ordinates. Polar co-ordinates are with respect to the recorder.
+Format is numbers for horizontal distance in metres from the recorder followed by a
+colon, followed by 3 numbers of degrees clockwise from 000 for north, followed by
+a colon and vertical distance in metres from the recorder, a negative sign before the
+numbers meaning negative vertical distance. After the numbers for vertical distance,
+the letter G should be used for GNSS data and P for Pressure Altitude, both can be
+used if the data is available. Alternatively, Cartesian co-ordinates can be used for
+the 3D position of the Other Aircraft (for instance from ADS-B and similar position
+reporting systems). Format is lat/long followed by pressure and GPS altitudes (if
+these are recorded by the system) in the same order and format as for the <a href="#link_B">B record</a>
+(para 4.1), omitting the fix validity character. Where a type of altitude is not
+recorded, zeros should be substituted.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al10.pdf" target=_blank><small>AL10</small></a>)
+</td></tr><tr><td><a name="link_OAT"></a>OAT</td><td><a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Outside air temperature (Celsius). If negative, use negative sign before the numbers.
+</td></tr><tr><td><a name="link_ONT"></a>ONT</td><td><a href="#link_E">E</a></td><td>On Task � attempting task
+</td></tr><tr><td><a name="link_OOI"></a>OOI</td><td><a href="#link_H">H</a></td><td>OO ID � OO equipment observation
+</td></tr><tr><td><a name="link_PEV"></a>PEV</td><td><a href="#link_E">E</a></td><td>Pilot EVent - Pilot initiated action such as pressing a button. A sequence of fast fixes
+follows (para 2.6.7.3).(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td><a name="link_PFC"></a>PFC</td><td><a href="#link_L">L</a></td><td>Post-Flight Claim. For Free Flights where waypoints are claimed post-flight.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al5.pdf" target=_blank><small>AL5</small></a>)
+</td></tr><tr><td><a name="link_PHO"></a>PHO</td><td><a href="#link_E">E</a></td><td>Photo taken (shutter-press)
+</td></tr><tr><td><a name="link_PLT"></a>PLT</td><td><a href="#link_H">H</a></td><td>Pilot-in-charge (aircraft commander), family name first then given name(s) as
+required(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td><a name="link_PRS"></a>PRS</td><td><a href="#link_H">H</a></td><td>Pressure Altitude Sensor, manufacturer, model, etc.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al3.pdf" target=_blank><small>AL3</small></a>)
+</td></tr><tr><td><a name="link_RAI"></a>RAI</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>RAIM - GPS Parameter, see Glossary
+</td></tr><tr><td><a name="link_REX"></a>REX</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Record extension - Manufacturer defined data defined in the I or <a href="#link_J">J record</a> as
+appropriate, normally in the form of a TLC (which, if a new variable is agreed, may
+be a new TLC allocated by GFAC at the time). Any use must be approved by
+GFAC, and published so that there will be no doubt on how it is being used.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al4.pdf" target=_blank><small>AL4</small></a>)
+</td></tr><tr><td><a name="link_RFW"></a>RFW</td><td><a href="#link_H">H</a></td><td>Firmware Revision Version of FR
+</td></tr><tr><td><a name="link_RHW"></a>RHW</td><td><a href="#link_H">H</a></td><td>Hardware Revision Version of FR
+</td></tr><tr><td><a name="link_RPM"></a>RPM</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a></td><td>A group of three numbers from 000 to 999 associated with the generation of forward
+thrust. Examples include propellor or engine RPM or another MoP variable agreed
+with GFAC that varies in a similar way. Such variable must always be recorded and
+must not be able to be switched off by the pilot, for instance through a cockpit
+switch, circuit-breaker or fuse. The whole range of numbers up to 999 shall be used.
+For instance, if RPM is recorded and maximum RPM is 3000, this shall be recorded
+in the <a href="#link_B">B record</a> as 999 or close to it. The baseline minimum value must produce
+positive but low RPM numbers on the IGC file (such as 010 but not above 025) as a
+continuous check that the circuit is still live. GFAC will look particularly at the
+recording of lower powers that give forward thrust and ensure that they produce high
+enough numbers to clearly show any use of engine.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al10.pdf" target=_blank><small>AL10</small></a>)
+</td></tr><tr><td><a name="link_SCM"></a>SCM</td><td><a href="#link_H">H</a></td><td>Obsolete code, now use CM2. Was Second Crew Member's Name(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td><a name="link_SEC"></a>SEC</td><td>G</td><td>Security - Log security data
+</td></tr><tr><td><a name="link_SIT"></a>SIT</td><td><a href="#link_H">H</a></td><td>Site, Name, region, nation etc.
+</td></tr><tr><td><a name="link_SIU"></a>SIU</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a></td><td>Satellites in use. A two-character field from the NMEA GGA or GNS sentences, as
+appropriate, or equivalent data agreed by GFAC.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al4.pdf" target=_blank><small>AL4</small></a>)
+</td></tr><tr><td><a name="link_STA"></a>STA</td><td><a href="#link_E">E</a></td><td>Start event
+</td></tr><tr><td><a name="link_TAS"></a>TAS</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Airspeed True, give units (kt, kph, etc.)
+</td></tr><tr><td><a name="link_TDS"></a>TDS</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Decimal seconds of UTC time, for use with systems recording time to this accuracy.
+Time in seconds is recorded in the main body of the <a href="#link_B">B record</a> and decimal seconds
+are recorded as an extension to the <a href="#link_B">B record</a>, their position in each <a href="#link_B">B record</a> line
+being specified in the <a href="#link_I">I record</a>. Similarly with the K and <a href="#link_J">J records</a>.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td><a name="link_TEN"></a>TEN</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Total Energy Altitude in metres
+</td></tr><tr><td><a name="link_TPC"></a>TPC</td><td><a href="#link_E">E</a></td><td>Turn point confirmation - Equipment generated event (not valid for flight validation
+which requires independent checking of fixes and relevant Observation Zones)
+</td></tr><tr><td><a name="link_TRM"></a>TRM</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Track Magnetic. Three numbers based on degrees clockwise from 000 for north
+(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td><a name="link_TRT"></a>TRT</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Track True. Three numbers based on degrees clockwise from 000 for north(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small><small>AL8</small></small></a>)
+</td></tr><tr><td><a name="link_TZN"></a>TZN</td><td><a href="#link_H">H</a></td><td>Time Zone Offset, hours from UTC to local time.
+</td></tr><tr><td><a name="link_UND"></a>UND</td><td><a href="#link_E">E</a></td><td>Undercarriage (landing gear), recorded as UP or DN, in the format UNDUP or
+UNDDN.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small><small>AL8</small></small></a>)
+</td></tr><tr><td><a name="link_UNT"></a>UNT</td><td><a href="#link_H">H</a></td><td>Units of Measure
+</td></tr><tr><td><a name="link_VAR"></a>VAR</td><td><a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Uncompensated variometer (non-total energy) vertical speed in metres and decimal
+metres. If negative, use negative sign before the numbers.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td><a name="link_VAT"></a>VAT</td><td><a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Compensated variometer (total energy/netto) vertical speed in metres and decimal
+metres. If negative, use negative sign before the numbers.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td><a name="link_VXA"></a>VXA</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Vertical Fix Accuracy, Three characters in metres from the VDOP part of the
+NMEA GSA sentence, or equivalent data agreed by GFAC.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al4.pdf" target=_blank><small>AL4</small></a>)
+</td></tr><tr><td><a name="link_WDI"></a>WDI</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Wind Direction (the direction the wind is coming from). Three numbers based on
+degrees clockwise from 000 for north(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td><a name="link_WSP"></a>WSP</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Wind speed, three numbers in kilometres per hour(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td><a name="link_XN"></a>XN*</td><td>As Appropriate</td><td>A manufacturer-selected code where N is the manufacturer's single-character IGC
+name (Appendix 1 para 3.5.6) and * can be any character. The manufacturer must
+specify its meaning and usage in the documentation for the recorder and its use must
+be approved by GFAC before IGC-approval of the recorder. The X prefix is
+intended to allow a trial with a provisional new code before deciding whether it is
+worthwhile adding to the full list.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)</td>
+</tr>
+
+</table>
+
+<h2><a name="link_8"></a>8. GNSS GEODETIC DATUMS</h2>
+<p>The Sporting Code for gliding states that the WGS 84 Geodetic Datum
+(serial 100 below) shall be used for all lat/long co-ordinates that are recorded and transferred from the FR after
+flight. Other Geodetic Datums have been numbered by IGC as follows.</p>
+
+<p><i>Note from Ian Forster-Lewis: I skipped this section - just use WGS84 IGC code </i><b>100.</b></p>
+
+<h2><a name="link_9"></a>9. EXAMPLE IGC-FORMAT FILE</h2>
+<p><b><a name="link_9.1"></a>9.1</b>
+The IGC file format starts with the <a href="#link_A">A Record</a> and is followed by the H (header) and other records. The
+record letter is always at the start of the appropriate line in the file when it is viewed in text format. For
+more details of formats for individual records, see the relevant paragraphs earlier in this Appendix.</p>
+<p><b><a name="link_9.2"></a>9.2</b> In this example, spaces have been used between subject fields to make the layout and sequence clearer
+to a reader. In a real IGC-format file there should be no spaces in any record except within a text string as
+a word separator.</p>
+<p><b><a name="link_9.3"></a>9.3</b> CRLF&nbsp;=&nbsp;line terminator, not flight data.</p>
+<p><b><a name="link_9.4"></a>9.4</b> In a real file there would be many more <a href="#link_B">B records</a> at 
+the preset fix intervals for cruise and fast fix rates.
+<p><b><a name="link_9.4"></a>9.5</b> In the example below, some notes appear in brackets. These are not part of the file format itself. Also,
+for clarity, some spaces are used in <a href="#link_B">B record</a> lines between different variables 
+that are recorded, but no
+spaces should be used in the IGC file itself.</p>
+<pre>
+AXXXABC FLIGHT:1
+HFFXA035
+HFDTE160701
+HFPLTPILOTINCHARGE: Bloggs Bill D
+HFCM2CREW2: Smith-Barry John A
+HFGTYGLIDERTYPE: Schleicher ASH-25
+HFGIDGLIDERID: ABCD-1234
+HFDTM100GPSDATUM: WGS-1984
+HFRFWFIRMWAREVERSION:6.4
+HFRHWHARDWAREVERSION:3.0
+HFFTYFRTYPE: Manufacturer, Model
+HFGPSMarconiCanada: Superstar,12ch, max10000m
+HFPRSPRESSALTSENSOR: Sensyn, XYZ1111, max11000m CR LF
+HFCIDCOMPETITIONID: XYZ-78910
+HFCCLCOMPETITIONCLASS:15m Motor Glider
+I033638FXA3940SIU4143ENL (<i>note: I corrected a TYPO from the original document that had RPM on this record</i>)
+J010812HDTCRLF
+C150701213841160701000102 500K Tri
+C5111359N00101899W Lasham Clubhouse
+C5110179N00102644W Lasham Start S, Start
+C5209092N00255227W Sarnesfield, TP1
+C5230147N00017612W Norman Cross, TP2
+C5110179N00102644W Lasham Start S, Finish
+C5111359N00101899W Lasham Clubhouse
+F160240040609123624221821
+B1602405407121N00249342WA002800042120509950
+D20331
+E160245PEV
+B1602455107126N00149300WA002880042919509020
+B1602505107134N00149283WA002900043221009015
+B1602555107140N00149221WA002900043020009012
+F1603000609123624221821
+B1603005107150N00149202WA002910043225608009
+E160305PEVCRLF
+B1603055107180N00149185WA002910043521008015
+B1603105107212N00149174WA002930043519608024
+K16024800090 (<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al7.pdf" target=_blank><small>AL7</small></a>)
+B1602485107220N00149150WA 00494 00436 190 08 018
+B1602525107330N00149127WA 00496 00439 195 08 015
+LXXXRURITANIAN STANDARD NATIONALS DAY 1
+LXXXFLIGHT TIME: 4:14:25, TASK SPEED:58.48KTS
+GREJNGJERJKNJKRE31895478537H43982FJN9248F942389T433T
+GJNJK2489IERGNV3089IVJE9GO398535J3894N358954983O0934
+GSKTO5427FGTNUT5621WKTC6714FT8957FGMKJ134527FGTR6751
+GK2489IERGNV3089IVJE39GO398535J3894N358954983FTGY546
+G12560DJUWT28719GTAOL5628FGWNIST78154INWTOLP7815FITN
+</pre>
+</body>
+</html>

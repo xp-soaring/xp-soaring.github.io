@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>Peter Krasnoff Competition Soaring Simulator</title>
+<script language="JavaScript">
+
+var task_length = 420; // DEFINE YOUR TASK LENGTH (in km) HERE
+var start_height_max = 5500;      // maximum permitted start height in feet
+var tp = new Array("Gransden","Didcot","Leicester","Bury");
+var leg_length = new Array(108,112,125,75);
+var leg_wind = new Array(-4,0,4,-4); // head (pos) / tail (neg) wind
+var events = new Array("general,distance,325,message,Looks blue at TP!",
+                       "special,distance,335,360,conditions,4", // weak-blue at Bury
+                       "general,time,12:10,conditions,1",  // stronger
+                       "general,time,16:30,conditions,0",  // normal
+                       "general,time,17:00,conditions,4"); // weak
+
+// conditions 0 = 'normal' Cu 4000 feet, (Median 3.6 knots at 9km) DEFAULT at start
+//            1 = 'stronger' Cu 5000 feet (4.6knots at 6km)
+//            2 = 'over-convected' 4000ft weaker more-spaced thermals
+//            3 = 'blue' 4500ft more-spaced thermals
+//            4 = 'weak' 3500ft weaker, more-spaced thermals
+//            5 = 'weak-blue' 3500ft more-spaced thermals
+//            6 = 'streeting' (4500 ft, a few thermals around 4.6 knots, many 1-3 knots, 1 km spacing)
+
+function day_init() // this code will be called when this day page is loaded - don't change it.
+  {
+    if (top.krasnoff != null) top.krasnoff.day_loaded();
+  }
+
+</script>
+</head>
+<body onLoad="day_init()">
+<font face="Helvetica">
+<p><strong><font color="green">
+Welcome to Day 7, the final day of the Krasnoff County Regionals!
+</strong></font></p>
+
+<p>Today's task is a 420km triangle, with legs of 108, 112, 125 and 75 km.</p>
+
+<p>The best weather of the competition!  Conditions are good with light winds and 4.5
+knot climbs to 5000 feet until 4:30pm, and steady deterioration after that.
+</p>
+
+<p>To begin, 'Hunt' for a thermal, and select 'Start Task' at the
+top of a climb when you're ready to go. There is more help
+and a detailed discussion of the simulator in <a href="k_help.html">the help file</a>.</p>
+
+</font>
+</body>
+</html>

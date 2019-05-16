@@ -1,0 +1,167 @@
+<html>
+<head>
+<title>IGC File Format homepage</title>
+</head>
+<body background="../clouds.jpg">
+<font face="Helvetica">
+<p><a href="../index.html">x-plane</a>
+    &nbsp;&gt;&nbsp;igc file format
+</p>
+
+<h1>IGC file format homepage</h1>
+
+<p><center><a href="igc_format_2008.html">QUICK LINK TO THE FORMAT SPECIFICATION</a></center>
+</p>
+
+<p>I've written a few different programs for creating and analysing the IGC-format log files used
+in soaring as the accepted transcript of the route of a flight, and this page collects reference
+information helpful to developers.</p>
+
+<p><b>As a plea</b>, if you <i>read</i> an IGC file into your software, just pick up the records
+and fields meaningful to you and <b>ignore</b> records and fields you don't care about. If you
+want but don't get a 'pilot date of birth' (this is an optional field in an IGC file, I kid you not) don't 
+have your software crash... just continue with a default value. If you see a record in an
+IGC file you don't recognise, just skip it. 99.999% of what needs to be done with an IGC file
+comes from reading the timestamped 'B' tracklog records (time, lat, long, alt), everything else is pretty 
+much irrelevant
+overhead for most purposes. 'B' records can have additional <i>optional</i> values tagged on
+the end (e.g. speed) so if you just need time, lat, long, alt please don't have your software
+crash because the 'B' record is slightly longer than you expected, just read the fields you
+want and ignore the rest of the line.
+</p>
+
+<p>In summary, the IGC file format is like every other 'GPS trail' file format, in that it
+is basically a container for a series of plain-text time-stamped location records one-per-line giving: <br/>
+<center><tt>&lt;time&gt;&nbsp;&lt;lat&gt;&nbsp;&lt;long&gt;&nbsp;&lt;alt&gt;&nbsp;</tt></center>
+</p>
+<p>To cut to the chase a real IGC file could be as below (although most software will require
+additional header records):<br/>
+<center><tt>B1101355206343N00006198WA0058700558</tt></center>
+<center><tt>B1101455206259N00006295WA0059300556</tt></center>
+<center><tt>B1101555206300N00006061WA0060300576</tt></center>
+<center><tt>B1102055206337N00006201WA0062000586</tt></center>
+<center><tt>B1102155206314N00005990WA0062200588</tt></center>
+<center><tt>B1102255206417N00006098WA0063100596</tt></center>
+</p>
+<p>And to explain the basic record format, using commas to indicate the actual fields:</br>
+<center><tt>B,110135,5206343N,00006198W,A,00587,00558</tt></center>
+<tt>B</tt>: record type is a basic tracklog record<br/>
+<tt>110135</tt>: &lt;time&gt; tracklog entry was recorded at 11:01:35 i.e. just after 11am<br/>
+<tt>5206343N</tt>: &lt;lat&gt; i.e. 52 degrees 06.343 minutes North<br/>
+<tt>00006198W</tt>: &lt;long&gt; i.e. 000 degrees 06.198 minutes West<br/>
+<tt>A</tt>: &lt;alt valid flag&gt; confirming this record has a valid altitude value<br/>
+<tt>00587</tt>: &lt;altitude from pressure sensor&gt;<br/>
+<tt>00558</tt>: &lt;altitude from GPS&gt;<br/>
+</p>
+
+<p>So if we call the 'B' record a 'trackpoint' record, you can see an IGC file without any
+would be
+fairly pointless (that's a pun, by the way). However, IGC files
+can contain quite a few other record types, each indicated by a unique first letter 
+and similarly terminated by a newline. Nearly all of the additional records are placed at
+the beginning of the IGC file, recording the DATE the trackpoints were created (this is
+important as the B records only contain the TIME) and also the name of the user, registration
+of the aircraft involved, type of logger used, other general stuff of that nature. NONE of these
+records actually care about the <i>content</i>, e.g. what is written for the type of the logger,
+so if that record is irrelevant for your requirement the usual approach is to populate the
+record with something generic, rather than omit the record.
+</p>
+
+<p>So an IGC file that pretty much all display software would be happy with could be:<br/>
+<tt>
+AXXX<font color=green> sim_logger v2.31</font><br/>
+HFDTE020911<br/>
+HFFXA035</br>
+HFPLTPILOTINCHARGE:<font color=green> Ian Forster-Lewis</font><br/>
+HFCM2CREW2:<font color=green> not recorded</font><br/>
+HFGTYGLIDERTYPE:<font color=green>Standard Libelle 201 B</font><br/>
+HFGIDGLIDERID:<font color=green>B21</font><br/>
+HFDTM100GPSDATUM: WGS-1984<br/>
+HFRFWFIRMWAREVERSION:<font color=green> 2.31</font><br/>
+HFRHWHARDWAREVERSION:<font color=green> 2009</font><br/>
+HFFTYFRTYPE:<font color=green> sim_logger by Ian Forster-Lewis</font><br/>
+HFGPSGPS:<font color=green>Microsoft Flight Simulator</font><br/>
+HFPRSPRESSALTSENSOR:<font color=green> Microsoft Flight Simulator</font><br/>
+HFCIDCOMPETITIONID:<font color=green>B21</font><br/>
+HFCCLCOMPETITIONCLASS: <br/>
+B1140115249652N00212031WA0009600096027000<br/>
+...
+</tt>
+</p>
+<p>You would need to check the <a href="igc_format_2008.html">spec</a> to understand the
+meaning of each of these header records, but the important thing to know is that the green
+stuff is whatever you want it to be. Software reading the file may or may not display or discard
+the HFGIDGLIDERID (the 7th record i this example), but if your usage doesn't 
+actually have a glider id then set it to XX or
+anything else you don't care about...
+</p>
+
+<p>In terms of priority, assuming you're coming to this page because you want to understand
+the IGC file format, you see from above you can get an effective tracklog file quickly with
+the header records plus a string of 'B' trackpoint records. Be prepared for most software to
+throw away most of your carefully considered header information, but you want to include it
+for other shite software out there which crashes if the file doesn't have e.g. a
+HFGIDGLIDERID: record. 
+</p>
+<ul>
+<li><b>Task (Course or Route) definition:</b> In addition to the critical <a href="igc_format_2008.html#link_B">B record</a>,
+the IGC file format can contain a <i>task</i> (i.e. route or course) definition using
+a similar <a href="igc_format_2008.html#link_C">C record</a>, so your IGC file can contain
+both the actual trail followed (in the B records) and the originally intended 'route'. This is
+particularly suitable for aviation as it is normal to declare your major waypoints in a flight plan
+before you take off. 
+</li>
+<li><b>Additional fields on the tracklog B record</b> can be defined with the header
+<a href="igc_format_2008.html#link_I">I record</a>. So you are not limited
+to the default time, lat, long, alt set of fields. For example you could easily have your
+tracklog records be time, lat, long, alt, speed, heading. The defined additional fields
+are documented in <a href="igc_format_2008.html#link_7">para 7</a> of the spec. In practice these
+fields are almost <i>always ignored</i> by tracklog display software so actually they
+can be conveniently used for your purposes if necessary, e.g. if you wanted to store aircraft
+bank in a field you would make up your own code or hijack an existing one.
+</li>
+<li><b>Comment records:</b> Finally a useful catch-all if you want to store your own proprietry 
+information in the IGC file is the comment or 
+<a href="igc_format_2008.html#link_L">L record</a>. Many software developers (including me)
+use L records
+to embed their own data in the file. In my case for flight simulator use I can record the
+<i>real</i> PC date and time the file was saved, while the main IGC date and timestamps actually
+record date/time in the <i>simulator</i>. If you do use the L record, use a reasonably
+unique string immediately after the 'L' so your records don't confuse other software that might
+also be trying to pick out data from their own comments. E.g. here's a comment from the
+log files I generate in my Flight Simulator logger (my comments use '<tt>L FSX</tt>'):<br/>
+<center><tt>L FSX user PC time            2011-10-01_0933</tt></center>
+</li>
+</ul>
+
+<p>I re-structured the FAI IGC 'Appendix 1' document section detailing the file format into
+an HTML file with cross-referencing links within it, so that references to (for example) the crucial
+<a href="igc_format_2008.html#link_B">B record</a> can be linked to the right part of the specification.
+</p>
+
+<ul>
+<li><a href="igc_format_2008.html">IGC file format documentation in HTML with handy cross-reference links</a>.
+ I started with the 'Appendix 1' part of the PDF IGC specification and added all the cross-reference links. 
+ It took ages but
+ I think the document is now more usable.
+</li>
+<li><a href="http://www.fai.org/gliding/system/files/tech_spec_gnss.pdf">Technical Specification for 
+IGC-Approved GNSS Flight Recorders</a>. The definitive document
+from the FAI. The HTML document linked above is a taken from Appendix 1. The FAI 
+unfortunately rename links on their site at frequent intervals so links-in are almost
+impossible to rely on. If you can't find the file on the FAI site,
+<a href="tech_spec_gnss.pdf">use this copy on my site</a> which I promise not to move around.
+</li>
+<li><a href="http://www.everytrail.com/view_trip.php?trip_id=89686">IGC files can be directly uploaded
+to everytrail.com</a>. This is a bit of an aside but damn fine, in my view.
+</li>
+<li><a href="sample_igc_file.txt">Here is a sample real IGC file</a> (from an LX logger) which includes the engine
+firing up during the flight (see the 'engine noise level' in the last three characters of each 'B record' from
+12:53:28 UTC).
+</li>
+
+</ul>
+
+</font>
+</body>
+</html>

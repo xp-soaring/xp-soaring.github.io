@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>Peter Krasnoff Competition Soaring Simulator</title>
+<script language="JavaScript">
+
+var task_length = 260; // DEFINE YOUR TASK LENGTH (in km) HERE
+var start_height_max = 5000;      // maximum permitted start height in feet
+var tp = new Array("Gransden","Thorne");
+var leg_length = new Array(130,130);
+var leg_wind = new Array(5,-4); // head (pos) / tail (neg) wind
+var events = new Array("general,time,12:20,message,Conditions should improve soon",
+                       "general,time,12:30,conditions,1", // stronger
+                       "general,time,14:40,message,Conditions look like they'll weaken soon",
+                       "general,time,14:50,conditions,0", // normal
+                       "general,time,15:10,conditions,4", // weak
+                       "general,time,15:30,conditions,5"); // weak-blue
+
+// conditions 0 = 'normal' Cu 4000 feet, (Median 3.6 knots at 9km)
+//            1 = 'stronger' Cu 5000 feet (4.6knots at 6km)
+//            2 = 'over-convected' 4000ft weaker more-spaced thermals
+//            3 = 'blue' 4500ft more-spaced thermals
+//            4 = 'weak' 3500ft weaker, more-spaced thermals
+//            5 = 'weak-blue' 3500ft more-spaced thermals
+//            6 = 'streeting' (4500 ft, a few thermals around 4.6 knots, many 1-3 knots, 1 km spacing)
+
+function day_init() // this code will be called when this day page is loaded - don't change it.
+  {
+    if (top.krasnoff != null) top.krasnoff.day_loaded();
+  }
+
+</script>
+</head>
+<body onLoad="day_init()">
+<font face="Helvetica">
+<p><strong><font color="green">
+Welcome to Day 1 of the Krasnoff County Regionals!
+</strong></font> I hope you did well on the practice day.</p>
+
+<p>Today's competition task is a 260km out-and-return, with two legs of 130km.</p>
+
+<p>We are expecting strong conditions with average climbs of about 4.5 knots from 12:30, with
+conditions weakening rapidly from 15:00.</p>
+
+<p>The day has light winds, with a 5 knot headwind on the first leg, an expected
+4 knot tailwind on the home leg.</p>
+
+<p>To begin, enter your name or competition number in the 'pilot name' box, 'Hunt' for a thermal, and select 'Start Task' at the
+top of a climb when you're ready to go. There is more help
+and a detailed discussion of the simulator in <a href="k_help.html">the help file</a>.</p>
+
+
+</font>
+</body>
+</html>
