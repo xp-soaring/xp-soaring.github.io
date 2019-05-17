@@ -1,0 +1,72 @@
+
+<SimBase.Document Type="AceXML" version="1,0" id="variometer">
+    <Filename>polar.xml</Filename>
+    <SimGauge.Gauge id="polar">
+        <FloatPosition>0.000,0.000</FloatPosition>
+        <Size>90,90</Size>
+        <Comment><Value>*******************************************************
+                    HERE IS WHERE YOU EDIT THE POLAR
+         **********************************************************************
+         
+            POLAR:
+                    SPEEDS are in KILOMETERS PER HOUR
+                    SINK values are in METERS PER SECOND (1m/s = ~2 knots)
+                    All numbers should be positive
+
+            WILLEM: changed polar_stf_2 from 130 to 148 to give higher (better fitting) Maccready
+                    especially for the ballasted glider
+                        
+            BALLAST:
+                    Also edit the B21_polar_weight_dry and B21_polar_weight_wet figures for the
+                    weight of the unballasted and fully ballasted glider so the 'ballast indicator'
+                    shows '0' when empty and '100' when full. If you CLICK the ballast indicator on
+                    the panel, you will see these weights in Kg. (I.e. from full ballast, click the
+                    indicator, note the weight (that is B21_polar_weight_wet), empty the ballast,
+                    and the weight displayed is now B21_polar_weight_dry.
+                    
+            SPEED-TO-FLY:
+                    Enter two values for the 'dry' (i.e. zero ballast) polar:
+                    Speed-to-fly for best glide in still air (e.g. 104 kph = 56 knots)
+                    Speed-to-fly in netto sink of 2 m/s, zero maccready (e.g. 147 kph = 80 knots)
+                    
+         </Value></Comment>
+        <Element>
+            <Select id="expression polar sink">
+                <Expression id="Expression2">
+                    <Minimum>-10.000</Minimum>
+                    <Maximum>10.000</Maximum>
+                    <Script>
+                       (L:B21_polar_init, number) 0 ==
+                       if{
+                            80   (&gt;L:B21_polar_speed_1, kph)
+                            0.52 (&gt;L:B21_polar_sink_1, meters per second)
+                          
+                            90   (&gt;L:B21_polar_speed_2, kph)
+                            0.53 (&gt;L:B21_polar_sink_2, meters per second)
+                          
+                            110  (&gt;L:B21_polar_speed_3, kph)
+                            0.62 (&gt;L:B21_polar_sink_3, meters per second)
+                          
+                            140  (&gt;L:B21_polar_speed_4, kph)
+                            0.95 (&gt;L:B21_polar_sink_4, meters per second)
+                          
+                            170  (&gt;L:B21_polar_speed_5, kph)
+                            1.51 (&gt;L:B21_polar_sink_5, meters per second)
+                          
+                            200  (&gt;L:B21_polar_speed_6, kph)
+                            2.40 (&gt;L:B21_polar_sink_6, meters per second)
+                          
+                            311  (&gt;L:B21_polar_weight_empty, kilograms)
+                            499  (&gt;L:B21_polar_weight_full, kilograms)
+
+                            100  (&gt;L:B21_polar_stf_best, kph)
+                            148  (&gt;L:B21_polar_stf_2, kph)
+                            
+                            1 (&gt;L:B21_polar_init, number)
+                       }
+                    </Script>
+                </Expression>
+            </Select>
+        </Element>
+    </SimGauge.Gauge>
+</SimBase.Document>
