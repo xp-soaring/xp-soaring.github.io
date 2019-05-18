@@ -483,34 +483,37 @@ function update_form1()
     else
       panel_set_climb(current_netto_climb-glider_sink[current_glider][current_ballast][0]);
     panel_set_altitude(current_altitude);
-    document.panel.update();
+    //document.panel.update();
   }
 
 function panel_set_speed(s)
   {
     var random_offset = (Math.random() - 0.5) * 0.05 * s;
-    document.panel.set_speed(s + random_offset);
+    //document.panel.set_speed(s + random_offset);
   }
 
 function panel_set_climb(c)
   {
     var random_offset = (Math.random() - 0.5) * 0.15 * c;
-    document.panel.set_climb(c + random_offset);
+    //document.panel.set_climb(c + random_offset);
   }
 
 function panel_set_altitude(a)
   {
-    document.panel.set_altitude(a);
+    //document.panel.set_altitude(a);
   }
   
 function load_description(s)
   {
+    day_frame = document.getElementById("day_frame");
     current_description = "";
-    top.description.location = s;
+    day_frame.src = s;
   }
 
 function set_description(s)
   {
+    console.log('set_description',s); //debug need to write to page
+    return;
     current_description = s;
     top.description.document.open();
     if (!task_started)
@@ -754,7 +757,6 @@ var leg_wind = new Array;
     leg_wind[2] = -8;     // e.g. 8 knot tailwind for final glide
 var current_leg = 0;
 var task_started = false;   // boolean set by start_task();
-var load_day_flag = true;   // boolean allows onLoad call in the day file for day_loaded() 
 
 // event arrays
 
@@ -772,7 +774,6 @@ var event_type = new Array; // "general" or "special"
 
 function show_task()
   {
-    load_day_flag = false; // disable callback to day_loaded() in 'day' file onLoad()
      var task_window = window.open("k_day"+current_day+".html","task","resizable=yes,scrollbars=yes,WIDTH=800,HEIGHT=600");
   }
 
@@ -794,7 +795,6 @@ function set_pilot()
 
 function set_day(d)
   {
-    load_day_flag = true; // enable callback to day_loaded() in 'day' file onLoad()
     current_day = d;
     setPolarQuad();
     // var last_performance = getCookie("krasnoff"+current_day); // debug - still to do - find last performance
@@ -810,14 +810,14 @@ function set_day(d)
     //     alert("Your last performance on " + last_date + " was " + last_speed);
     //   }
     document.form1.start.value = "Start Task"
-    load_description("k_day"+d+".html");
+    load_description("days/k_day"+d+".html");
+    day_loaded(day0); //debug
   }
 
-function day_loaded() // called by onLoad method of loaded day page
+function day_loaded(day) // called by onLoad method of loaded day page
   {
-    if (!load_day_flag) return; // do nothing of load_day_flag not enabled
-    load_task();
-    load_events();
+    load_task(day);
+    load_events(day);
     task_started = false;
     current_time = 43200;
     current_distance = 0;
@@ -834,30 +834,30 @@ function day_loaded() // called by onLoad method of loaded day page
     update_form1();
   }
 
-function load_task()  // load task from day page
+function load_task(day)  // load task from day page
   {
     var i;
-		start_height_max = top.description.start_height_max;
-    task_length = top.description.task_length;
-    num_legs = top.description.leg_length.length;  // number of legs in task
+		start_height_max = day.start_height_max;
+    task_length = day.task_length;
+    num_legs = day.leg_length.length;  // number of legs in task
     for (i=0; i<num_legs; i++)
       {
-        if (i==0) leg_distance[0] = top.description.leg_length[0];
-        else leg_distance[i] = leg_distance[i-1]+top.description.leg_length[i];
-        leg_wind[i] = top.description.leg_wind[i];
-        tp[i] = top.description.tp[i];
+        if (i==0) leg_distance[0] = day.leg_length[0];
+        else leg_distance[i] = leg_distance[i-1]+day.leg_length[i];
+        leg_wind[i] = day.leg_wind[i];
+        tp[i] = day.tp[i];
       }
 		tp[i]=tp[0];
   }
 
-function load_events()  // load events from day page
+function load_events(day)  // load events from day page
   {
     var i; // loop counter
     var events = new Array;
     num_events = 0;
-    for (i=0; i<top.description.events.length; i++)
+    for (i=0; i<day.events.length; i++)
       {
-        split(top.description.events[i],",");
+        split(day.events[i],",");
         events = splits;
         if (events[0]=="general")
           {

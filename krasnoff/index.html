@@ -1,0 +1,155 @@
+<html>
+<head>
+<title>Peter Krasnoff Competition Soaring Simulator</title>
+<script language="JavaScript" src="k_prog.js">
+  </script>
+  <script language="JavaScript" src="days/k_day0.js">
+    </script>
+</head>
+<body onLoad="load_results();update_form1()">
+    <font face="Helvetica">
+    
+    <form name="task_form" style="margin-bottom:0;" >
+      <table width="100%" border="1" bgcolor="lightgreen">
+        <tr>
+          <td><strong><font color="green">Krasnoff Comp!</font></strong></td>
+          <td>
+            <table border="1" align="right" bgcolor="lightgreen" width="100%">
+              <tr>
+                <td><strong><font color="green">Day:</font></strong></td>
+                <td><input type="radio" name="day" value="Practice" onClick="set_day(0)">Practice</td>
+                <td><input type="radio" name="day" value="Day 1" onClick="set_day(1)">1</td>
+                <td><input type="radio" name="day" value="Day 2" onClick="set_day(2)">2</td>
+                <td><input type="radio" name="day" value="Day 3" onClick="set_day(3)">3</td>
+                <td><input type="radio" name="day" value="Day 4" onClick="set_day(4)">4</td>
+                <td><input type="radio" name="day" value="Day 5" onClick="set_day(5)">5</td>
+                <td><input type="radio" name="day" value="Day 6" onClick="set_day(6)">6</td>
+                <td><input type="radio" name="day" value="Day 7" onClick="set_day(7)">7</td>
+                <td><input type="radio" name="day" value="Gov Cup BLR" onClick="set_day(8)">Gov BLR</td>
+                <td><input type="radio" name="day" value="Gov Cup PGC" onClick="set_day(9)">Gov PGC</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <table border="1" bgcolor="lightgreen" width="100%">
+        <tr>
+          <td><strong><font color="green">Glider:</font></strong></td>
+          <td><input type="radio" name="glider" value="glider0" onClick="set_glider(0)" checked>
+          <a href="http://www.easternsailplane.com/sailplane/asw28.html" target="_blank">ASW-28 (std 44:1)</a></td>
+          <td><input type="radio" name="glider" value="glider1" onClick="set_glider(1)">
+          <a href="http://www.easternsailplane.com/sailplane/asw27.html" target="_blank">ASW-27 (15m 48:1)</a></td>
+          <td><input type="radio" name="glider" value="glider2" onClick="set_glider(2)">
+          <a href="http://www.easternsailplane.com/sailplane/asw22b.html" target="_blank">ASW-22 (open 60:1)</a></td>
+        </tr>
+      </table>
+    </form>
+    <table width="100%">
+      <tr>
+        <td align="center">
+          <img src="images/panel.jpg"/>
+          <!-- <applet name="panel" code="Panel.class" width="450" height="150">
+            Java not enabled
+          </applet> -->
+        </td>
+      </tr>
+    </table>
+    <form name="form1" style="margin-bottom:0;" >
+    <table border="1" align="center">
+    <tr><td align="center">
+    <table>
+      <tr>
+        <td>
+          <table>
+            <tr>
+              <td><input type="button" value="Show Results..." onClick="show_results()"></td>
+              <td bgcolor="lightblue"><input type="radio" name="ballast" value="dry" onClick="set_ballast(0)"><font color="blue">dry</font></td>
+              <td><input type="text" size="7" name="time" value="12:00:00"></td>
+              <td><input type="text" size="10" name="altitude" value="4000"></td>
+              <td><input type="text" size="10" name="distance" value="0 km"></td>
+              <td><input type="text" size="15" name="speed" value="0 km/h"></td>
+            </tr>
+            <tr>
+              <td><input type="text" size="18" name="pilot" value="pilot name" onChange="set_pilot()"></td>
+              <td bgcolor="lightblue"><input type="radio" name="ballast" value="half" onClick="set_ballast(1)"><font color="blue">half</font></td>
+              <td></td>
+              <td colspan="2"></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><input type="button" value="Show Task........" onClick="show_task()"></td>
+              <td bgcolor="lightblue"><input type="radio" name="ballast" value="full"  onClick="set_ballast(2)" checked><font color="blue">full</font></td>
+              <td><input type="text" size="7" name="task_time" value="00:00:00"></td>
+              <td colspan="2"><input type="text" size="25" name="distance_to_next_tp" value="0 km"></td>
+              <td><input type="text" size="15" name="headwind" value="0 km/h"></td>
+            </tr>
+          <!-- COMMENT OUT THE UNITS CHANGE RADIO BUTTONS
+            <tr>
+              <td></td>
+              <td></td>
+              <td><input type="radio" name="altitude_units" value="feet" checked>feet
+                  <input type="radio" name="altitude_units" value="meters">meters
+              </td>
+              <td><input type="radio" name="distance_units" value="kilometers" checked>kilometers
+                  <input type="radio" name="distance_units" value="miles">miles
+                  <input type="radio" name="distance_units" value="nautical_miles">nautical niles
+              </td>
+              <td></td>
+              <td></td>
+            </tr>    
+          END OF COMMENTED OUT UNIT CHANGE RADIO BUTTONS -->
+          </table>
+        </td>
+        
+        <!-- john_w flight computer -->
+        
+        <td><table cellpadding="0" cellspacing="2" bgcolor="gray">
+              <tr>
+                <td><table cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td><input type="text" size="8" name="mc" value="Mc: 0 kts"></td>
+                        <td><table cellspacing="0" cellpadding="0">
+                              <tr><td><img src="a_up.gif" alt="MC+" onClick="set_mc(0.5)"></td></tr>
+                              <tr><td><img src="a_down.gif" alt="MC-" onClick="set_mc(-0.5)"></td></tr>									
+                            </table>
+                        </td>
+                      </tr>
+                    </table>
+                </td>
+              </tr>
+              <tr>
+                <td><input type="text" size="15" name="stf" value="StF: 0 kts"></td>
+              </tr>
+              <tr>
+                <td><input type="text" size="15" name="altReq" value="Arr: 0 ft"></td>
+              </tr>
+            </table>
+        </td>
+      </tr>
+    </table>
+    </td></tr>
+    
+    <tr><td align="center">
+    <input type="button" name="start" value="Start Task" onClick="start_task()">
+    <input type="button" name="climb1" value="Climb" onClick="start_climb()">
+    <input type="button" name="hunt1" value="Hunt" onClick="start_cruise(1)">
+    <input type="button" name="cruise2" value="60 kts" onClick="start_cruise(2)">
+    <input type="button" name="cruise3" value="70 kts" onClick="start_cruise(3)">
+    <input type="button" name="cruise4" value="80 kts" onClick="start_cruise(4)">
+    <input type="button" name="cruise5" value="90 kts" onClick="start_cruise(5)">
+    <input type="button" name="cruise6" value="100 kts" onClick="start_cruise(6)">
+    <input type="button" name="cruise7" value="110 kts" onClick="start_cruise(7)">
+    <input type="button" name="cruise7" value="120 kts" onClick="start_cruise(8)">
+    </td></tr>
+    </table>
+    </form>
+
+    <iframe id="day_frame" 
+            src="k_start.html" 
+            style="width: 100%; height: 1000px;" 
+    />
+    
+    
+    </font>
+    </body>
+</html>
