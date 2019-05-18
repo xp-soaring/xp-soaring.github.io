@@ -22,6 +22,14 @@
 // ALL THE CODE FOR THE SIMULATOR FOLLOWS BELOW:
 // **********************************************************************************
 
+var messages_div;
+
+function init()
+{
+  messages_div = document.getElementById('messages');
+  load_results();
+  update_form1();
+}
 // **********************************************************************************
 // Cookie functions
 // **********************************************************************************
@@ -148,33 +156,34 @@ function load_results() // populates global results variables from cookie
 
 function show_results()
   {
-     var results_window = window.open("","results","resizable=yes,scrollbars=yes,WIDTH=800,HEIGHT=600");
-     results_window.document.write("<html>");
-     results_window.document.write("<head><title>Results</title></head>");
-     results_window.document.write("<body><font face='Helvetica'>");
-     results_window.document.write("<h2>Krasnoff County Regionals: Results</h2>");
-     results_window.document.write("<table border='1'>");
-		 show_heading(results_window);
+     var message_text = "<html>";
+     message_text += "<head><title>Results</title></head>";
+     message_text += "<body><font face='Helvetica'>";
+     message_text += "<h2>Krasnoff County Regionals: Results</h2>";
+     message_text += "<table border='1'>";
+		 message_text += show_heading();
 		 for (var i = num_results-1;i>=0;i--)
 		   {
-			   show_result(results_window,i);
+			   message_text += show_result(i);
 			 }
-     results_window.document.write("</table></font></body></html>");
-     results_window.document.close();
+     message_text += "</table></font></body></html>";
+     messages_div.innerHTML = message_text;
   }
 
-function show_heading(w) // window
+function show_heading()
   {
-    w.document.write("<tr bgcolor=\"lightgreen\">");
-    w.document.write("<th>Glider</th>");
-    w.document.write("<th>Date</th>");
-    w.document.write("<th>Day</th>");
-    w.document.write("<th>Pilot</th>");
-    w.document.write("<th>Speed</th>");
-    w.document.write("<th>Handicapped<br>speed</th>");
-    w.document.write("<th>Distance</th>");
-    w.document.write("<th>Handicapped<br>distance</th>");
-    w.document.write("</tr>");	  
+    var message_text = '';
+    message_text += "<tr bgcolor=\"lightgreen\">";
+    message_text += "<th>Glider</th>";
+    message_text += "<th>Date</th>";
+    message_text += "<th>Day</th>";
+    message_text += "<th>Pilot</th>";
+    message_text += "<th>Speed</th>";
+    message_text += "<th>Handicapped<br>speed</th>";
+    message_text += "<th>Distance</th>";
+    message_text += "<th>Handicapped<br>distance</th>";
+    message_text += "</tr>";
+    return message_text;	  
 	}
 
 function is_less(i,j) // used by sort_results()
@@ -225,8 +234,9 @@ function sort_results() // bubble sort
 		 }  
   }
   
-function show_result(w,i) // window, result_index
+function show_result(i) // window, result_index
   {
+    var message_text = '';
     var d = new Date(parseInt(r_timestamp[i]));
     var day = r_day[i];
     if (day==0) { day = "practice"; }
@@ -236,32 +246,32 @@ function show_result(w,i) // window, result_index
     if (r_glider[i]==0) row_color = "#80ff00";
     else if (r_glider[i]==1) row_color = "#ffff00";
     else if (r_glider[i]==2) row_color = "#00ffff";
-    w.document.write("<tr bgcolor=" + row_color + ">");
-    w.document.write("<td>"+glider_desc[r_glider[i]]+"</td>");
-    w.document.write("<td>"+d.getYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()+"</td>");
-    w.document.write("<td>"+day+"</td>");
-    w.document.write("<td>"+pilot+"</td>");
+    message_text += "<tr bgcolor=" + row_color + ">";
+    message_text += "<td>"+glider_desc[r_glider[i]]+"</td>";
+    message_text += "<td>"+d.getYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()+"</td>";
+    message_text += "<td>"+day+"</td>";
+    message_text += "<td>"+pilot+"</td>";
     if (r_speed[i]!=0)
       {
-        w.document.write("<td>"+r_speed[i]+" km/h</td>");
-        w.document.write("<td>"+r_hspeed[i]+" km/h</td>");
+        message_text += "<td>"+r_speed[i]+" km/h</td>";
+        message_text += "<td>"+r_hspeed[i]+" km/h</td>";
       }
     else
       {
-        w.document.write("<td>&nbsp;</td>");
-        w.document.write("<td>&nbsp;</td>");
+        message_text += "<td>&nbsp;</td>";
+        message_text += "<td>&nbsp;</td>";
       }
     if (r_distance[i]!=0)
       {
-        w.document.write("<td>"+r_distance[i]+" km</td>");
-        w.document.write("<td>"+r_hdistance[i]+" km</td>");
+        message_text += "<td>"+r_distance[i]+" km</td>";
+        message_text += "<td>"+r_hdistance[i]+" km</td>";
       }
     else
       {
-        w.document.write("<td>&nbsp;</td>");
-        w.document.write("<td>&nbsp;</td>");
+        message_text += "<td>&nbsp;</td>";
+        message_text += "<td>&nbsp;</td>";
       }
-    w.document.write("</tr>");	  
+    message_text += "</tr>";	  
 	}
 	
 function store_results()
@@ -512,19 +522,22 @@ function load_description(s)
 
 function set_description(s)
   {
-    console.log('set_description',s); //debug need to write to page
-    return;
+    // console.log('set_description',s); //debug need to write to page
+    // return;
     current_description = s;
-    top.description.document.open();
+    // top.description.document.open();
+
+    var message_html = '';
+
     if (!task_started)
 		  {
-			  top.description.document.write(not_started_msg1);
-			  top.description.document.write(start_height_max + " feet.");
-			  top.description.document.write(not_started_msg2);
+			  message_html += not_started_msg1;
+			  message_html += start_height_max + " feet.";
+			  message_html += not_started_msg2;
 		  }
-    top.description.document.write(desc[current_conditions]);
-    top.description.document.write(current_description);
-    top.description.document.close();
+    message_html += desc[current_conditions];
+    message_html += current_description;
+    messages_div.innerHTML = message_html;
   }
 
 function add_description(s)
