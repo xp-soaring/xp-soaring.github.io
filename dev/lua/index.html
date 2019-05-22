@@ -1,0 +1,102 @@
+<html>
+    <head>
+        <title>X-Plane development in Lua</title>
+        <link rel="stylesheet" type="text/css" href="../../xp-soaring.css"/>
+    </head>
+<body>
+<div class="breadcrumbs"><a href="../../index.html">xp-soaring</a> &gt; </div>
+<div class="page_heading">X-Plane Lua plugin development</div>
+
+<div class="center">
+    <img src="images/lua_banner.jpg"/>
+</div>
+
+<h2>Summary</h2>
+<p>Lua is a popular scripting language designed to extend platforms written in some other language,
+    particularly C/C++ that, usefully, X-Plane is written in. In answer to the question <i>"can I do this..."</i>
+    in X-Plane, the answer is <i>"yes"</i>.
+    If Laminar haven't already implemented it then you can add that capability yourself via X-Plane's
+    support for 'plugins', and those are most straightforwardly produced in Lua. X-Plane has a comprehensive
+    programming interface (SDK API) available in the more complex and detailed 'C/C++' programming language and the Lua
+    support in X-Plane is effectively a bridge from that simpler language to this API.
+</p>
+<p>Lua plugins have the advantage of being 'operating system' agnostic, i.e. plugins developed in Lua 
+    typically don't care whether X-Plane is running on Windows, Linux or a Mac.
+</p>
+
+<h2>xlua vs. FlyWithLua vs. SASL</h2>
+<p>An easy point of confusion is that there are <i>three</i> completely independent implementations of
+    Lua as an X-Plane plugin scripting framework. They all exist for the same reason but the basic 
+    differences are:
+</p>
+<ul>
+    <li><a href="xlua_info.html">
+        <b>xlua</b>
+        </a> is developed (nominally for internal use) by Laminar Research (who make X-Plane). So you can write a 
+        simple xLua script
+        with reasonable confidence. The fundamental capability <i>required</i> of any plugin support is to read
+        'datarefs' from the core sim (like the current altitude) and issue 'commands' or publish new 'datarefs'
+        that causes a change to some aspect of your flight (e.g. giving a 'gear up' warning or moving a
+        needle on an instrument). xlua provides this capability and so is suitable for 80% of plugins. <i>But</i>
+        xlua is by far the most limited of the three options (e.g. no sounds, filesystem, debugging). There is neglible
+        documentation
+    </li>
+    <li><a href="https://forums.x-plane.org/index.php?/forums/forum/335-help-me-i-have-a-problem-with-flywithlua/">
+        <b>FlyWithLua</b>
+        </a>
+        has comprehensive support for the X-Plane API, and by using an add-on library can provide
+        a way of natively accessing any methods in the X-Plane SDK API. The code is partly open-source and community
+        support is available. Debugging is primarily based on writing your messages to the X-Plane log file. There
+        doesn't seem to be a definitive FlyWithLua website where you can download the add-on, access its documentation,
+        etc. The documentation is contained within the actual download
+    </li>
+    <li><a href="https://www.1-sim.com/"><b>SASL</b></a> also has comprehensive support for the X-Plane SDK API, and 
+        also available is a commercial version for payware add-on developers. Debugging support is well implemented, with
+        a per-project in-sim debug window available to see your error messages.
+    </li>
+</ul>
+
+<h2>Resources</h2>
+
+    <p><a href="https://www.lua.org/manual/5.3/">Lua language</a> online reference manual.
+    </p>
+    <p><a href="http://www.lua.org/pil/contents.html">Programming in Lua</a> online programming guide.
+    </p>
+    <p><a href="../../library/FlyWithLua_Manual_en.pdf">FlyWithLua reference manual PDF</a>
+    </p>
+    
+    <p><a href="../../library/SASL3Manual.pdf">SASL V3 Reference Manual PDF</a>
+    </p>
+
+<h2>X-Plane xlua programming guide</h2>
+<p><a href="xlua_info.html">this page</a> contains hints I extracted from a forum thread.  Not much else available.
+</p>
+<h2>X-Plane FlyWithLua programming guide</h2>
+<p><a href="../../library/FlyWithLua_Manual_en.pdf">FlyWithLua reference manual PDF</a>
+</p>
+<div>
+    <p>FlyWithLua install & first steps:</p>
+    <div class="center">
+            <iframe width="560" 
+            height="315" 
+            src="https://www.youtube.com/embed/ky8wHsShtMQ" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+        </iframe>
+    </div>
+</div>
+<p>.. more to come ..
+</p>
+<h2>X-Plane SASL programming guide</h2>
+
+<p><a href="https://www.1-sim.com/">Homepage</a> for the Scriptable Aviation Simulation Library.
+</p>
+
+<p><a href="https://forums.x-plane.org/index.php?/forums/forum/140-sasl-discussion-forum/">SASL forum</a>
+    on X-Plane.org.
+</p>
+
+
+</body>
+</html>
