@@ -1,0 +1,71 @@
+First thing would be to find a good source on the airfoil data.
+
+There's a good NACA summary report, but it only covers 2412, ..15, ..18, ..24. I guess it would be fairly safe to interpolate between these, but I'm not really an expert on that, so for the sake of the example, I'll use a 2424.
+
+Here's the link to the NACA report ... the 2412 data starts on PDF page 136:
+
+https://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/19930090976.pdf
+
+Note that the left-hand side of the diagram shows coefficient of lift over angle of attack and coefficient of moment over angle of attack in just the way expected by airfoil maker, so basically, you just re-create the picture you are seeing by using airfoil maker controls.
+
+The right hand side is used to get the coefficient of drag, but as it's shown as drag over lift, you have to read a drag value, determine the corresponding lift value, then go to the left hand side to read off the angle of attack for the drag value indirectly.
+
+With regard to the values to set, let me try it for the NACA 2424:
+
+1) Set Reynolds number to one of those displayed on the graph ... I choose 8.9 * 10^6. ("08.90 meg" in X-Plane terms)
+
+2) Set thickness ratio to 0.240 ... this only affects graphic display of the airfoil in X-Plane. (I know that value because the two last digits in a NACA 4-digit airfoil designation provide the relative thickness.)
+
+3) Leave the drag div number at Mach 0.75 ... the NACA report page doesn't actually have any test data on it, so getting it right would require some additional reading (or research, if it's not in this report).
+
+4) Intercept ... that's lift at zero angle of attack, and can be read directly off the NACA diagram as 0.19.
+
+5) Maximum ... that's directly evident too as 1.3.
+
+6) Alpha max ... again, directly evident as 15.2 degrees. (I'm jumping to the bottom of the screen now.)
+
+7) Alpha min ... -15.2 degrees, says the diagram.
+
+8) Slope ... now I look at the bit where the lift curve looks mostly linear, and see this extends to 6 deg angle of attack, 0.75 cl. With an intercept of 0 deg, 019 cl, I get a slope of 0.56/6 deg, or 0.0933.
+
+9) Linear range ... well, eying the curve, I already decided it was straight to 6 deg, so I enter 6 there.
+
+10) Lift power ... I just play around with this value to get a nice continuation of the straight part, and a nice curve to the maximum that looks like the one in the diagram. 1.6 looks good, so I leave it at that.
+
+11) Stall drop ... the 2424 does not have a sudden drop of lift beyond the maximum at positive angle of attack, so I set this to 0. (There seems to be no data on negative angle-on-attack-stall for this Reynolds number. It might be different from positive angle of attack, but we can't model such a difference in airfoil maker.)
+
+12) Stalled drop ... this is the downward slope beyond stall angle. From the graph, I see that we need to hit 1.1 at 20 deg, which is the right edge of the airfoil maker graph area. This is 0.2 less than our maximum value, and since the stall drop is zero, I can enter the 0.2 directly in the Stalled drop field. (Else, I'd have to pick a lower value to make the airfoil maker graph hit the intended target value.)
+
+13) Stall power ... this rounds off the dropping bit of the lift curve similar as lift power rounds off the lift curve. As the stall power curve is slightly concave, I try values lower than one, and settle for 0.75 which gives more or less the correct curvature.
+
+14) Our lift curve is complete now.
+
+15) cd-min ... evident from the right-hand NACA diagram as 0.0075.
+
+16) cd-min cl ... corresponds to the previous value, but is harder to tell because the curve is so shallow. I experimentally pick the value of 0.05.
+
+17) cd alpha = 10 ... now I go to the left-hand curve again and read of the cl for 10 deg angle of attack. It's 1.1. Back to the right hand side, reading cd at cl = 1.1, I get a value of 0.0142.
+
+18) cd power ... this changes the curvature of the entire drag curve. The problem with airfoil maker is, you can't really perfectly fit a curve with this mechanism, so I decide to go for accuracy at 6 deg. This yields a cl of 0.75 and a cd of 0.0094. Now it gets a bit inconvenient as I need to place the cursor in the graph to read off the exact values, then leave it to change the cd power, then come back to the graph, and so on, until I hit the target. This happens at a cd power of 2.8.
+
+(Note: I cross check this by using the highest cd available from the right hand graph, 0.0217 at cl = 0.123. I get only 0.196, which is not quite spot-on, but close enough within the capabilities of airfoil maker.)
+
+19) As the NACA 2424 is not a laminar flow profile, it does not have a drag bucket, so I can ignore the buck... figures and leave them at 0.
+
+20) alpha 1 ... this is the characteristic point where the coefficient of moment graph has a kink at negative angle of attack. There is no data for our chosen Reynolds number, but for 5.9 * 10^6, so I use that to get an angle of -16.2 deg.
+
+21) cm alpha 1 ... can be read off along with alpha 1 and is -0.07.
+
+22) cm -20 ... is coefficient of moment at -20 degrees, directly evident as -0.025.
+
+23) alpha 2 ... a bit difficult to find a kink here, but I decide on 6 deg.
+
+24) cm alpha 2 ... can be read off along with alpha 1 and is -0.025
+
+25) cm 20 ... evident as -0.024.
+
+Now all that's left to do is to enter outline data in the section tab, and that's more or less an artistic task, so I can't help you with that ;-) Just adjust the points until the result looks like a rough representation﻿﻿﻿﻿﻿﻿ of the section diagram also included in the NACA chart.﻿
+
+So this was sort of convoluted, but not really difficult. Step 18) was the most time-consuming, and my advice is to pick a value in the middle of the range and not one at the extreme edge, as this will probably be more relevant to the aircraft in the simulation, and as my impression is that it's easier to get a good match for the middle of﻿ the range anyway.
+
+It's also good not to strive for perfect precision, as airfoil maker makes a couple of simplifying assumptions which make it impossible to simulate every nook and cranny of the original graphs. You might be able to do that by manually creating afl files, but these can't be edited with airfoil maker afterwards without being turned into generic airfoil maker airfoils, too.
