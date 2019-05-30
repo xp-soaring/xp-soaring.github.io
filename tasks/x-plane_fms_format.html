@@ -1,0 +1,99 @@
+<html>
+    <head>
+        <title>X-Plane FMS File Format</title>
+        <link rel="stylesheet" type="text/css" href="../xp-soaring.css"/>
+    </head>
+<body>
+<div>
+    <div class="breadcrumbs"><a href="../index.html">xp-soaring</a> &gt; </div>
+    <div class="page_heading">Soaring Tasks</div>
+</div>
+
+<div><img src="images/flight_plan.png"/></div>
+
+<h1>X-Plane FMS File Format</h1>
+
+<p><a href="https://developer.x-plane.com/article/flightplan-files-v11-fms-file-format/">Summary info on x-plane.com</a>
+</p>
+
+<h2>Overview</h2>
+
+<p>The X-Plane FMS flightplan file (typically <tt>&lt;plan&nbsp;name&gt;.fms</tt>) contains the navigation details for
+    a planned flight, i.e. the reference to departure and destination airfields (and, optionally, runways) and intermediate
+    waypoints.
+</p>
+<p>The format allows selection of 'waypoints' as either aeronautical references (such as 
+    <a href="https://en.wikipedia.org/wiki/ICAO_airport_code">ICAO code</a> for an airport) or as user-specified lat/long/alt
+    points.
+</p>
+
+<h2>Example</h2>
+<p>This is the simple flightplan illustrated in the image at the top of this page.
+</p>
+
+<pre>
+I
+1100 Version
+CYCLE 1801
+ADEP 1N7
+ADES 1N7
+NUMENR 4
+1 1N7 ADEP 372.000000 40.971134 -74.997505
+28 Catfish_Pond DRCT 1713.316528 41.038837 -74.996765
+1 14N DRCT 3000.000000 40.844261 -75.635468
+1 1N7 ADES 372.000000 40.971134 -74.997505
+</pre>
+
+<h2>FMS File Format</h2>
+
+<h3>Header Section</h3>
+<table>
+    <tr>
+        <td>I</td>
+        <td>File type identifier, required</td>
+        <td>I</td>
+    </tr>
+    <tr>
+        <td>&lt;version&nbsp;number&gt; Version</td>
+        <td>Version of X-Plane supported, '3' or '1100'</td>
+        <td>1100&nbsp;Version</td>
+    </tr>
+    <tr>
+        <td>CYCLE &lt;cycle&nbsp;number&gt;</td>
+        <td>date-code for regulatory info, 
+            <a href="https://en.wikipedia.org/wiki/Aeronautical_Information_Publication">AIRAC cycle number </a>
+        </td>
+        <td>CYCLE&nbsp;1801</td>
+    </tr>
+</table>
+
+<h2>Departure Section</h2>
+
+<h3>Depart from Airport</h3>
+
+<table>
+    <tr>
+        <td>ADEP&nbsp;&lt;ICAO&nbsp;code&gt;</td>
+        <td>Airport ICAO code</td>
+        <td>ADEP&nbsp;1N7</td>
+    </tr>
+</table>
+
+<h3>Depart from user lat/long point</h3>
+
+<h2>Destination Section</h2>
+
+<h3>Destination Airport</h3>
+
+<h3>Destination as user lat/long point</h3>
+
+<h2>Enroute Section</h2>
+
+<table>
+    <tr>
+        <td>NUMENR&nbsp; &lt;count&gt;</td>
+        <td>Number of en-route points</td>
+        <td>NUMENR&nbsp;4</td>
+    </tr>
+</table>
+
