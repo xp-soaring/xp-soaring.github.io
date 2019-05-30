@@ -1,0 +1,135 @@
+Part of what we'll see in future versions of X-Plane is instruments made out of clustered generics. In the next post I explain more about the way things currently work, the problems, and the possible future. 
+
+What I've always thought would be really neat, is to have a section online somewhere, where custom gauges could be uploaded, databased, searched, downloaded, improved upon, etc. That section has now been [url="http://forums.x-plane.org/index.php?app=downloads&showcat=116"]created[/url] on the .org.
+
+If you've ever built a plane, you may have come across the frustrating limitations of not having the gauges readily available that the plane you're trying to make uses. Maybe you've found a default instrument that ALMOST cuts it, but as soon as you try editing it, it "breaks" or you run into limitations. The most common limitation I've run into is resolution. Some instruments will resize OK, but others get totally messed up.
+
+Generic instruments are like basic building blocks, that most instruments in a cockpit will be made of. Most advanced cockpit builders will have at least some experience making panel components out of generic instruments. What you may NOT have known, is that PlaneMaker has the (somewhat hidden) ability to EXPORT any number of selected instruments or components as a text file, which can be IMPORTED into another plane. 
+
+So, the concept here is, to get the community involved in creating custom instruments, that are "READY TO USE," just like the ones currently available in PlaneMaker. The main difference here is, that they are customizable, editable, searchable, databased, that you can take them apart and learn from them, and that the community has a unique opportunity to really push the boundaries of X-Plane's abilities, without having to wait for Laminar to come out with all of this. (Although Laminar says, this way of working with panels is "future-proof").
+
+The main achievement here, would be the creation of high-resolution cockpit components, something that I personally consider long overdue. Also, a searchable online database of instruments, an an opportunity for people who may have graphic talents, but aren't up to the complexities of an entire aircraft or panel, this should be an attractive way to showcase their stuff to the community.
+
+So: over the next little while, I hope to post some tutorials, example files, and I've got some cool surprises up my sleeve that I want to show you... all in hopes that this might move X-Plane to new levels of detail, functionality, usability, and, above all, FUN!
+
+My next post will be a re-posting of a tutorial I've already posted in the "PlaneMaker v10" topic, outlining the whole process a bit. To upload your own instruments made out of generics, you can now access those as new categories in the upload manager [url="http://forums.x-plane.org/index.php?app=downloads&showcat=116"]here.[/url]
+
+Any further links to tutorials or example files of custom instruments would be welcome in this thread.
+
+[color=#222222][font=verdana, helvetica, arial, verdana, tahoma, sans-serif][size=2]So, here's a quick guide on what we're trying to do here.[/size][/font][/color]
+[color=#222222][font=verdana, helvetica, arial, verdana, tahoma, sans-serif][size=2]
+[/size][/font][/color]
+[color=#222222][font=verdana, helvetica, arial, verdana, tahoma, sans-serif][size=2]
+THE WAY IT CURRENTLY IS:
+
+It's great to be able to make panels in PlaneMaker simply by dragging in instruments. For most plane builders, this may be the best way to build panels for another few years. However, just a heads-up, this system might be phased out in the future, in favour of clustered generics.
+
+THE PROBLEM
+
+Some of these instruments are complex, multi-layered, multi-function elements that work out-of-the-box, but are almost impossible to edit. Take this ASI, for instance... dragged in directly from the list of available options. The white, green, yellow, and red strips, as well as the numbers and markings are determined by factors in PlaneMaker strewn all over the place. (In the case of the ASI, these are all determined in PlaneMaker's "Viewpoint" menu... all those Vne, Vno, Vfe, etc. settings on the left... in case you ever wondered what those are for, they determine what the ASI looks like.)[/size][/font][/color]
+[color=#222222][font=verdana, helvetica, arial, verdana, tahoma, sans-serif][size=2]
+[/size][/font][/color]
+[color=#222222][font=verdana, helvetica, arial, verdana, tahoma, sans-serif][size=2]PLEASE NOTE: these screenshots were taken in X-Plane, at a resolution of 2560x1440, so this is NOT the "native" resolution of these instruments... it's how they would appear on a large monitor at a high X-Plane resolution setting.
+
+[url="http://forums.x-plane.org/index.php?app=core&module=attach&section=attach&attach_rel_module=post&attach_id=93573"][img]http://forums.x-plane.org/uploads/monthly_01_2011/post-3424-0-20079300-1293866906_thumb.jpg[/img][/url]
+
+So, it is already possible to make a custom ASI, using generic instruments. The concept is, you drag in a generic needle, assign it the dataref of the pilot's ASI (sim/cockpit2/gauges/indicators/airspeed_kts_pilot), and proceed to using pie generics to make the coloured arches along the outside. In this example, I used a resolution that was roughly 4x the amount of pixels as the default ASI. (Default ASI has 146x146 pixels... this generic assembled one uses 321x321 pixel texture as its base, and is set to 0.5 size in PlaneMaker.)
+
+[url="http://forums.x-plane.org/index.php?app=core&module=attach&section=attach&attach_rel_module=post&attach_id=93574"][img]http://forums.x-plane.org/uploads/monthly_01_2011/post-3424-0-67882000-1293866908_thumb.jpg[/img][/url]
+
+
+Looks fairly similar, so why go through the effort of assembling instruments from generics?
+
+Well, the answer is, as soon as you try to re-size the default instrument, you run into one of 2 problems. Either:
+
+1.) the instrument gets resized in PlaneMaker (bumped up to 2.0 size), which results in a fuzzy look, which is even worse if an odd size is chosen (such as 1.68 instead of a round 2.0) Again, this screenshot shows the instrument as it would appear in X-Plane running at 2560x1440.
+
+[url="http://forums.x-plane.org/index.php?app=core&module=attach&section=attach&attach_rel_module=post&attach_id=93575"][img]http://forums.x-plane.org/uploads/monthly_01_2011/post-3424-0-56916200-1293866912_thumb.jpg[/img][/url]
+
+
+OR:
+
+2.) you go through the effort to go into X-Plane's "Resources>Bitmaps>cockpit>standard six>airspeed" folder, look for the 4 png files that comprise the HSI we've used in the example above, make a copy of them, and paste them into a folder inside our plane: "Our_Plane>cockpit>standard six>airspeed" and then resize them in Photoshop to 2x their original size. This would give us the CANVAS we'd need to make higher-res instruments, although for this example, I didn't really bother re-making the instrument at a higher resolution. Then this is what you get:
+
+[url="http://forums.x-plane.org/index.php?app=core&module=attach&section=attach&attach_rel_module=post&attach_id=93576"][img]http://forums.x-plane.org/uploads/monthly_01_2011/post-3424-0-71275000-1293866916_thumb.jpg[/img][/url]
+
+
+Instruments whose textures are resized are generally un-useable, because texture place-holders and mouse-click regions go by the pixel dimensions of the original instrument. There are a few exceptions, where instruments that are accompanied by a .txt file beside their corresponding .png graphic files allow for edits to positions of the instrument's elements. Note, however, that these text files are NOT supported in "cockpit_3D" folders... they only work if they're placed in the plane's "cockpit" folders, in the appropriate sub-directory. This is a very un-reliable way to work over the long-term.
+
+
+So, let's re-size the instrument we had made earlier with generics, to its "full potential size" of 1.0. This is the result:
+
+[url="http://forums.x-plane.org/index.php?app=core&module=attach&section=attach&attach_rel_module=post&attach_id=93577"][img]http://forums.x-plane.org/uploads/monthly_01_2011/post-3424-0-86333100-1293866923_thumb.jpg[/img][/url]
+
+
+Much better. We've got hi-res textures, everything is in its proper place, and we can even tweak the colored arcs in PlaneMaker's cockpit builder, by altering the "Output" degrees of these pie instruments to match our plane's various speed limits. The one thing we cannot expect from this instrument, is to have the number arc automagically adapt to the Vne we determine in PlaneMaker. Yes, unfortunately, we will have to make the number arc and the markings around the circumference by hand, in some graphics program, to match the scale of the plane we're working on. But that's the price we have to pay to make high-res instruments.
+
+So we've gone from "drag-and-drop" simplicity
+
+
+[url="http://forums.x-plane.org/index.php?app=core&module=attach&section=attach&attach_rel_module=post&attach_id=93578"][img]http://forums.x-plane.org/uploads/monthly_01_2011/post-3424-0-31818500-1293866926_thumb.jpg[/img][/url]
+
+
+To multi-layered complexity, with the benefit of higher resolution instruments that actually work and are customizable. 
+
+
+[url="http://forums.x-plane.org/index.php?app=core&module=attach&section=attach&attach_rel_module=post&attach_id=93579"][img]http://forums.x-plane.org/uploads/monthly_01_2011/post-3424-0-98078100-1293866927_thumb.jpg[/img][/url]
+
+
+Now, here's the exciting part. If you make an instrument, say an HSI, you can SHARE IT with the X-Plane community! Any instrument cluster in PlaneMaker can be saved as a text file, and imported into another plane. But there is no actual menu for this... you'll have to assign a keyboard short cut for this function:
+
+[url="http://forums.x-plane.org/index.php?app=core&module=attach&section=attach&attach_rel_module=post&attach_id=93580"][img]http://forums.x-plane.org/uploads/monthly_01_2011/post-3424-0-00583900-1293866930_thumb.jpg[/img][/url]
+
+
+[url="http://forums.x-plane.org/index.php?app=core&module=attach&section=attach&attach_rel_module=post&attach_id=93581"][img]http://forums.x-plane.org/uploads/monthly_01_2011/post-3424-0-49135300-1293866935_thumb.jpg[/img][/url]
+
+
+So, let's say you've just created a generic instrument with high-res textures, that are all in the "cockpit>generic" folder: You can actually stick these textures into a SUB-FOLDER in the "cockpit>generic" folder, and label that folder in a way that you can recognize the instrument that's inside... for instance, "ASI_Adap_GA" or whatever. (I admit, I labeled that folder wrong... it's not very descriptive, and, in fact, misleading. I should have called it "Generics ASI_GA" or something like that.)
+
+[url="http://forums.x-plane.org/index.php?app=core&module=attach&section=attach&attach_rel_module=post&attach_id=93582"][img]http://forums.x-plane.org/uploads/monthly_01_2011/post-3424-0-21699800-1293866938_thumb.jpg[/img][/url]
+
+
+Now you can save the instrument cluster as a text file in that sub-folder as well. That folder now represents a self-contained instrument, made out of generics.
+
+Now, the real beauty about all of this is, that you can zip up that folder, and upload it, and others can simply download and unzip that instrument into their plane's "cockpit>generic" folder, load the text file in PlaneMaker's cockpit-builder, and make use of a fine, high-res, customizable instrument assembled using generics.
+
+[url="http://forums.x-plane.org/index.php?app=core&module=attach&section=attach&attach_rel_module=post&attach_id=93583"][img]http://forums.x-plane.org/uploads/monthly_01_2011/post-3424-0-43375700-1293868677_thumb.jpg[/img][/url]
+
+
+[url="http://forums.x-plane.org/index.php?app=core&module=attach&section=attach&attach_rel_module=post&attach_id=93584"][img]http://forums.x-plane.org/uploads/monthly_01_2011/post-3424-0-93335000-1293868679_thumb.jpg[/img][/url]
+
+
+And what's even better is, that these instruments use datarefs that can be replaced, tapped into for other purposes, learned from, etc. Plus, an on-line database of instruments is created, that can be searched, indexed, expanded, recycled, etc.
+
+
+Here's a "quick'n'dirty" sample instrument for you to try. Just download and unzip it, put the resulting folder in one of your plane's "cockpit>generic" folder, open up PlaneMaker, import the text file in the downloaded folder via the "import panel" button in PlaneMaker, and experiment with tweaking this instrument.
+
+[url="http://forums.x-plane.org/index.php?app=core&module=attach&section=attach&attach_id=93585"][img]http://forums.x-plane.org/public/style_extra/mime_types/zip.gif[/img][/url] [url="http://forums.x-plane.org/index.php?app=core&module=attach&section=attach&attach_id=93585"]ASI_Adap_GA.zip[/url] [color=#606060][size=2][b](175.92K)[/b][/size][/color] 
+[color=#606060][size=2]Number of downloads: 20[/size][/color]
+
+
+Categories to upload and search for downloadable assembled instruments using generics are now available on the .org. You can find them [url="http://forums.x-plane.org/index.php?app=downloads&showcat=116"]here[/url]. I'll put this instrument up there to get things started, and hopefully I'll get around to making some more of these.[/size][/font][/color]
+[color=#222222][font=verdana, helvetica, arial, verdana, tahoma, sans-serif][size=2]
+[/size][/font][/color]
+[color=#222222][font=verdana, helvetica, arial, verdana, tahoma, sans-serif][size=2]
+Just make sure that when you create your instruments, to include your name and any info you think might be helpful inside the instrument folder's "Comment" section (available in PlaneMaker's Cockpit Builder at the bottom left corner, when folder is selected).[/size][/font][/color]
+
+
+Just so you know, there are some instruments that are NOT POSSIBLE to create using generics yet... specifically, those instruments that depend on embedded animations (such as artificial horizons or HSIs). If I recall correctly, this ability should be added some time during the XPv10 run. For now, what can be done is, a default instrument can be altered, and its components used in combination with generics, to attain the desired result. 
+
+But please note: mixing generic instruments with non-generics requires folder structure and naming convention management. An instrument cluster consisting ONLY of generics can be placed in any folder in the "generic" folder inside your "cockpit" or "cockpit_3D" folder, and the texture files can be given any name you like. But with default instruments, the folder structure and naming convention of the original instrument HAS TO BE RESPECTED, otherwise the instrument won't work. Combination instruments will most likely require installation instructions.
+
+-right now, you cannot "parent" one animation to another one, making a whole slew of instruments impossible to make with generics. What you can do is, mix-and-match generics with non-generics, but there are pitfalls to be aware of and avoid: for instance, naming conventions and folder structures. The idea is, create as much with generics as possible, because it's the GENERICS that will be implemented in future X-Plane versions, and pre-fabricated instruments will probably not be developed much further, and will possibly fade out eventually.
+
+-X-Plane v10 might not have IMMEDIATE support for embedded animations in generics, but I am told that this is, indeed, the direction it will be going. So probably one of the updates in the v10 run will add support for such instruments.
+
+-While we cannot even build the complete set of standard six with generics yet, there are many other instruments we can start creating with generics; and it's a good place for people to start. If you're interested in building generics, an annunciator is an excellent place to start, and once you've done one annunciator, you can do 'em all. Now two things have happened: 1) you are no longer solely dependent on the instruments available in X-Plane. 2) you are given a reason to learn datarefs and use Photoshop to create buttons with 2, 3, or more positions. As your skills increase, as you're more comfortable with creating generics, you'll gain a broader understanding of the many more things you can do with Datarefs, that are not covered by the standard instrument set available in X-Plane.
+
+The timing of launching this idea MAY be premature, but it may also be just the right time... it would be good to have a fairly well-represented set of SIMPLE generic instruments by the time support for more complex ones comes out... and so it will be easier for someone who wishes to tackle generic clusters in the future, to download simpler instruments and pull them apart to see how more complex ones can be built.
+
+
+For your heading bug example, you can start off with one of X-Plane's default instruments, and use ONLY the components you need, and "blank out" the rest of the textures. True, it won't be a neat package for upload/download as would be the case if you were making it with 100% generics, but it would serve the purpose of creating higher resolution instruments and clustering in generics for functions that get messed up by re-sizing default instruments. 
+
+So: if you choose to make an instrument cluster that uses non-generics and generics mixed, slightly different rules apply. You need to write up some installation instructions (i.e. give instructions on where the graphic files of the non-generic instrument should be placed), and make sure that your instrument cluster's text file refers the non-generic instrument textures to the correct folder structure, the way the structure would appear after installation.
+
+Sure, it's a slightly cumbersome workaround, but until we get support for animation parenting, this is the way it'll probably have to happen... UNLESS you can write a plug-in, and assign custom datarefs to elements such as the heading bug... which would be the result of the heading dataref and the heading bug dataref plugged into a formula inside the plug-in, where you end up using the plug-in's custom dataref to drive the bug. But that's pretty much impossible to package for other peoples' use, so I'd stick with the previous suggestion for now.
