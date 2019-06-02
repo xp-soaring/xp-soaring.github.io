@@ -1,27 +1,31 @@
 
 local utils = {}
 
-function utils.print_r(arr, indentLevel)
-    local str = ""
-    local indentStr = "#"
-
-    if(indentLevel == nil) then
-        print(print_r(arr, 0))
-        return
-    end
-
-    for i = 0, indentLevel do
-        indentStr = indentStr.."\t"
-    end
-
-    for index,value in pairs(arr) do
-        if type(value) == "table" then
-            str = str..indentStr..index..": \n"..print_r(value, (indentLevel + 1))
-        else 
-            str = str..indentStr..index..": "..value.."\n"
+function print_r ( t ) 
+    local print_r_cache={}
+    local function sub_print_r(t,indent)
+        if (print_r_cache[tostring(t)]) then
+            print(indent.."*"..tostring(t))
+        else
+            print_r_cache[tostring(t)]=true
+            if (type(t)=="table") then
+                for pos,val in pairs(t) do
+                    if (type(val)=="table") then
+                        print(indent.."["..pos.."] => {")
+                        sub_print_r(val,indent..string.rep(" ",string.len(pos)+8))
+                        print(indent..string.rep(" ",string.len(pos)+6).."}")
+                    else
+                        print(indent.."["..pos.."] => "..tostring(val))
+                    end
+                end
+            else
+                print(indent..tostring(t))
+            end
         end
     end
-    return str
+    sub_print_r(t,"  ")
 end
+
+utils.print_r = print_r
 
 return utils

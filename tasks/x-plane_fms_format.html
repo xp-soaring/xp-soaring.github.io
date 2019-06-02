@@ -97,3 +97,159 @@ NUMENR 4
     </tr>
 </table>
 
+<h2>Previous format</h2>
+
+<p>credit: <a href="https://flightplandatabase.com/dev/specification">https://flightplandatabase.com/dev/specification</a>
+</p>
+
+<h3>Introduction</h3>
+
+<p>The X-Plane FMS file format is not officially documented anywhere. Therefore, this file specification
+     is unofficial and the current best known outline of the format. This specification has been tested 
+     thoroughly on X-Plane versions 8, 9 and 10. From X-Plane 11, a new file format has been introduced 
+     that is not backwards compatible with this specification. 
+</p>
+
+<p>Throughout this specification the following file will be used for examples. Clearly this is not a 
+    real flight plan and is only here to highlight as much of the specification as possible:
+</p>
+<pre>
+I
+3 version
+1 
+4 
+1 EDDM 0.000000 48.364822 11.794361 
+2 GL 1000 57.083820 9.680093 
+3 KFK 2000 38.803889 30.546944
+11 DETKO 0.600000 28.097222 49.525000 
+28 +13.691_+100.760 0.000000 13.691230 100.760811
+</pre>
+
+<h3>Header</h3>
+<pre>
+I
+3 version
+1 
+4
+</pre>
+
+<p>The first two lines cover the source computer OS and the version of the specification the file is built to. 
+    A letter 'I' represents a file built on a PC, whilst a letter 'A' represents one built on an Apple computer; 
+    there is full compatibility between the two, so either will work across either OS. All FMS files I have 
+    come across for X-Plane 8 and 9 use the version 3.
+</p>
+<pre>
+I
+3 version
+</pre>
+
+<p>The following two lines each contain an integer value. The first number is almost exclusively a '1' and the 
+    second number varies with the number of waypoints and appears to be number of waypoints minus 1, although I 
+    have not seen any adverse effects from using a different number here.
+</p>
+<pre>
+1
+4
+</pre>
+
+<h3>Waypoints</h3>
+
+<p>The remainder of the file consists of a number of waypoints that mark out the route for the FMC. Each row is 
+    made up of five segments that define the location, altitude, type and ID of the waypoint. 
+    The elements within each row can be either tab or space delimited.
+</p>
+<pre>
+1 EDDM 0.000000 48.364822 11.794361 
+2 GL 1000 57.083820 9.680093
+3 KFK 2000 38.803889 30.546944
+11 DETKO 0.600000 -28.097222 -49.525000
+28 +13.691_+100.760 0.000000 13.691230 100.760811
+</pre>
+
+<h3>Type</h3>
+
+<p>The initial integer on each row defines of what type the waypoint is. The available options are as follows: 
+</p>
+
+<pre>
+1 - Airport ICAO 
+2 - NDB 
+3 - VOR 
+11 - Fix 
+28 - Lat/Lon Position 
+</pre>
+
+<p>These are the only waypoint type values seen in flight plans. Other values do not work with the FMC and 
+    are not intended for use in .fms files.
+</p>
+<pre>
+2 GL 1000 57.083820 9.680093 NDB
+3 KFK 2000 38.803889 30.546944 VOR
+11 DETKO 0.600000 -28.097222 -49.525000 FIX
+</pre>
+
+<h3>ID</h3>
+
+<p>This element contains the ID for the waypoint and defines what title shows up on the FMC. 
+    For all waypoints except the lat/lon type it should consist of only alphanumeric characters.
+</p>
+<pre>
+1 EDDM 0.000000 48.364822 11.794361 
+3 KFK 2000 38.803889 30.546944
+</pre>
+
+<p>The lat/lon type is special in that it has a strict predefined format and also makes 
+    use of the +,-,. and _ symbols. The format used is as follows, each '0' character represents 
+    a single digit that must be present; the first set of zeros corresponds to the latitude value 
+    and the second to the longitude. The '+' character can be substitued for the '-' character for 
+    waypoints in the southern or western hemispheres, although positive numbers cannot omit the '+' symbol.
+</p>
+<pre>
+ 28 +00.000_+000.000 0.000000 0.000000 0.000000
+
++12.345_+009.459 Correct for a waypoint at 12.345°/0.459°.
+-28.478_-056.370 Correct for a waypoint at -28.478°/-56.370°.
+12.366_040.101 Incorrect: '+' or '-' symbol is required, even if values are positive.
+-16.982 +112.006 Incorrect: '_' symbol is required to separate the two values.
+-98.283_+200.554 Incorrect: the latitude numbers must be in the range -90 to 90.
+and the longitude values must be in the range -180 to 180.
++6.080_-9.412 Incorrect: the leading digits are required even when they are zero.
+28 +13.691_+100.760 0.000000 13.691230 100.760811
+</pre>
+
+<h3>Altitude</h3>
+
+<p>The altitude value set here is displayed on the FMC and can additionally be used to set the autopilot altitude 
+    through VNAV. The units are feet and the maximum value is 99999; any number greater than this 
+    should still work but will cause issues with the display of the value in the FMC and on the A/P. 
+    The value may also have up to 6 decimal places, but these will be rounded to the nearest integer when displayed in X-Plane.
+</p>
+<pre>
+11 DETKO 0.600000 28.097222 49.525000 Will be rounded to 1
+</pre>
+<pre>
+11 DETKO 1000000 -28.097222 -49.525000 Will not display properly, but should still work
+</pre>
+
+<h3>Location</h3>
+
+<p>The final two values are the latitude and longitude values that make up the location of the waypoint. 
+    They are in decimal degrees and support up to six decimal places. As with the ID values, the 
+    latitude value should be in the range -90° to 90° and the longitude value should be in the range -180° to 180 °.
+</p>
+<pre>
+1 EDDM 0.000000 48.364822 11.794361
+2 GL 1000 57.083820 9.680093
+3 KFK 2000 38.803889 30.546944
+11 DETKO 0.600000 -28.097222 -49.525000
+28 +13.691_+100.760 0.000000 13.691230 100.760811
+</pre>
+
+<h3>Padding</h3>
+
+<p>After all of the waypoints are defined, the file may contain a number of blank lines with the following 
+    format. These can be omitted or included at your discretion.
+</p>
+<pre>
+ 0 ---- 0.000000 0.000000 0.000000 
+</pre>
