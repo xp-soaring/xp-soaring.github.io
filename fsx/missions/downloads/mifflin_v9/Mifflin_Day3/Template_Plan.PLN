@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<SimBase.Document Type="AceXML" version="1,0">
+    <Descr>AceXML Document</Descr>
+    <FlightPlan.FlightPlan>
+        <Title>Mifflin - Day 3</Title>
+        <FPType>VFR</FPType>
+        <CruisingAlt>7500</CruisingAlt>
+        <DepartureID>ORIGIN</DepartureID>
+        <DepartureLLA>N40° 40' 43.80",W77° 37' 27.60",+000000.00</DepartureLLA>
+        <DestinationID>DESTINATION</DestinationID>
+        <DestinationLLA>N40° 40' 45.60",W77° 37' 36.00",+000000.00</DestinationLLA>
+        <Descr>Mifflin - Day 3</Descr>
+        <DeparturePosition>8</DeparturePosition>
+        <DepartureName>Mifflin</DepartureName>
+        <DestinationName>Mifflin</DestinationName>
+        <AppVersion>
+            <AppVersionMajor>10</AppVersionMajor>
+            <AppVersionBuild>60905</AppVersionBuild>
+        </AppVersion>
+        <ATCWaypoint id="PRE_START">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N40° 40' 43.80",W77° 37' 27.60",+000000.00</WorldPosition>
+            <Descr>PRE_START</Descr>
+        </ATCWaypoint>
+        <ATCWaypoint id="START">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N40° 40' 43.80",W77° 37' 27.60",+000000.00</WorldPosition>
+            <Descr>START</Descr>
+        </ATCWaypoint>
+        <ATCWaypoint id="TP1">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N40° 48' 56.00",W76° 51' 42.00",+003000.00</WorldPosition>
+            <Descr>Selinsgrove Airport</Descr>
+        </ATCWaypoint>
+        <ATCWaypoint id="TP2">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N40° 14' 27.00",W77° 53' 49.00",+003000.00</WorldPosition>
+            <Descr>Orbisonia</Descr>
+        </ATCWaypoint>
+        <ATCWaypoint id="TP3">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>%%%_TP3_latlong_%%%,+003000.00</WorldPosition>
+            <Descr>%%%_TP3_name_%%%</Descr>
+        </ATCWaypoint>
+        <ATCWaypoint id="FINISH">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N40° 40' 24.00",W77° 37' 58.20",+000000.00</WorldPosition>
+            <Descr>Mifflin</Descr>
+        </ATCWaypoint>
+    </FlightPlan.FlightPlan>
+</SimBase.Document>

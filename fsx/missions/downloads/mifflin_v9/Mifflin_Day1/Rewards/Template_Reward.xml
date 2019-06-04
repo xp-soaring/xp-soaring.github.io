@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<FSData version="9.0">
+<Reward rewardId="{8072f3ac-7c8c-486c-b941-7ab7a22020ae}" name="Mifflin Day 1" description="Successful Completion of Day 1 of the Mifflin Soaring Competition" type="TROPHY" bitmap = "Reward_small.jpg" rewardDetailBitmap="Reward_large.jpg">
+</Reward>
+</FSData>

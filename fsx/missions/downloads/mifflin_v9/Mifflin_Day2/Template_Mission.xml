@@ -1,0 +1,771 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<SimBase.Document Type="MissionFile" version="1,0">
+    <Descr>Soaring Competition</Descr>
+    <Title>Mifflin - Day 2</Title>
+    <WorldBase.Flight>
+        <SimMission.DialogAction InstanceId="{816266D7-7AA3-41BB-B539-5AA086D09FF5}">
+            <Descr>dialog_00_start_gate_open</Descr>
+            <Text>Mifflin to all competing gliders.  It's Day 2, and the start gate is now open. The wind is still from the NW, and the ridges are working.</Text>
+            <SoundFileName>dialog_00_start_gate_open.wav</SoundFileName>
+            <DelaySeconds>2.000</DelaySeconds>
+        </SimMission.DialogAction>
+        <SimMission.DialogAction InstanceId="{09394720-2196-4BBC-B828-00436B5F8B89}">
+            <Descr>dialog_01_bad_start</Descr>
+            <Text>Yankee-November, was that intended to be a start? It looked higher than the height limit from down here</Text>
+            <SoundFileName>dialog_01_bad_start.wav</SoundFileName>
+        </SimMission.DialogAction>
+        <SimMission.DialogAction InstanceId="{530EA5DD-2BB6-4A66-A1E1-6242C1CED546}">
+            <Descr>dialog_02_good_start</Descr>
+            <Text>Yankee-November good start.</Text>
+            <SoundFileName>dialog_02_good_start.wav</SoundFileName>
+        </SimMission.DialogAction>
+        <SimMission.DialogAction InstanceId="{9241FA4E-F943-493B-AB17-1CDD4191F303}">
+            <Descr>dialog_03_height_reminder</Descr>
+            <Text>all gliders - we're getting reports of gliders breaching the airspace limit.</Text>
+            <SoundFileName>dialog_03_height_reminder.wav</SoundFileName>
+        </SimMission.DialogAction>
+        <SimMission.DialogAction InstanceId="{5F124F2F-529B-46F4-A8FC-D883A3E65688}">
+            <Descr>dialog_10_tp1</Descr>
+            <Text>Yankee-November well done reaching Spruce Creek.</Text>
+            <SoundFileName>dialog_10_tp1.wav</SoundFileName>
+            <DelaySeconds>4.000</DelaySeconds>
+        </SimMission.DialogAction>
+        <SimMission.DialogAction InstanceId="{01A657F7-555C-4549-BACF-269455788715}">
+            <Descr>dialog_20_tp2</Descr>
+            <Text>Yankee-November nice job getting round Blair County Airport.</Text>
+            <SoundFileName>dialog_20_tp2.wav</SoundFileName>
+        </SimMission.DialogAction>
+        <SimMission.DialogAction InstanceId="{4A1D0E7C-67F5-4E93-919A-F21CDD5C51E4}">
+            <Descr>dialog_25_mid_way</Descr>
+            <Text>Yankee-November you're about half-way round the task.  keep it up!</Text>
+            <SoundFileName>dialog_25_mid_way.wav</SoundFileName>
+        </SimMission.DialogAction>
+        <SimMission.DialogAction InstanceId="{567217B3-9DC4-4665-8DFA-0E1050D3C6BD}">
+            <Descr>dialog_30_tp3</Descr>
+            <Text>Yankee-November good job reaching Penns Cave Airport. Get some height to get home.</Text>
+            <SoundFileName>dialog_30_tp3.wav</SoundFileName>
+        </SimMission.DialogAction>
+        <SimMission.DialogAction InstanceId="{758B66FC-6D1C-406F-9E36-E988761F8ADD}">
+            <Descr>dialog_31_tp3</Descr>
+            <Text>Yankee-November great job reaching TP3. we thought you weren't going to make it.</Text>
+            <SoundFileName>dialog_31_tp3.wav</SoundFileName>
+        </SimMission.DialogAction>
+        <SimMission.DialogAction InstanceId="{58C7D8BC-E80E-4AD0-990D-7292E05F0351}">
+            <Descr>dialog_35_curlover</Descr>
+            <Text>Yankee-November is that you in the lee of the ridge?</Text>
+            <SoundFileName>dialog_35_curlover.wav</SoundFileName>
+        </SimMission.DialogAction>
+        <SimMission.DialogAction InstanceId="{63FD5947-33C3-4A29-ACFF-9253156CD3F0}">
+            <Descr>dialog_40_final_glide</Descr>
+            <Text>Yankee-November we can see you coming in.  Well done. See you soon.</Text>
+            <SoundFileName>dialog_40_final_glide.wav</SoundFileName>
+        </SimMission.DialogAction>
+        <SimMission.DialogAction InstanceId="{0C3454A4-C90E-419E-B6C1-1FF6BB5EB615}">
+            <Descr>dialog_70_height_warning</Descr>
+            <Text>Yankee-November you are getting close to the area height limit.</Text>
+            <SoundFileName>dialog_70_height_warning.wav</SoundFileName>
+        </SimMission.DialogAction>
+        <SimMission.DialogAction InstanceId="{2DDBF1F6-2BB2-43BD-A098-DDDE1CB10830}">
+            <Descr>dialog_71_height_limit</Descr>
+            <Text>Yankee-November what happened? You've strayed into the upper airspace and have been disqualified.</Text>
+            <SoundFileName>dialog_71_height_limit.wav</SoundFileName>
+        </SimMission.DialogAction>
+        <SimMission.DialogAction InstanceId="{F3EB296B-FE0C-4F3A-AAB5-0834CEC2598C}">
+            <Descr>dialog_72_height_warning_2</Descr>
+            <Text>Yankee-November you're entering the upper airspace. Descend immediately.</Text>
+            <SoundFileName>dialog_72_height_warning_2.wav</SoundFileName>
+        </SimMission.DialogAction>
+        <SimMission.DialogAction InstanceId="{2F081DAC-ECA9-4EDC-953E-B74516BA5097}">
+            <Descr>dialog_73_height_warning_3</Descr>
+            <Text>Yankee-November watch out! (airspace warning)</Text>
+            <SoundFileName>dialog_73_height_warning_3.wav</SoundFileName>
+            <DelaySeconds>10.000</DelaySeconds>
+        </SimMission.DialogAction>
+        <SimMission.DialogAction InstanceId="{7D3777EC-7565-45DE-8CD7-FE8035B3964F}">
+            <Descr>dialog_90_land_out</Descr>
+            <Text>Yankee-November we've recorded a land-out for you. Please call in when you're ready.</Text>
+            <SoundFileName>dialog_90_land_out.wav</SoundFileName>
+            <DelaySeconds>4.000</DelaySeconds>
+        </SimMission.DialogAction>
+        <SimMission.DialogAction InstanceId="{E95B3B7D-3CE6-49E0-B657-C37DAAAA6574}">
+            <Descr>dialog_99_good_finish</Descr>
+            <Text>Yankee-November good finish!</Text>
+            <SoundFileName>dialog_99_good_finish.wav</SoundFileName>
+        </SimMission.DialogAction>
+        <SimMission.GoalResolutionAction InstanceId="{0D70BCFC-5885-4855-9494-A5AA1F7AC089}">
+            <Descr>GoalResAct_good_finish</Descr>
+            <Goals>
+                <ObjectReference id="Goal_good_finish" InstanceId="{6E284343-91B1-4AE9-8573-4401612CD8EC}">
+                </ObjectReference>
+            </Goals>
+        </SimMission.GoalResolutionAction>
+        <SimMission.GoalResolutionAction InstanceId="{597313E6-B7D2-47A1-B2B4-4BA6A3165D53}">
+            <Descr>GoalResAct_good_start</Descr>
+            <Goals>
+                <ObjectReference id="Goal_good_start" InstanceId="{EEF0E608-1B7A-4544-AED6-3EC6C25AE47A}">
+                </ObjectReference>
+            </Goals>
+        </SimMission.GoalResolutionAction>
+        <SimMission.GoalResolutionAction InstanceId="{8390F2E9-9608-4946-BD7E-082314811A3F}">
+            <Descr>GoalResAct_mission_fail</Descr>
+            <GoalResolution>failed</GoalResolution>
+            <Goals>
+                <ObjectReference id="Goal_good_finish" InstanceId="{6E284343-91B1-4AE9-8573-4401612CD8EC}">
+                </ObjectReference>
+            </Goals>
+        </SimMission.GoalResolutionAction>
+        <SimMission.GoalResolutionAction InstanceId="{E2B0931B-3DA4-4BB7-B022-6C03A18E2227}">
+            <Descr>GoalResAct_TP1</Descr>
+            <Goals>
+                <ObjectReference id="Goal_TP1" InstanceId="{04EACD37-CD3C-4B76-BCD5-677071CE6454}">
+                </ObjectReference>
+            </Goals>
+        </SimMission.GoalResolutionAction>
+        <SimMission.GoalResolutionAction InstanceId="{0880B66A-BC8B-4CD6-AAA7-70B7B987D333}">
+            <Descr>GoalResAct_TP2</Descr>
+            <Goals>
+                <ObjectReference id="Goal_TP2" InstanceId="{5450F91D-78A8-44F8-B0BD-94D23C7123A0}">
+                </ObjectReference>
+            </Goals>
+        </SimMission.GoalResolutionAction>
+        <SimMission.GoalResolutionAction InstanceId="{FBF02A58-74E3-40E1-BC2F-98C6830D7D45}">
+            <Descr>GoalResAct_TP3</Descr>
+            <Goals>
+                <ObjectReference id="Goal_TP3" InstanceId="{51492814-6794-4229-ACC0-95575C70B77F}">
+                </ObjectReference>
+            </Goals>
+        </SimMission.GoalResolutionAction>
+        <SimMission.GrantRewardAction InstanceId="{58C39B62-123A-41AC-983C-83357D459CB2}">
+            <Descr>GrantRewardAction44</Descr>
+            <RewardRef>{0927f676-a4d1-4ebc-bf3d-f195d970816b}</RewardRef>
+        </SimMission.GrantRewardAction>
+        <SimMission.ObjectActivationAction InstanceId="{AF0BF63D-7163-47FC-9EBE-7A949E8736C2}">
+            <Descr>ObjAct_AreaLandTrig_landout</Descr>
+            <ObjectReferenceList>
+                <ObjectReference id="AreaLandTrig_landout" InstanceId="{65905CD1-DACF-4CD9-A68A-66EF864C93CB}">
+                </ObjectReference>
+            </ObjectReferenceList>
+        </SimMission.ObjectActivationAction>
+        <SimMission.ObjectActivationAction InstanceId="{54EF1B0A-8AB2-4F68-9874-1BB89030C116}">
+            <Descr>ObjAct_disable_bad_start</Descr>
+            <NewObjectState>False</NewObjectState>
+            <ObjectReferenceList>
+                <ObjectReference id="ProxTrig_0_start_too_high" InstanceId="{B105A372-CBED-42B5-BFF7-67453FA4B743}">
+                </ObjectReference>
+            </ObjectReferenceList>
+        </SimMission.ObjectActivationAction>
+        <SimMission.ObjectActivationAction InstanceId="{B3370A57-DCB5-4D9D-824C-96586ADDC589}">
+            <Descr>ObjAct_ProxTrig_final_glide</Descr>
+            <ObjectReferenceList>
+                <ObjectReference id="ProxTrig_final_glide" InstanceId="{6F1F7CF8-214F-421C-856D-FD2781527A59}">
+                </ObjectReference>
+            </ObjectReferenceList>
+        </SimMission.ObjectActivationAction>
+        <SimMission.ObjectActivationAction InstanceId="{90501C87-D6BC-4ED6-8A57-00CB92AA24A7}">
+            <Descr>ObjAct_ProxTrig_finish</Descr>
+            <ObjectReferenceList>
+                <ObjectReference id="ProxTrig_finish" InstanceId="{E07626A0-01A4-4273-8A62-941E261EFD3E}">
+                </ObjectReference>
+            </ObjectReferenceList>
+        </SimMission.ObjectActivationAction>
+        <SimMission.ObjectActivationAction InstanceId="{50B772AC-BA3D-41C7-B455-37E0C11D3431}">
+            <Descr>ObjAct_ProxTrig_airfield_landing</Descr>
+            <ObjectReferenceList>
+                <ObjectReference id="ProxTrig_airfield_landing" InstanceId="{D0BF867D-80BF-4300-B3C8-A67AD209C0EF}">
+                </ObjectReference>
+            </ObjectReferenceList>
+        </SimMission.ObjectActivationAction>
+        <SimMission.ObjectActivationAction InstanceId="{3C855C8F-3F5A-402F-A0EB-9B825E7B885B}">
+            <Descr>ObjAct_ProxTrig_mid_way</Descr>
+            <ObjectReferenceList>
+                <ObjectReference id="ProxTrig_mid_way" InstanceId="{9E6546E0-5037-40BD-8360-26BF820AD13D}">
+                </ObjectReference>
+            </ObjectReferenceList>
+        </SimMission.ObjectActivationAction>
+        <SimMission.ObjectActivationAction InstanceId="{245DC6B2-FE4A-46C9-8764-52DC8B8A4DAC}">
+            <Descr>ObjAct_ProxTrig_TP1</Descr>
+            <ObjectReferenceList>
+                <ObjectReference id="ProxTrig_TP1" InstanceId="{E3B4BFAB-BC23-467A-8133-D01C842437D7}">
+                </ObjectReference>
+            </ObjectReferenceList>
+        </SimMission.ObjectActivationAction>
+        <SimMission.ObjectActivationAction InstanceId="{3D398456-0899-4732-ACAF-18CF677FAA82}">
+            <Descr>ObjAct_ProxTrig_TP2</Descr>
+            <ObjectReferenceList>
+                <ObjectReference id="ProxTrig_TP2" InstanceId="{B9F70251-2992-4B94-9247-DBEAB1AF56A9}">
+                </ObjectReference>
+            </ObjectReferenceList>
+        </SimMission.ObjectActivationAction>
+        <SimMission.ObjectActivationAction InstanceId="{ACE9584D-C589-4B1F-B7A2-5BAE805FD6BE}">
+            <Descr>ObjAct_ProxTrig_TP3</Descr>
+            <ObjectReferenceList>
+                <ObjectReference id="ProxTrig_TP3" InstanceId="{19E1048B-A1F5-424B-8FF6-D328127E1FA6}">
+                </ObjectReference>
+            </ObjectReferenceList>
+        </SimMission.ObjectActivationAction>
+        <SimMission.ObjectActivationAction InstanceId="{0238B780-D70A-46F1-AAE1-3DFFDED20010}">
+            <Descr>ObjAct_task_timer</Descr>
+            <ObjectReferenceList>
+                <ObjectReference id="tmr_task_timer" InstanceId="{E6C39645-F88D-4963-9A9E-72E6A33A60B3}">
+                </ObjectReference>
+            </ObjectReferenceList>
+        </SimMission.ObjectActivationAction>
+        <SimMission.ObjectActivationAction InstanceId="{CE751F9E-F412-4CC4-A9F0-E4472C6ABD46}">
+            <Descr>ObjDeAct_AreaLandTrig_landout</Descr>
+            <NewObjectState>False</NewObjectState>
+            <ObjectReferenceList>
+                <ObjectReference id="AreaLandTrig_landout" InstanceId="{65905CD1-DACF-4CD9-A68A-66EF864C93CB}">
+                </ObjectReference>
+            </ObjectReferenceList>
+        </SimMission.ObjectActivationAction>
+        <SimMission.ObjectActivationAction InstanceId="{1DA40561-6BC9-489B-A461-FDB8915CEF9C}">
+            <Descr>ObjDeAct_task_timer</Descr>
+            <NewObjectState>False</NewObjectState>
+            <ObjectReferenceList>
+                <ObjectReference id="tmr_task_timer" InstanceId="{E6C39645-F88D-4963-9A9E-72E6A33A60B3}">
+                </ObjectReference>
+            </ObjectReferenceList>
+        </SimMission.ObjectActivationAction>
+        <SimMission.PointOfInterestActivationAction InstanceId="{836C5E3D-0BD8-4EC8-BD51-5CCD2E1CB648}">
+            <Descr>POI_Act_StartFinish</Descr>
+            <ObjectReferenceList>
+                <ObjectReference id="POI_StartFinish" InstanceId="{4BBEF5FA-FC5A-409B-A0B9-9EDC5BFE8030}">
+                </ObjectReference>
+            </ObjectReferenceList>
+        </SimMission.PointOfInterestActivationAction>
+        <SimMission.PointOfInterestActivationAction InstanceId="{AC7676ED-DD46-4759-838D-B2F3E737B8B1}">
+            <Descr>POI_Act_TP1</Descr>
+            <ObjectReferenceList>
+                <ObjectReference id="POI_TP1" InstanceId="{596E95ED-FE57-438B-A8DA-246DB24A9175}">
+                </ObjectReference>
+            </ObjectReferenceList>
+        </SimMission.PointOfInterestActivationAction>
+        <SimMission.PointOfInterestActivationAction InstanceId="{E33FE90F-7D94-4A1C-B0D7-16E69F2BF3C2}">
+            <Descr>POI_Act_TP2</Descr>
+            <ObjectReferenceList>
+                <ObjectReference id="POI_TP2" InstanceId="{5B8396F5-FBFF-4943-A7CD-AEE51B107E79}">
+                </ObjectReference>
+            </ObjectReferenceList>
+        </SimMission.PointOfInterestActivationAction>
+        <SimMission.PointOfInterestActivationAction InstanceId="{150273A3-B720-4F98-AB20-7DCC4DD473CD}">
+            <Descr>POI_Act_TP3</Descr>
+            <ObjectReferenceList>
+                <ObjectReference id="POI_TP3" InstanceId="{4FAE51F9-5F77-4ADF-99A4-CCB0C5F2F283}">
+                </ObjectReference>
+            </ObjectReferenceList>
+        </SimMission.PointOfInterestActivationAction>
+        <SimMission.PointOfInterestActivationAction InstanceId="{FC1C8685-AD5A-41B3-B98F-80313B065BCC}">
+            <Descr>POI_DeAct_StartFinish</Descr>
+            <NewObjectState>False</NewObjectState>
+            <ObjectReferenceList>
+                <ObjectReference id="POI_StartFinish" InstanceId="{4BBEF5FA-FC5A-409B-A0B9-9EDC5BFE8030}">
+                </ObjectReference>
+            </ObjectReferenceList>
+        </SimMission.PointOfInterestActivationAction>
+        <SimMission.PointOfInterestActivationAction InstanceId="{D9910D15-6A9E-40E0-BD0D-FE5B4FF0CCBE}">
+            <Descr>POI_DeAct_TP1</Descr>
+            <NewObjectState>False</NewObjectState>
+            <ObjectReferenceList>
+                <ObjectReference id="POI_TP1" InstanceId="{596E95ED-FE57-438B-A8DA-246DB24A9175}">
+                </ObjectReference>
+            </ObjectReferenceList>
+        </SimMission.PointOfInterestActivationAction>
+        <SimMission.PointOfInterestActivationAction InstanceId="{885815BD-3A7D-4BC0-856A-A4783B053BE0}">
+            <Descr>POI_DeAct_TP2</Descr>
+            <NewObjectState>False</NewObjectState>
+            <ObjectReferenceList>
+                <ObjectReference id="POI_TP2" InstanceId="{5B8396F5-FBFF-4943-A7CD-AEE51B107E79}">
+                </ObjectReference>
+            </ObjectReferenceList>
+        </SimMission.PointOfInterestActivationAction>
+        <SimMission.PointOfInterestActivationAction InstanceId="{3BE464F7-19B9-4C7C-B0A6-24798BFBE8E4}">
+            <Descr>POI_DeAct_TP3</Descr>
+            <NewObjectState>False</NewObjectState>
+            <ObjectReferenceList>
+                <ObjectReference id="POI_TP3" InstanceId="{4FAE51F9-5F77-4ADF-99A4-CCB0C5F2F283}">
+                </ObjectReference>
+            </ObjectReferenceList>
+        </SimMission.PointOfInterestActivationAction>
+        <SimMission.RectangleArea InstanceId="{D1441513-6601-46B9-A077-498D9FD12CBA}">
+            <Descr>area_final_glide</Descr>
+            <Length>8000.000</Length>
+            <Width>200.000</Width>
+            <Height>4000.000</Height>
+            <Orientation>0.000,0.000,0.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N40° 43' 00.00",W77° 38' 00.00",+000000.00</WorldPosition>
+                <AltitudeIsAGL>True</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{839293D5-3E07-4B56-BA98-8395B0AF1717}">
+            <Descr>area_finish</Descr>
+            <Length>2000.000</Length>
+            <Width>200.000</Width>
+            <Height>3080.000</Height>
+            <Orientation>0.000,0.000,0.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N40° 40' 51.60",W77° 37' 7.20",+000000.00</WorldPosition>
+                <AltitudeIsAGL>True</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{B33666D5-49B8-48BB-B2BF-F4679396F1B0}">
+            <Descr>area_airfield_landing</Descr>
+            <Orientation>0.000,0.000,0.000</Orientation>
+            <Length>1200.000</Length>
+            <Width>1200.000</Width>
+            <AttachedWorldPosition>
+                <WorldPosition>N40° 40' 45.60",W77° 37' 36.00",+000000.00</WorldPosition>
+                <AltitudeIsAGL>True</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{33DB83F0-E925-4F74-B665-62F63B4E0AE9}">
+            <Descr>area_mid_way</Descr>
+            <Orientation>0.000,0.000,40.000</Orientation>
+            <Length>12000.000</Length>
+            <Width>200.000</Width>
+            <Height>6000.000</Height>
+            <AttachedWorldPosition>
+                <WorldPosition>N40° 27'00.00",W78° 09' 30.00",+000000.00</WorldPosition>
+                <AltitudeIsAGL>True</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{7B3B736E-CDE6-4F4A-B0CB-BC4AECA293D9}">
+            <Descr>area_start</Descr>
+            <Orientation>0.000,0.000,135.000</Orientation>
+            <Length>2000.000</Length>
+            <Width>200.000</Width>
+            <Height>1829.000</Height>
+            <AttachedWorldPosition>
+                <WorldPosition>N40° 40' 45.60",W77° 37' 36.00",+000000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{2F3BE583-980A-414D-BB11-36BB1956BB04}">
+            <Descr>area_start_too_high</Descr>
+            <Length>2000.000</Length>
+            <Width>200.000</Width>
+            <Height>2000.000</Height>
+            <Orientation>0.000,0.000,135.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N40° 40' 45.60",W77° 37' 36.00",+6000.00</WorldPosition>
+                <AltitudeIsAGL>False</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{7C3412AD-A6CA-431D-86BF-BF2FA7CA17F5}">
+            <Descr>area_TP1</Descr>
+            <Orientation>0.000,0.000,0.000</Orientation>
+            <Length>500.000</Length>
+            <Width>500.000</Width>
+            <Height>10000.000</Height>
+            <AttachedWorldPosition>
+                <WorldPosition>N40° 36' 03.00",W78° 07' 43.00",+000000.00</WorldPosition>
+                <AltitudeIsAGL>True</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{39CD309A-00AA-443B-8863-9B74F07FA9E6}">
+            <Descr>area_TP2</Descr>
+            <Length>500.000</Length>
+            <Width>500.000</Width>
+            <Height>10000.000</Height>
+            <Orientation>0.000,0.000,0.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N40° 17' 19.00",W78° 19' 24.00",+000000.00</WorldPosition>
+                <AltitudeIsAGL>True</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.RectangleArea InstanceId="{93E07453-C277-4553-843E-D0E429422627}">
+            <Descr>area_TP3</Descr>
+            <Length>500.000</Length>
+            <Width>500.000</Width>
+            <Height>10000.000</Height>
+            <Orientation>0.000,0.000,0.000</Orientation>
+            <AttachedWorldPosition>
+                <WorldPosition>N40° 53' 18.00",W77° 36' 26.00",+000000.00</WorldPosition>
+                <AltitudeIsAGL>True</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.RectangleArea>
+        <SimMission.AreaLandingTrigger InstanceId="{65905CD1-DACF-4CD9-A68A-66EF864C93CB}">
+            <Descr>AreaLandTrig_landout</Descr>
+            <Actions>
+                <ObjectReference id="dialog_90_land_out" InstanceId="{7D3777EC-7565-45DE-8CD7-FE8035B3964F}">
+                </ObjectReference>
+                <ObjectReference id="GoalResAct_mission_fail" InstanceId="{8390F2E9-9608-4946-BD7E-082314811A3F}">
+                </ObjectReference>
+            </Actions>
+        </SimMission.AreaLandingTrigger>
+        <SimMission.PropertyTrigger InstanceId="{295A31D8-ED45-4B20-ABEF-37280ACBC65C}">
+            <Descr>PropTrig_height_limit</Descr>
+            <Condition>
+                <And>
+                    <GreaterThan>
+                        <LHS>
+                            <Property>
+                                <Name>Simvar.AltitudeAMSL</Name>
+                                <Units>feet</Units>
+                                <PropertySource>User</PropertySource>
+                            </Property>
+                        </LHS>
+                        <RHS>
+                            <Constant>
+                                <Double>7900.000</Double>
+                            </Constant>
+                        </RHS>
+                    </GreaterThan>
+                </And>
+            </Condition>
+            <Actions>
+                <ObjectReference id="dialog_71_height_limit" InstanceId="{2DDBF1F6-2BB2-43BD-A098-DDDE1CB10830}">
+                </ObjectReference>
+                <ObjectReference id="GoalResAct_mission_fail" InstanceId="{8390F2E9-9608-4946-BD7E-082314811A3F}">
+                </ObjectReference>
+            </Actions>
+        </SimMission.PropertyTrigger>
+        <SimMission.PropertyTrigger InstanceId="{3DCDB290-B575-4F25-9D7B-BAB2A621F708}">
+            <Descr>PropTrig_height_warning</Descr>
+            <Condition>
+                <And>
+                    <GreaterThan>
+                        <LHS>
+                            <Property>
+                                <Name>Simvar.AltitudeAMSL</Name>
+                                <Units>feet</Units>
+                                <PropertySource>User</PropertySource>
+                            </Property>
+                        </LHS>
+                        <RHS>
+                            <Constant>
+                                <Double>7300.000</Double>
+                            </Constant>
+                        </RHS>
+                    </GreaterThan>
+                </And>
+            </Condition>
+            <Actions>
+                <ObjectReference id="dialog_70_height_warning" InstanceId="{0C3454A4-C90E-419E-B6C1-1FF6BB5EB615}">
+                </ObjectReference>
+            </Actions>
+        </SimMission.PropertyTrigger>
+        <SimMission.PropertyTrigger InstanceId="{E211DF78-3139-450F-A5F6-7FF4EBB7B59D}">
+            <Descr>PropTrig_height_warning_2</Descr>
+            <OneShot>False</OneShot>
+            <Condition>
+                <And>
+                    <GreaterThan>
+                        <LHS>
+                            <Property>
+                                <Name>Simvar.AltitudeAMSL</Name>
+                                <Units>feet</Units>
+                                <PropertySource>User</PropertySource>
+                            </Property>
+                        </LHS>
+                        <RHS>
+                            <Constant>
+                                <Double>7600.000</Double>
+                            </Constant>
+                        </RHS>
+                    </GreaterThan>
+                </And>
+            </Condition>
+            <Actions>
+                <ObjectReference id="dialog_72_height_warning_2" InstanceId="{F3EB296B-FE0C-4F3A-AAB5-0834CEC2598C}">
+                </ObjectReference>
+            </Actions>
+        </SimMission.PropertyTrigger>
+        <SimMission.PropertyTrigger InstanceId="{5CB4639A-83B9-465B-9ADC-CC7F0C45EA0A}">
+            <Descr>PropTrig_height_warning_3</Descr>
+            <OneShot>False</OneShot>
+            <Actions>
+                <ObjectReference id="dialog_73_height_warning_3" InstanceId="{2F081DAC-ECA9-4EDC-953E-B74516BA5097}">
+                </ObjectReference>
+            </Actions>
+            <Condition>
+                <And>
+                    <GreaterThan>
+                        <LHS>
+                            <Property>
+                                <Name>Simvar.AltitudeAMSL</Name>
+                                <Units>feet</Units>
+                                <PropertySource>User</PropertySource>
+                            </Property>
+                        </LHS>
+                        <RHS>
+                            <Constant>
+                                <Double>7700.000</Double>
+                            </Constant>
+                        </RHS>
+                    </GreaterThan>
+                </And>
+            </Condition>
+        </SimMission.PropertyTrigger>
+        <SimMission.ProximityTrigger InstanceId="{B105A372-CBED-42B5-BFF7-67453FA4B743}">
+            <Descr>ProxTrig_0_start_too_high</Descr>
+            <OnEnterActions>
+                <ObjectReference id="dialog_01_bad_start" InstanceId="{09394720-2196-4BBC-B828-00436B5F8B89}">
+                </ObjectReference>
+            </OnEnterActions>
+            <Areas>
+                <ObjectReference id="area_start_too_high" InstanceId="{2F3BE583-980A-414D-BB11-36BB1956BB04}">
+                </ObjectReference>
+            </Areas>
+            <OnExitActions>
+            </OnExitActions>
+        </SimMission.ProximityTrigger>
+        <SimMission.ProximityTrigger InstanceId="{6F1F7CF8-214F-421C-856D-FD2781527A59}">
+            <Descr>ProxTrig_final_glide</Descr>
+            <Activated>False</Activated>
+            <Areas>
+                <ObjectReference id="area_final_glide" InstanceId="{D1441513-6601-46B9-A077-498D9FD12CBA}">
+                </ObjectReference>
+            </Areas>
+            <OnEnterActions>
+                <ObjectReference id="dialog_40_final_glide" InstanceId="{63FD5947-33C3-4A29-ACFF-9253156CD3F0}">
+                </ObjectReference>
+            </OnEnterActions>
+        </SimMission.ProximityTrigger>
+        <SimMission.ProximityTrigger InstanceId="{E07626A0-01A4-4273-8A62-941E261EFD3E}">
+            <Descr>ProxTrig_finish</Descr>
+            <Activated>False</Activated>
+            <OnEnterActions>
+                <ObjectReference id="ObjDeAct_task_timer" InstanceId="{1DA40561-6BC9-489B-A461-FDB8915CEF9C}">
+                </ObjectReference>
+                <ObjectReference id="GoalResAct_good_finish" InstanceId="{0D70BCFC-5885-4855-9494-A5AA1F7AC089}">
+                </ObjectReference>
+                <ObjectReference id="dialog_99_good_finish" InstanceId="{E95B3B7D-3CE6-49E0-B657-C37DAAAA6574}">
+                </ObjectReference>
+                <ObjectReference id="GrantRewardAction44" InstanceId="{58C39B62-123A-41AC-983C-83357D459CB2}">
+                </ObjectReference>
+            </OnEnterActions>
+            <Areas>
+                <ObjectReference id="area_finish" InstanceId="{839293D5-3E07-4B56-BA98-8395B0AF1717}">
+                </ObjectReference>
+            </Areas>
+            <OnExitActions>
+            </OnExitActions>
+        </SimMission.ProximityTrigger>
+        <SimMission.ProximityTrigger InstanceId="{D0BF867D-80BF-4300-B3C8-A67AD209C0EF}">
+            <Descr>ProxTrig_airfield_landing</Descr>
+            <Activated>False</Activated>
+            <OnExitActions>
+                <ObjectReference id="ObjAct_AreaLandTrig_landout" InstanceId="{AF0BF63D-7163-47FC-9EBE-7A949E8736C2}">
+                </ObjectReference>
+            </OnExitActions>
+            <OnEnterActions>
+                <ObjectReference id="ObjDeAct_AreaLandTrig_landout" InstanceId="{CE751F9E-F412-4CC4-A9F0-E4472C6ABD46}">
+                </ObjectReference>
+            </OnEnterActions>
+            <Areas>
+                <ObjectReference id="area_airfield_landing" InstanceId="{B33666D5-49B8-48BB-B2BF-F4679396F1B0}">
+                </ObjectReference>
+            </Areas>
+        </SimMission.ProximityTrigger>
+        <SimMission.ProximityTrigger InstanceId="{9E6546E0-5037-40BD-8360-26BF820AD13D}">
+            <Descr>ProxTrig_mid_way</Descr>
+            <Activated>False</Activated>
+            <Areas>
+                <ObjectReference id="area_mid_way" InstanceId="{33DB83F0-E925-4F74-B665-62F63B4E0AE9}">
+                </ObjectReference>
+            </Areas>
+            <OnEnterActions>
+                <ObjectReference id="dialog_25_mid_way" InstanceId="{4A1D0E7C-67F5-4E93-919A-F21CDD5C51E4}">
+                </ObjectReference>
+            </OnEnterActions>
+        </SimMission.ProximityTrigger>
+        <SimMission.ProximityTrigger InstanceId="{16C72F51-3BEE-47FC-B41E-36D46F376B21}">
+            <Descr>ProxTrig_start</Descr>
+            <OnEnterActions>
+                <ObjectReference id="ObjAct_task_timer" InstanceId="{0238B780-D70A-46F1-AAE1-3DFFDED20010}">
+                </ObjectReference>
+                <ObjectReference id="dialog_02_good_start" InstanceId="{530EA5DD-2BB6-4A66-A1E1-6242C1CED546}">
+                </ObjectReference>
+                <ObjectReference id="POI_Act_TP1" InstanceId="{AC7676ED-DD46-4759-838D-B2F3E737B8B1}">
+                </ObjectReference>
+                <ObjectReference id="POI_DeAct_StartFinish" InstanceId="{FC1C8685-AD5A-41B3-B98F-80313B065BCC}">
+                </ObjectReference>
+                <ObjectReference id="ObjAct_disable_bad_start" InstanceId="{54EF1B0A-8AB2-4F68-9874-1BB89030C116}">
+                </ObjectReference>
+                <ObjectReference id="GoalResAct_good_start" InstanceId="{597313E6-B7D2-47A1-B2B4-4BA6A3165D53}">
+                </ObjectReference>
+                <ObjectReference id="ObjAct_ProxTrig_TP1" InstanceId="{245DC6B2-FE4A-46C9-8764-52DC8B8A4DAC}">
+                </ObjectReference>
+            </OnEnterActions>
+            <OnExitActions>
+            </OnExitActions>
+            <Areas>
+                <ObjectReference id="area_start" InstanceId="{7B3B736E-CDE6-4F4A-B0CB-BC4AECA293D9}">
+                </ObjectReference>
+            </Areas>
+        </SimMission.ProximityTrigger>
+        <SimMission.ProximityTrigger InstanceId="{E3B4BFAB-BC23-467A-8133-D01C842437D7}">
+            <Descr>ProxTrig_TP1</Descr>
+            <Activated>False</Activated>
+            <OnEnterActions>
+                <ObjectReference id="POI_Act_TP2" InstanceId="{E33FE90F-7D94-4A1C-B0D7-16E69F2BF3C2}">
+                </ObjectReference>
+                <ObjectReference id="POI_DeAct_TP1" InstanceId="{D9910D15-6A9E-40E0-BD0D-FE5B4FF0CCBE}">
+                </ObjectReference>
+                <ObjectReference id="GoalResAct_TP1" InstanceId="{E2B0931B-3DA4-4BB7-B022-6C03A18E2227}">
+                </ObjectReference>
+                <ObjectReference id="ObjAct_ProxTrig_TP2" InstanceId="{3D398456-0899-4732-ACAF-18CF677FAA82}">
+                </ObjectReference>
+                <ObjectReference id="dialog_10_tp1" InstanceId="{5F124F2F-529B-46F4-A8FC-D883A3E65688}">
+                </ObjectReference>
+            </OnEnterActions>
+            <Areas>
+                <ObjectReference id="area_TP1" InstanceId="{7C3412AD-A6CA-431D-86BF-BF2FA7CA17F5}">
+                </ObjectReference>
+            </Areas>
+        </SimMission.ProximityTrigger>
+        <SimMission.ProximityTrigger InstanceId="{B9F70251-2992-4B94-9247-DBEAB1AF56A9}">
+            <Descr>ProxTrig_TP2</Descr>
+            <Activated>False</Activated>
+            <OnEnterActions>
+                <ObjectReference id="GoalResAct_TP2" InstanceId="{0880B66A-BC8B-4CD6-AAA7-70B7B987D333}">
+                </ObjectReference>
+                <ObjectReference id="POI_DeAct_TP2" InstanceId="{885815BD-3A7D-4BC0-856A-A4783B053BE0}">
+                </ObjectReference>
+                <ObjectReference id="dialog_20_tp2" InstanceId="{01A657F7-555C-4549-BACF-269455788715}">
+                </ObjectReference>
+                <ObjectReference id="POI_Act_TP3" InstanceId="{150273A3-B720-4F98-AB20-7DCC4DD473CD}">
+                </ObjectReference>
+                <ObjectReference id="ObjAct_ProxTrig_TP3" InstanceId="{ACE9584D-C589-4B1F-B7A2-5BAE805FD6BE}">
+                </ObjectReference>
+                <ObjectReference id="ObjAct_ProxTrig_mid_way" InstanceId="{3C855C8F-3F5A-402F-A0EB-9B825E7B885B}">
+                </ObjectReference>
+            </OnEnterActions>
+            <Areas>
+                <ObjectReference id="area_TP2" InstanceId="{39CD309A-00AA-443B-8863-9B74F07FA9E6}">
+                </ObjectReference>
+            </Areas>
+        </SimMission.ProximityTrigger>
+        <SimMission.ProximityTrigger InstanceId="{19E1048B-A1F5-424B-8FF6-D328127E1FA6}">
+            <Descr>ProxTrig_TP3</Descr>
+            <Activated>False</Activated>
+            <OnEnterActions>
+                <ObjectReference id="ObjAct_ProxTrig_final_glide" InstanceId="{B3370A57-DCB5-4D9D-824C-96586ADDC589}">
+                </ObjectReference>
+                <ObjectReference id="ObjAct_ProxTrig_airfield_landing" InstanceId="{50B772AC-BA3D-41C7-B455-37E0C11D3431}">
+                </ObjectReference>
+                <ObjectReference id="ObjAct_ProxTrig_finish" InstanceId="{90501C87-D6BC-4ED6-8A57-00CB92AA24A7}">
+                </ObjectReference>
+                <ObjectReference id="POI_Act_StartFinish" InstanceId="{836C5E3D-0BD8-4EC8-BD51-5CCD2E1CB648}">
+                </ObjectReference>
+                <ObjectReference id="GoalResAct_TP3" InstanceId="{FBF02A58-74E3-40E1-BC2F-98C6830D7D45}">
+                </ObjectReference>
+                <ObjectReference id="dialog_30_tp3" InstanceId="{567217B3-9DC4-4665-8DFA-0E1050D3C6BD}">
+                </ObjectReference>
+                <ObjectReference id="POI_DeAct_TP3" InstanceId="{3BE464F7-19B9-4C7C-B0A6-24798BFBE8E4}">
+                </ObjectReference>
+            </OnEnterActions>
+            <Areas>
+                <ObjectReference id="area_TP3" InstanceId="{93E07453-C277-4553-843E-D0E429422627}">
+                </ObjectReference>
+            </Areas>
+        </SimMission.ProximityTrigger>
+        <SimMission.TimerTrigger InstanceId="{064DA5AA-5F37-4FC7-B5B2-83BEBC0BA5F5}">
+            <Descr>tmr_20_mins</Descr>
+            <StopTime>1200.000</StopTime>
+            <Actions>
+                <ObjectReference id="dialog_03_height_reminder" InstanceId="{9241FA4E-F943-493B-AB17-1CDD4191F303}">
+                </ObjectReference>
+            </Actions>
+        </SimMission.TimerTrigger>
+        <SimMission.TimerTrigger InstanceId="{98F1B66C-46D8-4999-B7F3-9A13295B07E6}">
+            <Descr>tmr_mission_start</Descr>
+            <StopTime>2.000</StopTime>
+            <Actions>
+                <ObjectReference id="dialog_00_start_gate_open" InstanceId="{816266D7-7AA3-41BB-B539-5AA086D09FF5}">
+                </ObjectReference>
+                <ObjectReference id="dialog_03_height_reminder" InstanceId="{9241FA4E-F943-493B-AB17-1CDD4191F303}">
+                </ObjectReference>
+            </Actions>
+        </SimMission.TimerTrigger>
+        <SimMission.TimerTrigger InstanceId="{E6C39645-F88D-4963-9A9E-72E6A33A60B3}">
+            <Descr>tmr_task_timer</Descr>
+            <OnScreenTimer>True</OnScreenTimer>
+            <Activated>False</Activated>
+            <StopTime>30000.000</StopTime>
+        </SimMission.TimerTrigger>
+        <SimMission.PointOfInterest InstanceId="{4BBEF5FA-FC5A-409B-A0B9-9EDC5BFE8030}">
+            <Descr>POI_StartFinish</Descr>
+            <CurrentSelection>True</CurrentSelection>
+            <MinimumModelScale>0.250</MinimumModelScale>
+            <AttachedWorldPosition>
+                <WorldPosition>N40° 40' 45.60",W77° 37' 36.00",+000000.00</WorldPosition>
+                <AltitudeIsAGL>True</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.PointOfInterest>
+        <SimMission.PointOfInterest InstanceId="{596E95ED-FE57-438B-A8DA-246DB24A9175}">
+            <Descr>POI_TP1</Descr>
+            <CycleOrder>1</CycleOrder>
+            <TargetName>Spruce Creek Tunnel</TargetName>
+            <MinimumModelScale>0.250</MinimumModelScale>
+            <AttachedWorldPosition>
+                <WorldPosition>N40° 36' 03.00",W78° 07' 43.00",+000000.00</WorldPosition>
+                <AltitudeIsAGL>True</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.PointOfInterest>
+        <SimMission.PointOfInterest InstanceId="{5B8396F5-FBFF-4943-A7CD-AEE51B107E79}">
+            <Descr>POI_TP2</Descr>
+            <CycleOrder>2</CycleOrder>
+            <TargetName>Blair County Apt</TargetName>
+            <MinimumModelScale>0.250</MinimumModelScale>
+            <AttachedWorldPosition>
+                <WorldPosition>N40° 17' 19.00",W78° 19' 24.00",+000000.00</WorldPosition>
+                <AltitudeIsAGL>True</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.PointOfInterest>
+        <SimMission.PointOfInterest InstanceId="{4FAE51F9-5F77-4ADF-99A4-CCB0C5F2F283}">
+            <Descr>POI_TP3</Descr>
+            <CycleOrder>3</CycleOrder>
+            <TargetName>Penns Cave Apt</TargetName>
+            <MinimumModelScale>0.250</MinimumModelScale>
+            <AttachedWorldPosition>
+                <WorldPosition>N40° 53' 18.00",W77° 36' 26.00",+000000.00</WorldPosition>
+                <AltitudeIsAGL>True</AltitudeIsAGL>
+            </AttachedWorldPosition>
+        </SimMission.PointOfInterest>
+        <SimMissionUI.ScenarioMetadata InstanceId="{dcee0634-0e4f-4868-a7d7-7f23a29ba899}">
+            <Descr>ScenarioMetadata B21 Mission Template</Descr>
+            <ScenarioType>Mission</ScenarioType>
+            <SkillLevel>Intermediate</SkillLevel>
+            <LocationDescr>Mifflin - Day 2</LocationDescr>
+            <DifficultyLevel>40</DifficultyLevel>
+            <EstimatedTime>1 hour 40 minutes</EstimatedTime>
+            <UncompletedImage>imgM_i.bmp</UncompletedImage>
+            <CompletedImage>imgM_c.bmp</CompletedImage>
+            <MissionBrief>Template_Overview_Tab.htm</MissionBrief>
+            <AbbreviatedMissionBrief>Template_Task.htm</AbbreviatedMissionBrief>
+            <SuccessMessage>Success! Well done!</SuccessMessage>
+            <FailureMessage>You Failed!</FailureMessage>
+            <UserCrashMessage>Crashed and burned! That was the pits...</UserCrashMessage>
+            <CategoryRef>{CE1FC5F9-824F-45FB-89B7-CB699829A5A3}</CategoryRef>
+        </SimMissionUI.ScenarioMetadata>
+        <SimMission.Goal InstanceId="{6E284343-91B1-4AE9-8573-4401612CD8EC}">
+            <Descr>Goal_good_finish</Descr>
+            <Text>Good finish!</Text>
+            <Order>3</Order>
+        </SimMission.Goal>
+        <SimMission.Goal InstanceId="{EEF0E608-1B7A-4544-AED6-3EC6C25AE47A}">
+            <Descr>Goal_good_start</Descr>
+            <Text>Good start</Text>
+        </SimMission.Goal>
+        <SimMission.Goal InstanceId="{04EACD37-CD3C-4B76-BCD5-677071CE6454}">
+            <Descr>Goal_TP1</Descr>
+            <Text>Spruce Creek Tunnel</Text>
+            <Order>1</Order>
+        </SimMission.Goal>
+        <SimMission.Goal InstanceId="{5450F91D-78A8-44F8-B0BD-94D23C7123A0}">
+            <Descr>Goal_TP2</Descr>
+            <Text>Blair County Apt</Text>
+            <Order>2</Order>
+        </SimMission.Goal>
+        <SimMission.Goal InstanceId="{51492814-6794-4229-ACC0-95575C70B77F}">
+            <Descr>Goal_TP3</Descr>
+            <Text>Penns Cave Apt</Text>
+            <Order>3</Order>
+        </SimMission.Goal>
+    </WorldBase.Flight>
+    <MissionBuilder.MissionBuilder>
+    </MissionBuilder.MissionBuilder>
+</SimBase.Document>

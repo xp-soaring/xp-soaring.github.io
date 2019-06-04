@@ -1,0 +1,50 @@
+dialog_00_start_gate_open.wav
+  Zell am See to all competition gliders.  Good morning everybody, it's day 4, and the start gate is now open, height limit 8000. There's less wind than yesterday but the ridges should be still working.
+
+dialog_01_bad_start.wav
+  Yankee-November, was that intended to be a start? It looked higher than 8000 feet from down here.
+
+dialog_02_good_start.wav
+  Yankee-November good start. All pilots, the wind is still North-Easterly but less than yesterday. Ridges are working but weaker.
+
+dialog_03_height_reminder.wav
+  Zell am See all gliders we're getting reports of gliders breaching the airspace limit.  All gliders keep below 9000 feet.
+
+dialog_10_tp1.wav
+  Yankee-November well done reaching turnpoint 1.  There's some high ground to cross to get to TP2 and it's an into wind leg, so be careful.
+
+dialog_20_tp2.wav
+  Yankee-November nice job getting round TP2. Other competitors have been landing out around TP3 so the conditions look weak around there.
+
+dialog_25_mid_way.wav
+  Yankee-November how's it going? Did you get low on purpose or are you struggling? The trailer's ready if you land out.
+
+dialog_30_tp3.wav
+  Yankee-November good job reaching TP3.  It should be a straight run for home - if you need it try the West side of the valley there might be ridge lift there.
+
+dialog_31_tp3.wav
+  Yankee-November great job reaching TP3. we thought you weren't going to make it. It's downwind to home from there, and the West side of the valley should pick a bit of ridge lift, so good luck.
+
+dialog_35_curlover.wav
+  Yankee-November is that you in the lee of the ridge?
+      
+dialog_40_final_glide.wav
+  Yankee-November we can see you coming in.  The beer's on ice. See you soon.
+
+dialog_70_height_warning.wav
+  Yankee-November you are getting close to the area height limit.  Remember today the limit is 9000 feet.
+
+dialog_71_height_limit.wav
+  Yankee-November what happened? You've strayed into the upper airspace and have been disqualified.
+
+dialog_72_height_warning_2.wav
+  Yankee-November you're entering the upper airspace. Descend immediately below 9000 feet.
+
+dialog_73_height_warning_3.wav
+  Yankee-November watch out!
+
+dialog_90_land_out.wav
+  Yankee-November we've recorded a land-out. Please call in when you're ready.
+
+dialog_99_good_finish.wav
+  Yankee-November good finish! Great job!

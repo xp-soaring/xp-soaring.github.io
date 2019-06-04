@@ -1,0 +1,167 @@
+Number,Name,Elevation [Feet],Latitude,Longitude,Control P,ID[3],ID[5],ID[6],ID[10],ID[12],ICAO Identifier
+30,Allensville,960.00,40.5358333,-77.8175,T,ALL,Allns,Allnsv,Allensvill,Allensville,
+25,Bedford,1161.00,40.0863889,-78.5136111,TA,BDF,Bdfrd,Bedfrd,Bedford,Bedford,HMZ
+4,Belleville,932.00,40.5794444,-77.7263889,T,BLL,Bllvl,Bllvll,Belleville,Belleville,
+20,Blair County,1504.00,40.2972222,-78.32,TA,BLR,BlrCn,BlrCnt,BlairCount,Blair County,AOO
+27,Bloomsburg,481.00,40.9975,-76.4358333,TA,BLM,Blmsb,Blmsbr,Bloomsburg,Bloomsburg,N13
+24,Breezewood,1240.00,39.9852778,-78.2436111,T,BRZ,Brzwd,Brezwd,Breezewood,Breezewood,
+15,Clarks Ferry,350.00,40.4016667,-77.0105556,T,CLR,Clrks,ClrksF,ClarksFerr,Clarks Ferry,
+29,Cumberland Valley,732.00,39.6152778,-78.7619444,TA,CMB,Cmbrl,Cmbrln,CmbrlndVll,CumberlndVll,CBE
+36,Dickey's Mtn,1900.00,39.7616667,-78.0608333,T,DCK,DcksM,DcksMt,DickeysMtn,Dickeys Mtn,
+38,Evitts South,1508.00,39.7016667,-78.6713889,T,EVT,Evtts,EvttsS,Evitts S,Evitts South,
+51,Finish,819.00,40.6791667,-77.6244444,DFH,FNS,Finsh,Finish,Finish,Finish,RVL
+1,Honey Grove,672.00,40.4022222,-77.5533333,T,HNG,HnGrv,HonGrv,HoneyGrove,Honey Grove,
+17,Kettle Dam,1717.00,40.5066667,-78.35,T,KTT,KttlD,KttlDm,Kettle Dam,Kettle Dam,
+7,Keystone GP,815.00,40.8847222,-77.9061111,TD,KST,KstnG,KstnGP,KeystoneGP,Keystone GP,79N
+14,Lock Haven,555.00,41.1361111,-77.4222222,TA,LCK,LckHv,LckHvn,Lock Haven,Lock Haven,LHV
+22,McConnellsburg,961.00,39.9325,-77.9994444,T,MCC,McCnn,McCnnl,McCnnllsbr,McConnllsbrg,
+13,Midstate,1948.00,40.8841667,-78.0869444,TA,MDS,Mdstt,Midstt,Midstate,Midstate,PSB
+3,Mifflin,819.00,40.6791667,-77.6244444,TD,MFF,Mffln,Miffln,Mifflin,Mifflin,RVL
+5,Mifflintown,545.00,40.5988889,-77.4058333,TA,MIF,Miffl,Mfflnt,Mifflintwn,Mifflintown,P34
+9,Mill Creek,2150.00,40.4305556,-77.8852778,TP,MLL,MllCr,MllCrk,Mill Creek,Mill Creek,3PS4
+21,Nisbet,530.00,41.2177778,-77.1147222,T,NSB,Nisbt,Nisbet,Nisbet,Nisbet,
+23,Northumberland,886.00,40.8369444,-76.5530556,TA,NRT,Nrthm,Nrthmb,Nrthmbrlnd,Northumbrlnd,N79
+2,Orbisonia,629.00,40.2408333,-77.8969444,T,ORB,Orbsn,Orbisn,Orbisonia,Orbisonia,
+6,Penns Cave,1260.00,40.89,-77.6030556,TA,PNN,PnnsC,PnnsCv,Penns Cave,Penns Cave,N74
+28,Potomac,413.00,39.6927778,-78.1669444,TA,PTM,Potmc,Potomc,Potomac,Potomac,W35
+37,Quarry,1182.00,39.6997222,-78.7752778,T,QRR,Quarr,Quarry,Quarry,Quarry,
+11,Raystown Dam,954.00,40.4305556,-78.0041667,T,RST,Rstwn,RstwnD,RaystownDm,Raystown Dam,
+8,Saw Mill,750.00,40.7833333,-77.2666667,T,SWM,SwMll,SawMll,Saw Mill,Saw Mill,
+26,Schuylkill Co,1729.00,40.7055556,-76.3752778,TA,SCH,Schlk,Schlkl,SchuylkllC,SchuylkillCo,ZER
+18,Selingsgrove,444.00,40.8219444,-76.8644444,TA,SLN,Slngs,Slngsg,Selingsgrv,Selingsgrove,SEG
+35,Shade Mtn,1900.00,40.745,-77.0583333,T,SHD,ShdMt,ShdMtn,Shade Mtn,Shade Mtn,
+12,Spruce Creek,800.00,40.6008333,-78.1286111,T,SPR,SprcC,SprcCr,SpruceCrek,Spruce Creek,
+41,Start A,819.00,40.6791667,-77.6244444,S,STR,Str A,Strt A,Start A,Start A,RVL
+42,Start B,819.00,40.7583333,-77.575,S,STA,Str B,Strt B,Start B,Start B,
+43,Start C,819.00,40.6416667,-77.525,S,STT,Str C,Strt C,Start C,Start C,
+44,Start D,819.00,40.6083333,-77.6666667,S,STD,Str D,Strt D,Start D,Start D,
+45,Start E,819.00,40.7083333,-77.7333333,S,STE,Str E,Strt E,Start E,Start E,
+32,Strip Mine,2250.00,40.6,-78.4833333,T,MIN,Mine,Mine,Strip Mine,Strip Mine,
+33,Tall Pines,1500.00,41.2008333,-77.4427778,TAP,TLL,TllPn,TllPns,Tall Pines,Tall Pines,6PA8
+40,The Wall,2431.00,40.1052778,-78.4005556,T,THW,ThWll,TheWll,The Wall,The Wall,
+39,Thompsontown,444.00,40.5644444,-77.2372222,T,THM,Thmps,Thmpsn,Thompsntwn,Thompsontown,
+31,Three Barns,2000.00,40.855,-77.1280556,T,THR,ThrBr,ThrBrn,ThreeBarns,Three Barns,
+16,Turnpike Tunnels,1822.00,40.1494444,-77.6611111,T,TRN,Trnpk,TrnpkT,TrnpkTnnls,TurnpikTnnls,
+19,Waggoner's Gap,1479.00,40.2761111,-77.2794444,T,WGG,Wggnr,Wggnrs,WaggonrsGp,WaggonersGap,
+34,White Pine,1500.00,41.4,-77.2,T,WHT,WhtPn,WhitPn,White Pine,White Pine,
+10,Woodward,1130.00,40.8986111,-77.3561111,T,WDW,Wdwrd,Wodwrd,Woodward,Woodward,
+0,McCardle,600.00,40.6447222,-77.5563889,AP,MCA,McCrd,McCrdl,McCardle,McCardle,PS11
+0,Dwight Yoder,935.00,40.6369444,-77.7202778,L,DWG,Dwght,Dwghtd,DwightYodr,Dwight Yoder,
+0,Shangri La,751.00,40.6855556,-77.4744444,L,SHN,Shngr,ShngrL,Shangri La,Shangri La,
+0,Krout,581.00,40.6369444,-77.4836111,L,KRT,Krout,Krout,Krout,Krout,
+0,Wagner,520.00,40.5522222,-77.6113889,AP,WGN,Wagnr,Wagner,Wagner,Wagner,1PA4
+0,Centre Apk,1307.00,40.8116667,-77.6572222,A,CNT,Cntrp,Cntrpk,Centre Apk,Centre Apk,N16
+0,Pennfield,1200.00,40.8511111,-77.6130556,AP,PEN,Pnnfl,Pnnfld,Pennfield,Pennfield,44PA
+0,Hostetler,760.00,40.6311111,-77.8497222,AP,HST,Hsttl,Hsttlr,Hostetler,Hostetler,0PA6
+0,Plane View,1051.00,40.5563889,-77.8105556,L,PLN,PlnVw,PlanVw,Plane View,Plane View,
+0,Univ Park,1239.00,40.8488889,-77.8491667,A,UNV,UnvPr,UnvPrk,Univ Park,Univ Park,UNV
+0,Bellefonte,1080.00,40.8861111,-77.815,A,BEL,Bllfn,Bllfnt,Bellefonte,Bellefonte,N96
+0,Carms,715.00,40.7402778,-77.2975,L,CRM,Carms,Carms,Carms,Carms,
+0,Homan,1200.00,40.7197222,-77.9613889,AP,HMN,Homan,Homan,Homan,Homan,47PA
+0,Bierly,960.00,40.9308333,-77.7397222,AP,BRL,Bierl,Bierly,Bierly,Bierly,01PN
+0,Snook,710.00,40.7316667,-77.2691667,AP,SNK,Snook,Snook,Snook,Snook,PS06
+0,Hilling,1380.00,40.5047222,-77.9380556,LP,HLL,Hllng,Hillng,Hilling,Hilling,PN64
+0,Crust,920.00,40.9844444,-77.5630556,L,CRS,Crust,Crust,Crust,Crust,
+0,Eagle Field,1780.00,40.8244444,-77.9925,AP,EGL,EglFl,EglFld,EagleField,Eagle Field,09PA
+0,Mtn Hideaway,1585.00,40.4344444,-77.9002778,LP,MTN,MtnHd,MtnHdw,MtnHideawa,Mtn Hideaway,3PS4
+0,Gilfert,630.00,40.7844444,-77.21,AP,GLF,Glfrt,Gilfrt,Gilfert,Gilfert,77PN
+0,Mapleton,590.00,40.4191667,-77.9355556,L,MPL,Mpltn,Mapltn,Mapleton,Mapleton,
+0,Fox,727.00,40.4861111,-77.2191667,AP,FOX,Fox,Fox,Fox,Fox,34PN
+0,Millers,852.00,41.0597222,-77.4902778,L,MIL,Mllrs,Millrs,Millers,Millers,
+0,Roadcap,731.00,40.7886111,-77.1055556,AP,RDC,Rodcp,Roadcp,Roadcap,Roadcap,37PA
+0,Shirleysburg,564.00,40.3183333,-77.8758333,L,SHR,Shrls,Shrlsb,Shirlesbrg,Shirleysburg,
+0,Poverty,846.00,41.0622222,-77.4325,L,PVR,Povrt,Povert,Poverty,Poverty,
+0,Egolf,610.00,40.3344444,-77.3,AP,EGO,Egolf,Egolf,Egolf,Egolf,2PA7
+0,Jansen,850.00,40.6525,-77.0544444,AP,JNS,Jansn,Jansen,Jansen,Jansen,PN71
+0,Shulls,640.00,40.3180556,-77.2838889,L,SHL,Shlls,Shulls,Shulls,Shulls,
+0,Lincoln,1208.00,40.3230556,-78.0408333,AP,LNC,Lncln,Lincln,Lincoln,Lincoln,5PN8
+0,Yost,560.00,40.3308333,-77.1766667,LP,YST,Yost,Yost,Yost,Yost,8PA6
+0,Beers Farm,630.00,40.23,-77.9197222,AP,BRS,BrsFr,BrsFrm,Beers Farm,Beers Farm,PN73
+0,J F T,660.00,40.9447222,-77.0447222,AP,JFT,J F T,J F T,J F T,J F T,8PA4
+0,Cove Valley,1156.00,40.4544444,-78.2380556,A,CVV,CvVll,CovVll,CoveValley,Cove Valley,6G6
+0,Haunstein,600.00,40.3183333,-77.1252778,AP,HNS,Hnstn,Hanstn,Haunstein,Haunstein,0PA2
+0,Sauers Haven,590.00,40.8830556,-76.9769444,AP,SRS,SrsHv,SrsHvn,SauersHavn,Sauers Haven,4PA1
+0,Drillmore,690.00,40.1325,-77.6283333,AP,DRL,Drllm,Drllmr,Drillmore,Drillmore,0PN7
+0,Heberlig,560.00,40.1644444,-77.3708333,AP,HBR,Hbrlg,Hebrlg,Heberlig,Heberlig,PS02
+0,Albert,1784.00,40.9716667,-78.2430556,A,ALB,Albrt,Albert,Albert,Albert,1N3
+0,Schrenkel,1237.00,40.2630556,-78.1013889,AP,SCR,Schrn,Schrnk,Schrenkel,Schrenkel,PN30
+0,Hinamin,800.00,41.1325,-77.2033333,AP,HNM,Hinmn,Hinamn,Hinamin,Hinamin,1PA0
+0,Mills,1203.00,40.1433333,-77.8627778,AP,MIS,Mills,Mills,Mills,Mills,05PS
+0,Botsford,615.00,40.1133333,-77.4544444,AP,BTS,Btsfr,Btsfrd,Botsford,Botsford,6PA5
+0,Memmi,1138.00,40.1697222,-77.9916667,AP,MMM,Memmi,Memmi,Memmi,Memmi,0PN6
+0,Deitch,420.00,40.2575,-77.0805556,AP,DTC,Detch,Deitch,Deitch,Deitch,41PA
+0,Vicars,1380.00,40.5480556,-78.3919444,AP,VCR,Vicrs,Vicars,Vicars,Vicars,PS15
+0,Carlisle,510.00,40.1880556,-77.1741667,A,CRL,Crlsl,Carlsl,Carlisle,Carlisle,N94
+0,Raystown LF,840.00,40.2677778,-78.2041667,L,RAY,Rayst,RstwnL,RaystownLF,Raystown LF,
+0,Jersey Shore,547.00,41.2063889,-77.2263889,A,JRS,JrsSh,JrsShr,JerseyShor,Jersey Shore,P96
+0,Harman,720.00,40.5225,-76.8466667,AP,HRM,Harmn,Harman,Harman,Harman,0PS7
+0,Spud View,733.00,40.0655556,-77.6925,LP,SPD,SpdVw,SpudVw,Spud View,Spud View,18PN
+0,Flying Eagle,660.00,40.6458333,-76.8108333,AP,FLN,Flngg,Flnggl,FlyingEagl,Flying Eagle,PS21
+0,Burnt Cabins,932.00,40.0863889,-77.8669444,L,BRN,BrntC,BrntCb,BurntCabns,Burnt Cabins,
+0,Fox Hollow,540.00,40.9927778,-76.9019444,AP,FXH,FxHll,FxHllw,Fox Hollow,Fox Hollow,3PA6
+0,Gusler,700.00,40.4652778,-76.84,AP,GSL,Guslr,Gusler,Gusler,Gusler,PA74
+0,Ponderosa,1820.00,41.3083333,-77.5236111,AP,PND,Pndrs,Pondrs,Ponderosa,Ponderosa,4PA5
+0,Pine Ridge,1190.00,40.2591667,-78.2483333,L,PNR,PnRdg,PinRdg,Pine Ridge,Pine Ridge,
+0,Sunbury,443.00,40.8916667,-76.7788889,A,SNB,Sunbr,Sunbur,Sunbury,Sunbury,71N
+0,Carsonville,800.00,40.4875,-76.7658333,AP,CAR,Crsnv,Crsnvl,Carsonvill,Carsonville,0PS3
+0,Blue Knob,1270.00,40.3966667,-78.4538889,A,BLK,BlKnb,BluKnb,Blue Knob,Blue Knob,7G4
+0,Barnhart,1640.00,40.7255556,-78.54,AP,BAR,Brnhr,Brnhrt,Barnhart,Barnhart,PS69
+0,Clearfield,1516.00,41.0491667,-78.415,A,CLE,Clrfl,Clrfld,Clearfield,Clearfield,FIG
+0,Rocktop,770.00,39.975,-77.5577778,AP,RCK,Rcktp,Rocktp,Rocktop,Rocktop,PA58
+0,Baker Sell,1371.00,40.2486111,-78.36,AP,BKR,BkrSl,BkrSll,Baker Sell,Baker Sell,2PN5
+0,Chambersburg,697.00,39.9730556,-77.6433333,A,CHM,Chmbr,Chmbrs,Chambrsbrg,Chambersburg,N68
+0,Hackenburg,1000.00,41.1588889,-76.8975,AP,HCK,Hcknb,Hcknbr,Hackenburg,Hackenburg,6PA3
+0,Lost Acres,710.00,39.9386111,-77.6158333,AP,LST,Lstcr,Lstcrs,Lost Acres,Lost Acres,8PN0
+0,Capital City,347.00,40.2172222,-76.8513889,A,CPT,CptlC,CaptlC,Capital C,Capital City,CXY
+0,Strohmier,1962.00,40.5516667,-78.6225,LP,STO,Strhm,Strhmr,Strohmier,Strohmier,PN53
+0,Five Lakes,821.00,39.9130556,-77.5330556,AP,FVL,FvLks,FivLks,Five Lakes,Five Lakes,PA81
+0,Schulteis,680.00,39.9602778,-77.2580556,AP,SCU,Schlt,Schlts,Schulteis,Schulteis,3PN0
+0,Williamsport,529.00,41.2419444,-76.9216667,A,WLL,Wllms,Wllmsp,Willimsprt,Williamsport,IPT
+0,Masser,720.00,40.6338889,-76.6,AP,MSS,Massr,Masser,Masser,Masser,67PN
+0,Old Orchard,1980.00,41.01,-78.5613889,AP,OLD,Oldrc,Oldrch,OldOrchard,Old Orchard,0PS4
+0,Danville,559.00,40.9483333,-76.6438889,A,DNV,Dnvll,Danvll,Danville,Danville,8N8
+0,Mathna,490.00,40.0158333,-77.0422222,AP,MTH,Mathn,Mathna,Mathna,Mathna,2PS3
+0,Kampel,610.00,40.0483333,-76.9780556,A,KMP,Kampl,Kampel,Kampel,Kampel,2N5
+0,Brookside Farms,489.00,40.3152778,-76.6858333,AP,BRK,Brksd,BrksdF,BroksdFrms,BrooksidFrms,59PN
+0,Shreveport N,550.00,40.035,-76.9941667,AP,SHE,Shrvp,Shrvpr,ShreveprtN,Shreveport N,62PA
+0,Finkhaven,640.00,41.3683333,-77.0711111,AP,FNK,Fnkhv,Fnkhvn,Finkhaven,Finkhaven,73PN
+0,Bermudian,470.00,40.0163889,-77.0036111,A,BRM,Brmdn,Bermdn,Bermudian,Bermudian,07N
+0,Harrisburg,310.00,40.1933333,-76.7633333,A,HRR,Hrrsb,Hrrsbr,Harrisburg,Harrisburg,MDT
+0,Bendigo,800.00,40.5591667,-76.5597222,A,BND,Bendg,Bendig,Bendigo,Bendigo,74N
+0,Strittmatter,2080.00,40.5469444,-78.6947222,LP,STI,Strtt,Strttm,Strittmttr,Strittmatter,PN04
+0,Muir AAF,480.00,40.4347222,-76.5694444,Y,MRF,MuirF,MuirAF,Muir AAF,Muir AAF,MUI
+0,Shimerfield,550.00,39.8966667,-77.195,AP,SHM,Shmrf,Shmrfl,Shimerfild,Shimerfield,PA51
+0,Cumberland Valley,580.00,39.8166667,-77.7261111,AP,CUM,Cumbe,Cumber,Cumberland,CumberlandVa,PA66
+0,Circle W,460.00,39.9586111,-76.9708333,AP,Crc,Crc W,Crc W,Circle W,Circle W,PA72
+0,Krumenacker,2040.00,40.5947222,-78.7786111,LP,KRM,Krmnc,Krmnck,Krumenackr,Krumenacker,85PA
+0,Hamilton,2245.00,40.4255556,-78.7394444,AP,HML,Hmltn,Hamltn,Hamilton,Hamilton,PS47
+0,Stone Castle,585.00,40.9736111,-76.5183333,L,STN,StnCs,StnCst,StoneCastl,Stone Castle,
+0,Fairview,600.00,40.5372222,-76.4661111,AP,FRV,Farvw,Fairvw,Fairview,Fairview,PS20
+0,JJ and PK,540.00,39.7933333,-77.7780556,AP,JJ+,JJ+PK,JJ +PK,JJ and PK,JJ and PK,PA08
+0,Marsh Creek,530.00,39.8219444,-77.2919444,AP,MRS,MrshC,MrshCr,MarshCreek,Marsh Creek,8PN9
+0,Lamberson,540.00,39.8825,-77.0836111,LP,LMB,Lmbrs,Lmbrsn,Lamberson,Lamberson,51PA
+0,Ebensburg,2099.00,40.4611111,-78.7752778,A,EBN,Ebnsb,Ebnsbr,Ebensburg,Ebensburg,9G8
+0,Farmers Pride,495.00,40.4427778,-76.4427778,A,FRM,Frmrs,FrmrsP,FarmersPrd,FarmersPride,9N7
+0,Horst,450.00,40.3780556,-76.4686111,LP,HRS,Horst,Horst,Horst,Horst,3PA0
+0,MAASA,565.00,39.7572222,-77.3516667,D,MAS,MAASA,MAASA,MAASA,MAASA,W73
+0,Numidia,1070.00,40.8661111,-76.3975,AP,NMD,Numid,Numidi,Numidia,Numidia,8PA0
+0,Scheck,750.00,41.1177778,-76.5119444,AP,SCE,Schck,Scheck,Scheck,Scheck,19PA
+0,Hagerstown,704.00,39.7080556,-77.7291667,A,HGR,Hgrst,Hgrstw,Hagerstown,Hagerstown,HGR
+0,Waltz,530.00,39.7594444,-77.1927778,AP,WLT,Waltz,Waltz,Waltz,Waltz,34PA
+0,Johnstown,2284.00,40.3169444,-78.8344444,A,JHN,Jhnst,Jhnstw,Johnstown,Johnstown,JST
+0,Broadt,920.00,40.9980556,-76.3841667,AP,BRD,Brodt,Broadt,Broadt,Broadt,5PA1
+0,Krill,520.00,40.4477778,-76.3408333,LP,KRL,Krill,Krill,Krill,Krill,PA86
+0,Seesholtz,730.00,41.0444444,-76.3552778,AP,SSH,Sshlt,Sshltz,Seesholtz,Seesholtz,86PN
+0,Alberter,2070.00,40.1947222,-78.8327778,LP,ALE,Alber,Albrtr,Alberter,Alberter,PS52
+0,Grimes,582.00,40.4852778,-76.2636111,A,GRM,Grims,Grimes,Grimes,Grimes,8N1
+0,Tidmore,917.00,40.7047222,-76.2361111,AP,TDM,Tidmr,Tidmor,Tidmore,Tidmore,7PN0
+0,Benton,780.00,41.2,-76.3872222,AP,BNT,Bentn,Benton,Benton,Benton,PA40
+0,HiLine,2125.00,41.6944444,-77.1647222,L,HLN,HiLin,HiLine,HiLine,HiLine,
+0,Ragged Mtn,1037.00,39.8172222,-78.48,AP,RGG,RggdM,RggdMt,Ragged Mtn,Ragged Mtn,32PA
+0,McDonald's,1200.00,40.8855556,-76.1538889,AP,MCD,McDnl,McDnld,McDonalds,McDonalds,6PN9
+0,Blue Mountain Academy,531.00,40.5522222,-76.0294444,AP,BLU,BlMtn,BlMtnc,BlueMtncdm,BlueMtnAcadm,PA92
+0,Crosswind,1140.00,41.0347222,-76.0219444,AP,CRO,Crssw,Crsswn,Crosswind,Crosswind,5PA2
+0,Hazleton,1604.00,40.9866667,-75.995,A,HZL,Hzltn,Hazltn,Hazleton,Hazleton,HZL
+0,Hartman,2350.00,39.86,-78.9877778,AP,HRT,Hrtmn,Hartmn,Hartman,Hartman,58PA
+0,Mexico Farms,607.00,39.6047222,-78.7605556,A,MXC,MxcFr,MxcFrm,MexicoFrms,Mexico Farms,1W3
+0,Moran,2080.00,39.5005556,-79.0722222,L,MRN,Moran,Moran,Moran,Moran,

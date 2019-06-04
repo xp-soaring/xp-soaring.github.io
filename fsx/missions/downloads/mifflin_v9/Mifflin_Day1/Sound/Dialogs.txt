@@ -1,0 +1,52 @@
+dialog_00_start_gate_open.wav
+  Mifflin ground to all competition gliders.  The start gate for Day 1 is now open.  6000 feet AGL maximum start. Wind is as forecast from the North-West, and the ridges are working.
+
+dialog_01_bad_start.wav
+  Yankee-November, was that intended to be a start? It looked higher than the height limit from down here
+
+dialog_02_good_start.wav
+  Yankee-November good start.
+
+dialog_03_height_reminder.wav
+  all gliders - we're getting reports of gliders breaching the airspace limit.
+
+dialog_10_tp1.wav
+  Yankee-november well done reaching turnpoint 1. TP2 will need a jump to the upwind ridge so take care.
+
+dialog_20_tp2.wav
+  Yankee-November nice job getting round TP2.
+  Yankee-November nice job getting round TP2. TP3 is back on the ridge to the south of Mifflin, so you're going to have to cross the vlley. Don't get too low.
+
+dialog_25_mid_way.wav
+  Yankee-November you're about half-way round the task.  keep it up!
+
+dialog_30_tp3.wav
+  Yankee-November good job reaching TP3.
+  Yankee-November good job reaching TP3. Should be a straight run home - use the ridge lift most of the way.
+
+dialog_31_tp3.wav
+  Yankee-November great job reaching TP3. we thought you weren't going to make it.
+
+dialog_35_curlover.wav
+  Yankee-November is that you in the lee of the ridge?
+      
+dialog_40_final_glide.wav
+  Yankee-November we can see you coming in.  Well done. See you soon.
+
+dialog_70_height_warning.wav
+  Yankee-November you are getting close to the area height limit.
+
+dialog_71_height_limit.wav
+  Yankee-November what happened? You've strayed into the upper airspace and have been disqualified.
+
+dialog_72_height_warning_2.wav
+  Yankee-November you're entering the upper airspace. Descend immediately.
+
+dialog_73_height_warning_3.wav
+  Yankee-November watch out!
+
+dialog_90_land_out.wav
+  Yankee-November we've recorded a land-out for you. Please call in when you're ready.
+
+dialog_99_good_finish.wav
+  Yankee-November good finish! Great job!
