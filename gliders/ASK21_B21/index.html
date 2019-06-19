@@ -15,12 +15,29 @@
 <body>
 <div>
     <div class="breadcrumbs">
-        <a href="../index.html">xp-soaring</a> &gt;
-        <a href="../../index.html">Sailplanes</a> &gt;
+        <a href="../../index.html">xp-soaring</a> &gt;
+        <a href="../index.html">Sailplanes</a> &gt;
         ASK21_B21
     </div>
-    <div class="page_heading">Schleicher ASK21 modified by B21</div>
+    <div class="page_heading">Schleicher ASK21 (mod by B21)</div>
 </div>
+
+<h2>Contents</h2>
+
+<ol>
+    <li><a href="instruments">Instruments</a> with an overview of the panel.</li>
+    <li><a href="variometers">Variometers</a> from Total Energy to Netto to Speed-to-Fly</li>
+    <li><a href="gpsnav">GPSNav navigation</a> including loading a flight plan</li>
+    <li><a href="arrival_height">Arrival height and final glide</a></li>
+    <li><a href="commands">X-Plane commands</a> if you want to set joystick buttons or keystrokes.</li>
+    <li><a href="user_settings">User settings</a> to change instrument units and other settings.</li>
+</ol>
+
+<h2>Credits</h2>
+<p>Thanks to Chris "Nodd" Evans for extensive testing, I recommend you check out his YouTube channel:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/QgaVjEM3EOY?start=404" frameborder="0"
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
 
 <h2>Overview</h2>
 
@@ -36,7 +53,21 @@ the most significant changes have been made.
 <img src="ask21_parked.png"/>
 <img src="ask21_soaring.png"/>
 
-<h2>Panel instruments</h2>
+<h2>Summary of Features</h2>
+
+<ol>
+    <li>Competition-grade variometers giving total energy, netto and speed-to-fly.</li>
+    <li>GPS Nav instrument using stock X-Plane flightplans for the cross-country task.</li>
+    <li>Re-worked flight model for accurate polar and reasonable flight characteristics.</li>
+    <li>User settings file provided so default setup can be adjusted, such as the vario sound
+        'quiet band' and the units used for speed, height etc in the instruments.</li>
+    <li>Updated sounds for general 'wind', spoilers, trim, vario.</li>
+    <li>Waypoint arrival height calculation based on computer vario and gpsnav data.</li>
+    <li>'Trigger' trim command to set trim to current airspeed. Additional commands added so
+        panel buttons (next waypoint, etc) can be configured to joystick or keyboard.</li>
+</ol>
+
+<h2 id="instruments">Panel instruments</h2>
 <p>The panel is screenshot below. The major upgrades are to the gliding rate-of-climb instruments, i.e. the
     variometers. In addition there is a GPS navigation instrument.
 </p>
@@ -46,7 +77,7 @@ the most significant changes have been made.
 <p>More detail is given in the separate article on <a href="../../instruments/index.html">soaring instruments</a>.
 </p>
 
-<h3>Variometers</h3>
+<h3 id="variometers">Variometers</h3>
 
 <p>In summary, the upgraded panel includes three variometers. The starting point for all of these is the rate-of-climb
     indicator (which is <i>not</i> on the panel) which would always indicate your current true rate of climb (or sink).
@@ -104,8 +135,44 @@ the most significant changes have been made.
     <p>The 'Computer Vario' (center of panel, with yellow needle) is by far the most sophisticated of all, but can still be
         interpreted as a simple 'rate-of-climb' indicator. The computer vario can operate in two modes - Total Energy
         (i.e. identical to the Winter Vario described above), and Speed-to-Fly. The instrument is typically used in
-        Total Energy mode when thermalling, and Speed-to-Fly mode when cruising between thermals.
+        Total Energy mode when thermalling, and Speed-to-Fly mode when cruising between thermals, and on the 'Auto'
+        setting will automatically switch between the two.
     </p>
+    <h4>The Maccready setting</h4>
+    <p>The knob labelled "Mc" in the picture above is used to dial-in a <b>Maccready Setting</b>. This can be
+        interpreted different ways but the simplest is as the <b>expected strength of your next climb</b>. I.e. the
+        setting has the same units as your vario setting, e.g Knots, and the setting is displayed in the two digits at
+        3 o'clock in the picture above in which it is the "0.0" above the 'STF' graphic.
+    </p>
+    <p>
+        The computer vario will do many calculations based on how fast you are intending to fly, a simple example
+        being your arrival height at a future waypoint will depend on your sink rate at your planned cruising speed
+        with this being related by the glider <a href="../../dev/polar.html">polar</a>. This may sound a circular
+        explanation but the vario itself (in Speed-to-Fly mode) will be <i>telling</i> you how fast to fly and the vario
+        assumes reasonably you will be mostly following that guidance. But it uses the <i>pilot input</i> for the
+        expected strength of thermals to calibrate it's recommended speed-to-fly.
+    </p>
+    <p>The net of all this is the Maccready
+        Setting is the pilot's one communication with the computer vario which then adjusts everything else. The pilot
+        learns pretty quickly that in still air a Maccready setting of, say, 3 knots will give a recommended speed of say
+        70 knots, or maybe a 4 knot Maccready will recommend 80 knots airspeed.  A perfectly normal use of the
+        Maccready setting is for the pilot, with years of experience of how fast they should fly in different
+        weather conditions, to turn the Maccready UP when they want to fly a bit faster or DOWN when they feel they
+        should be cautious. The computer vario will still do all the calculation trickery to continuously adjust the speed
+        appropriately in any lift or sink. (Note the actual speeds in a heavily ballasted racing glider like the
+        ASW27 will be <i>much</i> higher)
+    </p>
+    <p>The Maccready Setting has a special use on <b>final glide</b> (see <a href="#arrival_height">below</a>). It is
+        normal for the pilot to fly the course with an optimal cross-country Maccready Setting for the weather,
+        say 3.5 knots, and at some point the arrival height for the finish will become positive (happy news). At this
+        point the pilot is likely to set off for the finish but may still dolphin in thermals and gain a bit of energy
+        on the way so the predicted arrival height continues to improve.  At this point the pilot can turn UP the
+        Maccready until that reduces the arrival height to a small margin above the airfield, and then
+        follow the Speed-to-Fly much faster to the finish. The extra speed actually provides a built-in safety margin
+        but only the pilot experience can assess the expected conditions on the way home to judge accurately the risk of
+        landing out.
+    </p>
+    <h4>Speed to Fly</h4>
     <p>
         In Speed-to-Fly
         mode the variometer behaves <i>like</i> a normal variometer and appears to be indicating lift and sink in
@@ -113,16 +180,16 @@ the most significant changes have been made.
         a closely related concept (in soaring) that you should SPEED UP or SLOW DOWN. The general optimal
         practice in soaring is that you SPEED UP IN SINK and SLOW DOWN IN LIFT, and the Speed-to-Fly vario computes
         the <i>optimum</i> speed to fly given the current lift or sink, compares that to your current speed, and moves
-        the needle and beeps or burps directly according to how much you should speed up or slow down.
+        the needle and beeps or buuuurps directly according to how much you should speed up or slow down.
     </p>
     <p>This is more
         complicated to explain than to use in practice - the net effect is a vario that beeps at you to slow down and
-        burps at you to speed up, which is kind of what any electronic vario is doing although the STF vario does all
+        buuuuuurps at you to speed up, which is kind of what any electronic vario is doing although the STF vario does all
         this relative to your current airspeed (and in fact how much water ballast you're carrying, which in the
         ASK21 is zero). The optimal speed for you to fly in <i>still air</i> varies a lot depending on the strength of
-        the next climb your expecting to get, and this provides the baseline around which the STF vario operates. So
-        you tell the vario your guess of the strength of the next thermal by turning the knob for the
-        <b>Maccready Setting</b>.
+        the next climb you're hoping to get, and this provides the baseline around which the STF vario operates. So
+        you tell the vario your <i>guess</i> of the strength of the next thermal by turning the knob for the
+        <b>Maccready Setting</b> (labelled "Mc" in the picture above).
     </p>
     <p>This is simpler than it sounds - a typical setting might be 3 or 4 knots and you can
         dial that in and leave it for most of your flight, flying between thermals at the speed the STF vario directs you
@@ -135,7 +202,7 @@ the most significant changes have been made.
     </p>
 
 
-<h3>GPSNav</h3>
+<h3 id="gpsnav">GPSNav</h3>
 
 <img src="gpsnav.png"/>
 
@@ -164,8 +231,14 @@ the most significant changes have been made.
 
 <img src="vario_302.png"/>
 
-<p><b>This information is then sent to the computer vario which will continuously calulate an expected arrival height
-    at this waypoint</b>. The computer vario is saying you will arrive 1292 feet BELOW the intended waypoint.
+<h3 id="arrival_height">Arrival height / final glide calculation</h3>
+
+<p><b>The information from the GPSNav is sent to the computer vario which will continuously calulate an expected
+    arrival height
+    above the next waypoint</b>. The computer vario above is saying you will arrive 1292 feet BELOW the intended waypoint.
+    When you have height in hand the reading will have '+' in front of it. Note that the +/- figures are
+    <b>above the ground</b> at that waypoint and the default units are feet unless you've changed that in
+    your <a href="#user_settings">user settings</a>.
 </p>
 <p>The GPSNav is at heart a relatively simple GPS-based navigation instrument guiding you along a stored flightplan.
     In contrast the computer vario is doing a very complex calculation taking into account the all-up-weight of the
@@ -192,7 +265,7 @@ the most significant changes have been made.
     the Maccready until the arrival height is only a couple of hundred feet and storm home.
 </p>
 
-<h2>COMMANDS</h2>
+<h2 id="commands">New X-Plane COMMANDS</h2>
 
 <p>The ASK21_B21 has various x-plane commands built-in that you can assign to joystick buttons or keyboard keys.
     To do so open the Settings screen (2nd from right icon in top right corner of the XP11 screen) and
@@ -206,6 +279,21 @@ the most significant changes have been made.
     work the same.
 </p>
 <table>
+    <tr>
+        <td>b21/trim/trigger</td>
+        <td><p>This will set your 'trim' (i.e. the controls-centered steady speed of the aircraft) to match
+            the current <b>airspeed</b> of the aircraft. Note this will not necessarily match the current
+            pitch (nose up/down attitude) as the aircraft might currently be accelerating.</p>
+            <p>On the ground,
+            the trigger trim will adjust the speed setting according to the current forward/backward position
+            of the stick. If you use a joystick this command can usefully be assigned to the trigger button.
+            </p>
+            <p>The typical use is to pull the trigger when you've pulled up from fast flight into a thermal so
+            setting the trim for about 50 knots for thermalling, and pull the trigger again after exitting the
+            thermal and having sped up on cruise.
+            </p>
+        </td>
+    </tr>
     <tr>
         <td>b21/nav/load_task</td>
         <td>This will trigger the X-Plane 'Select FlightPlan' menu, and the selected .fms file data will be
@@ -260,7 +348,7 @@ the most significant changes have been made.
     <tr>
 </table>
 
-<h2>ASK21_B21/USER_SETTINGS.lua</h2>
+<h2 id="user_settings">ASK21_B21/USER_SETTINGS.lua</h2>
 
 <p>If you can edit a text file using Notepad, you can tweak the instruments to your preferences. The settings
 file at the base of the aircraft folder, and called <b>USER_SETTINGS.lua</b>. The initial settings in this file
@@ -294,9 +382,14 @@ project_settings.CLOCK_MODE = 0 -- cockpit panel clock display simulator local t
 
 <table>
     <tr>
-        <td>XXXX_UNITS</td><td>Each can be set to <b>0</b> or <b>1</b> to select knots or meters-per-second etc. for
+        <td>VARIO_UNITS<br/>
+        SPEED_UNITS<br/>
+        ALTITUDE_UNITS<br/>
+        DISTANCE_UNITS
+    </td>
+        <td>Each can be set to <b>0</b> or <b>1</b> to select knots or meters-per-second etc. for
             instruments that are displaying climb rates, speed, altitude or distance. It is not possible (unless you edit
-        the code) to have the altimeter display height in meters and the GPSNav display height in feet, i.e. the settings
+        the plugin code) to have the altimeter display height in meters and the GPSNav display height in feet, i.e. the settings
         are read by all of the instruments and they update accordingly.</td>
     </tr>
     <tr>
