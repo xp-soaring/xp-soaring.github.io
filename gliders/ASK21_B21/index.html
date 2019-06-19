@@ -3,8 +3,11 @@
         <title>X-Plane ASK21_B21 sailplane</title>
         <link rel="stylesheet" type="text/css" href="../../xp-soaring.css"/>
 <style>
+    table { width: 90%;
+    }
     td {
-        border: 1px solid black;
+        border-bottom: 1px solid black;
+        padding: 8px;
     }
 </style>
 
@@ -12,8 +15,8 @@
 <body>
 <div>
     <div class="breadcrumbs">
-        <a href="../index.html">xp-soaring</a> &gt; 
-        <a href="../../index.html">Sailplanes</a> &gt; 
+        <a href="../index.html">xp-soaring</a> &gt;
+        <a href="../../index.html">Sailplanes</a> &gt;
         ASK21_B21
     </div>
     <div class="page_heading">Schleicher ASK21 modified by B21</div>
@@ -27,6 +30,8 @@ performance (i.e. the <a href="../../dev/polar.html">polar</a>) is close to the 
 <p>There are additional improvements for example in the various sounds, switchable instruments for imperial/metric units, and configurable commands in general intended
 to make the glider enjoyable to fly. But it is the programming of the existing and new panel gauges where
 the most significant changes have been made.
+</p>
+<p>Couple of stock photos (this update is not about the external model):
 </p>
 <img src="ask21_parked.png"/>
 <img src="ask21_soaring.png"/>
@@ -54,15 +59,15 @@ the most significant changes have been made.
 <img src="winter.png"/>
 
     <p>The Winter Vario (panel bottom left) displays rate-of-climb <i>adjusted</i> to take into account whether the aircraft
-        airspeed is increasing or decreasing, referred to as Total Energy compensation. 
+        airspeed is increasing or decreasing, referred to as Total Energy compensation.
         If the pilot pushes the stick forwards the glider will sink faster <b>and</b>
         increase in airspeed. If the pilot pulls the stick back the reverse will happen. So a 'pitot' (i.e. the forward
-        facing airspeed pressure inlet) bleed can be added to the 'static' (i.e. altitude) pressure feed 
+        facing airspeed pressure inlet) bleed can be added to the 'static' (i.e. altitude) pressure feed
         the simple rate-of-climb
-        instrument uses to give a <b>compensated</b> reading that cancels out the effect of accelerating 
-        or decelerating. 
+        instrument uses to give a <b>compensated</b> reading that cancels out the effect of accelerating
+        or decelerating.
     </p>
-    <p>The end result is a variometer that shows how fast the glider is climbing or sinking without 
+    <p>The end result is a variometer that shows how fast the glider is climbing or sinking without
         injecting 'stick thermals' every time the pilot moves the controls. The compensation of the vario is easy
         to recognise in flight by pushing and pulling on the stick and you'll see in the short term the needle reading
         doesn't move much where in a pure rate-of-climb indicator the needle would be swinging wildly from lift to sink.
@@ -77,17 +82,17 @@ the most significant changes have been made.
         reading shown on the Winter Vario described above. If you watch the two varios carefully in flight you'll see
         they appear to move in tandem, with the Netto reading just offset upwards. This amount of offset of the Netto
         needle varies with the speed of the aircraft to match the way the 'still air' sink rate of the aircraft varies
-        with airspeed. 
+        with airspeed.
     </p>
     <p>The end result is the Netto Vario is showing you the sink rate of the <i>air through which the
         aircraft is flying</i> (as the natural sink of the glider has been deducted). In X-Plane you can witness
         this by choosing a flight in 'clear' weather and once you're off tow the needle will read pretty
-        close to zero throughout your flight in spite of you flying at a variety of speeds. 
+        close to zero throughout your flight in spite of you flying at a variety of speeds.
     </p>
     <p>Note the simulated
         instrument doesn't 'cheat' by reading vertical air movement from X-Plane - it does the same calculation as
         is built into the real instrument using airspeed and altimeter climb/descent rates so it is fairly accurate but
-        will deviate in certain circumstances such as a low-G push-over just like the real instrument. At very fast or 
+        will deviate in certain circumstances such as a low-G push-over just like the real instrument. At very fast or
         very slow airspeeds the aircraft 'polar' calculation calibrated into the instrument can't hope to be perfectly
         accurate so the netto reading will drift in these corners of the flight envelope, again like the real thing.
         </p>
@@ -99,7 +104,7 @@ the most significant changes have been made.
     <p>The 'Computer Vario' (center of panel, with yellow needle) is by far the most sophisticated of all, but can still be
         interpreted as a simple 'rate-of-climb' indicator. The computer vario can operate in two modes - Total Energy
         (i.e. identical to the Winter Vario described above), and Speed-to-Fly. The instrument is typically used in
-        Total Energy mode when thermalling, and Speed-to-Fly mode when cruising between thermals.  
+        Total Energy mode when thermalling, and Speed-to-Fly mode when cruising between thermals.
     </p>
     <p>
         In Speed-to-Fly
@@ -108,7 +113,7 @@ the most significant changes have been made.
         a closely related concept (in soaring) that you should SPEED UP or SLOW DOWN. The general optimal
         practice in soaring is that you SPEED UP IN SINK and SLOW DOWN IN LIFT, and the Speed-to-Fly vario computes
         the <i>optimum</i> speed to fly given the current lift or sink, compares that to your current speed, and moves
-        the needle and beeps or burps directly according to how much you should speed up or slow down. 
+        the needle and beeps or burps directly according to how much you should speed up or slow down.
     </p>
     <p>This is more
         complicated to explain than to use in practice - the net effect is a vario that beeps at you to slow down and
@@ -116,8 +121,8 @@ the most significant changes have been made.
         this relative to your current airspeed (and in fact how much water ballast you're carrying, which in the
         ASK21 is zero). The optimal speed for you to fly in <i>still air</i> varies a lot depending on the strength of
         the next climb your expecting to get, and this provides the baseline around which the STF vario operates. So
-        you tell the vario your guess of the strength of the next thermal by turning the knob for the 
-        <b>Maccready Setting</b>. 
+        you tell the vario your guess of the strength of the next thermal by turning the knob for the
+        <b>Maccready Setting</b>.
     </p>
     <p>This is simpler than it sounds - a typical setting might be 3 or 4 knots and you can
         dial that in and leave it for most of your flight, flying between thermals at the speed the STF vario directs you
@@ -141,7 +146,7 @@ the most significant changes have been made.
 <p>A soaring task is loaded into the GPSNav by clicking the 'LOAD' button and responding to the standard X-Plane
     'load flightplan' prompts. You can create a 'task' by using external map-based utilities like Little Navmap
      (Mac, Linux or Windows) or G-Plan (Windows). The GPSNav will pick up the waypoint names and lat/longs from
-     the task, and compute the ground elevation at each waypoint using an internal database. 
+     the task, and compute the ground elevation at each waypoint using an internal database.
 </p>
 <p>In the screenshot of the panel above, a task beginning at KSEA (Seattle Airport) has been loaded, which is turnpoint
     1 (i.e. start) out of 2 (hence display 1/2: KSEA).
@@ -177,7 +182,7 @@ the most significant changes have been made.
 <p>Remember the <b>Maccready setting</b> is telling the computer vario how fast you intend to fly (indirectly by
     saying how strong you think the thermals will be). So if you turn this UP your arrival height will go DOWN, and
     vice versa. In other words if your arrival height at the waypoint is below what you'd like it to be, you
-    have the option of turning the Maccready setting down and hence flying more conservatively with a happy 
+    have the option of turning the Maccready setting down and hence flying more conservatively with a happy
     effect on your predicted arrival height.
 </p>
 <p>This arrival height is <i>everything</i> during your final glide back to your home airport. From maybe 30 miles away
@@ -186,6 +191,74 @@ the most significant changes have been made.
     thermals on the way home so you improve a bit on the calculation, and then maybe 10 miles out you can crank up
     the Maccready until the arrival height is only a couple of hundred feet and storm home.
 </p>
+
+<h2>COMMANDS</h2>
+
+<p>The ASK21_B21 has various x-plane commands built-in that you can assign to joystick buttons or keyboard keys.
+    To do so open the Settings screen (2nd from right icon in top right corner of the XP11 screen) and
+    select the Keyboard or Joystick tab. There are a lot of keyboard mappings already there as part of
+    the default installation so you might want to check these out before you start assigning your own.
+    You will see that there are search functions for both commands and keys.
+</p>
+<p>All the ASK21_B21 commands begin with "b21/...", for example the command to 'Select next waypoint' is
+    "b21/nav/next_waypoint". Most of the commands have been designed to be general enough that they can be
+    repeated in other gliders (I'm expecting to work on other x-plane gliders) so your keyboard/joystick will
+    work the same.
+</p>
+<table>
+    <tr>
+        <td>b21/nav/load_task</td>
+        <td>This will trigger the X-Plane 'Select FlightPlan' menu, and the selected .fms file data will be
+            loaded into the panel nav instrument, in this case the GPSNav.
+        </td>
+    </tr>
+    <tr>
+        <td>b21/nav/next_waypoint</td>
+        <td>The nav instrument will click over to the next waypoint in the loaded flightplan.
+        </td>
+    </tr>
+    <tr>
+        <td>b21/nav/prev_waypoint</td>
+        <td>The nav instrument will click back to the previous waypoint in the loaded flightplan.
+        </td>
+    </tr>
+    <tr>
+        <td>b21/vario_302/mode_toggle</td>
+        <td>Switch the computer vario between Speed-to-Fly, Total Energy, and Auto modes</td>
+    </tr>
+    <tr>
+        <td>b21/vario_302/mode_stf</td>
+        <td>Switch the computer vario directly into Speed-to-Fly mode</td>
+    </tr>
+    <tr>
+        <td>b21/vario_302/mode_auto</td>
+        <td>Switch the computer vario directly into Auto mode</td>
+    </tr>
+    <tr>
+        <td>b21/vario_302/mode_te</td>
+        <td>Switch the computer vario directly into Total Energy mode</td>
+    </tr>
+    <tr>
+        <td>b21/wings_level_toggle</td>
+        <td>Enable/disable wing levelling on the ground, i.e. like asking your crew to pick your wing up during
+            a launch. Wings will be held level until cancelled or your ground speed is faster than your crew can run...
+        </td>
+    </tr>
+    <tr>
+        <td>b21/wings_level_on</td>
+        <td>Enable wings levelling - the wing on the ground will be picked up and the glider held balanced.
+            If you've read this far, here's a secret tip - the ASK21_B21 on the ground will recognise you
+            waggling the ailerons left-right a couple of times as a signal you want your wings levelled. This would
+            be a lot more useful if you could actually call an aerotow or winch launch but x-plane at the moment (11.3)
+            only allows the launch to happen when you first load the flight. One day we'll improve this.
+        </td>
+    </tr>
+    <tr>
+        <td>b21/wings_level_off</td>
+        <td>Simulates your grumpy crew walking off back to the clubhouse so your wing gently falls back to the ground.
+        </td>
+    <tr>
+</table>
 
 <h2>ASK21_B21/USER_SETTINGS.lua</h2>
 
