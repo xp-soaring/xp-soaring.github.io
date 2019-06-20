@@ -6,7 +6,7 @@
 <body>
 <div>
     <div class="breadcrumbs"><a href="../index.html">xp-soaring</a> &gt; </div>
-    <div class="page_heading">Soaring Tasks</div>
+    <div class="page_heading">Soaring Tasks and Waypoints</div>
 </div>
 
 <div><img src="images/mifflin_day1.jpg"/></div>
@@ -33,6 +33,39 @@
 
 <p><a href="https://www.tasoftware.co.uk/">Plan-G</a> (Windows) is a good flight planning tool.
 </p>
+
+<h2>Loading waypoints into Little Navmap</h2>
+
+<p>Soaring waypoint lists can be converted into comma-separated '.csv' format and loaded into
+Little Navmap. The Little Navmap
+<a href="https://www.littlenavmap.org/manuals/littlenavmap/release/2.2/en/USERPOINT.html">
+    manual</a> describes the process and required format of the csv file.</p>
+<p>In a nutshell, for soaring waypoints, the simplest list of columns for the CSV file
+would be:</p>
+<pre>
+"Pin",,&lt;ident&gt;,&lt;lat&gt;,&lt;lon&gt;,&lt;alt&gt;,,,&lt;description&gt;
+</pre>
+<p>Note this list includes 3 blank columns (will be explained later).</p>
+
+<p>"Pin" tells Little Navmap to use a pin symbol for the waypoint.  The manual lists alternatives such as "POI".
+</p>
+<p><tt>ident</tt> should be a 6-character-max string identifying the waypoint, <b>without spaces</b>.
+</p>
+<p><tt>lat, lon, alt</tt> are the position of the waypoint in decimal degrees and feet.</p>
+<p><tt>description</tt> is free text describing the waypoint, which most usefully can be the name followed
+by a location description.</p>
+
+<p>For example, here is the line refering to the Ripon Cathedral turnpoint:
+</p>
+<pre>
+Pin,,Ripon,54.1350833,-1.5206167,102,,,Ripon - Cathedral Tower
+</pre>
+<p>The Little Navmap  omitted columns (e.g. between "Pin" and "Ripon" above) are name, magnetic offset and user tags
+respectively. The reason to omit the 'name' is that it clutters the map.
+</p>
+<h2>Sample waypoint files</h2>
+
+<a href="waypoints/bga_2019_LNM.csv">British Gliding Association 2019 turnpoints</a>
 
 <h2>Loading the task in a glider</h2>
 <p>Credit <a href="http://www.tasoftware.co.uk/forum/index.php?topic=2478.msg12396#msg12396">Dempsey</a>
