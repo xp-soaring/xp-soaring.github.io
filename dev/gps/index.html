@@ -1,0 +1,91 @@
+<html>
+<head>
+    <title>GPS</title>
+<script>
+
+var nudge;
+
+var showNudgeBanner = function() {
+    nudge.style.display = "block";
+};
+
+var hideNudgeBanner = function() {
+    nudge.style.display = "none";
+};
+
+var nudgeTimeoutId = setTimeout(showNudgeBanner, 5000);
+
+var geoOptions = {
+    enableHighAccuracy: true,
+    timeout: 10 * 1000
+}
+
+var geoSuccess = function(p) {
+    console.log('geoSuccess');
+    hideNudgeBanner();
+    // We have the location, don't display banner
+    clearTimeout(nudgeTimeoutId);
+
+    // Do magic with location
+    position = p.coords;
+
+    document.getElementById('startLat').innerHTML = position.latitude;
+    document.getElementById('startLon').innerHTML = position.longitude;
+    log_str = "";
+    log_str += " lat: "+position.latitude;
+    log_str += " lng: "+position.longitude;
+    log_str += " alt(m): "+position.altitude;
+    log_str += " acc(m): "+position.accuracy;
+    log_str += " alt_acc(m): "+position.altitudeAccuracy;
+    log_str += " hdg(deg): "+position.heading;
+    log_str += " speed(m/s): "+position.speed;
+    log_str += " ts: "+position.timestamp;
+
+    document.getElementById('log_div').innerHTML = log_str;
+};
+
+var geoError = function(error) {
+    console.log('geoError');
+    switch(error.code) {
+        case error.TIMEOUT:
+            // The user didn't accept the callout
+            showNudgeBanner();
+            break;
+    }
+};
+
+function init()
+{
+    console.log('init');
+    nudge = document.getElementById("nudge");
+
+    // check for Geolocation support
+    if (navigator.geolocation) {
+      console.log('Geolocation is supported!');
+    }
+    else {
+      console.log('Geolocation is not supported for this Browser/OS.');
+    }
+}
+
+var get_location = function() {
+  navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
+};
+
+</script>
+</head>
+<body onload='init()'>
+
+<p>
+<a href="#" onclick="get_location()">GET LOCATION</a>
+</p>
+
+<p id="startLat"></p>
+<p id="startLon"></p>
+
+<div id="nudge">pls permit location</div>
+<div id="log_div"></div>
+
+</body>
+</html>
+
