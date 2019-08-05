@@ -39,7 +39,7 @@ var geoSuccess = function(p) {
     log_str += " alt_acc(m): "+position.altitudeAccuracy;
     log_str += " hdg(deg): "+position.heading;
     log_str += " speed(m/s): "+position.speed;
-    log_str += " ts: "+position.timestamp;
+    log_str += " ts: "+p.timestamp;
 
     document.getElementById('log_div').innerHTML = log_str;
 };
