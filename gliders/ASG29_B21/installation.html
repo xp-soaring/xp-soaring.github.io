@@ -1,0 +1,220 @@
+<html>
+    <head>
+        <title>Installation - X-Plane ASG29_B21 sailplane</title>
+        <link rel="stylesheet" type="text/css" href="../../xp-soaring.css"/>
+<style>
+    table { width: 90%;
+    }
+    td {
+        border-bottom: 1px solid black;
+        padding: 8px;
+    }
+</style>
+
+    </head>
+<body>
+<div>
+    <div class="breadcrumbs">
+        <a href="../../index.html">xp-soaring</a> &gt;
+        <a href="../index.html">Sailplanes</a> &gt;
+        <a href="index.html">ASG29_B21</a> &gt;
+    </div>
+    <div class="page_heading">Installation</div>
+</div>
+
+<img src="ballast.png"/>
+
+<h1>BETA this glider is still in development, including these docs</h1>
+
+<p>This  Schleicher ASG-29 for X-Plane is an 18 meter, flapped, ballast-capable glider with
+a very high gliding performance across a wide speed range and a state-of-the-art instrument
+panel.
+</p>
+
+<h2 id="commands">New X-Plane COMMANDS</h2>
+
+<p>The ASK21_B21 has various x-plane commands built-in that you can assign to joystick buttons or keyboard keys.
+    To do so open the Settings screen (2nd from right icon in top right corner of the XP11 screen) and
+    select the Keyboard or Joystick tab. There are a lot of keyboard mappings already there as part of
+    the default installation so you might want to check these out before you start assigning your own.
+    You will see that there are search functions for both commands and keys.
+</p>
+<p>All the ASK21_B21 commands begin with "b21/...", for example the command to 'Select next waypoint' is
+    "b21/nav/next_waypoint". Most of the commands have been designed to be general enough that they can be
+    repeated in other gliders (I'm expecting to work on other x-plane gliders) so your keyboard/joystick will
+    work the same.
+</p>
+<table>
+    <tr>
+        <td>b21/trim/trigger</td>
+        <td><p>This will set your 'trim' (i.e. the controls-centered steady speed of the aircraft) to match
+            the current <b>airspeed</b> of the aircraft. Note this will not necessarily match the current
+            pitch (nose up/down attitude) as the aircraft might currently be accelerating.</p>
+            <p>On the ground,
+            the trigger trim will adjust the speed setting according to the current forward/backward position
+            of the stick. If you use a joystick this command can usefully be assigned to the trigger button.
+            </p>
+            <p>The typical use is to pull the trigger when you've pulled up from fast flight into a thermal so
+            setting the trim for about 50 knots for thermalling, and pull the trigger again after exitting the
+            thermal and having sped up on cruise.
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td>b21/nav/load_task</td>
+        <td>This will trigger the X-Plane 'Select FlightPlan' menu, and the selected .fms file data will be
+            loaded into the panel nav instrument, in this case the GPSNav.
+        </td>
+    </tr>
+    <tr>
+        <td>b21/nav/next_waypoint</td>
+        <td>The nav instrument will click over to the next waypoint in the loaded flightplan.
+        </td>
+    </tr>
+    <tr>
+        <td>b21/nav/prev_waypoint</td>
+        <td>The nav instrument will click back to the previous waypoint in the loaded flightplan.
+        </td>
+    </tr>
+    <tr>
+        <td>b21/vario_302/mode_toggle</td>
+        <td>Switch the computer vario between Speed-to-Fly, Total Energy, and Auto modes</td>
+    </tr>
+    <tr>
+        <td>b21/vario_302/mode_stf</td>
+        <td>Switch the computer vario directly into Speed-to-Fly mode</td>
+    </tr>
+    <tr>
+        <td>b21/vario_302/mode_auto</td>
+        <td>Switch the computer vario directly into Auto mode</td>
+    </tr>
+    <tr>
+        <td>b21/vario_302/mode_te</td>
+        <td>Switch the computer vario directly into Total Energy mode</td>
+    </tr>
+    <tr>
+        <td>b21/wings_level_toggle</td>
+        <td>Enable/disable wing levelling on the ground, i.e. like asking your crew to pick your wing up during
+            a launch. Wings will be held level until cancelled or your ground speed is faster than your crew can run...
+        </td>
+    </tr>
+    <tr>
+        <td>b21/wings_level_on</td>
+        <td>Enable wings levelling - the wing on the ground will be picked up and the glider held balanced.
+            If you've read this far, here's a secret tip - the ASK21_B21 on the ground will recognise you
+            waggling the ailerons left-right a couple of times as a signal you want your wings levelled. This would
+            be a lot more useful if you could actually call an aerotow or winch launch but x-plane at the moment (11.3)
+            only allows the launch to happen when you first load the flight. One day we'll improve this.
+        </td>
+    </tr>
+    <tr>
+        <td>b21/wings_level_off</td>
+        <td>Simulates your grumpy crew walking off back to the clubhouse so your wing gently falls back to the ground.
+        </td>
+    </tr>
+    <tr>
+        <td>b21/ballast/open</td>
+        <td>Open the water ballast dump valve
+        </td>
+    </tr>
+    <tr>
+        <td>b21/ballast/close</td>
+        <td>Close the water ballast dump valve
+        </td>
+    </tr>
+    <tr>
+        <td>b21/ballast/fill</td>
+        <td>Fill the water ballast to max (100% = 200Kg)
+        </td>
+    </tr>
+    </table>
+
+<h2 id="user_settings">ASG29_B21/USER_SETTINGS.lua</h2>
+
+<p>If you can edit a text file using Notepad, you can tweak the instruments to your preferences. The settings
+file at the base of the aircraft folder, and called <b>USER_SETTINGS.lua</b>. The initial settings in this file
+are as below. To change the settings, edit the file in any text editor (e.g. Windows Notepad) and save it back to
+the same location (i.e. &lt;aircraft root folder, normally ASG29_B21&gt;/USER_SETTINGS.lua). Don't mix up your
+upper- and lower-case letters, keep the file name and the settings names exactly as here.
+</p>
+
+<p>The file:</p>
+<pre>
+-- HERE YOU CAN MODIFY SETTINGS FOR THIS AIRCRAFT
+
+-- UNITS for panel instuments, i.e. feet, meters etc
+project_settings.VARIO_UNITS = 0   -- panel display units for variometers (0=knots, 1=m/s)
+project_settings.SPEED_UNITS = 0   -- panel display units for air speed indicator (0=knots, 1=km/h)
+project_settings.ALTITUDE_UNITS = 0 -- panel display units for altimeter (0=feet, 1=meters)
+project_settings.DISTANCE_UNITS = 1 -- panel display units for computer (0=mi, 1=km)
+
+-- VARIOMETER settings
+project_settings.QUIET_CLIMB = 100 -- vario climb sound muted below 100 fpm (~1 knot, 0.5 m/s)
+project_settings.QUIET_SINK = -150 -- vario sink sound muted above 150 fpm (~1.5 knot, 0.75 m/s)
+project_settings.VARIO_VOLUME = 350 -- vario sound volume, set to 0 to mute
+project_settings.VARIO_302_MODE = 1 -- initial operating mode for the 302 vario (0=stf, 1=auto, 2=te)
+project_settings.VARIO_302_DUAL_SOUND = 0 -- use alternate 'beep' sound for STF mode vs TE mode (=1 to enable)
+
+-- Panel CLOCK instrument - sim time or real time
+project_settings.CLOCK_MODE = 0 -- cockpit panel clock display simulator local time (CLOCK_MODE=0)
+                                -- simulator Zulu time (CLOCK_MODE = 1)
+                                -- or real-world local time (CLOCK_MODE = 2)
+</pre>
+
+<table>
+    <tr>
+        <td>VARIO_UNITS<br/>
+        SPEED_UNITS<br/>
+        ALTITUDE_UNITS<br/>
+        DISTANCE_UNITS
+    </td>
+        <td>Each can be set to <b>0</b> or <b>1</b> to select knots or meters-per-second etc. for
+            instruments that are displaying climb rates, speed, altitude or distance. It is not possible (unless you edit
+        the plugin code) to have the altimeter display height in meters and the GPSNav display height in feet, i.e. the settings
+        are read by all of the instruments and they update accordingly.</td>
+    </tr>
+    <tr>
+        <td>QUIET_CLIMB<br/>QUIET_SINK</td>
+        <td>QUIET_CLIMB will be a positive value, where 100 represents 100 feet-per-minute (i.e. 1 knot climb, or 0.5
+            meters per second) and the vario climb tone will be suppressed BELOW this value. QUIET_SINK will be
+            a NEGATIVE value where -150 represents 150 feet-per-minute sink and the vario sink tone will be
+            suppressed ABOVE this value.  The combination of these two values enables you to fly in relaxed peace so
+            long as the computer vario is between these limits. This works particularly well when the vario is in
+            'speed-to-fly' mode because you can control the position of the needle by flying at the recommended speed
+            or adjusting the Maccready setting to make that the case.
+        </td>
+    </tr>
+    <tr>
+        <td>VARIO_VOLUME</td>
+        <td>The initial volume setting for the vario climb/sink tones, setting to zero will mean
+            the sound is initially suppressed. Use values <b>0</b>..<b>1000</b>
+        </td>
+    </tr>
+    <tr>
+        <td>VARIO_302_MODE</td>
+        <td>The computer vario (aka "302 vario") can switch between "Total Energy" or "Speed-to-Fly" modes, and this setting
+            sets the initial position of the switch. If the setting is <b>0</b> (STF) or <b>2</b> (TE) then the computer
+            vario will start fixed in that mode and stay there unless the pilot moves the switch during the flight. If
+            <b>1</b> (Auto) is selected, then the initial setting will be to auto-switch between the two modes, selecting
+            STF when the glider is cruising in an approximate straight line between thermals, and switching to TE mode as
+            the aircraft circles.
+        </td>
+    </tr>
+    <tr>
+        <td>VARIO_302_DUAL_SOUND</td>
+        <td>A setting of <b>0</b> will use the SAME climb/sink sounds in TE mode for the slow-down/speed-up sounds in
+            STF mode. A setting of <b>1</b> will use similar but different sounds in the two modes as an audio clue of
+            which mode the vario is in.
+        </td>
+    </tr>
+    <tr>
+        <td>CLOCK_MODE</td>
+        <td>This is a simple choice whether to display the simulated time (<b>0</b> means local, <b>1</b> means Zulu time)
+            or whether to display your real-world time on the clock on the panel as a handy cue to remember to take the
+            dog for a walk.
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

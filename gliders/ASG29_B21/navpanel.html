@@ -1,0 +1,159 @@
+<html>
+    <head>
+        <title>Navpanel - X-Plane ASG29_B21 sailplane</title>
+        <link rel="stylesheet" type="text/css" href="../../xp-soaring.css"/>
+<style>
+    table { width: 90%;
+    }
+    td {
+        border-bottom: 1px solid black;
+        padding: 8px;
+    }
+</style>
+
+    </head>
+<body>
+<div>
+    <div class="breadcrumbs">
+        <a href="../../index.html">xp-soaring</a> &gt;
+        <a href="../index.html">Sailplanes</a> &gt;
+        <a href="index.html">ASG29_B21</a> &gt;
+    </div>
+    <div class="page_heading">Computer Navpanel</div>
+</div>
+
+<img src="cockpit_nav.png"/>
+
+<h1>The Computer Navpanel</h1>
+
+<p>The central large display on the panel provides a variety of nav information taking into
+    account the speeds the pilot is flying and the ballast being carried.
+</p>
+
+    <h4 id="maccready">The Maccready setting</h4>
+    <p>The knob labelled "Mc" in the picture above is used to dial-in a <b>Maccready Setting</b>. This can be
+        interpreted different ways but the simplest is as the <b>expected strength of your next climb</b>. I.e. the
+        setting has the same units as your vario setting, e.g Knots, and the setting is displayed in the two digits at
+        3 o'clock in the picture above in which it is the "0.0" above the 'STF' graphic.
+    </p>
+    <p>
+        The computer vario will do many calculations based on how fast you are intending to fly, a simple example
+        being your arrival height at a future waypoint will depend on your sink rate at your planned cruising speed
+        with this being related by the glider <a href="../../dev/polar.html">polar</a>. This may sound a circular
+        explanation but the vario itself (in Speed-to-Fly mode) will be <i>telling</i> you how fast to fly and the vario
+        assumes reasonably you will be mostly following that guidance. But it uses the <i>pilot input</i> for the
+        expected strength of thermals to calibrate it's recommended speed-to-fly.
+    </p>
+    <p>The net of all this is the Maccready
+        Setting is the pilot's one communication with the computer vario which then adjusts everything else. The pilot
+        learns pretty quickly that in still air a Maccready setting of, say, 3 knots will give a recommended speed of say
+        70 knots, or maybe a 4 knot Maccready will recommend 80 knots airspeed.  A perfectly normal use of the
+        Maccready setting is for the pilot, with years of experience of how fast they should fly in different
+        weather conditions, to turn the Maccready UP when they want to fly a bit faster or DOWN when they feel they
+        should be cautious. The computer vario will still do all the calculation trickery to continuously adjust the speed
+        appropriately in any lift or sink. (Note the actual speeds in a heavily ballasted racing glider like the
+        ASW27 will be <i>much</i> higher)
+    </p>
+    <p>The Maccready Setting has a special use on <b>final glide</b> (see <a href="#arrival_height">below</a>). It is
+        normal for the pilot to fly the course with an optimal cross-country Maccready Setting for the weather,
+        say 3.5 knots, and at some point the arrival height for the finish will become positive (happy news). At this
+        point the pilot is likely to set off for the finish but may still dolphin in thermals and gain a bit of energy
+        on the way so the predicted arrival height continues to improve.  At this point the pilot can turn UP the
+        Maccready until that reduces the arrival height to a small margin above the airfield, and then
+        follow the Speed-to-Fly much faster to the finish. The extra speed actually provides a built-in safety margin
+        but only the pilot experience can assess the expected conditions on the way home to judge accurately the risk of
+        landing out.
+    </p>
+    <h4>Speed to Fly</h4>
+    <p>
+        In Speed-to-Fly
+        mode the variometer behaves <i>like</i> a normal variometer and appears to be indicating lift and sink in
+        a fairly coherent manner, but in fact the lift and sink indications have been fundamentally transformed into
+        a closely related concept (in soaring) that you should SPEED UP or SLOW DOWN. The general optimal
+        practice in soaring is that you SPEED UP IN SINK and SLOW DOWN IN LIFT, and the Speed-to-Fly vario computes
+        the <i>optimum</i> speed to fly given the current lift or sink, compares that to your current speed, and moves
+        the needle and beeps or buuuurps directly according to how much you should speed up or slow down.
+    </p>
+    <p>This is more
+        complicated to explain than to use in practice - the net effect is a vario that beeps at you to slow down and
+        buuuuuurps at you to speed up, which is kind of what any electronic vario is doing although the STF vario does all
+        this relative to your current airspeed (and in fact how much water ballast you're carrying, which in the
+        ASK21 is zero). The optimal speed for you to fly in <i>still air</i> varies a lot depending on the strength of
+        the next climb you're hoping to get, and this provides the baseline around which the STF vario operates. So
+        you tell the vario your <i>guess</i> of the strength of the next thermal by turning the knob for the
+        <b>Maccready Setting</b> (labelled "Mc" in the picture above).
+    </p>
+    <p>This is simpler than it sounds - a typical setting might be 3 or 4 knots and you can
+        dial that in and leave it for most of your flight, flying between thermals at the speed the STF vario directs you
+        to. The Maccready setting ultimately becomes a kind of 'confidence' setting - if you're feeling courageous you turn
+        the reading up and the STF will push you to fly faster, using up height at a scary rate but a strong climb will
+        make all that worthwhile.
+    </p>
+    <p>The computer vario also computes 'arrival height' at your next waypoint, using Nav data provided by the
+        GPSNav instrument.  This is described below.
+    </p>
+
+
+<h3 id="gpsnav">GPSNav</h3>
+
+<img src="gpsnav.png"/>
+
+<p>The rectangular instrument to the right of the computer vario is the GPSNav instrument, used for navigation and
+    feeding details of the next waypoint (such as elevation, bearing, distance to go) into the computer vario.
+</p>
+
+<p>A soaring task is loaded into the GPSNav by clicking the 'LOAD' button and responding to the standard X-Plane
+    'load flightplan' prompts. You can create a 'task' by using external map-based utilities like Little Navmap
+     (Mac, Linux or Windows) or G-Plan (Windows). The GPSNav will pick up the waypoint names and lat/longs from
+     the task, and compute the ground elevation at each waypoint using an internal database.
+</p>
+<p>In the screenshot of the panel above, a task beginning at KSEA (Seattle Airport) has been loaded, which is turnpoint
+    1 (i.e. start) out of 2 (hence display 1/2: KSEA).
+</p>
+<p>The <b>next</b> turnpoint can be selected  at any time with the RIGHT ARROW button, and similarly the LEFT
+    ARROW will move you backwards through the task.
+</p>
+<p>The GPSNav is currently saying KSEA is directly ahead (the single DIRECTION vertical bar). If the turnpoint was
+    to the left or right, chevrons would extend in the appropriate direction guiding you in a faily obvious way to turn
+    in the appropriate direction.
+</p>
+<p>The GPSNav is saying the waypoint is 9.7 Km away (the distance units can be changed to miles via USER_SETTINGS.lua, see
+    below) and has a ground elevation of 399 feet (again these height units can be changed in USER_SETTINGS.lua).
+</p>
+
+<h3 id="arrival_height">Arrival height / final glide calculation</h3>
+
+<p><b>The information from the GPSNav is sent to the computer vario which will continuously calulate an expected
+    arrival height
+    above the next waypoint</b>. The computer vario above is saying you will arrive 1292 feet BELOW the intended waypoint.
+    When you have height in hand the reading will have '+' in front of it. Note that the +/- figures are
+    <b>above the ground</b> at that waypoint and the default units are feet unless you've changed that in
+    your <a href="#user_settings">user settings</a>.
+</p>
+<p>The GPSNav is at heart a relatively simple GPS-based navigation instrument guiding you along a stored flightplan.
+    In contrast the computer vario is doing a very complex calculation taking into account the all-up-weight of the
+    glider (i.e. ballast carried), the wind speed, the glide performance of the ASK21, the pilot's chosen
+    Maccready setting, the current altitude of the glider and the elevation of the waypoint in order to calculate the
+    expected height the glider will be at when it finally arrives at that waypoint, which could be 30+ miles away.
+</p>
+<p>The calculation from the computer vario is <i>not</i> a guarantee - it doesn't know what lift and sink you'll fly
+    through to get there, just like you.  But it's saying if you fly at the speed indicated on the STF needle <i>and</i>
+    you fly though a reasonable balance of lift and sink, the calculation will be pretty close.  With experience
+    you learn how much safety margin to add (or subtract!) from the calculation to avoid ending up in the dirt and
+    winning the competition.
+</p>
+<p>Remember the <b>Maccready setting</b> is telling the computer vario how fast you intend to fly (indirectly by
+    saying how strong you think the thermals will be). So if you turn this UP your arrival height will go DOWN, and
+    vice versa. In other words if your arrival height at the waypoint is below what you'd like it to be, you
+    have the option of turning the Maccready setting down and hence flying more conservatively with a happy
+    effect on your predicted arrival height.
+</p>
+<p>This arrival height is <i>everything</i> during your final glide back to your home airport. From maybe 30 miles away
+    you may climb high enough to have a positive arrival height above your home airfield, at which point you can set sail
+    for home and worry a lot less about finding the next thermal.  It is normal to dolphin a fair bit through
+    thermals on the way home so you improve a bit on the calculation, and then maybe 10 miles out you can crank up
+    the Maccready until the arrival height is only a couple of hundred feet and storm home.
+</p>
+
+</body>
+</html>
