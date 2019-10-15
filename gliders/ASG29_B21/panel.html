@@ -22,15 +22,22 @@
     <div class="page_heading">Panel Instruments</div>
 </div>
 
-<img src="panel_demo.png"/>
-
-<h1>The ASG-29 Instrument Panel</h1>
-
-<p>This  Schleicher ASG-29 for X-Plane is an 18 meter, flapped, ballast-capable glider with
-a very high gliding performance across a wide speed range and a state-of-the-art instrument
-panel.
-</p>
-
+<div class="center">
+        <img src="panel_no_task2.png"/>
+</div>
+    
+    <table>
+        <tr>
+            <td>1</td>
+            <td>Spoilers indicator. Will be <span style="color: green">green</span> when spoilers closed and locked.<br>
+                <b>Important:</b> an analog axis on your joystick should be set to control the spoilers (in X-Plane called
+                <b>Speedbrakes</b>). Keen soaring pilots will use the <i>throttle axis</i>, with a backward pull opening the
+                brakes.<br/>
+                <b>Important: </b> the wheel brake is linearly operated when the spoilers are opened between 75% and 100%.
+            </td>
+        </tr>
+    </table>
+    
 <p>More detail on the basic soaring calculations and instruments
     is given in the separate article on <a href="../../instruments/index.html">soaring instruments</a>.
 </p>
@@ -49,42 +56,6 @@ panel.
         panel buttons (next waypoint, etc) can be configured to joystick or keyboard.</li>
 </ol>
 
-
-<h3 id="variometers">Variometers</h3>
-
-<p>In summary, the upgraded panel includes three variometers. The starting point for all of these is the rate-of-climb
-    indicator (which is <i>not</i> on the panel) which would always indicate your current true rate of climb (or sink).
-    Unfortunately for soaring pilots this indication is essentially useless as the pilot's movement of the controls will
-    dominate the short term reading, creating so-called 'stick thermals'.  The three variometers on the ASK21_B21 panel
-    improve upon this in a cumulative three ways:
-</p>
-
-<h4>'Winter' Total Energy variometer</h4>
-<img src="winter.png"/>
-
-    <p>The Winter Vario (panel bottom left) displays rate-of-climb <i>adjusted</i> to take into account whether the aircraft
-        airspeed is increasing or decreasing, referred to as Total Energy compensation.
-        If the pilot pushes the stick forwards the glider will sink faster <b>and</b>
-        increase in airspeed. If the pilot pulls the stick back the reverse will happen. So a 'pitot' (i.e. the forward
-        facing airspeed pressure inlet) bleed can be added to the 'static' (i.e. altitude) pressure feed
-        the simple rate-of-climb
-        instrument uses to give a <b>compensated</b> reading that cancels out the effect of accelerating
-        or decelerating.
-    </p>
-    <p>The end result is a variometer that shows how fast the glider is climbing or sinking without
-        injecting 'stick thermals' every time the pilot moves the controls. The compensation of the vario is easy
-        to recognise in flight by pushing and pulling on the stick and you'll see in the short term the needle reading
-        doesn't move much where in a pure rate-of-climb indicator the needle would be swinging wildly from lift to sink.
-    </p>
-    <p>The Winter Vario has a "Maccready Ring" around the outer rim which rotates (use mouse). The small triangle pointer
-        on the ring (next to the "50" graphic on the ring in the image above) should be turned clockwise to
-        align to the vario reading that
-        corresponds to the rate-of-climb expected in the next thermal. The vario needle, as you fly through lift, sink and
-        still air, will simultaneously point to <b>two</b> values: (1) the actual lift/sink value on the face of the instrument as
-        normal and (2) the value on the <b>ring</b> which suggests the airspeed you should be flying at given this
-        lift or sink. More detail on how this works is given after discussion of the computer vario (which does it
-        rather better) <a href="#maccready">below</a>.
-    </p>
 
 <h4>Netto 57mm slave vario to the computer vario</h4>
 
@@ -115,11 +86,26 @@ panel.
 <img src="vario_302.png"/>
 
     <p>The 'Computer Vario' (center of panel, with yellow needle) is by far the most sophisticated of all, but can still be
-        interpreted as a simple 'rate-of-climb' indicator. The computer vario can operate in two modes - Total Energy
-        (i.e. identical to the Winter Vario described above), and Speed-to-Fly. The instrument is typically used in
+        interpreted as a simple 'rate-of-climb' indicator. The computer vario can operate in two modes - 
+        Total Energy and Speed-to-Fly. The instrument is typically used in
         Total Energy mode when thermalling, and Speed-to-Fly mode when cruising between thermals, and on the 'Auto'
         setting will automatically switch between the two.
     </p>
+    <p>Total-energy mode displays rate-of-climb <i>adjusted</i> to take into account whether the aircraft
+        airspeed is increasing or decreasing, referred to as Total Energy compensation.
+        If the pilot pushes the stick forwards the glider will sink faster <b>and</b>
+        increase in airspeed. If the pilot pulls the stick back the reverse will happen. So a 'pitot' (i.e. the forward
+        facing airspeed pressure inlet) bleed can be added to the 'static' (i.e. altitude) pressure feed
+        the simple rate-of-climb
+        instrument uses to give a <b>compensated</b> reading that cancels out the effect of accelerating
+        or decelerating.
+    </p>
+    <p>The end result is a variometer that shows how fast the glider is climbing or sinking without
+        injecting 'stick thermals' every time the pilot moves the controls. The compensation of the vario is easy
+        to recognise in flight by pushing and pulling on the stick and you'll see in the short term the needle reading
+        doesn't move much where in a pure rate-of-climb indicator the needle would be swinging wildly from lift to sink.
+    </p>
+
     <h4 id="maccready">The Maccready setting</h4>
     <p>The knob labelled "Mc" in the picture above is used to dial-in a <b>Maccready Setting</b>. This can be
         interpreted different ways but the simplest is as the <b>expected strength of your next climb</b>. I.e. the

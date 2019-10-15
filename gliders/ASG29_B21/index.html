@@ -9,6 +9,9 @@
         border-bottom: 1px solid black;
         padding: 8px;
     }
+    .center { margin-left: auto;
+              margin-right: auto
+              }
 </style>
 
     </head>
@@ -21,47 +24,49 @@
     <div class="page_heading">Schleicher ASG29 (mod by B21)</div>
 </div>
 
-<img src="ballast.png"/>
+<div class="center">
+    <img class="center" src="landing_flaps2.png"/>
+</div>
+
+<h2>Credits</h2>
+
+<p>The glider <i>3D model</i> was originally developed for x-plane by the <b>Windsocks</b> team
+    in 2007, X-Plane version 8. <b>rhb</b> successfully migrated the model forwards through
+    the X-Plane versions arriving mostly intact at the current x-plane version 11. Subsequent 3D
+    hacks, flight model, instruments, sounds and plugin animations by <b>B21</b>. Testing by
+    the Facebook <a href="https://facebook.com/groups/416567982493369/">X-Plane Gliders</a>
+    group.
 
 <h1>BETA this glider is still in development, including these docs</h1>
 
-<p>This  Schleicher ASG-29 for X-Plane is an 18 meter, flapped, ballast-capable glider with
+<p>The <a href="https://www.alexander-schleicher.de/en/flugzeuge/asg-29/">Schleicher ASG-29</a>
+     for X-Plane is an 18 meter, flapped, ballast-capable glider with
 a very high gliding performance across a wide speed range and a state-of-the-art instrument
 panel.
 </p>
 
-<img src="panel_demo.png"/>
-
-<p><a href="ASG29Es.pdf">ASG29 Pilot Operating Handbook</a> (pdf)
+<p>If you are new to sim soaring, a much better training aircraft is the
+    <a href="../ASK21_B21/index.html">ASK 21</a> which is simpler to fly but has similarly
+    capable cross-country instruments so is also suitable for tasks suggested in the 
+    <a href="https://facebook.com/groups/416567982493369/">Facebook group</a>.
 </p>
 
-<h2>Sections</h2>
+<div class="center">
+<img src="panel_demo.png"/>
+</div>
 
-<ol>
-    <li><a href="installation.html">Installation</a></li>
-    <li><a href="panel.html">Panel instruments</a></li>
-    <li><a href="flaps.html">Flying with flaps</a></li>
-    <li><a href="ballast.html">Flying with ballast</a></li>
-    <li><a href="launch.html">Launch checklist</a></li>
-    <li><a href="landing.html">Landing checklist</a></li>
-    <li><a href="navpanel.html">Navpanel overview</a></li>
-    <li><a href="flightplan.html">Loading a flightplan</a></li>
-    <li><a href="arrival_height.html">Arrival height and final glide</a></li>
-    <li><a href="installation.html#commands">X-Plane commands</a> if you want to set joystick buttons or keystrokes.</li>
-    <li><a href="installation.html#user_settings">User settings</a> to change instrument units and other settings.</li>
-</ol>
-
-<h2>Credits</h2>
-<p>Thanks to Chris "Nodd" Evans for extensive testing, I recommend you check out his YouTube channel:</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/QgaVjEM3EOY?start=404" frameborder="0"
-    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-</iframe>
+<p>Background reading: the <a href="ASG29Es.pdf">ASG29 Pilot Operating Handbook</a> (pdf)
+</p>
 
 <h2>Overview</h2>
 
-<p>The ASK21_B21 is a comprehensive upgrade of the stock X-Plane ASK21. The most significant changes are to
-instrument panel (see below) but also the flight model has been re-worked and tools used to ensure the glide
-performance (i.e. the <a href="../../dev/polar.html">polar</a>) is close to the real aircraft as possible.
+<p>The ASG29_B21 is a comprehensive upgrade of the original Windsocks ASG29 for X-Plane 7, replacing everything except
+    for the 3D model. The instrument panel represents the current most advanced soaring instrumentation for X-Plane
+and the flight model has received much attention to ensure the glide
+performance (i.e. the <a href="../../dev/polar.html">polar</a>) is close to the real aircraft as possible, resulting in the
+highest performance glider currently available in X-Plane.
+</p>
+
 <p>There are additional improvements for example in the various sounds, switchable instruments for imperial/metric units, and configurable commands in general intended
 to make the glider enjoyable to fly. But it is the programming of the existing and new panel gauges where
 the most significant changes have been made.
@@ -77,14 +82,34 @@ the most significant changes have been made.
 
 <ol>
     <li>Competition-grade variometers giving total energy, netto and speed-to-fly.</li>
-    <li>GPS Nav instrument using stock X-Plane flightplans for the cross-country task.</li>
+    <li>Computer Navpanel instrument using stock X-Plane flightplans for the cross-country task.</li>
     <li>Re-worked flight model for accurate polar and reasonable flight characteristics.</li>
     <li>User settings file provided so default setup can be adjusted, such as the vario sound
         'quiet band' and the units used for speed, height etc in the instruments.</li>
     <li>Updated sounds for general 'wind', spoilers, trim, vario.</li>
-    <li>Waypoint arrival height calculation based on computer vario and gpsnav data.</li>
+    <li>Waypoint arrival height calculation based on computer vario and nav data, to the immediate
+        waypoint <i>and around that one to the next</i>.
+    </li>
     <li>'Trigger' trim command to set trim to current airspeed. Additional commands added so
         panel buttons (next waypoint, etc) can be configured to joystick or keyboard.</li>
+</ol>
+
+<h2>Sections</h2>
+
+<ol class="contents">
+    <li><a href="quickstart.html">Quick start</a></li>
+    <li><a href="installation.html">Installation</a></li>
+    <li><a href="panel.html">Panel instruments</a></li>
+    <li><a href="flaps.html">Flying with flaps</a></li>
+    <li><a href="ballast.html">Flying with ballast</a></li>
+    <li><a href="launch.html">Launch checklist</a></li>
+    <li><a href="landing.html">Landing checklist</a></li>
+    <li><a href="navpanel.html">Navpanel overview</a></li>
+    <li><a href="flightplan.html">Loading a flightplan</a></li>
+    <li><a href="arrival_height.html">Arrival height and final glide</a></li>
+    <li><a href="installation.html#commands">X-Plane commands</a> if you want to set joystick buttons or keystrokes.</li>
+    <li><a href="installation.html#user_settings">User settings</a> to change instrument units and other settings.</li>
+    <li><a href="development.html">The development story</a></li>
 </ol>
 
 </body>
