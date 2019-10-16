@@ -24,7 +24,7 @@
 
 <img src="images/ballast.png"/>
 
-<p>Download the glider X-Plane Zip file from 
+<p>Download the glider X-Plane Zip file from
     <a href="https://forums.x-plane.org/index.php?/files/category/180-gliders-and-motor-gliders/">
         the x-plane.org download site
     </a>.
@@ -34,7 +34,7 @@
     Copy that folder into <tt>&lt;Your&nbsp;X&#8209;Plane&nbsp;Folder&gt;/Aircraft/Extra&nbsp;Aircraft/</tt>
 </p>
 
-<p>Start X-Plane and select the ASG29 B21 from the choice of aircraft. The icon on the 
+<p>Start X-Plane and select the ASG29 B21 from the choice of aircraft. The icon on the
     select screen can be updated when you <i>fly</i> the ASG29 and use the flight window
     menu options "Developer" ... "Regenerate Icons for Current Aircraft".
 </p>
@@ -203,6 +203,10 @@ project_settings.VARIO_302_DUAL_SOUND = 0 -- use alternate 'beep' sound for STF 
 project_settings.CLOCK_MODE = 0 -- cockpit panel clock display simulator local time (CLOCK_MODE=0)
                                 -- simulator Zulu time (CLOCK_MODE = 1)
                                 -- or real-world local time (CLOCK_MODE = 2)
+
+project_settings.STARTUP_BALLAST_KG = 50 -- Ballast loaded on startup if on ground (0..200)
+project_settings.STARTUP_FLAPS = 4 -- Flap setting on startup if on ground (0..6)
+
 </pre>
 
 <table>
@@ -256,6 +260,19 @@ project_settings.CLOCK_MODE = 0 -- cockpit panel clock display simulator local t
         <td>This is a simple choice whether to display the simulated time (<b>0</b> means local, <b>1</b> means Zulu time)
             or whether to display your real-world time on the clock on the panel as a handy cue to remember to take the
             dog for a walk.
+        </td>
+    </tr>
+    <tr>
+        <td>STARTUP_BALLAST_KG</td>
+        <td>Kilograms (=liters) of water ballast to be loaded at startup, if glider is on ground. Max
+            capacity is 200 Kg for strong thermals and ridge running. Default is 50 Kg. Indicator on
+            panel shows this as %, i.e. 0..100, where 50 Kg is 25% full.
+        </td>
+    </tr>
+    <tr>
+        <td>STARTUP_FLAPS</td>
+        <td>Flap setting 0..6 to be set at startup if glider is on ground. Suitable choice for launching is
+            4 (=4/A, Aerotow) or 5 (=5T, Thermalling).
         </td>
     </tr>
 </table>
