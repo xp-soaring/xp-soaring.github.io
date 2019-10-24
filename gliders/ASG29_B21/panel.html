@@ -8,7 +8,11 @@
     td {
         border-bottom: 1px solid black;
         padding: 8px;
+        vertical-align: top;
     }
+    .center { margin-left: auto;
+              margin-right: auto
+              }
 </style>
 
     </head>
@@ -22,182 +26,262 @@
     <div class="page_heading">Panel Instruments</div>
 </div>
 
+<p>General detail on the basic soaring calculations and instruments
+        is given in the separate article on <a href="../../instruments/index.html">soaring instruments</a>.
+</p>
+
+<p>See <a href="navpanel.html">dedicated page for Navpanel usage information</a>.
+</p>
+    
 <div class="center">
         <img src="images/panel_no_task2.png"/>
 </div>
 
     <table>
         <tr>
-            <td>1</td>
-            <td>Spoilers indicator. Will be <span style="color: green">green</span> when spoilers closed and locked.<br>
+            <td style="font-size: 30px; font-weight: bold;">1<br/>
+            <img src="images/instruments/spoilers.png"/>
+        </td>
+            <td><b>Spoilers indicator.</b> 
+                <p>Shows the opening and closing of the airbrakes</p>
+                <p>Will be <span style="color: green">green</span> when spoilers closed and locked (as above),
+                    or <span style="color: red">red</span> (as left) when the spoilers aren't closed properly (which
+                    will kill your glide performance).</p>
+                <p>
+                <p>As a simple approximation, the ASG29 will manage up to 50:1 glide ratio with the spoilers closed,
+                    and more like 6:1 with gerar down, Landing flap and the spoilers fully open. 
+                    A 'good' final approach to landing
+                    will have the spoilers 50% open, as this gives you the most flexibility in increasing or reducing
+                    the glide. It is generally accepted in gliding that the landing is a one-shot attempt.
+                </p>
+                <p>
                 <b>Important:</b> an analog axis on your joystick should be set to control the spoilers (in X-Plane called
                 <b>Speedbrakes</b>). Keen soaring pilots will use the <i>throttle axis</i>, with a backward pull opening the
                 brakes.<br/>
-                <b>Important: </b> the wheel brake is linearly operated when the spoilers are opened between 75% and 100%.
+                <b>Also Important: </b> when the spoilers are opened between 75% and 100%, the wheel brake is linearly operated. 
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td style="font-size: 30px; font-weight: bold;">2<br/>
+                <img src="images/instruments/computer_vario.png"/>
+            </td>
+            <td><p><b>Computer Vario</b>. The needle shows <i>compensated rate of climb</i>, either 
+                <a href="../../instruments/index.html#te">Total Energy</a> or 
+                <a href="../../instruments/index.html#stf">Speed to Fly</a>.
+            </p>
+            <p>The switch on the panel (labelled <b>6</b>) allows the pilot to choose whether they would like the 
+                instrument to stay in Total Energy mode, Speed to Fly mode, or automatically toggle between the two as
+                appropriate. In general Total Energy mode, which simply tells you how much the glider is
+                climbing or sinking, is most suitable for thermalling (the TE compensation smoothes out the short-term
+                effects of pilot control inputs). The Speed to Fly mode is most suitable for cruising between thermals and
+                especially the final glide - the indications of lift and sink are similar but actually telling you how much to slow down
+                or speed up, i.e. if you are already flying at exactly the right speed the vario will read zero.
+            </p>
+            <p>The Computer Vario will provide an <b>audio indication</b> of the lift and sink, i.e. a rising interrupted
+                tone for lift and a continuous sinking tone for sink. For competitive flying this audio information
+                 is essential but for noobies and those recording video, it can be annoying and the volume can be
+                 turned down with the volume control knob (<b>10</b>).
+            </p>
+            </td>
+        </tr>
+        <tr>
+            <td style="font-size: 30px; font-weight: bold;">3<br/>
+                <img src="images/instruments/trim.png"/>
+            </td>
+            <td><p><b>Trim indicator</b>. Shows the aircraft trim setting (controlled by the '[' and ']' keys, or
+                you can assign a button or key to the 
+                <a href="installation.html#commands"><tt>b21/trim/trigger</tt></a> command). The trim provides a slight
+                loading on the elevator which controls the glider speed at a neutral joystick position. Trim forward
+                will result in a fast 'hands-off' gliding speed, while trim back will result in a slower speed, e.g. for
+                more relaxed thermalling.
+            </td>
+        </tr>
+        <tr>
+            <td style="font-size: 30px; font-weight: bold;">4<br/>
+                <img src="images/instruments/netto_vario.png"/>
+            </td>
+            <td><p><b>Netto Vario</b>.
+                The panel top-left smaller (57mm) variometer reads the <b>Netto</b> sink/climb rate. This is really simple in concept:
+                    the sink rate of the glider in <i>still air</i> at the current airspeed is subtracted from the total energy
+                    reading shown on the Winter Vario described above. If you watch the two varios carefully in flight you'll see
+                    they appear to move in tandem, with the Netto reading just offset upwards. This amount of offset of the Netto
+                    needle varies with the speed of the aircraft to match the way the 'still air' sink rate of the aircraft varies
+                    with airspeed.
+                </p>
+                <p>The end result is the Netto Vario is showing you the sink rate of the <i>air through which the
+                    aircraft is flying</i> (as the natural sink of the glider has been deducted). In X-Plane you can witness
+                    this by choosing a flight in 'clear' weather and once you're off tow the needle will read pretty
+                    close to zero throughout your flight in spite of you flying at a variety of speeds.
+                </p>
+                <p>Note the simulated
+                    instrument doesn't 'cheat' by reading vertical air movement from X-Plane - it does the same calculation as
+                    is built into the real instrument using airspeed and altimeter climb/descent rates so it is fairly accurate but
+                    will deviate in certain circumstances such as a low-G push-over just like the real instrument. At very fast or
+                    very slow airspeeds the aircraft 'polar' calculation calibrated into the instrument can't hope to be perfectly
+                    accurate so the netto reading will drift in these corners of the flight envelope, again like the real thing.
+                    </p>
+            
+            </td>
+        </tr>
+        <tr>
+            <td style="font-size: 30px; font-weight: bold;">5<br/>
+                <img src="images/instruments/maccready.png"/>
+            </td>
+            <td><p><b>Maccready setting knob</b>.
+                The knob labelled "Mc" in the picture above is used to dial-in a <b>Maccready Setting</b>. This can be
+                    interpreted different ways but the simplest is as the <b>expected strength of your next climb</b>. I.e. the
+                    setting has the same units as your vario setting, e.g Knots, and the setting is displayed in the two digits at
+                    3 o'clock in the picture above in which it is the "0.0" above the 'STF' graphic.
+                </p>
+                <p>
+                    The computer vario will do many calculations based on how fast you are intending to fly, a simple example
+                    being your arrival height at a future waypoint will depend on your sink rate at your planned cruising speed
+                    with this being related by the glider <a href="../../dev/polar.html">polar</a>. This may sound a circular
+                    explanation but the vario itself (in Speed-to-Fly mode) will be <i>telling</i> you how fast to fly and the vario
+                    assumes reasonably you will be mostly following that guidance. But it uses the <i>pilot input</i> for the
+                    expected strength of thermals to calibrate it's recommended speed-to-fly.
+                </p>
+                <p>The net of all this is the Maccready
+                    Setting is the pilot's one communication with the computer vario which then adjusts everything else. The pilot
+                    learns pretty quickly that in still air a Maccready setting of, say, 3 knots will give a recommended speed of say
+                    70 knots, or maybe a 4 knot Maccready will recommend 80 knots airspeed.  A perfectly normal use of the
+                    Maccready setting is for the pilot, with years of experience of how fast they should fly in different
+                    weather conditions, to turn the Maccready UP when they want to fly a bit faster or DOWN when they feel they
+                    should be cautious. The computer vario will still do all the calculation trickery to continuously adjust the speed
+                    appropriately in any lift or sink. (Note the actual speeds in a heavily ballasted racing glider like the
+                    ASW27 will be <i>much</i> higher)
+                </p>
+                <p>The Maccready Setting has a special use on <b>final glide</b> (see <a href="#arrival_height">below</a>). It is
+                    normal for the pilot to fly the course with an optimal cross-country Maccready Setting for the weather,
+                    say 3.5 knots, and at some point the arrival height for the finish will become positive (happy news). At this
+                    point the pilot is likely to set off for the finish but may still dolphin in thermals and gain a bit of energy
+                    on the way so the predicted arrival height continues to improve.  At this point the pilot can turn UP the
+                    Maccready until that reduces the arrival height to a small margin above the airfield, and then
+                    follow the Speed-to-Fly much faster to the finish. The extra speed actually provides a built-in safety margin
+                    but only the pilot experience can assess the expected conditions on the way home to judge accurately the risk of
+                    landing out.
+                </p>
+            <p>If you are currently clueless (welcome to gliding, by the way) just dial in a value of 4 knots, or 2 meters 
+                per second, and that will provide a reasonable medium. With experience you will learn to increase the figure
+                when you're feeling confident and want to fly faster, or you're on the final glide and have lots of height in
+                hand. On the other hand when you're struggling even to stay aloft, you'll dump all the ballast and reduce this
+                to zero until things improve.
+            </p>
+
+            </td>
+        </tr>
+        <tr>
+            <td style="font-size: 30px; font-weight: bold;">6<br/>
+                <img src="images/instruments/te_stf_switch.png"/>
+            </td>
+            <td><p><b>Computer Vario mode switch</b>. Total Energy, Auto, or Speed-to-fly. See explanation
+                above for the computer vario, or also see general information on 
+                <a href="../../instruments/index.html#te">Total Energy</a> or 
+                <a href="../../instruments/index.html#stf">Speed to Fly</a>.
+            </p>
+            </td>
+        </tr>
+        <tr>
+            <td style="font-size: 30px; font-weight: bold;">7<br/>
+                <img src="images/instruments/navpanel.png"/>
+            </td>
+            <td><p><b>Navpanel</b>. Shows navigation information, allowing the loading of standard
+                X-Plane 'FMS' flightplans, providing directional pointers to the current and next waypoints,
+                displaying windspeed and direction relative to current heading, and also the arrival height at
+                the current and next waypoint predicted for the current ballast and maccready settings.
+            </p>
+            <p>The Navpanel needs a flightplan loaded to provide most of its function, otherwise it shows
+                basic recommended speed-to-fly information for the current Maccready setting, and the current
+                smoothed glide ratio.
+            </p>
+            <p>See the <a href="navpanel.html">Navpanel usage guide</a>.
+            </p>
+            </td>
+        </tr>
+        <tr>
+            <td style="font-size: 30px; font-weight: bold;">8<br/>
+                <img src="images/instruments/flaps.png"/>
+            </td>
+            <td><p><b>Flaps and warnings indicator</b>. This will indicate 1,2,3 (cruising flaps), 4/A (aerotow),
+                5T, 6T (thermalling), LAND (landing). If a cruising setting is selected when attempting to thermal,
+                the low-speed handling and climb rate will be sub-optimal. If a thermalling setting is used during a
+                high-speed cruise the glide ratio will be sub-optimal. Carrying water ballast requires particular attention
+                to the flap settings. The indicator will also glow red and provide a warning if the main wheel is lowered 
+                while water ballast is carried, or if the spoilers are opened while the main wheel is retracted. 
+            </p>
+            </td>
+        </tr>
+        <tr>
+            <td style="font-size: 30px; font-weight: bold;">9<br/>
+                <img src="images/instruments/compass.png"/>
+            </td>
+            <td><p><b>Compass</b>. Shows magnetic bearing, adversely affected during banked turns.
+            </p>
+            </td>
+        </tr>
+        <tr>
+            <td style="font-size: 30px; font-weight: bold;">10<br/>
+                <img src="images/instruments/volume.png"/>
+            </td>
+            <td><p><b>Volume Control knob</b>. The default instrument volume (including off) can
+                be set in the <a href="installation.html#user_settings">USER_SETTINGS</a> file.
+            </p>
+            </td>
+        </tr>
+        <tr>
+            <td style="font-size: 30px; font-weight: bold;">11<br/>
+                <img src="images/instruments/altimeter.png"/>
+            </td>
+            <td><p><b>Digital Altimeter</b>. Units (feet, meters) can
+                be set in the <a href="installation.html#user_settings">USER_SETTINGS</a> file. The pressure
+                setting (default QNH, 1013 mb) can be adjusted with the knob at bottom left of the altimeter to
+                provide a QFE figure as required such that for local flying the home airfield can be dialled in
+                as zero.  For cross-country flying QNH is normally used.
+            </p>
+            </td>
+        </tr>
+        <tr>
+            <td style="font-size: 30px; font-weight: bold;">12<br/>
+                <img src="images/instruments/gear.png"/>
+            </td>
+            <td><p><b>Wheel up/down indicator</b>. Wheel can be raised and lowered with the 'G' key,
+                or assign a button or key to the <a href="installation.html#commands">standard X-Plane
+                    gear up/down commands</a>.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td style="font-size: 30px; font-weight: bold;">13<br/>
+                <img src="images/instruments/clock.png"/>
+            </td>
+            <td><p><b>Clock</b>. Choice of displayed time (sim local, sim UTC, user real) can
+                be set in the <a href="installation.html#user_settings">USER_SETTINGS</a> file.
+            </p>
+            </td>
+        </tr>
+        <tr>
+            <td style="font-size: 30px; font-weight: bold;">14<br/>
+                <img src="images/instruments/asi.png"/>
+            </td>
+            <td><p><b>Airspeed indicator</b>. Units (knots, kilometer per second) can
+                be set in the <a href="installation.html#user_settings">USER_SETTINGS</a> file.
+            </p>
+            </td>
+        </tr>
+        <tr>
+            <td style="font-size: 30px; font-weight: bold;">15<br/>
+                <img src="images/instruments/ballast.png"/>
+            </td>
+            <td><p><b>Ballast indicator and control</b>. This instrument shows the amount of water ballast
+                carried, and the open/close buttons allow the water to be dumped.
+                The aircraft will launch by default with 25% ballast (equal to 50Kg), but on the ground the
+                ballast can be filled by clicking the tap/faucet icon on the left side of the indicator.
+            </p>
             </td>
         </tr>
     </table>
 
-<p>More detail on the basic soaring calculations and instruments
-    is given in the separate article on <a href="../../instruments/index.html">soaring instruments</a>.
-</p>
-
-<h2>Summary of Panel Features</h2>
-
-<ol>
-    <li>Competition-grade variometers giving total energy, netto and speed-to-fly.</li>
-    <li>GPS Nav instrument using stock X-Plane flightplans for the cross-country task.</li>
-    <li>Re-worked flight model for accurate polar and reasonable flight characteristics.</li>
-    <li>User settings file provided so default setup can be adjusted, such as the vario sound
-        'quiet band' and the units used for speed, height etc in the instruments.</li>
-    <li>Updated sounds for general 'wind', spoilers, trim, vario.</li>
-    <li>Waypoint arrival height calculation based on computer vario and gpsnav data.</li>
-    <li>'Trigger' trim command to set trim to current airspeed. Additional commands added so
-        panel buttons (next waypoint, etc) can be configured to joystick or keyboard.</li>
-</ol>
-
-
-<h4>Netto 57mm slave vario to the computer vario</h4>
-
-<img src="vario_57mm.png"/>
-
-    <p>The panel top-left smaller (57mm) variometer reads the <b>Netto</b> sink/climb rate. This is really simple in concept:
-        the sink rate of the glider in <i>still air</i> at the current airspeed is subtracted from the total energy
-        reading shown on the Winter Vario described above. If you watch the two varios carefully in flight you'll see
-        they appear to move in tandem, with the Netto reading just offset upwards. This amount of offset of the Netto
-        needle varies with the speed of the aircraft to match the way the 'still air' sink rate of the aircraft varies
-        with airspeed.
-    </p>
-    <p>The end result is the Netto Vario is showing you the sink rate of the <i>air through which the
-        aircraft is flying</i> (as the natural sink of the glider has been deducted). In X-Plane you can witness
-        this by choosing a flight in 'clear' weather and once you're off tow the needle will read pretty
-        close to zero throughout your flight in spite of you flying at a variety of speeds.
-    </p>
-    <p>Note the simulated
-        instrument doesn't 'cheat' by reading vertical air movement from X-Plane - it does the same calculation as
-        is built into the real instrument using airspeed and altimeter climb/descent rates so it is fairly accurate but
-        will deviate in certain circumstances such as a low-G push-over just like the real instrument. At very fast or
-        very slow airspeeds the aircraft 'polar' calculation calibrated into the instrument can't hope to be perfectly
-        accurate so the netto reading will drift in these corners of the flight envelope, again like the real thing.
-        </p>
-
-<h4>"302" Computer Vario showing Total Energy or Speed-to-Fly</h4>
-
-<img src="vario_302.png"/>
-
-    <p>The 'Computer Vario' (center of panel, with yellow needle) is by far the most sophisticated of all, but can still be
-        interpreted as a simple 'rate-of-climb' indicator. The computer vario can operate in two modes -
-        Total Energy and Speed-to-Fly. The instrument is typically used in
-        Total Energy mode when thermalling, and Speed-to-Fly mode when cruising between thermals, and on the 'Auto'
-        setting will automatically switch between the two.
-    </p>
-    <p>Total-energy mode displays rate-of-climb <i>adjusted</i> to take into account whether the aircraft
-        airspeed is increasing or decreasing, referred to as Total Energy compensation.
-        If the pilot pushes the stick forwards the glider will sink faster <b>and</b>
-        increase in airspeed. If the pilot pulls the stick back the reverse will happen. So a 'pitot' (i.e. the forward
-        facing airspeed pressure inlet) bleed can be added to the 'static' (i.e. altitude) pressure feed
-        the simple rate-of-climb
-        instrument uses to give a <b>compensated</b> reading that cancels out the effect of accelerating
-        or decelerating.
-    </p>
-    <p>The end result is a variometer that shows how fast the glider is climbing or sinking without
-        injecting 'stick thermals' every time the pilot moves the controls. The compensation of the vario is easy
-        to recognise in flight by pushing and pulling on the stick and you'll see in the short term the needle reading
-        doesn't move much where in a pure rate-of-climb indicator the needle would be swinging wildly from lift to sink.
-    </p>
-
-    <h4 id="maccready">The Maccready setting</h4>
-    <p>The knob labelled "Mc" in the picture above is used to dial-in a <b>Maccready Setting</b>. This can be
-        interpreted different ways but the simplest is as the <b>expected strength of your next climb</b>. I.e. the
-        setting has the same units as your vario setting, e.g Knots, and the setting is displayed in the two digits at
-        3 o'clock in the picture above in which it is the "0.0" above the 'STF' graphic.
-    </p>
-    <p>
-        The computer vario will do many calculations based on how fast you are intending to fly, a simple example
-        being your arrival height at a future waypoint will depend on your sink rate at your planned cruising speed
-        with this being related by the glider <a href="../../dev/polar.html">polar</a>. This may sound a circular
-        explanation but the vario itself (in Speed-to-Fly mode) will be <i>telling</i> you how fast to fly and the vario
-        assumes reasonably you will be mostly following that guidance. But it uses the <i>pilot input</i> for the
-        expected strength of thermals to calibrate it's recommended speed-to-fly.
-    </p>
-    <p>The net of all this is the Maccready
-        Setting is the pilot's one communication with the computer vario which then adjusts everything else. The pilot
-        learns pretty quickly that in still air a Maccready setting of, say, 3 knots will give a recommended speed of say
-        70 knots, or maybe a 4 knot Maccready will recommend 80 knots airspeed.  A perfectly normal use of the
-        Maccready setting is for the pilot, with years of experience of how fast they should fly in different
-        weather conditions, to turn the Maccready UP when they want to fly a bit faster or DOWN when they feel they
-        should be cautious. The computer vario will still do all the calculation trickery to continuously adjust the speed
-        appropriately in any lift or sink. (Note the actual speeds in a heavily ballasted racing glider like the
-        ASW27 will be <i>much</i> higher)
-    </p>
-    <p>The Maccready Setting has a special use on <b>final glide</b> (see <a href="#arrival_height">below</a>). It is
-        normal for the pilot to fly the course with an optimal cross-country Maccready Setting for the weather,
-        say 3.5 knots, and at some point the arrival height for the finish will become positive (happy news). At this
-        point the pilot is likely to set off for the finish but may still dolphin in thermals and gain a bit of energy
-        on the way so the predicted arrival height continues to improve.  At this point the pilot can turn UP the
-        Maccready until that reduces the arrival height to a small margin above the airfield, and then
-        follow the Speed-to-Fly much faster to the finish. The extra speed actually provides a built-in safety margin
-        but only the pilot experience can assess the expected conditions on the way home to judge accurately the risk of
-        landing out.
-    </p>
-    <h4>Speed to Fly</h4>
-    <p>
-        In Speed-to-Fly
-        mode the variometer behaves <i>like</i> a normal variometer and appears to be indicating lift and sink in
-        a fairly coherent manner, but in fact the lift and sink indications have been fundamentally transformed into
-        a closely related concept (in soaring) that you should SPEED UP or SLOW DOWN. The general optimal
-        practice in soaring is that you SPEED UP IN SINK and SLOW DOWN IN LIFT, and the Speed-to-Fly vario computes
-        the <i>optimum</i> speed to fly given the current lift or sink, compares that to your current speed, and moves
-        the needle and beeps or buuuurps directly according to how much you should speed up or slow down.
-    </p>
-    <p>This is more
-        complicated to explain than to use in practice - the net effect is a vario that beeps at you to slow down and
-        buuuuuurps at you to speed up, which is kind of what any electronic vario is doing although the STF vario does all
-        this relative to your current airspeed (and in fact how much water ballast you're carrying, which in the
-        ASK21 is zero). The optimal speed for you to fly in <i>still air</i> varies a lot depending on the strength of
-        the next climb you're hoping to get, and this provides the baseline around which the STF vario operates. So
-        you tell the vario your <i>guess</i> of the strength of the next thermal by turning the knob for the
-        <b>Maccready Setting</b> (labelled "Mc" in the picture above).
-    </p>
-    <p>This is simpler than it sounds - a typical setting might be 3 or 4 knots and you can
-        dial that in and leave it for most of your flight, flying between thermals at the speed the STF vario directs you
-        to. The Maccready setting ultimately becomes a kind of 'confidence' setting - if you're feeling courageous you turn
-        the reading up and the STF will push you to fly faster, using up height at a scary rate but a strong climb will
-        make all that worthwhile.
-    </p>
-    <p>The computer vario also computes 'arrival height' at your next waypoint, using Nav data provided by the
-        GPSNav instrument.  This is described below.
-    </p>
-
-
-<h3 id="gpsnav">GPSNav</h3>
-
-<img src="gpsnav.png"/>
-
-<p>The rectangular instrument to the right of the computer vario is the GPSNav instrument, used for navigation and
-    feeding details of the next waypoint (such as elevation, bearing, distance to go) into the computer vario.
-</p>
-
-<p>A soaring task is loaded into the GPSNav by clicking the 'LOAD' button and responding to the standard X-Plane
-    'load flightplan' prompts. You can create a 'task' by using external map-based utilities like Little Navmap
-     (Mac, Linux or Windows) or G-Plan (Windows). The GPSNav will pick up the waypoint names and lat/longs from
-     the task, and compute the ground elevation at each waypoint using an internal database.
-</p>
-<p>In the screenshot of the panel above, a task beginning at KSEA (Seattle Airport) has been loaded, which is turnpoint
-    1 (i.e. start) out of 2 (hence display 1/2: KSEA).
-</p>
-<p>The <b>next</b> turnpoint can be selected  at any time with the RIGHT ARROW button, and similarly the LEFT
-    ARROW will move you backwards through the task.
-</p>
-<p>The GPSNav is currently saying KSEA is directly ahead (the single DIRECTION vertical bar). If the turnpoint was
-    to the left or right, chevrons would extend in the appropriate direction guiding you in a faily obvious way to turn
-    in the appropriate direction.
-</p>
-<p>The GPSNav is saying the waypoint is 9.7 Km away (the distance units can be changed to miles via USER_SETTINGS.lua, see
-    below) and has a ground elevation of 399 feet (again these height units can be changed in USER_SETTINGS.lua).
-</p>
-
-<img src="vario_302.png"/>
 
 </body>
 </html>

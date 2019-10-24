@@ -9,6 +9,9 @@
         border-bottom: 1px solid black;
         padding: 8px;
     }
+        .center { margin-left: auto;
+              margin-right: auto
+              }
 </style>
 
     </head>
@@ -39,7 +42,7 @@
     menu options "Developer" ... "Regenerate Icons for Current Aircraft".
 </p>
 
-<h2 id="commands">New X-Plane COMMANDS</h2>
+<h2 id="commands">Optional: set keys/buttons to X-Plane COMMANDS</h2>
 
 <p>The ASK21_B21 has various x-plane commands built-in that you can assign to joystick buttons or keyboard keys.
     To do so open the Settings screen (2nd from right icon in top right corner of the XP11 screen) and
@@ -171,9 +174,30 @@
         <td>Fill the water ballast to max (100% = 200Kg)
         </td>
     </tr>
+    <tr>
+        <td>sim/flight_controls/glider_tow_left<br/>
+            sim/flight_controls/glider_tow_straight<br/>
+            sim/flight_controls/glider_tow_right<br/>
+            sim/flight_controls/glider_tow_release
+        </td>
+        <td>These are useful towplane control commands available to assign keys or buttons in
+            default X-Plane.
+        </td>
+    </tr>
+    <tr>
+        <td>sim/flight_controls/landing_gear_down<br/>
+            sim/flight_controls/landing_gear_up</br>
+            sim/flight_controls/landing_gear_toggle
+        </td>
+        <td>Standard X-Plane commands that will raise and lower the ASG29 main wheel.
+        </td>
+    </tr>
     </table>
 
-<h2 id="user_settings">ASG29_B21/USER_SETTINGS.lua</h2>
+<h2 id="user_settings">Optional: USER_SETTINGS.lua</h2>
+
+<p>Settings file location: <tt>ASG29_B21/USER_SETTINGS.lua</tt>.
+</p>
 
 <p>If you can edit a text file using Notepad, you can tweak the instruments to your preferences. The settings
 file at the base of the aircraft folder, and called <b>USER_SETTINGS.lua</b>. The initial settings in this file
@@ -208,6 +232,8 @@ project_settings.STARTUP_BALLAST_KG = 50 -- Ballast loaded on startup if on grou
 project_settings.STARTUP_FLAPS = 4 -- Flap setting on startup if on ground (0..6)
 
 </pre>
+
+<h3>Explanation of the various user settings available:</h3>
 
 <table>
     <tr>
