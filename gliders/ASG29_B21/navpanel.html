@@ -28,12 +28,98 @@
 <div class="center">
     <img src="images/panel_demo.png"/>
 </div>
+<br/>
+<div class="center">
+    <img src="images/instruments/navpanel.png"/>
+</div>
 
-<h1>The Computer Navpanel</h1>
-
-<p>The central large display on the panel provides a variety of nav information taking into
-    account the speeds the pilot is flying and the ballast being carried.
+<p>The central large display on the panel provides a variety of navigation information taking into
+    account the speeds the pilot is flying and the ballast being carried. This includes directional
+    pointers, distance to go, and predicted arrival height for the <i>current</i> and <i>next</i>
+    waypoints.
 </p>
+
+<h4>The control buttons</h4>
+
+<p>Across the top of the Navpanel are four buttons:
+</p>
+
+<div class="center">
+    <img src="images/instruments/navpanel_buttons.png"/>
+</div>
+
+<ol>
+<li><b>PAGE:</b> will cycle through the multiple pages of information on the Navpanel, i.e.
+    <i>Nav</i>, <i>Task</i>, <i>multiple checklists</i>. It is normal to fly with the 'Nav'
+    page displayed as illustrated above.
+</li>
+<li><b>LOAD:</b> launch the stock X-Plane flightplan load screen to open a .FMS file used
+     to define a <a href="../../../tasks/index.html">soaring task</a>.
+</li>
+<li><b>WP-:</b> when a task is loaded this will update the Navpanel to use the <i>previous</i>
+    waypoint in the task.
+</li>
+<li><b>WP+:</b> as above but to select the <i>next</i> waypoint in the task.
+</li>
+</ol>
+
+<h4 id="task">Loading a task</h4>
+
+<p>You can create a soaring task using external tools, such as 
+<a href="https://albar965.github.io/littlenavmap.html">Little navmap</a> or
+<a href="https://www.tasoftware.co.uk/">Plan-G</a>. This will produce a .FMS file with the selected
+waypoints.  
+</p>
+<p>The Navpanel ignores the altitudes in the .FMS file, and uses ground elevations provided
+by X-Plane instead.
+</p>
+<p>You store the .FMS file in your <tt>&lt;X-Plane base&gt;/Output/FMS&nbsp;plans</tt> directory.
+</p>
+<p>Click the Navpanel <b>LOAD</b> button to select your task (.FMS) file and load it into the Navpanel.
+</p>
+
+<p>When a task is loaded, the Navpanel will switch to the 'Task' page below, giving the current selected
+waypoint in yellow at the top of the page, and each waypoint name (e.g. "1N7"), the 'leg' distance 
+from there to the next waypoint, and the elevation of the waypoint.
+</p>
+<p>With no .FMS file loaded, the 'Task' page will simple show the "B21 NAVPANEL" graphic on the left.
+</p>
+
+<div class="center">
+        <img src="images/instruments/navpanel_no_task.png"/>
+        <img src="images/instruments/navpanel_task.png"/>
+    </div>
+    
+
+<h4 id="nav">Navigation</h4>
+
+<p>This is the default page at startup, and should be the page viewed while soaring. It provides
+essential soaring navigation information while on a task, i.e. the direction and distance to go
+to the next <i>two</i> waypoints, and the predicted arrival heights when you get there, taking into
+account the ballast you are carrying, the speeds you are expected to fly at, your current altitude, the
+elevation of each waypoint and the current wind. The Navpanel will <span style="color: red; font-weight: bold">NOT</span>
+take into account any high obstructions between you and your destination.
+</p>
+
+<p>Note your default units for altitude (feet / meters) , distance (miles / kilometers) and speeds (knots / kilometers per hour) 
+can be changed in 
+the <a href="installation.html#user_settings">USER_SETTINGS</a> file.
+</p>
+
+<div class="center">
+    <img src="images/instruments/navpanel.png"/>
+</div>
+
+<p>The information displayed on the "Nav" page, using the example above, is:
+</p>
+
+<table>
+<tr>
+    <td style="font-weight: bold; font-size: 30; color: #aaaa00">1/5: 1N7</td>
+    <td>The waypoint number out of the total waypoints in the task (i.e. "1" of "5"). The waypoint name (i.e. "1N7").
+    </td>
+</tr>
+</table>
 
 <h4 id="maccready">The Maccready setting</h4>
 
@@ -165,12 +251,6 @@
     the Maccready until the arrival height is only a couple of hundred feet and storm home.
 </p>
 
-<h3>Task</h3>
-<div class="center">
-        <img src="images/instruments/navpanel_no_task.png"/>
-        <img src="images/instruments/navpanel_task.png"/>
-    </div>
-    
 <h3>Checklists</h3>
 <div class="center">
         <img src="images/instruments/navpanel_checklist.png"/>
