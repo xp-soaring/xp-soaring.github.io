@@ -9,6 +9,9 @@
         border-bottom: 1px solid black;
         padding: 8px;
     }
+    .center { margin-left: auto;
+              margin-right: auto
+              }
 </style>
 
     </head>
@@ -19,27 +22,102 @@
         <a href="../index.html">Sailplanes</a> &gt;
         <a href="index.html">ASG29_B21</a> &gt;
     </div>
-    <div class="page_heading">Flight Plan</div>
+    <div class="page_heading">Flying with Flaps</div>
 </div>
 
+<div class="center">
+    <img src="images/landing_flaps.png"/>
+</div>
 
-<img src="landing_flaps.png"/>
-
-<h1>Flying with flaps</h1>
-
-<p>This  Schleicher ASG-29 for X-Plane is an 18 meter, flapped, ballast-capable glider with
-a very high gliding performance across a wide speed range and a state-of-the-art instrument
-panel.
+<p>The British Gliding Association provide this <a href="flaps.pdf">thorough general descripion of gliding flaps</a>.
 </p>
 
-<img src="flaps.png"/>
+<p>As with the images below, flaps are designed to hinge down from the trailing edge of the wing and increase the
+    <i>lift</i> and the <i>drag</i> of the main wing. The ASG-29, like most flapped gliders, uses "simple flaps" and the
+    image at the top of this page shows the flaps deployed in the maximum, "Landing", setting.
+</p>
 
-<img src="flaps_concept.png"/>
+<div class="center">
+    <img src="images/flaps.jpg"/>
+</div>
 
-<img src="asg29_flap_speeds.png"/>
+<p>The ASG-29 main wing is generally most efficient with the flaps retracted, but in this configuration does not generate
+    enough lift when the glider is flying slowly hence a compromise must be made and positive flaps are needed then. When
+    flying quickly (which is common when soaring an ASG-29) the lift produced by the main wing is slightly more than ideal 
+    (causing extra "induced" drag because of this lift) and the ASG-29 has a 'negative' flap setting (with the flaps tilting
+    very slightly <i>upwards</i>) which reduces the lift and drag.
+</p>
 
-<img src="asg29_flaps_settings.png"/>
+<p>The Schleicher ASG-29 has SEVEN flap settings:
+</p>
+<table>
+    <tr><td style="font-size: 30px; font-weight: bold">LAND</td>
+        <td><b>Landing.</b> Very large positive flap setting, high-lift, high-drag.</td>
+    </tr>
+    <tr><td style="font-size: 30px; font-weight: bold">6T, 5T</td>
+        <td><b>Thermalling.</b> Medium positive flap settings, high-lift, medium-drag.</td>
+    </tr>
+    <tr><td style="font-size: 30px; font-weight: bold">4/A</td>
+        <td><b>Aerotow, slow cruise.</b> Positive flap setting. Good flight stability for potential launch failure.</td>
+    </tr>
+    <tr><td style="font-size: 30px; font-weight: bold">3</td>
+        <td><b>Slow Cruise.</b> Small positive flap setting.</td>
+    </tr>
+    <tr><td style="font-size: 30px; font-weight: bold">2</td>
+        <td><b>Medium Cruise.</b> Zero flap setting.</td>
+    </tr>
+    <tr><td style="font-size: 30px; font-weight: bold">1</td>
+        <td><b>Fast cruise.</b> Small negative flap setting. Best L/D at most cruising speeds.</td>
+    </tr>
+</table>
 
+<h3>The 'flaperon' concept</h3>
+
+<p>The ASG-29 has a complex flaps/ailerons linkage resulting in'flaperons', 
+    i.e. ailerons that operate normally but also move down together to droop with the flaps. In effect the 
+    'central' position of each aileron is adjusted downwards in the direction of the flap deflection, such that the 
+    ailerons still operate up/down opposite to each other but have a downward offset providing an
+    additional flap effect. This allows the ASG-29 to have extremely high aspect-ratio flaps, i.e. they are
+    effectively very long and very narrow, with the efficiency benefits that provides.
+</p>
+
+<h3>ASG-29 Flap and flaperon deflections:</h3>
+
+<p>The table below shows &lt;flap deflection&gt;/&lt;aileron droop&gt; for each flap setting. In positions 1
+    through 6 the ailerons act as 'flaperons' i.e. droop closely in line with the flaps. However, at flap position
+    L (LAND, 47 degrees), the ailerons revert to a smaller droop (12 degrees) for better roll control. This is
+    accurately modelled in the ASG29_B21, and can be viewed in the external view.
+</p>
+
+<div class="center">
+    <img src="images/asg29_flaps_settings.png"/>
+</div>
+
+<h3>ASG-29 Pilot Operating Handbook flap deployment speeds with ballast:</h3>
+
+<p>If carrying full ballast, for full control it is important to go into positive flaps promptly as you slow down
+    from cruise. At lower wing loadings the use of positive flap is less critical.
+</p>
+
+<div class="center">
+    <img src="images/asg29_flap_speeds.png"/>
+</div>
+
+<h3>ASG-29 Aileron droop with flaps (flaperons):</h3>
+
+<p>This really is for academic interest only, and I suspect even owners of ASG-29 sailplanes don't know
+    this detail. 
+    The actual movement of the ailerons and flaps is slightly more complex - as the flaps come down the range of
+    movement of the ailerons changes slightly asymmetrically up and down. The details were given in the presentation
+    slide below, originally used by Michael Greiner, the designer of the ASG-29. E.g. for the final 'L' position of the
+    flaps you can seen the flap deflection at +47 degrees with the ailerons centered at +12 degrees with a relative 
+    deflection
+    movement of about +13 degrees to -26 degrees (equating to +25 degrees and -14 degrees about the wing centerline).
+</p>
+
+<div class="center">
+    <img style="width: 600px" src="images/flaps.png"/>
+</div>
 
 </body>
 </html>
