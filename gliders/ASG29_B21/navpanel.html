@@ -28,10 +28,6 @@
 <div class="center">
     <img src="images/panel_demo.png"/>
 </div>
-<br/>
-<div class="center">
-    <img src="images/instruments/navpanel.png"/>
-</div>
 
 <p>The central large display on the panel provides a variety of navigation information taking into
     account the speeds the pilot is flying and the ballast being carried. This includes directional
@@ -68,13 +64,13 @@
 <p>You can create a soaring task using external tools, such as 
 <a href="https://albar965.github.io/littlenavmap.html">Little navmap</a> or
 <a href="https://www.tasoftware.co.uk/">Plan-G</a>. This will produce a .FMS file with the selected
-waypoints.  
+waypoints which you store in your <tt>&lt;X-Plane base&gt;/Output/FMS&nbsp;plans</tt> directory. (Here is
+an <a href="1N7-Slatington.fms">example</a> starting at 1N7 Blairstown USA)
 </p>
 <p>The Navpanel ignores the altitudes in the .FMS file, and uses ground elevations provided
 by X-Plane instead.
 </p>
-<p>You store the .FMS file in your <tt>&lt;X-Plane base&gt;/Output/FMS&nbsp;plans</tt> directory.
-</p>
+
 <p>Click the Navpanel <b>LOAD</b> button to select your task (.FMS) file and load it into the Navpanel.
 </p>
 
@@ -115,22 +111,86 @@ the <a href="installation.html#user_settings">USER_SETTINGS</a> file.
 
 <table>
 <tr>
-    <td style="font-weight: bold; font-size: 30; color: #aaaa00">1/5: 1N7</td>
+    <td><h4>Waypoint number/name</h4>
+        <image src="images/instruments/navpanel_wp.png"/></td>
     <td>The waypoint number out of the total waypoints in the task (i.e. "1" of "5"). The waypoint name (i.e. "1N7").
     </td>
 </tr>
+<tr>
+    <td><h4>Pointers</h4>
+        <image src="images/instruments/navpanel_pointers.png"/></td>
+    <td>The waypoint number out of the total waypoints in the task (i.e. "1" of "5") followed
+        by the waypoint name (i.e. "1N7").
+    </td>
+</tr>
+<tr>
+    <td><h4>Distance to Waypoint</h4>
+        <image src="images/instruments/navpanel_distance.png"/></td>
+    <td>Distance to the current waypoint (i.e. "1N7") in the selected units (i.e. Kilometers). The units can
+        be changed (miles / km) in <a href="installation.html#user_settings">User settings</a>.
+    </td>
+</tr>
+<tr>
+    <td><h4>Arrival height</h4>
+        <image src="images/instruments/navpanel_height.png"/></td>
+    <td>Your predicted height AGL (above ground level) at the waypoint. <b>This simple number is the main point of the
+        Navpanel
+    </b> based on some
+        fairly complex calculations based on the glider performance in the current wind
+        at the current ballast load assuming you are
+        flying at the optimal speed (see <a href="#speed-to-fly">speed to fly<a>) 
+            for your <a href="#maccready">Maccready setting</a>. When on <b>final glide</b> to your destination, possibly
+            from 50km away, this reading will be all you care about. You will watch the number increasing and decreasing
+            as you progress rather than look out the cockpit...
+    </td>
+</tr>
+<tr>
+    <td><h4>Wind</h4>
+        <image src="images/instruments/navpanel_wind.png"/></td>
+    <td>This shows the wind speed (over the ground) at the current position of the glider. The white triangle shows
+        the direction of the
+        wind <i>relative</i> to the current direction of the glider. In the example illustrated, the glider has
+        a slightly offset tailwind of 14 knots. In general
+        the wind will reduce with altitude but the arrival height calculations always assume the
+        <i>current wind</i>. So a final glide with a tailwind will be slightly optimistically calculated (as the
+        tailwind reduces as you get lower) and a final glide into a headwind will actually be slightly better than
+        you expect for the same reason. The units
+        for wind speed (knots, kilometers per hour) can be changed in <a href="installation.html#user_settings">User settings</a>.
+    </td>
+</tr>
+<tr>
+    <td><h4>Maccready setting</h4>
+        <image src="images/instruments/navpanel_maccready.png"/></td>
+    <td>Maccready setting (pilot estimate of climb rate) <a href="#maccready">see below</a>. This is complex to
+        explain but ultimately simple to use... theoretically it is the pilot input saying how fast the next climb
+        is going to be, so a value such as 3.5 knots or 2 meters per second will often be reasonable. But quite
+        quickly you will learn this exactly equates to <i>how fast you want to fly</i>. If you turn <i>up</i> the
+        dial the speed-to-fly vario will beep at you to fly <i>faster</i>, and the predicted arrival height will get
+        <i>lower</i>. Vice versa if you turn the dial down.
+    </td>
+</tr>
+<tr>
+    <td><h4>Next Waypoint</h4>
+        <image src="images/instruments/navpanel_next_wp.png"/></td>
+    <td>This is the distance and arrival high for the waypoint <i>after the current one</i>. The Navpanel does
+        the arrival height calculation around the current waypoint to the next one, taking into account everything
+        mentioned above for the current waypoint, plus the change in the wind vector turning from the current waypoint
+        to the next.
+    </td>
+</tr>
+
 </table>
 
 <h4 id="maccready">The Maccready setting</h4>
 
 <div class="center">
-    <img src="images/instruments/maccready.png"/>
+    <img src="images/instruments/navpanel_maccready.png"/>
 </div>
 
     <p>The knob labelled "Mc" in the picture above is used to dial-in a <b>Maccready Setting</b>. This can be
         interpreted different ways but the simplest is as the <b>expected strength of your next climb</b>. I.e. the
-        setting has the same units as your vario setting, e.g Knots, and the setting is displayed in the two digits at
-        3 o'clock in the picture above in which it is the "0.0" above the 'STF' graphic.
+        setting has the same units as your vario setting, e.g Knots, and the setting is displayed in the two digits the
+        left side of the Navpanel adjacent to the Maccready Knob.
     </p>
     <p>
         The computer vario will do many calculations based on how fast you are intending to fly, a simple example
@@ -160,7 +220,8 @@ the <a href="installation.html#user_settings">USER_SETTINGS</a> file.
         but only the pilot experience can assess the expected conditions on the way home to judge accurately the risk of
         landing out.
     </p>
-    <h4>Speed to Fly</h4>
+
+    <h4 id="speed-to-fly">Speed to Fly</h4>
     <p>
         In Speed-to-Fly
         mode the variometer behaves <i>like</i> a normal variometer and appears to be indicating lift and sink in
@@ -185,54 +246,22 @@ the <a href="installation.html#user_settings">USER_SETTINGS</a> file.
         the reading up and the STF will push you to fly faster, using up height at a scary rate but a strong climb will
         make all that worthwhile.
     </p>
-    <p>The computer vario also computes 'arrival height' at your next waypoint, using Nav data provided by the
-        GPSNav instrument.  This is described below.
-    </p>
-
-
-<h3 id="gpsnav">GPSNav</h3>
-
-<img src="gpsnav.png"/>
-
-<p>The rectangular instrument to the right of the computer vario is the GPSNav instrument, used for navigation and
-    feeding details of the next waypoint (such as elevation, bearing, distance to go) into the computer vario.
-</p>
-
-<p>A soaring task is loaded into the GPSNav by clicking the 'LOAD' button and responding to the standard X-Plane
-    'load flightplan' prompts. You can create a 'task' by using external map-based utilities like Little Navmap
-     (Mac, Linux or Windows) or G-Plan (Windows). The GPSNav will pick up the waypoint names and lat/longs from
-     the task, and compute the ground elevation at each waypoint using an internal database.
-</p>
-<p>In the screenshot of the panel above, a task beginning at KSEA (Seattle Airport) has been loaded, which is turnpoint
-    1 (i.e. start) out of 2 (hence display 1/2: KSEA).
-</p>
-<p>The <b>next</b> turnpoint can be selected  at any time with the RIGHT ARROW button, and similarly the LEFT
-    ARROW will move you backwards through the task.
-</p>
-<p>The GPSNav is currently saying KSEA is directly ahead (the single DIRECTION vertical bar). If the turnpoint was
-    to the left or right, chevrons would extend in the appropriate direction guiding you in a faily obvious way to turn
-    in the appropriate direction.
-</p>
-<p>The GPSNav is saying the waypoint is 9.7 Km away (the distance units can be changed to miles via USER_SETTINGS.lua, see
-    below) and has a ground elevation of 399 feet (again these height units can be changed in USER_SETTINGS.lua).
-</p>
 
 <h3 id="arrival_height">Arrival height / final glide calculation</h3>
 
-<p><b>The information from the GPSNav is sent to the computer vario which will continuously calulate an expected
-    arrival height
-    above the next waypoint</b>. The computer vario above is saying you will arrive 1292 feet BELOW the intended waypoint.
+<p>The computer navpanel above is saying you will arrive 2114 feet <i>above</i> the current waypoint.
     When you have height in hand the reading will have '+' in front of it. Note that the +/- figures are
     <b>above the ground</b> at that waypoint and the default units are feet unless you've changed that in
-    your <a href="#user_settings">user settings</a>.
+    your <a href="installation.html#user_settings">User settings</a>.
 </p>
-<p>The GPSNav is at heart a relatively simple GPS-based navigation instrument guiding you along a stored flightplan.
-    In contrast the computer vario is doing a very complex calculation taking into account the all-up-weight of the
-    glider (i.e. ballast carried), the wind speed, the glide performance of the ASK21, the pilot's chosen
+<p>The Navpanel provides GPS-based navigation guiding you along a stored flightplan.
+    The Navpanel is continuously doing a very complex calculation taking into account the all-up-weight of the
+    glider (i.e. ballast carried), the wind speed, the glide performance of the ASG29 at that ballast level,
+     the pilot's chosen
     Maccready setting, the current altitude of the glider and the elevation of the waypoint in order to calculate the
     expected height the glider will be at when it finally arrives at that waypoint, which could be 30+ miles away.
 </p>
-<p>The calculation from the computer vario is <i>not</i> a guarantee - it doesn't know what lift and sink you'll fly
+<p>The calculation from the Navpanel is <i>not</i> a guarantee - it doesn't know what lift and sink you'll fly
     through to get there, just like you.  But it's saying if you fly at the speed indicated on the STF needle <i>and</i>
     you fly though a reasonable balance of lift and sink, the calculation will be pretty close.  With experience
     you learn how much safety margin to add (or subtract!) from the calculation to avoid ending up in the dirt and
@@ -251,10 +280,20 @@ the <a href="installation.html#user_settings">USER_SETTINGS</a> file.
     the Maccready until the arrival height is only a couple of hundred feet and storm home.
 </p>
 
+<p>A key point is towards the end of a flight you tend to use the Maccready Setting / Arrival Height in <i>reverse</i>
+    i.e. you're watching the arrival height increase from negative to positive (at which point you feel like you are
+    nearly home, even though you could be 50Km+ away) and from then on you may dolphin fly to extract some energy
+    from the lift you fly through but gradually crank up the Maccready setting so the predicted arrival height
+    reduces again to a value that is good enough (say a few hundred feet) but not ridiculously conservative.
+</p>
+
 <h3>Checklists</h3>
 <div class="center">
         <img src="images/instruments/navpanel_checklist.png"/>
     </div>
-
+<p>There are a few checklists after the <i>Nav</i> and <i>Task</i> pages, e.g. Flaps, Ballast and Landing and Launch
+checklists.  The sequence is intentionally set such that the final checklist page is "Launch" so one press of the
+"Page" button will bring you back to the "Nav" page which is suitable for the entire flight.
+</p>
 </body>
 </html>
