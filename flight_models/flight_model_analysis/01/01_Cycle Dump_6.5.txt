@@ -1,0 +1,1836 @@
+••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+X-Plane, by Austin Meyer
+Simulating Aircraft/Extra Aircraft/ASG29_B21/ASG-29.acf
+••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+
+x location positive aft    x force positive right    pitch/alpha pos nose up
+y location positive right  y force positive up       roll pos right
+z location positive up     z force positive aft      yaw/beta pos nose right
+
+elevator, aileron, spoiler positive control surface up
+rudder                     positive control surface right
+drag-yaw                   positive control surface deployed
+pitch cyclic prop pitch    positive request nose up
+roll  cyclic prop pitch    positive request nose right
+
+Finite-Wing & Element Build-Up for LEFT WING 1:
+	root lo Re:  B21_ASG29.afl
+	root hi Re:  B21_ASG29.afl
+	tip  lo Re:  B21_ASG29.afl
+	tip  hi Re:  B21_ASG29.afl
+	Element # 0: S= 3.5864 sqr mtrs, MAC=   0.67 mtrs, incidence=   4.0 deg
+	Wing area for this wing= 3.5864
+	NOTE! I AM ADDING LEFT WING 2 TO THE TIP OF LEFT WING 1 (through any intermediate wings) TO FORM ONE CONTINUOUS WING! (S=4.9236)
+	NOTE! I AM ADDING LEFT WING 3 TO THE TIP OF LEFT WING 1 (through any intermediate wings) TO FORM ONE CONTINUOUS WING! (S=5.0112)
+	After any wing-joining, our area               is    5.01 m.
+	After any wing-joining, our semi-length        is    8.84 m.
+	After any wing-joining, our root chord         is    0.77 m.
+	After any wing-joining, our tip chord          is    0.12 m.
+	After any wing-joining, our leading-edge sweep is    4.3 deg.
+	After any wing-joining, our mean aero    sweep is    3.2 deg.
+	After any wing-joining, our aspect ratio       is 31.0563.
+	After any wing-joining, spanwise centroid      is  0.4468 semi-spans. (this is area centroid fraction of the way out to the tip)
+	After any wing-joining, our taper ratio        is  0.6871.
+	After any wing-joining, our delta-wing ratio   is  0.0000.
+	Oswalds efficiency is therefore  0.9363
+
+Finite-Wing & Element Build-Up for RIGT WING 1:
+	root lo Re:  B21_ASG29.afl
+	root hi Re:  B21_ASG29.afl
+	tip  lo Re:  B21_ASG29.afl
+	tip  hi Re:  B21_ASG29.afl
+	Element # 0: S= 3.5864 sqr mtrs, MAC=   0.67 mtrs, incidence=   4.0 deg
+	Wing area for this wing= 3.5864
+	NOTE! I AM ADDING RIGT WING 2 TO THE TIP OF RIGT WING 1 (through any intermediate wings) TO FORM ONE CONTINUOUS WING! (S=4.9236)
+	NOTE! I AM ADDING RIGT WING 3 TO THE TIP OF RIGT WING 1 (through any intermediate wings) TO FORM ONE CONTINUOUS WING! (S=5.0112)
+	After any wing-joining, our area               is    5.01 m.
+	After any wing-joining, our semi-length        is    8.84 m.
+	After any wing-joining, our root chord         is    0.77 m.
+	After any wing-joining, our tip chord          is    0.12 m.
+	After any wing-joining, our leading-edge sweep is    4.3 deg.
+	After any wing-joining, our mean aero    sweep is    3.2 deg.
+	After any wing-joining, our aspect ratio       is 31.0563.
+	After any wing-joining, spanwise centroid      is  0.4468 semi-spans. (this is area centroid fraction of the way out to the tip)
+	After any wing-joining, our taper ratio        is  0.6871.
+	After any wing-joining, our delta-wing ratio   is  0.0000.
+	Oswalds efficiency is therefore  0.9363
+
+Finite-Wing & Element Build-Up for LEFT WING 2:
+	root lo Re:  B21_ASG29.afl
+	root hi Re:  B21_ASG29.afl
+	tip  lo Re:  B21_ASG29.afl
+	tip  hi Re:  B21_ASG29.afl
+	Element # 0: S= 1.3372 sqr mtrs, MAC=   0.43 mtrs, incidence=   4.0 deg
+	Wing area for this wing= 1.3372
+	NOTE! I AM ADDING LEFT WING 1 TO THE ROOT OF LEFT WING 2 (through any intermediate wings) TO FORM ONE CONTINUOUS WING! (S=4.9236)
+	NOTE! I AM ADDING LEFT WING 3 TO THE TIP OF LEFT WING 2 (through any intermediate wings) TO FORM ONE CONTINUOUS WING! (S=5.0112)
+	After any wing-joining, our area               is    5.01 m.
+	After any wing-joining, our semi-length        is    8.84 m.
+	After any wing-joining, our root chord         is    0.77 m.
+	After any wing-joining, our tip chord          is    0.12 m.
+	After any wing-joining, our leading-edge sweep is    4.3 deg.
+	After any wing-joining, our mean aero    sweep is    3.2 deg.
+	After any wing-joining, our aspect ratio       is 31.0563.
+	After any wing-joining, spanwise centroid      is  0.4468 semi-spans. (this is area centroid fraction of the way out to the tip)
+	After any wing-joining, our taper ratio        is  0.6871.
+	After any wing-joining, our delta-wing ratio   is  0.0000.
+	Oswalds efficiency is therefore  0.9363
+
+Finite-Wing & Element Build-Up for RIGT WING 2:
+	root lo Re:  B21_ASG29.afl
+	root hi Re:  B21_ASG29.afl
+	tip  lo Re:  B21_ASG29.afl
+	tip  hi Re:  B21_ASG29.afl
+	Element # 0: S= 1.3372 sqr mtrs, MAC=   0.43 mtrs, incidence=   4.0 deg
+	Wing area for this wing= 1.3372
+	NOTE! I AM ADDING RIGT WING 1 TO THE ROOT OF RIGT WING 2 (through any intermediate wings) TO FORM ONE CONTINUOUS WING! (S=4.9236)
+	NOTE! I AM ADDING RIGT WING 3 TO THE TIP OF RIGT WING 2 (through any intermediate wings) TO FORM ONE CONTINUOUS WING! (S=5.0112)
+	After any wing-joining, our area               is    5.01 m.
+	After any wing-joining, our semi-length        is    8.84 m.
+	After any wing-joining, our root chord         is    0.77 m.
+	After any wing-joining, our tip chord          is    0.12 m.
+	After any wing-joining, our leading-edge sweep is    4.3 deg.
+	After any wing-joining, our mean aero    sweep is    3.2 deg.
+	After any wing-joining, our aspect ratio       is 31.0563.
+	After any wing-joining, spanwise centroid      is  0.4468 semi-spans. (this is area centroid fraction of the way out to the tip)
+	After any wing-joining, our taper ratio        is  0.6871.
+	After any wing-joining, our delta-wing ratio   is  0.0000.
+	Oswalds efficiency is therefore  0.9363
+
+Finite-Wing & Element Build-Up for LEFT WING 3:
+	root lo Re:  B21_symmetrical.afl
+	root hi Re:  B21_symmetrical.afl
+	tip  lo Re:  B21_symmetrical.afl
+	tip  hi Re:  B21_symmetrical.afl
+	Element # 0: S= 0.0502 sqr mtrs, MAC=   0.20 mtrs, incidence=   0.0 deg
+	Element # 1: S= 0.0374 sqr mtrs, MAC=   0.15 mtrs, incidence=   0.0 deg
+	Wing area for this wing= 0.0876
+	NOTE! I AM ADDING LEFT WING 2 TO THE ROOT OF LEFT WING 3 (through any intermediate wings) TO FORM ONE CONTINUOUS WING! (S=1.4248)
+	NOTE! I AM ADDING LEFT WING 1 TO THE ROOT OF LEFT WING 3 (through any intermediate wings) TO FORM ONE CONTINUOUS WING! (S=5.0112)
+	After any wing-joining, our area               is    5.01 m.
+	After any wing-joining, our semi-length        is    8.84 m.
+	After any wing-joining, our root chord         is    0.77 m.
+	After any wing-joining, our tip chord          is    0.12 m.
+	After any wing-joining, our leading-edge sweep is    4.3 deg.
+	After any wing-joining, our mean aero    sweep is    3.2 deg.
+	After any wing-joining, our aspect ratio       is 31.0563.
+	After any wing-joining, spanwise centroid      is  0.4468 semi-spans. (this is area centroid fraction of the way out to the tip)
+	After any wing-joining, our taper ratio        is  0.6871.
+	After any wing-joining, our delta-wing ratio   is  0.0000.
+	Oswalds efficiency is therefore  0.9363
+
+Finite-Wing & Element Build-Up for RIGT WING 3:
+	root lo Re:  B21_symmetrical.afl
+	root hi Re:  B21_symmetrical.afl
+	tip  lo Re:  B21_symmetrical.afl
+	tip  hi Re:  B21_symmetrical.afl
+	Element # 0: S= 0.0502 sqr mtrs, MAC=   0.20 mtrs, incidence=   0.0 deg
+	Element # 1: S= 0.0374 sqr mtrs, MAC=   0.15 mtrs, incidence=   0.0 deg
+	Wing area for this wing= 0.0876
+	NOTE! I AM ADDING RIGT WING 2 TO THE ROOT OF RIGT WING 3 (through any intermediate wings) TO FORM ONE CONTINUOUS WING! (S=1.4248)
+	NOTE! I AM ADDING RIGT WING 1 TO THE ROOT OF RIGT WING 3 (through any intermediate wings) TO FORM ONE CONTINUOUS WING! (S=5.0112)
+	After any wing-joining, our area               is    5.01 m.
+	After any wing-joining, our semi-length        is    8.84 m.
+	After any wing-joining, our root chord         is    0.77 m.
+	After any wing-joining, our tip chord          is    0.12 m.
+	After any wing-joining, our leading-edge sweep is    4.3 deg.
+	After any wing-joining, our mean aero    sweep is    3.2 deg.
+	After any wing-joining, our aspect ratio       is 31.0563.
+	After any wing-joining, spanwise centroid      is  0.4468 semi-spans. (this is area centroid fraction of the way out to the tip)
+	After any wing-joining, our taper ratio        is  0.6871.
+	After any wing-joining, our delta-wing ratio   is  0.0000.
+	Oswalds efficiency is therefore  0.9363
+
+Finite-Wing & Element Build-Up for LEFT H STAB:
+	root lo Re:  B21_symmetrical.afl
+	root hi Re:  B21_symmetrical.afl
+	tip  lo Re:  B21_symmetrical.afl
+	tip  hi Re:  B21_symmetrical.afl
+	Element # 0: S= 0.2290 sqr mtrs, MAC=   0.40 mtrs, incidence=  -4.0 deg
+	Element # 1: S= 0.1616 sqr mtrs, MAC=   0.29 mtrs, incidence=  -4.0 deg
+	Wing area for this wing= 0.3906
+	NOTE! I AM ADDING VERT STAB 1 TO THE ROOT OF LEFT H STAB (through any intermediate wings) TO FORM ONE CONTINUOUS WING! (S=1.3702)
+	After any wing-joining, our area               is    1.37 m.
+	After any wing-joining, our semi-length        is    1.68 m.
+	After any wing-joining, our root chord         is    0.93 m.
+	After any wing-joining, our tip chord          is    0.22 m.
+	After any wing-joining, our leading-edge sweep is   13.6 deg.
+	After any wing-joining, our mean aero    sweep is    7.7 deg.
+	After any wing-joining, our aspect ratio       is  4.0547.
+	After any wing-joining, spanwise centroid      is  0.4784 semi-spans. (this is area centroid fraction of the way out to the tip)
+	After any wing-joining, our taper ratio        is  0.8726.
+	After any wing-joining, our delta-wing ratio   is  0.0167.
+	Oswalds efficiency is therefore  0.9877
+
+Finite-Wing & Element Build-Up for RIGT H STAB:
+	root lo Re:  B21_symmetrical.afl
+	root hi Re:  B21_symmetrical.afl
+	tip  lo Re:  B21_symmetrical.afl
+	tip  hi Re:  B21_symmetrical.afl
+	Element # 0: S= 0.2290 sqr mtrs, MAC=   0.40 mtrs, incidence=  -4.0 deg
+	Element # 1: S= 0.1616 sqr mtrs, MAC=   0.29 mtrs, incidence=  -4.0 deg
+	Wing area for this wing= 0.3906
+	NOTE! I AM ADDING VERT STAB 1 TO THE ROOT OF RIGT H STAB (through any intermediate wings) TO FORM ONE CONTINUOUS WING! (S=1.3702)
+	After any wing-joining, our area               is    1.37 m.
+	After any wing-joining, our semi-length        is    1.68 m.
+	After any wing-joining, our root chord         is    0.93 m.
+	After any wing-joining, our tip chord          is    0.22 m.
+	After any wing-joining, our leading-edge sweep is   13.6 deg.
+	After any wing-joining, our mean aero    sweep is    7.7 deg.
+	After any wing-joining, our aspect ratio       is  4.0547.
+	After any wing-joining, spanwise centroid      is  0.4784 semi-spans. (this is area centroid fraction of the way out to the tip)
+	After any wing-joining, our taper ratio        is  0.8726.
+	After any wing-joining, our delta-wing ratio   is  0.0167.
+	Oswalds efficiency is therefore  0.9877
+
+Finite-Wing & Element Build-Up for VERT STAB 1:
+	root lo Re:  B21_symmetrical.afl
+	root hi Re:  B21_symmetrical.afl
+	tip  lo Re:  B21_symmetrical.afl
+	tip  hi Re:  B21_symmetrical.afl
+	Element # 0: S= 0.5246 sqr mtrs, MAC=   0.87 mtrs, incidence=   0.0 deg
+	Element # 1: S= 0.4549 sqr mtrs, MAC=   0.76 mtrs, incidence=   0.0 deg
+	Wing area for this wing= 0.9796
+	NOTE! I AM ADDING LEFT H STAB TO THE TIP OF VERT STAB 1 (through any intermediate wings) TO FORM ONE CONTINUOUS WING! (S=1.3702)
+	After any wing-joining, our area               is    1.37 m.
+	After any wing-joining, our semi-length        is    1.68 m.
+	After any wing-joining, our root chord         is    0.93 m.
+	After any wing-joining, our tip chord          is    0.22 m.
+	After any wing-joining, our leading-edge sweep is   13.6 deg.
+	After any wing-joining, our mean aero    sweep is    7.7 deg.
+	After any wing-joining, our aspect ratio       is  4.0547.
+	After any wing-joining, spanwise centroid      is  0.4784 semi-spans. (this is area centroid fraction of the way out to the tip)
+	After any wing-joining, our taper ratio        is  0.8726.
+	After any wing-joining, our delta-wing ratio   is  0.0167.
+	Oswalds efficiency is therefore  0.9877
+
+Critical altitude=    0 ft, rho at crit alt= 1.2250 kg/mmm, rho at SL= 1.2250 kg/mmm, engine power boosted to  1.0000 of original
+
+
+
+After LEFT WING 1, the RUNNING TOTAL wetted area is  3.5864 square meters for all wings listed so far
+After RIGT WING 1, the RUNNING TOTAL wetted area is  7.1729 square meters for all wings listed so far
+After LEFT WING 2, the RUNNING TOTAL wetted area is  8.5101 square meters for all wings listed so far
+After RIGT WING 2, the RUNNING TOTAL wetted area is  9.8473 square meters for all wings listed so far
+After LEFT WING 3, the RUNNING TOTAL wetted area is  9.9349 square meters for all wings listed so far
+After RIGT WING 3, the RUNNING TOTAL wetted area is 10.0225 square meters for all wings listed so far
+After LEFT H STAB, the RUNNING TOTAL wetted area is 10.4131 square meters for all wings listed so far
+After RIGT H STAB, the RUNNING TOTAL wetted area is 10.8037 square meters for all wings listed so far
+After VERT STAB 1, the RUNNING TOTAL wetted area is 11.7832 square meters for all wings listed so far
+
+Now for MI from FUSELAGE:
+	The frontal       area                                is  0.4293 square meters
+	The side          area                                is  2.4606 square meters
+	The top           area                                is  2.0559 square meters
+	The lateral       centroid                            is    0.00 meters
+	The vertical      centroid                            is   -0.06 meters
+	The longitudinal  centroid for lift at        0 alpha is    0.13 meters
+	The longitudinal  centroid for lift at       90 alpha is    0.13 meters
+	The longitudinal  centroid for side force at  0 beta  is    0.13 meters
+	The longitudinal  centroid for side force at 90 beta  is    0.13 meters
+	The RUNNING TOTAL wetted area                         is 18.9472 square meters, for the entire craft, including all wings, top and bottom surfaces, and all bodies listed so far
+	The RUNNING TOTAL radius of gyration in roll          is    2.82 meters
+	The RUNNING TOTAL radius of gyration in pitch         is    1.31 meters
+	The RUNNING TOTAL radius of gyration in yaw           is    3.04 meters
+
+Remainder of the craft has mass 385.55 (100% of total):
+	The radius of gyration of the shell in roll is     2.82 m, based on mass-distribution across the shell of the craft with a 50% weighting on all of the flying surfaces
+	The radius of gyration of the shell in pitch is    1.31 m, based on mass-distribution across the shell of the craft with a 50% weighting on all of the flying surfaces
+	The radius of gyration of the shell in yaw is      3.04 m, based on mass-distribution across the shell of the craft with a 50% weighting on all of the flying surfaces
+
+Final combined results:
+	The radius of gyration in roll is     2.82 m
+	The radius of gyration in pitch is    1.31 m
+	The radius of gyration in yaw is      3.04 m
+
+The centroid of all wings is at       0.35 m (positive aft from CG)
+The average chord of all wings is     0.71 m
+The static margin is                  0.50 (positive stable, in mean aero chords of wings)
+
+Critical altitude=    0 ft, rho at crit alt= 1.2250 kg/mmm, rho at SL= 1.2250 kg/mmm, engine power boosted to  1.0000 of original
+
+Engine # 0, is mass  186.54 kg at x=   0.00,  y=   0.17,  z=  -2.44
+
+Prop # 0, is mass    4.33 kg at x=   0.00,  y=   0.17,  z=  -2.44
+
+After LEFT WING 1, the RUNNING TOTAL wetted area is  5.4701 square meters for all wings listed so far
+After RIGT WING 1, the RUNNING TOTAL wetted area is 10.9403 square meters for all wings listed so far
+After LEFT WING 2, the RUNNING TOTAL wetted area is 11.6985 square meters for all wings listed so far
+After RIGT WING 2, the RUNNING TOTAL wetted area is 12.4567 square meters for all wings listed so far
+After LEFT H STAB, the RUNNING TOTAL wetted area is 14.0175 square meters for all wings listed so far
+After RIGT H STAB, the RUNNING TOTAL wetted area is 15.5783 square meters for all wings listed so far
+After VERT STAB 1, the RUNNING TOTAL wetted area is 17.4268 square meters for all wings listed so far
+
+Critical altitude=    0 ft, rho at crit alt= 1.2250 kg/mmm, rho at SL= 1.2250 kg/mmm, engine power boosted to  1.0000 of original
+
+Engine # 0, is mass  142.88 kg at x=   0.00,  y=  -0.06,  z=  -2.14
+
+Prop # 0, is mass    9.07 kg at x=   0.00,  y=  -0.06,  z=  -2.14
+
+After LEFT WING 1, the RUNNING TOTAL wetted area is  3.3817 square meters for all wings listed so far
+After RIGT WING 1, the RUNNING TOTAL wetted area is  6.7633 square meters for all wings listed so far
+After LEFT WING 2, the RUNNING TOTAL wetted area is 10.6430 square meters for all wings listed so far
+After RIGT WING 2, the RUNNING TOTAL wetted area is 14.5226 square meters for all wings listed so far
+After LEFT WING 3, the RUNNING TOTAL wetted area is 14.8684 square meters for all wings listed so far
+After RIGT WING 3, the RUNNING TOTAL wetted area is 15.2142 square meters for all wings listed so far
+After LEFT H STAB, the RUNNING TOTAL wetted area is 17.0046 square meters for all wings listed so far
+After RIGT H STAB, the RUNNING TOTAL wetted area is 18.7950 square meters for all wings listed so far
+After VERT STAB 1, the RUNNING TOTAL wetted area is 20.3737 square meters for all wings listed so far
+
+
+
+====================================================================================================
+====================================================================================================
+===AT TIME=   96.96=================================================================================
+====================================================================================================
+====================================================================================================
+flight control ptch: 0.5772 ratio
+flight control hdng:-0.0073 ratio
+flight control roll:-0.0186 ratio
+
+h       :  610 m
+rho     : 1.1548 kg/cubic meter, density ratio: 0.9427
+vx      :   9.3
+vy      :  -0.5
+vz      : -22.8
+mach-1  : 337.9 m/s
+airspeed:  24.6 m/s
+mach    : 0.0729
+
+psi     :  22.2 deg
+the     :   5.5 deg
+phi     :   3.7 deg
+
+alpha   :   6.6 deg (pos nose up)
+beta    :  -0.5 deg (pos nose right)
+
+P       :   0.0 deg/second
+Q       :   0.5 deg/second
+R       :   1.5 deg/second
+
+tire height above ground               :  604 m
+resting height of aircraft above ground:    0 m
+
+ELECTRICAL SYSTEM MANAGEMENT: bus-code=1, to bus=0, amperage=0 for total bus load=0 of amps from ADF 2
+ELECTRICAL SYSTEM MANAGEMENT: bus-code=1, to bus=0, amperage=0 for total bus load=0 of amps from GPS 2
+ELECTRICAL SYSTEM MANAGEMENT: bus-code=1, to bus=0, amperage=0 for total bus load=0 of amps from Misc Electrical
+ELECTRICAL SYSTEM MANAGEMENT: bus-code=1, to bus=0, amperage=0 for total bus load=0 of amps from ADC
+ELECTRICAL SYSTEM MANAGEMENT: bus-code=1, to bus=0, amperage=1 for total bus load=1 of amps from Navigation lights
+ELECTRICAL SYSTEM MANAGEMENT: bus-code=1, to bus=0, amperage=1 for total bus load=2 of amps from Strobe light
+ELECTRICAL SYSTEM MANAGEMENT: bus-code=1, to bus=0, amperage=3 for total bus load=5 of amps from Landing lights
+ELECTRICAL SYSTEM MANAGEMENT: bus-code=1, to bus=0, amperage=0 for total bus load=5 of amps from Instrument lights
+ELECTRICAL SYSTEM MANAGEMENT: bus-code=1, to bus=0, amperage=1 for total bus load=6 of amps from Floodlight
+ELECTRICAL SYSTEM MANAGEMENT: bus-code=1, to bus=0, amperage=3 for total bus load=9 of amps from Taxi lights
+ELECTRICAL SYSTEM MANAGEMENT: bus-code=1, to bus=0, amperage=1 for total bus load=10 of amps from Beacon light
+
+LEFT WING 1 height above ground:  609.30 m
+	hgt_in_cords is 793.2572
+	hgt_in_spans is 34.4813
+	setting ground effect cl   multiplier to  1.0001
+	setting ground effect cdi  multiplier to  1.0000
+	setting ground effect wash multiplier to  1.0000
+
+RIGT WING 1 height above ground:  608.95 m
+	hgt_in_cords is 792.8052
+	hgt_in_spans is 34.4617
+	setting ground effect cl   multiplier to  1.0001
+	setting ground effect cdi  multiplier to  1.0000
+	setting ground effect wash multiplier to  1.0000
+
+LEFT WING 2 height above ground:  609.74 m
+	hgt_in_cords is 1069.7616
+	hgt_in_spans is 34.5063
+	setting ground effect cl   multiplier to  1.0001
+	setting ground effect cdi  multiplier to  1.0000
+	setting ground effect wash multiplier to  1.0000
+
+RIGT WING 2 height above ground:  608.83 m
+	hgt_in_cords is 1068.1685
+	hgt_in_spans is 34.4549
+	setting ground effect cl   multiplier to  1.0001
+	setting ground effect cdi  multiplier to  1.0000
+	setting ground effect wash multiplier to  1.0000
+
+LEFT H STAB height above ground:  609.19 m
+	hgt_in_cords is 1517.6548
+	hgt_in_spans is 181.0892
+	setting ground effect cl   multiplier to  1.0001
+	setting ground effect cdi  multiplier to  1.0000
+	setting ground effect wash multiplier to  1.0000
+
+RIGT H STAB height above ground:  609.12 m
+	hgt_in_cords is 1517.4690
+	hgt_in_spans is 181.0670
+	setting ground effect cl   multiplier to  1.0001
+	setting ground effect cdi  multiplier to  1.0000
+	setting ground effect wash multiplier to  1.0000
+
+----------------------------------------------------------------------------------------------------
+---RUNNING PROPULSIVE FORCE AND TOTAL MOMENT TOTALS, AIRCRAFT AXIS SYSTEM---------------------------
+----------------------------------------------------------------------------------------------------
+Before all propulsion:
+	f_axil=     0.0 N, pos aft,    L=     0.0 N-m, pos right
+	f_side=     0.0 N, pos right,  M=     0.0 N-m, pos up
+	f_nrml=     0.0 N, pos up,     N=     0.0 N-m, pos right
+----------------------------------------------------------------------------------------------------
+
+
+••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+•••LEFT WING 1 ELEMENT # 0••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+	element x=  -2.68 m, pos right from CG
+	element y=   0.67 m, pos up    from CG
+	element z=   0.10 m, pos aft   from CG
+
+	infinite flow speed is vx of   -0.2 vy of    2.8 vz of   24.5 m/s in aircraft body coordinates
+	So final speed is vx=  -0.2 vy=   2.8 vz=  24.5 m/s in the aircraft axis coordinate system
+
+	alpha of the wing plane    :    6.6
+	incidence                  :    4.0
+	incidence increase         :    0.0
+	geometric alpha            :   10.6
+	v for forces               :   24.7 (based on effective sweep of   -1.0 deg)
+
+
+	AR=31.0551, e= 0.9363, ls_D_ls0= 0.9410, al_D_al0= 0.9601, cl_D_cl0= 0.9801
+
+root lo Reynolds number: Aircraft/Extra Aircraft/ASG29_B21/airfoils/B21_ASG29.afl, coefficient lookup, I have 1 Reynolds numbers available, and am using table #0
+	That's the table for Re= 1.6000 million, with flight Re= 1.0818 million
+	alpha airflow=  10.6, alpha zero-lift=  -0.5, finite wing alpha multiplier= 0.9601, slat alpha divisor= 1.0000, alpha lookup=  10.1
+	Cl lookup:  1.1882
+	Cd lookup:  0.0078
+	Cm lookup: -0.0954
+
+	element 1 of 1, center at  50%, which is  50% of foil interpolation span (at foil interp power of  1.0000)
+
+	Re       summary:   ---------- -root --tip
+	                    reyno 1     1.6000  1.6000 |
+	                    reyno 2     1.6000  1.6000 |======>with flight Re= 1.0818 million
+
+	CL coeff summary:   ---------- -root --tip
+	                    reyno 1     1.1882  1.1882 |
+	                    reyno 2     1.1882  1.1882 |======>resultant cl= 1.1882
+
+	CD coeff summary:   ---------- -root --tip
+	                    reyno 1     0.0078  0.0078 |
+	                    reyno 2     0.0078  0.0078 |======>resultant cd= 0.0078
+
+	CM coeff summary:   ---------- -root --tip
+	                    reyno 1    -0.0954 -0.0954 |
+	                    reyno 2    -0.0954 -0.0954 |======>resultant cm=-0.0954
+
+	finite-wing lift multiplier of  0.9801 takes cl to  1.1645, OLD FLIGHT MODEL, MODDING CONTROL EFFECTS AS WELL. EXPERIMENTAL FLIGHT MODEL WILL PUT THIS BEFORE CONTROL EFFECTS
+	e of  0.9363, geometric aspect ratio of 31.0563, effective aspect ratio of 31.0551, gives cdi of  0.0149
+
+	force along the local flight path of this particular element (see Aifoil-Maker plots in the 'AOA-180' tab to see sign conventions)
+	lift= 1.1677*  3.5864* sqr(  24.7) *  1.1548 / 2          =  1472.9 N
+	drag= 0.0227*  3.5864* sqr(  24.7) *  1.1548 / 2          =    28.7 N
+	momt=-0.0957*  3.5864* sqr(  24.7) *  1.1548 / 2 *    0.67=   -81.3 N-m
+
+LEFT WING 1:
+
+	x=  -2.68 m pos right.
+	y=   0.67 m pos up.
+	z=   0.10 m pos aft.
+
+	lift_local_path=  1472.9 N pos up.
+	drag_local_path=    28.7 N pos aft.
+	side_local_path=     0.0 N pos right.
+
+	lift vector xyz= 0.0426  0.9925 -0.1146
+	drag vector xyz=-0.0089  0.1151  0.9933
+	side vector xyz= 0.9991 -0.0413  0.0138
+
+----------------------------------------------------------------------------------------------------
+---RUNNING AERODYNAMIC FORCE AND TOTAL MOMENT TOTALS, AIRCRAFT AXIS SYSTEM--------------------------
+----------------------------------------------------------------------------------------------------
+LEFT WING 1
+	f_axil=  -140.3 N, pos aft,    L=  3963.1 N-m, pos right
+	f_side=    62.5 N, pos right,  M=  -323.6 N-m, pos up
+	f_nrml=  1465.1 N, pos up,     N=   365.5 N-m, pos right
+----------------------------------------------------------------------------------------------------
+
+
+••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+•••RIGT WING 1 ELEMENT # 0••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+	element x=   2.68 m, pos right from CG
+	element y=   0.67 m, pos up    from CG
+	element z=   0.10 m, pos aft   from CG
+
+	infinite flow speed is vx of   -0.2 vy of    2.8 vz of   24.4 m/s in aircraft body coordinates
+	So final speed is vx=  -0.2 vy=   2.8 vz=  24.4 m/s in the aircraft axis coordinate system
+
+	alpha of the wing plane    :    6.7
+	incidence                  :    4.0
+	incidence increase         :    0.0
+	geometric alpha            :   10.7
+	v for forces               :   24.6 (based on effective sweep of    1.0 deg)
+
+
+	AR=31.0551, e= 0.9363, ls_D_ls0= 0.9410, al_D_al0= 0.9601, cl_D_cl0= 0.9801
+
+root lo Reynolds number: Aircraft/Extra Aircraft/ASG29_B21/airfoils/B21_ASG29.afl, coefficient lookup, I have 1 Reynolds numbers available, and am using table #0
+	That's the table for Re= 1.6000 million, with flight Re= 1.0763 million
+	alpha airflow=  10.7, alpha zero-lift=  -0.5, finite wing alpha multiplier= 0.9601, slat alpha divisor= 1.0000, alpha lookup=  10.2
+	Cl lookup:  1.1951
+	Cd lookup:  0.0078
+	Cm lookup: -0.0957
+
+	element 1 of 1, center at  50%, which is  50% of foil interpolation span (at foil interp power of  1.0000)
+
+	Re       summary:   ---------- -root --tip
+	                    reyno 1     1.6000  1.6000 |
+	                    reyno 2     1.6000  1.6000 |======>with flight Re= 1.0763 million
+
+	CL coeff summary:   ---------- -root --tip
+	                    reyno 1     1.1951  1.1951 |
+	                    reyno 2     1.1951  1.1951 |======>resultant cl= 1.1951
+
+	CD coeff summary:   ---------- -root --tip
+	                    reyno 1     0.0078  0.0078 |
+	                    reyno 2     0.0078  0.0078 |======>resultant cd= 0.0078
+
+	CM coeff summary:   ---------- -root --tip
+	                    reyno 1    -0.0957 -0.0957 |
+	                    reyno 2    -0.0957 -0.0957 |======>resultant cm=-0.0957
+
+	finite-wing lift multiplier of  0.9801 takes cl to  1.1713, OLD FLIGHT MODEL, MODDING CONTROL EFFECTS AS WELL. EXPERIMENTAL FLIGHT MODEL WILL PUT THIS BEFORE CONTROL EFFECTS
+	e of  0.9363, geometric aspect ratio of 31.0563, effective aspect ratio of 31.0551, gives cdi of  0.0151
+
+	force along the local flight path of this particular element (see Aifoil-Maker plots in the 'AOA-180' tab to see sign conventions)
+	lift= 1.1746*  3.5864* sqr(  24.6) *  1.1548 / 2          =  1466.5 N
+	drag= 0.0229*  3.5864* sqr(  24.6) *  1.1548 / 2          =    28.6 N
+	momt=-0.0959*  3.5864* sqr(  24.6) *  1.1548 / 2 *    0.67=   -80.7 N-m
+
+RIGT WING 1:
+
+	x=   2.68 m pos right.
+	y=   0.67 m pos up.
+	z=   0.10 m pos aft.
+
+	lift_local_path=  1466.5 N pos up.
+	drag_local_path=    28.6 N pos aft.
+	side_local_path=     0.0 N pos right.
+
+	lift vector xyz=-0.0426  0.9923 -0.1161
+	drag vector xyz=-0.0090  0.1158  0.9932
+	side vector xyz= 0.9991  0.0433  0.0040
+
+----------------------------------------------------------------------------------------------------
+---RUNNING AERODYNAMIC FORCE AND TOTAL MOMENT TOTALS, AIRCRAFT AXIS SYSTEM--------------------------
+----------------------------------------------------------------------------------------------------
+RIGT WING 1
+	f_axil=  -282.2 N, pos aft,    L=    17.4 N-m, pos right
+	f_side=    -0.2 N, pos right,  M=  -647.0 N-m, pos up
+	f_nrml=  2923.7 N, pos up,     N=    -4.1 N-m, pos right
+----------------------------------------------------------------------------------------------------
+
+
+••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+•••LEFT WING 2 ELEMENT # 0••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+	element x=  -7.00 m, pos right from CG
+	element y=   0.84 m, pos up    from CG
+	element z=   0.25 m, pos aft   from CG
+
+	infinite flow speed is vx of   -0.2 vy of    2.8 vz of   24.6 m/s in aircraft body coordinates
+	So final speed is vx=  -0.2 vy=   2.8 vz=  24.6 m/s in the aircraft axis coordinate system
+
+	alpha of the wing plane    :    6.6
+	incidence                  :    4.0
+	incidence increase         :    0.0
+	geometric alpha            :   10.6
+	v for forces               :   24.7 (based on effective sweep of   -3.4 deg)
+
+
+   AILERON #1: crat= 0.1500, def=  -0.4 deg: (pos down or extended, neg up)
+	dx_te = 1.0000
+	dy_te =-0.0009
+	al_inc=-0.0432
+	cl inc=-0.0113
+	cd inc= 0.0000
+	cm inc= 0.0076
+	Effective alpha increased   -0.0 deg by all combined lift-incrementation devices up to final geo alpha of   10.5 deg
+
+
+	AR=31.0551, e= 0.9363, ls_D_ls0= 0.9410, al_D_al0= 0.9601, cl_D_cl0= 0.9801
+
+root lo Reynolds number: Aircraft/Extra Aircraft/ASG29_B21/airfoils/B21_ASG29.afl, coefficient lookup, I have 1 Reynolds numbers available, and am using table #0
+	That's the table for Re= 1.6000 million, with flight Re= 0.6878 million
+	alpha airflow=  10.5, alpha zero-lift=  -0.5, finite wing alpha multiplier= 0.9601, slat alpha divisor= 1.0000, alpha lookup=  10.1
+	Cl lookup:  1.1840
+	Cd lookup:  0.0078
+	Cm lookup: -0.0953
+
+	element 1 of 1, center at  50%, which is  50% of foil interpolation span (at foil interp power of  1.0000)
+
+	Re       summary:   ---------- -root --tip
+	                    reyno 1     1.6000  1.6000 |
+	                    reyno 2     1.6000  1.6000 |======>with flight Re= 0.6878 million
+
+	CL coeff summary:   ---------- -root --tip
+	                    reyno 1     1.1840  1.1840 |
+	                    reyno 2     1.1840  1.1840 |======>resultant cl= 1.1840
+
+	CD coeff summary:   ---------- -root --tip
+	                    reyno 1     0.0078  0.0078 |
+	                    reyno 2     0.0078  0.0078 |======>resultant cd= 0.0078
+
+	CM coeff summary:   ---------- -root --tip
+	                    reyno 1    -0.0953 -0.0953 |
+	                    reyno 2    -0.0953 -0.0953 |======>resultant cm=-0.0953
+
+	adding control-effects cl   of -0.0113 takes cl to  1.1728
+	adding control-effects cd   of  0.0000 takes cd to  0.0078
+	adding control-effects cm   of  0.0076 takes cm to -0.0877
+	finite-wing lift multiplier of  0.9801 takes cl to  1.1494, OLD FLIGHT MODEL, MODDING CONTROL EFFECTS AS WELL. EXPERIMENTAL FLIGHT MODEL WILL PUT THIS BEFORE CONTROL EFFECTS
+	e of  0.9363, geometric aspect ratio of 31.0563, effective aspect ratio of 31.0551, gives cdi of  0.0145
+
+	force along the local flight path of this particular element (see Aifoil-Maker plots in the 'AOA-180' tab to see sign conventions)
+	lift= 1.1526*  1.3372* sqr(  24.7) *  1.1548 / 2          =   544.5 N
+	drag= 0.0224*  1.3372* sqr(  24.7) *  1.1548 / 2          =    10.6 N
+	momt=-0.0879*  1.3372* sqr(  24.7) *  1.1548 / 2 *    0.43=   -17.8 N-m
+
+LEFT WING 2:
+
+	x=  -7.00 m pos right.
+	y=   0.84 m pos up.
+	z=   0.25 m pos aft.
+
+	lift_local_path=   544.5 N pos up.
+	drag_local_path=    10.6 N pos aft.
+	side_local_path=     0.0 N pos right.
+
+	lift vector xyz= 0.0259  0.9931 -0.1143
+	drag vector xyz=-0.0087  0.1145  0.9934
+	side vector xyz= 0.9996 -0.0247  0.0116
+
+----------------------------------------------------------------------------------------------------
+---RUNNING AERODYNAMIC FORCE AND TOTAL MOMENT TOTALS, AIRCRAFT AXIS SYSTEM--------------------------
+----------------------------------------------------------------------------------------------------
+LEFT WING 2
+	f_axil=  -333.9 N, pos aft,    L=  3822.8 N-m, pos right
+	f_side=    13.8 N, pos right,  M=  -842.1 N-m, pos up
+	f_nrml=  3465.7 N, pos up,     N=   354.0 N-m, pos right
+----------------------------------------------------------------------------------------------------
+
+
+••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+•••RIGT WING 2 ELEMENT # 0••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+	element x=   7.00 m, pos right from CG
+	element y=   0.84 m, pos up    from CG
+	element z=   0.25 m, pos aft   from CG
+
+	infinite flow speed is vx of   -0.2 vy of    2.8 vz of   24.3 m/s in aircraft body coordinates
+	So final speed is vx=  -0.2 vy=   2.8 vz=  24.3 m/s in the aircraft axis coordinate system
+
+	alpha of the wing plane    :    6.7
+	incidence                  :    4.0
+	incidence increase         :    0.0
+	geometric alpha            :   10.7
+	v for forces               :   24.4 (based on effective sweep of    3.4 deg)
+
+
+   AILERON #1: crat= 0.1500, def=   0.2 deg: (pos down or extended, neg up)
+	dx_te = 1.0000
+	dy_te = 0.0005
+	al_inc= 0.0244
+	cl inc= 0.0064
+	cd inc= 0.0000
+	cm inc=-0.0043
+	Effective alpha increased    0.0 deg by all combined lift-incrementation devices up to final geo alpha of   10.7 deg
+
+
+	AR=31.0551, e= 0.9363, ls_D_ls0= 0.9410, al_D_al0= 0.9601, cl_D_cl0= 0.9801
+
+root lo Reynolds number: Aircraft/Extra Aircraft/ASG29_B21/airfoils/B21_ASG29.afl, coefficient lookup, I have 1 Reynolds numbers available, and am using table #0
+	That's the table for Re= 1.6000 million, with flight Re= 0.6787 million
+	alpha airflow=  10.7, alpha zero-lift=  -0.5, finite wing alpha multiplier= 0.9601, slat alpha divisor= 1.0000, alpha lookup=  10.3
+	Cl lookup:  1.2006
+	Cd lookup:  0.0078
+	Cm lookup: -0.0959
+
+	element 1 of 1, center at  50%, which is  50% of foil interpolation span (at foil interp power of  1.0000)
+
+	Re       summary:   ---------- -root --tip
+	                    reyno 1     1.6000  1.6000 |
+	                    reyno 2     1.6000  1.6000 |======>with flight Re= 0.6787 million
+
+	CL coeff summary:   ---------- -root --tip
+	                    reyno 1     1.2006  1.2006 |
+	                    reyno 2     1.2006  1.2006 |======>resultant cl= 1.2006
+
+	CD coeff summary:   ---------- -root --tip
+	                    reyno 1     0.0078  0.0078 |
+	                    reyno 2     0.0078  0.0078 |======>resultant cd= 0.0078
+
+	CM coeff summary:   ---------- -root --tip
+	                    reyno 1    -0.0959 -0.0959 |
+	                    reyno 2    -0.0959 -0.0959 |======>resultant cm=-0.0959
+
+	adding control-effects cl   of  0.0064 takes cl to  1.2070
+	adding control-effects cd   of  0.0000 takes cd to  0.0078
+	adding control-effects cm   of -0.0043 takes cm to -0.1002
+	finite-wing lift multiplier of  0.9801 takes cl to  1.1829, OLD FLIGHT MODEL, MODDING CONTROL EFFECTS AS WELL. EXPERIMENTAL FLIGHT MODEL WILL PUT THIS BEFORE CONTROL EFFECTS
+	e of  0.9363, geometric aspect ratio of 31.0563, effective aspect ratio of 31.0551, gives cdi of  0.0154
+
+	force along the local flight path of this particular element (see Aifoil-Maker plots in the 'AOA-180' tab to see sign conventions)
+	lift= 1.1861*  1.3372* sqr(  24.4) *  1.1548 / 2          =   545.8 N
+	drag= 0.0232*  1.3372* sqr(  24.4) *  1.1548 / 2          =    10.7 N
+	momt=-0.1004*  1.3372* sqr(  24.4) *  1.1548 / 2 *    0.43=   -19.8 N-m
+
+RIGT WING 2:
+
+	x=   7.00 m pos right.
+	y=   0.84 m pos up.
+	z=   0.25 m pos aft.
+
+	lift_local_path=   545.8 N pos up.
+	drag_local_path=    10.7 N pos aft.
+	side_local_path=     0.0 N pos right.
+
+	lift vector xyz=-0.0257  0.9928 -0.1167
+	drag vector xyz=-0.0089  0.1165  0.9932
+	side vector xyz= 0.9996  0.0266  0.0058
+
+----------------------------------------------------------------------------------------------------
+---RUNNING AERODYNAMIC FORCE AND TOTAL MOMENT TOTALS, AIRCRAFT AXIS SYSTEM--------------------------
+----------------------------------------------------------------------------------------------------
+RIGT WING 2
+	f_axil=  -387.0 N, pos aft,    L=     9.4 N-m, pos right
+	f_side=    -0.3 N, pos right,  M= -1040.6 N-m, pos up
+	f_nrml=  4008.8 N, pos up,     N=   -13.4 N-m, pos right
+----------------------------------------------------------------------------------------------------
+
+
+••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+•••LEFT WING 3 ELEMENT # 0••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+	element x=  -8.68 m, pos right from CG
+	element y=   1.02 m, pos up    from CG
+	element z=   0.40 m, pos aft   from CG
+
+	infinite flow speed is vx of   -0.2 vy of    2.8 vz of   24.7 m/s in aircraft body coordinates
+	So final speed is vx=  -0.2 vy=   2.8 vz=  24.7 m/s in the aircraft axis coordinate system
+
+	alpha of the wing plane    :    1.3
+	incidence                  :    0.0
+	incidence increase         :    0.0
+	geometric alpha            :    1.3
+	v for forces               :   21.8 (based on effective sweep of  -22.1 deg)
+
+
+	AR=31.0354, e= 0.9363, ls_D_ls0= 0.9409, al_D_al0= 0.9601, cl_D_cl0= 0.9800
+
+root lo Reynolds number: Aircraft/Extra Aircraft/ASG29_B21/airfoils/B21_symmetrical.afl, coefficient lookup, I have 1 Reynolds numbers available, and am using table #0
+	That's the table for Re= 9.0000 million, with flight Re= 0.2815 million
+	alpha airflow=   1.3, alpha zero-lift=  -0.0, finite wing alpha multiplier= 0.9601, slat alpha divisor= 1.0000, alpha lookup=   1.2
+	Cl lookup:  0.1222
+	Cd lookup:  0.0011
+	Cm lookup:  0.0000
+
+	element 1 of 2, center at  25%, which is  25% of foil interpolation span (at foil interp power of  1.0000)
+
+	Re       summary:   ---------- -root --tip
+	                    reyno 1     9.0000  9.0000 |
+	                    reyno 2     9.0000  9.0000 |======>with flight Re= 0.2815 million
+
+	CL coeff summary:   ---------- -root --tip
+	                    reyno 1     0.1222  0.1222 |
+	                    reyno 2     0.1222  0.1222 |======>resultant cl= 0.1222
+
+	CD coeff summary:   ---------- -root --tip
+	                    reyno 1     0.0011  0.0011 |
+	                    reyno 2     0.0011  0.0011 |======>resultant cd= 0.0011
+
+	CM coeff summary:   ---------- -root --tip
+	                    reyno 1     0.0000  0.0000 |
+	                    reyno 2     0.0000  0.0000 |======>resultant cm= 0.0000
+
+	finite-wing lift multiplier of  0.9800 takes cl to  0.1198, OLD FLIGHT MODEL, MODDING CONTROL EFFECTS AS WELL. EXPERIMENTAL FLIGHT MODEL WILL PUT THIS BEFORE CONTROL EFFECTS
+	e of  0.9363, geometric aspect ratio of 31.0563, effective aspect ratio of 31.0354, gives cdi of  0.0002
+
+	force along the local flight path of this particular element (see Aifoil-Maker plots in the 'AOA-180' tab to see sign conventions)
+	lift= 0.1200*  0.0502* sqr(  21.8) *  1.1548 / 2          =     1.7 N
+	drag= 0.0012*  0.0502* sqr(  21.8) *  1.1548 / 2          =     0.0 N
+	momt= 0.0000*  0.0502* sqr(  21.8) *  1.1548 / 2 *    0.20=     0.0 N-m
+
+LEFT WING 3:
+
+	x=  -8.68 m pos right.
+	y=   1.02 m pos up.
+	z=   0.40 m pos aft.
+
+	lift_local_path=     1.7 N pos up.
+	drag_local_path=     0.0 N pos aft.
+	side_local_path=     0.0 N pos right.
+
+	lift vector xyz= 0.9677  0.2513 -0.0206
+	drag vector xyz=-0.0086  0.1144  0.9934
+	side vector xyz= 0.2520 -0.9611  0.1128
+
+----------------------------------------------------------------------------------------------------
+---RUNNING AERODYNAMIC FORCE AND TOTAL MOMENT TOTALS, AIRCRAFT AXIS SYSTEM--------------------------
+----------------------------------------------------------------------------------------------------
+LEFT WING 3
+	f_axil=  -387.0 N, pos aft,    L=    14.7 N-m, pos right
+	f_side=     1.3 N, pos right,  M= -1040.8 N-m, pos up
+	f_nrml=  4009.2 N, pos up,     N=   -13.9 N-m, pos right
+----------------------------------------------------------------------------------------------------
+
+
+••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+•••LEFT WING 3 ELEMENT # 1••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+	element x=  -8.74 m, pos right from CG
+	element y=   1.26 m, pos up    from CG
+	element z=   0.50 m, pos aft   from CG
+
+	infinite flow speed is vx of   -0.2 vy of    2.8 vz of   24.7 m/s in aircraft body coordinates
+	So final speed is vx=  -0.2 vy=   2.8 vz=  24.7 m/s in the aircraft axis coordinate system
+
+	alpha of the wing plane    :    1.3
+	incidence                  :    0.0
+	incidence increase         :    0.0
+	geometric alpha            :    1.3
+	v for forces               :   21.8 (based on effective sweep of  -22.1 deg)
+
+
+	AR=31.0354, e= 0.9363, ls_D_ls0= 0.9409, al_D_al0= 0.9601, cl_D_cl0= 0.9800
+
+root lo Reynolds number: Aircraft/Extra Aircraft/ASG29_B21/airfoils/B21_symmetrical.afl, coefficient lookup, I have 1 Reynolds numbers available, and am using table #0
+	That's the table for Re= 9.0000 million, with flight Re= 0.2106 million
+	alpha airflow=   1.3, alpha zero-lift=  -0.0, finite wing alpha multiplier= 0.9601, slat alpha divisor= 1.0000, alpha lookup=   1.2
+	Cl lookup:  0.1229
+	Cd lookup:  0.0011
+	Cm lookup:  0.0000
+
+	element 2 of 2, center at  75%, which is  75% of foil interpolation span (at foil interp power of  1.0000)
+
+	Re       summary:   ---------- -root --tip
+	                    reyno 1     9.0000  9.0000 |
+	                    reyno 2     9.0000  9.0000 |======>with flight Re= 0.2106 million
+
+	CL coeff summary:   ---------- -root --tip
+	                    reyno 1     0.1229  0.1229 |
+	                    reyno 2     0.1229  0.1229 |======>resultant cl= 0.1229
+
+	CD coeff summary:   ---------- -root --tip
+	                    reyno 1     0.0011  0.0011 |
+	                    reyno 2     0.0011  0.0011 |======>resultant cd= 0.0011
+
+	CM coeff summary:   ---------- -root --tip
+	                    reyno 1     0.0000  0.0000 |
+	                    reyno 2     0.0000  0.0000 |======>resultant cm= 0.0000
+
+	finite-wing lift multiplier of  0.9800 takes cl to  0.1204, OLD FLIGHT MODEL, MODDING CONTROL EFFECTS AS WELL. EXPERIMENTAL FLIGHT MODEL WILL PUT THIS BEFORE CONTROL EFFECTS
+	e of  0.9363, geometric aspect ratio of 31.0563, effective aspect ratio of 31.0354, gives cdi of  0.0002
+
+	force along the local flight path of this particular element (see Aifoil-Maker plots in the 'AOA-180' tab to see sign conventions)
+	lift= 0.1207*  0.0374* sqr(  21.8) *  1.1548 / 2          =     1.2 N
+	drag= 0.0012*  0.0374* sqr(  21.8) *  1.1548 / 2          =     0.0 N
+	momt= 0.0000*  0.0374* sqr(  21.8) *  1.1548 / 2 *    0.15=     0.0 N-m
+
+LEFT WING 3:
+
+	x=  -8.74 m pos right.
+	y=   1.26 m pos up.
+	z=   0.50 m pos aft.
+
+	lift_local_path=     1.2 N pos up.
+	drag_local_path=     0.0 N pos aft.
+	side_local_path=     0.0 N pos right.
+
+	lift vector xyz= 0.9677  0.2513 -0.0207
+	drag vector xyz=-0.0085  0.1144  0.9934
+	side vector xyz= 0.2520 -0.9611  0.1128
+
+----------------------------------------------------------------------------------------------------
+---RUNNING AERODYNAMIC FORCE AND TOTAL MOMENT TOTALS, AIRCRAFT AXIS SYSTEM--------------------------
+----------------------------------------------------------------------------------------------------
+LEFT WING 3
+	f_axil=  -387.0 N, pos aft,    L=    18.9 N-m, pos right
+	f_side=     2.5 N, pos right,  M= -1040.9 N-m, pos up
+	f_nrml=  4009.5 N, pos up,     N=   -14.3 N-m, pos right
+----------------------------------------------------------------------------------------------------
+
+
+••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+•••RIGT WING 3 ELEMENT # 0••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+	element x=   8.68 m, pos right from CG
+	element y=   1.02 m, pos up    from CG
+	element z=   0.40 m, pos aft   from CG
+
+	infinite flow speed is vx of   -0.2 vy of    2.9 vz of   24.2 m/s in aircraft body coordinates
+	So final speed is vx=  -0.2 vy=   2.9 vz=  24.2 m/s in the aircraft axis coordinate system
+
+	alpha of the wing plane    :    2.4
+	incidence                  :    0.0
+	incidence increase         :    0.0
+	geometric alpha            :    2.4
+	v for forces               :   21.5 (based on effective sweep of   22.1 deg)
+
+
+	AR=31.0665, e= 0.9363, ls_D_ls0= 0.9410, al_D_al0= 0.9601, cl_D_cl0= 0.9801
+
+root lo Reynolds number: Aircraft/Extra Aircraft/ASG29_B21/airfoils/B21_symmetrical.afl, coefficient lookup, I have 1 Reynolds numbers available, and am using table #0
+	That's the table for Re= 9.0000 million, with flight Re= 0.2768 million
+	alpha airflow=   2.4, alpha zero-lift=  -0.0, finite wing alpha multiplier= 0.9601, slat alpha divisor= 1.0000, alpha lookup=   2.3
+	Cl lookup:  0.2308
+	Cd lookup:  0.0012
+	Cm lookup:  0.0000
+
+	element 1 of 2, center at  25%, which is  25% of foil interpolation span (at foil interp power of  1.0000)
+
+	Re       summary:   ---------- -root --tip
+	                    reyno 1     9.0000  9.0000 |
+	                    reyno 2     9.0000  9.0000 |======>with flight Re= 0.2768 million
+
+	CL coeff summary:   ---------- -root --tip
+	                    reyno 1     0.2308  0.2308 |
+	                    reyno 2     0.2308  0.2308 |======>resultant cl= 0.2308
+
+	CD coeff summary:   ---------- -root --tip
+	                    reyno 1     0.0012  0.0012 |
+	                    reyno 2     0.0012  0.0012 |======>resultant cd= 0.0012
+
+	CM coeff summary:   ---------- -root --tip
+	                    reyno 1     0.0000  0.0000 |
+	                    reyno 2     0.0000  0.0000 |======>resultant cm= 0.0000
+
+	finite-wing lift multiplier of  0.9801 takes cl to  0.2262, OLD FLIGHT MODEL, MODDING CONTROL EFFECTS AS WELL. EXPERIMENTAL FLIGHT MODEL WILL PUT THIS BEFORE CONTROL EFFECTS
+	e of  0.9363, geometric aspect ratio of 31.0563, effective aspect ratio of 31.0665, gives cdi of  0.0006
+
+	force along the local flight path of this particular element (see Aifoil-Maker plots in the 'AOA-180' tab to see sign conventions)
+	lift= 0.2267*  0.0502* sqr(  21.5) *  1.1548 / 2          =     3.0 N
+	drag= 0.0018*  0.0502* sqr(  21.5) *  1.1548 / 2          =     0.0 N
+	momt= 0.0000*  0.0502* sqr(  21.5) *  1.1548 / 2 *    0.20=     0.0 N-m
+
+RIGT WING 3:
+
+	x=   8.68 m pos right.
+	y=   1.02 m pos up.
+	z=   0.40 m pos aft.
+
+	lift_local_path=     3.0 N pos up.
+	drag_local_path=     0.0 N pos aft.
+	side_local_path=     0.0 N pos right.
+
+	lift vector xyz=-0.9653  0.2584 -0.0389
+	drag vector xyz=-0.0087  0.1168  0.9931
+	side vector xyz= 0.2611  0.9590 -0.1105
+
+----------------------------------------------------------------------------------------------------
+---RUNNING AERODYNAMIC FORCE AND TOTAL MOMENT TOTALS, AIRCRAFT AXIS SYSTEM--------------------------
+----------------------------------------------------------------------------------------------------
+RIGT WING 3
+	f_axil=  -387.1 N, pos aft,    L=     9.1 N-m, pos right
+	f_side=    -0.4 N, pos right,  M= -1041.3 N-m, pos up
+	f_nrml=  4010.3 N, pos up,     N=   -14.0 N-m, pos right
+----------------------------------------------------------------------------------------------------
+
+
+••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+•••RIGT WING 3 ELEMENT # 1••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+	element x=   8.74 m, pos right from CG
+	element y=   1.26 m, pos up    from CG
+	element z=   0.50 m, pos aft   from CG
+
+	infinite flow speed is vx of   -0.2 vy of    2.9 vz of   24.2 m/s in aircraft body coordinates
+	So final speed is vx=  -0.2 vy=   2.9 vz=  24.2 m/s in the aircraft axis coordinate system
+
+	alpha of the wing plane    :    2.4
+	incidence                  :    0.0
+	incidence increase         :    0.0
+	geometric alpha            :    2.4
+	v for forces               :   21.4 (based on effective sweep of   22.1 deg)
+
+
+	AR=31.0665, e= 0.9363, ls_D_ls0= 0.9410, al_D_al0= 0.9601, cl_D_cl0= 0.9801
+
+root lo Reynolds number: Aircraft/Extra Aircraft/ASG29_B21/airfoils/B21_symmetrical.afl, coefficient lookup, I have 1 Reynolds numbers available, and am using table #0
+	That's the table for Re= 9.0000 million, with flight Re= 0.2071 million
+	alpha airflow=   2.4, alpha zero-lift=  -0.0, finite wing alpha multiplier= 0.9601, slat alpha divisor= 1.0000, alpha lookup=   2.3
+	Cl lookup:  0.2303
+	Cd lookup:  0.0012
+	Cm lookup:  0.0000
+
+	element 2 of 2, center at  75%, which is  75% of foil interpolation span (at foil interp power of  1.0000)
+
+	Re       summary:   ---------- -root --tip
+	                    reyno 1     9.0000  9.0000 |
+	                    reyno 2     9.0000  9.0000 |======>with flight Re= 0.2071 million
+
+	CL coeff summary:   ---------- -root --tip
+	                    reyno 1     0.2303  0.2303 |
+	                    reyno 2     0.2303  0.2303 |======>resultant cl= 0.2303
+
+	CD coeff summary:   ---------- -root --tip
+	                    reyno 1     0.0012  0.0012 |
+	                    reyno 2     0.0012  0.0012 |======>resultant cd= 0.0012
+
+	CM coeff summary:   ---------- -root --tip
+	                    reyno 1     0.0000  0.0000 |
+	                    reyno 2     0.0000  0.0000 |======>resultant cm= 0.0000
+
+	finite-wing lift multiplier of  0.9801 takes cl to  0.2257, OLD FLIGHT MODEL, MODDING CONTROL EFFECTS AS WELL. EXPERIMENTAL FLIGHT MODEL WILL PUT THIS BEFORE CONTROL EFFECTS
+	e of  0.9363, geometric aspect ratio of 31.0563, effective aspect ratio of 31.0665, gives cdi of  0.0006
+
+	force along the local flight path of this particular element (see Aifoil-Maker plots in the 'AOA-180' tab to see sign conventions)
+	lift= 0.2262*  0.0374* sqr(  21.4) *  1.1548 / 2          =     2.2 N
+	drag= 0.0018*  0.0374* sqr(  21.4) *  1.1548 / 2          =     0.0 N
+	momt= 0.0000*  0.0374* sqr(  21.4) *  1.1548 / 2 *    0.15=     0.0 N-m
+
+RIGT WING 3:
+
+	x=   8.74 m pos right.
+	y=   1.26 m pos up.
+	z=   0.50 m pos aft.
+
+	lift_local_path=     2.2 N pos up.
+	drag_local_path=     0.0 N pos aft.
+	side_local_path=     0.0 N pos right.
+
+	lift vector xyz=-0.9653  0.2583 -0.0388
+	drag vector xyz=-0.0086  0.1168  0.9931
+	side vector xyz= 0.2611  0.9590 -0.1106
+
+----------------------------------------------------------------------------------------------------
+---RUNNING AERODYNAMIC FORCE AND TOTAL MOMENT TOTALS, AIRCRAFT AXIS SYSTEM--------------------------
+----------------------------------------------------------------------------------------------------
+RIGT WING 3
+	f_axil=  -387.2 N, pos aft,    L=     1.3 N-m, pos right
+	f_side=    -2.6 N, pos right,  M= -1041.7 N-m, pos up
+	f_nrml=  4010.9 N, pos up,     N=   -13.5 N-m, pos right
+----------------------------------------------------------------------------------------------------
+
+
+••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+•••LEFT H STAB ELEMENT # 0••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+	element x=  -0.29 m, pos right from CG
+	element y=   1.06 m, pos up    from CG
+	element z=   3.80 m, pos aft   from CG
+
+	infinite flow speed is vx of   -0.1 vy of    2.9 vz of   24.5 m/s in aircraft body coordinates
+	DOWNWASH from LEFT WING 1 el #0 is    3.0 deg, at v=  24.6 m/s for vertical delta=  -1.29 m/s
+	So speed is changed to vx=  -0.1 vy=   1.6 vz=  24.5 m/s
+	So final speed is vx=  -0.1 vy=   1.6 vz=  24.5 m/s in the aircraft axis coordinate system
+
+	alpha of the wing plane    :    3.7
+	incidence                  :   -4.0
+	incidence increase         :    0.0
+	geometric alpha            :   -0.3
+	v for forces               :   24.4 (based on effective sweep of   -3.9 deg)
+
+
+   ELEVATOR #1: crat= 0.4000, def= -16.2 deg: (pos down or extended, neg up)
+	dx_te = 0.9841
+	dy_te =-0.1116
+	al_inc=-5.1797
+	cl inc=-0.6521
+	cd inc= 0.0016
+	cm inc= 0.3587
+	Effective alpha increased   -5.2 deg by all combined lift-incrementation devices up to final geo alpha of   -5.5 deg
+
+
+	AR= 4.0542, e= 0.9877, ls_D_ls0= 0.6871, al_D_al0= 0.7744, cl_D_cl0= 0.8872
+
+root lo Reynolds number: Aircraft/Extra Aircraft/ASG29_B21/airfoils/B21_symmetrical.afl, coefficient lookup, I have 1 Reynolds numbers available, and am using table #0
+	That's the table for Re= 9.0000 million, with flight Re= 0.6383 million
+	alpha airflow=  -5.5, alpha zero-lift=  -0.0, finite wing alpha multiplier= 0.7744, slat alpha divisor= 1.0000, alpha lookup=  -4.2
+	Cl lookup: -0.4230
+	Cd lookup:  0.0017
+	Cm lookup:  0.0000
+
+	element 1 of 2, center at  25%, which is  25% of foil interpolation span (at foil interp power of  1.0000)
+
+	Re       summary:   ---------- -root --tip
+	                    reyno 1     9.0000  9.0000 |
+	                    reyno 2     9.0000  9.0000 |======>with flight Re= 0.6383 million
+
+	CL coeff summary:   ---------- -root --tip
+	                    reyno 1    -0.4230 -0.4230 |
+	                    reyno 2    -0.4230 -0.4230 |======>resultant cl=-0.4230
+
+	CD coeff summary:   ---------- -root --tip
+	                    reyno 1     0.0017  0.0017 |
+	                    reyno 2     0.0017  0.0017 |======>resultant cd= 0.0017
+
+	CM coeff summary:   ---------- -root --tip
+	                    reyno 1     0.0000  0.0000 |
+	                    reyno 2     0.0000  0.0000 |======>resultant cm= 0.0000
+
+	adding control-effects cl   of -0.6521 takes cl to -1.0751
+	adding control-effects cd   of  0.0016 takes cd to  0.0033
+	adding control-effects cm   of  0.3587 takes cm to  0.3587
+	finite-wing lift multiplier of  0.8872 takes cl to -0.9538, OLD FLIGHT MODEL, MODDING CONTROL EFFECTS AS WELL. EXPERIMENTAL FLIGHT MODEL WILL PUT THIS BEFORE CONTROL EFFECTS
+	delta-wing moment addition of  0.0040 takes cm to  0.3626
+	e of  0.9877, geometric aspect ratio of  4.0547, effective aspect ratio of  4.0542, gives cdi of  0.0727
+
+	force along the local flight path of this particular element (see Aifoil-Maker plots in the 'AOA-180' tab to see sign conventions)
+	lift=-0.9563*  0.2290* sqr(  24.4) *  1.1548 / 2          =   -75.6 N
+	drag= 0.0760*  0.2290* sqr(  24.4) *  1.1548 / 2          =     6.0 N
+	momt= 0.3636*  0.2290* sqr(  24.4) *  1.1548 / 2 *    0.40=    11.5 N-m
+
+LEFT H STAB:
+
+	x=  -0.29 m pos right.
+	y=   1.06 m pos up.
+	z=   3.80 m pos aft.
+
+	lift_local_path=   -75.6 N pos up.
+	drag_local_path=     6.0 N pos aft.
+	side_local_path=     0.0 N pos right.
+
+	lift vector xyz=-0.0053  0.9979 -0.0647
+	drag vector xyz=-0.0052  0.0647  0.9979
+	side vector xyz= 1.0000  0.0056  0.0048
+
+----------------------------------------------------------------------------------------------------
+---RUNNING AERODYNAMIC FORCE AND TOTAL MOMENT TOTALS, AIRCRAFT AXIS SYSTEM--------------------------
+----------------------------------------------------------------------------------------------------
+LEFT H STAB
+	f_axil=  -376.3 N, pos aft,    L=   -19.9 N-m, pos right
+	f_side=    -2.2 N, pos right,  M=  -733.6 N-m, pos up
+	f_nrml=  3935.9 N, pos up,     N=   -18.1 N-m, pos right
+----------------------------------------------------------------------------------------------------
+
+
+••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+•••LEFT H STAB ELEMENT # 1••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+	element x=  -0.86 m, pos right from CG
+	element y=   1.06 m, pos up    from CG
+	element z=   3.84 m, pos aft   from CG
+
+	infinite flow speed is vx of   -0.1 vy of    2.9 vz of   24.5 m/s in aircraft body coordinates
+	DOWNWASH from LEFT WING 1 el #0 is    3.0 deg, at v=  24.6 m/s for vertical delta=  -1.29 m/s
+	So speed is changed to vx=  -0.1 vy=   1.6 vz=  24.5 m/s
+	So final speed is vx=  -0.1 vy=   1.6 vz=  24.5 m/s in the aircraft axis coordinate system
+
+	alpha of the wing plane    :    3.7
+	incidence                  :   -4.0
+	incidence increase         :    0.0
+	geometric alpha            :   -0.3
+	v for forces               :   24.5 (based on effective sweep of   -3.9 deg)
+
+
+   ELEVATOR #1: crat= 0.4000, def= -16.2 deg: (pos down or extended, neg up)
+	dx_te = 0.9841
+	dy_te =-0.1116
+	al_inc=-5.1797
+	cl inc=-0.6521
+	cd inc= 0.0016
+	cm inc= 0.3587
+	Effective alpha increased   -5.2 deg by all combined lift-incrementation devices up to final geo alpha of   -5.5 deg
+
+
+	AR= 4.0542, e= 0.9877, ls_D_ls0= 0.6871, al_D_al0= 0.7744, cl_D_cl0= 0.8872
+
+root lo Reynolds number: Aircraft/Extra Aircraft/ASG29_B21/airfoils/B21_symmetrical.afl, coefficient lookup, I have 1 Reynolds numbers available, and am using table #0
+	That's the table for Re= 9.0000 million, with flight Re= 0.4539 million
+	alpha airflow=  -5.5, alpha zero-lift=  -0.0, finite wing alpha multiplier= 0.7744, slat alpha divisor= 1.0000, alpha lookup=  -4.2
+	Cl lookup: -0.4225
+	Cd lookup:  0.0017
+	Cm lookup:  0.0000
+
+	element 2 of 2, center at  75%, which is  75% of foil interpolation span (at foil interp power of  1.0000)
+
+	Re       summary:   ---------- -root --tip
+	                    reyno 1     9.0000  9.0000 |
+	                    reyno 2     9.0000  9.0000 |======>with flight Re= 0.4539 million
+
+	CL coeff summary:   ---------- -root --tip
+	                    reyno 1    -0.4225 -0.4225 |
+	                    reyno 2    -0.4225 -0.4225 |======>resultant cl=-0.4225
+
+	CD coeff summary:   ---------- -root --tip
+	                    reyno 1     0.0017  0.0017 |
+	                    reyno 2     0.0017  0.0017 |======>resultant cd= 0.0017
+
+	CM coeff summary:   ---------- -root --tip
+	                    reyno 1     0.0000  0.0000 |
+	                    reyno 2     0.0000  0.0000 |======>resultant cm= 0.0000
+
+	adding control-effects cl   of -0.6521 takes cl to -1.0746
+	adding control-effects cd   of  0.0016 takes cd to  0.0033
+	adding control-effects cm   of  0.3587 takes cm to  0.3587
+	finite-wing lift multiplier of  0.8872 takes cl to -0.9534, OLD FLIGHT MODEL, MODDING CONTROL EFFECTS AS WELL. EXPERIMENTAL FLIGHT MODEL WILL PUT THIS BEFORE CONTROL EFFECTS
+	delta-wing moment addition of  0.0040 takes cm to  0.3626
+	e of  0.9877, geometric aspect ratio of  4.0547, effective aspect ratio of  4.0542, gives cdi of  0.0726
+
+	force along the local flight path of this particular element (see Aifoil-Maker plots in the 'AOA-180' tab to see sign conventions)
+	lift=-0.9559*  0.1616* sqr(  24.5) *  1.1548 / 2          =   -53.4 N
+	drag= 0.0759*  0.1616* sqr(  24.5) *  1.1548 / 2          =     4.2 N
+	momt= 0.3636*  0.1616* sqr(  24.5) *  1.1548 / 2 *    0.29=     5.8 N-m
+
+LEFT H STAB:
+
+	x=  -0.86 m pos right.
+	y=   1.06 m pos up.
+	z=   3.84 m pos aft.
+
+	lift_local_path=   -53.4 N pos up.
+	drag_local_path=     4.2 N pos aft.
+	side_local_path=     0.0 N pos right.
+
+	lift vector xyz=-0.0068  0.9979 -0.0648
+	drag vector xyz=-0.0051  0.0648  0.9979
+	side vector xyz= 1.0000  0.0071  0.0047
+
+----------------------------------------------------------------------------------------------------
+---RUNNING AERODYNAMIC FORCE AND TOTAL MOMENT TOTALS, AIRCRAFT AXIS SYSTEM--------------------------
+----------------------------------------------------------------------------------------------------
+LEFT H STAB
+	f_axil=  -368.6 N, pos aft,    L=   -65.2 N-m, pos right
+	f_side=    -1.9 N, pos right,  M=  -516.2 N-m, pos up
+	f_nrml=  3882.9 N, pos up,     N=   -26.0 N-m, pos right
+----------------------------------------------------------------------------------------------------
+
+
+••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+•••RIGT H STAB ELEMENT # 0••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+	element x=   0.29 m, pos right from CG
+	element y=   1.06 m, pos up    from CG
+	element z=   3.80 m, pos aft   from CG
+
+	infinite flow speed is vx of   -0.1 vy of    2.9 vz of   24.4 m/s in aircraft body coordinates
+	DOWNWASH from RIGT WING 1 el #0 is    3.0 deg, at v=  24.6 m/s for vertical delta=  -1.30 m/s
+	So speed is changed to vx=  -0.1 vy=   1.6 vz=  24.4 m/s
+	So final speed is vx=  -0.1 vy=   1.6 vz=  24.4 m/s in the aircraft axis coordinate system
+
+	alpha of the wing plane    :    3.7
+	incidence                  :   -4.0
+	incidence increase         :    0.0
+	geometric alpha            :   -0.3
+	v for forces               :   24.5 (based on effective sweep of    3.9 deg)
+
+
+   ELEVATOR #1: crat= 0.4000, def= -16.2 deg: (pos down or extended, neg up)
+	dx_te = 0.9841
+	dy_te =-0.1116
+	al_inc=-5.1797
+	cl inc=-0.6521
+	cd inc= 0.0016
+	cm inc= 0.3587
+	Effective alpha increased   -5.2 deg by all combined lift-incrementation devices up to final geo alpha of   -5.5 deg
+
+
+	AR= 4.0557, e= 0.9877, ls_D_ls0= 0.6871, al_D_al0= 0.7745, cl_D_cl0= 0.8872
+
+root lo Reynolds number: Aircraft/Extra Aircraft/ASG29_B21/airfoils/B21_symmetrical.afl, coefficient lookup, I have 1 Reynolds numbers available, and am using table #0
+	That's the table for Re= 9.0000 million, with flight Re= 0.6383 million
+	alpha airflow=  -5.5, alpha zero-lift=  -0.0, finite wing alpha multiplier= 0.7745, slat alpha divisor= 1.0000, alpha lookup=  -4.2
+	Cl lookup: -0.4243
+	Cd lookup:  0.0017
+	Cm lookup:  0.0000
+
+	element 1 of 2, center at  25%, which is  25% of foil interpolation span (at foil interp power of  1.0000)
+
+	Re       summary:   ---------- -root --tip
+	                    reyno 1     9.0000  9.0000 |
+	                    reyno 2     9.0000  9.0000 |======>with flight Re= 0.6383 million
+
+	CL coeff summary:   ---------- -root --tip
+	                    reyno 1    -0.4243 -0.4243 |
+	                    reyno 2    -0.4243 -0.4243 |======>resultant cl=-0.4243
+
+	CD coeff summary:   ---------- -root --tip
+	                    reyno 1     0.0017  0.0017 |
+	                    reyno 2     0.0017  0.0017 |======>resultant cd= 0.0017
+
+	CM coeff summary:   ---------- -root --tip
+	                    reyno 1     0.0000  0.0000 |
+	                    reyno 2     0.0000  0.0000 |======>resultant cm= 0.0000
+
+	adding control-effects cl   of -0.6521 takes cl to -1.0763
+	adding control-effects cd   of  0.0016 takes cd to  0.0033
+	adding control-effects cm   of  0.3587 takes cm to  0.3587
+	finite-wing lift multiplier of  0.8872 takes cl to -0.9550, OLD FLIGHT MODEL, MODDING CONTROL EFFECTS AS WELL. EXPERIMENTAL FLIGHT MODEL WILL PUT THIS BEFORE CONTROL EFFECTS
+	delta-wing moment addition of  0.0040 takes cm to  0.3626
+	e of  0.9877, geometric aspect ratio of  4.0547, effective aspect ratio of  4.0557, gives cdi of  0.0728
+
+	force along the local flight path of this particular element (see Aifoil-Maker plots in the 'AOA-180' tab to see sign conventions)
+	lift=-0.9574*  0.2290* sqr(  24.5) *  1.1548 / 2          =   -75.7 N
+	drag= 0.0762*  0.2290* sqr(  24.5) *  1.1548 / 2          =     6.0 N
+	momt= 0.3636*  0.2290* sqr(  24.5) *  1.1548 / 2 *    0.40=    11.5 N-m
+
+RIGT H STAB:
+
+	x=   0.29 m pos right.
+	y=   1.06 m pos up.
+	z=   3.80 m pos aft.
+
+	lift_local_path=   -75.7 N pos up.
+	drag_local_path=     6.0 N pos aft.
+	side_local_path=     0.0 N pos right.
+
+	lift vector xyz= 0.0052  0.9979 -0.0644
+	drag vector xyz=-0.0052  0.0644  0.9979
+	side vector xyz= 1.0000 -0.0049  0.0055
+
+----------------------------------------------------------------------------------------------------
+---RUNNING AERODYNAMIC FORCE AND TOTAL MOMENT TOTALS, AIRCRAFT AXIS SYSTEM--------------------------
+----------------------------------------------------------------------------------------------------
+RIGT H STAB
+	f_axil=  -357.7 N, pos aft,    L=   -44.0 N-m, pos right
+	f_side=    -2.3 N, pos right,  M=  -207.7 N-m, pos up
+	f_nrml=  3807.8 N, pos up,     N=   -21.3 N-m, pos right
+----------------------------------------------------------------------------------------------------
+
+
+••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+•••RIGT H STAB ELEMENT # 1••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+	element x=   0.86 m, pos right from CG
+	element y=   1.06 m, pos up    from CG
+	element z=   3.84 m, pos aft   from CG
+
+	infinite flow speed is vx of   -0.1 vy of    2.9 vz of   24.4 m/s in aircraft body coordinates
+	DOWNWASH from RIGT WING 1 el #0 is    3.0 deg, at v=  24.6 m/s for vertical delta=  -1.29 m/s
+	So speed is changed to vx=  -0.1 vy=   1.6 vz=  24.4 m/s
+	So final speed is vx=  -0.1 vy=   1.6 vz=  24.4 m/s in the aircraft axis coordinate system
+
+	alpha of the wing plane    :    3.7
+	incidence                  :   -4.0
+	incidence increase         :    0.0
+	geometric alpha            :   -0.3
+	v for forces               :   24.4 (based on effective sweep of    3.9 deg)
+
+
+   ELEVATOR #1: crat= 0.4000, def= -16.2 deg: (pos down or extended, neg up)
+	dx_te = 0.9841
+	dy_te =-0.1116
+	al_inc=-5.1797
+	cl inc=-0.6521
+	cd inc= 0.0016
+	cm inc= 0.3587
+	Effective alpha increased   -5.2 deg by all combined lift-incrementation devices up to final geo alpha of   -5.5 deg
+
+
+	AR= 4.0557, e= 0.9877, ls_D_ls0= 0.6871, al_D_al0= 0.7745, cl_D_cl0= 0.8872
+
+root lo Reynolds number: Aircraft/Extra Aircraft/ASG29_B21/airfoils/B21_symmetrical.afl, coefficient lookup, I have 1 Reynolds numbers available, and am using table #0
+	That's the table for Re= 9.0000 million, with flight Re= 0.4534 million
+	alpha airflow=  -5.5, alpha zero-lift=  -0.0, finite wing alpha multiplier= 0.7745, slat alpha divisor= 1.0000, alpha lookup=  -4.2
+	Cl lookup: -0.4232
+	Cd lookup:  0.0017
+	Cm lookup:  0.0000
+
+	element 2 of 2, center at  75%, which is  75% of foil interpolation span (at foil interp power of  1.0000)
+
+	Re       summary:   ---------- -root --tip
+	                    reyno 1     9.0000  9.0000 |
+	                    reyno 2     9.0000  9.0000 |======>with flight Re= 0.4534 million
+
+	CL coeff summary:   ---------- -root --tip
+	                    reyno 1    -0.4232 -0.4232 |
+	                    reyno 2    -0.4232 -0.4232 |======>resultant cl=-0.4232
+
+	CD coeff summary:   ---------- -root --tip
+	                    reyno 1     0.0017  0.0017 |
+	                    reyno 2     0.0017  0.0017 |======>resultant cd= 0.0017
+
+	CM coeff summary:   ---------- -root --tip
+	                    reyno 1     0.0000  0.0000 |
+	                    reyno 2     0.0000  0.0000 |======>resultant cm= 0.0000
+
+	adding control-effects cl   of -0.6521 takes cl to -1.0753
+	adding control-effects cd   of  0.0016 takes cd to  0.0033
+	adding control-effects cm   of  0.3587 takes cm to  0.3587
+	finite-wing lift multiplier of  0.8872 takes cl to -0.9540, OLD FLIGHT MODEL, MODDING CONTROL EFFECTS AS WELL. EXPERIMENTAL FLIGHT MODEL WILL PUT THIS BEFORE CONTROL EFFECTS
+	delta-wing moment addition of  0.0040 takes cm to  0.3626
+	e of  0.9877, geometric aspect ratio of  4.0547, effective aspect ratio of  4.0557, gives cdi of  0.0727
+
+	force along the local flight path of this particular element (see Aifoil-Maker plots in the 'AOA-180' tab to see sign conventions)
+	lift=-0.9565*  0.1616* sqr(  24.4) *  1.1548 / 2          =   -53.3 N
+	drag= 0.0760*  0.1616* sqr(  24.4) *  1.1548 / 2          =     4.2 N
+	momt= 0.3636*  0.1616* sqr(  24.4) *  1.1548 / 2 *    0.29=     5.8 N-m
+
+RIGT H STAB:
+
+	x=   0.86 m pos right.
+	y=   1.06 m pos up.
+	z=   3.84 m pos aft.
+
+	lift_local_path=   -53.3 N pos up.
+	drag_local_path=     4.2 N pos aft.
+	side_local_path=     0.0 N pos right.
+
+	lift vector xyz= 0.0068  0.9979 -0.0647
+	drag vector xyz=-0.0051  0.0647  0.9979
+	side vector xyz= 1.0000 -0.0065  0.0056
+
+----------------------------------------------------------------------------------------------------
+---RUNNING AERODYNAMIC FORCE AND TOTAL MOMENT TOTALS, AIRCRAFT AXIS SYSTEM--------------------------
+----------------------------------------------------------------------------------------------------
+RIGT H STAB
+	f_axil=  -350.0 N, pos aft,    L=     1.2 N-m, pos right
+	f_side=    -2.7 N, pos right,  M=     9.4 N-m, pos up
+	f_nrml=  3754.9 N, pos up,     N=   -13.2 N-m, pos right
+----------------------------------------------------------------------------------------------------
+
+
+••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+•••VERT STAB 1 ELEMENT # 0••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+	element x=  -0.00 m, pos right from CG
+	element y=   0.15 m, pos up    from CG
+	element z=   3.69 m, pos aft   from CG
+
+	infinite flow speed is vx of   -0.1 vy of    2.9 vz of   24.5 m/s in aircraft body coordinates
+	DOWNWASH from LEFT WING 1 el #0 is    2.9 deg, at v=  24.6 m/s for vertical delta=  -1.27 m/s
+	So speed is changed to vx=  -0.1 vy=   1.6 vz=  24.5 m/s
+	BODY SHADOWING with Cd of  0.0339 muliplies V by  0.9829
+	So speed is changed to vx=  -0.1 vy=   1.6 vz=  24.0 m/s
+	So final speed is vx=  -0.1 vy=   1.6 vz=  24.0 m/s in the aircraft axis coordinate system
+
+	alpha of the wing plane    :    0.3
+	incidence                  :    0.0
+	incidence increase         :    0.0
+	geometric alpha            :    0.3
+	v for forces               :   23.4 (based on effective sweep of    9.8 deg)
+
+
+   RUDDER #1: crat= 0.3000, def=  -0.2 deg: (pos down or extended, neg up)
+	dx_te = 1.0000
+	dy_te =-0.0009
+	al_inc=-0.0432
+	cl inc=-0.0077
+	cd inc= 0.0000
+	cm inc= 0.0046
+	Effective alpha increased   -0.0 deg by all combined lift-incrementation devices up to final geo alpha of    0.3 deg
+
+
+	AR= 4.0557, e= 0.9877, ls_D_ls0= 0.6871, al_D_al0= 0.7745, cl_D_cl0= 0.8872
+
+root lo Reynolds number: Aircraft/Extra Aircraft/ASG29_B21/airfoils/B21_symmetrical.afl, coefficient lookup, I have 1 Reynolds numbers available, and am using table #0
+	That's the table for Re= 9.0000 million, with flight Re= 1.3299 million
+	alpha airflow=   0.3, alpha zero-lift=  -0.0, finite wing alpha multiplier= 0.7745, slat alpha divisor= 1.0000, alpha lookup=   0.2
+	Cl lookup:  0.0207
+	Cd lookup:  0.0010
+	Cm lookup:  0.0000
+
+	element 1 of 2, center at  25%, which is  25% of foil interpolation span (at foil interp power of  1.0000)
+
+	Re       summary:   ---------- -root --tip
+	                    reyno 1     9.0000  9.0000 |
+	                    reyno 2     9.0000  9.0000 |======>with flight Re= 1.3299 million
+
+	CL coeff summary:   ---------- -root --tip
+	                    reyno 1     0.0207  0.0207 |
+	                    reyno 2     0.0207  0.0207 |======>resultant cl= 0.0207
+
+	CD coeff summary:   ---------- -root --tip
+	                    reyno 1     0.0010  0.0010 |
+	                    reyno 2     0.0010  0.0010 |======>resultant cd= 0.0010
+
+	CM coeff summary:   ---------- -root --tip
+	                    reyno 1     0.0000  0.0000 |
+	                    reyno 2     0.0000  0.0000 |======>resultant cm= 0.0000
+
+	adding control-effects cl   of -0.0077 takes cl to  0.0129
+	adding control-effects cd   of  0.0000 takes cd to  0.0010
+	adding control-effects cm   of  0.0046 takes cm to  0.0046
+	finite-wing lift multiplier of  0.8872 takes cl to  0.0115, OLD FLIGHT MODEL, MODDING CONTROL EFFECTS AS WELL. EXPERIMENTAL FLIGHT MODEL WILL PUT THIS BEFORE CONTROL EFFECTS
+	delta-wing moment addition of -0.0000 takes cm to  0.0046
+	e of  0.9877, geometric aspect ratio of  4.0547, effective aspect ratio of  4.0557, gives cdi of  0.0000
+
+	force along the local flight path of this particular element (see Aifoil-Maker plots in the 'AOA-180' tab to see sign conventions)
+	lift= 0.0115*  0.5246* sqr(  23.4) *  1.1548 / 2          =     1.9 N
+	drag= 0.0010*  0.5246* sqr(  23.4) *  1.1548 / 2          =     0.2 N
+	momt= 0.0046*  0.5246* sqr(  23.4) *  1.1548 / 2 *    0.87=     0.7 N-m
+
+VERT STAB 1:
+
+	x=  -0.00 m pos right.
+	y=   0.15 m pos up.
+	z=   3.69 m pos aft.
+
+	lift_local_path=     1.9 N pos up.
+	drag_local_path=     0.2 N pos aft.
+	side_local_path=     0.0 N pos right.
+
+	lift vector xyz=-1.0000  0.0009 -0.0053
+	drag vector xyz=-0.0053  0.0656  0.9978
+	side vector xyz= 0.0013  0.9978 -0.0656
+
+----------------------------------------------------------------------------------------------------
+---RUNNING AERODYNAMIC FORCE AND TOTAL MOMENT TOTALS, AIRCRAFT AXIS SYSTEM--------------------------
+----------------------------------------------------------------------------------------------------
+VERT STAB 1
+	f_axil=  -349.9 N, pos aft,    L=     0.9 N-m, pos right
+	f_side=    -4.6 N, pos right,  M=     9.3 N-m, pos up
+	f_nrml=  3754.9 N, pos up,     N=    -6.8 N-m, pos right
+----------------------------------------------------------------------------------------------------
+
+
+••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+•••VERT STAB 1 ELEMENT # 1••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+	element x=  -0.00 m, pos right from CG
+	element y=   0.75 m, pos up    from CG
+	element z=   3.79 m, pos aft   from CG
+
+	infinite flow speed is vx of   -0.1 vy of    2.9 vz of   24.5 m/s in aircraft body coordinates
+	DOWNWASH from LEFT WING 1 el #0 is    3.2 deg, at v=  24.6 m/s for vertical delta=  -1.39 m/s
+	So speed is changed to vx=  -0.1 vy=   1.5 vz=  24.5 m/s
+	So final speed is vx=  -0.1 vy=   1.5 vz=  24.5 m/s in the aircraft axis coordinate system
+
+	alpha of the wing plane    :    0.3
+	incidence                  :    0.0
+	incidence increase         :    0.0
+	geometric alpha            :    0.3
+	v for forces               :   23.8 (based on effective sweep of    9.8 deg)
+
+
+   RUDDER #1: crat= 0.3000, def=  -0.2 deg: (pos down or extended, neg up)
+	dx_te = 1.0000
+	dy_te =-0.0009
+	al_inc=-0.0432
+	cl inc=-0.0077
+	cd inc= 0.0000
+	cm inc= 0.0046
+	Effective alpha increased   -0.0 deg by all combined lift-incrementation devices up to final geo alpha of    0.3 deg
+
+
+	AR= 4.0557, e= 0.9877, ls_D_ls0= 0.6871, al_D_al0= 0.7745, cl_D_cl0= 0.8872
+
+root lo Reynolds number: Aircraft/Extra Aircraft/ASG29_B21/airfoils/B21_symmetrical.afl, coefficient lookup, I have 1 Reynolds numbers available, and am using table #0
+	That's the table for Re= 9.0000 million, with flight Re= 1.1746 million
+	alpha airflow=   0.3, alpha zero-lift=  -0.0, finite wing alpha multiplier= 0.7745, slat alpha divisor= 1.0000, alpha lookup=   0.2
+	Cl lookup:  0.0202
+	Cd lookup:  0.0010
+	Cm lookup:  0.0000
+
+	element 2 of 2, center at  75%, which is  75% of foil interpolation span (at foil interp power of  1.0000)
+
+	Re       summary:   ---------- -root --tip
+	                    reyno 1     9.0000  9.0000 |
+	                    reyno 2     9.0000  9.0000 |======>with flight Re= 1.1746 million
+
+	CL coeff summary:   ---------- -root --tip
+	                    reyno 1     0.0202  0.0202 |
+	                    reyno 2     0.0202  0.0202 |======>resultant cl= 0.0202
+
+	CD coeff summary:   ---------- -root --tip
+	                    reyno 1     0.0010  0.0010 |
+	                    reyno 2     0.0010  0.0010 |======>resultant cd= 0.0010
+
+	CM coeff summary:   ---------- -root --tip
+	                    reyno 1     0.0000  0.0000 |
+	                    reyno 2     0.0000  0.0000 |======>resultant cm= 0.0000
+
+	adding control-effects cl   of -0.0077 takes cl to  0.0125
+	adding control-effects cd   of  0.0000 takes cd to  0.0010
+	adding control-effects cm   of  0.0046 takes cm to  0.0046
+	finite-wing lift multiplier of  0.8872 takes cl to  0.0111, OLD FLIGHT MODEL, MODDING CONTROL EFFECTS AS WELL. EXPERIMENTAL FLIGHT MODEL WILL PUT THIS BEFORE CONTROL EFFECTS
+	delta-wing moment addition of -0.0000 takes cm to  0.0046
+	e of  0.9877, geometric aspect ratio of  4.0547, effective aspect ratio of  4.0557, gives cdi of  0.0000
+
+	force along the local flight path of this particular element (see Aifoil-Maker plots in the 'AOA-180' tab to see sign conventions)
+	lift= 0.0111*  0.4549* sqr(  23.8) *  1.1548 / 2          =     1.7 N
+	drag= 0.0010*  0.4549* sqr(  23.8) *  1.1548 / 2          =     0.2 N
+	momt= 0.0046*  0.4549* sqr(  23.8) *  1.1548 / 2 *    0.76=     0.5 N-m
+
+VERT STAB 1:
+
+	x=  -0.00 m pos right.
+	y=   0.75 m pos up.
+	z=   3.79 m pos aft.
+
+	lift_local_path=     1.7 N pos up.
+	drag_local_path=     0.2 N pos aft.
+	side_local_path=     0.0 N pos right.
+
+	lift vector xyz=-1.0000  0.0009 -0.0052
+	drag vector xyz=-0.0052  0.0607  0.9981
+	side vector xyz= 0.0012  0.9982 -0.0607
+
+----------------------------------------------------------------------------------------------------
+---RUNNING AERODYNAMIC FORCE AND TOTAL MOMENT TOTALS, AIRCRAFT AXIS SYSTEM--------------------------
+----------------------------------------------------------------------------------------------------
+VERT STAB 1
+	f_axil=  -349.7 N, pos aft,    L=    -0.4 N-m, pos right
+	f_side=    -6.3 N, pos right,  M=     9.4 N-m, pos up
+	f_nrml=  3754.9 N, pos up,     N=    -1.0 N-m, pos right
+----------------------------------------------------------------------------------------------------
+
+
+••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+Now to find aspect-ratio multiplier for LEFT WING 1:
+   el # 0, clQ=   711.3, el arm=   0.50, clQ_total=   711.3, clQ_x_arm=   355.6
+      loc= 0.5000, AR_mult= 1.0000
+
+Now to find aspect-ratio multiplier for RIGT WING 1:
+   el # 0, clQ=   708.2, el arm=   0.50, clQ_total=   708.2, clQ_x_arm=   354.1
+      loc= 0.5000, AR_mult= 1.0000
+
+Now to find aspect-ratio multiplier for LEFT WING 2:
+   el # 0, clQ=   705.2, el arm=   0.50, clQ_total=   705.2, clQ_x_arm=   352.6
+      loc= 0.5000, AR_mult= 1.0000
+
+Now to find aspect-ratio multiplier for RIGT WING 2:
+   el # 0, clQ=   706.9, el arm=   0.50, clQ_total=   706.9, clQ_x_arm=   353.4
+      loc= 0.5000, AR_mult= 1.0000
+
+Now to find aspect-ratio multiplier for LEFT WING 3:
+   el # 0, clQ=    57.1, el arm=   0.50, clQ_total=    57.1, clQ_x_arm=    28.6
+   el # 1, clQ=    57.4, el arm=   1.50, clQ_total=   114.5, clQ_x_arm=   114.6
+      loc= 0.5006, AR_mult= 0.9994
+
+Now to find aspect-ratio multiplier for RIGT WING 3:
+   el # 0, clQ=   104.3, el arm=   0.50, clQ_total=   104.3, clQ_x_arm=    52.2
+   el # 1, clQ=   104.0, el arm=   1.50, clQ_total=   208.3, clQ_x_arm=   208.2
+      loc= 0.4997, AR_mult= 1.0003
+
+Now to find aspect-ratio multiplier for LEFT H STAB:
+   el # 0, clQ=   571.6, el arm=   0.50, clQ_total=   571.6, clQ_x_arm=   285.8
+   el # 1, clQ=   572.0, el arm=   1.50, clQ_total=  1143.6, clQ_x_arm=  1143.8
+      loc= 0.5001, AR_mult= 0.9999
+
+Now to find aspect-ratio multiplier for RIGT H STAB:
+   el # 0, clQ=   572.4, el arm=   0.50, clQ_total=   572.4, clQ_x_arm=   286.2
+   el # 1, clQ=   571.1, el arm=   1.50, clQ_total=  1143.5, clQ_x_arm=  1142.9
+      loc= 0.4997, AR_mult= 1.0003
+
+Now to find aspect-ratio multiplier for VERT STAB 1:
+   el # 0, clQ=     6.3, el arm=   0.50, clQ_total=     6.3, clQ_x_arm=     3.2
+   el # 1, clQ=     6.3, el arm=   1.50, clQ_total=    12.6, clQ_x_arm=    12.6
+      loc= 0.4998, AR_mult= 1.0002
+
+••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+FUSELAGE:
+••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+	lat arm of centroid from acf ref=   0.00 m pos right
+	vrt arm of centroid from acf ref=  -0.06 m pos up
+	lon arm of centroid from acf ref=   0.13 m pos aft, for vertical force with alpha, with arm running from    0.13 at 0 alpha to    0.13 at 90 alpha, currently    6.6 alpha
+	lon arm of centroid from acf ref=   0.13 m pos aft, for vertical force with beta , with arm running from    0.13 at 0 beta  to    0.13 at 90 beta , currently   -0.5 beta 
+
+	body front area                 = 0.4293 square meters
+	body side  area for side force  = 2.4606 square meters
+	body top   area for lift force  = 2.0559 square meters
+
+	infinite flow speed is vx of   -0.2 vy of    2.8 vz of   24.5 m/s in aircraft body coordinates
+	So final speed is vx=  -0.2 vy=   2.8 vz=  24.5 m/s in the aircraft axis coordinate system
+
+	mach multiplication         = 1.0027, part_cd= 0.0080, cd_cylinder= 1.0027
+	air attacking aft from ahead=  24.5 m/s.
+	air attacking up from below =   2.8 m/s.
+	air attacking to the right  =  -0.2 m/s.
+	alph=   6.6
+	beta=  -0.5
+	angl=   6.6
+	cl vert= 0.1065, ref area of  2.0559, v=  24.6, rho= 1.1548, SUBSONIC body force=    76.7 N
+	cl side=-0.0082, ref area of  2.4606, v=  24.6, rho= 1.1548, SUBSONIC body force=    -7.1 N
+	cd_frnt= 0.0309, ref area of  0.4713, v=  24.6, rho= 1.1548, SUBSONIC body force=     5.1 N
+
+	THIS BODY AT MACH= 0.0729
+	body drag force=     5.1 N (is CD of  0.0339 based on frontal area)
+	body side force=    -7.1 N (is CL of -0.0082 based on side area)
+	body lift force=    76.7 N (is CL of  0.1065 based on top area)
+
+LIFT at the centroid for alpha:
+
+	x=   0.00 m pos right.
+	y=  -0.06 m pos up.
+	z=   0.13 m pos aft.
+
+	lift_local_path=    76.7 N pos up.
+	drag_local_path=     0.0 N pos aft.
+	side_local_path=     0.0 N pos right.
+
+	lift vector xyz= 0.0000  0.9933 -0.1154
+	drag vector xyz=-0.0089  0.1154  0.9933
+	side vector xyz= 1.0000  0.0010  0.0088
+
+----------------------------------------------------------------------------------------------------
+---RUNNING AERODYNAMIC FORCE AND TOTAL MOMENT TOTALS, AIRCRAFT AXIS SYSTEM--------------------------
+----------------------------------------------------------------------------------------------------
+LIFT at the centroid for alpha
+	f_axil=  -358.6 N, pos aft,    L=    -0.4 N-m, pos right
+	f_side=    -6.3 N, pos right,  M=    -0.1 N-m, pos up
+	f_nrml=  3831.0 N, pos up,     N=    -1.0 N-m, pos right
+----------------------------------------------------------------------------------------------------
+
+SIDE at the centroid for beta:
+
+	x=   0.00 m pos right.
+	y=  -0.06 m pos up.
+	z=   0.13 m pos aft.
+
+	lift_local_path=     0.0 N pos up.
+	drag_local_path=     0.0 N pos aft.
+	side_local_path=    -7.1 N pos right.
+
+	lift vector xyz= 0.0000  0.9933 -0.1154
+	drag vector xyz=-0.0089  0.1154  0.9933
+	side vector xyz= 1.0000  0.0010  0.0088
+
+----------------------------------------------------------------------------------------------------
+---RUNNING AERODYNAMIC FORCE AND TOTAL MOMENT TOTALS, AIRCRAFT AXIS SYSTEM--------------------------
+----------------------------------------------------------------------------------------------------
+SIDE at the centroid for beta
+	f_axil=  -358.6 N, pos aft,    L=     0.0 N-m, pos right
+	f_side=   -13.4 N, pos right,  M=    -0.1 N-m, pos up
+	f_nrml=  3831.0 N, pos up,     N=    -0.1 N-m, pos right
+----------------------------------------------------------------------------------------------------
+
+DRAG at the aero centroid:
+
+	x=   0.00 m pos right.
+	y=  -0.06 m pos up.
+	z=   0.13 m pos aft.
+
+	lift_local_path=     0.0 N pos up.
+	drag_local_path=     5.1 N pos aft.
+	side_local_path=     0.0 N pos right.
+
+	lift vector xyz= 0.0000  0.9933 -0.1154
+	drag vector xyz=-0.0089  0.1154  0.9933
+	side vector xyz= 1.0000  0.0010  0.0088
+
+----------------------------------------------------------------------------------------------------
+---RUNNING AERODYNAMIC FORCE AND TOTAL MOMENT TOTALS, AIRCRAFT AXIS SYSTEM--------------------------
+----------------------------------------------------------------------------------------------------
+DRAG at the aero centroid
+	f_axil=  -353.6 N, pos aft,    L=     0.0 N-m, pos right
+	f_side=   -13.4 N, pos right,  M=    -0.4 N-m, pos up
+	f_nrml=  3831.6 N, pos up,     N=    -0.1 N-m, pos right
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+---RUNNING AERODYNAMIC FORCE AND TOTAL MOMENT TOTALS, AIRCRAFT AXIS SYSTEM--------------------------
+----------------------------------------------------------------------------------------------------
+After water skimming forces:
+	f_axil=  -353.6 N, pos aft,    L=     0.0 N-m, pos right
+	f_side=   -13.4 N, pos right,  M=    -0.4 N-m, pos up
+	f_nrml=  3831.6 N, pos up,     N=    -0.1 N-m, pos right
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+---RUNNING AERODYNAMIC FORCE AND TOTAL MOMENT TOTALS, AIRCRAFT AXIS SYSTEM--------------------------
+----------------------------------------------------------------------------------------------------
+After shifted mass forces:
+	f_axil=  -353.6 N, pos aft,    L=     0.0 N-m, pos right
+	f_side=   -13.4 N, pos right,  M=    -0.4 N-m, pos up
+	f_nrml=  3831.6 N, pos up,     N=    -0.1 N-m, pos right
+----------------------------------------------------------------------------------------------------
+
+I am adding mass for the fuel! Adding 0.0 kg, at long=  -2.13 lat=   0.00 vert=  -0.06, and changing the moments to:
+	L=    -0.0 N-m, pos right
+	M=    -0.0 N-m, pos up
+	N=     0.0 N-m, pos right
+
+----------------------------------------------------------------------------------------------------
+---RUNNING AERODYNAMIC FORCE AND TOTAL MOMENT TOTALS, AIRCRAFT AXIS SYSTEM--------------------------
+----------------------------------------------------------------------------------------------------
+After fuel mass forces:
+	f_axil=  -353.6 N, pos aft,    L=     0.0 N-m, pos right
+	f_side=   -13.4 N, pos right,  M=    -0.4 N-m, pos up
+	f_nrml=  3831.6 N, pos up,     N=    -0.1 N-m, pos right
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+---RUNNING AERODYNAMIC FORCE AND TOTAL MOMENT TOTALS, AIRCRAFT AXIS SYSTEM--------------------------
+----------------------------------------------------------------------------------------------------
+After engine sep mass forces:
+	f_axil=  -353.6 N, pos aft,    L=     0.0 N-m, pos right
+	f_side=   -13.4 N, pos right,  M=    -0.4 N-m, pos up
+	f_nrml=  3831.6 N, pos up,     N=    -0.1 N-m, pos right
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+---RUNNING AERODYNAMIC FORCE AND TOTAL MOMENT TOTALS, AIRCRAFT AXIS SYSTEM--------------------------
+----------------------------------------------------------------------------------------------------
+After weapon mass forces:
+	f_axil=  -353.6 N, pos aft,    L=     0.0 N-m, pos right
+	f_side=   -13.4 N, pos right,  M=    -0.4 N-m, pos up
+	f_nrml=  3831.6 N, pos up,     N=    -0.1 N-m, pos right
+----------------------------------------------------------------------------------------------------
+
+
+••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+•••GRAND TOTALS AT END OF FORCE AND MOMENT BUILD-UP•••••••••••••••••••••••••••••••••••••••••••••••••
+••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+
+
+•••FINAL PROPULSIVE (ENGINE) FORCES, ALONG AIRCRAFT AXIS (pos aft/right/up)•••••••••••••••••••••••••
+f_side    =     0.0 N, pos right
+f_vertical=     0.0 N, pos up
+f_axial   =     0.0 N, pos aft
+
+L         =     0.0 N-m, pos right
+M         =     0.0 N-m, pos up
+N         =     0.0 N-m, pos right
+
+
+•••FINAL GEAR FORCES, ALONG AIRCRAFT AXIS (pos aft/right/up)••••••••••••••••••••••••••••••••••••••••
+f_side    =     0.0 N, pos right
+f_vertical=     0.0 N, pos up
+f_axial   =     0.0 N, pos aft
+
+L         =     0.0 N-m, pos right
+M         =     0.0 N-m, pos up
+N         =     0.0 N-m, pos right
+
+
+•••FINAL AERODYNAMIC FORCES, ALONG AIRCRAFT AXIS (pos aft/right/up)•••••••••••••••••••••••••••••••••
+f_side    =   -13.4 N, pos right
+f_vertical=  3831.6 N, pos up
+f_axial   =  -353.6 N, pos aft
+
+L         =     0.0 N-m, pos right
+M         =    -0.4 N-m, pos up
+N         =    -0.1 N-m, pos right
+
+
+•••FINAL AERODYNAMIC FORCES, ALONG FLIGTH PATH AXIS (pos aft/right/up)••••••••••••••••••••••••••••••
+f_side    =   -16.6 N, pos right
+f_lift    =  3846.8 N, pos up
+f_drag    =    91.1 N, pos aft
+
+
+•••FINAL FORCES BEFORE ASSYMETRIC LOADING EFFECTS, ALONG AIRCRAFT AXIS (pos aft/right/up)•••••••••••
+f_side    =   -13.4 N, pos right
+f_vertical=  3831.6 N, pos up
+f_axial   =  -353.6 N, pos aft
+
+L         =     0.0 N-m, pos right
+M         =    -0.5 N-m, pos up
+N         =    -0.1 N-m, pos right
+
+
+•••MASSES TO GET FROM FORCES TO ACCELERATIONS•••••••••••••••••••••••••••••••••••••••••••••••••••••••
+mass      =   385.6 kg (ice accretion will change mass and MI if present!
+roll  MI  =  3075.7 kg-m-m... M/mi=accel in RADIANS per sec
+pitch MI  =   666.2 kg-m-m... M/mi=accel in RADIANS per sec
+yaw   MI  =  3563.1 kg-m-m... M/mi=accel in RADIANS per sec
+
+
+•••FINAL TOTAL LINEAR ACCELS, ALONG GLOBAL AXIS (pos south/east/up)•••••••••••••••••••••••••••••••••
+a_x=   0.6 m/ss
+a_y=   0.2 m/ss
+a_z=   0.3 m/ss
+
+
+•••FINAL TOTAL ANGULAR ACCELS, ABOUT AIRCRAFT AXIS (pos right/up/right)•••••••••••••••••••••••••••••
+Pdot (roll) =  -0.0 deg/ss
+Qdot (pitch)=  -0.0 deg/ss
+Rdot (yaw)  =  -0.0 deg/ss
+
+
+•••FINAL TOTAL LINEAR VELOCITIES, ALONG GLOBAL AXIS (pos south/east/up)•••••••••••••••••••••••••••••
+v_x=   9.4 m/s
+v_y=  -0.5 m/s
+v_z= -22.8 m/s
+
+
+
+
