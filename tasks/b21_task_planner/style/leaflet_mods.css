@@ -1,0 +1,8 @@
+
+.leaflet-popup-content-wrapper, .leaflet-popup.tip {
+  background-color: lightgray;
+}
+
+.leaflet-container {
+    cursor: auto;
+}

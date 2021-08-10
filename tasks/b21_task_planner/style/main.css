@@ -1,0 +1,57 @@
+
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+    height: 100%;
+    background-color: pink;
+}
+
+.header {
+    background-color: #888888;
+}
+
+.title {
+    font-size: 32px;
+    margin-left: 10px;
+    display: inline-block;
+}
+
+#panes {
+    height: 93%;
+}
+
+#left_pane {
+    width: 25%;
+    height: 100%;
+    vertical-align: top;
+    margin-left: 5px;
+    background-color: white;
+    display: inline-block;
+}
+
+#map_pane {
+    width: 73%;
+    height: 100%;
+    display: inline-block;
+}
+
+#map {
+    height: 100%;
+}
+
+.menu {
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+.menuitem:hover {
+    background-color: white;
+}
+
+.task_list_wp {
+    border-bottom: 2px solid black;
+}

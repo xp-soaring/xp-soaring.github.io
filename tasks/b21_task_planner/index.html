@@ -1,0 +1,63 @@
+<html>
+<head>
+    <title>B21 Task Planner</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin=""/>
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+
+    <link href="style/main.css" rel="stylesheet"/>
+    <link href="style/leaflet_mods.css" rel="stylesheet"/>
+
+    <script src="js/b21_task_planner.js"> </script> <!-- De// *****************************************************************
+fines B21TaskPlanner class -->
+
+<script>
+
+// This global var will contain an instance of B21TaskPlanner class
+var b21_task_planner;
+
+// ******************************************************************
+// Page click callback functions -- route the call to B21TaskPlanner
+// ******************************************************************
+
+function change_wp_name(new_value) {
+    b21_task_planner.change_wp_name(new_value);
+}
+
+function change_wp_alt(new_value) {
+    b21_task_planner.change_wp_alt(new_value);
+}
+
+function loaded() {
+    b21_task_planner = new B21TaskPlanner();
+    b21_task_planner.init();
+}
+
+</script>
+</head>
+<body onload="loaded()">
+    <div class="header">
+        <div class="title">B21 Task Planner [<a href="help.html">help</a>]</div>
+    </div>
+
+    <div id="panes">
+        <div id="buttons">
+            <button onclick="b21_task_planner.reset()">Reset</button>
+            <button onclick="b21_task_planner.download()">Download</button>
+            <button id="elevation_units" onclick="b21_task_planner.toggle_elevation_units()">Elevation in feet</button>
+            <button id="distance_units" onclick="b21_task_planner.toggle_distance_units()">Distance in Km</button>
+        </div>
+        <div id="left_pane">
+            <div id="task_list"></div>
+        </div> <!-- end left_pane -->
+        <div id="map_pane">
+            <div id="map"></div>
+        </div>
+    </div> <!-- end panes -->
+</body>
+</html>
