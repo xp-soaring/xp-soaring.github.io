@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<SimBase.Document Type="AceXML" version="1,0">
+    <Descr>AceXML Document</Descr>
+    <FlightPlan.FlightPlan>
+        <Title>LOIJ to LOIJ</Title>
+        <FPType>VFR</FPType>
+        <RouteType>Direct</RouteType>
+        <CruisingAlt>6000</CruisingAlt>
+        <DepartureID>LOIJ</DepartureID>
+        <DepartureLLA>N47° 31' 13.18",E12° 26' 57.63",+002195.00</DepartureLLA>
+        <DestinationID>LOIJ</DestinationID>
+        <DestinationLLA>N47° 31' 13.18",E12° 26' 57.63",+002195.00</DestinationLLA>
+        <Descr>LOIJ, LOIJ</Descr>
+        <DepartureName>Fliegerclub St.Johann</DepartureName>
+        <DestinationName>Fliegerclub St.Johann</DestinationName>
+        <AppVersion>
+            <AppVersionMajor>11</AppVersionMajor>
+            <AppVersionBuild>282174</AppVersionBuild>
+        </AppVersion>
+        <ATCWaypoint id="LOIJ">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N47° 31' 13.18",E12° 26' 57.63",+002195.00</WorldPosition>
+            <RunwayNumberFP>13</RunwayNumberFP>
+            <ICAO>
+                <ICAOIdent>LOIJ</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="START">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N47° 27' 53.26",E12° 36' 8.38",+004519.17</WorldPosition>
+        </ATCWaypoint>
+        <ATCWaypoint id="POI1">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N47° 46' 58.46",E12° 58' 8.51",+006000.00</WorldPosition>
+        </ATCWaypoint>
+        <ATCWaypoint id="POI2">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N47° 40' 5.39",E12° 27' 8.28",+005293.32</WorldPosition>
+        </ATCWaypoint>
+        <ATCWaypoint id="POI3">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N47° 34' 59.91",E12° 28' 27.97",+003586.88</WorldPosition>
+        </ATCWaypoint>
+        <ATCWaypoint id="FINISH">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N47° 32' 38.97",E12° 26' 23.33",+002683.89</WorldPosition>
+        </ATCWaypoint>
+        <ATCWaypoint id="LOIJ">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N47° 31' 13.18",E12° 26' 57.63",+002195.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>LOIJ</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+    </FlightPlan.FlightPlan>
+</SimBase.Document>

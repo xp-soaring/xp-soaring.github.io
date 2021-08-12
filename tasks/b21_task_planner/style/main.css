@@ -39,14 +39,14 @@ body {
 
 #drop_zone {
     width: 80%;
-    height: 80%;
+    height: 25%;
     border-radius: 20px;
     border: 2px dashed gray;
     border-color: gray;
     margin-left: 10%;
     margin-top: 10%;
     text-align: center;
-    line-height: 100px;
+    line-height: 50px;
 }
 
 #map_pane {
@@ -66,6 +66,25 @@ body {
 
 .menuitem:hover {
     background-color: white;
+}
+
+.wp_icon {
+    background-color: yellow;
+}
+
+.wp_icon_html {
+    position: absolute;
+    display: inline-block;
+    font-size: 24px;
+    border: 1px solid black;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgba(255,255,255,0.4);
+}
+
+#task_list {
+    cursor: pointer;
 }
 
 .task_list_wp {

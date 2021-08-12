@@ -13,8 +13,8 @@
     <link href="style/main.css" rel="stylesheet"/>
     <link href="style/leaflet_mods.css" rel="stylesheet"/>
 
-    <script src="js/b21_task_planner.js"> </script> <!-- De// *****************************************************************
-fines B21TaskPlanner class -->
+    <script src="js/b21_geo_static.js"> </script> <!-- Defines Geo functions (static) -->
+    <script src="js/b21_task_planner.js"> </script> <!-- Defines B21TaskPlanner class -->
 
 <script>
 
@@ -47,8 +47,9 @@ function loaded() {
 
     <div id="panes">
         <div id="buttons">
-            <button onclick="b21_task_planner.reset()">Reset</button>
-            <button onclick="b21_task_planner.download()">Download</button>
+            <button onclick="b21_task_planner.reset()">Reset Task</button>
+            <button onclick="b21_task_planner.download()">Download FlightPlan</button>
+            <button onclick="b21_task_planner.update_elevations()">Update elevations</button>
             <button id="elevation_units" onclick="b21_task_planner.toggle_elevation_units()">Elevation in feet</button>
             <button id="distance_units" onclick="b21_task_planner.toggle_distance_units()">Distance in Km</button>
         </div>

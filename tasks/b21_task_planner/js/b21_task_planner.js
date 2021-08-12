@@ -116,19 +116,11 @@ class B21TaskPlanner {
         departure.id = dom.getElementsByTagName("DestinationID")[0].childNodes[0].nodeValue;
         // ***************************
         // Waypoints
-        let waypoints = [];
         let dom_waypoints = dom.getElementsByTagName("ATCWaypoint"); //XMLNodeList
         for (let i=0; i<dom_waypoints.length; i++) {
-            waypoints.push(new WP(this, 0, null, dom_waypoints[i]));
             this.task.add_new_wp(null, dom_waypoints[i]);
         }
-
-        console.log("Loaded flightplan",title);
-        console.log(departure.id);
-        for (let i=0; i<waypoints.length; i++) {
-            console.log(waypoints[i].name);
-        }
-        console.log(destination.id);
+        this.map.fitBounds( [[this.task.min_lat, this.task.min_lng],[this.task.max_lat, this.task.max_lng]]);
     }
 
     dragover_handler(ev) {
@@ -150,7 +142,8 @@ class B21TaskPlanner {
     load_map_coords() {
         let move_str = localStorage.getItem("b21_task_planner_map_coords");
         console.log("load_map_coords", move_str);
-        if (move_str == "undefined") {
+        if (move_str == null | move_str == "undefined") {
+            this.map.setView(new L.latLng(52.194748, 0.144295), 11);
             return;
         }
         let move_obj = {};
@@ -228,22 +221,40 @@ class B21TaskPlanner {
         this.task.display_task_list();
     }
 
-    delete_wp() {
-        console.log("delete WP", this.task.current_wp().get_name());
+    remove_wp_from_task() {
+        console.log("remove WP from task", this.task.current_wp().get_name());
         this.task.remove_wp(this.task.index);
+    }
+
+    //DEBUG TODO implement WP database
+    delete_wp_from_database() {
+        console.log("delete WP from database", this.task.current_wp().get_name());
     }
 
 // ********************************************************************************************
 // *********  Page buttons                             ****************************************
 // ********************************************************************************************
 
+    // Clear the current task and start afresh
     reset() {
         this.task.reset();
     }
 
+    //DEBUG implement flightplan download
     download() {
         console.log("download()");
     }
+
+    update_elevations() {
+        console.log("Update elevations");
+        for (let i=0; i<this.task.waypoints.length; i++) {
+            this.task.waypoints[i].get_alt_m();
+        }
+    }
+
+// ********************************************************************************************
+// *********  Settings                                 ****************************************
+// ********************************************************************************************
 
     display_units_buttons() {
         document.getElementById("elevation_units").innerHTML = "Elevation in "+this.altitude_units;
@@ -312,45 +323,42 @@ class B21TaskPlanner {
 }
 
 // ******************************************************************************
-// ***********   WP class                  **************************************
+// ***********   WP class (waypoint)       **************************************
 // ******************************************************************************
 
 class WP {
-    constructor(planner, index=null, latlng=null, dom_wp=null) {
+
+    // Waypoint may be created by a click on the map:
+    //          new WP(planner, index, position)
+    // or as a result of loading an MSFS flightplan:
+    //          new WP(planner,index,null,WP_dom_object)
+    //
+    constructor(planner, index=null, position=null, dom_wp=null) {
         this.planner = planner; // reference to B21TaskPlanner instance
         if (dom_wp==null) {
-            this.construct_new(index, latlng);
+            this.construct_new(index, position);
         } else {
             this.construct_from_dom(index, dom_wp);
         }
     }
 
-    construct_new(index, latlng, name=null) {
-        console.log("new WP", index, latlng, name);
-        let marker = L.marker(latlng,
-                              { draggable: true,
-                                autoPan: true
-        });
-        let parent = this;
-        marker.on("drag", function(e) {
-            let marker = e.target;
-            parent.latlng = marker.getLatLng();
-            parent.planner.task.redraw();
-        });
-        marker.on("dragend", function (e) {
-            let marker = e.target;
-            parent.get_alt_m();
-        });
-        marker.on("click", function(e) {
-            parent.wp_click(parent);
-        });
-        marker.addTo(this.planner.map);
-        this.marker = marker;
-        this.index = index;
+    construct_new(index, position, name=null) {
+        console.log("new WP", index, position, name);
+
+        //DEBUG highlight current waypoint on map
+        //DEBUG highlight start/finish waypoints
+        //DEBUG offset waypoints according to bisector
+
         this.name = name;
-        this.latlng = latlng;
+        this.position = position;
         this.alt_m = 123;
+        // Values from task
+        // Note each 'leg_' value is TO this waypoint
+        this.index = index;
         this.task_line = null;
+        this.leg_bearing_deg = 0;   // Bearing from previous WP to this WP
+        this.leg_distance_m = 0;    // Distance (meters) from previous WP to this WP
+        this.marker = this.create_marker();
     }
 
     construct_from_dom(index, dom_wp) {
@@ -369,14 +377,55 @@ class WP {
         this.construct_new(index,new L.latLng(lat,lng),name);
     }
 
+    create_marker() {
+        let marker = L.marker( this.position,
+                              { icon: this.get_icon(this.index),
+                                draggable: true,
+                                autoPan: true
+        });
+        let parent = this;
+        marker.on("dragstart", function (e) {
+            parent.planner.map.closePopup();
+        });
+        marker.on("drag", function(e) {
+            let marker = e.target;
+            parent.position = marker.getLatLng();
+            parent.planner.task.update_waypoints();
+            parent.planner.task.redraw();
+            parent.planner.task.display_task_list();
+        });
+        marker.on("dragend", function (e) {
+            parent.planner.task.set_current_wp(parent.index);
+            console.log("WP dragend");
+            let marker = e.target;
+            parent.get_alt_m();
+        });
+        marker.on("click", function(e) {
+            parent.wp_click(parent);
+        });
+        marker.addTo(this.planner.map);
+
+        return marker;
+    }
+
     wp_click(parent) {
-        parent.planner.task.index = parent.index;
-        parent.display_menu();
-        parent.planner.task.display_task_list(); // update highlight of current WP
+        parent.planner.task.set_current_wp(parent.index);
+    }
+
+    get_icon(index) {
+        let icon_str = index.toFixed(0);
+        let icon_html = '<div class="wp_icon_html">'+icon_str+"</div>";
+
+        let wp_icon = L.divIcon( {
+            className: "wp_icon",
+            html: icon_html
+        } );
+
+        return wp_icon;
     }
 
     get_alt_m() {
-        let request_str = "https://api.open-elevation.com/api/v1/lookup?locations="+this.latlng.lat+","+this.latlng.lng;
+        let request_str = "https://api.open-elevation.com/api/v1/lookup?locations="+this.position.lat+","+this.position.lng;
         console.log(request_str);
         fetch(request_str).then(response => {
             return response.json();
@@ -395,6 +444,32 @@ class WP {
         return this.name;
     }
 
+    update(prev_wp=null) {
+        console.log("update",this.index);
+        if (prev_wp != null) {
+            this.update_leg_distance(prev_wp);
+            this.update_leg_bearing(prev_wp);
+        }
+    }
+
+    // Add .leg_distance_m property for distance (meters) from wp to this waypoint
+    // Called when task is loaded
+    update_leg_distance(prev_wp) {
+        this.leg_distance_m = Geo.get_distance_m(this.position, prev_wp.position);
+        console.log("update_leg_distance", this.index, this.leg_distance_m);
+    }
+
+    // Add .bearing property for INBOUND bearing FROM wp TO this waypoint
+    // Called when task is loaded
+    update_leg_bearing(prev_wp) {
+        this.leg_bearing_deg = Geo.get_bearing_deg(prev_wp.position, this.position);
+    }
+
+    update_icon() {
+        let icon = this.get_icon(this.index);
+        this.marker.setIcon(icon);
+    }
+
     display_menu() {
         let form_str = 'Name: <input onchange="change_wp_name(this.value)" value="'+this.get_name() + '"</input>';
         let alt_str = this.alt_m.toFixed(0);
@@ -406,16 +481,17 @@ class WP {
         form_str += '<br/>Alt: <input onchange="change_wp_alt(this.value)" value="' + alt_str + '"</input> ' + alt_units_str;
         form_str += '<div class="menu">';
         form_str += this.planner.menuitem("Add this WP to task","add_wp_to_task");
-        form_str += this.planner.menuitem("Delete this WP","delete_wp");
+        form_str += this.planner.menuitem("Remove this WP from task","remove_wp_from_task");
+        form_str += this.planner.menuitem("Delete this WP from database","delete_wp_from_database");
         form_str += '</div>';
         var popup = L.popup({ offset: [0,-25]})
-            .setLatLng(this.latlng)
+            .setLatLng(this.position)
             .setContent(form_str)
             .openOn(this.planner.map);
     }
 
     copy(index) {
-        let wp = new WP(this.planner, index, this.latlng);
+        let wp = new WP(this.planner, index, this.position);
         wp.name = this.name;
         wp.alt_m = this.alt_m;
         return wp;
@@ -438,20 +514,28 @@ class Task {
         this.index = 0; // Index of current waypoint
         this.start_index = 0;
         this.finish_index = 0;
+        // task bounds
+        this.min_lat = 90;
+        this.min_lng = 180;
+        this.max_lat = -90;
+        this.max_lng = -180;
     }
 
     current_wp() {
         return this.waypoints[this.index];
     }
 
-    add_new_wp(latlng, dom_wp=null) {
+    add_new_wp(position, dom_wp=null) {
         this.index = this.waypoints.length;
         console.log("task adding wp",this.index);
-        let wp = new WP(this.planner, this.index, latlng, dom_wp);
+        let wp = new WP(this.planner, this.index, position, dom_wp);
         this.waypoints.push(wp);
         if (wp.index > 0) {
             this.add_line(this.waypoints[wp.index-1],wp);
         }
+        this.update_bounds();
+        this.update_waypoints();
+        this.update_waypoint_icons();
         this.redraw();
         this.display_task_list();
         return wp;
@@ -464,19 +548,60 @@ class Task {
         this.index = next_index;
         this.waypoints.push(wp);
         this.add_line(this.waypoints[wp.index-1],wp);
+        this.update_waypoints();
+        this.update_waypoint_icons();
         this.display_task_list();
         return wp;
     }
 
+    // Update the .leg_distance_m for each waypoint around task
+    update_waypoints() {
+        console.log("update_waypoints");
+        for (let i=0; i<this.waypoints.length; i++) {
+            if (i > 0) {
+                const wp = this.waypoints[i];
+                const prev_wp = this.waypoints[i-1];
+                wp.update(prev_wp);
+            }
+        }
+    }
+
+    update_waypoint_icons() {
+        console.log("update_waypoint_icons");
+        for (let i=0; i<this.waypoints.length; i++) {
+            this.waypoints[i].update_icon();
+        }
+    }
+
+    // Calculate the SW & NE corners of the task, so map can be zoomed to fit.
+    update_bounds() {
+        for (let i=0; i<this.waypoints.length; i++) {
+            let position = this.waypoints[i].position;
+            if (position.lat<this.min_lat) {
+                this.min_lat = position.lat;
+            }
+            if (position.lat>this.max_lat) {
+                this.max_lat = position.lat;
+            }
+            if (position.lng<this.min_lng) {
+                this.min_lng = position.lng;
+            }
+            if (position.lng>this.max_lng) {
+                this.max_lng = position.lng;
+            }
+        }
+        console.log("new map bounds ",this.min_lat, this.min_lng, this.max_lng, this.max_lng);
+    }
+
+    // Add a straight line between wp1 and wp2
     add_line(wp1, wp2) {
-        let latlngs = [ wp1.latlng, wp2.latlng ];
+        let latlngs = [ wp1.position, wp2.position ];
         wp2.task_line = L.polyline(latlngs, {color: 'red'});
         wp2.task_line.addTo(this.planner.map);
     }
 
     redraw() {
         for (let i=0; i<this.waypoints.length; i++) {
-            console.log("redraw",i);
             if (i==this.index) {
                 this.waypoints[i].marker.setZIndexOffset(1000);
             } else {
@@ -489,6 +614,7 @@ class Task {
         }
     }
 
+    //DEBUG add total distance to task (recognise start/finish)
     display_task_list() {
         while (this.task_el.firstChild) {
             this.task_el.removeChild(this.task_el.lastChild);
@@ -506,18 +632,31 @@ class Task {
         if (wp.index == this.index) {
             wp_div.style.backgroundColor = "yellow";
         }
+        // Build elevation string
         let alt_str = wp.alt_m.toFixed(0);
         let alt_units_str = "m";
         if (this.planner.altitude_units == "feet") {
             alt_str = (wp.alt_m * this.planner.M_TO_FEET).toFixed(0);
             alt_units_str = "feet";
         }
-        wp_div.innerHTML = wp.index + " " + wp.get_name() + " " + alt_str + " " + alt_units_str;
+        // Build distance string
+        let dist_str = "";
+        let dist_units_str = "";
+        if (wp.index>0) {
+            if (this.planner.distance_units == "miles") {
+                dist_str = (wp.leg_distance_m * this.planner.M_TO_MILES).toFixed(1);
+                dist_units_str = "feet";
+            } else {
+                dist_str = (wp.leg_distance_m / 1000).toFixed(1);
+                dist_units_str = "km";
+            }
+        }
+        wp_div.innerHTML = wp.index + " | " + wp.get_name() + " | " + alt_str + " " + alt_units_str + " | " + dist_str + " " + dist_units_str;
         this.task_el.appendChild(wp_div);
     }
 
-    delete_wp(index) {
-        console.log("delete_wp",index);
+    remove_wp_from_task(index) {
+        console.log("remove_wp_from_task",index);
         let wp = this.waypoints[index];
         // remove line TO this waypoint
         if (index>0) {
@@ -540,7 +679,9 @@ class Task {
     }
 
     remove_wp(index) {
-        this.delete_wp(index);
+        this.remove_wp_from_task(index);
+        this.update_waypoints();
+        this.update_waypoint_icons();
         this.redraw();
         this.display_task_list();
         if (this.waypoints.length > 0) {
@@ -554,6 +695,7 @@ class Task {
     set_current_wp(index) {
         console.log("Set current WP index",index);
         this.index = index;
+        this.update_waypoint_icons();
         this.redraw();
         this.current_wp().display_menu();
         this.display_task_list();
@@ -562,7 +704,7 @@ class Task {
     reset() {
         console.log("task.reset()");
         while (this.waypoints.length > 0) {
-            this.delete_wp(this.waypoints.length - 1);
+            this.remove_wp_from_task(this.waypoints.length - 1);
         }
         this.init();
         this.planner.map.closePopup();
