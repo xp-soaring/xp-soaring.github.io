@@ -20,6 +20,10 @@ body {
     display: inline-block;
 }
 
+#buttons {
+    margin-bottom: 4px;
+}
+
 #panes {
     height: 93%;
 }
@@ -31,6 +35,18 @@ body {
     margin-left: 5px;
     background-color: white;
     display: inline-block;
+}
+
+#drop_zone {
+    width: 80%;
+    height: 80%;
+    border-radius: 20px;
+    border: 2px dashed gray;
+    border-color: gray;
+    margin-left: 10%;
+    margin-top: 10%;
+    text-align: center;
+    line-height: 100px;
 }
 
 #map_pane {

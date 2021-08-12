@@ -3,12 +3,28 @@
 class B21TaskPlanner {
 
     constructor() {
+        this.M_TO_FEET = 3.28084;
+        this.M_TO_MILES = 0.000621371;
     }
 
     init() {
         let parent = this;
 
         this.load_settings();
+
+        this.display_units_buttons();
+
+        this.init_drop_zone();
+
+        this.init_map();
+
+        // Task object to hold accumulated waypoints
+        this.task = new Task(this);
+    }
+
+    init_map() {
+
+        let parent = this;
 
         // Where you want to render the map.
         const element = document.getElementById('map');
@@ -27,24 +43,137 @@ class B21TaskPlanner {
 
         this.tiles_outdoor.addTo(this.map);
 
-        // Target's GPS coordinates.
-        const target = L.latLng(52, 0);
-
-        // Set map's center to target with zoom 14.
-        this.map.setView(target, 11);
+        this.load_map_coords();
 
         // Set up the map mouse click callbacks
         this.map.on('click', (e) => {parent.map_left_click(parent, e);} );
 
         this.map.on('contextmenu', (e) => {parent.map_right_click(parent, e);} );
 
-        // Task object to hold accumulated waypoints
-        this.task = new Task(this);
+        this.map.on("moveend", () => {
+            parent.save_map_coords(parent.map.getCenter(), parent.map.getZoom());
+        });
     }
+
+// ********************************************************************************************
+// *********  Flight Plan handling                     ****************************************
+// ********************************************************************************************
+
+    init_drop_zone() {
+        this.drop_zone_el = document.getElementById("drop_zone");
+        this.drop_zone_el.style.display = "block";
+        let parent = this;
+        this.drop_zone_el.ondragover = (e) => {parent.dragover_handler(e); };
+        this.drop_zone_el.ondrop = (e) => { parent.drop_handler(parent, e); };
+    }
+
+    drop_handler(parent, ev) {
+        console.log('File(s) dropped');
+        // Prevent default behavior (Prevent file from being opened)
+        ev.preventDefault();
+
+        if (ev.dataTransfer.items) {
+            // Use DataTransferItemList interface to access the file(s)
+            for (var i = 0; i < ev.dataTransfer.items.length; i++) {
+                // If dropped items aren't files, reject them
+                if (ev.dataTransfer.items[i].kind === 'file') {
+                    var file = ev.dataTransfer.items[i].getAsFile();
+                    console.log('DataTransferItemList... file[' + i + '].name = ' + file.name);
+                    let reader = new FileReader();
+                    reader.onload = (e) => {
+                        parent.handle_dropped_task_pln(e.target.result);
+                    }
+                    reader.readAsText(file);
+                }
+            }
+        } else {
+            // Use DataTransfer interface to access the file(s)
+            for (var i = 0; i < ev.dataTransfer.files.length; i++) {
+                console.log('DataTransfer... file[' + i + '].name = ' + ev.dataTransfer.files[i].name);
+                let reader = new FileReader();
+                reader.onload = (e) => {
+                    parent.handle_dropped_task_pln(e.target.result);
+                }
+                reader.readAsText(file);
+            }
+        }
+    }
+
+    handle_dropped_task_pln(file_str) {
+        console.log("handle file");
+        //console.log(file_str);
+        const parser = new DOMParser();
+        const dom = parser.parseFromString(file_str, "application/xml");
+        let flight_plan_el = dom.getElementsByTagName("FlightPlan.FlightPlan")[0];
+        let title = dom.getElementsByTagName("Title")[0].childNodes[0].nodeValue;
+        // ***************************
+        // Departure
+        let departure = {};
+        departure.id = dom.getElementsByTagName("DepartureID")[0].childNodes[0].nodeValue;
+        // ***************************
+        // Destination
+        let destination = {};
+        departure.id = dom.getElementsByTagName("DestinationID")[0].childNodes[0].nodeValue;
+        // ***************************
+        // Waypoints
+        let waypoints = [];
+        let dom_waypoints = dom.getElementsByTagName("ATCWaypoint"); //XMLNodeList
+        for (let i=0; i<dom_waypoints.length; i++) {
+            waypoints.push(new WP(this, 0, null, dom_waypoints[i]));
+            this.task.add_new_wp(null, dom_waypoints[i]);
+        }
+
+        console.log("Loaded flightplan",title);
+        console.log(departure.id);
+        for (let i=0; i<waypoints.length; i++) {
+            console.log(waypoints[i].name);
+        }
+        console.log(destination.id);
+    }
+
+    dragover_handler(ev) {
+        // Prevent default behavior (Prevent file from being opened)
+        ev.preventDefault();
+    }
+
+// ********************************************************************************************
+// *********  Persist map position and scale between sessions      ****************************
+// ********************************************************************************************
+
+    save_map_coords(center, zoom) {
+        console.log(center.toString(), zoom);
+        let move_obj = { lat: center.lat, lng: center.lng, zoom: zoom };
+        let move_str = JSON.stringify(move_obj);
+        localStorage.setItem("b21_task_planner_map_coords", move_str);
+    }
+
+    load_map_coords() {
+        let move_str = localStorage.getItem("b21_task_planner_map_coords");
+        console.log("load_map_coords", move_str);
+        if (move_str == "undefined") {
+            return;
+        }
+        let move_obj = {};
+        try {
+            move_obj = JSON.parse(move_str);
+        } catch (e) {
+            console.log("bad b21_task_planner_map_coords localStorage");
+            return;
+        }
+        if (move_obj.lat == null || move_obj.lng == null ) {
+            return;
+        }
+
+        this.map.setView(new L.latLng(move_obj.lat, move_obj.lng),move_obj.zoom);
+    }
+
+// ********************************************************************************************
+// *********  Map click callbacks                      ****************************************
+// ********************************************************************************************
 
     map_left_click(parent, e) {
         this.current_latlng = e.latlng;
-        this.add_wp();
+        this.add_new_wp();
     }
 
     map_right_click(parent, e) {
@@ -66,9 +195,9 @@ class B21TaskPlanner {
         return '<div onclick="b21_task_planner.'+menu_function_name+'()" class="menuitem">'+menu_str+'</div>';
     }
 
-    add_wp() {
+    add_new_wp() {
         console.log("add wp " + this.current_latlng);
-        let wp = this.task.add_wp(this.current_latlng);
+        let wp = this.task.add_new_wp(this.current_latlng);
 
         this.map.closePopup();
 
@@ -104,6 +233,10 @@ class B21TaskPlanner {
         this.task.remove_wp(this.task.index);
     }
 
+// ********************************************************************************************
+// *********  Page buttons                             ****************************************
+// ********************************************************************************************
+
     reset() {
         this.task.reset();
     }
@@ -112,9 +245,21 @@ class B21TaskPlanner {
         console.log("download()");
     }
 
+    display_units_buttons() {
+        document.getElementById("elevation_units").innerHTML = "Elevation in "+this.altitude_units;
+        document.getElementById("distance_units").innerHTML = "Distance in "+this.distance_units;
+    }
+
     toggle_elevation_units() {
         this.toggle_setting("altitude_units");
-        document.getElementById("elevation_units").innerHTML = "Elevation in "+this.altitude_units;
+        this.display_units_buttons();
+        this.task.display_task_list();
+    }
+
+    toggle_distance_units() {
+        this.toggle_setting("distance_units");
+        this.display_units_buttons();
+        this.task.display_task_list();
     }
 
     toggle_setting(var_name) {
@@ -136,7 +281,7 @@ class B21TaskPlanner {
             this[var_name] = this.settings_values[var_name][index];
         }
         console.log("toggle index", index);
-        localStorage.setItem('b21_task_planner_'+var_name, this.var_name);
+        localStorage.setItem('b21_task_planner_'+var_name, this[var_name]);
     }
 
     get_setting(var_name) {
@@ -171,9 +316,17 @@ class B21TaskPlanner {
 // ******************************************************************************
 
 class WP {
-    constructor(planner, index, latlng) {
-        console.log("new WP", latlng);
+    constructor(planner, index=null, latlng=null, dom_wp=null) {
         this.planner = planner; // reference to B21TaskPlanner instance
+        if (dom_wp==null) {
+            this.construct_new(index, latlng);
+        } else {
+            this.construct_from_dom(index, dom_wp);
+        }
+    }
+
+    construct_new(index, latlng, name=null) {
+        console.log("new WP", index, latlng, name);
         let marker = L.marker(latlng,
                               { draggable: true,
                                 autoPan: true
@@ -189,17 +342,37 @@ class WP {
             parent.get_alt_m();
         });
         marker.on("click", function(e) {
-            parent.planner.task.index = parent.index;
-            parent.display_menu();
-            parent.planner.task.display_task_list(); // update highlight of current WP
+            parent.wp_click(parent);
         });
-        marker.addTo(planner.map);
+        marker.addTo(this.planner.map);
         this.marker = marker;
         this.index = index;
-        this.name = null;
+        this.name = name;
         this.latlng = latlng;
         this.alt_m = 123;
         this.task_line = null;
+    }
+
+    construct_from_dom(index, dom_wp) {
+        let name = dom_wp.getAttribute("id");
+        // <WorldPosition>N40° 40' 38.62",W77° 37' 36.71",+000813.00</WorldPosition>
+        let world_position = dom_wp.getElementsByTagName("WorldPosition")[0].childNodes[0].nodeValue;
+        let world_pos_elements = world_position.split(","); // lat, lng, alt
+        let lat_elements = world_pos_elements[0].split(" ");
+        let lat = parseInt(lat_elements[0].slice(1)) + parseFloat(lat_elements[1])/60 + parseFloat(lat_elements[2])/3600;
+        lat = lat_elements[0][0]=="N" ? lat : -1 * lat;
+        let lng_elements = world_pos_elements[1].split(" ");
+        let lng = parseInt(lng_elements[0].slice(1)) + parseFloat(lng_elements[1])/60 + parseFloat(lng_elements[2])/3600;
+        lng = lng_elements[0][0]=="E" ? lng : -1 * lng;
+
+        console.log(world_position);
+        this.construct_new(index,new L.latLng(lat,lng),name);
+    }
+
+    wp_click(parent) {
+        parent.planner.task.index = parent.index;
+        parent.display_menu();
+        parent.planner.task.display_task_list(); // update highlight of current WP
     }
 
     get_alt_m() {
@@ -224,7 +397,13 @@ class WP {
 
     display_menu() {
         let form_str = 'Name: <input onchange="change_wp_name(this.value)" value="'+this.get_name() + '"</input>';
-        form_str += '<br/>Alt: <input onchange="change_wp_alt(this.value)" value="' + this.alt_m + '"</input>' + " m";
+        let alt_str = this.alt_m.toFixed(0);
+        let alt_units_str = "m";
+        if (this.planner.altitude_units == "feet") {
+            alt_str = (this.alt_m * this.planner.M_TO_FEET).toFixed(0);
+            alt_units_str = "feet";
+        }
+        form_str += '<br/>Alt: <input onchange="change_wp_alt(this.value)" value="' + alt_str + '"</input> ' + alt_units_str;
         form_str += '<div class="menu">';
         form_str += this.planner.menuitem("Add this WP to task","add_wp_to_task");
         form_str += this.planner.menuitem("Delete this WP","delete_wp");
@@ -265,14 +444,15 @@ class Task {
         return this.waypoints[this.index];
     }
 
-    add_wp(latlng) {
+    add_new_wp(latlng, dom_wp=null) {
         this.index = this.waypoints.length;
         console.log("task adding wp",this.index);
-        let wp = new WP(this.planner, this.index, latlng);
+        let wp = new WP(this.planner, this.index, latlng, dom_wp);
         this.waypoints.push(wp);
         if (wp.index > 0) {
             this.add_line(this.waypoints[wp.index-1],wp);
         }
+        this.redraw();
         this.display_task_list();
         return wp;
     }
@@ -295,9 +475,17 @@ class Task {
     }
 
     redraw() {
-        for (let i=1; i<this.waypoints.length; i++) {
-            this.waypoints[i].task_line.remove(this.planner.map);
-            this.add_line(this.waypoints[i-1], this.waypoints[i]);
+        for (let i=0; i<this.waypoints.length; i++) {
+            console.log("redraw",i);
+            if (i==this.index) {
+                this.waypoints[i].marker.setZIndexOffset(1000);
+            } else {
+                this.waypoints[i].marker.setZIndexOffset(0);
+            }
+            if (i>0) {
+                this.waypoints[i].task_line.remove(this.planner.map);
+                this.add_line(this.waypoints[i-1], this.waypoints[i]);
+            }
         }
     }
 
@@ -318,7 +506,13 @@ class Task {
         if (wp.index == this.index) {
             wp_div.style.backgroundColor = "yellow";
         }
-        wp_div.innerHTML = wp.index + " " + wp.get_name() + " " + wp.alt_m;
+        let alt_str = wp.alt_m.toFixed(0);
+        let alt_units_str = "m";
+        if (this.planner.altitude_units == "feet") {
+            alt_str = (wp.alt_m * this.planner.M_TO_FEET).toFixed(0);
+            alt_units_str = "feet";
+        }
+        wp_div.innerHTML = wp.index + " " + wp.get_name() + " " + alt_str + " " + alt_units_str;
         this.task_el.appendChild(wp_div);
     }
 
@@ -360,6 +554,7 @@ class Task {
     set_current_wp(index) {
         console.log("Set current WP index",index);
         this.index = index;
+        this.redraw();
         this.current_wp().display_menu();
         this.display_task_list();
     }
