@@ -1,4 +1,5 @@
-<html>
+<html translate="no">
+<meta name="google" content="notranslate" />
 <head>
     <title>B21 Task Planner</title>
 
@@ -21,18 +22,6 @@
 // This global var will contain an instance of B21TaskPlanner class
 var b21_task_planner;
 
-// ******************************************************************
-// Page click callback functions -- route the call to B21TaskPlanner
-// ******************************************************************
-
-function change_wp_name(new_value) {
-    b21_task_planner.change_wp_name(new_value);
-}
-
-function change_wp_alt(new_value) {
-    b21_task_planner.change_wp_alt(new_value);
-}
-
 function loaded() {
     b21_task_planner = new B21TaskPlanner();
     b21_task_planner.init();
@@ -42,23 +31,44 @@ function loaded() {
 </head>
 <body onload="loaded()">
     <div class="header">
-        <div class="title">B21 Task Planner [<a href="help.html">help</a>]</div>
+        <div class="title">
+            <div class="title_text">B21 Task Planner</div>
+            <div class="title_task_option">Soaring task: <input id="soaring_task_option_checkbox" type="checkbox" onclick="b21_task_planner.click_soaring_task_option(this)" checked/></div>
+        </div>
     </div>
 
+    <div id="buttons">
+        <button onclick="b21_task_planner.reset()">Reset Task</button>
+        <button onclick="b21_task_planner.download()">Download FlightPlan</button>
+        <button onclick="b21_task_planner.update_elevations()">Update elevations</button>
+        <button onclick="b21_task_planner.reset_map()">Zoom to task</button>
+        <button onclick="b21_task_planner.toggle_settings()">Settings</button>
+        <form style="display: inline;" action="help.html" target="_blank"><button type="submit">Help</button></form>
+    </div>
     <div id="panes">
-        <div id="buttons">
-            <button onclick="b21_task_planner.reset()">Reset Task</button>
-            <button onclick="b21_task_planner.download()">Download FlightPlan</button>
-            <button onclick="b21_task_planner.update_elevations()">Update elevations</button>
-            <button id="elevation_units" onclick="b21_task_planner.toggle_elevation_units()">Elevation in feet</button>
-            <button id="distance_units" onclick="b21_task_planner.toggle_distance_units()">Distance in Km</button>
-        </div>
         <div id="left_pane">
             <div id="task_list"></div>
             <div id="drop_zone">DROP MSFS FLIGHT PLAN HERE</div>
         </div> <!-- end left_pane -->
         <div id="map_pane">
             <div id="map"></div>
+        </div>
+        <div id="settings">
+            <div id="settings_heading">Settings</div>
+            <div class="setting">
+                <div class="setting_name">Altitude Units</div>
+                <div class="setting_options">
+                    <div id="setting_altitude_units_m" onclick="b21_task_planner.set_altitude_units_m()" class="setting_option">Meters</div>
+                    <div id="setting_altitude_units_feet" onclick="b21_task_planner.set_altitude_units_feet()" class="setting_option">Feet</div>
+                </div>
+            </div>
+            <div class="setting">
+                <div class="setting_name">Distance Units</div>
+                <div class="setting_options">
+                    <div id="setting_distance_units_km" onclick="b21_task_planner.set_distane_units_km()" class="setting_option">Kilometers</div>
+                    <div id="setting_distance_units_miles" onclick="b21_task_planner.set_distance_units_miles" class="setting_option">Miles</div>
+                </div>
+            </div>
         </div>
     </div> <!-- end panes -->
 </body>

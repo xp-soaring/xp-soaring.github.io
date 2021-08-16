@@ -17,7 +17,21 @@ body {
 .title {
     font-size: 32px;
     margin-left: 10px;
+}
+
+.title_text {
     display: inline-block;
+}
+
+.title_task_option {
+    vertical-align: middle;
+    display: inline-block;
+    float: right;
+}
+
+.title_task_option input {
+    vertical-align: middle;
+    margin-right: 30px;
 }
 
 #buttons {
@@ -25,7 +39,8 @@ body {
 }
 
 #panes {
-    height: 93%;
+    height: 90%;
+    position: relative;
 }
 
 #left_pane {
@@ -68,6 +83,10 @@ body {
     background-color: white;
 }
 
+/* *************************************************** */
+/* ******* WP elements    **************************** */
+/* *************************************************** */
+
 .wp_icon {
     background-color: yellow;
 }
@@ -80,8 +99,20 @@ body {
     text-align: center;
     padding-left: 10px;
     padding-right: 10px;
-    background-color: rgba(255,255,255,0.4);
+    background-color: rgba(255,255,255,0.6);
 }
+
+.wp_alt {
+    width: 50px;
+}
+
+.wp_radius {
+    width: 50px;
+}
+
+/* *************************************************** */
+/* ******* Task list elements    ********************* */
+/* *************************************************** */
 
 #task_list {
     cursor: pointer;
@@ -89,4 +120,49 @@ body {
 
 .task_list_wp {
     border-bottom: 2px solid black;
+}
+
+/* *************************************************** */
+/* ******* Settings              ********************* */
+/* *************************************************** */
+
+#settings {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: 2000;
+}
+
+#settings_heading {
+    text-align: center;
+    font-size: 32px;
+}
+
+.setting {
+    border-bottom: 2px solid black;
+}
+
+.setting_name {
+    background-color: pink;
+    width: 45%;
+    font-size: 28px;
+    text-align: right;
+}
+
+.setting_options {
+    width: 55%;
+    text-align: right;
+}
+.setting_option {
+    background-color: lightblue;
+    text-align: right;
+    margin-left: 50%;
+}
+
+.setting_option:hover {
+    cursor: pointer;
+    background-color: lightgreen;
 }

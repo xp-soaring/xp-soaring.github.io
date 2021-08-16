@@ -9,7 +9,8 @@ set in the ".pln" file are ignored for intermediate waypoints.
 
 B21 Task Planner uses:
 * openstreetmap.org for the map
-* The geonames.org API to find nearest airports to a lat/long
+* leaflet for the map API
+* mapbox for the map tiles
 * open-elevation.com API to find the elevation at any lat/long
 
 Airports and waypoints you have set for your tasks are stored locally on your PC forming a database for subsequent tasks.

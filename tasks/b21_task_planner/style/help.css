@@ -1,0 +1,19 @@
+
+body {
+    font-family: sans-serif;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td {
+    min-width: 140px;
+    vertical-align: top;
+    border: 2px solid black;
+    padding: 8px;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
