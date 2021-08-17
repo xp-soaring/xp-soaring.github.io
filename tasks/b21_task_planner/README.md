@@ -14,3 +14,4 @@ B21 Task Planner uses:
 * open-elevation.com API to find the elevation at any lat/long
 
 Airports and waypoints you have set for your tasks are stored locally on your PC forming a database for subsequent tasks.
+
