@@ -88,7 +88,18 @@ body {
 /* *************************************************** */
 
 .wp_icon {
-    background-color: yellow;
+    background-color: red;
+}
+
+.wp_icon_html_current {
+    position: absolute;
+    display: inline-block;
+    font-size: 24px;
+    border: 1px solid black;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgba(255,255,0,0.6);
 }
 
 .wp_icon_html {
@@ -131,6 +142,12 @@ body {
     border-bottom: 2px solid black;
 }
 
+#task_list_distance {
+    text-align: right;
+    font-size: 24px;
+    background-color: #d0d0d0;
+    margin-right: 10px;
+}
 /* *************************************************** */
 /* ******* Settings              ********************* */
 /* *************************************************** */
