@@ -174,7 +174,7 @@ class B21TaskPlanner {
     }
 
     add_new_wp() {
-        console.log("add wp " + this.current_latlng);
+        console.log("add_new_wp " + this.current_latlng);
         let wp = this.task.add_new_wp(this.current_latlng);
 
         this.map.closePopup();
@@ -185,9 +185,9 @@ class B21TaskPlanner {
     }
 
     // User has clicked on an existing WP and selected 'Add this WP to task'
-    add_wp_to_task() {
-        console.log("B21TaskPlanner add_wp_to_task()");
-        this.task.append_current_wp_to_task();
+    duplicate_wp_to_task() {
+        console.log("B21TaskPlanner duplicate_wp_to_task()");
+        this.task.duplicate_current_wp();
     }
 
     add_airport() {
@@ -677,6 +677,7 @@ class WP {
         this.marker.setIcon(icon);
     }
 
+    //DEBUG highlight ICAO entry for 1st and last WP
     display_menu() {
         let form_str = 'Name: <input onchange="b21_task_planner.change_wp_name(this.value)" value="'+this.get_name() + '"</input>';
 
@@ -735,7 +736,7 @@ class WP {
 
         form_str += '<div class="menu">';
         form_str += this.planner.menuitem("Remove this WP from task","remove_wp_from_task");
-        form_str += this.planner.menuitem("Add this WP to task","add_wp_to_task");
+        form_str += this.planner.menuitem("Add duplicate of this WP to task","duplicate_wp_to_task");
         form_str += this.planner.menuitem("Delete this WP from database","delete_wp_from_database");
         form_str += '</div>';
         var popup = L.popup({ offset: [0,0]})
@@ -769,7 +770,7 @@ class Task {
 
     init() {
         this.waypoints = [];
-        this.index = 0; // Index of current waypoint
+        this.index = null; // Index of current waypoint
         this.start_index = null;
         this.finish_index = null;
         this.task_distance_m = 123456;
@@ -781,8 +782,8 @@ class Task {
         this.max_lng = -180;
     }
 
-    load_flightplan(file_str){
-        //console.log(file_str);
+    load_flightplan(file_str) {
+        console.log("load_flightplan");
         const parser = new DOMParser();
         const dom = parser.parseFromString(file_str, "application/xml");
         let flight_plan_el = dom.getElementsByTagName("FlightPlan.FlightPlan")[0];
@@ -818,14 +819,17 @@ class Task {
     }
 
     add_new_wp(position, dom_wp=null) {
-        this.index = this.waypoints.length;
-        console.log("task adding wp",this.index);
+        //this.index = this.waypoints.length;
+        this.index = this.index==null ? 0 : this.index + 1;
+        console.log("task adding wp with index",this.index);
         let wp = new WP(this.planner, this.index, position, dom_wp);
-        this.waypoints.push(wp);
+        //this.waypoints.push(wp);
+        //INSERT this wp into waypoints at index
+        this.waypoints.splice(this.index,0,wp);
         if (wp.index > 0) {
             this.add_line(this.waypoints[wp.index-1],wp);
         }
-        this.parse_wp_name(wp);
+        this.decode_wp_name(wp);
         this.update_bounds();
         this.update_waypoints();
         this.update_waypoint_icons();
@@ -834,7 +838,7 @@ class Task {
         return wp;
     }
 
-    append_current_wp_to_task() {
+    duplicate_current_wp() {
         let next_index = this.waypoints.length;
         console.log("task append existing wp",next_index);
         let wp = this.current_wp().copy(next_index);
@@ -847,10 +851,9 @@ class Task {
         return wp;
     }
 
-    //DEBUG parse_wp_name not finished
     // Parse soaring-encoded WP name, e.g. *Mifflin+813|6000/1000x500 => Mifflin alt 613ft, max_alt=6000ft, min_alt=1000ft, radius=500m
     // The "x" (radius) must come after either "+" or "|", so +813x500 is ok.
-    parse_wp_name(wp) {
+    decode_wp_name(wp) {
         console.log("parsing", wp.name);
         if (wp.name==null) {
             return;
@@ -912,8 +915,9 @@ class Task {
     update_waypoints() {
         console.log("update_waypoints");
         for (let i=0; i<this.waypoints.length; i++) {
+            const wp = this.waypoints[i];
+            wp.index = i;
             if (i > 0) {
-                const wp = this.waypoints[i];
                 const prev_wp = this.waypoints[i-1];
                 wp.update(prev_wp);
             }
@@ -1116,7 +1120,7 @@ class Task {
     }
 
     remove_wp_from_task(index) {
-        console.log("remove_wp_from_task",index, this.waypoints[index].name);
+        console.log("remove_wp_from_task",index, this.waypoints[index].name, this.waypoints.length);
         let wp = this.waypoints[index];
         // remove line TO this waypoint
         if (index>0) {
@@ -1136,7 +1140,8 @@ class Task {
         }
         // If we just deleted the last waypoint, we need to set current to new last WP
         if (index >= this.waypoints.length) {
-            index = this.waypoints.length - 1;
+            this.index = this.waypoints.length - 1;
+            console.log("remove_wp_from_task last wp", index, this.index);
         }
     }
 
