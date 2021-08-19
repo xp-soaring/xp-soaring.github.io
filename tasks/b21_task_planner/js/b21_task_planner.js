@@ -190,6 +190,12 @@ class B21TaskPlanner {
         this.task.duplicate_current_wp();
     }
 
+    // User has clicked on WP menu (Update waypoint elevation)
+    update_wp_elevation() {
+        console.log("User click Update WP elevation");
+        this.task.current_wp().request_alt_m();
+    }
+
     add_airport() {
         console.log("add airport" + this.current_latlng);
     }
@@ -213,7 +219,9 @@ class B21TaskPlanner {
 
     change_wp_alt(new_alt) {
         console.log("new wp alt = ",new_alt);
-        this.task.current_wp().alt_m = parseFloat(new_alt) / (this.settings.altitude_units=="m" ? 1 : this.M_TO_FEET);
+        let wp = this.task.current_wp();
+        wp.alt_m = parseFloat(new_alt) / (this.settings.altitude_units=="m" ? 1 : this.M_TO_FEET);
+        wp.alt_m_updated = true;
         this.task.display_task_list();
     }
 
@@ -246,29 +254,43 @@ class B21TaskPlanner {
         console.log("delete WP from database", this.task.current_wp().get_name());
     }
 
-    click_soaring_task_option(el) {
-        console.log("click_soaring_task_option", el.checked);
+    click_soaring_task(el) {
+        console.log("click_soaring_task", el.checked);
         let option = el.checked;
-        this.set_setting("soaring_task_option", option ? 1 : 0);
+        this.set_setting("soaring_task", option ? 1 : 0);
     }
 
-    click_start() {
+    click_start(e) {
         let wp = this.task.current_wp();
-        this.task.start_index = wp.index;
-        if (this.task.finish_index != null && this.task.finish_index <= wp.index) {
-            this.task.finish_index = null;
-        }
-        this.task.update_waypoint_icons();
-        this.task.display_task_list();
-    }
-
-    click_finish() {
-        let wp = this.task.current_wp();
-        this.task.finish_index = wp.index;
-        if (this.task.start_index != null && this.task.start_index >= wp.index) {
+        if (e.checked) {
+            this.task.start_index = wp.index;
+            if (this.task.finish_index != null && this.task.finish_index <= wp.index) {
+                this.task.finish_index = null;
+            }
+        } else {
             this.task.start_index = null;
         }
         this.task.update_waypoint_icons();
+        wp.display_menu();
+        this.task.redraw();
+        this.task.display_task_list();
+    }
+
+    click_finish(e) {
+        let wp = this.task.current_wp();
+        if (e.checked) {
+            this.task.finish_index = wp.index;
+            console.log("Setting finish_index to",this.task.finish_index);
+            // Remove start if it is AFTER this finish
+            if (this.task.start_index != null && this.task.start_index >= wp.index) {
+                this.task.start_index = null;
+            }
+        } else {
+            this.task.finish_index = null;
+        }
+        this.task.update_waypoint_icons();
+        wp.display_menu();
+        this.task.redraw();
         this.task.display_task_list();
     }
 
@@ -284,6 +306,12 @@ class B21TaskPlanner {
     //DEBUG implement flightplan download
     download() {
         console.log("download()");
+        try {
+            this.task.save_flightplan();
+        } catch (e) {
+            alert(e);
+            return;
+        }
     }
 
     update_elevations() {
@@ -308,7 +336,7 @@ class B21TaskPlanner {
         this.settings = {};
 
         this.settings_values = {
-            soaring_task_option: 1,                // 1 or 0 = true/false whether to embed the B21/ALBATROSS soaring params
+            soaring_task: 1,                // 1 or 0 = true/false whether to embed the B21/ALBATROSS soaring params
             altitude_units: ["feet","m"],
             distance_units: ["km", "miles" ],
             wp_radius_units: ["m", "feet"],
@@ -445,7 +473,6 @@ class B21TaskPlanner {
         let value = window.localStorage.getItem('b21_task_planner_'+var_name);
         let error = true;
         if (typeof this.settings_values[var_name] == "object") {
-            console.log("get setting string", var_name);
             for (let i=0; i<this.settings_values[var_name].length; i++) {
                 if (value == this.settings_values[var_name][i]) {
                     this.settings[var_name] = value;
@@ -457,22 +484,20 @@ class B21TaskPlanner {
                 this.settings[var_name] = this.settings_values[var_name][0];
             }
         } else {
-            console.log("get setting value", var_name);
             this.settings[var_name] = parseFloat(value);
             if (isNaN(this.settings[var_name])) {
-                console.log("get_setting default", var_name);
                 this.settings[var_name] = this.settings_values[var_name];
             }
         }
-        console.log("get_setting",this.settings[var_name]);
+        console.log("get_setting",var_name,this.settings[var_name]);
     }
 
     load_settings() {
         for (const var_name in this.settings_values) {
             this.get_setting(var_name);
         }
-        if (this.settings.soaring_task_option==0) {
-            document.getElementById("soaring_task_option_checkbox").checked = false;
+        if (this.settings.soaring_task==0) {
+            document.getElementById("soaring_task_checkbox").checked = false;
         }
         console.log("load_settings",this.settings.altitude_units, this.settings.distance_units);
     }
@@ -510,6 +535,7 @@ class WP {
         this.icao = null;
         this.runway = null;
         this.alt_m = 0;
+        this.alt_m_updated = false; // true is elevation has been updated
         this.radius_m = null;
         this.max_alt_m = null;
         this.min_alt_m = null;
@@ -527,6 +553,13 @@ class WP {
 
     construct_from_dom(index, dom_wp) {
         let name = dom_wp.getAttribute("id");
+        console.log("New WP from dom:",name);
+        if (this.planner.settings.soaring_task==1 &&
+            (name=="TIMECRUIS" || name=="TIMECLIMB" || name=="TIMEVERT") ){
+                // Skip this waypoint, & tell the caller (Task) via an exception
+                throw "SKIP_WAYPOINT";
+        }
+        console.log("New WP from dom OK:",name);
         // <WorldPosition>N40° 40' 38.62",W77° 37' 36.71",+000813.00</WorldPosition>
         let world_position = dom_wp.getElementsByTagName("WorldPosition")[0].childNodes[0].nodeValue;
         let world_pos_elements = world_position.split(","); // lat, lng, alt
@@ -551,7 +584,10 @@ class WP {
             this.icao = icao_codes[0].childNodes[0].nodeValue;
         }
         if (runways.length>0) {
-            this.runway = runways[0].childNodes[0].nodeValue;
+            let runway_nodes = runways[0].childNodes;
+            if (runway_nodes.length>0) {
+                this.runway = runways[0].childNodes[0].nodeValue;
+            }
         }
     }
 
@@ -615,6 +651,7 @@ class WP {
         }).then( results => {
             console.log("open-elevation.com:", results["results"][0]["elevation"]);
             this.alt_m = results["results"][0]["elevation"];
+            this.alt_m_updated = true;
             this.display_menu();
             this.planner.task.display_task_list();
         }).catch(error => {
@@ -677,7 +714,7 @@ class WP {
         this.marker.setIcon(icon);
     }
 
-    //DEBUG highlight ICAO entry for 1st and last WP
+    //DEBUG highlight required ICAO entry for 1st and last WP
     display_menu() {
         let form_str = 'Name: <input onchange="b21_task_planner.change_wp_name(this.value)" value="'+this.get_name() + '"</input>';
 
@@ -694,11 +731,11 @@ class WP {
 
         form_str += '<br/>Elevation: <input class="wp_alt" onchange="b21_task_planner.change_wp_alt(this.value)" value="' + alt_str + '"</input> ' + alt_units_str;
 
-        if (this.planner.settings.soaring_task_option==1) {
+        if (this.planner.settings.soaring_task==1) {
             let start = this.index == this.planner.task.start_index;
-            form_str += '<br/>Start: <input onclick="b21_task_planner.click_start()" type="checkbox"'+(start ? " checked":"")+'/>';
+            form_str += '<br/>Start: <input onclick="b21_task_planner.click_start(this)" type="checkbox"'+(start ? " checked":"")+'/>';
             let finish = this.index == this.planner.task.finish_index;
-            form_str += ' Finish: <input  onclick="b21_task_planner.click_finish()" type="checkbox"'+(finish ? " checked":"")+'/> ';
+            form_str += ' Finish: <input  onclick="b21_task_planner.click_finish(this)" type="checkbox"'+(finish ? " checked":"")+'/> ';
             let radius_units_str = "m";
             if (this.planner.settings.wp_radius_units=="feet") {
                 radius_units_str = "feet";
@@ -737,7 +774,7 @@ class WP {
         form_str += '<div class="menu">';
         form_str += this.planner.menuitem("Remove this WP from task","remove_wp_from_task");
         form_str += this.planner.menuitem("Add duplicate of this WP to task","duplicate_wp_to_task");
-        form_str += this.planner.menuitem("Delete this WP from database","delete_wp_from_database");
+        form_str += this.planner.menuitem("Update this waypoint elevation","update_wp_elevation");
         form_str += '</div>';
         var popup = L.popup({ offset: [0,0]})
             .setLatLng(this.position)
@@ -755,7 +792,7 @@ class WP {
     toString() {
         return this.name;
     }
-}
+} // end WP class
 
 // ******************************************************************************
 // ***********   Task class                **************************************
@@ -804,6 +841,23 @@ class Task {
         }
     }
 
+    save_flightplan() {
+        let fp = new FlightPlan(this);
+        let filename = fp.get_title()+".pln";
+        let text = fp.get_text();
+
+        let element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+        element.setAttribute('download', filename);
+
+        element.style.display = 'none';
+        document.body.appendChild(element);
+
+        element.click();
+
+        document.body.removeChild(element);
+    }
+
     current_wp() {
         return this.waypoints[this.index];
     }
@@ -820,9 +874,17 @@ class Task {
 
     add_new_wp(position, dom_wp=null) {
         //this.index = this.waypoints.length;
-        this.index = this.index==null ? 0 : this.index + 1;
-        console.log("task adding wp with index",this.index);
-        let wp = new WP(this.planner, this.index, position, dom_wp);
+        let wp_index = this.index==null ? 0 : this.index + 1;
+        console.log(">>>>>>>task adding wp with index",this.index);
+        let wp;
+        try {
+            // An exception will be generated if this WP should be ignored, e.g. TIMECRUIS
+            wp = new WP(this.planner, wp_index, position, dom_wp);
+        } catch (e) {
+            console.log("add_new_wp skipping:",e);
+            return;
+        }
+        this.index = wp_index;
         //this.waypoints.push(wp);
         //INSERT this wp into waypoints at index
         this.waypoints.splice(this.index,0,wp);
@@ -851,10 +913,10 @@ class Task {
         return wp;
     }
 
-    // Parse soaring-encoded WP name, e.g. *Mifflin+813|6000/1000x500 => Mifflin alt 613ft, max_alt=6000ft, min_alt=1000ft, radius=500m
+    // Parse soaring-encoded WP name, e.g. *Mifflin+813|6000-1000x500 => Mifflin alt 613ft, max_alt=6000ft, min_alt=1000ft, radius=500m
     // The "x" (radius) must come after either "+" or "|", so +813x500 is ok.
     decode_wp_name(wp) {
-        console.log("parsing", wp.name);
+        console.log("decoding", wp.index, wp.name);
         if (wp.name==null) {
             return;
         }
@@ -877,6 +939,7 @@ class Task {
             let alt_feet = parseFloat(wp_extra);
             if (!isNaN(alt_feet)) {
                 wp.alt_m = alt_feet / this.planner.M_TO_FEET;
+                wp.alt_m_updated = true;
             }
         }
         let wp_bar = wp.name.split("|");
@@ -889,7 +952,7 @@ class Task {
                 wp.max_alt_m = max_alt_feet / this.planner.M_TO_FEET;
             }
         }
-        let wp_slash = wp_extra.split("/");
+        let wp_slash = wp_extra.split("-");
         if (wp_slash.length>1) {
             let min_alt_feet = parseFloat(wp_slash[1]);
             if (!isNaN(min_alt_feet)) {
@@ -909,6 +972,40 @@ class Task {
         }
         // Trim wp.name to shortest before "+" or "|"
         wp.name = wp.name.split("+")[0].split("|")[0];
+    }
+
+    // Return WP name with appended soaring parameters e.g. *Mifflin+813|5000-1000x1000
+    // *=start/finish, +=elevation(feet), |=max_alt(feet), -=min_alt(feet), x=radius(meters)
+    get_encoded_name(wp) {
+        let start = "";
+        if (wp.index==this.start_index || wp.index==this.finish_index) {
+            start = "*";
+        }
+        let encoded_name = start + wp.get_name();
+        let extra = false;
+        if (wp.alt_m_updated && wp.icao==null) {
+            extra = true;
+            encoded_name += "+"+(wp.alt_m * this.planner.M_TO_FEET).toFixed(0);
+        }
+        if (wp.max_alt_m!=null) {
+            extra = true;
+            encoded_name += "|"+(wp.max_alt_m * this.planner.M_TO_FEET).toFixed(0);
+        }
+        if (wp.min_alt_m!=null) {
+            if (!extra) {
+                encoded_name += "|";
+                extra = true;
+            }
+            encoded_name += "-"+(wp.min_alt_m * this.planner.M_TO_FEET).toFixed(0);
+        }
+        if (wp.radius_m!=null) {
+            if (!extra) {
+                encoded_name += "|";
+                extra = true;
+            }
+            encoded_name += "x"+wp.radius_m.toFixed(0);
+        }
+        return encoded_name;
     }
 
     // Update the .leg_distance_m for each waypoint around task
@@ -981,7 +1078,32 @@ class Task {
 
     add_sector(wp) {
             this.remove_sector(wp);
-            wp.sector = L.circle(wp.position, { radius: wp.radius_m, color: 'red', weight: 1 });
+            if (wp.index==this.start_index) {
+                // Sector = START LINE
+                console.log("add_sector START",wp.radius_m);
+                let radius_m = wp.radius_m==null ? 2500 : wp.radius_m;
+                let direction_deg = 0;
+                if (wp.index < this.waypoints.length - 1) {
+                    direction_deg = (this.waypoints[wp.index+1].leg_bearing_deg + 180) % 360;
+                }
+                wp.sector = L.semiCircle(wp.position,
+                    {radius: radius_m, color: 'red'})
+                    .setDirection(direction_deg,180);
+            } else if (wp.index==this.finish_index) {
+                // Sector = FINISH LINE
+                console.log("add_sector FINISH",wp.radius_m);
+                let radius_m = wp.radius_m==null ? 1000 : wp.radius_m;
+                let direction_deg = 0;
+                if (wp.index > 0) {
+                    direction_deg = wp.leg_bearing_deg;
+                }
+                wp.sector = L.semiCircle(wp.position,
+                    {radius: radius_m, color: 'red'})
+                    .setDirection(direction_deg,180);
+            } else {
+                // Sector = WAYPOINT
+                wp.sector = L.circle(wp.position, { radius: wp.radius_m, color: 'red', weight: 1 });
+            }
             wp.sector.addTo(this.planner.map);
     }
 
@@ -993,6 +1115,7 @@ class Task {
     }
 
     redraw() {
+        console.log("Task.redraw()");
         for (let i=0; i<this.waypoints.length; i++) {
             let wp = this.waypoints[i];
             // Set current WP marker to foreground
@@ -1008,11 +1131,11 @@ class Task {
             if (i>0) {
                 this.add_line(this.waypoints[i-1], this.waypoints[i]);
             }
-            // Draw WP circle
+            // Draw WP circle, start, finish lines
             if (wp.sector != null) {
                 this.remove_sector(wp);
             }
-            if (wp.radius_m != null && wp.radius_m > 0) {
+            if (wp.radius_m != null || wp.index == this.start_index || wp.index == this.finish_index) {
                 this.add_sector(wp);
             }
 
@@ -1189,4 +1312,202 @@ class Task {
         str += "]";
         return str;
     }
-}
+} // end Task class
+
+// ******************************************************************************
+// ***********   FlightPlan class          **************************************
+// ******************************************************************************
+
+class FlightPlan {
+
+    constructor(task) {
+
+        this.task = task;
+
+        this.check();
+
+        let header_text = this.get_header_text();
+        let wp_text = "";
+        for (let i=0; i<task.waypoints.length; i++) {
+            wp_text += this.get_wp_text(i);
+        }
+        let footer_text = this.get_footer_text();
+        this.text = header_text + wp_text + footer_text;
+    }
+
+    check() {
+        if (this.task==null) {
+            throw "Cannot create FlightPlan with no task";
+        }
+
+        if (this.task.waypoints.length<2) {
+            throw "Cannot create FlightPlan with less than 2 waypoints";
+        }
+
+        if (this.task.waypoints[0].icao==null || this.task.waypoints[this.task.waypoints.length-1].icao==null) {
+            throw "Cannot create Flightplan unless first and last waypoints have ICAO";
+        }
+    }
+
+    get_text() {
+        return this.text;
+    }
+
+    get_title() {
+        let first_wp = this.task.waypoints[0];
+        let last_wp = this.task.waypoints[this.task.waypoints.length-1];
+        return first_wp.get_name() + " to " + last_wp.get_name();
+    }
+
+    get_header_text() {
+        let header_text = this.get_header_template();
+        let first_wp = this.task.waypoints[0];
+        let last_wp = this.task.waypoints[this.task.waypoints.length-1];
+        let title = this.get_title();
+        header_text = header_text.replace("#TITLE#", title);
+        header_text = header_text.replace("#DESCR#", title);
+
+        header_text = header_text.replace("#DEPARTURE_ID#", first_wp.icao);
+        header_text = header_text.replace("#DEPARTURE_LLA#", this.get_world_position(first_wp));
+        if (first_wp.runway==null) {
+            header_text = header_text.replace("<DeparturePosition>#DEPARTURE_POSITION#</DeparturePosition>","");
+        } else {
+            header_text = header_text.replace("#DEPARTURE_POSITION#", first_wp.runway);
+        }
+        header_text = header_text.replace("#DEPARTURE_NAME#", first_wp.get_name());
+
+        header_text = header_text.replace("#DESTINATION_ID#", last_wp.icao);
+        header_text = header_text.replace("#DESTINATION_LLA#", this.get_world_position(last_wp));
+        header_text = header_text.replace("#DESTINATION_NAME#", last_wp.get_name());
+
+        return header_text;
+    }
+
+    get_wp_text(index) {
+        let wp = this.task.waypoints[index];
+        let encoded_name = this.task.get_encoded_name(wp);
+        let wp_text = "";
+        if (wp.icao==null) {
+            let wp_template = this.get_wp_user_template();
+            wp_text = wp_template.replace("#ATCWAYPOINT_ID#",encoded_name);
+            wp_text = wp_text.replace("#WORLD_POSITION#",this.get_world_position(wp));
+        } else {
+            let wp_template = this.get_wp_airport_template();
+            wp_text = wp_template.replace("#ATCWAYPOINT_ID#",encoded_name);
+            wp_text = wp_text.replace("#ICAO_IDENT#", wp.icao);
+            wp_text = wp_text.replace("#WORLD_POSITION#",this.get_world_position(wp));
+            if (wp.runway==null) {
+                wp_text = wp_text.replace("<RunwayNumberFP>#RUNWAY_NUMBER_FP#</RunwayNumberFP>","");
+            } else {
+                wp_text = wp_text.replace("#RUNWAY_NUMBER_FP#", wp.runway);
+            }
+        }
+        return wp_text;
+    }
+
+    get_footer_text() {
+        let footer_text = this.get_footer_template();
+        return footer_text;
+    }
+
+    get_world_position(wp) {
+        let position = wp.position;
+        let alt_m = wp.alt_m;
+
+        // e.g. `N51° 33' 50.34",E0° 21' 17.76",+000019.18`;
+        let world_position = "";
+        let NS = position.lat >= 0 ? "N" : "S";
+        world_position += NS;
+        let lat_deg = Math.trunc(Math.abs(position.lat));
+        world_position += lat_deg + "° ";
+        let lat_frac = Math.abs(position.lat) - Math.abs(lat_deg);
+        let lat_mins = Math.trunc(lat_frac * 60);
+        world_position += lat_mins +"' ";
+        let lat_secs = ((lat_frac * 60 - lat_mins) * 60).toFixed(2);
+        world_position += lat_secs + '",';
+
+        let EW = position.lng >= 0 ? "E" : "W";
+        world_position += EW;
+        let lng_deg = Math.trunc(Math.abs(position.lng));
+        world_position += lng_deg + "° ";
+        let lng_frac = Math.abs(position.lng) - Math.abs(lng_deg);
+        let lng_mins = Math.trunc(lng_frac * 60);
+        world_position += lng_mins +"' ";
+        let lng_secs = ((lng_frac * 60 - lng_mins) * 60).toFixed(2);
+        world_position += lng_secs + '",';
+
+        let alt_feet = alt_m * this.task.planner.M_TO_FEET;
+        let alt_str = (alt_feet>0 ? "+" : "-")+("000000"+alt_feet.toFixed(2)).slice(-9);
+        world_position += alt_str;
+
+        return world_position;
+    }
+
+    get_header_template() {
+        return `<?xml version="1.0" encoding="UTF-8"?>
+
+<SimBase.Document Type="AceXML" version="1,0">
+    <Descr>AceXML Document</Descr>
+    <FlightPlan.FlightPlan>
+        <Title>#TITLE#</Title>
+        <FPType>VFR</FPType>
+        <CruisingAlt>1500.000</CruisingAlt>
+        <DepartureID>#DEPARTURE_ID#</DepartureID>
+        <DepartureLLA>#DEPARTURE_LLA#</DepartureLLA>
+        <DestinationID>#DESTINATION_ID#</DestinationID>
+        <DestinationLLA>#DESTINATION_LLA#</DestinationLLA>
+        <Descr>#DESCR#</Descr>
+        <DeparturePosition>#DEPARTURE_POSITION#</DeparturePosition>
+        <DepartureName>#DEPARTURE_NAME#</DepartureName>
+        <DestinationName>#DESTINATION_NAME#</DestinationName>
+        <AppVersion>
+            <AppVersionMajor>11</AppVersionMajor>
+            <AppVersionBuild>282174</AppVersionBuild>
+        </AppVersion>
+`;
+    }
+
+    get_wp_airport_template() {
+        return `
+        <ATCWaypoint id="#ATCWAYPOINT_ID#">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>#WORLD_POSITION#</WorldPosition>
+            <RunwayNumberFP>#RUNWAY_NUMBER_FP#</RunwayNumberFP>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+            <ICAO>
+                <ICAOIdent>#ICAO_IDENT#</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+`;
+    }
+
+    get_wp_user_template() {
+        return `
+        <ATCWaypoint id="#ATCWAYPOINT_ID#">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>#WORLD_POSITION#</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+        </ATCWaypoint>
+`;
+    }
+
+    get_wp_intersection_template() {
+        return `
+        <ATCWaypoint id="#ATCWAYPOINT_ID#">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>#WORLD_POSITION#</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+            <ICAO>
+                <ICAOIdent>#ICAO_IDENT#</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+`;
+    }
+
+    get_footer_template() {
+        return `
+    </FlightPlan.FlightPlan>
+</SimBase.Document>
+`;
+    }
+} // end FlightPlan class

@@ -1,0 +1,240 @@
+<html>
+<head>
+    <title>Help for B21 task Planner</title>
+    <link href="help.css" rel="stylesheet"/>
+</head>
+<body>
+<h1>B21 Task Planner Help</h1>
+
+<h2>Introduction</h2>
+
+<img src="images/overview.png"/>
+
+<p>We want to create <i>soaring tasks</i> in MSFS as simply as possible, e.g. a three-waypoint task could be created
+    with three clicks on a map. The soaring tasks are created as 'standard' MSFS Flight Plans.
+</p>
+
+<p>B21 Task Planner has TWO ways to get started with a Flight Plan:</p>
+<ol>
+    <li>Drag an existing MSFS .pln file onto the DROP ZONE.</li>
+    <li>Just start clicking on the map.</li>
+</ol>
+
+<p> Soaring tasks benefit from additional information embedded into the MSFS .pln file so the soaring Nav gauges and other
+    addons (e.g. ALBATROSS) can pick up this information. Sticking with the MSFS '.pln' format gives us the maximum
+    compatibility and flexibility with MSFS and other flight planning tools. The soaring parameters need to be passed to the
+    aircraft without corruption by MSFS - these include:
+    <ul>
+        <li>the <i>elevation</i> of the waypoint</li>
+        <li>the <i>radius</i> of the waypoint (i.e. how close the pilot must get to the WP to confirm having reached it)</li>
+        <li><i>minimum and maximum altitudes</i> required at the WP.</li>
+    </ul>
+     This is done in an upwards-compatible way, so an ordinary MSFS waypoint with no additional
+    soaring parameters will work fine and the parameters will be given default values.
+</p>
+
+<p>The 'additional' soaring parameters in the flight plan are entirely optional, and the B21 Task Planner can equally produce a valid MSFS
+    flight plan with none of these parameters provided. When the optional parameters <i>are</i> provided, and encoded into the waypoint
+    name, custom soaring gauges in the aircraft (such as the B21 Nav Panel) can pick those parameters out of the name and display the
+    name <i>without</i> the parameters to the pilot in the gauge, i.e. a waypoint called "*Burnt Cabins+2310|6000/1000x800" will be
+    displayed in the cockpit as "Burnt Cabins".
+</p>
+
+<h2>General Hints</h2>
+
+<p>Most of these hints relate to the fact that MSFS ignores much of the information in the Flight Plan, e.g. it will take
+the airport ICAO code but look up any data relevant to that (such as name of the airport, and its elevation) in the MSFS database rather
+than accepting what is in the Flight Plan. For intermediate waypoints MSFS will accept the name but completely ignore the
+altitude in the Flight Plan and generate an estimate of the altitude it thinks the autopilot should be flying at instead.
+</p>
+
+<p><b>(1)</b> Always start and end the flightplan with an airport. For these you will need the ICAO code, and for the departure airport
+    it is possible to specify a launch runway but you will need to look the name for this in MSFS (e.g. "26" or "06L").
+</p>
+
+<p><b>(2)</b> Generally it is better to have Start and Finish waypoints that are other than the departure and destination airports. They
+    can be in roughly the same location, if that is what is wanted, but zoom in on the map and create an additional waypoint
+    such as "Mifflin Start" rather than using the ICAO code "KRVL".
+</p>
+
+<p><b>(3)</b> Task waypoints, even ones which are airports, should be specifed WITHOUT the ICAO code, so they will be stored in
+    the Flight Plan as 'User' waypoints. MSFS does not allow the
+    additional soaring parameters (like max/min heights) relative to airports.
+</p>
+
+<p><b>(4)</b> If you want to create a general VFR flightplan, perhaps nothing to do with soaring, you can uncheck the
+    [Soaring&nbsp;Task] checkbox in the top-right of the window and the waypoint menu will be simplified.
+</p>
+
+<p><b>(5)</b> Soaring flightplans created with B21 Task Planner can contain additional information that is not normally stored
+    inside an MSFS Flight Plan. The 'trick' used is to add data to the <b>name</b> of the waypoint, e.g. a waypoint
+    named in the Flight Plan as "Burnt Cabins+2340" can be read by the soaring Nav instruments as a waypoint called
+    "Burnt Cabins" at an elevation of 2340 feet. That waypoint will be displayed as "Burnt Cabins" in the soaring
+    instruments, while the Flight Plan remains valid for any use in MSFS (where it will be displayed as
+    "Burnt&nbsp;Cabins+2340"). Note that MSFS is generally ok with elevations for Airports but it ignores elevations in
+    the Flight Plan for intermediate waypoints.
+</p>
+
+<p><b>(6)</b> B21 Task Planner remembers your settings from one session to the next (assuming the same browser), this includes
+    the units you've chosen for altitudes and distances, and the map location and zoom.
+</p>
+
+<h2>An example starting with an existing MSFS Flight Plan</h2>
+
+<p>We'll use an example starting with an existing flightplan as apart from the first step (the 'drop') the use of the
+program is the same as if you'd clicked on the map to create the waypoints.
+</p>
+
+<p>Here's the program (i.e. web page) when you first open it. The map position will be wherever you left it last time you
+used the program.
+</p>
+
+<img src="images/start.png"/>
+
+<p>After we 'drag & drop' a flightplan:
+</p>
+
+<img src="images/drop_flightplan.png"/>
+
+<p>Checking the box to show which waypoint is the task start. We also set a maximum start height:
+</p>
+
+<img src="images/set_start.png"/>
+
+<p>Similarly we can set a checkbox to show which is the FINISH waypoint. Note the task distance is calculated from
+    Start to Finish, ignoring legs before or after those.
+</p>
+
+<img src="images/set_finish.png"/>
+
+<p>A 'killer' feature of the B21 Task Planner (for soaring tasks) is it can look up the ground elevation for each
+    waypoint an annotate the data in the MSFS Flight Plan with that information. For B21 instruments that display Nav
+    information including Arrival Height, this elevation allows that information to be AGL. You can click the
+    [Update&nbsp;elevations] button which will update the elevations for ALL the waypoints, or for a single waypoint you
+    can click the waypoint "Update this waypoint elevation" option, as illustrated below.
+</p>
+
+<img src="images/update_elevations.png"/>
+
+<p>Setting a 'radius' for each turnpoint is also easy via the waypoint pop-up menu:
+
+<img src="images/set_wp_radius.png"/>
+
+<p>At this point the task is complete, and can be downloaded by clicking the [Download] button:
+
+<img src="images/download.png"/>
+
+<h2>Creating a Flight Plan from scratch</h2>
+
+<p>The Flight Plan MUST begin and end with an airport, and for these you MUST know the ICAO code to enter into the
+    waypoint data. The easiest way to find the ICAO code for the airport (e.g. LOWZ for Zell am See airport) is to use the World Map
+    page in MSFS, and that will also give you the runway names if you want to specify one for the departure (you should,
+    so the plane is facing into wind).
+</p>
+
+<img src="images/LOWZ.png"/>
+
+<p>Now is a useful time to lookup the destination airport and add that:
+</p>
+
+<img src="images/LOWI.png"/>
+
+<p>Now if you RESELECT LOWZ (because additional waypoints are always added after the CURRENTLY SELECTED waypoint), you can
+    click on the map and add waypoints between those airports:
+</p>
+
+<img src="images/WP2.png"/>
+
+<p>At this point you have pretty much caught up with the example given before with a loaded MSFS Flight Plan, and
+    the editting of waypoint radius, and min/max altitudes is the same.
+</p>
+
+<h2>Units used for the additional soaring parameters</h2>
+
+<p>The B21 Task Planner allows the user to choose the units they want to input/see for altitude (meters or feet) and distance (kilometers
+    or miles). However, when these values are encoded into the MSFS flight plan WP name, altitude/elevation will be in
+    <i>feet MSL</i> and distances will be in <i>meters</i>.
+</p>
+
+<h2>Default values for the soaring parameters</h2>
+
+<table>
+    <tr>
+        <td>WP elevation</td>
+        <td>For an <i>airport</i> the default elevation will be the ground elevation for the airport defined by MSFS. In most
+            circumstances this should work great. For a user waypoint, the ground elevation will default to 0 MSL.
+        </td>
+    </tr>
+    <tr>
+        <td>WP max altitude</td>
+        <td>no limit</td>
+    </tr>
+    <tr>
+        <td>WP min altitude</td>
+        <td>no limit</td>
+    </tr>
+    <tr>
+        <td>WP radius</td>
+        <td>500 meters</td>
+    </tr>
+</table>
+
+<h2>The MSFS .pln format, with extensions for the soaring parameters</h2>
+
+<p>To pass these additional parameters through to MSFS and the aircraft, while ensuring the flight plan remains completely compatible
+    with 'plain vanilla' MSFS, the B21 Task Planner encodes the additional parameters into the <i>name</i> assigned to the waypoint.
+</p>
+
+<p><b>*</b> is used to flag a WP as the Start or Finish of the task, <i>prepended to the name</i>, e.g. "*Burnt Cabins" will imply the
+    "Burnt Cabins" waypoint is the start or finish (the first *WP will be the start, the second one will be the finish)
+</p>
+
+<p><b>+</b> indicates the <i>elevation in feet</i> of the waypoint, e.g. "Burnt Cabins+2310" implies the "Burnt Cabins" waypoint is at
+    2310 feet.
+</p>
+
+<p><b>|</b> indicates the <i>max altitude in feet</i> permitted at the waypoint.
+</p>
+
+<p><b>-</b> any time after the <b>|</b> indicates the <i>min altitude in feet</i> permitted at the waypoint.
+</p>
+
+<p><b>x</b> any time after the <b>|</b> indicates the <i>radius of the waypoint in meters</i>
+</p>
+
+<h3>Waypoint name format examples</h3>
+
+<table>
+
+    <tr>
+        <td>Burnt Cabins</td><td>A waypoint with the default values for the soaring parameters (e.g. a waypoint elevation of 0 MSL)</td>
+    </tr>
+    <tr>
+        <td>*Burnt Cabins</td><td>This waypoint is the start or finish WP of the task.</td>
+    </tr>
+    <tr>
+        <td>Burnt Cabins+2310</td><td>The elevation of the WP is 2310 feet</td>
+    </tr>
+    <tr>
+        <td>*Burnt Cabins+2310|6000</td><td>Burnt Cabins is the start (or finish) WP with an elevation of 2310
+        feet and a max start height of 6000 feet MSL.</td>
+    </tr>
+    <tr>
+        <td>Burnt Cabins|6000</td><td>The WP has a max altitude of 6000 feet MSL</td>
+    </tr>
+    <tr>
+        <td>Burnt Cabins|-1000</td><td>The WP has a min altitude of 1000 feet MSL</td>
+    </tr>
+    <tr>
+        <td>Burnt Cabins|x800</td><td>The WP has a turn radius of 800 meters. The <b>|</b> is required anywhere <i>before</i> the <b>x</b>,
+        which can most simply achieved by adding the turn radius after the other WP parameters.</td>
+    </tr>
+    <tr>
+        <td class="nowrap">*Burnt Cabins+2310|6000-1000x800"</td><td>The WP "Burnt Cabins" is a start or finish waypoint, at an elevation of
+            2310 feet MSL, a maximum turn altitude of 6000 feet, a minimum turn altitude of 1000 feet, and a turn radius of 800 meters. </td>
+    </tr>
+
+</table>
+
+</body>
+</html>

@@ -1,5 +1,7 @@
 <html translate="no">
 <meta name="google" content="notranslate" />
+<!-- this line is required to get Javascript to default to UTF-8 -->
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
 <head>
     <title>B21 Task Planner</title>
 
@@ -14,6 +16,7 @@
     <link href="style/main.css" rel="stylesheet"/>
     <link href="style/leaflet_mods.css" rel="stylesheet"/>
 
+    <script src="js/semicircle.js"></script>
     <script src="js/b21_geo_static.js"> </script> <!-- Defines Geo functions (static) -->
     <script src="js/b21_task_planner.js"> </script> <!-- Defines B21TaskPlanner class -->
 
@@ -33,7 +36,7 @@ function loaded() {
     <div class="header">
         <div class="title">
             <div class="title_text">B21 Task Planner</div>
-            <div class="title_task_option">Soaring task: <input id="soaring_task_option_checkbox" type="checkbox" onclick="b21_task_planner.click_soaring_task_option(this)" checked/></div>
+            <div class="title_task_option">Soaring task: <input id="soaring_task_checkbox" type="checkbox" onclick="b21_task_planner.click_soaring_task(this)" checked/></div>
         </div>
     </div>
 
@@ -43,12 +46,12 @@ function loaded() {
         <button onclick="b21_task_planner.update_elevations()">Update elevations</button>
         <button onclick="b21_task_planner.reset_map()">Zoom to task</button>
         <button onclick="b21_task_planner.toggle_settings()">Settings</button>
-        <form style="display: inline;" action="help.html" target="_blank"><button type="submit">Help</button></form>
+        <form style="display: inline;" action="help/help.html" target="_blank"><button type="submit">Help</button></form>
     </div>
     <div id="panes">
         <div id="left_pane">
             <div id="task_list"></div>
-            <div id="drop_zone">DROP MSFS FLIGHT PLAN HERE</div>
+            <div id="drop_zone">CLICK MAP TO START, OR DROP MSFS FLIGHT PLAN HERE</div>
         </div> <!-- end left_pane -->
         <div id="map_pane">
             <div id="map"></div>

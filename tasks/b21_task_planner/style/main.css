@@ -44,7 +44,7 @@ body {
 }
 
 #left_pane {
-    width: 25%;
+    width: 20%;
     height: 100%;
     vertical-align: top;
     margin-left: 5px;
@@ -54,7 +54,7 @@ body {
 
 #drop_zone {
     width: 80%;
-    height: 25%;
+    min-height: 25%;
     border-radius: 20px;
     border: 2px dashed gray;
     border-color: gray;
@@ -65,7 +65,7 @@ body {
 }
 
 #map_pane {
-    width: 73%;
+    width: 78%;
     height: 100%;
     display: inline-block;
 }
