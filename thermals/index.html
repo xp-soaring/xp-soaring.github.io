@@ -5,25 +5,94 @@
     </head>
 <body>
 <div>
-<div class="breadcrumbs"><a href="../index.html">xp-soaring</a> &gt; </div>
+<div class="breadcrumbs"><a href="../index.html">Home</a> &gt; </div>
 <div class="page_heading">Thermals</div>
 </div>
 
 <img src="../dev/images/thermals.jpg"/>
 
 <h2>Objective</h2>
-<p>Soaring requires either <a href="../ridge_lift/index.html">ridge lift</a> or thermals to stay aloft</a>. We want
-    thermals to have appropriate strength, have a life-cycle, have cumulus clouds, relate to ground features.
+<p>Thermals should not be confused with <a href="../ridge_lift/index.html">ridge lift</a>. We want
+    sim thermals to have appropriate strength, have a life-cycle, have cumulus clouds, relate to ground features.
 </p>
 
-<h2>Current status</h2>
+<p>Thermals are relatively simple, but often badly explained. The Sun heats the ground, some areas warm better then others (e.g.
+those areas are less damp, or facing into the sun more), the warmer air tends to collect near the surface and then rise in a steady column. The
+air cools steadily as it rises (because it is EXPANDING due to lower pressure, not because it's otherwise losing heat, so this is
+easily predictable). Give the prevailing HUMIDITY, at some altitude (i.e. temperature) the water contained in the air-mass will condense
+out and form a cloud. Given all this, Cumulus clouds would have perfectly flat bottoms (because that condensing temperature occurs at
+a particular height). In fact the center of the rising column of air is rising faster than than the air around it, and this is enough
+to push the center of the bottom of the Cumulus cloud UP a little, so the underside of active Cumulus clouds is typically concave. You
+can easily see this when thermalling under a cloud because as you reach cloud base the edges of the cloud will be lower than you
+are (which is slightly unsettling as you can't see the horizon).
+<p>
 
-<p>X-Plane has built-in thermals, which I've not yet tested at all. They are not currently related to cumulus clouds.</p>
+<p>Some key points:</p>
+<ul>
+    <li>Cumulus clouds are FAR AND AWAY the most important indicators of thermals to soaring pilots. The absence of Cu's on
+    a sunny day (because a layer of warmer air stops the thermal reaching the condensating altitude/temperature) is referred
+    to as a 'blue' day and thermalling on those days is awful, with racing competitors forming huge gaggles because no-one
+    has any idea where the thermals are so the best technique is to find another glider circling and join them.
+    </li>
+    <li>In the UK (and probably elsewhere), cloud-flying is permitted for gliders. This is a wonderful experience, with
+    the lift of the thermal continuing (the condensing water vapour actually ADDS energy to the thermal) but in my
+    experience the lift becomes smoother and the sounds inside the cloud seem slightly dampened which is somehow
+    relaxing as you sit in the gray watching the Attitude Indicator. The best bit is
+    emerging from the cloud with all the juicy extra height you've gained, into a castellated landscape of dense Cu's with
+    a long straight glide on track until you're back below cloudbase.
+    </li>
+    <li>People that draw Cumulus clouds as symmetical fluffy blobs of cotton wool have obviously never actually looked at one,
+    the bottoms of Cu's are FLAT. People are mysteriously blind to this or struggle to believe it, so even in flight sims the
+    Cu's are always fluffier on the bottom than they should be.
+    </li>
+    <li>At some point the thermal will stop rising, and the Cu will 'die' at that point with the condensed vapour dissipating
+    and the cloud gradually disappearing. Soaring pilots aim to reach clouds while they are still 'active', but we have all
+    had the frustrating experience of circling under a great looking Cu and finding nothing, having timed our arrival perfectly for the
+    death of the thermal.
+    </li>
+    <li>The weight of the air rising in a thermal can be 100,000 to 1,000,000 TONNES.
+    </li>
+    <li>In Northern Europe, typical thermals are often 2..4 knots (1..2m/s). In Southern Europe or the USA you might typically see
+    3..5knots (1.5..2.5m/s). Places like Texas have much stronger thermals. HOWEVER, the entire art of competition soaring is to
+    find the STRONGEST thermals and only circle in those. E.g. in Germany a glider pilot will 'dolphin fly' through the 3..5knot
+    thermals (i.e. pull up in lift but keep flying on track) and stop and circle in the relatively rare 6+ knot (3m/s) thermals.
+    </li>
+    <li>As you lose height, you naturally get less picky about how strong the thermal has to be for you to stop and climb in
+    it. This has a big impact on your cross-country speed because the fact you're low means you have further to climb, but you may
+    have to accept a crap thermal, so your chances of winning the race are seriously diminished.
+    </li>
+    <li>Of course all days are different. A little bit of 'high cover' (e.g. some high Cirrus clouds) radically reduces the strength
+    of the Sun hitting the ground, and the thermal will be weaker. This is often only for part of a task and the technique is to
+    take as high a climb as you can while you're still in the good sunshine before you head off into the murk. Also the Cu's
+    may start the day looking fantastic (this is actually a warning sign) but over-convect so they join together and cut off the
+    life-giving sunshine on the ground that created the thermals in the first place. Eventually holes in the cloud layer will
+    appear (because the thermals have died) and glider pilots will look for those spots on sunshine on the ground as a likely
+    source of lift. A similar phenomenon is 'spread-out': great looking active Cu's grow rapidly, but the tops of the clouds
+    reach a warmer layer and spread out rather than continuing to rise. This higher 'spread-out' layer can join up, and
+    similarly cut off the sunshine to the ground.
+    </li>
+    <li>Within a given area on a given day, the stronger the thermals, the further apart they are likely to be. NE USA has great
+    soaring weather with stronger thermals the the UK, going much higher, but in the UK the weedy thermals are closer together.
+    </li>
+    <li>Sim soaring often has thermals considerably stronger than typical in RL, with the effect that every day is soaring heaven. IMHO
+    this is partly ignorance on the part of developers, partly giving sim pilots a more enjoyable experience. In my competition
+    soaring career it was the weak days that were the most interesting, and separated the pilots, so long as it was still possible to
+    make it around the task. Sim's have an advantage here in that you can test and confirm a task is possible, so a task can be a
+    challenge and still enjoyable - this opportunity seems underrated in sim soaring currently.
+    </li>
+</ol>
 
-<p><a href="https://github.com/alexferrer/xplane_thermals">Alex Ferrer</a> has done some development for X-Plane thermals
-also.</p>
+<h2>Current sim thermal status Aug 2021</h2>
 
-<p>coming soon...
+<p>MSFS essentially has no thermals, but the support for them seems to exist within the sim as modest lift can be detected in the
+proximity of thunderstorms. The <a href="https://msfs.touching.cloud/mods/kinetic-assistant/">Kinetic Assistant</a> add-on for MSFS
+generates 'thermal lift' with a life-cycle that can be shared by multiple players but has no way of linking that lift to the MSFS
+simulated Cumulus clouds.
+</p>
+
+<p>X-Plane has built-in thermals but not currently related to cumulus clouds.</p>
+
+<p>Condor 2 is the only flight sim with thermals with a life-cycle, linked to Cumulus clouds, shareable in multi-player.
 </p>
 
 </body>

@@ -4,7 +4,10 @@
         <link rel="stylesheet" type="text/css" href="../../xp-soaring.css"/>
     </head>
 <body>
-<div class="breadcrumbs"><a href="../../index.html">xp-soaring</a> &gt; </div>
+<div class="breadcrumbs">
+    <a href="../../index.html">Home</a> &gt;
+    <a href="../index.html">X-Plane</a> &gt; 
+</div>
 <div class="page_heading">X-Plane Lua plugin development</div>
 
 <div class="center">
@@ -20,19 +23,19 @@
     programming interface (SDK API) available in the more complex and detailed 'C/C++' programming language and the Lua
     support in X-Plane is effectively a bridge from that simpler language to this API.
 </p>
-<p>Lua plugins have the advantage of being 'operating system' agnostic, i.e. plugins developed in Lua 
+<p>Lua plugins have the advantage of being 'operating system' agnostic, i.e. plugins developed in Lua
     typically don't care whether X-Plane is running on Windows, Linux or a Mac.
 </p>
 
 <h2>xlua vs. FlyWithLua vs. SASL</h2>
 <p>An easy point of confusion is that there are <i>three</i> completely independent implementations of
-    Lua as an X-Plane plugin scripting framework. They all exist for the same reason but the basic 
+    Lua as an X-Plane plugin scripting framework. They all exist for the same reason but the basic
     differences are:
 </p>
 <ul>
     <li><a href="xlua_info.html">
         <b>xlua</b>
-        </a> is developed (nominally for internal use) by Laminar Research (who make X-Plane). So you can write a 
+        </a> is developed (nominally for internal use) by Laminar Research (who make X-Plane). So you can write a
         simple xLua script
         with reasonable confidence. The fundamental capability <i>required</i> of any plugin support is to read
         'datarefs' from the core sim (like the current altitude) and issue 'commands' or publish new 'datarefs'
@@ -50,7 +53,7 @@
         doesn't seem to be a definitive FlyWithLua website where you can download the add-on, access its documentation,
         etc. The documentation is contained within the actual download
     </li>
-    <li><a href="https://www.1-sim.com/"><b>SASL</b></a> also has comprehensive support for the X-Plane SDK API, and 
+    <li><a href="https://www.1-sim.com/"><b>SASL</b></a> also has comprehensive support for the X-Plane SDK API, and
         also available is a commercial version for payware add-on developers. Debugging support is well implemented, with
         a per-project in-sim debug window available to see your error messages.
     </li>
@@ -64,7 +67,7 @@
     </p>
     <p><a href="../../library/FlyWithLua_Manual_en.pdf">FlyWithLua reference manual PDF</a>
     </p>
-    
+
     <p><a href="../../library/SASL3Manual.pdf">SASL V3 Reference Manual PDF</a>
     </p>
 
@@ -77,11 +80,11 @@
 <div>
     <p>FlyWithLua install & first steps:</p>
     <div class="center">
-            <iframe width="560" 
-            height="315" 
-            src="https://www.youtube.com/embed/ky8wHsShtMQ" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+            <iframe width="560"
+            height="315"
+            src="https://www.youtube.com/embed/ky8wHsShtMQ"
+            frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen>
         </iframe>
     </div>
