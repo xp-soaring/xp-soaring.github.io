@@ -200,3 +200,11 @@ body {
     cursor: pointer;
     background-color: lightgreen;
 }
+
+/* *************************************************** */
+/* ******* SkyVector              ******************** */
+/* *************************************************** */
+
+#skyvector_button {
+    text-decoration: none;
+}

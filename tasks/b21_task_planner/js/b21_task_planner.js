@@ -10,6 +10,8 @@ class B21TaskPlanner {
     init() {
         let parent = this;
 
+        this.sv_button = document.getElementById("skyvector_button"); // So we can update action URL
+
         this.init_settings();
 
         this.init_drop_zone();
@@ -36,12 +38,15 @@ class B21TaskPlanner {
             id: 'mapbox/outdoors-v11',
             tileSize: 512,
             zoomOffset: -1,
+            minZoom: 2,
             accessToken: 'pk.eyJ1IjoiYjIxc29hcmluZyIsImEiOiJja3M0Z2o0ZWEyNjJ1MzFtcm5rYnAwbjJ6In0.frJxiv-ZUV8e2li7r4_3_A'
         });
 
         this.tiles_outdoor.addTo(this.map);
 
         this.load_map_coords();
+
+        this.update_skyvector_link(parent.map.getCenter(), parent.map.getZoom());
 
         // Set up the map mouse click callbacks
         this.map.on('click', (e) => {parent.map_left_click(parent, e);} );
@@ -50,6 +55,10 @@ class B21TaskPlanner {
 
         this.map.on("moveend", () => {
             parent.save_map_coords(parent.map.getCenter(), parent.map.getZoom());
+            parent.update_skyvector_link(parent.map.getCenter(), parent.map.getZoom());
+        });
+        this.map.on('zoomend', () => {
+            parent.update_skyvector_link(parent.map.getCenter(), parent.map.getZoom());
         });
     }
 
@@ -144,6 +153,29 @@ class B21TaskPlanner {
 
         this.map.setView(new L.latLng(move_obj.lat, move_obj.lng),move_obj.zoom);
     }
+
+// ********************************************************************************************
+// *********  Manage the SkyVector link                            ****************************
+// ********************************************************************************************
+
+    // Build the SkyVector button link
+    // e.g. https://skyvector.com/?ll=54.65188861732224,-2.073669422461872&chart=301&zoom=1
+    update_skyvector_link(center, zoom) {
+        let sv_link = "https://skyvector.com/?ll=#LAT#,#LNG#&chart=301&zoom=#ZOOM#"
+        let sv_zoom = 2 * (11 - zoom); // Convert OSM zoom to SV zoom
+        if (sv_zoom<1) { // limit SkyVector zoom to 1..12
+            sv_zoom = 1;
+        }
+        if (sv_zoom>12) {
+            sv_zoom = 12;
+        }
+        sv_link = sv_link.replace("#LAT#",center.lat.toFixed(8));
+        sv_link = sv_link.replace("#LNG#",center.lng.toFixed(8));
+        sv_link = sv_link.replace("#ZOOM#",sv_zoom.toFixed(0));
+
+        this.sv_button.setAttribute("href", sv_link);
+    }
+
 
 // ********************************************************************************************
 // *********  Map click callbacks                      ****************************************

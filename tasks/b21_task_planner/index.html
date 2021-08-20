@@ -19,7 +19,6 @@
     <script src="js/semicircle.js"></script>
     <script src="js/b21_geo_static.js"> </script> <!-- Defines Geo functions (static) -->
     <script src="js/b21_task_planner.js"> </script> <!-- Defines B21TaskPlanner class -->
-
 <script>
 
 // This global var will contain an instance of B21TaskPlanner class
@@ -45,6 +44,14 @@ function loaded() {
         <button onclick="b21_task_planner.download()">Download FlightPlan</button>
         <button onclick="b21_task_planner.update_elevations()">Update elevations</button>
         <button onclick="b21_task_planner.reset_map()">Zoom to task</button>
+        <a  id="skyvector_button"
+            href="https://skyvector.com/?ll=54.65188861732224,-2.073669422461872&chart=301&zoom=1"
+            target="_skyvector">
+            <button
+                title="Will open SkyVector aligned to current map here"
+                type="submit">SkyVector
+            </button>
+        </a>
         <button onclick="b21_task_planner.toggle_settings()">Settings</button>
         <form style="display: inline;" action="help/help.html" target="_blank"><button type="submit">Help</button></form>
     </div>
