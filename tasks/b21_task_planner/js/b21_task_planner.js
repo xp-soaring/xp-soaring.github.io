@@ -708,7 +708,18 @@ class WP {
     }
 
     set_icao(icao) {
-        this.icao = icao;
+        console.log("wp.set_icao",icao);
+        if (icao=="") {
+            console.log("setting icao to null");
+            this.icao = null;
+        } else {
+            console.log("setting icao to '"+icao+"'");
+            this.icao = icao;
+            if (this.name==null) {
+                this.name = this.icao;
+                document.getElementById("wp_name").value = this.icao;
+            }
+        }
         this.update_icon();
     }
 
@@ -748,7 +759,7 @@ class WP {
 
     //DEBUG highlight required ICAO entry for 1st and last WP
     display_menu() {
-        let form_str = 'Name: <input onchange="b21_task_planner.change_wp_name(this.value)" value="'+this.get_name() + '"</input>';
+        let form_str = 'Name: <input id="wp_name" onchange="b21_task_planner.change_wp_name(this.value)" value="'+this.get_name() + '"</input>';
 
         form_str += '<br/>ICAO: <input class="wp_icao" onchange="b21_task_planner.change_wp_icao(this.value)" value="' + this.get_icao() + '"</input> ';
 
@@ -1391,6 +1402,7 @@ class FlightPlan {
         return first_wp.get_name() + " to " + last_wp.get_name();
     }
 
+    // Return the XML string for the 'header' part of the PLN file
     get_header_text() {
         let header_text = this.get_header_template();
         let first_wp = this.task.waypoints[0];
@@ -1415,6 +1427,7 @@ class FlightPlan {
         return header_text;
     }
 
+    // Return the XML string for each waypoint (either "User" or "Airport" depending on wp.icao==null)
     get_wp_text(index) {
         let wp = this.task.waypoints[index];
         let encoded_name = this.task.get_encoded_name(wp);
@@ -1437,6 +1450,7 @@ class FlightPlan {
         return wp_text;
     }
 
+    // Return XML string for the end of the PLN file
     get_footer_text() {
         let footer_text = this.get_footer_template();
         return footer_text;
