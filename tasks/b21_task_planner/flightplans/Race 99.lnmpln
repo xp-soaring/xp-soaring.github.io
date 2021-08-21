@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LittleNavmap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://www.littlenavmap.org/schema/lnmpln.xsd">
+  <Flightplan>
+    <Header>
+      <FlightplanType>IFR</FlightplanType>
+      <CruisingAlt>10000</CruisingAlt>
+      <CreationDate>2021-08-18T12:57:42+01:00</CreationDate>
+      <FileVersion>1.0</FileVersion>
+      <ProgramName>Little Navmap</ProgramName>
+      <ProgramVersion>2.6.16</ProgramVersion>
+      <Documentation>https://www.littlenavmap.org/lnmpln.html</Documentation>
+    </Header>
+    <SimData>MSFS</SimData>
+    <NavData Cycle="2108">NAVIGRAPH</NavData>
+    <Departure>
+      <Pos Lon="2.234943" Lat="50.728840" Alt="249.00"/>
+      <Start>27</Start>
+      <Type>Runway</Type>
+    </Departure>
+    <Waypoints>
+      <Waypoint>
+        <Name>Wizernes</Name>
+        <Ident>LFQN</Ident>
+        <Type>AIRPORT</Type>
+        <Pos Lon="2.235834" Lat="50.729446" Alt="249.00"/>
+      </Waypoint>
+      <Waypoint>
+        <Ident>*Start+379</Ident>
+        <Type>USER</Type>
+        <Pos Lon="2.169306" Lat="50.722763" Alt="10000.00"/>
+      </Waypoint>
+      <Waypoint>
+        <Ident>WP1+10</Ident>
+        <Type>USER</Type>
+        <Pos Lon="1.816628" Lat="50.941990" Alt="10000.00"/>
+      </Waypoint>
+      <Waypoint>
+        <Ident>WP2+0</Ident>
+        <Type>USER</Type>
+        <Pos Lon="1.319581" Lat="51.114624" Alt="10000.00"/>
+      </Waypoint>
+      <Waypoint>
+        <Ident>WP3+260</Ident>
+        <Type>USER</Type>
+        <Pos Lon="1.048892" Lat="51.070675" Alt="10000.00"/>
+      </Waypoint>
+      <Waypoint>
+        <Name>Harringe Airfield</Name>
+        <Ident>EGIQ</Ident>
+        <Type>AIRPORT</Type>
+        <Pos Lon="0.988405" Lat="51.091980" Alt="276.00"/>
+      </Waypoint>
+    </Waypoints>
+  </Flightplan>
+</LittleNavmap>
