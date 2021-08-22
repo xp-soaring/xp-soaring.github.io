@@ -77,7 +77,7 @@ def main():
             ]
             airports.append(airport)
 
-    shred(airports,AIRPORT_KEYS['lng'], "", { 'min_lat': -90, 'min_lng': -180, 'max_lat': 90, 'max_lng': 180} )
+    shred(airports, "", { 'min_lat': -90, 'min_lng': -180, 'max_lat': 90, 'max_lng': 180} )
 
     make_json_file('airports.json')
 
@@ -92,19 +92,49 @@ def make_json_file(name):
     with open(name, 'w') as f:
         f.write(json.dumps(file_obj))
 
-def shred(airports, latlng, index, box_coords):
+def haversine(lon1, lat1, lon2, lat2):
+    """
+    Calculate the great circle distance in kilometers between two points
+    on the earth (specified in decimal degrees)
+    """
+    # convert decimal degrees to radians
+    lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
+
+    # haversine formula
+    dlon = lon2 - lon1
+    dlat = lat2 - lat1
+    a = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlon/2)**2
+    c = 2 * asin(sqrt(a))
+    r = 6371 # Radius of earth in kilometers. Use 3956 for miles. Determines return value units.
+    return c * r
+
+def aspect_ratio(box):
+    lat1 = math.radians(box['min_lat'])
+    lng1 = math.radians(box['min_lng'])
+    lat2 = math.radians(box['max_lat'])
+    lng2 = math.radians(box['max_lng'])
+    dlat = lat2-lat1
+    dlng = lng2-lng1
+    w = math.asin(math.sqrt(math.cos(lat1) ** 2 * math.sin(dlng/2)**2))
+    h = math.asin(math.sqrt(math.sin(dlat/2)**2 ))
+    return w/h
+
+def shred(airports, index, box_coords):
     if len(airports) <= MAX_AIRPORTS_PER_BOX:
         BOX_COORDS[index] = box_coords
         BOXES[index] = airports
     else:
-        airports.sort(key=lambda airport: airport[latlng])
         mid = math.floor(len(airports)/2)
-        if latlng==AIRPORT_KEYS['lat']:
+        if aspect_ratio(box_coords) < 1:
+            # Tall box, so split by latitude
+            airports.sort(key=lambda airport: airport[AIRPORT_KEYS['lat']])
             coords0 = { 'min_lat': box_coords['min_lat'], 'max_lat': airports[mid-1][AIRPORT_KEYS['lat']],
                         'min_lng': box_coords['min_lng'], 'max_lng': box_coords['max_lng'] }
             coords1 = { 'min_lat': airports[mid][AIRPORT_KEYS['lat']],  'max_lat': box_coords['max_lat'],
                         'min_lng': box_coords['min_lng'], 'max_lng': box_coords['max_lng'] }
         else:
+            # Wide box, so split by longitude
+            airports.sort(key=lambda airport: airport[AIRPORT_KEYS['lng']])
             coords0 = { 'min_lat': box_coords['min_lat'], 'max_lat': box_coords['max_lat'],
                         'min_lng': box_coords['min_lng'], 'max_lng': airports[mid-1][AIRPORT_KEYS['lng']] }
             coords1 = { 'min_lat': box_coords['min_lat'], 'max_lat': box_coords['max_lat'],
@@ -113,9 +143,8 @@ def shred(airports, latlng, index, box_coords):
         box0 = airports[0:mid]
         box1 = airports[mid:]
 
-        next_latlng = AIRPORT_KEYS['lat'] if latlng==AIRPORT_KEYS['lng'] else AIRPORT_KEYS['lng']
-        shred(box0, next_latlng, index+"0", coords0)
-        shred(box1, next_latlng, index+"1", coords1)
+        shred(box0, index+"0", coords0) # Oh yeah, recursion FTW.
+        shred(box1, index+"1", coords1)
 
 
 
