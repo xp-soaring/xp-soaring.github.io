@@ -5,6 +5,8 @@ class B21TaskPlanner {
     constructor() {
         this.M_TO_FEET = 3.28084;
         this.M_TO_MILES = 0.000621371;
+
+        this.DEBUG_DRAW_MAP_BOXES = false;
     }
 
     init() {
@@ -12,11 +14,14 @@ class B21TaskPlanner {
 
         this.sv_button = document.getElementById("skyvector_button"); // So we can update action URL
 
+        this.airports_available = false; // set to true when airports.json downloaded
         this.init_settings();
 
         this.init_drop_zone();
 
         this.init_map();
+
+        this.init_airports();
 
         // Task object to hold accumulated waypoints
         this.task = new Task(this);
@@ -54,12 +59,80 @@ class B21TaskPlanner {
         this.map.on('contextmenu', (e) => {parent.map_right_click(parent, e);} );
 
         this.map.on("moveend", () => {
+            console.log("moveend");
             parent.save_map_coords(parent.map.getCenter(), parent.map.getZoom());
             parent.update_skyvector_link(parent.map.getCenter(), parent.map.getZoom());
+            parent.draw_airports();
         });
-        this.map.on('zoomend', () => {
-            parent.update_skyvector_link(parent.map.getCenter(), parent.map.getZoom());
+        this.map.on('zoomend', () => { // Will also call moveend
+            console.log("zoomend");
+            //parent.save_map_coords(parent.map.getCenter(), parent.map.getZoom());
+            //parent.update_skyvector_link(parent.map.getCenter(), parent.map.getZoom());
+            //parent.draw_airports();
         });
+    }
+
+// ********************************************************************************************
+// *********  Download the airport data                ****************************************
+// ********************************************************************************************
+
+    init_airports() {
+        fetch("https://xp-soaring.github.io/tasks/b21_task_planner/airports/airports.json").then(response => {
+            if (!response.ok) {
+                alert("Failed to download the airports data")
+                return null;
+            }
+            //response.headers.set('content-type','application/json');
+            return response.text();
+        }).then( results => {
+            console.log("airports.json loaded");
+            this.airports_data = JSON.parse(results);
+            this.airports_available = true;
+            this.draw_airports();
+        }).catch(error => {
+            console.error('Network error accessing airports.json:', error);
+        });
+    }
+
+    draw_airports() {
+        if (!this.airports_available) {
+            console.log("draw_airports failed");
+            return;
+        }
+        let map_bounds = this.map.getBounds();
+        let map_box = { "min_lat": map_bounds.getSouth(),
+                        "min_lng": map_bounds.getWest(),
+                        "max_lat": map_bounds.getNorth(),
+                        "max_lng": map_bounds.getEast()
+        }
+        console.log("draw_airports", map_box);
+        let box_ids = [];
+        for (let box_id in this.airports_data.box_coords) {
+            let box = this.airports_data.box_coords[box_id];
+            if (this.box_overlap(box, map_box)) {
+                console.log("overlap",box_id, box);
+                if (this.DEBUG_DRAW_MAP_BOXES) {
+                    L.rectangle([[box.min_lat,box.min_lng],[box.max_lat,box.max_lng]]).addTo(this.map);
+                }
+
+            }
+        }
+    }
+
+    box_overlap(box, map_box) {
+        if (map_box.min_lat > box.max_lat) {
+            return false;
+        }
+        if (map_box.max_lat < box.min_lat) {
+            return false;
+        }
+        if (map_box.min_lng > box.max_lng) {
+            return false;
+        }
+        if (map_box.max_lng < box.min_lng) {
+            return false;
+        }
+        return true;
     }
 
 // ********************************************************************************************
