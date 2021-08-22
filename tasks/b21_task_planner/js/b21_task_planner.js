@@ -12,11 +12,14 @@ class B21TaskPlanner {
 
         this.sv_button = document.getElementById("skyvector_button"); // So we can update action URL
 
+        this.airports_available = false; // set to true when airports.json downloaded
         this.init_settings();
 
         this.init_drop_zone();
 
         this.init_map();
+
+        this.init_airports();
 
         // Task object to hold accumulated waypoints
         this.task = new Task(this);
@@ -59,6 +62,26 @@ class B21TaskPlanner {
         });
         this.map.on('zoomend', () => {
             parent.update_skyvector_link(parent.map.getCenter(), parent.map.getZoom());
+        });
+    }
+
+// ********************************************************************************************
+// *********  Download the airport data                ****************************************
+// ********************************************************************************************
+
+    init_airports() {
+        fetch("https://xp-soaring.github.io/tasks/b21_task_planner/airports/airports.json").then(response => {
+            if (!response.ok) {
+                alert("Failed to download the airports data")
+                return null;
+            }
+            response.headers.set('content-type','application/json');
+            return response.json();
+        }).then( results => {
+            console.log("airports.json loaded");
+            this.airports_data = JSON.parse(results);
+        }).catch(error => {
+            console.error('Network error accessing airports.json:', error);
         });
     }
 
