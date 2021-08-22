@@ -187,18 +187,7 @@ class B21TaskPlanner {
     }
 
     map_right_click(parent, e) {
-
-        this.current_latlng = e.latlng; // Preserve 'current' latlng so page methods can use it
-
-        let menu_str = '<div class="menu">';
-        menu_str += parent.menuitem("Add WP", "add_wp");
-        menu_str += parent.menuitem("Add Airport", "add_airport");
-        menu_str += '</div>'; // end menu
-
-        var popup = L.popup()
-            .setLatLng(this.current_latlng)
-            .setContent(menu_str)
-            .openOn(parent.map);
+        return;
     }
 
     menuitem(menu_str, menu_function_name) {
