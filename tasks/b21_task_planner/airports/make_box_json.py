@@ -92,32 +92,18 @@ def make_json_file(name):
     with open(name, 'w') as f:
         f.write(json.dumps(file_obj))
 
-def haversine(lon1, lat1, lon2, lat2):
-    """
-    Calculate the great circle distance in kilometers between two points
-    on the earth (specified in decimal degrees)
-    """
-    # convert decimal degrees to radians
-    lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
-
-    # haversine formula
-    dlon = lon2 - lon1
-    dlat = lat2 - lat1
-    a = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlon/2)**2
-    c = 2 * asin(sqrt(a))
-    r = 6371 # Radius of earth in kilometers. Use 3956 for miles. Determines return value units.
-    return c * r
-
 def aspect_ratio(box):
     lat1 = math.radians(box['min_lat'])
     lng1 = math.radians(box['min_lng'])
     lat2 = math.radians(box['max_lat'])
     lng2 = math.radians(box['max_lng'])
+
     dlat = lat2-lat1
     dlng = lng2-lng1
-    w = math.asin(math.sqrt(math.cos(lat1) ** 2 * math.sin(dlng/2)**2))
-    h = math.asin(math.sqrt(math.sin(dlat/2)**2 ))
-    return w/h
+    mid_lat = (lat1+lat2)/2
+    w = math.cos(mid_lat) * dlng
+    print(w/dlat, box,dlat,dlng)
+    return w/dlat
 
 def shred(airports, index, box_coords):
     if len(airports) <= MAX_AIRPORTS_PER_BOX:

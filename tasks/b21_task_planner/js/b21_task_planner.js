@@ -37,6 +37,8 @@ class B21TaskPlanner {
         // Create Leaflet map on map element.
         this.map = L.map(element);
 
+        this.canvas_renderer = L.canvas();
+
         this.tiles_outdoor = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYjIxc29hcmluZyIsImEiOiJja3M0Z2o0ZWEyNjJ1MzFtcm5rYnAwbjJ6In0.frJxiv-ZUV8e2li7r4_3_A', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             maxZoom: 18,
@@ -87,6 +89,7 @@ class B21TaskPlanner {
         }).then( results => {
             console.log("airports.json loaded");
             this.airports_data = JSON.parse(results);
+            this.airport_markers = L.layerGroup().addTo(this.map);
             this.airports_available = true;
             this.draw_airports();
         }).catch(error => {
@@ -95,8 +98,16 @@ class B21TaskPlanner {
     }
 
     draw_airports() {
+
+        this.airport_markers.clearLayers();
+
         if (!this.airports_available) {
             console.log("draw_airports failed");
+            return;
+        }
+        let zoom = this.map.getZoom();
+        if ( zoom < 9) {
+            console.log("Too zoomed out to display airports");
             return;
         }
         let map_bounds = this.map.getBounds();
@@ -106,7 +117,12 @@ class B21TaskPlanner {
                         "max_lng": map_bounds.getEast()
         }
         console.log("draw_airports", map_box);
-        let box_ids = [];
+        const LAT = this.airports_data.airport_keys['lat'];
+        const LNG = this.airports_data.airport_keys['lng'];
+        const NAME = this.airports_data.airport_keys['name'];
+        const IDENT = this.airports_data.airport_keys['ident'];
+        const TYPE = this.airports_data.airport_keys['type'];
+
         for (let box_id in this.airports_data.box_coords) {
             let box = this.airports_data.box_coords[box_id];
             if (this.box_overlap(box, map_box)) {
@@ -114,7 +130,30 @@ class B21TaskPlanner {
                 if (this.DEBUG_DRAW_MAP_BOXES) {
                     L.rectangle([[box.min_lat,box.min_lng],[box.max_lat,box.max_lng]]).addTo(this.map);
                 }
-
+                let airports = this.airports_data.boxes[box_id];
+                for (let i=0; i<airports.length; i++) {
+                    let airport = airports[i];
+                    let position = new L.latLng(airport[LAT], airport[LNG]);
+                    let ident = airport[IDENT];
+                    let name = airport[NAME];
+                    let type = airport[TYPE];
+                    let marker = L.circleMarker(position, {
+                        renderer: this.canvas_renderer,
+                        color: '#3388ff',
+                        radius: type=="large_airport" ? 10 : 3 * (zoom - 8)
+                    });
+                    marker.addTo(this.airport_markers);
+                    marker.bindPopup(name+"<br/>"+type+"<br/>"+ident);
+                    marker.on('mouseover', function(event){
+                        marker.openPopup();
+                    });
+                    marker.on('mouseout', function(event){
+                        marker.closePopup();
+                    });
+                    marker.on('click', (e) => {
+                        console.log(ident,name);
+                    });
+                }
             }
         }
     }
@@ -260,7 +299,18 @@ class B21TaskPlanner {
     }
 
     map_right_click(parent, e) {
-        return;
+
+        this.current_latlng = e.latlng; // Preserve 'current' latlng so page methods can use it
+
+        let menu_str = '<div class="menu">';
+        menu_str += parent.menuitem("Add WP", "add_wp");
+        menu_str += parent.menuitem("Add Airport", "add_airport");
+        menu_str += '</div>'; // end menu
+
+        var popup = L.popup()
+            .setLatLng(this.current_latlng)
+            .setContent(menu_str)
+            .openOn(parent.map);
     }
 
     menuitem(menu_str, menu_function_name) {
