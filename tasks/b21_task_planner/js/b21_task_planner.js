@@ -5,6 +5,7 @@ class B21TaskPlanner {
     constructor() {
         this.M_TO_FEET = 3.28084;
         this.M_TO_MILES = 0.000621371;
+        this.AIRPORTS_JSON_URL = "https://xp-soaring.github.io/tasks/b21_task_planner/airports/airports.json";
 
         this.DEBUG_DRAW_MAP_BOXES = false;
     }
@@ -79,7 +80,7 @@ class B21TaskPlanner {
 // ********************************************************************************************
 
     init_airports() {
-        fetch("https://xp-soaring.github.io/tasks/b21_task_planner/airports/airports.json").then(response => {
+        fetch(this.AIRPORTS_JSON_URL).then(response => {
             if (!response.ok) {
                 alert("Failed to download the airports data")
                 return null;
@@ -106,7 +107,7 @@ class B21TaskPlanner {
             return;
         }
         let zoom = this.map.getZoom();
-        if ( zoom < 9) {
+        if ( zoom < 8) {
             console.log("Too zoomed out to display airports");
             return;
         }
@@ -121,38 +122,48 @@ class B21TaskPlanner {
         const LNG = this.airports_data.airport_keys['lng'];
         const NAME = this.airports_data.airport_keys['name'];
         const IDENT = this.airports_data.airport_keys['ident'];
-        const TYPE = this.airports_data.airport_keys['type'];
-
+        const TYPE = this.airports_data.airport_keys['type']; //"closed_airport", "heliport", "large_airport", "medium_airport", "seaplane_base", "small_airport"
+        const ALT_M = this.airports_data.airport_keys['alt_m'];
         for (let box_id in this.airports_data.box_coords) {
             let box = this.airports_data.box_coords[box_id];
+            if (this.DEBUG_DRAW_MAP_BOXES) {
+                L.rectangle([[box.min_lat,box.min_lng],[box.max_lat,box.max_lng]]).addTo(this.map);
+            }
             if (this.box_overlap(box, map_box)) {
-                console.log("overlap",box_id, box);
-                if (this.DEBUG_DRAW_MAP_BOXES) {
-                    L.rectangle([[box.min_lat,box.min_lng],[box.max_lat,box.max_lng]]).addTo(this.map);
-                }
+                //console.log("overlap",box_id, box);
                 let airports = this.airports_data.boxes[box_id];
                 for (let i=0; i<airports.length; i++) {
                     let airport = airports[i];
-                    let position = new L.latLng(airport[LAT], airport[LNG]);
-                    let ident = airport[IDENT];
-                    let name = airport[NAME];
                     let type = airport[TYPE];
-                    let marker = L.circleMarker(position, {
-                        renderer: this.canvas_renderer,
-                        color: '#3388ff',
-                        radius: type=="large_airport" ? 10 : 3 * (zoom - 8)
-                    });
-                    marker.addTo(this.airport_markers);
-                    marker.bindPopup(name+"<br/>"+type+"<br/>"+ident);
-                    marker.on('mouseover', function(event){
-                        marker.openPopup();
-                    });
-                    marker.on('mouseout', function(event){
-                        marker.closePopup();
-                    });
-                    marker.on('click', (e) => {
-                        console.log(ident,name);
-                    });
+                    if (type.includes("airport")) {
+                        let position = new L.latLng(airport[LAT], airport[LNG]);
+                        let ident = airport[IDENT];
+                        let name = airport[NAME];
+                        let alt_m = airport[ALT_M];
+                        let circle_radius = 3 * (zoom - 7);
+                        if (type=="large_airport") {
+                            circle_radius *= 3;
+                        } else if (type=="medium_airport") {
+                            circle_radius *= 2;
+                        }
+                        let marker = L.circleMarker(position, {
+                            renderer: this.canvas_renderer,
+                            color: '#3388ff',
+                            radius: circle_radius
+                        });
+                        marker.addTo(this.airport_markers);
+                        marker.bindPopup(name+"<br/>"+type+"<br/>"+ident);
+                        marker.on('mouseover', function(event){
+                            marker.openPopup();
+                        });
+                        marker.on('mouseout', function(event){
+                            marker.closePopup();
+                        });
+                        marker.on('click', (e) => {
+                            console.log("User click:",ident,name);
+                            this.add_new_airport(position, ident, name, alt_m);
+                        });
+                    }
                 }
             }
         }
@@ -294,12 +305,12 @@ class B21TaskPlanner {
 // ********************************************************************************************
 
     map_left_click(parent, e) {
-        this.current_latlng = e.latlng;
-        this.add_new_wp();
+        let position = e.latlng;
+        this.add_new_wp(position);
     }
 
     map_right_click(parent, e) {
-
+        /*
         this.current_latlng = e.latlng; // Preserve 'current' latlng so page methods can use it
 
         let menu_str = '<div class="menu">';
@@ -311,19 +322,58 @@ class B21TaskPlanner {
             .setLatLng(this.current_latlng)
             .setContent(menu_str)
             .openOn(parent.map);
+        */
     }
 
     menuitem(menu_str, menu_function_name) {
         return '<div onclick="b21_task_planner.'+menu_function_name+'()" class="menuitem">'+menu_str+'</div>';
     }
 
-    add_new_wp() {
-        console.log("add_new_wp " + this.current_latlng);
-        let wp = this.task.add_new_wp(this.current_latlng);
+    // User has clicked an airport symbol on the map
+    add_new_airport(position, ident, name, alt_m) {
+        console.log("add_new_airport ", ident, position, name, alt_m);
+        let wp = this.task.add_new_wp(position);
+
+        wp.alt_m = alt_m;
+        if (alt_m == 0) {
+            wp.request_alt_m();
+        }
+        if (this.settings.soaring_task==0 || wp.index == 0 || wp.index == this.task.waypoints.length-1) {
+            wp.name = name;
+            wp.icao = ident;
+        } else {
+            wp.name = ident + " " + name;
+            wp.icao = null;
+        }
+        console.log("airport added, scrubbing earlier airports WP name/icao")
+        // for SOARING tasks, scrub the icao code from earlier airports in task except departure airport
+        for (let i=1; i<this.task.waypoints.length-1; i++) {
+            let task_wp = this.task.waypoints[i];
+            console.log("checking WP",i,task_wp.name);
+            if (task_wp.icao!=null) {
+                console.log("Fixing airport WP",task_wp.name);
+                task_wp.name = task_wp.icao + " " + task_wp.name;
+                task_wp.icao = null;
+            }
+        }
+
+        this.task.update_display();
+
+        this.map.closePopup();
+
+        wp.display_menu();
+    }
+
+    // User has clicked somewhere on the map
+    add_new_wp(position) {
+        console.log("add_new_wp " + position);
+        let wp = this.task.add_new_wp(position);
 
         this.map.closePopup();
 
         wp.request_alt_m();
+
+        this.task.update_display();
 
         wp.display_menu();
     }
@@ -338,10 +388,6 @@ class B21TaskPlanner {
     update_wp_elevation() {
         console.log("User click Update WP elevation");
         this.task.current_wp().request_alt_m();
-    }
-
-    add_airport() {
-        console.log("add airport" + this.current_latlng);
     }
 
     change_wp_name(new_name) {
@@ -993,6 +1039,7 @@ class Task {
         let dom_waypoints = dom.getElementsByTagName("ATCWaypoint"); //XMLNodeList
         for (let i=0; i<dom_waypoints.length; i++) {
             this.add_new_wp(null, dom_waypoints[i]);
+            this.update_display();
         }
     }
 
@@ -1047,12 +1094,15 @@ class Task {
             this.add_line(this.waypoints[wp.index-1],wp);
         }
         this.decode_wp_name(wp);
+        return wp;
+    }
+
+    update_display() {
         this.update_bounds();
         this.update_waypoints();
         this.update_waypoint_icons();
         this.redraw();
         this.display_task_list();
-        return wp;
     }
 
     duplicate_current_wp() {
@@ -1090,7 +1140,7 @@ class Task {
         let wp_extra = "";
         let wp_plus = wp.name.split('+');
         if (wp_plus.length>1){
-            wp_extra = wp_plus[1];
+            wp_extra = wp_plus[wp_plus.length-1];
             let alt_feet = parseFloat(wp_extra);
             if (!isNaN(alt_feet)) {
                 wp.alt_m = alt_feet / this.planner.M_TO_FEET;
@@ -1099,7 +1149,7 @@ class Task {
         }
         let wp_bar = wp.name.split("|");
         if (wp_bar.length>1) {
-            wp_extra = wp_bar[1];
+            wp_extra = wp_bar[wp_bar.length-1];
             let max_alt_feet = parseFloat(wp_extra);
             console.log("parsed max_alt_feet from",wp_extra);
             if (!isNaN(max_alt_feet)) {
@@ -1109,7 +1159,7 @@ class Task {
         }
         let wp_slash = wp_extra.split("-");
         if (wp_slash.length>1) {
-            let min_alt_feet = parseFloat(wp_slash[1]);
+            let min_alt_feet = parseFloat(wp_slash[wp_slash.length-1]);
             if (!isNaN(min_alt_feet)) {
                 console.log("parse min_alt_feet",min_alt_feet);
                 wp.min_alt_m = min_alt_feet / this.planner.M_TO_FEET;
@@ -1119,7 +1169,7 @@ class Task {
         console.log("wp_extra is", wp_extra);
         let wp_x = wp_extra.split("x");
         if (wp_x.length>1) {
-            let wp_radius_m = parseFloat(wp_x[1]);
+            let wp_radius_m = parseFloat(wp_x[wp_x.length-1]);
             if (!isNaN(wp_radius_m)) {
                 console.log("parse wp_radius_m",wp_radius_m);
                 wp.radius_m = wp_radius_m;
@@ -1504,6 +1554,10 @@ class FlightPlan {
         }
     }
 
+    clean(str) {
+        return str.replaceAll('"',"");
+    }
+
     get_text() {
         return this.text;
     }
@@ -1519,22 +1573,22 @@ class FlightPlan {
         let header_text = this.get_header_template();
         let first_wp = this.task.waypoints[0];
         let last_wp = this.task.waypoints[this.task.waypoints.length-1];
-        let title = this.get_title();
+        let title = this.clean(this.get_title());
         header_text = header_text.replace("#TITLE#", title);
         header_text = header_text.replace("#DESCR#", title);
 
-        header_text = header_text.replace("#DEPARTURE_ID#", first_wp.icao);
+        header_text = header_text.replace("#DEPARTURE_ID#", this.clean(first_wp.icao));
         header_text = header_text.replace("#DEPARTURE_LLA#", this.get_world_position(first_wp));
         if (first_wp.runway==null) {
             header_text = header_text.replace("<DeparturePosition>#DEPARTURE_POSITION#</DeparturePosition>","");
         } else {
             header_text = header_text.replace("#DEPARTURE_POSITION#", first_wp.runway);
         }
-        header_text = header_text.replace("#DEPARTURE_NAME#", first_wp.get_name());
+        header_text = header_text.replace("#DEPARTURE_NAME#", this.clean(first_wp.get_name()));
 
-        header_text = header_text.replace("#DESTINATION_ID#", last_wp.icao);
+        header_text = header_text.replace("#DESTINATION_ID#", this.clean(last_wp.icao));
         header_text = header_text.replace("#DESTINATION_LLA#", this.get_world_position(last_wp));
-        header_text = header_text.replace("#DESTINATION_NAME#", last_wp.get_name());
+        header_text = header_text.replace("#DESTINATION_NAME#", this.clean(last_wp.get_name()));
 
         return header_text;
     }
@@ -1542,7 +1596,7 @@ class FlightPlan {
     // Return the XML string for each waypoint (either "User" or "Airport" depending on wp.icao==null)
     get_wp_text(index) {
         let wp = this.task.waypoints[index];
-        let encoded_name = this.task.get_encoded_name(wp);
+        let encoded_name = this.clean(this.task.get_encoded_name(wp));
         let wp_text = "";
         if (wp.icao==null) {
             let wp_template = this.get_wp_user_template();
@@ -1551,7 +1605,7 @@ class FlightPlan {
         } else {
             let wp_template = this.get_wp_airport_template();
             wp_text = wp_template.replace("#ATCWAYPOINT_ID#",encoded_name);
-            wp_text = wp_text.replace("#ICAO_IDENT#", wp.icao);
+            wp_text = wp_text.replace("#ICAO_IDENT#", this.clean(wp.icao));
             wp_text = wp_text.replace("#WORLD_POSITION#",this.get_world_position(wp));
             if (wp.runway==null) {
                 wp_text = wp_text.replace("<RunwayNumberFP>#RUNWAY_NUMBER_FP#</RunwayNumberFP>","");

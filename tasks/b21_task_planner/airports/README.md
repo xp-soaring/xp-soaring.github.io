@@ -3,8 +3,11 @@
 This data is downloaded from the awesome guys at https://ourairports.com/data/
 
 Our objective is to create a data structure which speeds up searching for which airports should be drawn within a given map bounds. We do
-this by segmenting the linear list of airports into a collection of lat/long boxes, so the map display algorithm can FIRST search the box
+this by segmenting the linear list of airports into a collection of equal-airport-count lat/long boxes, so the map display
+algorithm can FIRST search the box
 boundaries and choose which boxes overlap the map bounds, and then only display/search the airports within those boxes.
+
+![airports divided into equal-count boxes](shred.png)
 
 The current script set the MAX_AIRPORTS_PER_BOX to 500, which results in 256 boxes (it's always a power of 2) each with about 260 airports.
 
