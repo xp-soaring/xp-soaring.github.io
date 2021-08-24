@@ -16,6 +16,7 @@ class B21TaskPlanner {
         this.sv_button = document.getElementById("skyvector_button"); // So we can update action URL
 
         this.airports_available = false; // set to true when airports.json downloaded
+
         this.init_settings();
 
         this.init_drop_zone();
@@ -33,14 +34,13 @@ class B21TaskPlanner {
         let parent = this;
 
         // Where you want to render the map.
-        const element = document.getElementById('map');
-
-        // Create Leaflet map on map element.
-        this.map = L.map(element);
+        const map_el = document.getElementById('map');
 
         this.canvas_renderer = L.canvas();
 
-        this.tiles_outdoor = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYjIxc29hcmluZyIsImEiOiJja3M0Z2o0ZWEyNjJ1MzFtcm5rYnAwbjJ6In0.frJxiv-ZUV8e2li7r4_3_A', {
+        // https://leaflet-extras.github.io/leaflet-providers/preview/
+
+        let tiles_outdoor = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYjIxc29hcmluZyIsImEiOiJja3M0Z2o0ZWEyNjJ1MzFtcm5rYnAwbjJ6In0.frJxiv-ZUV8e2li7r4_3_A', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             maxZoom: 18,
             id: 'mapbox/outdoors-v11',
@@ -50,7 +50,82 @@ class B21TaskPlanner {
             accessToken: 'pk.eyJ1IjoiYjIxc29hcmluZyIsImEiOiJja3M0Z2o0ZWEyNjJ1MzFtcm5rYnAwbjJ6In0.frJxiv-ZUV8e2li7r4_3_A'
         });
 
-        this.tiles_outdoor.addTo(this.map);
+        let tiles_opentopomap = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+        	maxZoom: 17,
+        	attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+        });
+
+        let thunderforest_landscape = L.tileLayer('https://{s}.tile.thunderforest.com/landscape/{z}/{x}/{y}.png?apikey={apikey}', {
+        	attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        	apikey: '<your apikey>',
+        	maxZoom: 22
+        });
+
+        let thunderforest_outdoors = L.tileLayer('https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey={apikey}', {
+	       attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+	       apikey: '<your apikey>',
+	       maxZoom: 22
+        });
+
+        let stamen_terrain = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}{r}.{ext}', {
+        	attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        	subdomains: 'abcd',
+        	minZoom: 0,
+        	maxNativeZoom: 13,
+        	ext: 'png'
+        });
+
+        let cyclosm = L.tileLayer('https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png', {
+        	maxZoom: 20,
+        	attribution: '<a href="https://github.com/cyclosm/cyclosm-cartocss-style/releases" title="CyclOSM - Open Bicycle render">CyclOSM</a> | Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        });
+
+        var esri_natgeo_world = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {
+        	attribution: 'Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC',
+        	maxZoom: 16
+        });
+
+        let esri_world_imagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+        });
+
+        // Optional additional layers
+        this.airport_markers = L.layerGroup(); //.addTo(this.map);
+
+        let open_railway_map = L.tileLayer('https://{s}.tiles.openrailwaymap.org/standard/{z}/{x}/{y}.png', {
+        	maxZoom: 19,
+        	attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | Map style: &copy; <a href="https://www.OpenRailwayMap.org">OpenRailwayMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+        });
+
+        this.base_maps = { "TopoMap": tiles_opentopomap,
+                            "NatGeo": esri_natgeo_world,
+                            "Outdoor": tiles_outdoor,
+                            //"Thunderforest Land": thunderforest_landscape,
+                            //"Thunderforest Outdoor": thunderforest_outdoors,
+                            "StamenTerrain": stamen_terrain,
+                            //"CyclOSM": cyclosm,
+                           "Satellite": esri_world_imagery
+        }
+
+        this.map_layers = { "Airports": this.airport_markers,
+                            "Railways": open_railway_map
+        }
+
+        this.map = L.map(map_el, {
+            minZoom: 5,
+            maxZoom: 16,
+            layers: [this.base_maps[this.settings.base_layer_name], this.airport_markers]
+        });
+        //this.tiles_outdoor.addTo(this.map);
+        //this.tiles_opentopomap.addTo(this.map);
+        //esri_world_imagery.addTo(this.map);
+
+        this.map.on("baselayerchange",(e) => {
+            console.log("baselayerchange",e);
+            this.set_setting("base_layer_name",e.name);
+        });
+
+        L.control.layers(this.base_maps, this.map_layers).addTo(this.map);
 
         this.load_map_coords();
 
@@ -90,7 +165,6 @@ class B21TaskPlanner {
         }).then( results => {
             console.log("airports.json loaded");
             this.airports_data = JSON.parse(results);
-            this.airport_markers = L.layerGroup().addTo(this.map);
             this.airports_available = true;
             this.draw_airports();
         }).catch(error => {
@@ -532,7 +606,8 @@ class B21TaskPlanner {
             wp_radius_units: ["m", "feet"],
             wp_radius_m:  500,
             wp_min_alt_m: 330,
-            wp_max_alt_m: 2000
+            wp_max_alt_m: 2000,
+            base_layer_name: "TopoMap"
         };
 
         this.settings_el = document.getElementById("settings");
@@ -662,7 +737,13 @@ class B21TaskPlanner {
     get_setting(var_name) {
         let value = window.localStorage.getItem('b21_task_planner_'+var_name);
         let error = true;
-        if (typeof this.settings_values[var_name] == "object") {
+        if (typeof this.settings_values[var_name] == "string") {
+            if (value==null || value=="") {
+                this.settings[var_name] = this.settings_values[var_name];
+            } else {
+                this.settings[var_name] = value;
+            }
+        } else if (typeof this.settings_values[var_name] == "object") {
             for (let i=0; i<this.settings_values[var_name].length; i++) {
                 if (value == this.settings_values[var_name][i]) {
                     this.settings[var_name] = value;
