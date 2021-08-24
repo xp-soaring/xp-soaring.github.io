@@ -33,6 +33,8 @@ keywords	LON, Londres	Extra keywords/phrases to assist with search, comma-separa
 import csv
 import math
 import json
+import argparse
+import sys
 
 # csv offsets in airports.csv file (see above)
 F_IDENT = 1
@@ -57,9 +59,9 @@ M_TO_FEET = 3.28084
 BOX_COORDS = {}
 BOXES = {}
 
-def main():
+def main(fn_in, fn_out):
     airports = [];
-    with open('airports.csv') as csvfile:
+    with sys.stdin if fn_in is None else open(fn_in, 'r') as csvfile:
         reader = csv.reader(csvfile)
         for row in reader:
             #airport = { 'lat': float(row[LAT]),
@@ -68,18 +70,21 @@ def main():
             #            'type': row[TYPE],
             #            'alt_m': 0 if row[ELEVATION]=='' else float(row[ELEVATION]) / M_TO_FEET
             #}
-            airport = [ row[F_IDENT],
-                        float(row[F_LAT]),
-                        float(row[F_LNG]),
-                        row[F_NAME],
-                        row[F_TYPE],
-                        0 if row[F_ELEVATION]=='' else float(row[F_ELEVATION]) / M_TO_FEET
-            ]
-            airports.append(airport)
+            try:
+                airport = [ row[F_IDENT],
+                            float(row[F_LAT]),
+                            float(row[F_LNG]),
+                            row[F_NAME],
+                            row[F_TYPE],
+                            0 if row[F_ELEVATION]=='' else float(row[F_ELEVATION]) / M_TO_FEET
+                ]
+                airports.append(airport)
+            except Exception as e:
+                print(row,e, file=sys.stderr)
 
     shred(airports, "", { 'min_lat': -90, 'min_lng': -180, 'max_lat': 90, 'max_lng': 180} )
 
-    make_json_file('airports.json')
+    make_json_file(fn_out)
 
 def make_json_file(name):
     file_obj = {}
@@ -89,7 +94,7 @@ def make_json_file(name):
     #for key in BOXES:
     #    airports_list = 'debug'
     file_obj['boxes'] = BOXES
-    with open(name, 'w') as f:
+    with sys.stdout if name is None else open(name, 'w') as f:
         f.write(json.dumps(file_obj))
 
 def aspect_ratio(box):
@@ -102,7 +107,7 @@ def aspect_ratio(box):
     dlng = lng2-lng1
     mid_lat = (lat1+lat2)/2
     w = math.cos(mid_lat) * dlng
-    print(w/dlat, box,dlat,dlng)
+    #print(w/dlat, box,dlat,dlng)
     return w/dlat
 
 def shred(airports, index, box_coords):
@@ -135,4 +140,8 @@ def shred(airports, index, box_coords):
 
 
 if __name__=="__main__":
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--input_file", help="CSV file id,ident,type,name,lat,lng,elev_ft[,short_desc,long_desc]")
+    parser.add_argument("--output_file", help="json file to be written.")
+    args = parser.parse_args()
+    main(args.input_file, args.output_file)
