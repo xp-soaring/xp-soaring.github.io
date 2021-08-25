@@ -40,6 +40,11 @@ class B21TaskPlanner {
 
         // https://leaflet-extras.github.io/leaflet-providers/preview/
 
+        let tiles_mapnik = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        });
+
         let tiles_outdoor = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYjIxc29hcmluZyIsImEiOiJja3M0Z2o0ZWEyNjJ1MzFtcm5rYnAwbjJ6In0.frJxiv-ZUV8e2li7r4_3_A', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             maxZoom: 18,
@@ -97,7 +102,8 @@ class B21TaskPlanner {
         	attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | Map style: &copy; <a href="https://www.OpenRailwayMap.org">OpenRailwayMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
         });
 
-        this.base_maps = { "TopoMap": tiles_opentopomap,
+        this.base_maps = {  "Streetmap": tiles_mapnik,
+                            "TopoMap": tiles_opentopomap,
                             "NatGeo": esri_natgeo_world,
                             "Outdoor": tiles_outdoor,
                             //"Thunderforest Land": thunderforest_landscape,
@@ -620,7 +626,7 @@ class B21TaskPlanner {
             wp_radius_m:  500,
             wp_min_alt_m: 330,
             wp_max_alt_m: 2000,
-            base_layer_name: "TopoMap"
+            base_layer_name: "Streetmap"
         };
 
         this.settings_el = document.getElementById("settings");
