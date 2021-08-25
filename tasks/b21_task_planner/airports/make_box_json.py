@@ -43,6 +43,7 @@ F_NAME = 3
 F_LAT = 4
 F_LNG = 5
 F_ELEVATION = 6
+F_RUNWAYS = 7
 
 # index offsets for our airport list (more compact text than using dict)
 AIRPORT_KEYS = {
@@ -51,7 +52,8 @@ AIRPORT_KEYS = {
     'lng': 2,
     'name': 3,
     'type': 4,
-    'alt_m': 5
+    'alt_m': 5,
+    'runways': 6
 }
 
 M_TO_FEET = 3.28084
@@ -76,7 +78,8 @@ def main(fn_in, fn_out):
                             float(row[F_LNG]),
                             row[F_NAME],
                             row[F_TYPE],
-                            0 if row[F_ELEVATION]=='' else float(row[F_ELEVATION]) / M_TO_FEET
+                            0 if row[F_ELEVATION]=='' else float(row[F_ELEVATION]) / M_TO_FEET,
+                            row[F_RUNWAYS]
                 ]
                 airports.append(airport)
             except Exception as e:

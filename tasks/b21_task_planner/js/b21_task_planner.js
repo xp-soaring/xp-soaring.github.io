@@ -6,7 +6,7 @@ class B21TaskPlanner {
         this.M_TO_FEET = 3.28084;
         this.M_TO_MILES = 0.000621371;
         this.AIRPORTS_JSON_URL = "https://xp-soaring.github.io/tasks/b21_task_planner/airports/airports.json";
-
+        //this.AIRPORTS_JSON_URL = "https://raw.githubusercontent.com/xp-soaring/b21_task_planner/main/airports/airports.json"
         this.DEBUG_DRAW_MAP_BOXES = false;
     }
 
@@ -198,6 +198,7 @@ class B21TaskPlanner {
         const IDENT = this.airports_data.airport_keys['ident'];
         const TYPE = this.airports_data.airport_keys['type']; //"closed_airport", "heliport", "large_airport", "medium_airport", "seaplane_base", "small_airport"
         const ALT_M = this.airports_data.airport_keys['alt_m'];
+        const RUNWAYS = this.airports_data.airport_keys['runways'];
         for (let box_id in this.airports_data.box_coords) {
             let box = this.airports_data.box_coords[box_id];
             if (this.DEBUG_DRAW_MAP_BOXES) {
@@ -214,6 +215,7 @@ class B21TaskPlanner {
                         let ident = airport[IDENT];
                         let name = airport[NAME];
                         let alt_m = airport[ALT_M];
+                        let runways = airport[RUNWAYS];
                         let circle_radius = 3 * (zoom - 7);
                         if (type=="large_airport") {
                             circle_radius *= 3;
@@ -235,7 +237,7 @@ class B21TaskPlanner {
                         });
                         marker.on('click', (e) => {
                             console.log("User click:",ident,name);
-                            this.add_new_airport(position, ident, name, alt_m);
+                            this.add_new_airport(position, ident, name, alt_m, runways);
                         });
                     }
                 }
@@ -404,8 +406,8 @@ class B21TaskPlanner {
     }
 
     // User has clicked an airport symbol on the map
-    add_new_airport(position, ident, name, alt_m) {
-        console.log("add_new_airport ", ident, position, name, alt_m);
+    add_new_airport(position, ident, name, alt_m, runways) {
+        console.log("add_new_airport ", ident, position, name, alt_m, runways);
         let wp = this.task.add_new_wp(position);
 
         wp.alt_m = alt_m;
@@ -418,6 +420,10 @@ class B21TaskPlanner {
         } else {
             wp.name = ident + " " + name;
             wp.icao = null;
+        }
+        if (runways != null && runways != "") {
+            let runways_list = runways.split(" ");
+            wp.runways = runways_list;
         }
         console.log("airport added, scrubbing earlier airports WP name/icao")
         // for SOARING tasks, scrub the icao code from earlier airports in task except departure airport
@@ -479,6 +485,13 @@ class B21TaskPlanner {
     change_wp_runway(runway) {
         console.log("new wp runway = ",runway);
         this.task.current_wp().set_runway(runway);
+    }
+
+    // Runway selected from drop-down box
+    select_wp_runway(runway) {
+        document.getElementById("wp_runway").value = runway;
+        console.log("Selected runway",runway);
+        this.change_wp_runway(runway);
     }
 
     change_wp_alt(new_alt) {
@@ -804,7 +817,8 @@ class WP {
         this.name = null;
         this.position = position;
         this.icao = null;
-        this.runway = null;
+        this.runway = null; // Selected runway
+        this.runways = null; // List of available runways
         this.alt_m = 0;
         this.alt_m_updated = false; // true is elevation has been updated
         this.radius_m = null;
@@ -1002,8 +1016,15 @@ class WP {
 
         form_str += '<br/>ICAO: <input class="wp_icao" onchange="b21_task_planner.change_wp_icao(this.value)" value="' + this.get_icao() + '"</input> ';
 
-        form_str += ' runway: <input class="wp_runway" onchange="b21_task_planner.change_wp_runway(this.value)" value="' + this.get_runway() + '"</input> ';
-
+        form_str += ' Runway: <input id="wp_runway" class="wp_runway" onchange="b21_task_planner.change_wp_runway(this.value)" value="' + this.get_runway() + '"</input> ';
+        if (this.runways != null) {
+            form_str += '<select class="wp_runway_select" onchange="b21_task_planner.select_wp_runway(this.value)" value="">';
+            form_str += '<option></option>';
+            for (let i=0;i<this.runways.length;i++) {
+                form_str += '<option>'+this.runways[i]+'</option>';
+            }
+            form_str += '</select>';
+        }
         let alt_str = this.alt_m.toFixed(0);
         let alt_units_str = "m.";
         if (this.planner.settings.altitude_units == "feet") {
