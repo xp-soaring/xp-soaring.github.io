@@ -243,7 +243,7 @@ class B21TaskPlanner {
                         });
                         marker.on('click', (e) => {
                             console.log("User click:",ident,name);
-                            this.add_new_airport(position, ident, name, alt_m, runways);
+                            this.task.add_new_airport(position, ident, name, alt_m, runways);
                         });
                     }
                 }
@@ -409,45 +409,6 @@ class B21TaskPlanner {
 
     menuitem(menu_str, menu_function_name) {
         return '<div onclick="b21_task_planner.'+menu_function_name+'()" class="menuitem">'+menu_str+'</div>';
-    }
-
-    // User has clicked an airport symbol on the map
-    add_new_airport(position, ident, name, alt_m, runways) {
-        console.log("add_new_airport ", ident, position, name, alt_m, runways);
-        let wp = this.task.add_new_wp(position);
-
-        wp.alt_m = alt_m;
-        if (alt_m == 0) {
-            wp.request_alt_m();
-        }
-        if (this.settings.soaring_task==0 || wp.index == 0 || wp.index == this.task.waypoints.length-1) {
-            wp.name = name;
-            wp.icao = ident;
-        } else {
-            wp.name = ident + " " + name;
-            wp.icao = null;
-        }
-        if (runways != null && runways != "") {
-            let runways_list = runways.split(" ");
-            wp.runways = runways_list;
-        }
-        console.log("airport added, scrubbing earlier airports WP name/icao")
-        // for SOARING tasks, scrub the icao code from earlier airports in task except departure airport
-        for (let i=1; i<this.task.waypoints.length-1; i++) {
-            let task_wp = this.task.waypoints[i];
-            console.log("checking WP",i,task_wp.name);
-            if (task_wp.icao!=null) {
-                console.log("Fixing airport WP",task_wp.name);
-                task_wp.name = task_wp.icao + " " + task_wp.name;
-                task_wp.icao = null;
-            }
-        }
-
-        this.task.update_display();
-
-        this.map.closePopup();
-
-        wp.display_menu();
     }
 
     // User has clicked somewhere on the map
@@ -924,6 +885,7 @@ class WP {
         let wp_icon = L.divIcon( {
             className: "wp_icon",
             iconSize: [5,5],
+            iconAnchor: [0,0],
             html: icon_html
         } );
 
@@ -1085,7 +1047,7 @@ class WP {
         form_str += this.planner.menuitem("Add duplicate of this WP to task","duplicate_wp_to_task");
         form_str += this.planner.menuitem("Update this waypoint elevation","update_wp_elevation");
         form_str += '</div>';
-        var popup = L.popup({ offset: [0,0]})
+        var popup = L.popup({ offset: [0,10]})
             .setLatLng(this.position)
             .setContent(form_str)
             .openOn(this.planner.map);
@@ -1095,6 +1057,8 @@ class WP {
         let wp = new WP(this.planner, index, this.position);
         wp.name = this.name;
         wp.alt_m = this.alt_m;
+        wp.icao = this.icao;
+        wp.runways = this.runways;
         return wp;
     }
 
@@ -1205,6 +1169,52 @@ class Task {
         return wp;
     }
 
+    // User has clicked an airport symbol on the map
+    add_new_airport(position, ident, name, alt_m, runways) {
+        console.log("task.add_new_airport ", ident, position, name, alt_m, runways);
+        let wp = this.add_new_wp(position);
+
+        wp.alt_m = alt_m;
+        if (alt_m == 0) {
+            wp.request_alt_m();
+        }
+        if (this.planner.settings.soaring_task==0 || wp.index == 0 || wp.index == this.waypoints.length-1) {
+            wp.name = name;
+            wp.icao = ident;
+        } else {
+            wp.name = ident + " " + name;
+            wp.icao = null;
+        }
+        if (runways != null && runways != "") {
+            let runways_list = runways.split(" ");
+            wp.runways = runways_list;
+        }
+        console.log("airport added, scrubbing earlier airports WP name/icao")
+        // for SOARING tasks, scrub the icao code from earlier airports in task except departure airport
+        if (this.planner.settings.soaring_task==1) {
+            this.scrub_intermediate_icao();
+        }
+
+        this.update_display();
+
+        this.planner.map.closePopup();
+
+        wp.display_menu();
+    }
+
+    scrub_intermediate_icao() {
+        console.log("Scrubbing intermediate icao codes");
+        for (let i=1; i<this.waypoints.length-1; i++) {
+            let task_wp = this.waypoints[i];
+            console.log("checking WP",i,task_wp.name);
+            if (task_wp.icao!=null) {
+                console.log("Fixing airport WP",task_wp.name);
+                task_wp.name = task_wp.icao + " " + task_wp.name;
+                task_wp.icao = null;
+            }
+        }
+    }
+
     update_display() {
         this.update_bounds();
         this.update_waypoints();
@@ -1214,11 +1224,15 @@ class Task {
     }
 
     duplicate_current_wp() {
+        console.log("Duplicating current WP, icao=",this.current_wp().icao);
         let next_index = this.waypoints.length;
         console.log("task append existing wp",next_index);
         let wp = this.current_wp().copy(next_index);
-        this.index = next_index;
         this.waypoints.push(wp);
+        if (this.planner.settings.soaring_task==1 && wp.icao != null) {
+            this.scrub_intermediate_icao();
+        }
+        this.index = next_index;
         this.add_line(this.waypoints[wp.index-1],wp);
         this.update_waypoints();
         this.update_waypoint_icons();
