@@ -1211,6 +1211,7 @@ class Task {
                 console.log("Fixing airport WP",task_wp.name);
                 task_wp.name = task_wp.icao + " " + task_wp.name;
                 task_wp.icao = null;
+                task_wp.alt_m_updated = true; // So planner will append +(alt_m) to encoded wp name
             }
         }
     }
