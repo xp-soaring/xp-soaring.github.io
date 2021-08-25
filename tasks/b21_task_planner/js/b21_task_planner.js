@@ -1184,6 +1184,7 @@ class Task {
         } else {
             wp.name = ident + " " + name;
             wp.icao = null;
+            wp.alt_m_updated = true;
         }
         if (runways != null && runways != "") {
             let runways_list = runways.split(" ");
