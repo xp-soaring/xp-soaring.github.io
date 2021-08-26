@@ -219,6 +219,7 @@ class B21TaskPlanner {
                     if (type.includes("airport")) {
                         let position = new L.latLng(airport[LAT], airport[LNG]);
                         let ident = airport[IDENT];
+                        let type = airport[TYPE];
                         let name = airport[NAME];
                         let alt_m = airport[ALT_M];
                         let runways = airport[RUNWAYS];
@@ -230,7 +231,7 @@ class B21TaskPlanner {
                         }
                         let marker = L.circleMarker(position, {
                             renderer: this.canvas_renderer,
-                            color: '#3388ff',
+                            color: this.task.is_msfs_airport(type) ? '#3388ff' : '#33ff88',
                             radius: circle_radius
                         });
                         marker.addTo(this.airport_markers);
@@ -243,7 +244,7 @@ class B21TaskPlanner {
                         });
                         marker.on('click', (e) => {
                             console.log("User click:",ident,name);
-                            this.task.add_new_airport(position, ident, name, alt_m, runways);
+                            this.task.add_new_poi(position, type, {"ident": ident, "name": name, "alt_m": alt_m, "runways": runways});
                         });
                     }
                 }
@@ -1169,25 +1170,38 @@ class Task {
         return wp;
     }
 
+    is_msfs_airport(type) {
+        return type != null && type.includes("msfs") && type.includes("airport")
+    }
+
     // User has clicked an airport symbol on the map
-    add_new_airport(position, ident, name, alt_m, runways) {
-        console.log("task.add_new_airport ", ident, position, name, alt_m, runways);
+    add_new_poi(position, type, poi_info) {
+        // poi_info = {ident,name,alt_m,runways}
+        console.log("task.add_new_poi ", position, type, poi_info);
         let wp = this.add_new_wp(position);
 
-        wp.alt_m = alt_m;
-        if (alt_m == 0) {
+        if (wp.index==0 && !this.is_msfs_airport(type)) {
+            alert("Hint: your first (and last) WP should be a MSFS airport (blue circle on map)");
+        }
+
+        wp.alt_m = poi_info["alt_m"];
+        if (wp.alt_m == 0) {
             wp.request_alt_m();
         }
-        if (this.planner.settings.soaring_task==0 || wp.index == 0 || wp.index == this.waypoints.length-1) {
-            wp.name = name;
-            wp.icao = ident;
+        if (this.is_msfs_airport(type) && (this.planner.settings.soaring_task==0 || wp.index == 0 || wp.index == this.waypoints.length-1)) {
+            wp.name = poi_info["name"];
+            wp.icao = poi_info["ident"];
         } else {
-            wp.name = ident + " " + name;
+            if (this.is_msfs_airport(type)) {
+                wp.name = poi_info["ident"] + " " + poi_info["name"];
+            } else {
+                wp.name = poi_info["name"];
+            }
             wp.icao = null;
             wp.alt_m_updated = true;
         }
-        if (runways != null && runways != "") {
-            let runways_list = runways.split(" ");
+        if (poi_info["runways"] != null && poi_info["runways"] != "") {
+            let runways_list = poi_info["runways"].split(" ");
             wp.runways = runways_list;
         }
         console.log("airport added, scrubbing earlier airports WP name/icao")

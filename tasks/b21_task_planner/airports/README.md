@@ -1,15 +1,13 @@
 # The airports data for B21 Task Planner
 
-This data is downloaded from the awesome guys at https://ourairports.com/data/
+We currently have two main sources for airports data:
 
-Our objective is to create a data structure which speeds up searching for which airports should be drawn within a given map bounds. We do
-this by segmenting the linear list of airports into a collection of equal-airport-count lat/long boxes, so the map display
-algorithm can FIRST search the box
-boundaries and choose which boxes overlap the map bounds, and then only display/search the airports within those boxes.
+1. Data is downloaded from the awesome guys at https://ourairports.com/data/
+2. Data extracted from MSFS
 
-![airports divided into equal-count boxes](shred.png)
+## Ourairports data
 
-The current script set the MAX_AIRPORTS_PER_BOX to 500, which results in 256 boxes (it's always a power of 2) each with about 260 airports.
+Available from https://ourairports.com/data/
 
 We download the ourairports.com 'airports.csv', then process that file by running `make_box_json.py` (e.g. use command "python make_box_json.py").
 
@@ -41,6 +39,55 @@ home_link	http://www.heathrowairport.com/	URL of the airport's official home pag
 wikipedia_link	https://en.wikipedia.org/wiki/Heathrow_Airport	URL of the airport's page on Wikipedia, if one exists.
 keywords	LON, Londres	Extra keywords/phrases to assist with search, comma-separated. May include former names for the airport, alternate codes, names in other languages, nearby tourist destinations, etc.
 ```
+
+## Reading the data from MSFS 2020
+
+Here you need a PC with MSFS installed, and use [LittleNavMap](https://albar965.github.io/littlenavmap.html) to
+read the data from MSFS into an SQLite database (i.e. file), and then use the SQLite command line to query the data
+in the tables and output CSV.
+
+### `make_merge_runways.py`
+```
+usage: make_merge_runways.py [-h] [--output_file OUTPUT_FILE] airport_file runway_file
+
+positional arguments:
+  airport_file          CSV file id,ident,type,name,lat,lng,elev_ft[,short_desc,long_desc]
+  runway_file           CSV file ident,runway_name
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --output_file OUTPUT_FILE
+                        CSV output file
+```
+
+Suitable queries will extract the Airports data and the Runways data (both as CSV), and then the program
+`make_merge_runways.py` in this package can be used to append the runway information (just the names) onto
+each airport CSV record. With input files `msfs_airports.csv` and `msfs_runways.csv` we produce the
+output file `msfs_airports_runways.csv` which has one row per airport
+
+## Structuring the data for fast access
+
+Our objective is to create a data structure which speeds up searching for which airports should be drawn within a given map bounds. We do
+this by segmenting the linear list of airports into a collection of equal-airport-count lat/long boxes, so the map display
+algorithm can FIRST search the box
+boundaries and choose which boxes overlap the map bounds, and then only display/search the airports within those boxes.
+
+![airports divided into equal-count boxes](shred.png)
+
+### `make_box_json.py`
+
+```
+usage: make_box_json.py [-h] [--input_file INPUT_FILE] [--output_file OUTPUT_FILE]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --input_file INPUT_FILE
+                        CSV file id,ident,type,name,lat,lng,elev_ft[,short_desc,long_desc]
+  --output_file OUTPUT_FILE
+                        json file to be written.
+```
+
+The current script set the MAX_AIRPORTS_PER_BOX to 500, which results in 256 boxes (it's always a power of 2) each with about 260 airports.
 
 The output of 'make_box_json.py' is a JSON formatted object (suitable for reading into Javascript, or anything else that can parse JSON)
 which has the airports divided into lat/long boxes that combined cover the earth but each box contains the same number of airports. I.e.
