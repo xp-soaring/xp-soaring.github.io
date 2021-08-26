@@ -61,7 +61,7 @@ def main(fn_msfs, fn_ourairports, fn_out):
                             row[F_NAME],
                             float(row[F_LAT]),
                             float(row[F_LNG]),
-                            0 if row[F_ELEVATION]=='' else float(row[F_ELEVATION]) / M_TO_FEET,
+                            0 if row[F_ELEVATION]=='' else float(row[F_ELEVATION]),
                             row[F_GPS_CODE],
                             row[F_LOCAL_CODE]
                 ]

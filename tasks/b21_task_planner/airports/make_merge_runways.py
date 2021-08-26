@@ -42,7 +42,7 @@ def main(fn_airport, fn_runway, fn_out):
                             row[F_NAME],
                             float(row[F_LAT]),
                             float(row[F_LNG]),
-                            0 if row[F_ELEVATION]=='' else float(row[F_ELEVATION]) / M_TO_FEET
+                            0 if row[F_ELEVATION]=='' else float(row[F_ELEVATION])
                 ]
                 airports[ident]=airport
             except Exception as e:
@@ -84,4 +84,3 @@ if __name__=="__main__":
     parser.add_argument("--output_file", help="CSV output file")
     args = parser.parse_args()
     main(args.airport_file, args.runway_file, args.output_file)
-
