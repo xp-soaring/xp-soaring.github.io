@@ -22,7 +22,7 @@ F_LOCAL_CODE = 14
 
 M_TO_FEET = 3.28084
 
-LAT_LNG_DIGITS = 2 ## how many decimals lat|lng to consider same location
+LAT_LNG_DIFF = 0.03 ## decimals lat|lng to consider same location
 
 BOX_COORDS = {}
 BOXES = {}
@@ -41,7 +41,8 @@ def main(fn_msfs, fn_ourairports, fn_out):
             #}
             try:
                 ident = row[F_IDENT]
-                airport = [ round(float(row[F_LAT]),LAT_LNG_DIGITS),round(float(row[F_LNG]),LAT_LNG_DIGITS),
+                airport = [ float(row[F_LAT]),
+                            float(row[F_LNG]),
                             row[F_NAME]
                  ]
                 msfs[ident]=airport
@@ -103,11 +104,11 @@ def main(fn_msfs, fn_ourairports, fn_out):
                 break
 
 def match_lat_lng(airports, lat, lng):
-    lat_round = round(lat,LAT_LNG_DIGITS)
-    lng_round = round(lng,LAT_LNG_DIGITS)
     for ident in airports:
         #print(f'match {lat},{lng} with msfs[{ident}] {airports[ident]}')
-        if lat_round == airports[ident][0] and lng_round == airports[ident][1]:
+        lat_diff = abs(lat - airports[ident][0])
+        lng_diff = abs(lng - airports[ident][1])
+        if lat_diff < LAT_LNG_DIFF and lng_diff < LAT_LNG_DIFF:
             return ident
 
     #print(f'no match for {lat},{lng}')
