@@ -34,14 +34,14 @@ function loaded() {
 <body onload="loaded()">
     <div class="header">
         <div class="title">
-            <div class="title_text">B21 Task Planner</div>
+            <div class="title_text">B21 Task Planner v1.10</div>
             <div class="title_task_option">Soaring task: <input id="soaring_task_checkbox" type="checkbox" onclick="b21_task_planner.click_soaring_task(this)" checked/></div>
         </div>
     </div>
 
     <div id="buttons">
-        <button onclick="b21_task_planner.reset()">Reset Task</button>
         <button onclick="b21_task_planner.download()">Download FlightPlan</button>
+        <button onclick="b21_task_planner.reset()">Reset Task</button>
         <button onclick="b21_task_planner.update_elevations()">Update elevations</button>
         <button onclick="b21_task_planner.reset_map()">Zoom to task</button>
         <a  id="skyvector_button"

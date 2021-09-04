@@ -285,7 +285,8 @@ class B21TaskPlanner {
         // Prevent default behavior (Prevent file from being opened)
         ev.preventDefault();
 
-        if (ev.dataTransfer.items) {
+        if (ev.dataTransfer.items && ev.dataTransfer.items.length>0) {
+            console.log(`dataTransfer.items ${ev.dataTransfer.items.length} found`);
             // Use DataTransferItemList interface to access the file(s)
             for (var i = 0; i < ev.dataTransfer.items.length; i++) {
                 // If dropped items aren't files, reject them
@@ -301,6 +302,7 @@ class B21TaskPlanner {
                 }
             }
         } else {
+            console.log("dataTransfer.items not found, using dataTransfer.files");
             // Use DataTransfer interface to access the file(s)
             for (var i = 0; i < ev.dataTransfer.files.length; i++) {
                 console.log('DataTransfer... file[' + i + '].name = ' + ev.dataTransfer.files[i].name);
