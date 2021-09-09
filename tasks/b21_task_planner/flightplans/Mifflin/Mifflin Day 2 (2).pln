@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SimBase.Document Type="AceXML" version="1,0">
+    <Descr>AceXML Document</Descr>
+    <FlightPlan.FlightPlan>
+        <Title>KRVL to KRVL</Title>
+        <FPType>VFR</FPType>
+        <CruisingAlt>1500.000</CruisingAlt>
+        <DepartureID>KRVL</DepartureID>
+        <DepartureLLA>N40° 40' 38.59",W77° 37' 36.59",+000803.81</DepartureLLA>
+        <DestinationID>KRVL</DestinationID>
+        <DestinationLLA>N40° 40' 38.59",W77° 37' 36.59",+000803.81</DestinationLLA>
+        <Descr>KRVL to KRVL</Descr>
+        <DeparturePosition>24</DeparturePosition>
+        <DepartureName>KRVL</DepartureName>
+        <DestinationName>KRVL</DestinationName>
+        <AppVersion>
+            <AppVersionMajor>11</AppVersionMajor>
+            <AppVersionBuild>282174</AppVersionBuild>
+        </AppVersion>
+
+        <ATCWaypoint id="KRVL">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N40° 40' 38.59",W77° 37' 36.59",+000803.81</WorldPosition>
+            <RunwayNumberFP>24</RunwayNumberFP>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+            <ICAO>
+                <ICAOIdent>KRVL</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="*Mifflin Start+797|4000x2000">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N40° 41' 6.83",W77° 37' 23.15",+000797.24</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="WP1+1010x500">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N40° 36' 20.21",W78° 9' 0.86",+001010.50</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="Altoona County+1470x500">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N40° 17' 46.90",W78° 19' 12.11",+001469.82</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="Penns Cave+1270|4000-1000x1000">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N40° 53' 23.76",W77° 36' 11.28",+001269.69</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="*Mifflin Finish+801-901x1000">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N40° 40' 54.14",W77° 37' 13.95",+000800.52</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="KRVL">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N40° 40' 38.59",W77° 37' 36.59",+000803.81</WorldPosition>
+
+            <SpeedMaxFP>-1</SpeedMaxFP>
+            <ICAO>
+                <ICAOIdent>KRVL</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+
+    </FlightPlan.FlightPlan>
+</SimBase.Document>

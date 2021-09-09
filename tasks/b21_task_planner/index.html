@@ -5,6 +5,8 @@
 <head>
     <title>B21 Task Planner</title>
 
+    <!-- Leaflet, the OpenStreetMap API -->
+    <link href="style/leaflet_mods.css" rel="stylesheet"/> <!-- our local tweaks to the map CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
         crossorigin=""/>
@@ -12,20 +14,28 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
+    <script src="js/semicircle.js"></script> <!-- 3rd-party mod to add semicircles to Leaflet -->
 
+    <!-- Highcharts used to draw the baro/speed chart -->
+    <script src="js/highcharts.js"></script>
+    <link href="style/highcharts.css" rel="stylesheet"/>
+
+    <!-- Main app CSS -->
     <link href="style/main.css" rel="stylesheet"/>
-    <link href="style/leaflet_mods.css" rel="stylesheet"/>
 
-    <script src="js/semicircle.js"></script>
-    <script src="js/b21_geo_static.js"> </script> <!-- Defines Geo functions (static) -->
-    <script src="js/b21_task_planner.js"> </script> <!-- Defines B21TaskPlanner class -->
+    <script src="js/b21_geo_static.js"> </script>   <!-- Geo: Defines Geo functions (static) -->
+    <script src="js/b21_track_log.js"> </script>    <!-- B21_TrackLog: Supports GPX files -->
+    <script src="js/b21_wp.js"> </script>           <!-- B21_WP: internal representation of a gliding waypoint -->
+    <script src="js/b21_task.js"> </script>         <!-- B21_Task: internal representation of a gliding task from FlightPlan -->
+    <script src="js/b21_flight_plan.js"> </script>  <!-- B21_FlightPlan: Supports PLN files -->
+    <script src="js/b21_task_planner.js"> </script> <!-- B21_TaskPlanner: the main app class -->
 <script>
 
 // This global var will contain an instance of B21TaskPlanner class
 var b21_task_planner;
 
 function loaded() {
-    b21_task_planner = new B21TaskPlanner();
+    b21_task_planner = new B21_TaskPlanner();
     b21_task_planner.init();
 }
 
@@ -34,14 +44,14 @@ function loaded() {
 <body onload="loaded()">
     <div class="header">
         <div class="title">
-            <div class="title_text">B21 Task Planner</div>
+            <div class="title_text">B21 Task Planner v1.20</div>
             <div class="title_task_option">Soaring task: <input id="soaring_task_checkbox" type="checkbox" onclick="b21_task_planner.click_soaring_task(this)" checked/></div>
         </div>
     </div>
 
     <div id="buttons">
-        <button onclick="b21_task_planner.reset()">Reset Task</button>
         <button onclick="b21_task_planner.download()">Download FlightPlan</button>
+        <button onclick="b21_task_planner.reset()">Reset Task</button>
         <button onclick="b21_task_planner.update_elevations()">Update elevations</button>
         <button onclick="b21_task_planner.reset_map()">Zoom to task</button>
         <a  id="skyvector_button"
@@ -60,12 +70,13 @@ function loaded() {
             <div id="task_list"></div>
             <div id="drop_zone">CLICK MAP TO START, OR DROP MSFS FLIGHT PLAN HERE</div>
         </div> <!-- end left_pane -->
-        <div id="map_pane">
+        <div id="right_pane">
             <div id="map"></div>
+            <div id="barograph"></div>
         </div>
         <div id="settings">
             <div id="settings_heading">
-                <div id="settings_heading_text">Settingsx</div>
+                <div id="settings_heading_text">Ooops! Something went wrong</div>
                 <button onclick="b21_task_planner.close_settings()">Close Settings</button>
             </div>
             <div class="setting">
@@ -73,6 +84,13 @@ function loaded() {
                 <div class="setting_options">
                     <div id="setting_altitude_units_m" onclick="b21_task_planner.set_altitude_units_m()" class="setting_option">Meters</div>
                     <div id="setting_altitude_units_feet" onclick="b21_task_planner.set_altitude_units_feet()" class="setting_option">Feet</div>
+                </div>
+            </div>
+            <div class="setting">
+                <div class="setting_name">Speed Units</div>
+                <div class="setting_options">
+                    <div id="setting_speed_units_kph" onclick="b21_task_planner.set_speed_units_kph()" class="setting_option">Kph</div>
+                    <div id="setting_speed_units_feet" onclick="b21_task_planner.set_speed_units_knots()" class="setting_option">Knots</div>
                 </div>
             </div>
             <div class="setting">

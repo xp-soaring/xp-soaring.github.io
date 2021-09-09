@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SimBase.Document Type="AceXML" version="1,0">
+    <Descr>AceXML Document</Descr>
+    <FlightPlan.FlightPlan>
+        <Title>LRSA to LRCS</Title>
+        <FPType>VFR</FPType>
+        <CruisingAlt>1500.000</CruisingAlt>
+        <DepartureID>LRSA</DepartureID>
+        <DepartureLLA>N45° 43' 15.84",E25° 38' 1.41",+001708.00</DepartureLLA>
+        <DestinationID>LRCS</DestinationID>
+        <DestinationLLA>N45° 25' 12.86",E22° 15' 8.21",+000836.00</DestinationLLA>
+        <Descr>LRSA to LRCS</Descr>
+        
+        <DepartureName>LRSA</DepartureName>
+        <DestinationName>LRCS</DestinationName>
+        <AppVersion>
+            <AppVersionMajor>11</AppVersionMajor>
+            <AppVersionBuild>282174</AppVersionBuild>
+        </AppVersion>
+
+        <ATCWaypoint id="LRSA">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N45° 43' 15.84",E25° 38' 1.41",+001708.00</WorldPosition>
+            
+            <ICAO>
+                <ICAOIdent>LRSA</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="*START |7000/5000x2000">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N45° 41' 17.07",E25° 31' 59.65",+003243.88</WorldPosition>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="POI1 |8000/3000x1000">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N45° 17' 39.48",E25° 3' 47.52",+008000.00</WorldPosition>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="POI2 |8000/3000x1000">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N45° 40' 6.60",E24° 15' 38.88",+008000.00</WorldPosition>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="POI3 |8000/3000x1000">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N45° 10' 56.28",E23° 22' 44.76",+008000.00</WorldPosition>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="Final |5000/2000x500">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N45° 20' 48.49",E22° 15' 30.60",+002297.47</WorldPosition>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="*FINISH |2000/800x500">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N45° 23' 57.48",E22° 15' 2.52",+001252.02</WorldPosition>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="LRCS">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N45° 25' 12.86",E22° 15' 8.21",+000836.00</WorldPosition>
+            
+            <ICAO>
+                <ICAOIdent>LRCS</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+
+    </FlightPlan.FlightPlan>
+</SimBase.Document>

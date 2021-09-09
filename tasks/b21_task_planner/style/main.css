@@ -1,6 +1,7 @@
 
 html {
     height: 100%;
+    box-sizing: border-box;
 }
 
 body {
@@ -50,6 +51,11 @@ body {
     margin-left: 5px;
     background-color: white;
     display: inline-block;
+    overflow-y: scroll;
+}
+
+#left_pane td {
+    text-align: right;
 }
 
 #drop_zone {
@@ -64,14 +70,23 @@ body {
     line-height: 50px;
 }
 
-#map_pane {
+#right_pane {
     width: 78%;
-    height: 100%;
+    height: 100%; /* 100% or 75% depending on whether the baro is displayed */
     display: inline-block;
 }
 
 #map {
     height: 100%;
+}
+
+#barograph {
+    width: 100%;
+    height: 25%;
+    margin-top: 3px;
+    display: inline-block;
+    background-color: #aaaaaa;
+    display: none;
 }
 
 .menu {
@@ -136,10 +151,78 @@ body {
 #task_list {
     cursor: pointer;
     font-size: 16px;
+    width: 100%;
+    border-collapse: collapse;
 }
 
 .task_list_wp {
-    border-bottom: 2px solid black;
+    border-top: 2px solid black;
+    height: 36px;
+}
+
+.task_list_wp:hover {
+    background-color: #cccc88;
+}
+
+.task_list_wp_current {
+    border: 4px solid yellow;
+    background-color: yellow;
+    height: 36px;
+}
+
+.task_list_wp:hover {
+    background-color: #cccc88;
+}
+
+.task_list_wp_index {
+    text-align: left;
+    font-size: 12px;
+    background-color: #e6ffff;
+    width: 1%;
+    white-space: nowrap;
+}
+
+.task_list_wp_name {
+    text-align: left;
+    background-color: #e6ffff;
+}
+
+.task_list_wp_bearing {
+    padding-right: 15px;
+}
+
+
+.task_list_wp_buttons {
+    width: 80px;
+}
+
+.task_list_wp_buttons div:hover { /* highlight buttons in red */
+    border: 2px solid red;
+}
+
+.task_list_wp_button_up {
+    display: inline-block;
+    width: 25px;
+    height: 30px;
+    background-image: url("../images/arrow_up.png");
+}
+
+.task_list_wp_button_down {
+    display: inline-block;
+    width: 25px;
+    height: 30px;
+    background-image: url("../images/arrow_down.png");
+}
+
+.task_list_wp_button_delete {
+    display: inline-block;
+    width: 25px;
+    height: 30px;
+    background-image: url("../images/delete.png");
+}
+
+.task_list_wp_limits {
+    font-size: 14px;
 }
 
 #task_list_distance {
