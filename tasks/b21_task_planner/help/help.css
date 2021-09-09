@@ -17,16 +17,3 @@ td {
 .nowrap {
     white-space: nowrap;
 }
-
-.code {
-    font-family: monospace;
-    font-size: small;
-}
-
-.inline {
-    display: inline-block;
-}
-
-li {
-    margin-bottom: 8px;
-}
