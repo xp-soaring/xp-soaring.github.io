@@ -105,6 +105,15 @@ class B21_TrackLog {
         this.polyline = L.polyline(coords, { weight: 4, color: 'darkred' }).addTo(map);
     }
 
+    chart_selected(parent, e) {
+        if (e.xAxis) {
+            console.log("chart_selected ["+e.xAxis[0].min+".."+e.xAxis[0].max+"]",e);
+        } else {
+            console.log("chart_selected no e.xAxis");
+        }
+        return false;
+    }
+
     // Use Highcharts to draw a time/altitude plot
     draw_baro() {
         let parent = this;
@@ -138,9 +147,37 @@ class B21_TrackLog {
         let baro_points = this.logpoints.map(p => [new Date(p.time_iso), p.alt_m * alt_scaler]);
         let speed_points = this.logpoints.map(p => [new Date(p.time_iso), p.speed_ms * speed_scaler]);
 
+        // Var to hold selection highlight rectangle
+        let selection_rect;
+
+        // Vars to hold point data text
+        let point_time;
+        let point_altitude;
+        let point_speed;
+
         // Draw chart
-        Highcharts.chart('barograph', {
-            chart: { zoomType: 'x' },
+        let chart = new Highcharts.chart('barograph', {
+            chart: { zoomType: 'x',
+                    events: {
+                        selection: function (e) {
+                            // Update highlight rectangle
+                            var xMin = chart.xAxis[0].translate((e.xAxis[0]||chart.xAxis[0]).min),
+                                xMax = chart.xAxis[0].translate((e.xAxis[0]||chart.xAxis[0]).max),
+                                yMin = chart.yAxis[0].translate((e.yAxis[0]||chart.yAxis[0]).min),
+                                yMax = chart.yAxis[0].translate((e.yAxis[0]||chart.yAxis[0]).max);
+
+                            selection_rect.attr({
+                                x: xMin + chart.plotLeft,
+                                y: chart.plotHeight + chart.plotTop - yMax,
+                                width: xMax - xMin,
+                                height: yMax - yMin
+                            });
+
+                            // Update app with regard to selection
+                            return parent.chart_selected(parent, e);
+                        }
+                    }
+            },
             title: { text: this.name==null ? this.filename : this.name +" ("+this.filename+")" },
             //subtitle: { text: document.ontouchstart === undefined ?
             //        'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
@@ -149,19 +186,22 @@ class B21_TrackLog {
             yAxis: [ {  title: { text: 'Altitude ('+alt_units_str+')' },
                         //min: 0,
                         //max: 12000,
-                        startOnTick: false,
-                        endOnTick: false,
-                        tickInterval: 1000 },
+                        //startOnTick: false,
+                        //endOnTick: false,
+                        tickInterval: 1000,
+                        tickPixelInterval: 20
+                    },
                      {  title: { text: 'Speed ('+speed_units_str+')' },
-                        startOnTick: false,
-                        endOnTick: false,
+                        //startOnTick: false,
+                        //endOnTick: false,
                         min: 0,
-                        max: 200,
+                        //max: 200,
                         tickInterval: 25,
                         opposite: true }
                  ],
             legend: { enabled: false },
-            tooltip: {
+            tooltip: { enabled: false },
+            /*
                 backgroundColor: '#FCFFC5',
                 borderColor: 'black',
                 borderRadius: 10,
@@ -170,10 +210,10 @@ class B21_TrackLog {
                     let str = this.x+"<br/>";
                     let p = parent.logpoints[this.point.index];
                     str += "Speed ("+speed_units_str+"): "+ (p.speed_ms * speed_scaler).toFixed(0)+"<br/>";
-                    str += "Alt ("+alt_units_str+"): "+(p.alt_m * alt_scaler).toFixed(0)
+                    str += "Alt ("+alt_units_str+"): "+(p.alt_m * alt_scaler).toFixed(0);
                      return str;
                 }
-            },
+            }, */
             plotOptions: {
                 series: {
                     animation: false,
@@ -189,6 +229,12 @@ class B21_TrackLog {
                             click: function (e) { console.log("point clicked ",e.point.index); },
                             mouseOver: function (e) {
                                 let p = parent.logpoints[e.target.index];
+                                let time_str = p.time_iso;
+                                let speed_str = "Speed ("+speed_units_str+"): "+ (p.speed_ms * speed_scaler).toFixed(0)+"<br/>";
+                                let alt_str = "Alt ("+alt_units_str+"): "+(p.alt_m * alt_scaler).toFixed(0);
+                                point_time.attr({ text: time_str });
+                                point_altitude.attr({ text: alt_str });
+                                point_speed.attr({ text: speed_str });
                                 parent.planner.baro_marker.setLatLng(new L.LatLng(p.lat, p.lng));
                                 //console.log("mouseover", this.x, this.y, e.target.index);
                             },
@@ -220,6 +266,18 @@ class B21_TrackLog {
             series: [ { yAxis: 0, type: 'area', name: "Alt", data: baro_points },
                       { yAxis: 1, type: 'line', name: "Speed", data: speed_points }]
         });
+
+        selection_rect = chart.renderer.rect(0,0,0,0,0).css({
+                            stroke: 'black',
+                            strokeWidth: '.5',
+                            fill: 'black',
+                            fillOpacity: '.1'
+                        }).add();
+
+        point_time = chart.renderer.label("Move mouse over chart to see data here.",10,10).add();
+        point_altitude = chart.renderer.label("",10,25).add();
+        point_speed = chart.renderer.label("",10,40).add();
+
     } // end draw_baro()
 
 } // End class TrackLog

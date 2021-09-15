@@ -11,6 +11,11 @@ body {
     background-color: pink;
 }
 
+/* don't underline links */
+a {
+    text-decoration: none;
+}
+
 .header {
     background-color: #888888;
 }
@@ -42,16 +47,19 @@ body {
 #panes {
     height: 90%;
     position: relative;
+    display: flex;
 }
 
 #left_pane {
-    width: 20%;
+    width: 25%;
     height: 100%;
     vertical-align: top;
     margin-left: 5px;
     background-color: white;
     display: inline-block;
     overflow-y: scroll;
+    min-width: 400px;
+    max-width: 500px;
 }
 
 #left_pane td {
@@ -60,7 +68,7 @@ body {
 
 #drop_zone {
     width: 80%;
-    min-height: 25%;
+    /* min-height: 25%;*/
     border-radius: 20px;
     border: 2px dashed gray;
     border-color: gray;
@@ -73,7 +81,9 @@ body {
 #right_pane {
     width: 78%;
     height: 100%; /* 100% or 75% depending on whether the baro is displayed */
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0;
 }
 
 #map {
@@ -84,7 +94,6 @@ body {
     width: 100%;
     height: 25%;
     margin-top: 3px;
-    display: inline-block;
     background-color: #aaaaaa;
     display: none;
 }
@@ -109,7 +118,7 @@ body {
 .wp_icon_html_current {
     position: absolute;
     display: inline-block;
-    font-size: 24px;
+    font-size: 16px;
     border: 1px solid black;
     text-align: center;
     padding-left: 10px;
@@ -120,7 +129,7 @@ body {
 .wp_icon_html {
     position: absolute;
     display: inline-block;
-    font-size: 24px;
+    font-size: 16px;
     border: 1px solid black;
     text-align: center;
     padding-left: 10px;
@@ -231,6 +240,7 @@ body {
     background-color: #d0d0d0;
     margin-right: 10px;
 }
+
 /* *************************************************** */
 /* ******* Settings              ********************* */
 /* *************************************************** */
@@ -290,4 +300,28 @@ body {
 
 #skyvector_button {
     text-decoration: none;
+}
+
+/* *************************************************** */
+/* ******* Tabs                  ********************* */
+/* *************************************************** */
+
+#left_pane_tabs {
+    display: none; /* will enable when GPX is loaded */
+    font-size: 22px;
+}
+
+.tab_active {
+    border-bottom: 4px solid blue;
+    border-right: 2px solid blue;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 0;
+}
+
+.tab_inactive {
+    border-right: 1px solid blue;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 0;
 }

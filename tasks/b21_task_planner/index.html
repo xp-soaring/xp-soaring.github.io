@@ -6,7 +6,7 @@
     <title>B21 Task Planner</title>
 
     <!-- Leaflet, the OpenStreetMap API -->
-    <link href="style/leaflet_mods.css" rel="stylesheet"/> <!-- our local tweaks to the map CSS -->
+    <link href="css/leaflet_mods.css" rel="stylesheet"/> <!-- our local tweaks to the map CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
         crossorigin=""/>
@@ -18,10 +18,10 @@
 
     <!-- Highcharts used to draw the baro/speed chart -->
     <script src="js/highcharts.js"></script>
-    <link href="style/highcharts.css" rel="stylesheet"/>
+    <link href="css/highcharts.css" rel="stylesheet"/>
 
     <!-- Main app CSS -->
-    <link href="style/main.css" rel="stylesheet"/>
+    <link href="css/main.css" rel="stylesheet"/>
 
     <script src="js/b21_geo_static.js"> </script>   <!-- Geo: Defines Geo functions (static) -->
     <script src="js/b21_track_log.js"> </script>    <!-- B21_TrackLog: Supports GPX files -->
@@ -44,7 +44,7 @@ function loaded() {
 <body onload="loaded()">
     <div class="header">
         <div class="title">
-            <div class="title_text">B21 Task Planner v1.20</div>
+            <div class="title_text">B21 Task Planner v1.22</div>
             <div class="title_task_option">Soaring task: <input id="soaring_task_checkbox" type="checkbox" onclick="b21_task_planner.click_soaring_task(this)" checked/></div>
         </div>
     </div>
@@ -67,6 +67,10 @@ function loaded() {
     </div>
     <div id="panes">
         <div id="left_pane">
+            <div id="left_pane_tabs">
+                <a id="tab_task" class="tab_active" href="#" onclick="b21_task_planner.tab_task()">Task Info</a>
+                <a id="tab_tracklogs" class="tab_inactive" href="#" onclick="b21_task_planner.tab_tracklogs()">Tracklogs Info</a>
+            </div>
             <div id="task_list"></div>
             <div id="drop_zone">CLICK MAP TO START, OR DROP MSFS FLIGHT PLAN HERE</div>
         </div> <!-- end left_pane -->

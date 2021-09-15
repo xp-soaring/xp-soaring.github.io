@@ -266,7 +266,7 @@ class B21_TaskPlanner {
                         let position = new L.latLng(airport[LAT], airport[LNG]);
                         let ident = airport[IDENT];
                         let type = airport[TYPE];
-                        let name = airport[NAME];
+                        let name = airport[NAME].replaceAll('"',""); // Remove double quotes if original name includes those.
                         let alt_m = airport[ALT_M];
                         let runways = airport[RUNWAYS];
                         let circle_radius = 3 * (zoom - 7);
@@ -373,7 +373,7 @@ class B21_TaskPlanner {
             return;
         }
         if (name.toLowerCase().endsWith(".pln")) {
-            parent.reset(); 
+            parent.reset();
             parent.handle_pln_str(e.target.result, name);
             return;
         }
@@ -694,6 +694,16 @@ class B21_TaskPlanner {
         this.task.update_bounds();
         console.log( [[this.task.min_lat, this.task.min_lng],[this.task.max_lat, this.task.max_lng]]);
         this.map.fitBounds( [[this.task.min_lat, this.task.min_lng],[this.task.max_lat, this.task.max_lng]]);
+    }
+
+    tab_task() {
+        document.getElementById("tab_task").className = "tab_active";
+        document.getElementById("tab_tracklogs").className = "tab_inactive";
+    }
+
+    tab_tracklogs() {
+        document.getElementById("tab_task").className = "tab_inactive";
+        document.getElementById("tab_tracklogs").className = "tab_active";
     }
 
 // ********************************************************************************************
