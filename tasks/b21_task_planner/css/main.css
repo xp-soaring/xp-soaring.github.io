@@ -42,6 +42,50 @@ a {
 
 #buttons {
     margin-bottom: 4px;
+    margin-top: 2px;
+    position: relative;
+}
+
+#help_button {
+    position: absolute;
+    right: 8px;
+}
+
+/* ****************************** */
+/*  Search                        */
+/* ****************************** */
+
+#search {
+    position: relative;
+    display: inline;
+}
+
+#search_input {
+
+}
+
+#search_results {
+    position: absolute;
+    top: 24px;
+    left: 0px;
+    max-height: 600px;
+    overflow-y: auto;
+    word-break: keep-all;
+    white-space: nowrap;
+    background-color: white;
+    border: 1px solid black;
+    z-index: 2000;
+    display: none;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.search_result {
+    cursor: pointer;
+}
+
+.search_result:hover {
+    background-color: yellow;
 }
 
 #panes {

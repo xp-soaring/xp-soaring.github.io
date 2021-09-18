@@ -6,7 +6,6 @@
     <title>B21 Task Planner</title>
 
     <!-- Leaflet, the OpenStreetMap API -->
-    <link href="css/leaflet_mods.css" rel="stylesheet"/> <!-- our local tweaks to the map CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
         crossorigin=""/>
@@ -15,6 +14,7 @@
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
     <script src="js/semicircle.js"></script> <!-- 3rd-party mod to add semicircles to Leaflet -->
+    <link href="css/leaflet_mods.css" rel="stylesheet"/> <!-- our local tweaks to the map CSS -->
 
     <!-- Highcharts used to draw the baro/speed chart -->
     <script src="js/highcharts.js"></script>
@@ -24,6 +24,7 @@
     <link href="css/main.css" rel="stylesheet"/>
 
     <script src="js/b21_geo_static.js"> </script>   <!-- Geo: Defines Geo functions (static) -->
+    <script src="js/b21_airports.js"> </script>     <!-- B21_Airports: loads airport data -->
     <script src="js/b21_track_log.js"> </script>    <!-- B21_TrackLog: Supports GPX files -->
     <script src="js/b21_wp.js"> </script>           <!-- B21_WP: internal representation of a gliding waypoint -->
     <script src="js/b21_task.js"> </script>         <!-- B21_Task: internal representation of a gliding task from FlightPlan -->
@@ -44,16 +45,20 @@ function loaded() {
 <body onload="loaded()">
     <div class="header">
         <div class="title">
-            <div class="title_text">B21 Task Planner v1.22</div>
+            <div class="title_text">B21 Task Planner v1.31</div>
             <div class="title_task_option">Soaring task: <input id="soaring_task_checkbox" type="checkbox" onclick="b21_task_planner.click_soaring_task(this)" checked/></div>
         </div>
     </div>
 
     <div id="buttons">
-        <button onclick="b21_task_planner.download()">Download FlightPlan</button>
-        <button onclick="b21_task_planner.reset()">Reset Task</button>
-        <button onclick="b21_task_planner.update_elevations()">Update elevations</button>
-        <button onclick="b21_task_planner.reset_map()">Zoom to task</button>
+        <button onclick="b21_task_planner.download()"
+            title="Download .PLN file to your Downloads folder">Download FlightPlan</button>
+        <button onclick="b21_task_planner.reset()"
+            title="Delete the current task">Reset Task</button>
+        <button onclick="b21_task_planner.update_elevations()"
+            title="Insert the correct elevation for each user waypoint, airports will be unchanged">Update elevations</button>
+        <button onclick="b21_task_planner.reset_map()"
+            title="Reset the map to show the whole task">Zoom to task</button>
         <a  id="skyvector_button"
             href="https://skyvector.com/?ll=54.65188861732224,-2.073669422461872&chart=301&zoom=1"
             target="_skyvector">
@@ -62,8 +67,19 @@ function loaded() {
                 type="submit">SkyVector
             </button>
         </a>
-        <button onclick="b21_task_planner.toggle_settings()">Settings</button>
-        <form style="display: inline;" action="help/help.html" target="_blank"><button type="submit">Help</button></form>
+        <button onclick="b21_task_planner.toggle_settings()"
+            title="Choose units for distance, elevation etc.">Settings</button>
+        <div id="search">
+            <input id="search_input"
+                title="Search airport names and identifiers, click any result to show on map"
+                type="text" width="10" placeholder="Search" onkeyup="b21_task_planner.search()"/>
+            <div id="search_results">
+            </div>
+        </div>
+        <form id="help_button" style="display: inline;" action="help/help.html" target="_blank">
+            <button type="submit"
+                title="Opens the help page in another tab in your browser">Help</button>
+        </form>
     </div>
     <div id="panes">
         <div id="left_pane">

@@ -7,9 +7,6 @@ class B21_TaskPlanner {
         this.M_TO_MILES = 0.000621371;
         this.MS_TO_KPH = 3.6;
         this.MS_TO_KNOTS = 1.94384;
-        this.AIRPORTS_JSON_URL = "https://xp-soaring.github.io/tasks/b21_task_planner/airports/airports.json";
-        //this.AIRPORTS_JSON_URL = "https://raw.githubusercontent.com/xp-soaring/b21_task_planner/main/airports/airports.json"
-        this.DEBUG_DRAW_MAP_BOXES = false;
     }
 
     init() {
@@ -17,15 +14,16 @@ class B21_TaskPlanner {
 
         this.sv_button = document.getElementById("skyvector_button"); // So we can update action URL
 
-        this.airports_available = false; // set to true when airports.json downloaded
-
         this.init_settings();
 
         this.init_drop_zone();
 
         this.init_map();
 
-        this.init_airports();
+        this.airports = new B21_Airports(this, this.map);
+
+        this.airports.init();
+        //this.init_airports();
 
         // Task object to hold accumulated waypoints
         this.task = new B21_Task(this);
@@ -45,7 +43,9 @@ class B21_TaskPlanner {
     parse_querystring() {
         var search = location.search.substring(1);
         console.log(search);
-        return JSON.parse('{"' + search.replace(/&/g, '","').replace(/=/g,'":"') + '"}', function(key, value) { return key===""?value:decodeURIComponent(value) })
+        return JSON.parse('{"' + search.replace(/&/g, '","').replace(/=/g, '":"') + '"}', function(key, value) {
+            return key === "" ? value : decodeURIComponent(value)
+        })
     }
 
     init_map() {
@@ -64,76 +64,82 @@ class B21_TaskPlanner {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         });
 
-        let tiles_outdoor = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYjIxc29hcmluZyIsImEiOiJja3M0Z2o0ZWEyNjJ1MzFtcm5rYnAwbjJ6In0.frJxiv-ZUV8e2li7r4_3_A', {
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            maxZoom: 18,
-            id: 'mapbox/outdoors-v11',
-            tileSize: 512,
-            zoomOffset: -1,
-            minZoom: 2,
-            accessToken: 'pk.eyJ1IjoiYjIxc29hcmluZyIsImEiOiJja3M0Z2o0ZWEyNjJ1MzFtcm5rYnAwbjJ6In0.frJxiv-ZUV8e2li7r4_3_A'
-        });
+        let tiles_outdoor = L.tileLayer(
+            'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYjIxc29hcmluZyIsImEiOiJja3M0Z2o0ZWEyNjJ1MzFtcm5rYnAwbjJ6In0.frJxiv-ZUV8e2li7r4_3_A', {
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                maxZoom: 18,
+                id: 'mapbox/outdoors-v11',
+                tileSize: 512,
+                zoomOffset: -1,
+                minZoom: 2,
+                accessToken: 'pk.eyJ1IjoiYjIxc29hcmluZyIsImEiOiJja3M0Z2o0ZWEyNjJ1MzFtcm5rYnAwbjJ6In0.frJxiv-ZUV8e2li7r4_3_A'
+            });
 
         let tiles_opentopomap = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
-        	maxZoom: 17,
-        	attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+            maxZoom: 17,
+            attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
         });
 
-        let thunderforest_landscape = L.tileLayer('https://{s}.tile.thunderforest.com/landscape/{z}/{x}/{y}.png?apikey={apikey}', {
-        	attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        	apikey: '<your apikey>',
-        	maxZoom: 22
-        });
+        let thunderforest_landscape = L.tileLayer(
+            'https://{s}.tile.thunderforest.com/landscape/{z}/{x}/{y}.png?apikey={apikey}', {
+                attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                apikey: '<your apikey>',
+                maxZoom: 22
+            });
 
         let thunderforest_outdoors = L.tileLayer('https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey={apikey}', {
-	       attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-	       apikey: '<your apikey>',
-	       maxZoom: 22
+            attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            apikey: '<your apikey>',
+            maxZoom: 22
         });
 
         let stamen_terrain = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}{r}.{ext}', {
-        	attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        	subdomains: 'abcd',
-        	minZoom: 0,
-        	maxNativeZoom: 13,
-        	ext: 'png'
+            attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            subdomains: 'abcd',
+            minZoom: 0,
+            maxNativeZoom: 13,
+            ext: 'png'
         });
 
         let cyclosm = L.tileLayer('https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png', {
-        	maxZoom: 20,
-        	attribution: '<a href="https://github.com/cyclosm/cyclosm-cartocss-style/releases" title="CyclOSM - Open Bicycle render">CyclOSM</a> | Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            maxZoom: 20,
+            attribution: '<a href="https://github.com/cyclosm/cyclosm-cartocss-style/releases" title="CyclOSM - Open Bicycle render">CyclOSM</a> | Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         });
 
-        var esri_natgeo_world = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {
-        	attribution: 'Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC',
-        	maxZoom: 16
-        });
+        var esri_natgeo_world = L.tileLayer(
+            'https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {
+                attribution: 'Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC',
+                maxZoom: 16
+            });
 
-        let esri_world_imagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-        	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
-        });
+        let esri_world_imagery = L.tileLayer(
+            'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+                attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+            });
 
         // Optional additional layers
         this.airport_markers = L.layerGroup(); //.addTo(this.map);
 
         let open_railway_map = L.tileLayer('https://{s}.tiles.openrailwaymap.org/standard/{z}/{x}/{y}.png', {
-        	maxZoom: 19,
-        	attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | Map style: &copy; <a href="https://www.OpenRailwayMap.org">OpenRailwayMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+            maxZoom: 19,
+            attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | Map style: &copy; <a href="https://www.OpenRailwayMap.org">OpenRailwayMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
         });
 
-        this.base_maps = {  "Streetmap": tiles_mapnik,
-                            "TopoMap": tiles_opentopomap,
-                            "NatGeo": esri_natgeo_world,
-                            "Outdoor": tiles_outdoor,
-                            //"Thunderforest Land": thunderforest_landscape,
-                            //"Thunderforest Outdoor": thunderforest_outdoors,
-                            "StamenTerrain": stamen_terrain,
-                            //"CyclOSM": cyclosm,
-                           "Satellite": esri_world_imagery
+        this.base_maps = {
+            "Streetmap": tiles_mapnik,
+            "TopoMap": tiles_opentopomap,
+            "NatGeo": esri_natgeo_world,
+            "Outdoor": tiles_outdoor,
+            //"Thunderforest Land": thunderforest_landscape,
+            //"Thunderforest Outdoor": thunderforest_outdoors,
+            "StamenTerrain": stamen_terrain,
+            //"CyclOSM": cyclosm,
+            "Satellite": esri_world_imagery
         }
 
-        this.map_layers = { "Airports": this.airport_markers,
-                            "Railways": open_railway_map
+        this.map_layers = {
+            "Airports": this.airport_markers,
+            "Railways": open_railway_map
         }
 
         this.map = L.map(map_el, {
@@ -145,9 +151,9 @@ class B21_TaskPlanner {
         //this.tiles_opentopomap.addTo(this.map);
         //esri_world_imagery.addTo(this.map);
 
-        this.map.on("baselayerchange",(e) => {
-            console.log("baselayerchange",e);
-            this.set_setting("base_layer_name",e.name);
+        this.map.on("baselayerchange", (e) => {
+            console.log("baselayerchange", e);
+            this.set_setting("base_layer_name", e.name);
         });
 
         L.control.layers(this.base_maps, this.map_layers).addTo(this.map);
@@ -164,36 +170,37 @@ class B21_TaskPlanner {
 
     set_map_events(parent) {
         // Set up the map mouse click callbacks
-        this.map.on('click', (e) => {parent.map_left_click(parent, e);} );
+        this.map.on('click', (e) => {
+            parent.map_left_click(parent, e);
+        });
 
-        this.map.on('contextmenu', (e) => {parent.map_right_click(parent, e);} );
+        this.map.on('contextmenu', (e) => {
+            parent.map_right_click(parent, e);
+        });
 
         this.map.on("moveend", () => {
             console.log("moveend");
             parent.save_map_coords(parent.map.getCenter(), parent.map.getZoom());
             parent.update_skyvector_link(parent.map.getCenter(), parent.map.getZoom());
-            parent.draw_airports();
+            parent.airports.draw();
         });
         this.map.on('zoomend', () => { // Will also call moveend
             console.log("zoomend");
-            //parent.save_map_coords(parent.map.getCenter(), parent.map.getZoom());
-            //parent.update_skyvector_link(parent.map.getCenter(), parent.map.getZoom());
-            //parent.draw_airports();
         });
     }
 
     create_baro_marker(parent) {
-        let position = new L.latLng(0,0);
+        let position = new L.latLng(0, 0);
         parent.baro_marker = L.circleMarker(position, {
-                                    color: "darkred",
-                                    radius: 30
-                                });
+            color: "darkred",
+            radius: 30
+        });
         parent.baro_marker.addTo(parent.map);
         parent.baro_marker.bindPopup("Foo<br/>Bar<br/>FUBAR");
-        parent.baro_marker.on('mouseover', function(event){
+        parent.baro_marker.on('mouseover', function(event) {
             parent.baro_marker.openPopup();
         });
-        parent.baro_marker.on('mouseout', function(event){
+        parent.baro_marker.on('mouseout', function(event) {
             parent.baro_marker.closePopup();
         });
         parent.baro_marker.on('click', (e) => {
@@ -202,128 +209,20 @@ class B21_TaskPlanner {
 
     }
 
-// ********************************************************************************************
-// *********  Download the airport data                ****************************************
-// ********************************************************************************************
-
-    init_airports() {
-        fetch(this.AIRPORTS_JSON_URL).then(response => {
-            if (!response.ok) {
-                alert("Failed to download the airports data")
-                return null;
-            }
-            //response.headers.set('content-type','application/json');
-            return response.text();
-        }).then( results => {
-            console.log("airports.json loaded");
-            this.airports_data = JSON.parse(results);
-            this.airports_available = true;
-            this.draw_airports();
-        }).catch(error => {
-            console.error('Network error accessing airports.json:', error);
-        });
-    }
-
-    draw_airports() {
-
-        this.airport_markers.clearLayers();
-
-        if (!this.airports_available) {
-            console.log("draw_airports failed");
-            return;
-        }
-        let zoom = this.map.getZoom();
-        if ( zoom < 8) {
-            console.log("Too zoomed out to display airports");
-            return;
-        }
-        let map_bounds = this.map.getBounds();
-        let map_box = { "min_lat": map_bounds.getSouth(),
-                        "min_lng": map_bounds.getWest(),
-                        "max_lat": map_bounds.getNorth(),
-                        "max_lng": map_bounds.getEast()
-        }
-        console.log("draw_airports", map_box);
-        const LAT = this.airports_data.airport_keys['lat'];
-        const LNG = this.airports_data.airport_keys['lng'];
-        const NAME = this.airports_data.airport_keys['name'];
-        const IDENT = this.airports_data.airport_keys['ident'];
-        const TYPE = this.airports_data.airport_keys['type']; //"closed_airport", "heliport", "large_airport", "medium_airport", "seaplane_base", "small_airport"
-        const ALT_M = this.airports_data.airport_keys['alt_m'];
-        const RUNWAYS = this.airports_data.airport_keys['runways'];
-        for (let box_id in this.airports_data.box_coords) {
-            let box = this.airports_data.box_coords[box_id];
-            if (this.DEBUG_DRAW_MAP_BOXES) {
-                L.rectangle([[box.min_lat,box.min_lng],[box.max_lat,box.max_lng]]).addTo(this.map);
-            }
-            if (this.box_overlap(box, map_box)) {
-                //console.log("overlap",box_id, box);
-                let airports = this.airports_data.boxes[box_id];
-                for (let i=0; i<airports.length; i++) {
-                    let airport = airports[i];
-                    let type = airport[TYPE];
-                    if (type.includes("airport")) {
-                        let position = new L.latLng(airport[LAT], airport[LNG]);
-                        let ident = airport[IDENT];
-                        let type = airport[TYPE];
-                        let name = airport[NAME].replaceAll('"',""); // Remove double quotes if original name includes those.
-                        let alt_m = airport[ALT_M];
-                        let runways = airport[RUNWAYS];
-                        let circle_radius = 3 * (zoom - 7);
-                        if (type=="large_airport") {
-                            circle_radius *= 3;
-                        } else if (type=="medium_airport") {
-                            circle_radius *= 2;
-                        }
-                        let marker = L.circleMarker(position, {
-                            renderer: this.canvas_renderer,
-                            color: this.task.is_msfs_airport(type) ? '#3388ff' : '#33ff88',
-                            radius: circle_radius
-                        });
-                        marker.addTo(this.airport_markers);
-                        marker.bindPopup(name+"<br/>"+type+"<br/>"+ident);
-                        marker.on('mouseover', function(event){
-                            marker.openPopup();
-                        });
-                        marker.on('mouseout', function(event){
-                            marker.closePopup();
-                        });
-                        marker.on('click', (e) => {
-                            console.log("User click:",ident,name);
-                            this.task.add_new_poi(position, type, {"ident": ident, "name": name, "alt_m": alt_m, "runways": runways});
-                        });
-                    }
-                }
-            }
-        }
-    }
-
-    box_overlap(box, map_box) {
-        if (map_box.min_lat > box.max_lat) {
-            return false;
-        }
-        if (map_box.max_lat < box.min_lat) {
-            return false;
-        }
-        if (map_box.min_lng > box.max_lng) {
-            return false;
-        }
-        if (map_box.max_lng < box.min_lng) {
-            return false;
-        }
-        return true;
-    }
-
-// ********************************************************************************************
-// *********  Flight Plan handling                     ****************************************
-// ********************************************************************************************
+    // ********************************************************************************************
+    // *********  Flight Plan handling                     ****************************************
+    // ********************************************************************************************
 
     init_drop_zone() {
         this.drop_zone_el = document.getElementById("drop_zone");
         this.drop_zone_el.style.display = "block";
         let parent = this;
-        this.drop_zone_el.ondragover = (e) => {parent.dragover_handler(e); };
-        this.drop_zone_el.ondrop = (e) => { parent.drop_handler(parent, e); };
+        this.drop_zone_el.ondragover = (e) => {
+            parent.dragover_handler(e);
+        };
+        this.drop_zone_el.ondrop = (e) => {
+            parent.drop_handler(parent, e);
+        };
     }
 
     drop_handler(parent, ev) {
@@ -331,7 +230,7 @@ class B21_TaskPlanner {
         // Prevent default behavior (Prevent file from being opened)
         ev.preventDefault();
 
-        if (ev.dataTransfer.items && ev.dataTransfer.items.length>0) {
+        if (ev.dataTransfer.items && ev.dataTransfer.items.length > 0) {
             console.log(`dataTransfer.items ${ev.dataTransfer.items.length} found`);
             // Use DataTransferItemList interface to access the file(s)
             for (var i = 0; i < ev.dataTransfer.items.length; i++) {
@@ -343,7 +242,7 @@ class B21_TaskPlanner {
                     reader.onload = (e) => {
                         parent.handle_drop(parent, e, file.name);
                     }
-                    console.log("reader.readAsText",file.name);
+                    console.log("reader.readAsText", file.name);
                     reader.readAsText(file);
                 }
             }
@@ -357,18 +256,18 @@ class B21_TaskPlanner {
                 reader.addEventListener("load", (e) => {
                     parent.handle_drop(parent, e);
                 });
-            	// event fired when file reading failed
-            	reader.addEventListener('error', (e) => {
-            	    alert('Error : Failed to read file');
-            	});
+                // event fired when file reading failed
+                reader.addEventListener('error', (e) => {
+                    alert('Error : Failed to read file');
+                });
                 reader.readAsText(file);
             }
         }
     }
 
-    handle_drop(parent, e, name=null) {
-        console.log("handle_drop",name, e);
-        if (name==null) {
+    handle_drop(parent, e, name = null) {
+        console.log("handle_drop", name, e);
+        if (name == null) {
             console.log("No name for dropped file - aborting");
             return;
         }
@@ -404,14 +303,14 @@ class B21_TaskPlanner {
 
         let request_str = param_obj["pln"];
 
-        console.log("load_pln_url",request_str);
+        console.log("load_pln_url", request_str);
         fetch(request_str).then(response => {
             if (!response.ok) {
                 console.log("User PLN url fetch error");
                 return null;
             }
             return response.text();
-        }).then( result_str => {
+        }).then(result_str => {
             console.log("load_pln_url return ok");
             this.handle_pln_str(result_str);
         }).catch(error => {
@@ -422,12 +321,15 @@ class B21_TaskPlanner {
     handle_pln_str(file_str) {
         console.log("handle string containing PLN XML");
         this.task.load_flightplan(file_str);
-        this.map.fitBounds( [[this.task.min_lat, this.task.min_lng],[this.task.max_lat, this.task.max_lng]]);
+        this.map.fitBounds([
+            [this.task.min_lat, this.task.min_lng],
+            [this.task.max_lat, this.task.max_lng]
+        ]);
     }
 
-// ********************************************************************************************
-// *********  Handle GPX file (from drop or URL)                   ****************************
-// ********************************************************************************************
+    // ********************************************************************************************
+    // *********  Handle GPX file (from drop or URL)                   ****************************
+    // ********************************************************************************************
 
     handle_gpx_str(file_str, name) {
         console.log("handle_gpx_str", name);
@@ -440,13 +342,17 @@ class B21_TaskPlanner {
         this.track_log.draw_baro();
     }
 
-// ********************************************************************************************
-// *********  Persist map position and scale between sessions      ****************************
-// ********************************************************************************************
+    // ********************************************************************************************
+    // *********  Persist map position and scale between sessions      ****************************
+    // ********************************************************************************************
 
     save_map_coords(center, zoom) {
         console.log(center.toString(), zoom);
-        let move_obj = { lat: center.lat, lng: center.lng, zoom: zoom };
+        let move_obj = {
+            lat: center.lat,
+            lng: center.lng,
+            zoom: zoom
+        };
         let move_str = JSON.stringify(move_obj);
         localStorage.setItem("b21_task_planner_map_coords", move_str);
     }
@@ -465,39 +371,39 @@ class B21_TaskPlanner {
             console.log("bad b21_task_planner_map_coords localStorage");
             return;
         }
-        if (move_obj.lat == null || move_obj.lng == null ) {
+        if (move_obj.lat == null || move_obj.lng == null) {
             return;
         }
 
-        this.map.setView(new L.latLng(move_obj.lat, move_obj.lng),move_obj.zoom);
+        this.map.setView(new L.latLng(move_obj.lat, move_obj.lng), move_obj.zoom);
     }
 
-// ********************************************************************************************
-// *********  Manage the SkyVector link                            ****************************
-// ********************************************************************************************
+    // ********************************************************************************************
+    // *********  Manage the SkyVector link                            ****************************
+    // ********************************************************************************************
 
     // Build the SkyVector button link
     // e.g. https://skyvector.com/?ll=54.65188861732224,-2.073669422461872&chart=301&zoom=1
     update_skyvector_link(center, zoom) {
         let sv_link = "https://skyvector.com/?ll=#LAT#,#LNG#&chart=301&zoom=#ZOOM#"
         let sv_zoom = 2 * (11 - zoom); // Convert OSM zoom to SV zoom
-        if (sv_zoom<1) { // limit SkyVector zoom to 1..12
+        if (sv_zoom < 1) { // limit SkyVector zoom to 1..12
             sv_zoom = 1;
         }
-        if (sv_zoom>12) {
+        if (sv_zoom > 12) {
             sv_zoom = 12;
         }
-        sv_link = sv_link.replace("#LAT#",center.lat.toFixed(8));
-        sv_link = sv_link.replace("#LNG#",center.lng.toFixed(8));
-        sv_link = sv_link.replace("#ZOOM#",sv_zoom.toFixed(0));
+        sv_link = sv_link.replace("#LAT#", center.lat.toFixed(8));
+        sv_link = sv_link.replace("#LNG#", center.lng.toFixed(8));
+        sv_link = sv_link.replace("#ZOOM#", sv_zoom.toFixed(0));
 
         this.sv_button.setAttribute("href", sv_link);
     }
 
 
-// ********************************************************************************************
-// *********  Map click callbacks                      ****************************************
-// ********************************************************************************************
+    // ********************************************************************************************
+    // *********  Map click callbacks                      ****************************************
+    // ********************************************************************************************
 
     map_left_click(parent, e) {
         let position = e.latlng;
@@ -521,7 +427,7 @@ class B21_TaskPlanner {
     }
 
     menuitem(menu_str, menu_function_name) {
-        return '<div onclick="b21_task_planner.'+menu_function_name+'()" class="menuitem">'+menu_str+'</div>';
+        return '<div onclick="b21_task_planner.' + menu_function_name + '()" class="menuitem">' + menu_str + '</div>';
     }
 
     // User has clicked somewhere on the map
@@ -551,42 +457,42 @@ class B21_TaskPlanner {
     }
 
     change_wp_name(new_name) {
-        console.log("new wp name = ",new_name);
+        console.log("new wp name = ", new_name);
         this.task.current_wp().set_name(new_name);
         this.task.display_task_list();
     }
 
     change_wp_icao(new_icao) {
-        console.log("new wp icao = ",new_icao);
+        console.log("new wp icao = ", new_icao);
         this.task.current_wp().set_icao(new_icao);
         this.task.display_task_list();
     }
 
     change_wp_runway(runway) {
-        console.log("new wp runway = ",runway);
+        console.log("new wp runway = ", runway);
         this.task.current_wp().set_runway(runway);
     }
 
     // Runway selected from drop-down box
     select_wp_runway(runway) {
         document.getElementById("wp_runway").value = runway;
-        console.log("Selected runway",runway);
+        console.log("Selected runway", runway);
         this.change_wp_runway(runway);
     }
 
     change_wp_alt(new_alt) {
-        console.log("new wp alt = ",new_alt);
+        console.log("new wp alt = ", new_alt);
         let wp = this.task.current_wp();
-        wp.alt_m = parseFloat(new_alt) / (this.settings.altitude_units=="m" ? 1 : this.M_TO_FEET);
+        wp.alt_m = parseFloat(new_alt) / (this.settings.altitude_units == "m" ? 1 : this.M_TO_FEET);
         wp.alt_m_updated = true;
         this.task.display_task_list();
     }
 
     change_wp_radius(radius_str) {
-        console.log("new wp radius = "+radius_str);
-        let radius_m = parseFloat(radius_str) / (this.settings.wp_radius_units=="m" ? 1 : this.M_TO_FEET);
+        console.log("new wp radius = " + radius_str);
+        let radius_m = parseFloat(radius_str) / (this.settings.wp_radius_units == "m" ? 1 : this.M_TO_FEET);
         let wp = this.task.current_wp();
-        if (radius_m==null || isNaN(radius_m) || radius_m==0) {
+        if (radius_m == null || isNaN(radius_m) || radius_m == 0) {
             wp.set_radius(null);
         } else {
             wp.set_radius(radius_m);
@@ -596,20 +502,20 @@ class B21_TaskPlanner {
     }
 
     change_wp_max_alt(new_alt) {
-        console.log("new wp max alt = ",new_alt);
+        console.log("new wp max alt = ", new_alt);
         let wp = this.task.current_wp();
-        wp.max_alt_m = parseFloat(new_alt) / (this.settings.altitude_units=="m" ? 1 : this.M_TO_FEET);
-        if (isNaN(wp.max_alt_m) || wp.max_alt_m==0) {
+        wp.max_alt_m = parseFloat(new_alt) / (this.settings.altitude_units == "m" ? 1 : this.M_TO_FEET);
+        if (isNaN(wp.max_alt_m) || wp.max_alt_m == 0) {
             wp.max_alt_m = null;
         }
         this.task.display_task_list();
     }
 
     change_wp_min_alt(new_alt) {
-        console.log("new wp min alt = ",new_alt);
+        console.log("new wp min alt = ", new_alt);
         let wp = this.task.current_wp();
-        wp.min_alt_m = parseFloat(new_alt) / (this.settings.altitude_units=="m" ? 1 : this.M_TO_FEET);
-        if (isNaN(wp.min_alt_m) || wp.min_alt_m==0) {
+        wp.min_alt_m = parseFloat(new_alt) / (this.settings.altitude_units == "m" ? 1 : this.M_TO_FEET);
+        if (isNaN(wp.min_alt_m) || wp.min_alt_m == 0) {
             wp.min_alt_m = null;
         }
         this.task.display_task_list();
@@ -634,6 +540,15 @@ class B21_TaskPlanner {
     click_start(e) {
         let wp = this.task.current_wp();
         if (e.checked) {
+            // See if this WP is an airport (so cannot be start or finish)
+            if (wp.icao != null) {
+                let alert_str = "You cannot set the departure airport as a soaring task START in a flightplan.";
+                alert_str += " Create another waypoint after this one and set that as start.";
+                alert_str += " See General Hint (1) in help.";
+                alert(alert_str);
+                e.checked = false;
+                return;
+            }
             this.task.start_index = wp.index;
             if (this.task.finish_index != null && this.task.finish_index <= wp.index) {
                 this.task.finish_index = null;
@@ -650,8 +565,17 @@ class B21_TaskPlanner {
     click_finish(e) {
         let wp = this.task.current_wp();
         if (e.checked) {
+            // See if this WP is an airport (so cannot be start or finish)
+            if (wp.icao != null) {
+                let alert_str = "You cannot set the destination airport as a soaring task FINISH in a flightplan.";
+                alert_str += " Create a waypoint before this and set that as task FINISH.";
+                alert_str += " See General Hint (1) in help.";
+                alert(alert_str);
+                e.checked = false;
+                return;
+            }
             this.task.finish_index = wp.index;
-            console.log("Setting finish_index to",this.task.finish_index);
+            console.log("Setting finish_index to", this.task.finish_index);
             // Remove start if it is AFTER this finish
             if (this.task.start_index != null && this.task.start_index >= wp.index) {
                 this.task.start_index = null;
@@ -665,16 +589,15 @@ class B21_TaskPlanner {
         this.task.display_task_list();
     }
 
-// ********************************************************************************************
-// *********  Page buttons                             ****************************************
-// ********************************************************************************************
+    // ********************************************************************************************
+    // *********  Page buttons                             ****************************************
+    // ********************************************************************************************
 
     // Clear the current task and start afresh
     reset() {
         this.task.reset();
     }
 
-    //DEBUG implement flightplan download
     download() {
         console.log("download()");
         try {
@@ -692,8 +615,14 @@ class B21_TaskPlanner {
 
     reset_map() {
         this.task.update_bounds();
-        console.log( [[this.task.min_lat, this.task.min_lng],[this.task.max_lat, this.task.max_lng]]);
-        this.map.fitBounds( [[this.task.min_lat, this.task.min_lng],[this.task.max_lat, this.task.max_lng]]);
+        console.log([
+            [this.task.min_lat, this.task.min_lng],
+            [this.task.max_lat, this.task.max_lng]
+        ]);
+        this.map.fitBounds([
+            [this.task.min_lat, this.task.min_lng],
+            [this.task.max_lat, this.task.max_lng]
+        ]);
     }
 
     tab_task() {
@@ -706,21 +635,38 @@ class B21_TaskPlanner {
         document.getElementById("tab_tracklogs").className = "tab_active";
     }
 
-// ********************************************************************************************
-// *********  Settings                                 ****************************************
-// ********************************************************************************************
+    // User has typed in search box
+    //DEBUG pan the map to the clicked airport result, and highlight that airport
+    search(e) {
+        let results_el = document.getElementById("search_results");
+        results_el.style.display = "none";
+        let search_input_el = document.getElementById("search_input");
+        let search_value = search_input_el.value.toLowerCase();
+        console.log("search", search_input.value);
+        if (!this.airports.available) {
+            return;
+        }
+        if (search_value.length < 3) {
+            return;
+        }
+        this.airports.search(search_value, results_el);
+    }
+
+    // ********************************************************************************************
+    // *********  Settings                                 ****************************************
+    // ********************************************************************************************
 
     init_settings() {
 
         this.settings = {};
 
         this.settings_values = {
-            soaring_task: 1,                // 1 or 0 = true/false whether to embed the B21/ALBATROSS soaring params
-            altitude_units: ["feet","m"],
-            speed_units: ["kph","knots"],
-            distance_units: ["km", "miles" ],
+            soaring_task: 1, // 1 or 0 = true/false whether to embed the B21/ALBATROSS soaring params
+            altitude_units: ["feet", "m"],
+            speed_units: ["kph", "knots"],
+            distance_units: ["km", "miles"],
             wp_radius_units: ["m", "feet"],
-            wp_radius_m:  500,
+            wp_radius_m: 500,
             wp_min_alt_m: 330,
             wp_max_alt_m: 2000,
             base_layer_name: "Streetmap"
@@ -736,7 +682,7 @@ class B21_TaskPlanner {
     }
 
     toggle_settings() {
-        console.log("toggle settings from",this.settings_displayed);
+        console.log("toggle settings from", this.settings_displayed);
         if (this.settings_displayed) {
             this.close_settings();
         } else {
@@ -770,7 +716,7 @@ class B21_TaskPlanner {
         this.settings_el.appendChild(heading_el);
 
         for (const var_name in this.settings_values) {
-            if (typeof this.settings_values[var_name]=="object") {
+            if (typeof this.settings_values[var_name] == "object") {
                 this.build_setting_html(var_name);
             }
         }
@@ -785,13 +731,13 @@ class B21_TaskPlanner {
         setting_name_el.className = "setting_name";
         setting_name_el.innerHTML = this.var_name_to_title(var_name);
         setting_el.appendChild(setting_name_el);
-        if (typeof this.settings_values[var_name]=="object") {
+        if (typeof this.settings_values[var_name] == "object") {
             let setting_options_el = document.createElement("div");
             setting_options_el.className = "setting_options";
-            for (let i=0; i<this.settings_values[var_name].length; i++) {
+            for (let i = 0; i < this.settings_values[var_name].length; i++) {
                 let option_name = this.settings_values[var_name][i];
                 let setting_option_el = document.createElement("div");
-                setting_option_el.id = "setting_"+var_name+"_"+option_name;
+                setting_option_el.id = "setting_" + var_name + "_" + option_name;
                 setting_option_el.className = "setting_option";
                 setting_option_el.addEventListener("click", (e) => {
                     parent.unset_setting(var_name);
@@ -799,8 +745,8 @@ class B21_TaskPlanner {
                     parent.set_setting(var_name, option_name);
                     parent.task.display_task_list();
                 });
-                setting_option_el.innerHTML = "Option: "+option_name;
-                if (this.settings[var_name]==option_name) {
+                setting_option_el.innerHTML = "Option: " + option_name;
+                if (this.settings[var_name] == option_name) {
                     this.select(setting_option_el);
                 }
                 setting_options_el.appendChild(setting_option_el);
@@ -813,29 +759,29 @@ class B21_TaskPlanner {
     var_name_to_title(var_name) {
         let parts = var_name.split("_");
         let title = "";
-        for (let i=0; i<parts.length; i++) {
-            title += (i>0 ? " " : "") + parts[i][0].toUpperCase()+parts[i].slice(1);
+        for (let i = 0; i < parts.length; i++) {
+            title += (i > 0 ? " " : "") + parts[i][0].toUpperCase() + parts[i].slice(1);
         }
         return title;
     }
 
     set_altitude_units_m() {
-        this.set_setting("altitude_units","m");
+        this.set_setting("altitude_units", "m");
         this.task.display_task_list();
     }
 
     set_altitude_units_feet() {
-        this.set_setting("altitude_units","feet");
+        this.set_setting("altitude_units", "feet");
         this.task.display_task_list();
     }
 
     set_speed_units_kph() {
-        this.set_setting("speed_units","kph");
+        this.set_setting("speed_units", "kph");
         this.task.display_task_list();
     }
 
     set_speed_units_knots() {
-        this.set_setting("speed_units","knots");
+        this.set_setting("speed_units", "knots");
         this.task.display_task_list();
     }
 
@@ -848,29 +794,29 @@ class B21_TaskPlanner {
     }
 
     unset_setting(var_name) {
-        for (let i=0; i<this.settings_values[var_name].length; i++) {
+        for (let i = 0; i < this.settings_values[var_name].length; i++) {
             let option_name = this.settings_values[var_name][i];
-            let id = "setting_"+var_name+"_"+option_name;
+            let id = "setting_" + var_name + "_" + option_name;
             this.unselect(document.getElementById(id));
         }
     }
 
     set_setting(var_name, value) {
         this.settings[var_name] = value;
-        window.localStorage.setItem('b21_task_planner_'+var_name, ""+value);
+        window.localStorage.setItem('b21_task_planner_' + var_name, "" + value);
     }
 
     get_setting(var_name) {
-        let value = window.localStorage.getItem('b21_task_planner_'+var_name);
+        let value = window.localStorage.getItem('b21_task_planner_' + var_name);
         let error = true;
         if (typeof this.settings_values[var_name] == "string") {
-            if (value==null || value=="") {
+            if (value == null || value == "") {
                 this.settings[var_name] = this.settings_values[var_name];
             } else {
                 this.settings[var_name] = value;
             }
         } else if (typeof this.settings_values[var_name] == "object") {
-            for (let i=0; i<this.settings_values[var_name].length; i++) {
+            for (let i = 0; i < this.settings_values[var_name].length; i++) {
                 if (value == this.settings_values[var_name][i]) {
                     this.settings[var_name] = value;
                     error = false;
@@ -886,16 +832,16 @@ class B21_TaskPlanner {
                 this.settings[var_name] = this.settings_values[var_name];
             }
         }
-        console.log("get_setting",var_name,this.settings[var_name]);
+        console.log("get_setting", var_name, this.settings[var_name]);
     }
 
     load_settings() {
         for (const var_name in this.settings_values) {
             this.get_setting(var_name);
         }
-        if (this.settings.soaring_task==0) {
+        if (this.settings.soaring_task == 0) {
             document.getElementById("soaring_task_checkbox").checked = false;
         }
-        console.log("load_settings",this.settings.altitude_units, this.settings.distance_units);
+        console.log("load_settings", this.settings.altitude_units, this.settings.distance_units);
     }
 }

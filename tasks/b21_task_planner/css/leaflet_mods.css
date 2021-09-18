@@ -12,3 +12,11 @@
     border-width: 1px;
     margin: 1px;
 }
+
+.leaflet-grab {
+    cursor: pointer;
+}
+
+.leaflet-dragging .leaflet-grab {
+   cursor: move;
+}

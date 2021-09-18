@@ -33,6 +33,14 @@ class B21_FlightPlan {
         if (this.task.waypoints[0].icao==null || this.task.waypoints[this.task.waypoints.length-1].icao==null) {
             throw "Cannot create Flightplan unless first and last waypoints have ICAO";
         }
+
+        if (this.task.start_index==0) {
+            throw "Cannot set the departure airport as the task START waypoint. See Help - General Hint (1).";
+        }
+
+        if (this.task.finish_index==this.task.waypoints.length-1) {
+            throw "Cannot set the destination airport as the task FINISH waypoint. See Help - General Hint (1).";
+        }
     }
 
     clean(str) {
