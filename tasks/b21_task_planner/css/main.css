@@ -88,8 +88,12 @@ a {
     background-color: yellow;
 }
 
+/* ******************************************* */
+/* ******   PANES           ****************** */
+/* ******************************************* */
+
 #panes {
-    height: 90%;
+    height: calc(100% - 80px);
     position: relative;
     display: flex;
 }
@@ -110,6 +114,32 @@ a {
     text-align: right;
 }
 
+/* *************************************************** */
+/* ******* Tabs                  ********************* */
+/* *************************************************** */
+
+#left_pane_tabs {
+    display: none; /* will enable when GPX is loaded */
+    font-size: 22px;
+}
+
+.tab_active {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 0;
+}
+
+.tab_inactive {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 0;
+    background-color: #999999;
+}
+
+/* *************************************************** */
+/* ******* Drop Zone             ********************* */
+/* *************************************************** */
+
 #drop_zone {
     width: 80%;
     /* min-height: 25%;*/
@@ -122,19 +152,23 @@ a {
     line-height: 50px;
 }
 
+/* *************************************************** */
+/* ******* Right Pane            ********************* */
+/* *************************************************** */
+
 #right_pane {
-    width: 78%;
     height: 100%; /* 100% or 75% depending on whether the baro is displayed */
     display: flex;
     flex-direction: column;
     flex: 1 1 0;
+    margin-right: 8px;
 }
 
 #map {
     height: 100%;
 }
 
-#barograph {
+#chart {
     width: 100%;
     height: 25%;
     margin-top: 3px;
@@ -198,36 +232,32 @@ a {
 }
 
 /* *************************************************** */
-/* ******* Task list elements    ********************* */
+/* ******* Task info elements    ********************* */
 /* *************************************************** */
 
-#task_list {
+#task_info {
     cursor: pointer;
     font-size: 16px;
     width: 100%;
     border-collapse: collapse;
 }
 
-.task_list_wp {
+.task_info_wp {
     border-top: 2px solid black;
     height: 36px;
 }
 
-.task_list_wp:hover {
+.task_info_wp:hover {
     background-color: #cccc88;
 }
 
-.task_list_wp_current {
+.task_info_wp_current {
     border: 4px solid yellow;
     background-color: yellow;
     height: 36px;
 }
 
-.task_list_wp:hover {
-    background-color: #cccc88;
-}
-
-.task_list_wp_index {
+.task_info_wp_index {
     text-align: left;
     font-size: 12px;
     background-color: #e6ffff;
@@ -235,54 +265,121 @@ a {
     white-space: nowrap;
 }
 
-.task_list_wp_name {
+.task_info_wp_name {
     text-align: left;
     background-color: #e6ffff;
 }
 
-.task_list_wp_bearing {
+.task_info_wp_bearing {
     padding-right: 15px;
 }
 
 
-.task_list_wp_buttons {
+.task_info_wp_buttons {
     width: 80px;
 }
 
-.task_list_wp_buttons div:hover { /* highlight buttons in red */
+.task_info_wp_buttons div:hover { /* highlight buttons in red */
     border: 2px solid red;
 }
 
-.task_list_wp_button_up {
+.task_info_wp_button_up {
     display: inline-block;
     width: 25px;
     height: 30px;
     background-image: url("../images/arrow_up.png");
 }
 
-.task_list_wp_button_down {
+.task_info_wp_button_down {
     display: inline-block;
     width: 25px;
     height: 30px;
     background-image: url("../images/arrow_down.png");
 }
 
-.task_list_wp_button_delete {
+.task_info_wp_button_delete {
     display: inline-block;
     width: 25px;
     height: 30px;
     background-image: url("../images/delete.png");
 }
 
-.task_list_wp_limits {
+.task_info_wp_limits {
     font-size: 14px;
 }
 
-#task_list_distance {
+#task_info_distance {
     text-align: right;
     font-size: 24px;
     background-color: #d0d0d0;
     margin-right: 10px;
+}
+
+/* *************************************************** */
+/* ******* TrackLogs info elements    **************** */
+/* *************************************************** */
+
+#tracklogs_info {
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    border-collapse: collapse;
+    display: none;
+}
+
+.tracklogs_info_entry {
+    border-top: 2px solid black;
+    height: 36px;
+}
+
+.tracklogs_info_entry_current {
+    border: 4px solid yellow;
+    background-color: yellow;
+    height: 36px;
+}
+
+.tracklogs_info_entry_name {
+    text-align: left;
+    background-color: #e6ffff;
+}
+
+.tracklogs_info_entry_name:hover {
+    background-color: #cccc88;
+}
+
+/* *************************************************** */
+/* ******* TrackLog info elements    ***************** */
+/* *************************************************** */
+
+#tracklog_info {
+    font-size: 16px;
+    width: 100%;
+    cursor: default;
+    display: none;
+}
+
+.tracklog_name {
+    text-align: center;
+    background-color: #e6ffff;
+}
+
+.tracklog_info_section_header {
+    background-color: pink;
+    text-align: center;
+    font-weight: bold;
+}
+
+.tracklog_info_header {
+    border-top: 2px solid black;
+    font-weight: bold;
+}
+
+.tracklog_wp_info {
+    border-top: 2px solid #888888;
+}
+
+.tracklog_wp_info:hover {
+    background-color: #cccc88;
 }
 
 /* *************************************************** */
@@ -344,28 +441,4 @@ a {
 
 #skyvector_button {
     text-decoration: none;
-}
-
-/* *************************************************** */
-/* ******* Tabs                  ********************* */
-/* *************************************************** */
-
-#left_pane_tabs {
-    display: none; /* will enable when GPX is loaded */
-    font-size: 22px;
-}
-
-.tab_active {
-    border-bottom: 4px solid blue;
-    border-right: 2px solid blue;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin: 0;
-}
-
-.tab_inactive {
-    border-right: 1px solid blue;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin: 0;
 }

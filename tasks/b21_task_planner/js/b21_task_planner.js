@@ -12,9 +12,21 @@ class B21_TaskPlanner {
     init() {
         let parent = this;
 
-        this.sv_button = document.getElementById("skyvector_button"); // So we can update action URL
+        this.skyvector_button_el = document.getElementById("skyvector_button"); // So we can update action URL
+        this.chart_el = document.getElementById("chart");
+        this.left_pane_tabs_el = document.getElementById("left_pane_tabs");
 
-        this.init_settings();
+        this.tab_task_el = document.getElementById("tab_task");
+        this.tab_tracklogs_el = document.getElementById("tab_tracklogs");
+        this.tab_tracklog_el = document.getElementById("tab_tracklog");
+        this.task_info_el = document.getElementById("task_info");
+        this.tracklogs_info_el = document.getElementById("tracklogs_info");
+        this.tracklog_info_el = document.getElementById("tracklog_info");
+
+        this.tracklogs = []; // Loaded tracklogs
+        this.tracklog_index = null; // index of current tracklog
+
+        this.settings = new B21_Settings(this); // Load settings from localStorage
 
         this.init_drop_zone();
 
@@ -153,7 +165,7 @@ class B21_TaskPlanner {
 
         this.map.on("baselayerchange", (e) => {
             console.log("baselayerchange", e);
-            this.set_setting("base_layer_name", e.name);
+            this.settings.set("base_layer_name", e.name);
         });
 
         L.control.layers(this.base_maps, this.map_layers).addTo(this.map);
@@ -318,6 +330,7 @@ class B21_TaskPlanner {
         });
     }
 
+    //DEBUG load task should score TrackLogs
     handle_pln_str(file_str) {
         console.log("handle string containing PLN XML");
         this.task.load_flightplan(file_str);
@@ -325,6 +338,8 @@ class B21_TaskPlanner {
             [this.task.min_lat, this.task.min_lng],
             [this.task.max_lat, this.task.max_lng]
         ]);
+        this.score_tracklogs();
+        this.show_task_info();
     }
 
     // ********************************************************************************************
@@ -332,14 +347,29 @@ class B21_TaskPlanner {
     // ********************************************************************************************
 
     handle_gpx_str(file_str, name) {
-        console.log("handle_gpx_str", name);
-        this.track_log = new B21_TrackLog(this);
-        this.track_log.load_gpx(file_str, name);
-        this.track_log.draw(this.map);
+        console.log("loading tracklogs[" + this.tracklogs.length + "]", name);
+        let tracklog = new B21_TrackLog(this.tracklogs.length, this, this.map);
+        this.tracklogs.push(tracklog);
+        this.tracklog_index = this.tracklogs.length-1;
+        tracklog.load_gpx(file_str, name);
+        tracklog.draw_map();
         // zoom the map to the polyline
-        this.map.fitBounds(this.track_log.polyline.getBounds());
+        this.map.fitBounds(tracklog.polyline.getBounds());
+        // If this is the 1st time we're drawing the chart, adjust size of map
+        if (this.tracklogs.length == 1) {
+            let map_el = document.getElementById("map");
+            map_el.style.height = "75%";
+            this.chart_el.style.display = "block";
+            this.map.invalidateSize();
 
-        this.track_log.draw_baro();
+            this.left_pane_tabs_el.style.display = 'block';
+        }
+
+        tracklog.draw_chart();
+        if (this.task != null) {
+            tracklog.score_task();
+        }
+        this.show_tracklog_info();
     }
 
     // ********************************************************************************************
@@ -397,7 +427,7 @@ class B21_TaskPlanner {
         sv_link = sv_link.replace("#LNG#", center.lng.toFixed(8));
         sv_link = sv_link.replace("#ZOOM#", sv_zoom.toFixed(0));
 
-        this.sv_button.setAttribute("href", sv_link);
+        this.skyvector_button_el.setAttribute("href", sv_link);
     }
 
 
@@ -459,13 +489,13 @@ class B21_TaskPlanner {
     change_wp_name(new_name) {
         console.log("new wp name = ", new_name);
         this.task.current_wp().set_name(new_name);
-        this.task.display_task_list();
+        this.task.display_task_info();
     }
 
     change_wp_icao(new_icao) {
         console.log("new wp icao = ", new_icao);
         this.task.current_wp().set_icao(new_icao);
-        this.task.display_task_list();
+        this.task.display_task_info();
     }
 
     change_wp_runway(runway) {
@@ -485,7 +515,7 @@ class B21_TaskPlanner {
         let wp = this.task.current_wp();
         wp.alt_m = parseFloat(new_alt) / (this.settings.altitude_units == "m" ? 1 : this.M_TO_FEET);
         wp.alt_m_updated = true;
-        this.task.display_task_list();
+        this.task.display_task_info();
     }
 
     change_wp_radius(radius_str) {
@@ -498,7 +528,7 @@ class B21_TaskPlanner {
             wp.set_radius(radius_m);
         }
         this.task.redraw();
-        this.task.display_task_list();
+        this.task.display_task_info();
     }
 
     change_wp_max_alt(new_alt) {
@@ -508,7 +538,7 @@ class B21_TaskPlanner {
         if (isNaN(wp.max_alt_m) || wp.max_alt_m == 0) {
             wp.max_alt_m = null;
         }
-        this.task.display_task_list();
+        this.task.display_task_info();
     }
 
     change_wp_min_alt(new_alt) {
@@ -518,7 +548,7 @@ class B21_TaskPlanner {
         if (isNaN(wp.min_alt_m) || wp.min_alt_m == 0) {
             wp.min_alt_m = null;
         }
-        this.task.display_task_list();
+        this.task.display_task_info();
     }
 
     remove_wp_from_task() {
@@ -534,7 +564,7 @@ class B21_TaskPlanner {
     click_soaring_task(el) {
         console.log("click_soaring_task", el.checked);
         let option = el.checked;
-        this.set_setting("soaring_task", option ? 1 : 0);
+        this.settings.set("soaring_task", option ? 1 : 0);
     }
 
     click_start(e) {
@@ -559,7 +589,7 @@ class B21_TaskPlanner {
         this.task.update_waypoint_icons();
         wp.display_menu();
         this.task.redraw();
-        this.task.display_task_list();
+        this.task.display_task_info();
     }
 
     click_finish(e) {
@@ -586,7 +616,7 @@ class B21_TaskPlanner {
         this.task.update_waypoint_icons();
         wp.display_menu();
         this.task.redraw();
-        this.task.display_task_list();
+        this.task.display_task_info();
     }
 
     // ********************************************************************************************
@@ -598,10 +628,20 @@ class B21_TaskPlanner {
         this.task.reset();
     }
 
-    download() {
-        console.log("download()");
+    download_pln() {
+        console.log("download_pln()");
         try {
-            this.task.save_flightplan();
+            this.task.save_file_pln();
+        } catch (e) {
+            alert(e);
+            return;
+        }
+    }
+
+    download_tsk() {
+        console.log("download_tsk()");
+        try {
+            this.task.save_file_tsk();
         } catch (e) {
             alert(e);
             return;
@@ -625,15 +665,30 @@ class B21_TaskPlanner {
         ]);
     }
 
-    tab_task() {
-        document.getElementById("tab_task").className = "tab_active";
-        document.getElementById("tab_tracklogs").className = "tab_inactive";
+    toggle_settings() {
+        this.settings.toggle();
     }
 
-    tab_tracklogs() {
-        document.getElementById("tab_task").className = "tab_inactive";
-        document.getElementById("tab_tracklogs").className = "tab_active";
+    set_altitude_units_m() {
+        this.settings.set("altitude_units", "m");
+        this.task.display_task_info();
     }
+
+    set_altitude_units_feet() {
+        this.settings.set("altitude_units", "feet");
+        this.task.display_task_info();
+    }
+
+    set_speed_units_kph() {
+        this.settings.set("speed_units", "kph");
+        this.task.display_task_info();
+    }
+
+    set_speed_units_knots() {
+        this.settings.set("speed_units", "knots");
+        this.task.display_task_info();
+    }
+
 
     // User has typed in search box
     //DEBUG pan the map to the clicked airport result, and highlight that airport
@@ -653,195 +708,115 @@ class B21_TaskPlanner {
     }
 
     // ********************************************************************************************
-    // *********  Settings                                 ****************************************
+    // TrackLog stuff
     // ********************************************************************************************
 
-    init_settings() {
-
-        this.settings = {};
-
-        this.settings_values = {
-            soaring_task: 1, // 1 or 0 = true/false whether to embed the B21/ALBATROSS soaring params
-            altitude_units: ["feet", "m"],
-            speed_units: ["kph", "knots"],
-            distance_units: ["km", "miles"],
-            wp_radius_units: ["m", "feet"],
-            wp_radius_m: 500,
-            wp_min_alt_m: 330,
-            wp_max_alt_m: 2000,
-            base_layer_name: "Streetmap"
-        };
-
-        this.settings_el = document.getElementById("settings");
-        this.settings_el.style.display = "none";
-        this.settings_displayed = false;
-
-        this.load_settings();
-
-        this.build_settings_html();
+    score_tracklogs() {
+        for (let i=0; i<this.tracklogs.length; i++) {
+            this.tracklogs[i].score_task();
+        }
     }
 
-    toggle_settings() {
-        console.log("toggle settings from", this.settings_displayed);
-        if (this.settings_displayed) {
-            this.close_settings();
+    //DEBUG tracklog select should update map, chart
+    set_current_tracklog(index) {
+        this.tracklog_index = index;
+        this.show_tracklog_info();
+    }
+
+    // ********************************************************************************************
+    // *********  Tabs                                     ****************************************
+    // ********************************************************************************************
+
+    tab_task() {
+        this.show_task_info();
+    }
+
+    tab_tracklogs() {
+        this.show_tracklogs_info();
+    }
+
+    tab_tracklog() {
+        this.show_tracklog_info();
+    }
+
+    // Show task info
+    show_task_info() {
+        this.task.display_task_info();
+        this.tab_task_el.className = "tab_active";
+        this.task_info_el.style.display = "block";
+        this.tab_tracklogs_el.className = "tab_inactive";
+        this.tracklogs_info_el.style.display = "none";
+        this.tab_tracklog_el.className = "tab_inactive";
+        this.tracklog_info_el.style.display = "none";
+    }
+
+    // Show list of tracklogs
+    show_tracklogs_info() {
+        console.log("tab_tracklogs()");
+        this.display_tracklogs_info();
+        this.tab_task_el.className = "tab_inactive";
+        this.task_info_el.style.display = "none";
+        this.tab_tracklogs_el.className = "tab_active";
+        this.tracklogs_info_el.style.display = "block";
+        this.tab_tracklog_el.className = "tab_inactive";
+        this.tracklog_info_el.style.display = "none";
+    }
+
+    // Show single tracklog info
+    show_tracklog_info() {
+        if (this.tracklog_index != null) {
+            this.tracklogs[this.tracklog_index].display_info();
         } else {
-            this.settings_el.style.display = "block";
-            this.settings_displayed = true;
+            document.getElementById("tracklog_info").innerHTML = "No tracklogs loaded";
         }
+        this.tab_task_el.className = "tab_inactive";
+        this.task_info_el.style.display = "none";
+        this.tab_tracklogs_el.className = "tab_inactive";
+        this.tracklogs_info_el.style.display = "none";
+        this.tab_tracklog_el.className = "tab_active";
+        this.tracklog_info_el.style.display = "block";
     }
 
-    close_settings() {
-        this.settings_el.style.display = "none";
-        this.settings_displayed = false;
+    // ********************************************************************************************
+    // *********  Tracklogs                                ****************************************
+    // ********************************************************************************************
+
+    display_tracklogs_info() {
+        while (this.tracklogs_info_el.firstChild) {
+            this.tracklogs_info_el.removeChild(this.tracklogs_info_el.lastChild);
+        }
+        let tracklogs_table_el = document.createElement("table");
+        tracklogs_table_el.id = "task_info";
+
+        // Column headings
+        let headings_el = document.createElement("tr");
+        let heading1 = document.createElement("th"); // WP #
+        headings_el.appendChild(heading1);
+
+        tracklogs_table_el.appendChild(headings_el);
+
+        // Add tracklog
+        for (let i = 0; i < this.tracklogs.length; i++) {
+            this.display_tracklogs_entry(tracklogs_table_el, this.tracklogs[i]);
+        }
+        this.tracklogs_info_el.appendChild(tracklogs_table_el);
     }
 
-    build_settings_html() {
-        while (this.settings_el.firstChild) {
-            this.settings_el.removeChild(this.settings_el.lastChild);
-        }
-        let heading_el = document.createElement("div");
-        heading_el.id = "settings_heading";
-
-        let heading_text_el = document.createElement("div");
-        heading_text_el.id = "settings_heading_text";
-        heading_text_el.innerHTML = "Settings";
-        heading_el.appendChild(heading_text_el);
-
-        let close_el = document.createElement("button");
-        close_el.addEventListener("click", (e) => this.close_settings());
-        close_el.innerHTML = "Close Settings";
-        heading_el.appendChild(close_el);
-
-        this.settings_el.appendChild(heading_el);
-
-        for (const var_name in this.settings_values) {
-            if (typeof this.settings_values[var_name] == "object") {
-                this.build_setting_html(var_name);
-            }
-        }
-
-    }
-
-    build_setting_html(var_name) {
+    display_tracklogs_entry(table_el, tracklog) {
+        console.log("Displaying tracklogs entry tracklog.index="+tracklog.index+" current="+this.tracklog_index);
+        let tracklog_entry_el = document.createElement("tr");
+        tracklog_entry_el.className = tracklog.index == this.tracklog_index ? "tracklogs_info_entry_current" : "tracklogs_info_entry";
         let parent = this;
-        let setting_el = document.createElement("div");
-        setting_el.className = "setting";
-        let setting_name_el = document.createElement("div");
-        setting_name_el.className = "setting_name";
-        setting_name_el.innerHTML = this.var_name_to_title(var_name);
-        setting_el.appendChild(setting_name_el);
-        if (typeof this.settings_values[var_name] == "object") {
-            let setting_options_el = document.createElement("div");
-            setting_options_el.className = "setting_options";
-            for (let i = 0; i < this.settings_values[var_name].length; i++) {
-                let option_name = this.settings_values[var_name][i];
-                let setting_option_el = document.createElement("div");
-                setting_option_el.id = "setting_" + var_name + "_" + option_name;
-                setting_option_el.className = "setting_option";
-                setting_option_el.addEventListener("click", (e) => {
-                    parent.unset_setting(var_name);
-                    parent.select(e.target);
-                    parent.set_setting(var_name, option_name);
-                    parent.task.display_task_list();
-                });
-                setting_option_el.innerHTML = "Option: " + option_name;
-                if (this.settings[var_name] == option_name) {
-                    this.select(setting_option_el);
-                }
-                setting_options_el.appendChild(setting_option_el);
-            }
-            setting_el.appendChild(setting_options_el);
-        }
-        this.settings_el.appendChild(setting_el);
+        let tracklog_name_el = document.createElement("td"); // TrackLog name
+        tracklog_name_el.className = "tracklogs_info_entry_name";
+        tracklog_name_el.onclick = function() {
+            parent.set_current_tracklog(tracklog.index);
+        };
+        tracklog_name_el.innerHTML = tracklog.get_name() + "<br/>" + tracklog.get_filename();
+
+        tracklog_entry_el.appendChild(tracklog_name_el);
+
+        table_el.appendChild(tracklog_entry_el);
     }
 
-    var_name_to_title(var_name) {
-        let parts = var_name.split("_");
-        let title = "";
-        for (let i = 0; i < parts.length; i++) {
-            title += (i > 0 ? " " : "") + parts[i][0].toUpperCase() + parts[i].slice(1);
-        }
-        return title;
-    }
-
-    set_altitude_units_m() {
-        this.set_setting("altitude_units", "m");
-        this.task.display_task_list();
-    }
-
-    set_altitude_units_feet() {
-        this.set_setting("altitude_units", "feet");
-        this.task.display_task_list();
-    }
-
-    set_speed_units_kph() {
-        this.set_setting("speed_units", "kph");
-        this.task.display_task_list();
-    }
-
-    set_speed_units_knots() {
-        this.set_setting("speed_units", "knots");
-        this.task.display_task_list();
-    }
-
-    select(el) {
-        el.style.backgroundColor = "lightgreen";
-    }
-
-    unselect(el) {
-        el.style.backgroundColor = "white";
-    }
-
-    unset_setting(var_name) {
-        for (let i = 0; i < this.settings_values[var_name].length; i++) {
-            let option_name = this.settings_values[var_name][i];
-            let id = "setting_" + var_name + "_" + option_name;
-            this.unselect(document.getElementById(id));
-        }
-    }
-
-    set_setting(var_name, value) {
-        this.settings[var_name] = value;
-        window.localStorage.setItem('b21_task_planner_' + var_name, "" + value);
-    }
-
-    get_setting(var_name) {
-        let value = window.localStorage.getItem('b21_task_planner_' + var_name);
-        let error = true;
-        if (typeof this.settings_values[var_name] == "string") {
-            if (value == null || value == "") {
-                this.settings[var_name] = this.settings_values[var_name];
-            } else {
-                this.settings[var_name] = value;
-            }
-        } else if (typeof this.settings_values[var_name] == "object") {
-            for (let i = 0; i < this.settings_values[var_name].length; i++) {
-                if (value == this.settings_values[var_name][i]) {
-                    this.settings[var_name] = value;
-                    error = false;
-                    break;
-                }
-            }
-            if (error) {
-                this.settings[var_name] = this.settings_values[var_name][0];
-            }
-        } else {
-            this.settings[var_name] = parseFloat(value);
-            if (isNaN(this.settings[var_name])) {
-                this.settings[var_name] = this.settings_values[var_name];
-            }
-        }
-        console.log("get_setting", var_name, this.settings[var_name]);
-    }
-
-    load_settings() {
-        for (const var_name in this.settings_values) {
-            this.get_setting(var_name);
-        }
-        if (this.settings.soaring_task == 0) {
-            document.getElementById("soaring_task_checkbox").checked = false;
-        }
-        console.log("load_settings", this.settings.altitude_units, this.settings.distance_units);
-    }
-}
+} // End class B21_TaskPlanner

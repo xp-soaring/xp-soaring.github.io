@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SimBase.Document Type="AceXML" version="1,0">
+    <Descr>AceXML Document</Descr>
+    <FlightPlan.FlightPlan>
+        <Title>LFQN to EGIQ</Title>
+        <FPType>VFR</FPType>
+        <CruisingAlt>1500.000</CruisingAlt>
+        <DepartureID>LFQN</DepartureID>
+        <DepartureLLA>N50° 43' 46.01",E2° 14' 9.00",+000249.00</DepartureLLA>
+        <DestinationID>EGIQ</DestinationID>
+        <DestinationLLA>N51° 5' 31.13",E0° 59' 18.26",+000276.00</DestinationLLA>
+        <Descr>LFQN to EGIQ</Descr>
+        
+        <DepartureName>LFQN</DepartureName>
+        <DestinationName>EGIQ</DestinationName>
+        <AppVersion>
+            <AppVersionMajor>11</AppVersionMajor>
+            <AppVersionBuild>282174</AppVersionBuild>
+        </AppVersion>
+
+        <ATCWaypoint id="LFQN">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N50° 43' 46.01",E2° 14' 9.00",+000249.00</WorldPosition>
+            
+            <SpeedMaxFP>-1</SpeedMaxFP>
+            <ICAO>
+                <ICAOIdent>LFQN</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="*Start+379|6000-3000x2000">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N50° 43' 21.95",E2° 10' 9.50",+000379.00</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="WP1+10|6000-1000x1000">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N50° 56' 31.16",E1° 48' 59.86",+000010.00</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="WP2+0|6000-1000x1000">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N51° 6' 52.65",E1° 19' 10.49",-000000.00</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="WP3+260|2000-1000x500">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N51° 4' 14.43",E1° 2' 56.01",+000260.00</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="*Finish+282|1000-300x500">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N51° 5' 25.28",E0° 59' 16.78",+000282.15</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="EGIQ">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N51° 5' 31.13",E0° 59' 18.26",+000276.00</WorldPosition>
+            
+            <SpeedMaxFP>-1</SpeedMaxFP>
+            <ICAO>
+                <ICAOIdent>EGIQ</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+
+    </FlightPlan.FlightPlan>
+</SimBase.Document>

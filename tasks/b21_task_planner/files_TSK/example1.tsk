@@ -1,0 +1,21 @@
+<Task fai_finish="0" start_max_height_ref="MSL" start_max_height="1800" finish_min_height_ref="MSL"
+      finish_min_height="0"  start_max_speed="0" start_requires_arm="0" aat_min_time="0" type="RT">
+       <Point type="Start">
+               <Waypoint name="S:Bomoen" id="0" comment="Bomoen" altitude="101">
+                       <Location latitude="60.63820" longitude="6.50350"/>
+               </Waypoint>
+               <ObservationZone type="Line" length="6000"/>
+       </Point>
+       <Point type="Turn">
+               <Waypoint name="1:Suldal utel." id="0" comment="Suldal utel." altitude="77">
+                       <Location latitude="59.49135" longitude="6.50027"/>
+               </Waypoint>
+               <ObservationZone type="SymmetricQuadrant" radius="3000"/>
+       </Point>
+       <Point type="Finish">
+               <Waypoint name="F:Bomoen" id="0" comment="Bomoen" altitude="101">
+                       <Location latitude="60.63820" longitude="6.50350"/>
+               </Waypoint>
+               <ObservationZone type="Cylinder" radius="1500"/>
+       </Point>
+</Task>

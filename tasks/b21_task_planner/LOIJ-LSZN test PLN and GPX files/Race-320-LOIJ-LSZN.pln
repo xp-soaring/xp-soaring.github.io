@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SimBase.Document Type="AceXML" version="1,0">
+    <Descr>AceXML Document</Descr>
+    <FlightPlan.FlightPlan>
+        <Title>LOIJ to LSZN</Title>
+        <FPType>VFR</FPType>
+        <CruisingAlt>7000.000</CruisingAlt>
+        <DepartureID>LOIJ</DepartureID>
+        <DepartureLLA>N47° 31' 13.18",E12° 26' 57.63",+002198.16</DepartureLLA>
+        <DestinationID>LSZN</DestinationID>
+        <DestinationLLA>N47° 14' 20.00",E8° 30' 56.00",+001919.29</DestinationLLA>
+        <Descr>LOIJ to LSZN</Descr>
+        
+        <DepartureName>LOIJ</DepartureName>
+        <DestinationName>LSZN</DestinationName>
+        <AppVersion>
+            <AppVersionMajor>11</AppVersionMajor>
+            <AppVersionBuild>282174</AppVersionBuild>
+        </AppVersion>
+
+        <ATCWaypoint id="LOIJ">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N47° 31' 13.18",E12° 26' 57.63",+002198.16</WorldPosition>
+            
+            <SpeedMaxFP>-1</SpeedMaxFP>
+            <ICAO>
+                <ICAOIdent>LOIJ</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="START | 5000/3000x2000">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N47° 31' 50.75",E12° 25' 18.33",+002158.79</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="POI1 | 9000/3000x1000">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N47° 15' 35.98",E11° 16' 46.46",+001945.54</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="POI2 | 9000/3000x1000">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N47° 29' 19.84",E10° 42' 35.31",+002772.31</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="POI3 | 9000/3000x1000">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N47° 0' 49.25",E9° 30' 32.07",+001630.58</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="Final | 5000/2000x500">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N47° 12' 26.58",E8° 47' 38.10",+001338.58</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="FINISH | 5000/1320x500">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N47° 16' 23.00",E8° 36' 13.53",+001318.90</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="LSZN">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N47° 14' 20.00",E8° 30' 56.00",+001919.29</WorldPosition>
+            
+            <SpeedMaxFP>-1</SpeedMaxFP>
+            <ICAO>
+                <ICAOIdent>LSZN</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+
+    </FlightPlan.FlightPlan>
+</SimBase.Document>

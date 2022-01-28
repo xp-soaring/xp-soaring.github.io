@@ -24,11 +24,13 @@
     <link href="css/main.css" rel="stylesheet"/>
 
     <script src="js/b21_geo_static.js"> </script>   <!-- Geo: Defines Geo functions (static) -->
+    <script src="js/b21_settings.js"> </script>     <!-- B21_Settings: loads localStorage settings e.g. units -->
     <script src="js/b21_airports.js"> </script>     <!-- B21_Airports: loads airport data -->
     <script src="js/b21_track_log.js"> </script>    <!-- B21_TrackLog: Supports GPX files -->
     <script src="js/b21_wp.js"> </script>           <!-- B21_WP: internal representation of a gliding waypoint -->
     <script src="js/b21_task.js"> </script>         <!-- B21_Task: internal representation of a gliding task from FlightPlan -->
     <script src="js/b21_flight_plan.js"> </script>  <!-- B21_FlightPlan: Supports PLN files -->
+    <script src="js/b21_xcsoar_tsk.js"> </script>   <!-- B21_XCsoar_TSK: Supports XCSoar TSK files -->
     <script src="js/b21_task_planner.js"> </script> <!-- B21_TaskPlanner: the main app class -->
 <script>
 
@@ -45,14 +47,16 @@ function loaded() {
 <body onload="loaded()">
     <div class="header">
         <div class="title">
-            <div class="title_text">B21 Task Planner v1.31</div>
+            <div class="title_text">B21 Task Planner v1.34</div>
             <div class="title_task_option">Soaring task: <input id="soaring_task_checkbox" type="checkbox" onclick="b21_task_planner.click_soaring_task(this)" checked/></div>
         </div>
     </div>
 
     <div id="buttons">
-        <button onclick="b21_task_planner.download()"
-            title="Download .PLN file to your Downloads folder">Download FlightPlan</button>
+        <button onclick="b21_task_planner.download_pln()"
+            title="Download .PLN file to your Downloads folder">Download MSFS FlightPlan</button>
+        <button onclick="b21_task_planner.download_tsk()"
+            title="Download .TSK file to your Downloads folder">Download XCsoar Task</button>
         <button onclick="b21_task_planner.reset()"
             title="Delete the current task">Reset Task</button>
         <button onclick="b21_task_planner.update_elevations()"
@@ -85,14 +89,21 @@ function loaded() {
         <div id="left_pane">
             <div id="left_pane_tabs">
                 <a id="tab_task" class="tab_active" href="#" onclick="b21_task_planner.tab_task()">Task Info</a>
-                <a id="tab_tracklogs" class="tab_inactive" href="#" onclick="b21_task_planner.tab_tracklogs()">Tracklogs Info</a>
+                <a id="tab_tracklogs" class="tab_inactive" href="#" onclick="b21_task_planner.tab_tracklogs()">Tracklogs</a>
+                <a id="tab_tracklog" class="tab_inactive" href="#" onclick="b21_task_planner.tab_tracklog()">Tracklog Info</a>
             </div>
-            <div id="task_list"></div>
+            <div id="task_info"></div>
+            <div id="tracklogs_info">TRACKLOGS</div>
+            <div id="tracklog_info">
+                <div id="tracklog_info_header"></div>
+                <div id="tracklog_info_task">TASK</div>
+                <div id="tracklog_info_selected">SELECTED</div>
+            </div>
             <div id="drop_zone">CLICK MAP TO START, OR DROP MSFS FLIGHT PLAN HERE</div>
         </div> <!-- end left_pane -->
         <div id="right_pane">
             <div id="map"></div>
-            <div id="barograph"></div>
+            <div id="chart"></div>
         </div>
         <div id="settings">
             <div id="settings_heading">

@@ -1,0 +1,28 @@
+<Task fai_finish="0" finish_min_height_ref="AGL" finish_min_height="152"
+    start_max_height_ref="MSL" start_max_height="1828" start_max_speed="0" start_requires_arm="0"
+    aat_min_time="0" name="ZELL-AM-SEE TASK 1" type="RT">
+    <Point type="Start">
+        <Waypoint altitude="0" comment="TP HHN User WP" id="2" name="TP HHN">
+            <Location latitude="47.303333" longitude="12.837778"/>
+        </Waypoint>
+        <ObservationZone length="10000" type="Line"/>
+    </Point>
+    <Point type="Turn">
+        <Waypoint altitude="0" comment="TP STS User WP" id="3" name="TP STS">
+            <Location latitude="47.458889" longitude="13.815"/>
+        </Waypoint>
+        <ObservationZone radius="500" type="Cylinder"/>
+    </Point>
+    <Point type="Turn">
+        <Waypoint altitude="0" comment="TP WRF User WP" id="4" name="TP WRF">
+            <Location latitude="47.483333" longitude="13.188889"/>
+        </Waypoint>
+        <ObservationZone radius="500" type="Cylinder"/>
+    </Point>
+    <Point type="Finish">
+        <Waypoint altitude="751.942" comment="LOWZ Airport" id="5" name="LOWZ">
+            <Location latitude="47.292778" longitude="12.788056"/>
+        </Waypoint>
+        <ObservationZone length="2000"  type="Line"/>
+    </Point>
+</Task>

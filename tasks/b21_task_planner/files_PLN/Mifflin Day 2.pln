@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<SimBase.Document Type="AceXML" version="1,0">
+    <Descr>AceXML Document</Descr>
+    <FlightPlan.FlightPlan>
+        <Title>KRVL to KRVL</Title>
+        <FPType>IFR</FPType>
+        <RouteType>LowAlt</RouteType>
+        <CruisingAlt>10000</CruisingAlt>
+        <DepartureID>KRVL</DepartureID>
+        <DepartureLLA>N40° 40' 23.09",W77° 37' 59.94",+000819.00</DepartureLLA>
+        <DestinationID>KRVL</DestinationID>
+        <DestinationLLA>N40° 40' 38.59",W77° 37' 36.59",+000819.00</DestinationLLA>
+        <Descr>KRVL, KRVL</Descr>
+        <DeparturePosition>6</DeparturePosition>
+        <DepartureName>Mifflin Co</DepartureName>
+        <DestinationName>Mifflin Co</DestinationName>
+        <AppVersion>
+            <AppVersionMajor>11</AppVersionMajor>
+            <AppVersionBuild>282174</AppVersionBuild>
+        </AppVersion>
+        <ATCWaypoint id="KRVL">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N40° 40' 38.59",W77° 37' 36.59",+000819.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>KRVL</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="WP1">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N40° 36' 20.21",W78° 9' 0.86",+008814.61</WorldPosition>
+        </ATCWaypoint>
+        <ATCWaypoint id="KAOO">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N40° 17' 46.90",W78° 19' 12.11",+010000.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>KAOO</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="N74">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N40° 53' 23.76",W77° 36' 11.28",+005044.76</WorldPosition>
+            <ICAO>
+                <ICAOIdent>N74</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="KRVL">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N40° 40' 38.59",W77° 37' 36.59",+000819.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>KRVL</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+    </FlightPlan.FlightPlan>
+</SimBase.Document>
