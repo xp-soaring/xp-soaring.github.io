@@ -1,4 +1,5 @@
-<html translate="no">
+<!DOCTYPE html>
+<html lang="en" translate="no">
 <meta name="google" content="notranslate" />
 <!-- this line is required to get Javascript to default to UTF-8 -->
 <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
@@ -29,7 +30,7 @@
     <script src="js/b21_track_log.js"> </script>    <!-- B21_TrackLog: Supports GPX files -->
     <script src="js/b21_wp.js"> </script>           <!-- B21_WP: internal representation of a gliding waypoint -->
     <script src="js/b21_task.js"> </script>         <!-- B21_Task: internal representation of a gliding task from FlightPlan -->
-    <script src="js/b21_flight_plan.js"> </script>  <!-- B21_FlightPlan: Supports PLN files -->
+    <script src="js/b21_msfs_pln.js"> </script>     <!-- B21_MSFS_PLN: Supports PLN files -->
     <script src="js/b21_xcsoar_tsk.js"> </script>   <!-- B21_XCsoar_TSK: Supports XCSoar TSK files -->
     <script src="js/b21_task_planner.js"> </script> <!-- B21_TaskPlanner: the main app class -->
 <script>
@@ -47,7 +48,8 @@ function loaded() {
 <body onload="loaded()">
     <div class="header">
         <div class="title">
-            <div class="title_text">B21 Task Planner v1.34</div>
+            <!-- NOTE VERSION NUMBER HERE -->
+            <div class="title_text">B21 Task Planner v1.35</div>
             <div class="title_task_option">Soaring task: <input id="soaring_task_checkbox" type="checkbox" onclick="b21_task_planner.click_soaring_task(this)" checked/></div>
         </div>
     </div>

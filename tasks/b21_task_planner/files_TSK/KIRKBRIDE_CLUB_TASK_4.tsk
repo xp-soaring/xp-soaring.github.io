@@ -1,0 +1,26 @@
+<Task fai_finish="0" finish_min_height_ref="AGL" finish_min_height="152" start_max_height_ref="MSL" start_max_height="0" start_max_speed="0" start_requires_arm="0" aat_min_time="0" name="KIRKBRIDE CLUB TASK 4" type="RT">
+    <Point type="Start">
+        <Waypoint altitude="42.001" comment="*Start User WP" id="2" name="*Start">
+            <Location latitude="54.865539" longitude="-3.116364"/>
+        </Waypoint>
+        <ObservationZone length="10000" type="Line"/>
+    </Point>
+    <Point type="Turn">
+        <Waypoint altitude="656.999" comment="WP1 User WP" id="3" name="WP1">
+            <Location latitude="54.669572" longitude="-3.0267"/>
+        </Waypoint>
+        <ObservationZone radius="500" type="Cylinder"/>
+    </Point>
+    <Point type="Turn">
+        <Waypoint altitude="158.999" comment="SUBUK Airport" id="4" name="SUBUK">
+            <Location latitude="54.38" longitude="-3.286389"/>
+        </Waypoint>
+        <ObservationZone radius="500" type="Cylinder"/>
+    </Point>
+    <Point type="Finish">
+        <Waypoint altitude="45.001" comment="*Finish User WP" id="5" name="*Finish">
+            <Location latitude="54.302108" longitude="-2.747789"/>
+        </Waypoint>
+        <ObservationZone length="2000"  type="Line"/>
+    </Point>
+</Task>

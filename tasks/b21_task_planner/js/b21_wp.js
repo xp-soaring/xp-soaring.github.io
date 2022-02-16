@@ -9,21 +9,15 @@ class B21_WP {
     // or as a result of loading an MSFS flightplan:
     //          new WP(planner,index,null,WP_dom_object)
     //
-    constructor(planner, index = null, position = null, dom_wp = null) {
+    constructor(planner) {
         this.planner = planner; // reference to B21TaskPlanner instance
 
         this.DEFAULT_RADIUS_M = 500;
         this.DEFAULT_START_RADIUS_M = 1000;
         this.DEFAULT_FINISH_RADIUS_M = 1000;
-
-        if (dom_wp == null) {
-            this.construct_new(index, position);
-        } else {
-            this.construct_from_dom(index, dom_wp);
-        }
     }
 
-    construct_new(index, position) {
+    new_point(index, position) {
         console.log("new WP", index, position, name);
 
         //DEBUG highlight start/finish waypoints
@@ -51,46 +45,6 @@ class B21_WP {
         this.leg_bearing_deg = null; // Bearing from previous WP to this WP
         this.leg_distance_m = null; // Distance (meters) from previous WP to this WP
         this.marker = this.create_marker();
-    }
-
-    construct_from_dom(index, dom_wp) {
-        let name = dom_wp.getAttribute("id");
-        console.log("New WP from dom:", name);
-        if (this.planner.settings.soaring_task == 1 &&
-            (name == "TIMECRUIS" || name == "TIMECLIMB" || name == "TIMEVERT")) {
-            // Skip this waypoint, & tell the caller (Task) via an exception
-            throw "SKIP_WAYPOINT";
-        }
-        console.log("New WP from dom OK:", name);
-        // <WorldPosition>N40° 40' 38.62",W77° 37' 36.71",+000813.00</WorldPosition>
-        let world_position = dom_wp.getElementsByTagName("WorldPosition")[0].childNodes[0].nodeValue;
-        let world_pos_elements = world_position.split(","); // lat, lng, alt
-        let lat_elements = world_pos_elements[0].split(" ");
-        let lat = parseInt(lat_elements[0].slice(1)) + parseFloat(lat_elements[1]) / 60 + parseFloat(lat_elements[2]) / 3600;
-        lat = lat_elements[0][0] == "N" ? lat : -1 * lat;
-        let lng_elements = world_pos_elements[1].split(" ");
-        let lng = parseInt(lng_elements[0].slice(1)) + parseFloat(lng_elements[1]) / 60 + parseFloat(lng_elements[2]) / 3600;
-        lng = lng_elements[0][0] == "E" ? lng : -1 * lng;
-
-        let icao_codes = dom_wp.getElementsByTagName("ICAOIdent");
-        let runways = dom_wp.getElementsByTagName("RunwayNumberFP");
-
-        console.log(world_position);
-        this.construct_new(index, new L.latLng(lat, lng));
-
-        this.name = name;
-        this.alt_m = parseFloat(world_pos_elements[2]) / this.planner.M_TO_FEET;
-        if (icao_codes.length > 0) {
-            this.data_icao = icao_codes[0].childNodes[0].nodeValue;
-            this.icao = this.data_icao;
-            console.log("Set icao to " + this.icao);
-        }
-        if (runways.length > 0) {
-            let runway_nodes = runways[0].childNodes;
-            if (runway_nodes.length > 0) {
-                this.runway = runways[0].childNodes[0].nodeValue;
-            }
-        }
     }
 
     create_marker() {
@@ -143,23 +97,37 @@ class B21_WP {
     }
 
     request_alt_m() {
-        let request_str = "https://api.open-elevation.com/api/v1/lookup?locations=" + this.position.lat + "," + this.position.lng;
+        let request_str = "https://tfc-app9.cl.cam.ac.uk/90adc1c1-2c02-46ce-a140-db0d7dda1b4e/lookup?locations=" + this.position.lat + "," + this.position.lng;
+        request_str += "&id=" + this.planner.id;
+        let request_error = false;
         console.log(request_str);
-        fetch(request_str).then(response => {
-            if (!response.ok) {
-                console.log("open-elevation.com fetch error");
-                return null;
-            }
-            return response.json();
-        }).then(results => {
-            console.log("open-elevation.com:", results["results"][0]["elevation"]);
-            this.alt_m = results["results"][0]["elevation"];
-            this.alt_m_updated = true;
-            this.display_menu();
-            this.planner.task.display_task_info();
-        }).catch(error => {
-            console.error('Network error accessing open-elevation.com:', error);
-        });
+        try {
+            fetch(request_str)
+            .then(response => {
+                if (!response.ok) {
+                    console.log(response);
+                    throw new Error(response.statusText);
+                }
+                console.log("response ok");
+                return response.json();
+            }).catch(error => {
+                request_error = true;
+                console.log('Elevation fetch error:', response.status, error);
+            }).then(results => {
+                console.log("handle results", request_error);
+                if (!request_error){
+                    console.log("elevation(m):", results["results"][0]["elevation"], "query time(s):", parseFloat(results["query_time"]).toFixed(6));
+                    this.alt_m = results["results"][0]["elevation"];
+                    this.alt_m_updated = true;
+                    this.display_menu();
+                    this.planner.task.display_task_info();
+                }
+            }).catch(error => {
+                console.log('Elevation access error:', error);
+            });
+        } catch (e) {
+            console.log('elevation request error');
+        }
     }
 
     is_task_start() {
