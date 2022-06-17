@@ -24,7 +24,7 @@ class B21_MSFS_PLN {
         // ***************************
         // Destination
         let destination = {};
-        departure.id = dom.getElementsByTagName("DestinationID")[0].childNodes[0].nodeValue;
+        destination.id = dom.getElementsByTagName("DestinationID")[0].childNodes[0].nodeValue;
         // ***************************
         // Waypoints
         let dom_waypoints = dom.getElementsByTagName("ATCWaypoint"); //XMLNodeList
@@ -174,7 +174,12 @@ class B21_MSFS_PLN {
         if (first_wp.runway==null) {
             header_text = header_text.replace("<DeparturePosition>#DEPARTURE_POSITION#</DeparturePosition>","");
         } else {
-            header_text = header_text.replace("#DEPARTURE_POSITION#", first_wp.runway);
+            // For runway e.g. "01" MSFS needs departure position "1" (bugfix)
+            let dep_pos = first_wp.runway;
+            while (dep_pos.startsWith("0")) {
+                dep_pos = dep_pos.substr(1);
+            }
+            header_text = header_text.replace("#DEPARTURE_POSITION#", dep_pos);
         }
         header_text = header_text.replace("#DEPARTURE_NAME#", this.clean(first_wp.get_name()));
 
@@ -276,7 +281,7 @@ class B21_MSFS_PLN {
         <ATCWaypoint id="#ATCWAYPOINT_ID#">
             <ATCWaypointType>Airport</ATCWaypointType>
             <WorldPosition>#WORLD_POSITION#</WorldPosition>
-            <RunwayNumberFP>#RUNWAY_NUMBER_FP#</RunwayNumberFP>
+            <SpeedMaxFP>-1</SpeedMaxFP>
             <ICAO>
                 <ICAOIdent>#ICAO_IDENT#</ICAOIdent>
             </ICAO>
@@ -289,6 +294,7 @@ class B21_MSFS_PLN {
         <ATCWaypoint id="#ATCWAYPOINT_ID#">
             <ATCWaypointType>User</ATCWaypointType>
             <WorldPosition>#WORLD_POSITION#</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
         </ATCWaypoint>
 `;
     }

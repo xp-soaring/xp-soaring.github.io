@@ -198,6 +198,7 @@ class B21_Task {
         console.log("task append existing wp", next_index);
         let wp = this.current_wp().copy(next_index);
         this.waypoints.push(wp);
+        console.log("duplicate_current_wp pushed new wp", wp);
         if (this.planner.settings.soaring_task == 1 && wp.icao != null) {
             this.scrub_intermediate_icao();
         }
@@ -367,6 +368,7 @@ class B21_Task {
 
     // Add a straight line between wp1 and wp2
     add_line(wp1, wp2) {
+        console.log("add_line",wp1,wp2);
         this.remove_line(wp2);
         let latlngs = [wp1.position, wp2.position];
         wp2.task_line = L.polyline(latlngs, {

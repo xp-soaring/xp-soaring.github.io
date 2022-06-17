@@ -47,6 +47,19 @@ class B21_WP {
         this.marker = this.create_marker();
     }
 
+    copy(index) {
+        console.log("copying wp",this.index,"into new",index);
+        let wp = new B21_WP(this.planner);
+        wp.index = index;
+        wp.position = this.position;
+        wp.name = this.name;
+        wp.alt_m = this.alt_m;
+        wp.icao = this.icao;
+        wp.runways = this.runways;
+        wp.marker = this.create_marker();
+        return wp;
+    }
+
     create_marker() {
         let marker = L.marker(this.position, {
             icon: this.get_icon(this.index),
@@ -219,6 +232,7 @@ class B21_WP {
     }
 
     update_icon() {
+        console.log("update_icon for wp",this.index,this);
         let icon = this.get_icon(this.index);
         this.marker.setIcon(icon);
     }
@@ -308,15 +322,6 @@ class B21_WP {
             .setLatLng(this.position)
             .setContent(form_str)
             .openOn(this.planner.map);
-    }
-
-    copy(index) {
-        let wp = new B21_WP(this.planner, index, this.position);
-        wp.name = this.name;
-        wp.alt_m = this.alt_m;
-        wp.icao = this.icao;
-        wp.runways = this.runways;
-        return wp;
     }
 
     // ********************************************
