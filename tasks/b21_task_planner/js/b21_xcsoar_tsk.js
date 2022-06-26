@@ -4,6 +4,10 @@
 
 // Constructs an xcsoar .TSK file for output
 
+// The general technique is to use the string TEMPLATES given at the end of this source for the
+// XCSoar .tsk file header, each waypoint, and footer, populating those with the appropriate values from the
+// B21 task object given to this constructor.
+
 class B21_XCsoar_TSK {
 
     constructor(task) {
@@ -11,6 +15,7 @@ class B21_XCsoar_TSK {
         this.task = task;
     }
 
+    // Load the waypoints from the .TSK file string into this.task
     load_tsk_str(tsk_str) {
         console.log("load_tsk_str", tsk_str);
         const parser = new DOMParser();
@@ -50,7 +55,7 @@ class B21_XCsoar_TSK {
         }
     }
 
-    // Add a WP from a tsk waypoint entry
+    // Add a WP to this.task from a tsk waypoint entry
     add_tsk_wp(point_el) {
         //this.index = this.waypoints.length;
         let wp_index = this.task.index == null ? 0 : this.task.index + 1;
@@ -69,6 +74,7 @@ class B21_XCsoar_TSK {
         this.task.decode_wp_name(wp);
     }
 
+    // Given an XCSoar waypoint XML element, update a B21 Waypoint with that content.
     update_wp_tsk(wp, index, point_el) {
         let point_type;
         if (point_el.hasAttribute('type')) {
@@ -166,6 +172,7 @@ class B21_XCsoar_TSK {
         return str.replaceAll('"',"");
     }
 
+    // Return the text string for a .TSK file from waypoints in this.task
     get_text() {
         this.check();
 
@@ -175,7 +182,13 @@ class B21_XCsoar_TSK {
 
         let header_text = this.get_header_text();
         let wp_text = "";
+        // Iterate through the waypoints in this.tasks
+        // convert each one to the appropriate XCSoar waypoint stanza
         for (let i=0; i<this.task.waypoints.length; i++) {
+            // If a task START waypoint is set, and the current waypoint is BEFORE this start, then skip over this waypoint
+            if (this.task.start_index != null && i < this.task.start_index) {
+                continue;
+            }
             wp_text += this.get_wp_text(i);
         }
         let footer_text = this.get_footer_text();
@@ -213,9 +226,10 @@ class B21_XCsoar_TSK {
         console.log("B21_XCsoar_TSK get_wp_text", wp);
         //let encoded_name = this.clean(this.task.get_encoded_name(wp));
         let wp_text = "";
+        let wp_name = wp.get_name();
         let wp_template;
         if (wp.is_task_start()) {
-            console.log("B21_XCsoar_TSK start is ",wp.name);
+            console.log("B21_XCsoar_TSK start is ",wp_name);
             // Fixup max start altitude if in this WP
             if (wp.max_alt_m != null) {
                 this.start_max_m = wp.max_alt_m;
@@ -223,7 +237,7 @@ class B21_XCsoar_TSK {
             wp_template = this.get_point_start_template(); // #ALTITUDE# #COMMENT# #ID# #NAME# #LATITUDE# #LONGITUDE# #LENGTH#
             wp_text = wp_template.replace("#LENGTH#",wp.get_radius().toFixed(0));
         } else if (wp.is_task_finish()) {
-            console.log("B21_XCsoar_TSK finish is ",wp.name);
+            console.log("B21_XCsoar_TSK finish is ",wp_name);
             // Fixup min finish altitude if in this WP
             if (wp.min_alt_m != null) {
                 this.finish_min_m = wp.min_alt_m;
@@ -238,7 +252,7 @@ class B21_XCsoar_TSK {
         wp_text = wp_text.replace("#ALTITUDE#", wp.alt_m.toFixed(3) );
         wp_text = wp_text.replace("#COMMENT#", "");
         wp_text = wp_text.replace("#ID#", index.toFixed(0));
-        wp_text = wp_text.replace("#NAME#", wp.name);
+        wp_text = wp_text.replace("#NAME#", wp_name);
         wp_text = wp_text.replace("#LATITUDE#", wp.position.lat.toFixed(7));
         wp_text = wp_text.replace("#LONGITUDE#", wp.position.lng.toFixed(7));
         console.log("B21_XCsoar_TSK wp_text is ",wp_text);

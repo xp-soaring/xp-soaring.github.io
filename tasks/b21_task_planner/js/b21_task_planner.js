@@ -248,6 +248,7 @@ class B21_TaskPlanner {
         this.drop_zone_el.ondrop = (e) => {
             parent.drop_handler(parent, e);
         };
+
     }
 
     drop_handler(parent, ev) {
@@ -256,25 +257,36 @@ class B21_TaskPlanner {
         ev.preventDefault();
 
         if (ev.dataTransfer.items && ev.dataTransfer.items.length > 0) {
-            console.log(`dataTransfer.items ${ev.dataTransfer.items.length} found`);
+            console.log(`dataTransfer.items ${ev.dataTransfer.items.length} found`, ev.dataTransfer.items);
             // Use DataTransferItemList interface to access the file(s)
             for (var i = 0; i < ev.dataTransfer.items.length; i++) {
+                console.log("checking data item "+i);
+                let item = ev.dataTransfer.items[i];
                 // If dropped items aren't files, reject them
-                if (ev.dataTransfer.items[i].kind === 'file') {
-                    let file = ev.dataTransfer.items[i].getAsFile();
-                    console.log('DataTransferItemList... file[' + i + '].name = ' + file.name);
+                if (item.kind === 'file') {
+                    let file = item.getAsFile();
+                    console.log('DataTransferItemList... file[' + i + ']' +file.name+'=', file);
                     let reader = new FileReader();
                     reader.onload = (e) => {
+                        console.log("FileReader.onload")
                         parent.handle_drop(parent, e, file.name);
                     }
                     console.log("reader.readAsText", file.name);
                     reader.readAsText(file);
+                } else {
+                    console.log("Item dropped not of kind 'file':", ev.dataTransfer.items[i].kind);
+                    if (item.kind === 'string') {
+                        item.getAsString( function (s) {
+                            console.log("item string",s);
+                        });
+                    }
                 }
             }
         } else {
-            console.log("dataTransfer.items not found, using dataTransfer.files");
+            console.log("dataTransfer.items not found, using dataTransfer.files", ev.dataTransfer.files.length);
             // Use DataTransfer interface to access the file(s)
             for (var i = 0; i < ev.dataTransfer.files.length; i++) {
+                console.log("checking file "+i)
                 let file = ev.dataTransfer.files[i];
                 console.log('DataTransfer... file[' + i + '].name = ' + file.name);
                 let reader = new FileReader();
@@ -315,6 +327,7 @@ class B21_TaskPlanner {
     }
 
     dragover_handler(ev) {
+        //console.log("dragover_handler preventDefault");
         // Prevent default behavior (Prevent file from being opened)
         ev.preventDefault();
     }
