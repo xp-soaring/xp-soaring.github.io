@@ -13,7 +13,7 @@ class B21_TaskPlanner {
         let parent = this;
 
         this.id = localStorage.getItem('b21_task_planner_id');
-        if (this.id==null) {
+        if (this.id == null) {
             this.id = this.create_guid();
             localStorage.setItem('b21_task_planner_id', this.id);
         }
@@ -58,11 +58,11 @@ class B21_TaskPlanner {
     }
 
     create_guid() {
-       function _p8(s) {
-          var p = (Math.random().toString(16)+"000000000").substr(2,8);
-          return s ? "-" + p.substr(0,4) + "-" + p.substr(4,4) : p ;
-       }
-       return _p8() + _p8(true) + _p8(true) + _p8();
+        function _p8(s) {
+            var p = (Math.random().toString(16) + "000000000").substr(2, 8);
+            return s ? "-" + p.substr(0, 4) + "-" + p.substr(4, 4) : p;
+        }
+        return _p8() + _p8(true) + _p8(true) + _p8();
     }
 
     parse_querystring() {
@@ -260,12 +260,12 @@ class B21_TaskPlanner {
             console.log(`dataTransfer.items ${ev.dataTransfer.items.length} found`, ev.dataTransfer.items);
             // Use DataTransferItemList interface to access the file(s)
             for (var i = 0; i < ev.dataTransfer.items.length; i++) {
-                console.log("checking data item "+i);
+                console.log("checking data item " + i);
                 let item = ev.dataTransfer.items[i];
                 // If dropped items aren't files, reject them
                 if (item.kind === 'file') {
                     let file = item.getAsFile();
-                    console.log('DataTransferItemList... file[' + i + ']' +file.name+'=', file);
+                    console.log('DataTransferItemList... file[' + i + ']' + file.name + '=', file);
                     let reader = new FileReader();
                     reader.onload = (e) => {
                         console.log("FileReader.onload")
@@ -276,8 +276,8 @@ class B21_TaskPlanner {
                 } else {
                     console.log("Item dropped not of kind 'file':", ev.dataTransfer.items[i].kind);
                     if (item.kind === 'string') {
-                        item.getAsString( function (s) {
-                            console.log("item string",s);
+                        item.getAsString(function(s) {
+                            console.log("item string", s);
                         });
                     }
                 }
@@ -286,7 +286,7 @@ class B21_TaskPlanner {
             console.log("dataTransfer.items not found, using dataTransfer.files", ev.dataTransfer.files.length);
             // Use DataTransfer interface to access the file(s)
             for (var i = 0; i < ev.dataTransfer.files.length; i++) {
-                console.log("checking file "+i)
+                console.log("checking file " + i)
                 let file = ev.dataTransfer.files[i];
                 console.log('DataTransfer... file[' + i + '].name = ' + file.name);
                 let reader = new FileReader();
@@ -353,9 +353,9 @@ class B21_TaskPlanner {
 
         console.log("load_pln_url", request_url);
         // Get name from url, i.e. between last '/' and '.'
-        let name = request_url.slice(request_url.lastIndexOf('/')+1);
+        let name = request_url.slice(request_url.lastIndexOf('/') + 1);
         name = name.slice(0, name.lastIndexOf('.'));
-        console.log("load_pln_url name=",name);
+        console.log("load_pln_url name=", name);
 
         fetch(request_url).then(response => {
             if (!response.ok) {
@@ -373,7 +373,7 @@ class B21_TaskPlanner {
 
     //DEBUG load task should score TrackLogs
     handle_pln_str(pln_str, name) {
-        console.log("handle string containing PLN XML '"+name+"'");
+        console.log("handle string containing PLN XML '" + name + "'");
         this.task.load_pln_str(pln_str, name);
         this.map.fitBounds([
             [this.task.min_lat, this.task.min_lng],
@@ -384,7 +384,7 @@ class B21_TaskPlanner {
     }
 
     handle_tsk_str(tsk_str, name) {
-        console.log("handle string containing TSK XML '"+name+"'");
+        console.log("handle string containing TSK XML '" + name + "'");
         this.task.load_tsk_str(tsk_str, name);
         this.map.fitBounds([
             [this.task.min_lat, this.task.min_lng],
@@ -402,7 +402,7 @@ class B21_TaskPlanner {
         console.log("loading tracklogs[" + this.tracklogs.length + "]", name);
         let tracklog = new B21_TrackLog(this.tracklogs.length, this, this.map);
         this.tracklogs.push(tracklog);
-        this.tracklog_index = this.tracklogs.length-1;
+        this.tracklog_index = this.tracklogs.length - 1;
         tracklog.load_gpx(gpx_str, name);
         tracklog.draw_map();
         // zoom the map to the polyline
@@ -686,6 +686,7 @@ class B21_TaskPlanner {
             this.task.save_file_pln();
         } catch (e) {
             alert(e);
+            console.log(e);
             return;
         }
     }
@@ -764,7 +765,7 @@ class B21_TaskPlanner {
     // ********************************************************************************************
 
     score_tracklogs() {
-        for (let i=0; i<this.tracklogs.length; i++) {
+        for (let i = 0; i < this.tracklogs.length; i++) {
             this.tracklogs[i].score_task();
         }
     }
@@ -855,9 +856,10 @@ class B21_TaskPlanner {
     }
 
     display_tracklogs_entry(table_el, tracklog) {
-        console.log("Displaying tracklogs entry tracklog.index="+tracklog.index+" current="+this.tracklog_index);
+        console.log("Displaying tracklogs entry tracklog.index=" + tracklog.index + " current=" + this.tracklog_index);
         let tracklog_entry_el = document.createElement("tr");
-        tracklog_entry_el.className = tracklog.index == this.tracklog_index ? "tracklogs_info_entry_current" : "tracklogs_info_entry";
+        tracklog_entry_el.className = tracklog.index == this.tracklog_index ? "tracklogs_info_entry_current" :
+            "tracklogs_info_entry";
         let parent = this;
         let tracklog_name_el = document.createElement("td"); // TrackLog name
         tracklog_name_el.className = "tracklogs_info_entry_name";

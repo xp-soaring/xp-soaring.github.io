@@ -9,6 +9,9 @@ class B21_MSFS_PLN {
     constructor(task) {
 
         this.task = task;
+        this.departure = null;
+        this.departure_updated = false; // will set to true if/when the departure runway has been set in the first waypoint
+        this.destination = null;
     }
 
     load_pln_str(pln_str) {
@@ -19,12 +22,14 @@ class B21_MSFS_PLN {
         let title = dom.getElementsByTagName("Title")[0].childNodes[0].nodeValue;
         // ***************************
         // Departure
-        let departure = {};
-        departure.id = dom.getElementsByTagName("DepartureID")[0].childNodes[0].nodeValue;
+        this.departure = {};
+        this.departure.id = dom.getElementsByTagName("DepartureID")[0].childNodes[0].nodeValue;
+        this.departure.runway = dom.getElementsByTagName("DeparturePosition")[0].childNodes[0].nodeValue;
+        console.log("load_pln_str got departure", this.departure);
         // ***************************
         // Destination
-        let destination = {};
-        destination.id = dom.getElementsByTagName("DestinationID")[0].childNodes[0].nodeValue;
+        this.destination = {};
+        this.destination.id = dom.getElementsByTagName("DestinationID")[0].childNodes[0].nodeValue;
         // ***************************
         // Waypoints
         let dom_waypoints = dom.getElementsByTagName("ATCWaypoint"); //XMLNodeList
@@ -42,6 +47,7 @@ class B21_MSFS_PLN {
         try {
             // An exception will be generated if this WP should be ignored, e.g. TIMECRUIS
             wp = new B21_WP(this.task.planner);
+            // Update this WP with the additional PLN info
             this.update_wp_pln(wp, wp_index, dom_wp);
         } catch (e) {
             console.log("add_pln_wp skipping:", e);
@@ -58,6 +64,7 @@ class B21_MSFS_PLN {
         this.task.decode_wp_name(wp);
     }
 
+    // Update an existing task WP with data contained in a PLN ATCWaypoint
     update_wp_pln(wp, index, dom_wp) {
         let name = dom_wp.getAttribute("id");
         console.log("New WP from dom:", name);
@@ -96,6 +103,22 @@ class B21_MSFS_PLN {
             wp.data_icao = icao_codes[0].childNodes[0].nodeValue;
             wp.icao = wp.data_icao;
             console.log("Set icao to " + wp.icao);
+            // Get our MSFS airports data for this icao:
+            let airport_info = this.task.planner.airports.lookup(wp.icao);
+            console.log("PLN load lookup ICAO", wp.icao, airport_info);
+            // Add the 'runways' data to the WP, if available
+            if (airport_info != null) {
+                // Add list of available runways
+                if (airport_info['runways'] != null && airport_info["runways"] != "") {
+                    let runways_list = airport_info["runways"].split(" ");
+                    wp.runways = runways_list;
+                }
+                // Add actual departure runway if this is the departure airfield, and it's set
+                if (this.departure != null && this.departure.id != null && this.departure.id == wp.icao) {
+                    wp.runway = this.departure.runway;
+                    this.departure_updated = true;
+                }
+            }
         }
 
         // Set WP runway
@@ -108,29 +131,29 @@ class B21_MSFS_PLN {
     }
 
     check() {
-        if (this.task==null) {
+        if (this.task == null) {
             throw "Cannot create FlightPlan with no task";
         }
 
-        if (this.task.waypoints.length<2) {
+        if (this.task.waypoints.length < 2) {
             throw "Cannot create FlightPlan with less than 2 waypoints";
         }
 
-        if (this.task.waypoints[0].icao==null || this.task.waypoints[this.task.waypoints.length-1].icao==null) {
+        if (this.task.waypoints[0].icao == null || this.task.waypoints[this.task.waypoints.length - 1].icao == null) {
             throw "Cannot create Flightplan unless first and last waypoints have ICAO";
         }
 
-        if (this.task.start_index==0) {
+        if (this.task.start_index == 0) {
             throw "Cannot set the departure airport as the task START waypoint. See Help - General Hint (1).";
         }
 
-        if (this.task.finish_index==this.task.waypoints.length-1) {
+        if (this.task.finish_index == this.task.waypoints.length - 1) {
             throw "Cannot set the destination airport as the task FINISH waypoint. See Help - General Hint (1).";
         }
     }
 
     clean(str) {
-        return str.replaceAll('"',"");
+        return str.replaceAll('"', "");
     }
 
     get_text() {
@@ -138,7 +161,7 @@ class B21_MSFS_PLN {
 
         let header_text = this.get_header_text();
         let wp_text = "";
-        for (let i=0; i<this.task.waypoints.length; i++) {
+        for (let i = 0; i < this.task.waypoints.length; i++) {
             wp_text += this.get_wp_text(i);
         }
         let footer_text = this.get_footer_text();
@@ -153,7 +176,7 @@ class B21_MSFS_PLN {
             return this.task.name;
         }
         let first_wp = this.task.waypoints[0];
-        let last_wp = this.task.waypoints[this.task.waypoints.length-1];
+        let last_wp = this.task.waypoints[this.task.waypoints.length - 1];
         let from = first_wp.icao != null ? first_wp.icao : first_wp.get_name();
         let to = last_wp.icao != null ? last_wp.icao : last_wp.get_name();
 
@@ -163,16 +186,17 @@ class B21_MSFS_PLN {
     // Return the XML string for the 'header' part of the PLN file
     get_header_text() {
         let header_text = this.get_header_template();
+        console.log('pln download called get_header_template, header_text=', header_text);
         let first_wp = this.task.waypoints[0];
-        let last_wp = this.task.waypoints[this.task.waypoints.length-1];
+        let last_wp = this.task.waypoints[this.task.waypoints.length - 1];
         let title = this.clean(this.get_title());
         header_text = header_text.replace("#TITLE#", title);
         header_text = header_text.replace("#DESCR#", title);
 
         header_text = header_text.replace("#DEPARTURE_ID#", this.clean(first_wp.icao));
         header_text = header_text.replace("#DEPARTURE_LLA#", this.get_world_position(first_wp));
-        if (first_wp.runway==null) {
-            header_text = header_text.replace("<DeparturePosition>#DEPARTURE_POSITION#</DeparturePosition>","");
+        if (first_wp.runway == null) {
+            header_text = header_text.replace("<DeparturePosition>#DEPARTURE_POSITION#</DeparturePosition>", "");
         } else {
             // For runway e.g. "01" MSFS needs departure position "1" (bugfix)
             let dep_pos = first_wp.runway;
@@ -195,17 +219,17 @@ class B21_MSFS_PLN {
         let wp = this.task.waypoints[index];
         let encoded_name = this.clean(this.task.get_encoded_name(wp));
         let wp_text = "";
-        if (wp.icao==null) {
+        if (wp.icao == null) {
             let wp_template = this.get_wp_user_template();
-            wp_text = wp_template.replace("#ATCWAYPOINT_ID#",encoded_name);
-            wp_text = wp_text.replace("#WORLD_POSITION#",this.get_world_position(wp));
+            wp_text = wp_template.replace("#ATCWAYPOINT_ID#", encoded_name);
+            wp_text = wp_text.replace("#WORLD_POSITION#", this.get_world_position(wp));
         } else {
             let wp_template = this.get_wp_airport_template();
-            wp_text = wp_template.replace("#ATCWAYPOINT_ID#",encoded_name);
+            wp_text = wp_template.replace("#ATCWAYPOINT_ID#", encoded_name);
             wp_text = wp_text.replace("#ICAO_IDENT#", this.clean(wp.icao));
-            wp_text = wp_text.replace("#WORLD_POSITION#",this.get_world_position(wp));
-            if (wp.runway==null) {
-                wp_text = wp_text.replace("<RunwayNumberFP>#RUNWAY_NUMBER_FP#</RunwayNumberFP>","");
+            wp_text = wp_text.replace("#WORLD_POSITION#", this.get_world_position(wp));
+            if (wp.runway == null) {
+                wp_text = wp_text.replace("<RunwayNumberFP>#RUNWAY_NUMBER_FP#</RunwayNumberFP>", "");
             } else {
                 wp_text = wp_text.replace("#RUNWAY_NUMBER_FP#", wp.runway);
             }
@@ -231,7 +255,7 @@ class B21_MSFS_PLN {
         world_position += lat_deg + "° ";
         let lat_frac = Math.abs(position.lat) - Math.abs(lat_deg);
         let lat_mins = Math.trunc(lat_frac * 60);
-        world_position += lat_mins +"' ";
+        world_position += lat_mins + "' ";
         let lat_secs = ((lat_frac * 60 - lat_mins) * 60).toFixed(2);
         world_position += lat_secs + '",';
 
@@ -241,12 +265,12 @@ class B21_MSFS_PLN {
         world_position += lng_deg + "° ";
         let lng_frac = Math.abs(position.lng) - Math.abs(lng_deg);
         let lng_mins = Math.trunc(lng_frac * 60);
-        world_position += lng_mins +"' ";
+        world_position += lng_mins + "' ";
         let lng_secs = ((lng_frac * 60 - lng_mins) * 60).toFixed(2);
         world_position += lng_secs + '",';
 
         let alt_feet = alt_m * this.task.planner.M_TO_FEET;
-        let alt_str = (alt_feet>0 ? "+" : "-")+("000000"+alt_feet.toFixed(2)).slice(-9);
+        let alt_str = (alt_feet > 0 ? "+" : "-") + ("000000" + alt_feet.toFixed(2)).slice(-9);
         world_position += alt_str;
 
         return world_position;

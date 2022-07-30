@@ -46,7 +46,7 @@ class B21_Airports {
             }
             //response.headers.set('content-type','application/json');
             return response.text();
-        }).then( results => {
+        }).then(results => {
             console.log("airports.json loaded");
             this.airports_data = JSON.parse(results);
             this.KEY_LAT = this.airports_data.airport_keys['lat'];
@@ -74,39 +74,43 @@ class B21_Airports {
         this.markers = {};
 
         let zoom = this.map.getZoom();
-        if ( zoom < 8) {
+        if (zoom < 8) {
             console.log("Too zoomed out to display airports");
             return;
         }
         let map_bounds = this.map.getBounds();
-        let map_box = { "min_lat": map_bounds.getSouth(),
-                        "min_lng": map_bounds.getWest(),
-                        "max_lat": map_bounds.getNorth(),
-                        "max_lng": map_bounds.getEast()
+        let map_box = {
+            "min_lat": map_bounds.getSouth(),
+            "min_lng": map_bounds.getWest(),
+            "max_lat": map_bounds.getNorth(),
+            "max_lng": map_bounds.getEast()
         }
         console.log("draw_airports", map_box);
         for (let box_id in this.airports_data.box_coords) {
             let box = this.airports_data.box_coords[box_id];
             if (this.DEBUG_DRAW_MAP_BOXES) {
-                L.rectangle([[box.min_lat,box.min_lng],[box.max_lat,box.max_lng]]).addTo(this.map);
+                L.rectangle([
+                    [box.min_lat, box.min_lng],
+                    [box.max_lat, box.max_lng]
+                ]).addTo(this.map);
             }
             if (this.box_overlap(box, map_box)) {
                 //console.log("overlap",box_id, box);
                 let airports = this.airports_data.boxes[box_id];
-                for (let i=0; i<airports.length; i++) {
+                for (let i = 0; i < airports.length; i++) {
                     let airport = airports[i];
                     let type = airport[this.KEY_TYPE];
                     if (type.includes("airport")) {
                         let position = new L.latLng(airport[this.KEY_LAT], airport[this.KEY_LNG]);
                         let ident = airport[this.KEY_IDENT];
                         let type = airport[this.KEY_TYPE];
-                        let name = airport[this.KEY_NAME].replaceAll('"',""); // Remove double quotes if original name includes those.
+                        let name = airport[this.KEY_NAME].replaceAll('"', ""); // Remove double quotes if original name includes those.
                         let alt_m = airport[this.KEY_ALT_M];
                         let runways = airport[this.KEY_RUNWAYS];
                         let circle_radius = 3 * (zoom - 7);
-                        if (type=="large_airport") {
+                        if (type == "large_airport") {
                             circle_radius *= 3;
-                        } else if (type=="medium_airport") {
+                        } else if (type == "medium_airport") {
                             circle_radius *= 2;
                         }
                         let marker = L.circleMarker(position, {
@@ -115,16 +119,21 @@ class B21_Airports {
                             radius: circle_radius
                         });
                         marker.addTo(this.planner.airport_markers);
-                        marker.bindPopup(name+"<br/>"+type+"<br/>"+ident);
-                        marker.on('mouseover', function(event){
+                        marker.bindPopup(name + "<br/>" + type + "<br/>" + ident);
+                        marker.on('mouseover', function(event) {
                             marker.openPopup();
                         });
-                        marker.on('mouseout', function(event){
+                        marker.on('mouseout', function(event) {
                             marker.closePopup();
                         });
                         marker.on('click', (e) => {
-                            console.log("User click:",ident,name);
-                            this.planner.task.add_new_poi(position, type, {"ident": ident, "name": name, "alt_m": alt_m, "runways": runways});
+                            console.log("User click:", ident, name);
+                            this.planner.task.add_new_poi(position, type, {
+                                "ident": ident,
+                                "name": name,
+                                "alt_m": alt_m,
+                                "runways": runways
+                            });
                         });
                         if (ident == this.search_ident) {
                             marker.openPopup();
@@ -153,6 +162,33 @@ class B21_Airports {
         return true;
     }
 
+    // Return airport info given ident e.g. lookup("LSMM") returns
+    // { alt_m: 579.1, ident: "LSMM", lat: 46.74333, lng: 8.109999, name: "Meiringen Mil", runways: "28 10", type: "msfs_airport" }
+    // Note our airports data structure is highly optimised for a lookup by lat/long (i.e. stored by latlong 'boxes')
+    // so for what would seem a simple 'lookup by ident' we actually have to search all the airports.
+    lookup(ident) {
+        console.log("b21_airports lookup", ident);
+        let ident_key = this.airports_data.airport_keys["ident"];
+        for (const [box_key, airports_list] of Object.entries(this.airports_data.boxes)) {
+            //console.log(box_key);
+            for (let i = 0; i < airports_list.length; i++) {
+                // airports_list is a list of the airports in the current 'box'
+                // so airports_list[i] is the current airport we're checking for the ident
+                // Each airport info is stored as a list of values, as defined in airport_keys
+                if (airports_list[i][ident_key] == ident) {
+                    console.log("airports lookup ident found", ident, airports_list[i]);
+                    let airport_info = {};
+                    // Note we use 'airport_keys' to map from key name (e.g. ident) to array entry (e.g. 0)
+                    for (const [key, value] of Object.entries(this.airports_data.airport_keys)) {
+                        airport_info[key] = airports_list[i][value]
+                    }
+                    return airport_info
+                }
+            }
+        }
+        return null;
+    }
+
     // User has typed in search box
     //DEBUG pan the map to the clicked airport result, and highlight that airport
     search(search_value, results_el) {
@@ -161,13 +197,13 @@ class B21_Airports {
         let results = [];
         for (let box_id in this.airports_data.box_coords) {
             let airports = this.airports_data.boxes[box_id];
-            for (let i=0; i<airports.length; i++) {
+            for (let i = 0; i < airports.length; i++) {
                 let airport = airports[i];
                 let type = airport[this.KEY_TYPE];
                 if (type.includes("airport")) {
                     let ident = airport[this.KEY_IDENT];
-                    let name = airport[this.KEY_NAME].replaceAll('"',""); // Remove double quotes if original name includes those.
-                    if ((ident+name).toLowerCase().includes(search_value)) {
+                    let name = airport[this.KEY_NAME].replaceAll('"', ""); // Remove double quotes if original name includes those.
+                    if ((ident + name).toLowerCase().includes(search_value)) {
                         results.push(airport);
                         if (results.length > RESULTS_MAX) {
                             break;
@@ -179,12 +215,12 @@ class B21_Airports {
                 break;
             }
         }
-        if (results.length>0) {
+        if (results.length > 0) {
             while (results_el.firstChild) {
                 results_el.removeChild(results_el.lastChild);
             }
             results_el.style.display = "block";
-            for (let i=0;i<results.length;i++) {
+            for (let i = 0; i < results.length; i++) {
                 let airport = results[i];
                 let result_el = document.createElement("div");
                 result_el.className = "search_result";
@@ -192,7 +228,7 @@ class B21_Airports {
                     results_el.style.display = "none";
                     parent.clicked(parent, airport);
                 }
-                result_el.innerHTML = (airport[this.KEY_IDENT]+" "+airport[this.KEY_NAME]).replaceAll(" ","&nbsp;");
+                result_el.innerHTML = (airport[this.KEY_IDENT] + " " + airport[this.KEY_NAME]).replaceAll(" ", "&nbsp;");
                 results_el.appendChild(result_el);
             }
         }
@@ -205,7 +241,7 @@ class B21_Airports {
         let lng = airport[parent.KEY_LNG];
         // Set the search_ident so draw() knows the redraw is due to a search and can highlight the airport on map
         parent.search_ident = airport[parent.KEY_IDENT];
-        this.map.panTo([lat,lng]);
+        this.map.panTo([lat, lng]);
     }
 
 } // end class B21_Airports

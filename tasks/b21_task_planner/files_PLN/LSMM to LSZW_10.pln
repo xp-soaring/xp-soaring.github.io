@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SimBase.Document Type="AceXML" version="1,0">
+    <Descr>AceXML Document</Descr>
+    <FlightPlan.FlightPlan>
+        <Title>LSMM to LSZW</Title>
+        <FPType>VFR</FPType>
+        <CruisingAlt>1500.000</CruisingAlt>
+        <DepartureID>LSMM</DepartureID>
+        <DepartureLLA>N46° 44' 35.99",E8° 6' 36.00",+001900.00</DepartureLLA>
+        <DestinationID>LSZW</DestinationID>
+        <DestinationLLA>N46° 45' 23.00",E7° 36' 2.00",+001837.00</DestinationLLA>
+        <Descr>LSMM to LSZW</Descr>
+        <DeparturePosition>10</DeparturePosition>
+        <DepartureName>Meiringen Mil</DepartureName>
+        <DestinationName>Thun</DestinationName>
+        <AppVersion>
+            <AppVersionMajor>11</AppVersionMajor>
+            <AppVersionBuild>282174</AppVersionBuild>
+        </AppVersion>
+
+        <ATCWaypoint id="Meiringen Mil">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N46° 44' 35.99",E8° 6' 36.00",+001900.00</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+            <ICAO>
+                <ICAOIdent>LSMM</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="*WP 1+6476">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N46° 42' 38.44",E8° 8' 22.19",+006476.00</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="WP 2+4318">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N46° 37' 43.29",E7° 55' 40.83",+004318.00</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="*WP 3+2920">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N46° 41' 6.89",E7° 37' 23.30",+002920.00</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="Thun">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N46° 45' 23.00",E7° 36' 2.00",+001837.00</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+            <ICAO>
+                <ICAOIdent>LSZW</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+
+    </FlightPlan.FlightPlan>
+</SimBase.Document>
