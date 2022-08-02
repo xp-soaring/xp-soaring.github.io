@@ -317,7 +317,7 @@ class B21_WP {
         form_str += this.planner.menuitem("Update this waypoint elevation", "update_wp_elevation");
         form_str += '</div>';
         var popup = L.popup({
-                offset: [0, 10]
+                offset: [20, 10]
             })
             .setLatLng(this.position)
             .setContent(form_str)

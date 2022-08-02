@@ -465,7 +465,7 @@ class B21_Task {
         }
     }
 
-    //DEBUG add total distance to task (recognise start/finish)
+    // Update the 'task_info' element with the table of waypoint data
     display_task_info() {
         while (this.task_el.firstChild) {
             this.task_el.removeChild(this.task_el.lastChild);
@@ -556,22 +556,29 @@ class B21_Task {
         wp_index_el.innerHTML = index_note; //(wp.index+1)+"&nbsp;"+index_note;
         wp_el.appendChild(wp_index_el);
 
-        let wp_name_el = document.createElement("td"); // WP name
+         // WP name
+        let wp_name_el = document.createElement("td");
         wp_name_el.className = "task_info_wp_name";
         wp_name_el.onclick = function() {
             parent.set_current_wp(wp.index);
         };
-        wp_name_el.innerHTML = wp.get_name();
+        let wp_name_str = wp.get_name();
+        if (wp.runway != null && wp.runway != "" && wp.runway != " ") {
+            wp_name_str += "<br/>Runway: "+wp.runway;
+        }
+        wp_name_el.innerHTML = wp_name_str;
         wp_el.appendChild(wp_name_el);
 
-        let wp_alt_el = document.createElement("td"); // WP alt
+        // WP alt
+        let wp_alt_el = document.createElement("td");
         wp_alt_el.onclick = function() {
             parent.set_current_wp(wp.index);
         };
         wp_alt_el.innerHTML = alt_str;
         wp_el.appendChild(wp_alt_el);
 
-        let wp_bearing_el = document.createElement("td"); // leg bearing
+        // leg bearing
+        let wp_bearing_el = document.createElement("td");
         wp_bearing_el.onclick = function() {
             parent.set_current_wp(wp.index);
         };
@@ -579,14 +586,16 @@ class B21_Task {
         wp_bearing_el.innerHTML = wp.get_leg_bearing();
         wp_el.appendChild(wp_bearing_el);
 
-        let wp_dist_el = document.createElement("td"); // leg distance
+        // leg distance
+        let wp_dist_el = document.createElement("td");
         wp_dist_el.onclick = function() {
             parent.set_current_wp(wp.index);
         };
         wp_dist_el.innerHTML = dist_str;
         wp_el.appendChild(wp_dist_el);
 
-        let wp_buttons_el = document.createElement("td"); // buttons
+        // up/down/delete buttons
+        let wp_buttons_el = document.createElement("td");
         this.task_info_wp_buttons(wp_buttons_el, wp);
         wp_el.appendChild(wp_buttons_el);
 

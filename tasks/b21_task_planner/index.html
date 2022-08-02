@@ -50,7 +50,7 @@ function loaded() {
     <div class="header">
         <div class="title">
             <!-- NOTE VERSION NUMBER HERE -->
-            <div class="title_text">B21 Task Planner v1.39</div>
+            <div class="title_text">B21 Task Planner v1.40</div>
             <div class="title_task_option">Soaring task: <input id="soaring_task_checkbox" type="checkbox" onclick="b21_task_planner.click_soaring_task(this)" checked/></div>
         </div>
     </div>
@@ -102,7 +102,9 @@ function loaded() {
                 <div id="tracklog_info_task">TASK</div>
                 <div id="tracklog_info_selected">SELECTED</div>
             </div>
-            <div id="drop_zone">CLICK MAP TO START, OR DROP MSFS FLIGHT PLAN HERE</div>
+            <div id="drop_zone">DROP .PLN or .TSK FLIGHT PLAN HERE<br/>
+                Or: <input type="file" id="drop_zone_choose_input"/> <button id="drop_zone_choose_button">Choose file</button>
+            </div>
         </div> <!-- end left_pane -->
         <div id="right_pane">
             <div id="map"></div>

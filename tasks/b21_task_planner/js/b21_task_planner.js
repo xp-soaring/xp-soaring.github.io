@@ -7,6 +7,8 @@ class B21_TaskPlanner {
         this.M_TO_MILES = 0.000621371;
         this.MS_TO_KPH = 3.6;
         this.MS_TO_KNOTS = 1.94384;
+
+        this.PLN_URL_RETRY_MAX = 10; // Given a PLN url on startup, will try this many times to load that PLN file.
     }
 
     init() {
@@ -52,9 +54,13 @@ class B21_TaskPlanner {
             this.querystring = null;
             console.log("parse_querystring fail");
         }
-        console.log(this.querystring);
+        console.log("querystring",this.querystring);
 
-        this.load_pln_url(this.querystring);
+        if (this.querystring != null && this.querystring['pln'] !== null) {
+            // It is possible the 'airports.json' data hasn't loaded yet
+            this.pln_url_retry_count = 0;
+            this.load_pln_url(this.querystring);
+        }
     }
 
     create_guid() {
@@ -239,16 +245,21 @@ class B21_TaskPlanner {
     // ********************************************************************************************
 
     init_drop_zone() {
-        this.drop_zone_el = document.getElementById("drop_zone");
-        this.drop_zone_el.style.display = "block";
+        let drop_zone_el = document.getElementById("drop_zone");
+        drop_zone_el.style.display = "block";
         let parent = this;
-        this.drop_zone_el.ondragover = (e) => {
+        drop_zone_el.ondragover = (e) => {
             parent.dragover_handler(e);
         };
-        this.drop_zone_el.ondrop = (e) => {
+        drop_zone_el.ondrop = (e) => {
             parent.drop_handler(parent, e);
         };
 
+        let drop_zone_choose_input_el = document.getElementById("drop_zone_choose_input");
+        drop_zone_choose_input_el.onchange = () => { parent.drop_choose_handler(parent, [...drop_zone_choose_input_el.files]); };
+
+        let drop_zone_choose_button_el = document.getElementById("drop_zone_choose_button");
+        drop_zone_choose_button_el.onclick = () => { drop_zone_choose_input_el.click(); };
     }
 
     drop_handler(parent, ev) {
@@ -274,7 +285,7 @@ class B21_TaskPlanner {
                     console.log("reader.readAsText", file.name);
                     reader.readAsText(file);
                 } else {
-                    console.log("Item dropped not of kind 'file':", ev.dataTransfer.items[i].kind);
+                    console.log("Item dropped not of kind 'file':", ev.dataTransfer.items[i].kind, ev.dataTransfer.items[i]);
                     if (item.kind === 'string') {
                         item.getAsString(function(s) {
                             console.log("item string", s);
@@ -283,22 +294,31 @@ class B21_TaskPlanner {
                 }
             }
         } else {
-            console.log("dataTransfer.items not found, using dataTransfer.files", ev.dataTransfer.files.length);
-            // Use DataTransfer interface to access the file(s)
-            for (var i = 0; i < ev.dataTransfer.files.length; i++) {
-                console.log("checking file " + i)
-                let file = ev.dataTransfer.files[i];
-                console.log('DataTransfer... file[' + i + '].name = ' + file.name);
-                let reader = new FileReader();
-                reader.addEventListener("load", (e) => {
-                    parent.handle_drop(parent, e, file.name);
-                });
-                // event fired when file reading failed
-                reader.addEventListener('error', (e) => {
-                    alert('Error : Failed to read file');
-                });
-                reader.readAsText(file);
-            }
+            console.log("dataTransfer.items not found, using dataTransfer.files", ev);
+            parent.handle_files(parent, ev.dataTransfer.files);
+        }
+    }
+
+    drop_choose_handler(parent, files) {
+        console.log("drop_choose_handler", files);
+        parent.handle_files(parent, files);
+    }
+
+    handle_files(parent, files) {
+        // Use DataTransfer interface to access the file(s)
+        for (var i = 0; i < files.length; i++) {
+            console.log("checking file " + i)
+            let file = files[i];
+            console.log('DataTransfer... file[' + i + '].name = ' + file.name);
+            let reader = new FileReader();
+            reader.addEventListener("load", (e) => {
+                parent.handle_drop(parent, e, file.name);
+            });
+            // event fired when file reading failed
+            reader.addEventListener('error', (e) => {
+                alert('Error : Failed to read file');
+            });
+            reader.readAsText(file);
         }
     }
 
@@ -311,7 +331,7 @@ class B21_TaskPlanner {
         if (name.toLowerCase().endsWith(".pln")) {
             console.log("handle_drop for PLN file");
             parent.reset();
-            parent.handle_pln_str(e.target.result, name);
+            parent.handle_pln_str(parent, e.target.result, name);
             return;
         }
         if (name.toLowerCase().endsWith(".tsk")) {
@@ -349,7 +369,7 @@ class B21_TaskPlanner {
             return;
         }
 
-        let request_url = param_obj["pln"];
+        let request_url = "https://"+param_obj["pln"];
 
         console.log("load_pln_url", request_url);
         // Get name from url, i.e. between last '/' and '.'
@@ -365,22 +385,34 @@ class B21_TaskPlanner {
             return response.text();
         }).then(result_str => {
             console.log("load_pln_url return ok");
-            this.handle_pln_str(result_str, name);
+            this.handle_pln_str(this, result_str, name);
         }).catch(error => {
             console.error('Network error accessing user PLN URL:', error);
         });
     }
 
     //DEBUG load task should score TrackLogs
-    handle_pln_str(pln_str, name) {
-        console.log("handle string containing PLN XML '" + name + "'");
-        this.task.load_pln_str(pln_str, name);
-        this.map.fitBounds([
-            [this.task.min_lat, this.task.min_lng],
-            [this.task.max_lat, this.task.max_lng]
+    handle_pln_str(parent, pln_str, name) {
+        console.log("handle_pln_str string containing PLN XML '" + name + "'");
+        if (parent.airports.available) {
+            parent.task.load_pln_str(pln_str, name);
+        } else {
+            console.log("ERROR: handle_pln_string airports not ready, will retry after delay");
+            // The airports data is not ready, so have another try loading this PLN after a delay
+            parent.pln_url_retry_count++;
+            if (parent.pln_url_retry_count > parent.PLN_URL_RETRY_MAX) {
+                alert("ERROR: failed loading the airports.json data file");
+                return;
+            }
+            setTimeout(function () { parent.handle_pln_str(parent, pln_str, name); }, 1000);
+            return;
+        }
+        parent.map.fitBounds([
+            [parent.task.min_lat, this.task.min_lng],
+            [parent.task.max_lat, this.task.max_lng]
         ]);
-        this.score_tracklogs();
-        this.show_task_info();
+        parent.score_tracklogs();
+        parent.show_task_info();
     }
 
     handle_tsk_str(tsk_str, name) {
@@ -553,6 +585,7 @@ class B21_TaskPlanner {
     change_wp_runway(runway) {
         console.log("new wp runway = ", runway);
         this.task.current_wp().set_runway(runway);
+        this.task.display_task_info();
     }
 
     // Runway selected from drop-down box

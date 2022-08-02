@@ -16,6 +16,10 @@ a {
     text-decoration: none;
 }
 
+th {
+    text-align: right;
+}
+
 .header {
     background-color: #888888;
 }
@@ -152,6 +156,10 @@ a {
     line-height: 50px;
 }
 
+#drop_zone_choose_input {
+    display: none;
+}
+
 /* *************************************************** */
 /* ******* Right Pane            ********************* */
 /* *************************************************** */
@@ -244,7 +252,7 @@ a {
 
 .task_info_wp {
     border-top: 2px solid black;
-    height: 36px;
+    height: 50px;
 }
 
 .task_info_wp:hover {
@@ -254,7 +262,7 @@ a {
 .task_info_wp_current {
     border: 4px solid yellow;
     background-color: yellow;
-    height: 36px;
+    height: 50px;
 }
 
 .task_info_wp_index {
@@ -266,8 +274,8 @@ a {
 }
 
 .task_info_wp_name {
-    text-align: left;
     background-color: #e6ffff;
+    padding-right: 4px;
 }
 
 .task_info_wp_bearing {
@@ -276,7 +284,7 @@ a {
 
 
 .task_info_wp_buttons {
-    width: 80px;
+    width: 86px;
 }
 
 .task_info_wp_buttons div:hover { /* highlight buttons in red */
@@ -285,22 +293,22 @@ a {
 
 .task_info_wp_button_up {
     display: inline-block;
-    width: 25px;
-    height: 30px;
+    width: 27px;
+    height: 32px;
     background-image: url("../images/arrow_up.png");
 }
 
 .task_info_wp_button_down {
     display: inline-block;
-    width: 25px;
-    height: 30px;
+    width: 27px;
+    height: 32px;
     background-image: url("../images/arrow_down.png");
 }
 
 .task_info_wp_button_delete {
     display: inline-block;
-    width: 25px;
-    height: 30px;
+    width: 27px;
+    height: 32px;
     background-image: url("../images/delete.png");
 }
 

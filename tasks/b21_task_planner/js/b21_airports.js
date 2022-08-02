@@ -167,6 +167,10 @@ class B21_Airports {
     // Note our airports data structure is highly optimised for a lookup by lat/long (i.e. stored by latlong 'boxes')
     // so for what would seem a simple 'lookup by ident' we actually have to search all the airports.
     lookup(ident) {
+        if (!this.available) {
+            console.log("ERROR: airports lookup request, but data not available", ident);
+            return null;
+        }
         console.log("b21_airports lookup", ident);
         let ident_key = this.airports_data.airport_keys["ident"];
         for (const [box_key, airports_list] of Object.entries(this.airports_data.boxes)) {

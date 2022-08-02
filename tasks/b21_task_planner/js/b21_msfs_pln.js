@@ -24,8 +24,13 @@ class B21_MSFS_PLN {
         // Departure
         this.departure = {};
         this.departure.id = dom.getElementsByTagName("DepartureID")[0].childNodes[0].nodeValue;
-        this.departure.runway = dom.getElementsByTagName("DeparturePosition")[0].childNodes[0].nodeValue;
-        console.log("load_pln_str got departure", this.departure);
+        try {
+            this.departure.runway = dom.getElementsByTagName("DeparturePosition")[0].childNodes[0].nodeValue;
+            console.log("load_pln_str got departure", this.departure);
+        } catch (e) {
+            this.departure.runway = null;
+            console.log("load_pln_str no DeparturePosition in .PLN file");
+        }
         // ***************************
         // Destination
         this.destination = {};
