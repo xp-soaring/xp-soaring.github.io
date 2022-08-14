@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SimBase.Document Type="AceXML" version="1,0">
+    <Descr>AceXML Document</Descr>
+    <FlightPlan.FlightPlan>
+        <Title>LOKL to LOWK</Title>
+        <FPType>VFR</FPType>
+        <CruisingAlt>1500.000</CruisingAlt>
+        <DepartureID>LOKL</DepartureID>
+        <DepartureLLA>N46° 47' 54.00",E12° 52' 42.00",+002093.00</DepartureLLA>
+        <DestinationID>LOWK</DestinationID>
+        <DestinationLLA>N46° 38' 34.00",E14° 20' 14.00",+001460.00</DestinationLLA>
+        <Descr>LOKL to LOWK</Descr>
+        <DeparturePosition>12</DeparturePosition>
+        <DepartureName>Nikolsdorf Airport</DepartureName>
+        <DestinationName>Klagenfurt Apt</DestinationName>
+        <AppVersion>
+            <AppVersionMajor>11</AppVersionMajor>
+            <AppVersionBuild>282174</AppVersionBuild>
+        </AppVersion>
+
+        <ATCWaypoint id="Nikolsdorf Airport">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N46° 47' 54.00",E12° 52' 42.00",+002093.00</WorldPosition>
+            <RunwayNumberFP>12</RunwayNumberFP>
+            <ICAO>
+                <ICAOIdent>LOKL</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="*Start+2136|5000x4000">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N46° 48' 23.40",E12° 50' 38.94",+002135.83</WorldPosition>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="Seeboden+1962">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N46° 49' 3.46",E13° 30' 51.81",+001961.94</WorldPosition>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="A10/Drau Bridge+1663">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N46° 38' 29.63",E13° 48' 22.24",+001663.39</WorldPosition>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="*Klagenfurt+1467x4000">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N46° 38' 46.52",E14° 19' 15.04",+001466.54</WorldPosition>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="Klagenfurt Apt">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N46° 38' 34.00",E14° 20' 14.00",+001460.00</WorldPosition>
+            
+            <ICAO>
+                <ICAOIdent>LOWK</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+
+    </FlightPlan.FlightPlan>
+</SimBase.Document>

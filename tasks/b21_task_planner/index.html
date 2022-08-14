@@ -16,10 +16,12 @@
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
     <script src="js/semicircle.js"></script> <!-- 3rd-party mod to add semicircles to Leaflet -->
+    <script src="js/leaflet.rotatedmarker.js"></script> <!-- https://github.com/bbecquet/Leaflet.RotatedMarker -->
     <link href="css/leaflet_mods.css" rel="stylesheet"/> <!-- our local tweaks to the map CSS -->
 
     <!-- Highcharts used to draw the baro/speed chart -->
-    <script src="js/highcharts.js"></script>
+    <!-- <script src="js/highcharts.js"></script> -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
     <link href="css/highcharts.css" rel="stylesheet"/>
 
     <!-- Main app CSS -->
@@ -28,7 +30,7 @@
     <script src="js/b21_geo_static.js"> </script>   <!-- Geo: Defines Geo functions (static) -->
     <script src="js/b21_settings.js"> </script>     <!-- B21_Settings: loads localStorage settings e.g. units -->
     <script src="js/b21_airports.js"> </script>     <!-- B21_Airports: loads airport data -->
-    <script src="js/b21_track_log.js"> </script>    <!-- B21_TrackLog: Supports GPX files -->
+    <script src="js/b21_tracklog.js"> </script>    <!-- B21_TrackLog: Supports GPX files -->
     <script src="js/b21_wp.js"> </script>           <!-- B21_WP: internal representation of a gliding waypoint -->
     <script src="js/b21_task.js"> </script>         <!-- B21_Task: internal representation of a gliding task from FlightPlan -->
     <script src="js/b21_msfs_pln.js"> </script>     <!-- B21_MSFS_PLN: Supports PLN files -->
@@ -50,7 +52,7 @@ function loaded() {
     <div class="header">
         <div class="title">
             <!-- NOTE VERSION NUMBER HERE -->
-            <div class="title_text">B21 Task Planner v1.40</div>
+            <div class="title_text">B21 Task Planner v1.42</div>
             <div class="title_task_option">Soaring task: <input id="soaring_task_checkbox" type="checkbox" onclick="b21_task_planner.click_soaring_task(this)" checked/></div>
         </div>
     </div>
@@ -99,7 +101,7 @@ function loaded() {
             <div id="tracklogs_info">TRACKLOGS</div>
             <div id="tracklog_info">
                 <div id="tracklog_info_header"></div>
-                <div id="tracklog_info_task">TASK</div>
+                <div id="tracklog_info_task"></div>
                 <div id="tracklog_info_selected">SELECTED</div>
             </div>
             <div id="drop_zone">DROP .PLN or .TSK FLIGHT PLAN HERE<br/>

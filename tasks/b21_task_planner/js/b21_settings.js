@@ -9,7 +9,7 @@ class B21_Settings {
     constructor(planner) {
 
         this.planner = planner;
-        
+
         this.settings = {};
 
         this.settings_values = {
@@ -21,6 +21,8 @@ class B21_Settings {
             wp_radius_m: 500,
             wp_min_alt_m: 330,
             wp_max_alt_m: 2000,
+            task_line_color_1: ["red","green","yellow"],
+            task_line_color_2: ["none", "brown", "black"],
             base_layer_name: "Streetmap"
         };
 
@@ -46,6 +48,8 @@ class B21_Settings {
     close_settings() {
         this.settings_el.style.display = "none";
         this.settings_displayed = false;
+        this.planner.task.display_task_info();
+        this.planner.task.redraw();
     }
 
     build_settings_html() {

@@ -47,20 +47,7 @@ class B21_TaskPlanner {
         // Task object to hold accumulated waypoints
         this.task = new B21_Task(this);
 
-        // Load parameters from querystring into this.querystring object
-        try {
-            this.querystring = this.parse_querystring();
-        } catch (e) {
-            this.querystring = null;
-            console.log("parse_querystring fail");
-        }
-        console.log("querystring",this.querystring);
-
-        if (this.querystring != null && this.querystring['pln'] !== null) {
-            // It is possible the 'airports.json' data hasn't loaded yet
-            this.pln_url_retry_count = 0;
-            this.load_pln_url(this.querystring);
-        }
+        this.process_querystring();
     }
 
     create_guid() {
@@ -77,6 +64,28 @@ class B21_TaskPlanner {
         return JSON.parse('{"' + search.replace(/&/g, '","').replace(/=/g, '":"') + '"}', function(key, value) {
             return key === "" ? value : decodeURIComponent(value)
         })
+    }
+
+    process_querystring() {
+        // Load parameters from querystring into querystring object
+        let querystring;
+        try {
+            querystring = this.parse_querystring();
+        } catch (e) {
+            querystring = null;
+            console.log("process_querystring: parse_querystring failed, returning");
+        }
+        console.log("querystring", querystring);
+
+        if (querystring == null) {
+            return;
+        }
+
+        if (querystring['pln'] !== null) {
+            // It is possible the 'airports.json' data hasn't loaded yet
+            this.pln_url_retry_count = 0;
+            this.load_pln_url(querystring);
+        }
     }
 
     init_map() {
@@ -182,6 +191,10 @@ class B21_TaskPlanner {
         //this.tiles_opentopomap.addTo(this.map);
         //esri_world_imagery.addTo(this.map);
 
+        // Create pane in foreground to display the tracklogs
+        this.tracklogs_pane = this.map.createPane("tracklogs_pane");
+        this.tracklogs_pane.style.zIndex = 450;
+
         this.map.on("baselayerchange", (e) => {
             console.log("baselayerchange", e);
             this.settings.set("base_layer_name", e.name);
@@ -193,7 +206,8 @@ class B21_TaskPlanner {
 
         this.update_skyvector_link(parent.map.getCenter(), parent.map.getZoom());
 
-        this.create_baro_marker(parent);
+        //DEBUG here we create a single baro marker, will want multiple for maggot racing of multiple tracklogs
+        this.baro_marker = this.create_baro_marker(parent);
 
         this.set_map_events(parent);
 
@@ -220,24 +234,44 @@ class B21_TaskPlanner {
         });
     }
 
-    create_baro_marker(parent) {
+    create_baro_marker() {
         let position = new L.latLng(0, 0);
-        parent.baro_marker = L.circleMarker(position, {
-            color: "darkred",
-            radius: 30
-        });
-        parent.baro_marker.addTo(parent.map);
-        parent.baro_marker.bindPopup("Foo<br/>Bar<br/>FUBAR");
-        parent.baro_marker.on('mouseover', function(event) {
-            parent.baro_marker.openPopup();
-        });
-        parent.baro_marker.on('mouseout', function(event) {
-            parent.baro_marker.closePopup();
-        });
-        parent.baro_marker.on('click', (e) => {
-            console.log("User baro_marker click");
+        const svgIcon = L.divIcon({
+            html: `
+            <svg width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+             <g id="Layer_1">
+              <title>Layer 1</title>
+              <path id="svg_1" d="M30 31 h 2 l 1 6 h 14 l 12 2 v 2 h -26 l -1 20  h 5 v 2 h -12 v -2  h 5 l -1 -20 h -26 v -2 l 12 -2 h 14 z" stroke="#000" fill="#fff"/>
+             </g>
+            </svg>
+            `,
+            className: "",
+            iconSize: [64, 64],
+            iconAnchor: [32, 32]
         });
 
+        //let baro_marker = L.circleMarker(position, {
+        //    color: "darkred",
+        //    radius: 30
+        //});
+
+        let baro_marker = L.marker([0, 0], {
+            icon: svgIcon,
+            rotationOrigin: 'center'
+        }); // extended using leaflet.rotationMarker
+        baro_marker.addTo(this.map);
+        baro_marker.bindPopup("Foo<br/>Bar<br/>FUBAR");
+        baro_marker.on('mouseover', function(event) {
+            baro_marker.openPopup();
+        });
+        baro_marker.on('mouseout', function(event) {
+            baro_marker.closePopup();
+        });
+        baro_marker.on('click', (e) => {
+            baro_marker.setRotationAngle(90);
+            console.log("User baro_marker click");
+        });
+        return baro_marker;
     }
 
     // ********************************************************************************************
@@ -256,10 +290,14 @@ class B21_TaskPlanner {
         };
 
         let drop_zone_choose_input_el = document.getElementById("drop_zone_choose_input");
-        drop_zone_choose_input_el.onchange = () => { parent.drop_choose_handler(parent, [...drop_zone_choose_input_el.files]); };
+        drop_zone_choose_input_el.onchange = () => {
+            parent.drop_choose_handler(parent, [...drop_zone_choose_input_el.files]);
+        };
 
         let drop_zone_choose_button_el = document.getElementById("drop_zone_choose_button");
-        drop_zone_choose_button_el.onclick = () => { drop_zone_choose_input_el.click(); };
+        drop_zone_choose_button_el.onclick = () => {
+            drop_zone_choose_input_el.click();
+        };
     }
 
     drop_handler(parent, ev) {
@@ -369,7 +407,7 @@ class B21_TaskPlanner {
             return;
         }
 
-        let request_url = "https://"+param_obj["pln"];
+        let request_url = "https://" + param_obj["pln"];
 
         console.log("load_pln_url", request_url);
         // Get name from url, i.e. between last '/' and '.'
@@ -393,18 +431,20 @@ class B21_TaskPlanner {
 
     //DEBUG load task should score TrackLogs
     handle_pln_str(parent, pln_str, name) {
-        console.log("handle_pln_str string containing PLN XML '" + name + "'");
+        console.log("handle_pln_str string containing PLN XML '" + name + "'", pln_str);
         if (parent.airports.available) {
             parent.task.load_pln_str(pln_str, name);
         } else {
-            console.log("ERROR: handle_pln_string airports not ready, will retry after delay");
+            console.log("handle_pln_string airports not ready, will retry after delay");
             // The airports data is not ready, so have another try loading this PLN after a delay
             parent.pln_url_retry_count++;
             if (parent.pln_url_retry_count > parent.PLN_URL_RETRY_MAX) {
                 alert("ERROR: failed loading the airports.json data file");
                 return;
             }
-            setTimeout(function () { parent.handle_pln_str(parent, pln_str, name); }, 1000);
+            setTimeout(() => {
+                parent.handle_pln_str(parent, pln_str, name);
+            }, 1000); // retry in 1 second
             return;
         }
         parent.map.fitBounds([

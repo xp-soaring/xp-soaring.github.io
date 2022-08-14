@@ -367,19 +367,43 @@ class B21_Task {
     }
 
     // Add a straight line between wp1 and wp2
+    // This line is multiple polylines that all should be drawn (allowing an alternate color dash if needed).
     add_line(wp1, wp2) {
         console.log("add_line",wp1,wp2);
         this.remove_line(wp2);
         let latlngs = [wp1.position, wp2.position];
-        wp2.task_line = L.polyline(latlngs, {
-            color: 'red'
-        });
-        wp2.task_line.addTo(this.planner.map);
+        let color1 = this.planner.settings.task_line_color_1;
+        if (color1 == null || color1 == "") {
+            color1 = 'red';
+        }
+        let color2 = this.planner.settings.task_line_color_2;
+        let line1_options = {
+            color: color1
+        };
+        if (color2 != null && color2 != "" && color2 != "none") {
+            line1_options["dashArray"] = '12 12';
+            line1_options["lineCap"] = 'butt';
+        }
+        wp2.task_line = [ L.polyline(latlngs, line1_options) ];
+
+        if (color2 != null && color2 != "" && color2 != "none") {
+            wp2.task_line.push(L.polyline(latlngs, {
+                color: color2,
+                dashArray: '12 12',
+                dashOffset: '12',
+                lineCap: 'butt'
+            }));
+        }
+        for (let i = 0; i < wp2.task_line.length; i++) {
+            wp2.task_line[i].addTo(this.planner.map);
+        }
     }
 
     remove_line(wp) {
         if (wp.task_line != null) {
-            wp.task_line.remove(this.planner.map);
+            for (let i = 0; i < wp.task_line.length; i++) {
+                wp.task_line[i].remove(this.planner.map);
+            }
             wp.task_line = null;
         }
     }

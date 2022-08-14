@@ -41,7 +41,7 @@ class B21_WP {
         // Values from task
         // Note each 'leg_' value is TO this waypoint
         this.index = index;
-        this.task_line = null;
+        this.task_line = null; // holds [L.polyline, L.polyline] used in task.js to draw task on map
         this.leg_bearing_deg = null; // Bearing from previous WP to this WP
         this.leg_distance_m = null; // Distance (meters) from previous WP to this WP
         this.marker = this.create_marker();
