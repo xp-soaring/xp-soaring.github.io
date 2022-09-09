@@ -1083,16 +1083,29 @@ class B21_TaskPlanner {
         this.task.update_elevations();
     }
 
-    reset_map() {
-        this.task.update_bounds();
-        console.log([
-            [this.task.min_lat, this.task.min_lng],
-            [this.task.max_lat, this.task.max_lng]
-        ]);
-        this.map.fitBounds([
-            [this.task.min_lat, this.task.min_lng],
-            [this.task.max_lat, this.task.max_lng]
-        ]);
+    zoom_to_task() {
+        if (this.task.available()) {
+            this.task.update_bounds();
+            console.log([
+                [this.task.min_lat, this.task.min_lng],
+                [this.task.max_lat, this.task.max_lng]
+            ]);
+            this.map.fitBounds([
+                [this.task.min_lat, this.task.min_lng],
+                [this.task.max_lat, this.task.max_lng]
+            ]);
+            return;
+        }
+        for (let i=0; i<this.tracklogs.length; i++) {
+            let tracklog = this.tracklogs[i];
+            if (tracklog.checked) {
+                if (tracklog.map_bounds != null) {
+                    this.map.fitBounds(tracklog.map_bounds);
+                    return;
+                }
+            }
+        }
+        alert("No task or selected tracklog to zoom to.");
     }
 
     toggle_settings() {
@@ -1354,7 +1367,7 @@ class B21_TaskPlanner {
     replay_sync_click() {
         if (this.replay_sync_el.checked) {
             console.log("replay_sync_click ON");
-            if (this.task.waypoints.length == 0) {
+            if (!this.task.available()) {
                 alert("You must have a task loaded for 'Sync starts' to work");
                 this.replay_sync_el.checked = false;
                 return;
@@ -1416,10 +1429,10 @@ class B21_TaskPlanner {
     }
 
     update_rescore_button() {
-        if (this.task.waypoints.length == 0) {
-            this.rescore_button_el.style.display = "none";
-        } else {
+        if (this.task.available()) {
             this.rescore_button_el.style.display = "inline-flex";
+        } else {
+            this.rescore_button_el.style.display = "none";
         }
     }
 

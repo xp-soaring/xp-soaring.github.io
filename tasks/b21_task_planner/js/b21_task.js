@@ -25,6 +25,11 @@ class B21_Task {
         this.max_lng = -180;
     }
 
+    // Return true if a task is actually available
+    available() {
+        return this.waypoints.length > 0;
+    }
+
     // Initialize this task using a MSFS Flight Plan
     load_pln_str(pln_str, name) {
         console.log(">>>>>>task.load_pln_str", name);
@@ -505,11 +510,11 @@ class B21_Task {
 
         this.task_info_content_el.style.display = "block";
 
-        if (this.waypoints.length == 0) {
+        if (this.available()) {
+            this.task_info_none_el.style.display = "none";
+        } else {
             this.task_info_none_el.style.display = "block";
             return;
-        } else {
-            this.task_info_none_el.style.display = "none";
         }
 
 
