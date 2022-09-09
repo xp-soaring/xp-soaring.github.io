@@ -519,7 +519,7 @@ class B21_TaskPlanner {
         } else if (suffix == "cup") {
             parent.handle_cup_str(parent, fetch_start, decoder.decode(file_content), name);
 
-        } else if (suffix == ".comp") {
+        } else if (suffix == "comp") {
             parent.handle_comp_str(parent, fetch_start, decoder.decode(file_content), name);
 
         } else if (suffix == "zip") {
