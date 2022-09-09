@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SimBase.Document Type="AceXML" version="1,0">
+    <Descr>AceXML Document</Descr>
+    <FlightPlan.FlightPlan>
+        <Title>Mifflin - Day 1</Title>
+        <FPType>VFR</FPType>
+        <RouteType>Direct</RouteType>
+        <CruisingAlt>7500</CruisingAlt>
+        <DepartureID>KRVL</DepartureID>
+        <DepartureLLA>N40° 40' 38.62",W77° 37' 36.71",+000813.00</DepartureLLA>
+        <DestinationID>KRVL</DestinationID>
+        <DestinationLLA>N40° 40' 38.62",W77° 37' 36.71",+000813.00</DestinationLLA>
+        <Descr>Mifflin Co to Mifflin Co</Descr>
+        <DepartureName>Mifflin Co</DepartureName>
+        <DestinationName>Mifflin Co</DestinationName>
+        <AppVersion>
+            <AppVersionMajor>11</AppVersionMajor>
+            <AppVersionBuild>282174</AppVersionBuild>
+        </AppVersion>
+        <ATCWaypoint id="KRVL">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N40° 40' 38.62",W77° 37' 36.71",+000813.00</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+            <RunwayNumberFP>24</RunwayNumberFP>
+            <ICAO>
+                <ICAOIdent>KRVL</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="START+4000">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N40° 40' 45.60",W77° 37' 36.00",+000000.00</WorldPosition>
+            <Descr>START</Descr>
+        </ATCWaypoint>
+        <ATCWaypoint id="TP1+2360">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N40° 25' 50.00",W77° 53' 07.00",+003000.00</WorldPosition>
+            <Descr>Mill Creek</Descr>
+        </ATCWaypoint>
+        <ATCWaypoint id="TP2+1010">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N40° 32' 09.00",W77° 49' 03.00",+001234.00</WorldPosition>
+            <Descr>Allensville (HWY)</Descr>
+        </ATCWaypoint>
+        <ATCWaypoint id="TP3+2090">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N40° 51' 18.00",W77° 07' 41.00",+003000.00</WorldPosition>
+            <Descr>Three Barns</Descr>
+        </ATCWaypoint>
+        <ATCWaypoint id="FINISH+813">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N40° 40' 51.60",W77° 37' 7.20",+000000.00</WorldPosition>
+            <Descr>Mifflin</Descr>
+        </ATCWaypoint>
+        <ATCWaypoint id="foo">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N40° 40' 38.62",W77° 37' 36.71",+000800.00</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+            <ICAO>
+                <ICAOIdent>KRVL</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+    </FlightPlan.FlightPlan>
+</SimBase.Document>

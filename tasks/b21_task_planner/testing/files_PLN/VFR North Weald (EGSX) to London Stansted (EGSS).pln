@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<SimBase.Document Type="AceXML" version="1,0">
+    <Descr>AceXML Document</Descr>
+    <FlightPlan.FlightPlan>
+        <Title>EGSX to EGSS</Title>
+        <FPType>VFR</FPType>
+        <RouteType>Direct</RouteType>
+        <CruisingAlt>9000</CruisingAlt>
+        <DepartureID>EGSX</DepartureID>
+        <DepartureLLA>N51° 43' 48.27",E0° 9' 29.26",+000321.00</DepartureLLA>
+        <DestinationID>EGSS</DestinationID>
+        <DestinationLLA>N51° 53' 5.99",E0° 14' 6.00",+000348.00</DestinationLLA>
+        <Descr>EGSX, EGSS</Descr>
+        <DeparturePosition>20</DeparturePosition>
+        <DepartureName>North Weald</DepartureName>
+        <DestinationName>London Stansted</DestinationName>
+        <AppVersion>
+            <AppVersionMajor>11</AppVersionMajor>
+            <AppVersionBuild>282174</AppVersionBuild>
+        </AppVersion>
+        <ATCWaypoint id="EGSX">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N51° 43' 18.01",E0° 9' 15.00",+000321.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>EGSX</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="TP1+56">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N51° 34' 13.00",E0° 41' 36.00",+009000.00</WorldPosition>
+            <Descr>Mill Creek</Descr>
+        </ATCWaypoint>
+        <ATCWaypoint id="EGSS">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N51° 53' 5.99",E0° 14' 6.00",+000348.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>EGSS</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+    </FlightPlan.FlightPlan>
+</SimBase.Document>

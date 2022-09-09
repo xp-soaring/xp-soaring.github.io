@@ -1,0 +1,32 @@
+<Task fai_finish="0" finish_min_height_ref="AGL" finish_min_height="152" start_max_height_ref="MSL" start_max_height="1371" start_max_speed="0" start_requires_arm="0" aat_min_time="0" name="SKELLING FARM TASK 31" type="RT">
+    <Point type="Start">
+        <Waypoint altitude="189.89" comment="TP OUS User WP" id="2" name="TP OUS">
+            <Location latitude="54.70585" longitude="-2.5793"/>
+        </Waypoint>
+        <ObservationZone length="10000" type="Line"/>
+    </Point>
+    <Point type="Turn">
+        <Waypoint altitude="276.758" comment="NATS009 User WP" id="3" name="NATS009">
+            <Location latitude="54.809444" longitude="-2.443889"/>
+        </Waypoint>
+        <ObservationZone radius="500" type="Cylinder"/>
+    </Point>
+    <Point type="Turn">
+        <Waypoint altitude="164.897" comment="TP TEB User WP" id="4" name="TP TEB">
+            <Location latitude="54.436617" longitude="-2.597683"/>
+        </Waypoint>
+        <ObservationZone radius="500" type="Cylinder"/>
+    </Point>
+    <Point type="Turn">
+        <Waypoint altitude="320.04" comment="TP SEL User WP" id="5" name="TP SEL">
+            <Location latitude="54.589367" longitude="-2.127483"/>
+        </Waypoint>
+        <ObservationZone radius="500" type="Cylinder"/>
+    </Point>
+    <Point type="Finish">
+        <Waypoint altitude="187.757" comment="X5SF Airport" id="6" name="X5SF">
+            <Location latitude="54.694728" longitude="-2.579561"/>
+        </Waypoint>
+        <ObservationZone length="2000"  type="Line"/>
+    </Point>
+</Task>

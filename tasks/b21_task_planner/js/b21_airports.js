@@ -1,3 +1,4 @@
+"use strict"
 // ********************************************************************************************
 // *********  Manager for the airports data                ************************************
 //
@@ -25,12 +26,11 @@
 
 class B21_Airports {
 
-    constructor(planner, map) {
+    constructor(planner) {
         this.AIRPORTS_JSON_URL = "https://xp-soaring.github.io/tasks/b21_task_planner/airports/airports.json";
         this.DEBUG_DRAW_MAP_BOXES = false;
 
         this.planner = planner;
-        this.map = map;
         this.airports_data = null;
         this.markers = null; // dictionary IDENT -> marker for each airport drawn on map
         this.search_ident = null; // ident of an airport search result to be highlighted on map
@@ -38,7 +38,7 @@ class B21_Airports {
     }
 
     // init() will asynchronously download the airports data
-    init() {
+    init(map) {
         fetch(this.AIRPORTS_JSON_URL).then(response => {
             if (!response.ok) {
                 alert("Failed to download the airports data")
@@ -53,32 +53,37 @@ class B21_Airports {
             this.KEY_LNG = this.airports_data.airport_keys['lng'];
             this.KEY_NAME = this.airports_data.airport_keys['name'];
             this.KEY_IDENT = this.airports_data.airport_keys['ident'];
-            this.KEY_TYPE = this.airports_data.airport_keys['type']; //"closed_airport", "heliport", "large_airport", "medium_airport", "seaplane_base", "small_airport"
+            this.KEY_TYPE = this.airports_data.airport_keys['type']; //"closed_airport", "heliport", "large_airport", "medium_airport", "seaplane_base", "small_airport", "msfs_airport"
             this.KEY_ALT_M = this.airports_data.airport_keys['alt_m'];
             this.KEY_RUNWAYS = this.airports_data.airport_keys['runways'];
             this.available = true;
-            this.draw();
+            this.draw(map);
         }).catch(error => {
             console.error('Network error accessing airports.json:', error);
         });
     }
 
-    draw() {
+    draw(map) {
+        const ZOOM_MIN_MSFS = 8;
+        const ZOOM_MIN_OTHER = 9;
+
         this.planner.airport_markers.clearLayers();
 
         if (!this.available) {
-            console.log("draw_airports failed");
+            console.log("b21_airports.draw(), airports not available, returning.");
             return;
         }
 
         this.markers = {};
 
-        let zoom = this.map.getZoom();
-        if (zoom < 8) {
+        let zoom = map.getZoom();
+        if (zoom < ZOOM_MIN_MSFS) {
             console.log("Too zoomed out to display airports");
             return;
         }
-        let map_bounds = this.map.getBounds();
+        //console.log("airports.draw(map) drawing");
+
+        let map_bounds = map.getBounds();
         let map_box = {
             "min_lat": map_bounds.getSouth(),
             "min_lng": map_bounds.getWest(),
@@ -86,24 +91,29 @@ class B21_Airports {
             "max_lng": map_bounds.getEast()
         }
         console.log("draw_airports", map_box);
+
         for (let box_id in this.airports_data.box_coords) {
             let box = this.airports_data.box_coords[box_id];
             if (this.DEBUG_DRAW_MAP_BOXES) {
                 L.rectangle([
                     [box.min_lat, box.min_lng],
                     [box.max_lat, box.max_lng]
-                ]).addTo(this.map);
+                ]).addTo(map);
             }
-            if (this.box_overlap(box, map_box)) {
+            if (Geo.box_overlap(box, map_box)) {
                 //console.log("overlap",box_id, box);
                 let airports = this.airports_data.boxes[box_id];
                 for (let i = 0; i < airports.length; i++) {
                     let airport = airports[i];
                     let type = airport[this.KEY_TYPE];
                     if (type.includes("airport")) {
+                        // Skip this airport if it's non-msfs and insufficient zoom
+                        if (! type.includes("msfs") && zoom < ZOOM_MIN_OTHER) {
+                            continue;
+                        }
                         let position = new L.latLng(airport[this.KEY_LAT], airport[this.KEY_LNG]);
                         let ident = airport[this.KEY_IDENT];
-                        let type = airport[this.KEY_TYPE];
+                        //let type = airport[this.KEY_TYPE];
                         let name = airport[this.KEY_NAME].replaceAll('"', ""); // Remove double quotes if original name includes those.
                         let alt_m = airport[this.KEY_ALT_M];
                         let runways = airport[this.KEY_RUNWAYS];
@@ -119,7 +129,14 @@ class B21_Airports {
                             radius: circle_radius
                         });
                         marker.addTo(this.planner.airport_markers);
-                        marker.bindPopup(name + "<br/>" + type + "<br/>" + ident);
+
+                        // add popup
+                        let popup_content = name + "<br/>" + type + "<br/>" + ident;
+                        let popup = L.popup({
+                            autoPan: false
+                        }).setContent(popup_content);
+                        marker.bindPopup(popup);
+
                         marker.on('mouseover', function(event) {
                             marker.openPopup();
                         });
@@ -146,22 +163,6 @@ class B21_Airports {
         }
     }
 
-    box_overlap(box, map_box) {
-        if (map_box.min_lat > box.max_lat) {
-            return false;
-        }
-        if (map_box.max_lat < box.min_lat) {
-            return false;
-        }
-        if (map_box.min_lng > box.max_lng) {
-            return false;
-        }
-        if (map_box.max_lng < box.min_lng) {
-            return false;
-        }
-        return true;
-    }
-
     // Return airport info given ident e.g. lookup("LSMM") returns
     // { alt_m: 579.1, ident: "LSMM", lat: 46.74333, lng: 8.109999, name: "Meiringen Mil", runways: "28 10", type: "msfs_airport" }
     // Note our airports data structure is highly optimised for a lookup by lat/long (i.e. stored by latlong 'boxes')
@@ -172,32 +173,37 @@ class B21_Airports {
             return null;
         }
         console.log("b21_airports lookup", ident);
-        let ident_key = this.airports_data.airport_keys["ident"];
         for (const [box_key, airports_list] of Object.entries(this.airports_data.boxes)) {
             //console.log(box_key);
             for (let i = 0; i < airports_list.length; i++) {
                 // airports_list is a list of the airports in the current 'box'
                 // so airports_list[i] is the current airport we're checking for the ident
                 // Each airport info is stored as a list of values, as defined in airport_keys
-                if (airports_list[i][ident_key] == ident) {
+                if (airports_list[i][this.KEY_IDENT] == ident) {
                     console.log("airports lookup ident found", ident, airports_list[i]);
-                    let airport_info = {};
-                    // Note we use 'airport_keys' to map from key name (e.g. ident) to array entry (e.g. 0)
-                    for (const [key, value] of Object.entries(this.airports_data.airport_keys)) {
-                        airport_info[key] = airports_list[i][value]
-                    }
-                    return airport_info
+                    return this.airport_list_to_obj(airports_list[i]);
                 }
             }
         }
         return null;
     }
 
+    // Convert the compact airports list data to a JS obj
+    airport_list_to_obj(airport_list) {
+        let airport_info = {};
+        // Note we use 'airport_keys' to map from key name (e.g. ident) to array entry (e.g. 0)
+        for (const [key, value] of Object.entries(this.airports_data.airport_keys)) {
+            airport_info[key] = airport_list[value]
+        }
+        airport_info["id"] = airport_info["ident"];
+        airport_info["source"] = airport_info["type"] == "msfs_airport" ? "msfs_airports" : "ourairports";
+        return airport_info
+    }
+
     // User has typed in search box
-    //DEBUG pan the map to the clicked airport result, and highlight that airport
-    search(search_value, results_el) {
+    search(search_value) {
         let parent = this;
-        const RESULTS_MAX = 100;
+        const RESULTS_MAX = 50;
         let results = [];
         for (let box_id in this.airports_data.box_coords) {
             let airports = this.airports_data.boxes[box_id];
@@ -207,8 +213,8 @@ class B21_Airports {
                 if (type.includes("airport")) {
                     let ident = airport[this.KEY_IDENT];
                     let name = airport[this.KEY_NAME].replaceAll('"', ""); // Remove double quotes if original name includes those.
-                    if ((ident + name).toLowerCase().includes(search_value)) {
-                        results.push(airport);
+                    if ((ident + "!" + name).toLowerCase().includes(search_value)) {
+                        results.push(this.airport_list_to_obj(airport));
                         if (results.length > RESULTS_MAX) {
                             break;
                         }
@@ -219,33 +225,8 @@ class B21_Airports {
                 break;
             }
         }
-        if (results.length > 0) {
-            while (results_el.firstChild) {
-                results_el.removeChild(results_el.lastChild);
-            }
-            results_el.style.display = "block";
-            for (let i = 0; i < results.length; i++) {
-                let airport = results[i];
-                let result_el = document.createElement("div");
-                result_el.className = "search_result";
-                result_el.onclick = (e) => {
-                    results_el.style.display = "none";
-                    parent.clicked(parent, airport);
-                }
-                result_el.innerHTML = (airport[this.KEY_IDENT] + " " + airport[this.KEY_NAME]).replaceAll(" ", "&nbsp;");
-                results_el.appendChild(result_el);
-            }
-        }
-        console.log("Search results", results.length);
-    }
 
-    clicked(parent, airport) {
-        console.log("result clicked", airport);
-        let lat = airport[parent.KEY_LAT];
-        let lng = airport[parent.KEY_LNG];
-        // Set the search_ident so draw() knows the redraw is due to a search and can highlight the airport on map
-        parent.search_ident = airport[parent.KEY_IDENT];
-        this.map.panTo([lat, lng]);
+        return results;
     }
 
 } // end class B21_Airports

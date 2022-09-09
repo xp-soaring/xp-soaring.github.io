@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SimBase.Document Type="AceXML" version="1,0">
+    <Descr>AceXML Document</Descr>
+    <FlightPlan.FlightPlan>
+        <Title>LSZA to LSZA</Title>
+        <FPType>VFR</FPType>
+        <CruisingAlt>1500.000</CruisingAlt>
+        <DepartureID>LSZA</DepartureID>
+        <DepartureLLA>N46° 0' 13.01",E8° 54' 37.00",+000907.00</DepartureLLA>
+        <DestinationID>LSZA</DestinationID>
+        <DestinationLLA>N46° 0' 13.01",E8° 54' 37.00",+000907.00</DestinationLLA>
+        <Descr>LSZA to LSZA</Descr>
+        <DeparturePosition>01</DeparturePosition>
+        <DepartureName>Lugano</DepartureName>
+        <DestinationName>Lugano</DestinationName>
+        <AppVersion>
+            <AppVersionMajor>11</AppVersionMajor>
+            <AppVersionBuild>282174</AppVersionBuild>
+        </AppVersion>
+
+        <ATCWaypoint id="Lugano">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N46° 0' 13.01",E8° 54' 37.00",+000907.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>LSZA</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="*START+1542">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N45° 58' 50.67",E8° 45' 46.51",+001541.99</WorldPosition>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="WP 2+2277">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N45° 53' 44.67",E8° 49' 1.77",+002276.90</WorldPosition>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="*FINISH+1939">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N45° 56' 40.08",E8° 59' 14.73",+001938.98</WorldPosition>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="WP 4+909">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N46° 0' 13.10",E8° 54' 28.02",+000908.79</WorldPosition>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="Lugano">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N46° 0' 13.01",E8° 54' 37.00",+000907.00</WorldPosition>
+
+            <ICAO>
+                <ICAOIdent>LSZA</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+
+    </FlightPlan.FlightPlan>
+</SimBase.Document>

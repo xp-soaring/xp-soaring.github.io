@@ -94,6 +94,24 @@ class Geo {
          return bisector;
     }
 
+    // Given two boxes defined by min/max lat/lng values, return true if they overlap
+    static box_overlap(box, map_box) {
+        if (map_box.min_lat > box.max_lat) {
+            return false;
+        }
+        if (map_box.max_lat < box.min_lat) {
+            return false;
+        }
+        if (map_box.min_lng > box.max_lng) {
+            return false;
+        }
+        if (map_box.max_lng < box.min_lng) {
+            return false;
+        }
+        return true;
+    }
+
+
 //*********************************************************************************************
 //*************** CONVERSION FUNCTIONS, E.G. meters to nautical miles *************************
 //*********************************************************************************************

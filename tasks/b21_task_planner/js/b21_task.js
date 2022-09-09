@@ -5,7 +5,8 @@
 class B21_Task {
     constructor(planner) {
         this.planner = planner; // Reference to B21TaskPlanner instance
-        this.task_el = document.getElementById("task_info");
+        this.task_info_none_el = document.getElementById("task_info_none");
+        this.task_info_content_el = document.getElementById("task_info_content");
         this.init();
     }
 
@@ -32,11 +33,11 @@ class B21_Task {
         // Have msfs_pln update this task
         msfs_pln.load_pln_str(pln_str);
         // Fix up the start and finish waypoints if the PLN didn't mark those.
-        console.log(">>>>>>>loaded PLN, start_index=",this.start_index);
-        if (this.start_index==null && this.waypoints.length > 0) {
+        console.log(">>>>>>>loaded PLN, start_index=", this.start_index);
+        if (this.start_index == null && this.waypoints.length > 0) {
             this.start_index = 0;
         }
-        if (this.finish_index==null && this.waypoints.length > 1) {
+        if (this.finish_index == null && this.waypoints.length > 1) {
             this.finish_index = this.waypoints.length - 1;
         }
         this.update_display();
@@ -127,7 +128,7 @@ class B21_Task {
     // User has clicked an airport symbol on the map
     add_new_poi(position, type, poi_info) {
         // poi_info = {ident,name,alt_m,runways}
-        console.log("task.add_new_poi ", position, type, poi_info);
+        console.log(">>>>>>>task.add_new_poi ", position, type, poi_info);
         let wp = this.add_point_wp(position);
 
         if (wp.index == 0 && !this.is_msfs_airport(type)) {
@@ -189,7 +190,8 @@ class B21_Task {
         this.update_waypoints();
         this.update_waypoint_icons();
         this.redraw();
-        this.display_task_info();
+        //this.display_task_info();
+        this.planner.show_task_info();
     }
 
     duplicate_current_wp() {
@@ -369,7 +371,7 @@ class B21_Task {
     // Add a straight line between wp1 and wp2
     // This line is multiple polylines that all should be drawn (allowing an alternate color dash if needed).
     add_line(wp1, wp2) {
-        console.log("add_line",wp1,wp2);
+        console.log("add_line", wp1, wp2);
         this.remove_line(wp2);
         let latlngs = [wp1.position, wp2.position];
         let color1 = this.planner.settings.task_line_color_1;
@@ -384,7 +386,7 @@ class B21_Task {
             line1_options["dashArray"] = '12 12';
             line1_options["lineCap"] = 'butt';
         }
-        wp2.task_line = [ L.polyline(latlngs, line1_options) ];
+        wp2.task_line = [L.polyline(latlngs, line1_options)];
 
         if (color2 != null && color2 != "" && color2 != "none") {
             wp2.task_line.push(L.polyline(latlngs, {
@@ -420,27 +422,29 @@ class B21_Task {
         if (wp.index == this.start_index) {
             // Sector = START LINE
             console.log("add_sector START", wp.radius_m);
-            let radius_m = wp.radius_m == null ? 2500 : wp.radius_m;
+            let radius_m = wp.radius_m == null ? wp.DEFAULT_START_RADIUS_M : wp.radius_m;
             let direction_deg = 0;
             if (wp.index < this.waypoints.length - 1) {
                 direction_deg = (this.waypoints[wp.index + 1].leg_bearing_deg + 180) % 360;
             }
             wp.sector = L.semiCircle(wp.position, {
                     radius: radius_m,
-                    color: 'red'
+                    color: 'red',
+                    interactive: false
                 })
                 .setDirection(direction_deg, 180);
         } else if (wp.index == this.finish_index) {
             // Sector = FINISH LINE
             console.log("add_sector FINISH", wp.radius_m);
-            let radius_m = wp.radius_m == null ? 1000 : wp.radius_m;
+            let radius_m = wp.radius_m == null ? wp.DEFAULT_FINISH_RADIUS_M : wp.radius_m;
             let direction_deg = 0;
             if (wp.index > 0) {
                 direction_deg = wp.leg_bearing_deg;
             }
             wp.sector = L.semiCircle(wp.position, {
                     radius: radius_m,
-                    color: 'red'
+                    color: 'red',
+                    interactive: false
                 })
                 .setDirection(direction_deg, 180);
         } else {
@@ -448,7 +452,8 @@ class B21_Task {
             wp.sector = L.circle(wp.position, {
                 radius: wp.radius_m,
                 color: 'red',
-                weight: 1
+                weight: 1,
+                interactive: false
             });
         }
         wp.sector.addTo(this.planner.map);
@@ -489,13 +494,27 @@ class B21_Task {
         }
     }
 
+    hide_task_info() {
+        this.task_info_none_el.style.display = "none";
+        this.task_info_content_el.style.display = "none";
+    }
+
     // Update the 'task_info' element with the table of waypoint data
     display_task_info() {
-        while (this.task_el.firstChild) {
-            this.task_el.removeChild(this.task_el.lastChild);
+        B21_Utils.clear_div(this.task_info_content_el);
+
+        this.task_info_content_el.style.display = "block";
+
+        if (this.waypoints.length == 0) {
+            this.task_info_none_el.style.display = "block";
+            return;
+        } else {
+            this.task_info_none_el.style.display = "none";
         }
-        let task_info_el = document.createElement("table");
-        task_info_el.id = "task_info";
+
+
+        let task_info_table_el = document.createElement("table");
+        task_info_table_el.id = "task_info_table";
 
         let distance_units_str = "Km";
         if (this.planner.settings.distance_units == "miles") {
@@ -509,6 +528,7 @@ class B21_Task {
 
         // Column headings
         let headings_el = document.createElement("tr");
+        headings_el.id = "task_info_headings";
         let heading1 = document.createElement("th"); // WP #
         headings_el.appendChild(heading1);
         let heading2 = document.createElement("th"); // WP name
@@ -525,13 +545,13 @@ class B21_Task {
         let heading6 = document.createElement("th"); // buttons
         headings_el.appendChild(heading6);
 
-        task_info_el.appendChild(headings_el);
+        task_info_table_el.appendChild(headings_el);
 
         // Add waypoints
         for (let i = 0; i < this.waypoints.length; i++) {
-            this.display_task_waypoint(task_info_el, this.waypoints[i]);
+            this.display_task_waypoint(task_info_table_el, this.waypoints[i]);
         }
-        this.task_el.appendChild(task_info_el);
+        this.task_info_content_el.appendChild(task_info_table_el);
 
         let distance_m = this.get_task_distance_m();
         let distance_str = (distance_m / 1000).toFixed(1);
@@ -543,10 +563,10 @@ class B21_Task {
         distance_el.id = "task_info_distance";
         distance_el.innerHTML = "Task distance: " + distance_str + " " + distance_units_str;
 
-        this.task_el.appendChild(distance_el);
+        this.task_info_content_el.appendChild(distance_el);
     }
 
-    display_task_waypoint(task_info_el, wp) {
+    display_task_waypoint(task_info_table_el, wp) {
         let wp_el = document.createElement("tr");
         wp_el.className = wp.index == this.index ? "task_info_wp_current" : "task_info_wp";
         let parent = this;
@@ -580,7 +600,7 @@ class B21_Task {
         wp_index_el.innerHTML = index_note; //(wp.index+1)+"&nbsp;"+index_note;
         wp_el.appendChild(wp_index_el);
 
-         // WP name
+        // WP name
         let wp_name_el = document.createElement("td");
         wp_name_el.className = "task_info_wp_name";
         wp_name_el.onclick = function() {
@@ -588,13 +608,14 @@ class B21_Task {
         };
         let wp_name_str = wp.get_name();
         if (wp.runway != null && wp.runway != "" && wp.runway != " ") {
-            wp_name_str += "<br/>Runway: "+wp.runway;
+            wp_name_str += "<br/>Runway: " + wp.runway;
         }
         wp_name_el.innerHTML = wp_name_str;
         wp_el.appendChild(wp_name_el);
 
         // WP alt
         let wp_alt_el = document.createElement("td");
+        wp_alt_el.className = "task_info_wp_alt";
         wp_alt_el.onclick = function() {
             parent.set_current_wp(wp.index);
         };
@@ -612,6 +633,7 @@ class B21_Task {
 
         // leg distance
         let wp_dist_el = document.createElement("td");
+        wp_dist_el.className = "task_info_wp_distance";
         wp_dist_el.onclick = function() {
             parent.set_current_wp(wp.index);
         };
@@ -623,7 +645,7 @@ class B21_Task {
         this.task_info_wp_buttons(wp_buttons_el, wp);
         wp_el.appendChild(wp_buttons_el);
 
-        task_info_el.appendChild(wp_el);
+        task_info_table_el.appendChild(wp_el);
 
         // Add another row if this WP has limits set
         if (wp.max_alt_m != null || wp.min_alt_m != null || wp.radius_m != null) {
@@ -664,7 +686,7 @@ class B21_Task {
             wp_limits_el.innerHTML = limits_str;
             wp_limits_row_el.appendChild(wp_limits_el);
 
-            task_info_el.appendChild(wp_limits_el);
+            task_info_table_el.appendChild(wp_limits_row_el);
         }
     }
 
@@ -672,8 +694,9 @@ class B21_Task {
         buttons_el.className = "task_info_wp_buttons";
 
         if (wp.index != 0) {
-            let up_el = document.createElement("div");
-            up_el.className = "task_info_wp_button_up";
+            let up_el = document.createElement("img");
+            up_el.src = "images/arrow_up.png";
+            up_el.className = "task_info_wp_button";
             up_el.addEventListener("click", () => {
                 this.move_wp_up(wp.index);
             });
@@ -681,16 +704,18 @@ class B21_Task {
         }
 
         if (wp.index != this.waypoints.length - 1) {
-            let down_el = document.createElement("div");
-            down_el.className = "task_info_wp_button_down";
+            let down_el = document.createElement("img");
+            down_el.src = "images/arrow_down.png";
+            down_el.className = "task_info_wp_button";
             down_el.addEventListener("click", () => {
                 this.move_wp_down(wp.index);
             });
             buttons_el.appendChild(down_el);
         }
 
-        let delete_el = document.createElement("div");
-        delete_el.className = "task_info_wp_button_delete";
+        let delete_el = document.createElement("img");
+        delete_el.src = "images/delete.png";
+        delete_el.className = "task_info_wp_button";
         delete_el.addEventListener("click", () => {
             this.remove_wp(wp.index);
         });
@@ -800,9 +825,9 @@ class B21_Task {
     }
 
     reset() {
-        console.log("task.reset()");
+        //console.log("task.reset()");
         let length = this.waypoints.length;
-        console.log(this.toString());
+        //console.log(this.toString());
         for (let i = length - 1; i >= 0; i--) {
             this.remove_wp_from_task(i);
             console.log(this.toString());

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SimBase.Document Type="AceXML" version="1,0">
+    <Descr>AceXML Document</Descr>
+    <FlightPlan.FlightPlan>
+        <Title>LFKT to LFKT</Title>
+        <FPType>VFR</FPType>
+        <CruisingAlt>1500.000</CruisingAlt>
+        <DepartureID>LFKT</DepartureID>
+        <DepartureLLA>N42° 17' 25.01",E9° 11' 33.00",+001100.00</DepartureLLA>
+        <DestinationID>LFKT</DestinationID>
+        <DestinationLLA>N42° 17' 25.01",E9° 11' 33.00",+001100.00</DestinationLLA>
+        <Descr>LFKT to LFKT</Descr>
+        <DeparturePosition>12</DeparturePosition>
+        <DepartureName>Corte</DepartureName>
+        <DestinationName>Corte</DestinationName>
+        <AppVersion>
+            <AppVersionMajor>11</AppVersionMajor>
+            <AppVersionBuild>282174</AppVersionBuild>
+        </AppVersion>
+
+        <ATCWaypoint id="Corte">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N42° 17' 25.01",E9° 11' 33.00",+001100.00</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+            <ICAO>
+                <ICAOIdent>LFKT</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="*START|6000x4000">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N42° 13' 49.18",E9° 14' 24.37",+000662.73</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="POI1|6000x1000">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N41° 58' 43.72",E8° 49' 54.89",+000170.60</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="POI2|6000x1000">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N41° 55' 7.64",E9° 23' 1.62",+000088.58</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="POI3|6000x1000">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N42° 29' 24.04",E8° 47' 50.37",+000472.44</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="POI4|6000x1000">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N42° 31' 32.28",E9° 27' 24.65",+000042.65</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="Final|2940x500">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N42° 23' 36.30",E9° 11' 27.32",+001154.86</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="*FINISH|1530/1300x500">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N42° 18' 18.25",E9° 10' 12.00",+001194.23</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="Corte">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N42° 17' 25.01",E9° 11' 33.00",+001100.00</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+            <ICAO>
+                <ICAOIdent>LFKT</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+
+    </FlightPlan.FlightPlan>
+</SimBase.Document>

@@ -15,8 +15,8 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
-    <script src="js/semicircle.js"></script> <!-- 3rd-party mod to add semicircles to Leaflet -->
-    <script src="js/leaflet.rotatedmarker.js"></script> <!-- https://github.com/bbecquet/Leaflet.RotatedMarker -->
+    <script src="js/lib/semicircle.js"></script> <!-- 3rd-party mod to add semicircles to Leaflet -->
+    <script src="js/lib/leaflet.rotatedmarker.js"></script> <!-- https://github.com/bbecquet/Leaflet.RotatedMarker -->
     <link href="css/leaflet_mods.css" rel="stylesheet"/> <!-- our local tweaks to the map CSS -->
 
     <!-- Highcharts used to draw the baro/speed chart -->
@@ -24,13 +24,20 @@
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <link href="css/highcharts.css" rel="stylesheet"/>
 
+    <!-- D3 for CSV -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+
     <!-- Main app CSS -->
     <link href="css/main.css" rel="stylesheet"/>
 
+    <script src="js/b21_utils_static.js"> </script> <!-- B21_Utils: Defines useful functions (static) -->
     <script src="js/b21_geo_static.js"> </script>   <!-- Geo: Defines Geo functions (static) -->
     <script src="js/b21_settings.js"> </script>     <!-- B21_Settings: loads localStorage settings e.g. units -->
     <script src="js/b21_airports.js"> </script>     <!-- B21_Airports: loads airport data -->
-    <script src="js/b21_tracklog.js"> </script>    <!-- B21_TrackLog: Supports GPX files -->
+    <script src="js/b21_file_gpx.js"> </script>     <!-- B21_File_GPX: loads GPX data into TrackLog -->
+    <script src="js/b21_file_igc.js"> </script>     <!-- B21_File_IGC: loads IGC data into TrackLog -->
+    <script src="js/b21_local_waypoints.js"> </script>  <!-- loads CUP data into waypoints -->
+    <script src="js/b21_tracklog.js"> </script>     <!-- B21_TrackLog: holds tracklog logpoints array plus metadata incl. scoring -->
     <script src="js/b21_wp.js"> </script>           <!-- B21_WP: internal representation of a gliding waypoint -->
     <script src="js/b21_task.js"> </script>         <!-- B21_Task: internal representation of a gliding task from FlightPlan -->
     <script src="js/b21_msfs_pln.js"> </script>     <!-- B21_MSFS_PLN: Supports PLN files -->
@@ -52,7 +59,7 @@ function loaded() {
     <div class="header">
         <div class="title">
             <!-- NOTE VERSION NUMBER HERE -->
-            <div class="title_text">B21 Task Planner v1.42</div>
+            <div class="title_text">B21 Task Planner v2.12</div>
             <div class="title_task_option">Soaring task: <input id="soaring_task_checkbox" type="checkbox" onclick="b21_task_planner.click_soaring_task(this)" checked/></div>
         </div>
     </div>
@@ -62,8 +69,8 @@ function loaded() {
             title="Download .PLN file to your Downloads folder">Download MSFS FlightPlan</button>
         <button onclick="b21_task_planner.download_tsk()"
             title="Download .TSK file to your Downloads folder">Download XCsoar Task</button>
-        <button onclick="b21_task_planner.reset()"
-            title="Delete the current task">Reset Task</button>
+        <button onclick="b21_task_planner.reset_all()"
+            title="Clear the current task and tracklogs">Reset All</button>
         <button onclick="b21_task_planner.update_elevations()"
             title="Insert the correct elevation for each user waypoint, airports will be unchanged">Update elevations</button>
         <button onclick="b21_task_planner.reset_map()"
@@ -81,7 +88,7 @@ function loaded() {
         <div id="search">
             <input id="search_input"
                 title="Search airport names and identifiers, click any result to show on map"
-                type="text" width="10" placeholder="Search" onkeyup="b21_task_planner.search()"/>
+                type="text" width="10" placeholder="Search Airports/Waypoints" onkeyup="b21_task_planner.search()"/>
             <div id="search_results">
             </div>
         </div>
@@ -92,52 +99,79 @@ function loaded() {
     </div>
     <div id="panes">
         <div id="left_pane">
+            <div id="left_top_area">
+                <div id="drop_zone">
+                    DROP FILES HERE<br/>
+                    Task: (.PLN .TSK)<br/>
+                    Tracklogs: (.GPX .IGC)<br/>
+                    WPs: (.CUP)<br/>
+                    Or: <input type="file" id="drop_zone_choose_input" multiple="multiple"/> <button id="drop_zone_choose_button">Choose file(s)</button>
+                </div>
+                <div id="left_pane_hide">
+                    <button id="left_pane_hide_button" href="#" onclick="b21_task_planner.left_pane_hide_click()"
+                        title="Hide this display pane.">h<br/>i<br/>d<br/>e</button>
+                </div>
+            </div>
+            <!-- TABS content -->
             <div id="left_pane_tabs">
-                <a id="tab_task" class="tab_active" href="#" onclick="b21_task_planner.tab_task()">Task Info</a>
-                <a id="tab_tracklogs" class="tab_inactive" href="#" onclick="b21_task_planner.tab_tracklogs()">Tracklogs</a>
-                <a id="tab_tracklog" class="tab_inactive" href="#" onclick="b21_task_planner.tab_tracklog()">Tracklog Info</a>
+                <div id="tab_task" class="tab_active"><a href="#" onclick="b21_task_planner.tab_task_click()">Task Info</a></div>
+                <div id="tab_tracklogs" class="tab_inactive">
+                    <input id="tracklogs_select_all" type="checkbox" checked="checked" onclick="b21_task_planner.tracklogs_select_all_clicked()"/>
+                    <a href="#" onclick="b21_task_planner.tab_tracklogs_click()">Tracklogs</a>
+                </div>
+                <div id="rescore_button"><button onclick="b21_task_planner.rescore_click()">Re-score</button></div>
             </div>
-            <div id="task_info"></div>
-            <div id="tracklogs_info">TRACKLOGS</div>
-            <div id="tracklog_info">
-                <div id="tracklog_info_header"></div>
-                <div id="tracklog_info_task"></div>
-                <div id="tracklog_info_selected">SELECTED</div>
+            <div id="task_info">
+                <div id="task_info_none">
+                    NO TASK LOADED.
+                </div>
+                <div id="task_info_content">
+                </div>
             </div>
-            <div id="drop_zone">DROP .PLN or .TSK FLIGHT PLAN HERE<br/>
-                Or: <input type="file" id="drop_zone_choose_input"/> <button id="drop_zone_choose_button">Choose file</button>
-            </div>
+            <div id="tracklogs">TRACKLOGS ENTRIES GO HERE</div>
         </div> <!-- end left_pane -->
+        <div id="left_pane_show">
+            <button id="left_pane_show_button" href="#" onclick="b21_task_planner.left_pane_show_click()"
+                title="Show this display pane.">s<br/>h<br/>o<br/>w</button>
+        </div>
         <div id="right_pane">
             <div id="map"></div>
-            <div id="chart"></div>
+            <div id="replay">
+                <div id="replay_sync" title="Offset tracklog times to a common start time. Tracklogs must have successful task start.">
+                    <input type="checkbox" id="replay_sync_checkbox" onclick="b21_task_planner.replay_sync_click()"/>
+                    Sync starts
+                </div>
+                <button id="replay_reset" class="replay_button"  onclick="b21_task_planner.replay_restart()"
+                    title="Reset replay to start of tracklog">&#9632</button>
+                <button id="replay_pause" class="replay_button" onclick="b21_task_planner.replay_pause()"
+                    title="Pause replay">||</button>
+                <button id="replay_play" class="replay_button" onclick="b21_task_planner.replay_play()"
+                    title="Play all selected tracklogs">&gt;</button>
+                <div id="replay_speed">
+                    <button id="replay_slower" class="replay_button" onclick="b21_task_planner.replay_slower()"
+                        title="Slow down replay speed">-</button>
+                    <div id="replay_speed_value">x1</div>
+                    <button id="replay_faster" class="replay_button" onclick="b21_task_planner.replay_faster()"
+                        title="Speed up replay speed">+</button>
+                </div>
+                <div id="replay_time">1 Jan 1970 00:00</div>
+                <button id="replay_hide_tracks" class="replay_button" href="#" onclick="b21_task_planner.replay_hide_tracks()"
+                    title="Hide the tracks display on map">hide map tracks</button>
+                <button id="replay_hide_chart" class="replay_button" href="#" onclick="b21_task_planner.replay_hide_chart()"
+                    title="Hide the chart display">hide chart</button>
+            </div>
+            <div id="charts"></div>
+            <div id="tracklog_info">
+                <div id="tracklog_info_header">
+                    <div id="tracklog_info_name"></div>
+                    <div id="tracklog_info_select">
+                        <button onclick="b21_task_planner.close_tracklog_info()">close</button>
+                    </div>
+                </div>
+                <div id="tracklog_info_task"></div>
+            </div>
         </div>
         <div id="settings">
-            <div id="settings_heading">
-                <div id="settings_heading_text">Ooops! Something went wrong</div>
-                <button onclick="b21_task_planner.close_settings()">Close Settings</button>
-            </div>
-            <div class="setting">
-                <div class="setting_name">Altitude Units</div>
-                <div class="setting_options">
-                    <div id="setting_altitude_units_m" onclick="b21_task_planner.set_altitude_units_m()" class="setting_option">Meters</div>
-                    <div id="setting_altitude_units_feet" onclick="b21_task_planner.set_altitude_units_feet()" class="setting_option">Feet</div>
-                </div>
-            </div>
-            <div class="setting">
-                <div class="setting_name">Speed Units</div>
-                <div class="setting_options">
-                    <div id="setting_speed_units_kph" onclick="b21_task_planner.set_speed_units_kph()" class="setting_option">Kph</div>
-                    <div id="setting_speed_units_feet" onclick="b21_task_planner.set_speed_units_knots()" class="setting_option">Knots</div>
-                </div>
-            </div>
-            <div class="setting">
-                <div class="setting_name">Distance Units</div>
-                <div class="setting_options">
-                    <div id="setting_distance_units_km" onclick="b21_task_planner.set_distane_units_km()" class="setting_option">Kilometers</div>
-                    <div id="setting_distance_units_miles" onclick="b21_task_planner.set_distance_units_miles" class="setting_option">Miles</div>
-                </div>
-            </div>
         </div>
     </div> <!-- end panes -->
 </body>

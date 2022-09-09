@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<SimBase.Document Type="AceXML" version="1,0">
+    <Descr>AceXML Document</Descr>
+    <FlightPlan.FlightPlan>
+        <Title>LFQN to EGIQ</Title>
+        <FPType>IFR</FPType>
+        <RouteType>LowAlt</RouteType>
+        <CruisingAlt>10000</CruisingAlt>
+        <DepartureID>LFQN</DepartureID>
+        <DepartureLLA>N50° 43' 43.82",E2° 14' 5.80",+000249.00</DepartureLLA>
+        <DestinationID>EGIQ</DestinationID>
+        <DestinationLLA>N51° 5' 31.13",E0° 59' 18.26",+000276.00</DestinationLLA>
+        <Descr>LFQN, EGIQ</Descr>
+        <DeparturePosition>27</DeparturePosition>
+        <DepartureName>Wizernes</DepartureName>
+        <DestinationName>Harringe Airfield</DestinationName>
+        <AppVersion>
+            <AppVersionMajor>11</AppVersionMajor>
+            <AppVersionBuild>282174</AppVersionBuild>
+        </AppVersion>
+        <ATCWaypoint id="LFQN">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N50° 43' 46.01",E2° 14' 9.00",+000249.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>LFQN</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="*Start+379">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N50° 43' 21.95",E2° 10' 9.50",+010000.00</WorldPosition>
+        </ATCWaypoint>
+        <ATCWaypoint id="WP1+10">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N50° 56' 31.16",E1° 48' 59.86",+010000.00</WorldPosition>
+        </ATCWaypoint>
+        <ATCWaypoint id="WP2+0">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N51° 6' 52.65",E1° 19' 10.49",+010000.00</WorldPosition>
+        </ATCWaypoint>
+        <ATCWaypoint id="WP3+260">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N51° 4' 14.43",E1° 2' 56.01",+010000.00</WorldPosition>
+        </ATCWaypoint>
+        <ATCWaypoint id="EGIQ">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N51° 5' 31.13",E0° 59' 18.26",+000276.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>EGIQ</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+    </FlightPlan.FlightPlan>
+</SimBase.Document>

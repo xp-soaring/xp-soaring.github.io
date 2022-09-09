@@ -1,0 +1,26 @@
+<Task pev_start_window="0" pev_start_wait_time="0" fai_finish="0" finish_min_height_ref="MSL" finish_min_height="0" start_max_height_ref="MSL" start_max_height="0" start_max_speed="0" start_score_exit="1" start_requires_arm="0" aat_min_time="0" type="RT">
+	<Point type="Start">
+		<Waypoint altitude="7" comment="SALLAND B" id="250" name="Sal 1Af Salland">
+			<Location latitude="52.4464" longitude="6.33972"/>
+		</Waypoint>
+		<ObservationZone type="BGAStartSector"/>
+	</Point>
+	<Point type="Turn">
+		<Waypoint altitude="6" comment="" id="2" name="RAALTE">
+			<Location latitude="52.3854" longitude="6.27457"/>
+		</Waypoint>
+		<ObservationZone radius="500" type="Cylinder"/>
+	</Point>
+	<Point type="Turn">
+		<Waypoint altitude="8" comment="" id="3" name="DEVENTER">
+			<Location latitude="52.2536" longitude="6.18041"/>
+		</Waypoint>
+		<ObservationZone radius="500" type="Cylinder"/>
+	</Point>
+	<Point type="Finish">
+		<Waypoint altitude="3" comment="" id="4" name="FINISH">
+			<Location latitude="52.2432" longitude="6.0593"/>
+		</Waypoint>
+		<ObservationZone radius="1000" type="Cylinder"/>
+	</Point>
+</Task>

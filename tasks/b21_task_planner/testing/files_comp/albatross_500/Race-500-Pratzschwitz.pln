@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SimBase.Document Type="AceXML" version="1,0">
+    <Descr>AceXML Document</Descr>
+    <FlightPlan.FlightPlan>
+        <Title>Race-500-Pratzschwitz</Title>
+        <FPType>VFR</FPType>
+        <CruisingAlt>6000.000</CruisingAlt>
+        <DepartureID>EDAR</DepartureID>
+        <DepartureLLA>N50° 58' 40.99",E13° 54' 53.00",+000398.00</DepartureLLA>
+        <DestinationID>EDAR</DestinationID>
+        <DestinationLLA>N50° 58' 40.99",E13° 54' 53.00",+000398.00</DestinationLLA>
+        <Descr>Race-500-Pratzschwitz</Descr>
+        <DeparturePosition>11</DeparturePosition>        
+        <DepartureName>EDAR</DepartureName>
+        <DestinationName>EDAR</DestinationName>
+        <AppVersion>
+            <AppVersionMajor>11</AppVersionMajor>
+            <AppVersionBuild>282174</AppVersionBuild>
+        </AppVersion>
+
+        <ATCWaypoint id="EDAR">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N50° 58' 40.99",E13° 54' 53.00",+000398.00</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+            <ICAO>
+                <ICAOIdent>EDAR</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="*START+938|4000x5000">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N51° 3' 48.96",E13° 56' 3.84",+000938.32</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="POI1+118|6000x1000">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N52° 17' 48.25",E13° 37' 53.56",+000118.11</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="POI2+210|6000x1000">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N51° 47' 16.11",E11° 42' 12.71",+000209.97</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="POI3+1178|6000x1000">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N50° 45' 17.52",E12° 51' 26.77",+001177.82</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="Final+1270|3000/2000x500">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N50° 54' 22.22",E13° 47' 43.42",+001269.69</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="*FINISH+387|1000/500x500">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N50° 58' 22.80",E13° 53' 26.16",+000387.14</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="EDAR">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N50° 58' 40.99",E13° 54' 53.00",+000398.00</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+            <ICAO>
+                <ICAOIdent>EDAR</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+
+    </FlightPlan.FlightPlan>
+</SimBase.Document>

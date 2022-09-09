@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SimBase.Document Type="AceXML" version="1,0">
+    <Descr>AceXML Document</Descr>
+    <FlightPlan.FlightPlan>
+        <Title>Mifflin Co to Mifflin Co</Title>
+        <FPType>VFR</FPType>
+        <CruisingAlt>1500.000</CruisingAlt>
+        <DepartureID>KRVL</DepartureID>
+        <DepartureLLA>N40° 40' 38.59",W77° 37' 36.59",+000813.00</DepartureLLA>
+        <DestinationID>KRVL</DestinationID>
+        <DestinationLLA>N40° 40' 38.59",W77° 37' 36.59",+000813.00</DestinationLLA>
+        <Descr>Mifflin Co to Mifflin Co</Descr>
+        <DeparturePosition>24</DeparturePosition>
+        <DepartureName>Mifflin Co</DepartureName>
+        <DestinationName>Mifflin Co</DestinationName>
+        <AppVersion>
+            <AppVersionMajor>11</AppVersionMajor>
+            <AppVersionBuild>282174</AppVersionBuild>
+        </AppVersion>
+
+        <ATCWaypoint id="Mifflin Co">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N40° 40' 38.59",W77° 37' 36.59",+000813.00</WorldPosition>
+            <RunwayNumberFP>24</RunwayNumberFP>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+            <ICAO>
+                <ICAOIdent>KRVL</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="*START+814|4000x2000">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N40° 40' 43.80",W77° 37' 27.60",+000813.65</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="TP1+427">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N40° 48' 56.00",W76° 51' 42.00",+000426.51</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="TP2+630">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N40° 14' 27.00",W77° 53' 49.00",+000629.92</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="*FINISH+814x1000">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N40° 40' 24.00",W77° 37' 58.20",+000813.65</WorldPosition>
+            <SpeedMaxFP>-1</SpeedMaxFP>
+        </ATCWaypoint>
+
+        <ATCWaypoint id="Mifflin Co">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N40° 40' 38.59",W77° 37' 36.59",+000813.00</WorldPosition>
+            
+            <SpeedMaxFP>-1</SpeedMaxFP>
+            <ICAO>
+                <ICAOIdent>KRVL</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+
+    </FlightPlan.FlightPlan>
+</SimBase.Document>

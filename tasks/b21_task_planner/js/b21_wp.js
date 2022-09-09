@@ -13,16 +13,12 @@ class B21_WP {
         this.planner = planner; // reference to B21TaskPlanner instance
 
         this.DEFAULT_RADIUS_M = 500;
-        this.DEFAULT_START_RADIUS_M = 1000;
-        this.DEFAULT_FINISH_RADIUS_M = 1000;
+        this.DEFAULT_START_RADIUS_M = 2500;
+        this.DEFAULT_FINISH_RADIUS_M = 2000;
     }
 
     new_point(index, position) {
         console.log("new WP", index, position, name);
-
-        //DEBUG highlight start/finish waypoints
-        //DEBUG offset waypoints according to bisector
-        //DEBUG enter runway for departure airport
 
         this.name = null;
         this.position = position;
@@ -237,25 +233,29 @@ class B21_WP {
         this.marker.setIcon(icon);
     }
 
-    //DEBUG highlight required ICAO entry for 1st and last WP
     display_menu() {
-        let form_str = 'Name: <input id="wp_name" onchange="b21_task_planner.change_wp_name(this.value)" value="' + this.get_name() +
+        // NAME
+        let form_str = 'Name: <input id="wp_name" class="wp_name" onchange="b21_task_planner.change_wp_name(this.value)" value="' + this.get_name() +
             '"</input>';
 
+        // ICAO
         form_str += '<br/>ICAO: <input class="wp_icao" onchange="b21_task_planner.change_wp_icao(this.value)" value="' + this.get_icao() +
             '"</input> ';
 
+        // RUNWAY
         form_str +=
             ' Runway: <input id="wp_runway" class="wp_runway" onchange="b21_task_planner.change_wp_runway(this.value)" value="' +
             this.get_runway() + '"</input> ';
         if (this.runways != null) {
             form_str += '<select class="wp_runway_select" onchange="b21_task_planner.select_wp_runway(this.value)" value="">';
-            form_str += '<option></option>';
             for (let i = 0; i < this.runways.length; i++) {
                 form_str += '<option>' + this.runways[i] + '</option>';
             }
+            form_str += '<option></option>'; // Add 'blank' option for no runway selected
             form_str += '</select>';
         }
+
+        // ELEVATION
         let alt_str = this.alt_m.toFixed(0);
         let alt_units_str = "m.";
         if (this.planner.settings.altitude_units == "feet") {
@@ -266,13 +266,19 @@ class B21_WP {
         form_str += '<br/>Elevation: <input class="wp_alt" onchange="b21_task_planner.change_wp_alt(this.value)" value="' +
             alt_str + '"</input> ' + alt_units_str;
 
+        // settings.soaring_task == true . It's a placeholder in case we want planner for non-soaring.
         if (this.planner.settings.soaring_task == 1) {
+            // START checkbox
             let start = this.index == this.planner.task.start_index;
-            form_str += '<br/>Start: <input onclick="b21_task_planner.click_start(this)" type="checkbox"' + (start ? " checked" :
-                "") + '/>';
+            form_str += '<br/><div class="wp_start">Start: <input onclick="b21_task_planner.click_start(this)" type="checkbox"' + (start ? " checked" :
+                "") + '/></div> ';
+
+            // FINISH checkbox
             let finish = this.index == this.planner.task.finish_index;
-            form_str += ' Finish: <input  onclick="b21_task_planner.click_finish(this)" type="checkbox"' + (finish ? " checked" :
-                "") + '/> ';
+            form_str += '<div class="wp_finish">Finish: <input  onclick="b21_task_planner.click_finish(this)" type="checkbox"' + (finish ? " checked" :
+                "") + '/></div>';
+
+            // RADIUS
             let radius_units_str = "m";
             if (this.planner.settings.wp_radius_units == "feet") {
                 radius_units_str = "feet";
@@ -288,6 +294,7 @@ class B21_WP {
             form_str += ' Radius: <input class="wp_radius" onchange="b21_task_planner.change_wp_radius(this.value)" value="' +
                 radius_str + '"</input> ' + radius_units_str;
 
+            // MAX ALT LIMIT
             let max_alt_str = "";
             if (this.max_alt_m != null) {
                 if (this.planner.settings.altitude_units == "m") {
@@ -299,6 +306,7 @@ class B21_WP {
             form_str += '<br/>Max Alt: <input class="wp_alt" onchange="b21_task_planner.change_wp_max_alt(this.value)" value="' +
                 max_alt_str + '"</input> ';
 
+            // MIN ALT LIMIT
             let min_alt_str = "";
             if (this.min_alt_m != null) {
                 if (this.planner.settings.altitude_units == "m") {
@@ -311,11 +319,14 @@ class B21_WP {
                 min_alt_str + '"</input> ' + alt_units_str;
         }
 
+        // MENU items
         form_str += '<div class="menu">';
-        form_str += this.planner.menuitem("Remove this WP from task", "remove_wp_from_task");
-        form_str += this.planner.menuitem("Add duplicate of this WP to task", "duplicate_wp_to_task");
-        form_str += this.planner.menuitem("Update this waypoint elevation", "update_wp_elevation");
+        form_str += this.planner.menuitem("Remove from task", "remove_wp_from_task");
+        form_str += this.planner.menuitem("Append to task", "duplicate_wp_to_task");
+        form_str += this.planner.menuitem("Update elevation", "update_wp_elevation");
         form_str += '</div>';
+
+        // POPUP
         var popup = L.popup({
                 offset: [20, 10]
             })
@@ -344,7 +355,7 @@ class B21_WP {
             return false;
         }
 
-        let radius_m = this.radius_m == null ? this.DEFAULT_RADIUS_M : this.radius_m;
+        let radius_m = this.radius_m == null ? this.DEFAULT_START_RADIUS_M : this.radius_m;
         let p1_distance_m = Geo.get_distance_m(p1, this.position);
         if (p1_distance_m > radius_m) {
             //console.log("WP.is_start() false radius_m="+radius_m.toFixed(0)+" vs "+distance_m.toFixed(0));
@@ -367,7 +378,7 @@ class B21_WP {
         wp_bearing_deg = Geo.get_bearing_deg(p2, this.position);
         let over_start_line = Geo.in_sector(reverse_bearing_deg, wp_bearing_deg, 180);
         if (over_start_line) {
-            console.log("WP.is_start true at " + wp_bearing_deg.toFixed(0));
+            //console.log("WP.is_start true at " + wp_bearing_deg.toFixed(0));
         } else {
             //console.log("WP.is_start false at "+wp_bearing_deg.toFixed(0));
         }
@@ -398,7 +409,7 @@ class B21_WP {
             return false;
         }
 
-        let radius_m = this.radius_m == null ? this.DEFAULT_RADIUS_M : this.radius_m;
+        let radius_m = this.radius_m == null ? this.DEFAULT_FINISH_RADIUS_M : this.radius_m;
         let distance_m = Geo.get_distance_m(p2, this.position);
         if (distance_m > radius_m) {
             //console.log("WP.is_finish() false p2 radius_m="+radius_m.toFixed(0)+" vs "+distance_m.toFixed(0));
@@ -413,14 +424,14 @@ class B21_WP {
             return false;
         }
 
-        console.log("WP.is_finish() true");
+        //console.log("WP.is_finish() true");
 
         return true;
     }
 
     is_wp(p1, p2) {
         if (!this.in_wp_sector(p1) && this.in_wp_sector(p2)) {
-            console.log("wp is_wp() true");
+            //console.log("wp is_wp() true");
             return true;
         }
         //console.log("wp is_wp() false");

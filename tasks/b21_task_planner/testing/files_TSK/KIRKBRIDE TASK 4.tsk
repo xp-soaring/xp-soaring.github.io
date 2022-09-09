@@ -1,0 +1,26 @@
+<Task fai_finish="0" finish_min_height_ref="AGL" finish_min_height="152" start_max_height_ref="MSL" start_max_height="1219" start_max_speed="0" start_requires_arm="0" aat_min_time="0" name="KIRKBRIDE TASK 4" type="RT">
+    <Point type="Start">
+        <Waypoint altitude="0" comment="EG3J ST User WP" id="2" name="EG3J ST">
+            <Location latitude="54.885297" longitude="-3.17505"/>
+        </Waypoint>
+        <ObservationZone length="10000" type="Line"/>
+    </Point>
+    <Point type="Turn">
+        <Waypoint altitude="21.946" comment="TP KIE User WP" id="3" name="TP KIE">
+            <Location latitude="55.178417" longitude="-2.46035"/>
+        </Waypoint>
+        <ObservationZone radius="500" type="Cylinder"/>
+    </Point>
+    <Point type="Turn">
+        <Waypoint altitude="128.016" comment="TP BEN User WP" id="4" name="TP BEN">
+            <Location latitude="55.2017" longitude="-3.083433"/>
+        </Waypoint>
+        <ObservationZone radius="500" type="Cylinder"/>
+    </Point>
+    <Point type="Finish">
+        <Waypoint altitude="7.925" comment="EG3J Airport" id="5" name="EG3J">
+            <Location latitude="54.882806" longitude="-3.204739"/>
+        </Waypoint>
+        <ObservationZone length="2000"  type="Line"/>
+    </Point>
+</Task>
