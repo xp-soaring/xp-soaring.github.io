@@ -520,11 +520,11 @@ class B21_TrackLog {
 
         // RANGE data values top-right of chart
         let range_x_px = this.chart_el.offsetWidth - 160; // Position range numbers 110px from right edge of chart_el
-        this.chart_range_time = this.chart.renderer.label("", range_x_px, -7).attr({zIndex: 2}).add();
-        this.chart_range_altitude = this.chart.renderer.label("", range_x_px, 3).attr({zIndex: 2}).add();
-        this.chart_range_speed = this.chart.renderer.label("", range_x_px, 13).attr({zIndex: 2}).add();
-        this.chart_range_distance = this.chart.renderer.label("", range_x_px, 23).attr({zIndex: 2}).add();
-        this.chart_range_glide = this.chart.renderer.label("", range_x_px - 100, -7).attr({zIndex: 2}).add();
+        this.chart_range_time = this.chart.renderer.label("", range_x_px, -4).attr({zIndex: 2}).add();
+        this.chart_range_altitude = this.chart.renderer.label("", range_x_px, 6).attr({zIndex: 2}).add();
+        this.chart_range_speed = this.chart.renderer.label("", range_x_px, 16).attr({zIndex: 2}).add();
+        this.chart_range_distance = this.chart.renderer.label("", range_x_px, 26).attr({zIndex: 2}).add();
+        this.chart_range_glide = this.chart.renderer.label("", range_x_px - 120, -4).attr({zIndex: 2}).add();
 
         // Create colors boxes for assigned tracklog colors
         this.chart.renderer.rect(10,2,54,10).attr({

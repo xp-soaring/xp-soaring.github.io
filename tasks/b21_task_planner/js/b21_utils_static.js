@@ -31,4 +31,8 @@ class B21_Utils {
 
         return hh+mm+ss;
     }
+
+    static file_suffix(filename) {
+        return filename.toLowerCase().split('.').pop();
+    }
 }

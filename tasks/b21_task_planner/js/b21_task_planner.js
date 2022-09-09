@@ -446,10 +446,10 @@ class B21_TaskPlanner {
                     let reader = new FileReader();
                     reader.onload = (e) => {
                         console.log("FileReader.onload")
-                        parent.handle_file_str(parent, Date.now(), e.target.result, file.name);
+                        parent.handle_file_content(parent, Date.now(), e.target.result, file.name);
                     }
-                    console.log("reader.readAsText", file.name);
-                    reader.readAsText(file);
+                    console.log("reader.readAsArrayBuffer", file.name);
+                    reader.readAsArrayBuffer(file);
                 } else {
                     console.log("Item dropped not of kind 'file':", ev.dataTransfer.items[i].kind, ev.dataTransfer.items[i]);
                     if (item.kind === 'string') {
@@ -478,42 +478,52 @@ class B21_TaskPlanner {
             console.log('DataTransfer... file[' + i + '].name = ' + file.name);
             let reader = new FileReader();
             reader.addEventListener("load", (e) => {
-                parent.handle_file_str(parent, Date.now(), e.target.result, file.name);
+                parent.handle_file_content(parent, Date.now(), e.target.result, file.name);
             });
             // event fired when file reading failed
             reader.addEventListener('error', (e) => {
                 alert('Error : Failed to read file');
             });
-            reader.readAsText(file);
+            reader.readAsArrayBuffer(file);
         }
     }
 
-    handle_file_str(parent, fetch_start, file_str, name = null) {
-        //console.log("handle_file_str", name);
+    // Handle the file contents, called after a URL access, file drop, or file choose
+    handle_file_content(parent, fetch_start, file_content, name = null) {
+        //console.log("handle_file_content", name);
         if (name == null) {
             console.log("No name for dropped file - aborting");
+            return;
+        }
 
-        } else if (name.toLowerCase().endsWith(".pln")) {
+        let suffix = B21_Utils.file_suffix(name);
+
+        let decoder = new TextDecoder();
+
+        if (suffix == "pln") {
             console.log("handle_drop for PLN file");
             parent.init_task(parent);
-            parent.handle_pln_str(parent, fetch_start, file_str, name);
+            parent.handle_pln_str(parent, fetch_start, decoder.decode(file_content), name);
 
-        } else if (name.toLowerCase().endsWith(".tsk")) {
+        } else if (suffix == "tsk") {
             console.log("handle_drop for TSK file");
             parent.init_task(parent);
-            parent.handle_tsk_str(parent, fetch_start, file_str, name);
+            parent.handle_tsk_str(parent, fetch_start, decoder.decode(file_content), name);
 
-        } else  if (name.toLowerCase().endsWith(".gpx")) {
-            parent.handle_gpx_str(parent, fetch_start, file_str, name);
+        } else  if (suffix == "gpx") {
+            parent.handle_gpx_str(parent, fetch_start, decoder.decode(file_content), name);
 
-        } else if (name.toLowerCase().endsWith(".igc")) {
-            parent.handle_igc_str(parent, fetch_start, file_str, name);
+        } else if (suffix == "igc") {
+            parent.handle_igc_str(parent, fetch_start, decoder.decode(file_content), name);
 
-        } else if (name.toLowerCase().endsWith(".cup")) {
-            parent.handle_cup_str(parent, fetch_start, file_str, name);
+        } else if (suffix == "cup") {
+            parent.handle_cup_str(parent, fetch_start, decoder.decode(file_content), name);
 
-        } else if (name.toLowerCase().endsWith(".comp")) {
-            parent.handle_comp_str(parent, fetch_start, file_str, name);
+        } else if (suffix == ".comp") {
+            parent.handle_comp_str(parent, fetch_start, decoder.decode(file_content), name);
+
+        } else if (suffix == "zip") {
+            parent.handle_zip_str(parent, fetch_start, file_content, name);
 
         } else {
             alert(`${name} not a recognized type`);
@@ -598,11 +608,11 @@ class B21_TaskPlanner {
                 alert("A file referenced in the querystring failed to load.");
                 return null;
             }
-            return response.text();
-        }).then(result_str => {
+            return response.arrayBuffer();
+        }).then(result_content => {
             //console.log("fetch(url) return");
-            if (result_str != null) {
-                parent.handle_file_str(parent, fetch_start, result_str, filename);
+            if (result_content != null) {
+                parent.handle_file_content(parent, fetch_start, result_content, filename);
             }
         }).catch(error => {
             console.error('Network error accessing user URL:', error);
@@ -616,7 +626,7 @@ class B21_TaskPlanner {
             parent.task.load_pln_str(pln_str, name);
         } else {
             console.log(
-                `WARNING: handle_pln_string airports not ready after ${((Date.now() - fetch_start)/1000).toFixed(2)} seconds`
+                `WARNING: handle_pln_str airports not ready after ${((Date.now() - fetch_start)/1000).toFixed(2)} seconds`
             );
             // The airports data is not ready, so have another try loading this PLN after a delay
             let seconds_since_start = (Date.now() - fetch_start) / 1000;
@@ -730,7 +740,7 @@ class B21_TaskPlanner {
 
     // ********************************************************************************************
     // *********  Handle COMP file (from drop or URL)                  ****************************
-    // A .comp file is simply
+    // A .comp file is simply a text file containing a list of URL's
     // ********************************************************************************************
 
     handle_comp_str(parent, fetch_start, file_str, filename) {
@@ -738,7 +748,42 @@ class B21_TaskPlanner {
         let lines = file_str.split("\n");
         for (let i=0; i < lines.length; i++) {
             let url = lines[i];
-            let suffix = url.toLowerCase().split('.').pop();
+            let suffix = B21_Utils.file_suffix(url);
+            if (url.startsWith("https://") && ["pln","tsk","igc","gpx","cup"].includes(suffix)) {
+                parent.handle_url_file(parent, url);
+            } else {
+                if (url.length > 2) {
+                    console.log(`${filename} contains bad url '${url}'`);
+                }
+            }
+        }
+    }
+
+    // ********************************************************************************************
+    // *********  Handle ZIP file (from drop or URL)                   ****************************
+    // ********************************************************************************************
+
+    handle_zip_str(parent, fetch_start, file_content, filename) {
+        console.log("loading ZIP files from", filename);
+
+        JSZip.loadAsync(file_content)
+            .then( function (zip) {
+                zip.forEach( function (path, zip_object) {
+                    if (! zip_object.dir) {
+                        let name = zip_object.name;
+                        console.log("handle_zip_str",name);
+                        zip.file(name).async("arraybuffer")
+                            .then( function (file_content) {
+                                parent.handle_file_content(parent, fetch_start, file_content, name);
+                            });
+                    }
+                });
+            });
+        return;
+
+        for (let i=0; i < lines.length; i++) {
+            let url = lines[i];
+            let suffix = B21_Utils.file_suffix(url);
             if (url.startsWith("https://") && ["pln","tsk","igc","gpx","cup"].includes(suffix)) {
                 parent.handle_url_file(parent, url);
             } else {
