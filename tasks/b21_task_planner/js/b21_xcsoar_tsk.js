@@ -235,7 +235,7 @@ class B21_XCsoar_TSK {
                 this.start_max_m = wp.max_alt_m;
             }
             wp_template = this.get_point_start_template(); // #ALTITUDE# #COMMENT# #ID# #NAME# #LATITUDE# #LONGITUDE# #LENGTH#
-            wp_text = wp_template.replace("#LENGTH#",wp.get_radius().toFixed(0));
+            wp_text = wp_template.replace("#LENGTH#",(2 * wp.get_radius()).toFixed(0));
         } else if (wp.is_task_finish()) {
             console.log("B21_XCsoar_TSK finish is ",wp_name);
             // Fixup min finish altitude if in this WP
@@ -243,7 +243,7 @@ class B21_XCsoar_TSK {
                 this.finish_min_m = wp.min_alt_m;
             }
             wp_template = this.get_point_finish_template(); // #ALTITUDE# #COMMENT# #ID# #NAME# #LATITUDE# #LONGITUDE# #LENGTH#
-            wp_text = wp_template.replace("#LENGTH#",wp.get_radius().toFixed(0));
+            wp_text = wp_template.replace("#LENGTH#",( 2 * wp.get_radius()).toFixed(0));
         } else {
             wp_template = this.get_point_turn_template(); // #ALTITUDE# #COMMENT# #ID# #NAME# #LATITUDE# #LONGITUDE# #RADIUS#
             wp_text = wp_template.replace("#RADIUS#",wp.get_radius().toFixed(0));
