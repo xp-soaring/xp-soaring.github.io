@@ -395,6 +395,7 @@ th {
 
 #task_info_table {
     border-collapse: collapse;
+    width: 100%;
 }
 
 #task_info_summary {

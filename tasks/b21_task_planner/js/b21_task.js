@@ -1,3 +1,5 @@
+"use strict"
+
 // ******************************************************************************
 // ***********   Task class                **************************************
 // ******************************************************************************
@@ -173,7 +175,7 @@ class B21_Task {
 
         this.planner.map.closePopup();
 
-        wp.display_menu();
+        wp.display_menu(wp);
     }
 
     scrub_intermediate_icao() {
@@ -332,9 +334,10 @@ class B21_Task {
     }
 
     update_waypoint_icons() {
-        console.log("update_waypoint_icons");
+        console.log("Task.update_waypoint_icons");
         for (let i = 0; i < this.waypoints.length; i++) {
-            this.waypoints[i].update_icon();
+            let wp = this.waypoints[i];
+            wp.update_icon(wp);
         }
     }
 
@@ -774,7 +777,8 @@ class B21_Task {
         this.redraw();
         this.display_task_info();
         if (this.waypoints.length > 0) {
-            this.current_wp().display_menu();
+            let wp = this.current_wp();
+            wp.display_menu(wp);
         } else {
             this.planner.map.closePopup();
         }
@@ -794,7 +798,7 @@ class B21_Task {
         this.redraw();
         this.display_task_info();
         if (this.waypoints.length > 0) {
-            this.current_wp().display_menu();
+            wp.display_menu(wp);
         } else {
             this.planner.map.closePopup();
         }
@@ -814,18 +818,19 @@ class B21_Task {
         this.redraw();
         this.display_task_info();
         if (this.waypoints.length > 0) {
-            this.current_wp().display_menu();
+            wp.display_menu(wp);
         } else {
             this.planner.map.closePopup();
         }
     }
 
     set_current_wp(index) {
-        console.log("Set current WP index", index);
+        console.log("Task. Set current WP index", index);
         this.index = index;
         this.update_waypoint_icons();
         this.redraw();
-        this.current_wp().display_menu();
+        let wp = this.current_wp();
+        wp.display_menu(wp);
         this.display_task_info();
     }
 

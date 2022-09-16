@@ -1,6 +1,6 @@
 
 .leaflet-popup-content-wrapper, .leaflet-popup.tip {
-  background-color: lightgray;
+  /* background-color: lightgrey; */
 }
 
 .leaflet-container {
@@ -19,4 +19,28 @@
 
 .leaflet-dragging .leaflet-grab {
    cursor: move;
+}
+
+/* This is the tracklog info details for the current tracklog point */
+.tracklog_popup .leaflet-popup-content-wrapper,
+.tracklog_popup .leaflet-popup-tip
+{
+    background: transparent;
+    text-align: center;
+    color: blue;
+    box-shadow: none;
+}
+
+/* these popups appear when mouse hovers over any airport/poi on map*/
+.airport_popup .leaflet-popup-content-wrapper,
+.airport_popup .leaflet-popup-tip
+{
+    background-color: lightgrey;
+}
+
+/* This is the 'task waypoint' menu */
+.wp_popup .leaflet-popup-content-wrapper,
+.wp_popup .leaflet-popup-tip
+{
+    background-color: lightgreen;
 }

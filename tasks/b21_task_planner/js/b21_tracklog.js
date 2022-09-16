@@ -38,7 +38,7 @@ class B21_TrackLog {
 
         this.file_obj = null;  // Will contain a reference to a B21_File_GPX or B21_File_IGC object
 
-        // Set this.color1, this.color2 for the polylines (c1=long, c2=short) and icon (c1=wings, c2=fuselage)
+        // Set this.color1, this.color2 for the polylines (c1=long, c2=short) and aircraft_marker (c1=wings, c2=fuselage)
         const C1_COLORS = ['#333','#b30000','#D58C10','#46A844', '#178CE9', '#0000b3', '#b300b3'];//'#6a428a', '#C05FBC'];
         // Note we make c2 line length shorter than c1 length to increase pattern count
         const C2_COLORS = ['#FF4F4F','#FFFF4F','#FFB44F','#93FF4F','#4FFFF1','#f799ff','white'];
@@ -59,7 +59,7 @@ class B21_TrackLog {
         this.line1_polyline = null; // line drawn for tracklog on map
         this.line2_polyline = null; // Optional dashes for line
 
-        this.icon = this.create_icon();
+        this.aircraft_marker = this.create_marker();
 
         this.alt_units_str = "m";
         this.alt_scaler = 1;
@@ -83,11 +83,11 @@ class B21_TrackLog {
     }
 
     load_gpx(file_str, filename) {
+        let parent = this;
         try {
             this.file_obj = new B21_File_GPX(this);
             this.file_obj.load(file_str, filename);
-            // Set text for the glider icon popup
-            this.icon.setPopupContent(this.name);
+            this.aircraft_marker_update(parent);
             return true;
         } catch (e) {
             console.log(filename, "load_gpx exception", e);
@@ -97,11 +97,11 @@ class B21_TrackLog {
     }
 
     load_igc(file_str, filename) {
+        let parent = this;
         try {
             this.file_obj = new B21_File_IGC(this);
             this.file_obj.load(file_str, filename);
-            // Set text for the glider icon popup
-            this.icon.setPopupContent(this.name);
+            this.aircraft_marker_update(parent);
             return true;
         } catch (e) {
             console.log(filename, "load_igc exception", e);
@@ -125,7 +125,7 @@ class B21_TrackLog {
         if (! this.map.getBounds().intersects(this.map_bounds)) {
             this.map.fitBounds(this.map_bounds);
         }
-        this.icon.addTo(this.planner.map);
+        this.aircraft_marker.addTo(this.planner.map);
     }
 
     hide() {
@@ -136,7 +136,7 @@ class B21_TrackLog {
         if (this.line2_polyline != null) {
             this.map.removeLayer(this.line2_polyline);
         }
-        this.map.removeLayer(this.icon);
+        this.map.removeLayer(this.aircraft_marker);
     }
 
     // Resize the chart to fit its container
@@ -205,37 +205,6 @@ class B21_TrackLog {
             this.line2_polyline = L.polyline(coords, line2_properties).addTo(this.map);
         }
 
-    }
-
-    chart_selected(parent, e) {
-        if (e.xAxis) {
-            console.log("chart_selected [" + e.xAxis[0].min + ".." + e.xAxis[0].max + "]", e);
-            // log the min and max of the primary, datetime x-axis
-            console.log(
-                Highcharts.dateFormat(
-                    '%Y-%m-%d %H:%M:%S',
-                    e.xAxis[0].min
-                ),
-                Highcharts.dateFormat(
-                    '%Y-%m-%d %H:%M:%S',
-                    e.xAxis[0].max
-                )
-            );
-            // Get timestamps for range (note highcharts xaxis values are milliseconds)
-            let ts_min = e.xAxis[0].min / 1000;
-            let ts_max = e.xAxis[0].max / 1000;
-            console.log("Chart select timestamps",ts_min, ts_max, "delta:", ts_max - ts_min);
-            let index_min = parent.ts_to_logpoints_index(0,ts_min);
-            let index_max = parent.ts_to_logpoints_index(index_min,ts_max);
-            console.log("Chart select indexes",index_min, index_max);
-            let p1 = parent.logpoints[index_min];
-            let p2 = parent.logpoints[index_max];
-            parent.draw_chart_range_data(p1,p2);
-        } else {
-            console.log("chart_selected no e.xAxis");
-            parent.clear_chart_range_data();
-        }
-        return false;
     }
 
     // *****************************************************************
@@ -307,10 +276,12 @@ class B21_TrackLog {
             bearing = Geo.get_bearing_deg(p2,p1);
         }
 
-        parent.icon.setLatLng(new L.LatLng(p1.lat, p1.lng));
-        parent.icon.setRotationAngle(bearing);
+        parent.aircraft_marker.setLatLng(new L.LatLng(p1.lat, p1.lng));
+        parent.aircraft_marker.setRotationAngle(bearing);
 
         parent.draw_chart_line_for_logpoint(parent, track_index)
+
+        this.aircraft_marker_update(parent);
 
         this.draw_chart_point_data(p1);
 
@@ -524,7 +495,11 @@ class B21_TrackLog {
         this.chart_range_altitude = this.chart.renderer.label("", range_x_px, 6).attr({zIndex: 2}).add();
         this.chart_range_speed = this.chart.renderer.label("", range_x_px, 16).attr({zIndex: 2}).add();
         this.chart_range_distance = this.chart.renderer.label("", range_x_px, 26).attr({zIndex: 2}).add();
-        this.chart_range_glide = this.chart.renderer.label("", range_x_px - 120, -4).attr({zIndex: 2}).add();
+        this.chart_range_glide = this.chart.renderer.label("", range_x_px - 130, -4)
+            .attr({ zIndex: 2 })
+            .css({
+                "font-size": "16px"
+            }).add();
 
         // Create colors boxes for assigned tracklog colors
         this.chart.renderer.rect(10,2,54,10).attr({
@@ -541,6 +516,38 @@ class B21_TrackLog {
         // Scroll the 'charts' div so this chart is shown
         this.scroll_chart();
     } // end draw_chart()
+
+    // User has dragged mouse across chart and selected a range of this tracklog
+    chart_selected(parent, e) {
+        if (e.xAxis) {
+            console.log("chart_selected [" + e.xAxis[0].min + ".." + e.xAxis[0].max + "]", e);
+            // log the min and max of the primary, datetime x-axis
+            console.log(
+                Highcharts.dateFormat(
+                    '%Y-%m-%d %H:%M:%S',
+                    e.xAxis[0].min
+                ),
+                Highcharts.dateFormat(
+                    '%Y-%m-%d %H:%M:%S',
+                    e.xAxis[0].max
+                )
+            );
+            // Get timestamps for range (note highcharts xaxis values are milliseconds)
+            let ts_min = e.xAxis[0].min / 1000;
+            let ts_max = e.xAxis[0].max / 1000;
+            console.log("Chart select timestamps",ts_min, ts_max, "delta:", ts_max - ts_min);
+            let index_min = parent.ts_to_logpoints_index(0,ts_min);
+            let index_max = parent.ts_to_logpoints_index(index_min,ts_max);
+            console.log("Chart select indexes",index_min, index_max);
+            let p1 = parent.logpoints[index_min];
+            let p2 = parent.logpoints[index_max];
+            parent.draw_chart_range_data(p1,p2);
+        } else {
+            console.log("chart_selected no e.xAxis");
+            parent.clear_chart_range_data();
+        }
+        return false;
+    }
 
     // Write the points data numbers to top-left corner of the chart
     draw_chart_point_data(p1) {
@@ -641,6 +648,7 @@ class B21_TrackLog {
     // User has clicked on the chart
     click_logpoints_index(logpoints_index) {
         let parent = this;
+        console.log("click_logpoints_index", logpoints_index, parent.aircraft_marker.getPopup().isOpen());
         parent.set_logpoints_index(logpoints_index);
         // If we're in task_fixup mode then manually set current logpoint as achieving current waypoint
         if (parent.select_point_info != null) {
@@ -649,9 +657,10 @@ class B21_TrackLog {
                 parent.chart.update({ chart: { backgroundColor: 'white' }})
 
             }
-        }// else {
+        } else {
+            parent.aircraft_marker.togglePopup();
         //    parent.draw_chart_line_for_logpoint(parent, logpoints_index);
-        //}
+        }
     }
 
     draw_chart_line_for_logpoint(parent, logpoints_index) {
@@ -1042,11 +1051,11 @@ class B21_TrackLog {
         parent.chart.update({ chart: { backgroundColor: 'white' }})
     }
 
-    // ***************************************************************************
-    // ************ Create the SVG glider icon to show position on map   *********
-    // ***************************************************************************
+    // **************************************************************************************
+    // ************ Create the SVG glider aircraft_marker to show position on map   *********
+    // **************************************************************************************
 
-    create_icon() {
+    create_marker() {
         let parent = this;
         let position = new L.latLng(0, 0);
         let c1 = "#fff";
@@ -1071,23 +1080,55 @@ class B21_TrackLog {
             iconAnchor: [32,32]
         });
 
-        let icon = L.marker([0,0], { icon: svgIcon, rotationOrigin: 'center'}); // extended using leaflet.rotationMarker
+        let aircraft_marker = L.marker([0,0], { icon: svgIcon, rotationOrigin: 'center'}); // extended using leaflet.rotationMarker
 
-        icon.bindPopup("no name set");
+        let popup = L.popup({
+            closeButton: true,
+            className: "tracklog_popup",
+            autoPan: false,
+            autoClose: false
+        }).setContent("no name set");
 
-        icon.on('mouseover', function(event) {
-            icon.openPopup();
-        });
-        icon.on('mouseout', function(event) {
-            icon.closePopup();
-        });
-        icon.on('click', (e) => {
-            //icon.setRotationAngle(90);
-            console.log("User icon click");
-        });
-        icon.addTo(this.planner.map);
+        aircraft_marker.bindPopup(popup);
 
-        return icon;
+        //aircraft_marker.on('mouseover', function(event) {
+        //    aircraft_marker.openPopup();
+        //});
+        //aircraft_marker.on('mouseout', function(event) {
+        //    aircraft_marker.closePopup();
+        //});
+        //aircraft_marker.on('click', (e) => {
+        //    console.log("User icon click, popup open=",aircraft_marker.isPopupOpen(), aircraft_marker.getPopup().isOpen());
+        //    aircraft_marker.openPopup();
+        //});
+
+        aircraft_marker.addTo(this.planner.map);
+
+        return aircraft_marker;
+    }
+
+    aircraft_marker_update(parent) {
+        try {
+            let name_str = this.name;
+
+            if (parent.logpoints_index != null) {
+                let p1 = parent.logpoints[parent.logpoints_index];
+
+                let speed_str = "" + ((p1.speed_ms == null ? 0 : p1.speed_ms) * this.speed_scaler).toFixed(
+                    0) + this.speed_units_str ;
+
+                let alt_str = "" + (p1.alt_m * this.alt_scaler).toFixed(0) + this.alt_units_str;
+
+                let popup_str = alt_str + "<br/>"+ speed_str;
+
+                this.aircraft_marker.setPopupContent(popup_str);
+            } else {
+                this.aircraft_marker.setPopupContent(name_str);
+            }
+            // Set text for the glider aircraft_marker popup
+        } catch (e) {
+            console.log("aircraft_marker_update exception",e);
+        }
     }
 
     // *****************************************************************************************************

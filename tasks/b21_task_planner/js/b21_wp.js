@@ -57,12 +57,13 @@ class B21_WP {
     }
 
     create_marker() {
+        let parent = this;
+
         let marker = L.marker(this.position, {
-            icon: this.get_icon(this.index),
+            icon: parent.get_icon(parent),
             draggable: true,
             autoPan: true
         });
-        let parent = this;
         marker.on("dragstart", function(e) {
             parent.planner.map.closePopup();
         });
@@ -77,23 +78,46 @@ class B21_WP {
             parent.planner.task.set_current_wp(parent.index);
             console.log("WP dragend");
             let marker = e.target;
-            parent.request_alt_m();
+            parent.request_alt_m(parent);
         });
-        marker.on("click", function(e) {
-            parent.wp_click(parent);
+
+        //marker.on("click", function(e) {
+        //    this.openPopup();
+        //    return;
+        //    parent.wp_click(parent, e);
+        //});
+
+        // POPUP
+        console.log("creating WP popup",this.get_name());
+        var popup = L.popup({
+                offset: [20, 10],
+                className: "wp_popup",
+                autoClose: false
+            })
+            .setContent("no WP content yet");
+
+        marker.bindPopup(popup);
+
+        marker.on('popupopen', () => {
+            console.log("marker event on popupopen");
+            parent.planner.task.set_current_wp(parent.index);
         });
+
         marker.addTo(this.planner.map);
 
         return marker;
     }
 
-    wp_click(parent) {
+    wp_click(parent, e) {
+        console.log("wp_click");
         parent.planner.task.set_current_wp(parent.index);
     }
 
-    get_icon() {
-        let icon_str = ((1 + this.index) + "." + this.get_name()).replaceAll(" ", "&nbsp;");
-        let class_name = (this.planner.task.index == this.index) ? "wp_icon_html_current" : "wp_icon_html";
+    get_icon(parent) {
+        //let icon_str = '<div onclick="b21_task_planner.task.set_current_wp(0);">';
+        let icon_str = ((1 + parent.index) + "." + parent.get_name()).replaceAll(" ", "&nbsp;");
+        //icon_str += "</div>";
+        let class_name = (parent.planner.task.index == parent.index) ? "wp_icon_html_current" : "wp_icon_html";
         let icon_html = '<div class="' + class_name + '">' + icon_str + "</div>";
         let wp_icon = L.divIcon({
             className: "wp_icon",
@@ -105,11 +129,11 @@ class B21_WP {
         return wp_icon;
     }
 
-    request_alt_m() {
+    request_alt_m(parent) {
         let request_str = "https://tfc-app9.cl.cam.ac.uk/90adc1c1-2c02-46ce-a140-db0d7dda1b4e/lookup?locations=" + this.position.lat + "," + this.position.lng;
         request_str += "&id=" + this.planner.id;
         let request_error = false;
-        console.log(request_str);
+        //console.log(request_str);
         try {
             fetch(request_str)
             .then(response => {
@@ -123,13 +147,13 @@ class B21_WP {
                 request_error = true;
                 console.log('Elevation fetch error:', response.status, error);
             }).then(results => {
-                console.log("handle results", request_error);
+                console.log("wp.request_alt_m(): handle results, request_error=", request_error);
                 if (!request_error){
                     console.log("elevation(m):", results["results"][0]["elevation"], "query time(s):", parseFloat(results["query_time"]).toFixed(6));
-                    this.alt_m = results["results"][0]["elevation"];
-                    this.alt_m_updated = true;
-                    this.display_menu();
-                    this.planner.task.display_task_info();
+                    parent.alt_m = results["results"][0]["elevation"];
+                    parent.alt_m_updated = true;
+                    parent.display_menu(parent);
+                    parent.planner.task.display_task_info();
                 }
             }).catch(error => {
                 console.log('Elevation access error:', error);
@@ -155,8 +179,9 @@ class B21_WP {
     }
 
     set_name(name) {
-        this.name = name;
-        this.update_icon();
+        let parent = this;
+        parent.name = name;
+        parent.update_icon(parent);
     }
 
     get_icao() {
@@ -164,19 +189,20 @@ class B21_WP {
     }
 
     set_icao(icao) {
+        let parent = this;
         console.log("wp.set_icao", icao);
         if (icao == "") {
             console.log("setting icao to null");
-            this.icao = null;
+            parent.icao = null;
         } else {
             console.log("setting icao to '" + icao + "'");
-            this.icao = icao;
-            if (this.name == null) {
-                this.name = this.icao;
-                document.getElementById("wp_name").value = this.icao;
+            parent.icao = icao;
+            if (parent.name == null) {
+                parent.name = parent.icao;
+                document.getElementById("wp_name").value = parent.icao;
             }
         }
-        this.update_icon();
+        parent.update_icon(parent);
     }
 
     get_runway() {
@@ -227,39 +253,40 @@ class B21_WP {
         this.leg_bearing_deg = Geo.get_bearing_deg(prev_wp.position, this.position);
     }
 
-    update_icon() {
-        console.log("update_icon for wp",this.index,this);
-        let icon = this.get_icon(this.index);
-        this.marker.setIcon(icon);
+    update_icon(parent) {
+        console.log("update_icon for wp",parent.index);
+        let icon = parent.get_icon(parent);
+        parent.marker.setIcon(icon);
     }
 
-    display_menu() {
+    display_menu(parent) {
+        console.log("wp.display_menu()");
         // NAME
-        let form_str = 'Name: <input id="wp_name" class="wp_name" onchange="b21_task_planner.change_wp_name(this.value)" value="' + this.get_name() +
+        let form_str = 'Name: <input id="wp_name" class="wp_name" onchange="b21_task_planner.change_wp_name(this.value)" value="' + parent.get_name() +
             '"</input>';
 
         // ICAO
-        form_str += '<br/>ICAO: <input class="wp_icao" onchange="b21_task_planner.change_wp_icao(this.value)" value="' + this.get_icao() +
+        form_str += '<br/>ICAO: <input class="wp_icao" onchange="b21_task_planner.change_wp_icao(this.value)" value="' + parent.get_icao() +
             '"</input> ';
 
         // RUNWAY
         form_str +=
             ' Runway: <input id="wp_runway" class="wp_runway" onchange="b21_task_planner.change_wp_runway(this.value)" value="' +
-            this.get_runway() + '"</input> ';
-        if (this.runways != null) {
+            parent.get_runway() + '"</input> ';
+        if (parent.runways != null) {
             form_str += '<select class="wp_runway_select" onchange="b21_task_planner.select_wp_runway(this.value)" value="">';
-            for (let i = 0; i < this.runways.length; i++) {
-                form_str += '<option>' + this.runways[i] + '</option>';
+            for (let i = 0; i < parent.runways.length; i++) {
+                form_str += '<option>' + parent.runways[i] + '</option>';
             }
             form_str += '<option></option>'; // Add 'blank' option for no runway selected
             form_str += '</select>';
         }
 
         // ELEVATION
-        let alt_str = this.alt_m.toFixed(0);
+        let alt_str = parent.alt_m.toFixed(0);
         let alt_units_str = "m.";
-        if (this.planner.settings.altitude_units == "feet") {
-            alt_str = (this.alt_m * this.planner.M_TO_FEET).toFixed(0);
+        if (parent.planner.settings.altitude_units == "feet") {
+            alt_str = (parent.alt_m * parent.planner.M_TO_FEET).toFixed(0);
             alt_units_str = "feet.";
         }
 
@@ -267,28 +294,28 @@ class B21_WP {
             alt_str + '"</input> ' + alt_units_str;
 
         // settings.soaring_task == true . It's a placeholder in case we want planner for non-soaring.
-        if (this.planner.settings.soaring_task == 1) {
+        if (parent.planner.settings.soaring_task == 1) {
             // START checkbox
-            let start = this.index == this.planner.task.start_index;
+            let start = parent.index == parent.planner.task.start_index;
             form_str += '<br/><div class="wp_start">Start: <input onclick="b21_task_planner.click_start(this)" type="checkbox"' + (start ? " checked" :
                 "") + '/></div> ';
 
             // FINISH checkbox
-            let finish = this.index == this.planner.task.finish_index;
+            let finish = parent.index == parent.planner.task.finish_index;
             form_str += '<div class="wp_finish">Finish: <input  onclick="b21_task_planner.click_finish(this)" type="checkbox"' + (finish ? " checked" :
                 "") + '/></div>';
 
             // RADIUS
             let radius_units_str = "m";
-            if (this.planner.settings.wp_radius_units == "feet") {
+            if (parent.planner.settings.wp_radius_units == "feet") {
                 radius_units_str = "feet";
             }
             let radius_str = "";
-            if (this.radius_m != null) {
-                if (this.planner.settings.wp_radius_units == "m") {
-                    radius_str = this.radius_m.toFixed(0);
+            if (parent.radius_m != null) {
+                if (parent.planner.settings.wp_radius_units == "m") {
+                    radius_str = parent.radius_m.toFixed(0);
                 } else {
-                    radius_str = (this.radius_m * this.planner.M_TO_FEET).toFixed(0);
+                    radius_str = (parent.radius_m * parent.planner.M_TO_FEET).toFixed(0);
                 }
             }
             form_str += ' Radius: <input class="wp_radius" onchange="b21_task_planner.change_wp_radius(this.value)" value="' +
@@ -296,11 +323,11 @@ class B21_WP {
 
             // MAX ALT LIMIT
             let max_alt_str = "";
-            if (this.max_alt_m != null) {
-                if (this.planner.settings.altitude_units == "m") {
-                    max_alt_str = this.max_alt_m.toFixed(0);
+            if (parent.max_alt_m != null) {
+                if (parent.planner.settings.altitude_units == "m") {
+                    max_alt_str = parent.max_alt_m.toFixed(0);
                 } else {
-                    max_alt_str = (this.max_alt_m * this.planner.M_TO_FEET).toFixed(0);
+                    max_alt_str = (parent.max_alt_m * parent.planner.M_TO_FEET).toFixed(0);
                 }
             }
             form_str += '<br/>Max Alt: <input class="wp_alt" onchange="b21_task_planner.change_wp_max_alt(this.value)" value="' +
@@ -308,11 +335,11 @@ class B21_WP {
 
             // MIN ALT LIMIT
             let min_alt_str = "";
-            if (this.min_alt_m != null) {
-                if (this.planner.settings.altitude_units == "m") {
-                    min_alt_str = this.min_alt_m.toFixed(0);
+            if (parent.min_alt_m != null) {
+                if (parent.planner.settings.altitude_units == "m") {
+                    min_alt_str = parent.min_alt_m.toFixed(0);
                 } else {
-                    min_alt_str = (this.min_alt_m * this.planner.M_TO_FEET).toFixed(0);
+                    min_alt_str = (parent.min_alt_m * parent.planner.M_TO_FEET).toFixed(0);
                 }
             }
             form_str += ' Min Alt: <input class="wp_alt" onchange="b21_task_planner.change_wp_min_alt(this.value)" value="' +
@@ -321,18 +348,15 @@ class B21_WP {
 
         // MENU items
         form_str += '<div class="menu">';
-        form_str += this.planner.menuitem("Remove from task", "remove_wp_from_task");
-        form_str += this.planner.menuitem("Append to task", "duplicate_wp_to_task");
-        form_str += this.planner.menuitem("Update elevation", "update_wp_elevation");
+        form_str += parent.planner.menuitem("Remove from task", "remove_wp_from_task");
+        form_str += parent.planner.menuitem("Append to task", "duplicate_wp_to_task");
+        form_str += parent.planner.menuitem("Update elevation", "update_wp_elevation");
         form_str += '</div>';
 
         // POPUP
-        var popup = L.popup({
-                offset: [20, 10]
-            })
-            .setLatLng(this.position)
-            .setContent(form_str)
-            .openOn(this.planner.map);
+        parent.marker.getPopup().setContent(form_str);
+        console.log("opening popup");
+        parent.marker.openPopup();
     }
 
     // ********************************************

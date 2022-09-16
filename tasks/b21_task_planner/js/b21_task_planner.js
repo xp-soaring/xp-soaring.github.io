@@ -893,7 +893,7 @@ class B21_TaskPlanner {
 
         this.task.update_display();
 
-        wp.display_menu();
+        wp.display_menu(wp);
     }
 
     // User has clicked on an existing WP and selected 'Add this WP to task'
@@ -1008,7 +1008,7 @@ class B21_TaskPlanner {
             this.task.start_index = null;
         }
         this.task.update_waypoint_icons();
-        wp.display_menu();
+        wp.display_menu(wp);
         this.task.redraw();
         this.task.display_task_info();
     }
@@ -1038,7 +1038,7 @@ class B21_TaskPlanner {
             this.task.finish_index = null;
         }
         this.task.update_waypoint_icons();
-        wp.display_menu();
+        wp.display_menu(wp);
         this.task.redraw();
         this.task.display_task_info();
     }

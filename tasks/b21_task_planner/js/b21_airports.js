@@ -133,7 +133,8 @@ class B21_Airports {
                         // add popup
                         let popup_content = name + "<br/>" + type + "<br/>" + ident;
                         let popup = L.popup({
-                            autoPan: false
+                            autoPan: false,
+                            className: "airport_popup"
                         }).setContent(popup_content);
                         marker.bindPopup(popup);
 
