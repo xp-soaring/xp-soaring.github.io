@@ -605,7 +605,7 @@ class B21_TaskPlanner {
 
         fetch(url).then(response => {
             if (!response.ok) {
-                alert("A file referenced in the querystring failed to load.");
+                alert("A file referenced in the querystring failed to load:\n"+filename);
                 return null;
             }
             return response.arrayBuffer();
