@@ -130,6 +130,7 @@ class B21_WP {
     }
 
     request_alt_m(parent) {
+        console.log("WP.request_alt_m called with parent=",parent);
         let request_str = "https://tfc-app9.cl.cam.ac.uk/90adc1c1-2c02-46ce-a140-db0d7dda1b4e/lookup?locations=" + this.position.lat + "," + this.position.lng;
         request_str += "&id=" + this.planner.id;
         let request_error = false;

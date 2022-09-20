@@ -889,7 +889,7 @@ class B21_TaskPlanner {
 
         this.map.closePopup();
 
-        wp.request_alt_m();
+        wp.request_alt_m(wp);
 
         this.task.update_display();
 
@@ -905,7 +905,8 @@ class B21_TaskPlanner {
     // User has clicked on WP menu (Update waypoint elevation)
     update_wp_elevation() {
         console.log("User click Update WP elevation");
-        this.task.current_wp().request_alt_m();
+        let wp = this.task.current_wp();
+        wp.request_alt_m(wp);
     }
 
     change_wp_name(new_name) {

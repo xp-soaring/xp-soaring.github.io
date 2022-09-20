@@ -144,7 +144,7 @@ class B21_Task {
 
         wp.alt_m = poi_info["alt_m"];
         if (wp.alt_m == 0) {
-            wp.request_alt_m();
+            wp.request_alt_m(wp);
         }
         if (this.is_msfs_airport(type) && (this.planner.settings.soaring_task == 0 || wp.index == 0 || wp.index == this.waypoints
                 .length - 1)) {
@@ -345,7 +345,7 @@ class B21_Task {
         for (let i = 0; i < this.waypoints.length; i++) {
             let wp = this.waypoints[i];
             if (wp.data_icao == null) { // Only request elevations for non-airports
-                wp.request_alt_m();
+                wp.request_alt_m(wp);
             }
         }
     }
