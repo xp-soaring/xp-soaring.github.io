@@ -1,0 +1,51 @@
+<html>
+<head>
+<title>Peter Krasnoff Competition Soaring Simulator</title>
+<script language="JavaScript">
+
+var task_length = 270; // DEFINE YOUR TASK LENGTH (in km) HERE
+var start_height_max = 4300;      // maximum permitted start height in feet
+var tp = new Array("Gransden","Didcot","HusBos");
+var leg_length = new Array(110,95,65);
+var leg_wind = new Array(8,-4,-2); // head (pos) / tail (neg) wind
+var events = new Array("general,distance,95,message,Good lift expected around TP",
+                       "special,distance,105,115,conditions,1", // stronger at Didcot
+                       "general,time,14:20,message,Weaker conditions ahead!",
+                       "general,time,14:30,conditions,4", // weak
+                       "general,time,15:00,conditions,5"); // weak-blue
+
+// conditions 0 = 'normal' Cu 4000 feet, (Median 3.6 knots at 9km) DEFAULT at start
+//            1 = 'stronger' Cu 5000 feet (4.6knots at 6km)
+//            2 = 'over-convected' 4000ft weaker more-spaced thermals
+//            3 = 'blue' 4500ft more-spaced thermals
+//            4 = 'weak' 3500ft weaker, more-spaced thermals
+//            5 = 'weak-blue' 3500ft more-spaced thermals
+//            6 = 'streeting' (4500 ft, a few thermals around 4.6 knots, many 1-3 knots, 1 km spacing)
+
+function day_init() // this code will be called when this day page is loaded - don't change it.
+  {
+    if (top.krasnoff != null) top.krasnoff.day_loaded();
+  }
+
+</script>
+</head>
+<body onLoad="day_init()">
+<font face="Helvetica">
+<p><strong><font color="green">
+Welcome to Day 3 of the Krasnoff County Regionals!
+</strong></font></p>
+
+<p>Today's task is a 270km triangle, with legs of 110, 95 and 65 km.</p>
+
+<p>The day is not particularly strong, with average 3.5 knot thermals.
+Conditions will weaken rapidly from 14:30, and by 15:00 conditions are expected to be
+weak and blue, with climbs to 3500 foot max. We're expecting a light headwind on the first
+leg, neutral on the others. Stronger climbs can be expected within
+5km of the first turnpoint (i.e. 105 to 115km, at a power station).</p>
+<p>To begin, 'Hunt' for a thermal, and select 'Start Task' at the
+top of a climb when you're ready to go. There is more help
+and a detailed discussion of the simulator in <a href="k_help.html">the help file</a>.</p>
+
+</font>
+</body>
+</html>

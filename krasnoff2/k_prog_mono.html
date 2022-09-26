@@ -1,0 +1,148 @@
+<html>
+<head>
+<title>Peter Krasnoff soaring simulator</title>
+
+<script language="JavaScript" src="k_prog.js">
+</script>
+
+</head>
+
+<!-- HERE IS THE 'body', I.E. THE BIT THE USER ACTUALLY SEES ON THE PAGE -->
+
+<body onLoad="load_results();update_form1()">
+<font face="Helvetica">
+
+<font size="5">Product Codes: Microsoft</font><br>
+<form name="task_form" style="margin-bottom:0;" >
+  <table width="100%">
+    <tr>
+      <td></td>
+      <td>
+        <table border="1" align="right" width="100%">
+          <tr>
+            <td>Task:</td>
+            <td><input type="radio" name="day" value="Test" onClick="set_day(0)">Test</td>
+            <td><input type="radio" name="day" value="1" onClick="set_day(1)">1</td>
+            <td><input type="radio" name="day" value="2" onClick="set_day(2)">2</td>
+            <td><input type="radio" name="day" value="3" onClick="set_day(3)">3</td>
+            <td><input type="radio" name="day" value="4" onClick="set_day(4)">4</td>
+            <td><input type="radio" name="day" value="5" onClick="set_day(5)">5</td>
+            <td><input type="radio" name="day" value="6" onClick="set_day(6)">6</td>
+            <td><input type="radio" name="day" value="7" onClick="set_day(7)">7</td>
+            <td><input type="radio" name="day" value="Gov BLR" onClick="set_day(8)">Gov BLR</td>
+            <td><input type="radio" name="day" value="Gov PGC" onClick="set_day(9)">Gov PGC</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <table border="1" width="100%">
+    <tr>
+      <td>a/c:</td>
+      <td><input type="radio" name="glider" value="glider0" onClick="set_glider(0)" checked>
+		  <a href="http://www.easternsailplane.com/sailplane/asw28.html" target="_blank">ASW-28 (std 44:1)</a></td>
+      <td><input type="radio" name="glider" value="glider1" onClick="set_glider(1)">
+		  <a href="http://www.easternsailplane.com/sailplane/asw27.html" target="_blank">ASW-27 (15m 48:1)</a></td>
+      <td><input type="radio" name="glider" value="glider2" onClick="set_glider(2)">
+		  <a href="http://www.easternsailplane.com/sailplane/asw22b.html" target="_blank">ASW-22 (open 60:1)</a></td>
+    </tr>
+  </table>
+</form>
+
+<table border="0">
+<tr><td align="center">
+<form name="form1" style="margin-bottom:0;" >
+<table>
+  <tr>
+	  <td>
+      <table>
+        <tr>
+          <td><a href="javascript:show_results()">results</a></td>
+          <td><input type="radio" name="ballast" value="dr" onClick="set_ballast(0)"><font color="black">dr</font>
+      		</td>
+          <td><input type="text" size="7" name="time" value="12:00:00"></td>
+          <td><input type="text" size="10" name="altitude" value="4000"></td>
+          <td><input type="text" size="10" name="distance" value="0 km"></td>
+          <td><input type="text" size="15" name="speed" value="0 km/h"></td>
+        </tr>
+        <tr>
+          <td><input type="text" size="18" name="pilot" value="pilot name" onChange="set_pilot()"></td>
+          <td><input type="radio" name="ballast" value="ha" onClick="set_ballast(1)"><font color="black">ha</font></td>
+          <td></td>
+          <td colspan="2"></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><a href="javascript:show_task()">task</a></td>
+          <td><input type="radio" name="ballast" value="fu"  onClick="set_ballast(2)" checked><font color="black">fu</font></td>
+          <td><input type="text" size="7" name="task_time" value="00:00:00"></td>
+          <td colspan="2"><input type="text" size="25" name="distance_to_next_tp" value="0 km"></td>
+          <td><input type="text" size="15" name="headwind" value="0 km/h"></td>
+        </tr>
+      <!-- COMMENT OUT THE UNITS CHANGE RADIO BUTTONS
+        <tr>
+          <td></td>
+          <td></td>
+          <td><input type="radio" name="altitude_units" value="feet" checked>feet
+              <input type="radio" name="altitude_units" value="meters">meters
+          </td>
+          <td><input type="radio" name="distance_units" value="kilometers" checked>kilometers
+              <input type="radio" name="distance_units" value="miles">miles
+              <input type="radio" name="distance_units" value="nautical_miles">nautical niles
+          </td>
+          <td></td>
+          <td></td>
+        </tr>    
+      END OF COMMENTED OUT UNIT CHANGE RADIO BUTTONS -->
+      </table>
+    </td>
+		
+    <!-- john_w flight computer -->
+		
+		<td><table cellpadding="0" cellspacing="2">
+		      <tr>
+            <td><table cellspacing="0" cellpadding="0">
+        		      <tr>
+        					  <td><input type="text" size="10" name="mc" value="Mc: 0 kts"></td>
+        						<td><table cellspacing="0" cellpadding="0">
+      	  					      <tr><td><a href="javascript:set_mc(0.5)">  ++  </a></td></tr>
+      		  				      <tr><td><a href="javascript:set_mc(-0.5)">  ----  </a></td></tr>									
+      			  			    </table>
+      				  		</td>
+      				  	</tr>
+      				  </table>
+      		  </td>
+					</tr>
+					<tr>
+            <td><input type="text" size="15" name="stf" value="StF: 0 kts"></td>
+					</tr>
+					<tr>
+            <td><input type="text" size="15" name="altReq" value="Arr: 0 ft"></td>
+					</tr>
+        </table>
+		</td>
+	</tr>
+</table>
+</form>
+</td></tr>
+
+<tr><td>
+<form name="form3">
+<a href="javascript:start_task()">St</a>&nbsp;
+<a href="javascript:start_climb()">Cl</a>&nbsp;
+<a href="javascript:start_cruise(1)">Srch</a>&nbsp;
+<a href="javascript:start_cruise(2)">60</a>&nbsp;
+<a href="javascript:start_cruise(3)">70</a>&nbsp;
+<a href="javascript:start_cruise(4)">80</a>&nbsp;
+<a href="javascript:start_cruise(5)">90</a>&nbsp;
+<a href="javascript:start_cruise(6)">100</a>&nbsp;
+<a href="javascript:start_cruise(7)">110</a>&nbsp;
+<a href="javascript:start_cruise(8)">120</a>&nbsp;
+</form>
+</td></tr>
+</table>
+
+
+</font>
+</body>
+</html>

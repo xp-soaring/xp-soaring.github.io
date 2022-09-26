@@ -1,0 +1,72 @@
+<html>
+<head>
+<title>Peter Krasnoff Competition Soaring Simulator - Practice Day</title>
+<script language="JavaScript">
+
+var task_length = 302;                               // DEFINE YOUR TASK LENGTH (in km) HERE
+var tp = new Array("Gransden","Didcot","Leicester"); // TURNPOINTS
+var leg_length = new Array(90,130,82);               // LEG LENGTHS IN KILOMETERS
+var leg_wind = new Array(0,5,-8);                    // LEG WINDS headwind (pos) / tailwind (neg)
+var start_height_max = 4000;                         // maximum permitted start height in feet
+
+ // THIS IS THE 'CONDITIONS' ARRAY. DON'T CHANGE IT UNLESS YOU'VE READ k_help.html
+
+var events = new Array("general,time,12:50,message,Conditions look likely to improve",
+                       "general,time,13:00,conditions,1", // stronger
+                       "general,time,14:10,message,Oh oh! Looks like it's going blue",
+                       "general,time,14:20,conditions,3", // blue
+                       "general,time,14:50,conditions,5", // weak-blue
+                       "general,distance,70,message,It looks over-convected around the TP",
+                       "special,distance,80,100,conditions,2", // over-convected
+                       "special,distance,130,190,conditions,6"); // streeting
+
+
+// conditions 0 = 'normal' Cu 4000 feet, (Median 3.6 knots at 9km)
+//            1 = 'stronger' Cu 5000 feet (4.6knots at 6km)
+//            2 = 'over-convected' 4000ft weaker more-spaced thermals
+//            3 = 'blue' 4500ft more-spaced thermals
+//            4 = 'weak' 3500ft weaker, more-spaced thermals
+//            5 = 'weak-blue' 3500ft more-spaced thermals
+//            6 = 'streeting' (4500 ft, a few thermals around 4.6 knots, many 1-3 knots, 1 km spacing)
+
+function day_init() // this code will be called when this day page is loaded - don't change it.
+  {
+    //if (top.krasnoff != null) top.krasnoff.day_loaded();
+  }
+
+</script>
+</head>
+<body onLoad="day_init()">
+<font face="Helvetica">
+<p><strong><font color="green">
+Welcome to Krasnoff County!  This is the first (and only) practice day!
+</strong></font></p>
+<p>There is <a href="k_help.html" target="top">help</a> available.</p>
+
+<p>Today's practice task is a 302km triangle, with legs of 90km, 130km and 82km.</p>
+
+<p>We are expecting reasonable conditions with average climbs of about 3.5 knots, with
+lift improving after 13:00 but blue and weakening from 14:20. Overconvection is expected
+around the first TP (i.e. at distance approx 80km).</p>
+
+<p>The day is becoming breezy, with a nil wind on the first leg, an effective
+5 knot headwind on the second leg, and an 8 knot tailwind on the final leg.</p>
+
+<p>You can start the simulator running by clicking any 'cruise'
+button.  After that, each time you are offered a climb, you can
+select it by clicking the 'climb' button, or you can keep going on
+track by selecting a 'cruise' button.</p>
+
+<p>When you are at the top of a climb and have reached your preferred time
+to start the task, click the 'start' button.</p>
+
+<p>Note: The 'hunt' button improves your chances of finding a thermal,
+but with little progress on track, and to make good progress choose an
+appropriate cruise speed for the next expected climb, and don't get too low.
+There is more help
+and a detailed discussion of the simulator in <a href="k_help.html">the help file</a>.</p>
+
+
+</font>
+</body>
+</html>

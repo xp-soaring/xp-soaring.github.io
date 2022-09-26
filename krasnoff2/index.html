@@ -1,0 +1,161 @@
+<html>
+<head>
+    <title>Krasnoff Competition Soaring Simulator</title>
+
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+
+    <script src="js/main.js"></script>
+    <script src="config.js"></script>
+    <script src="js/glider.js"></script>
+    <script src="js/results.js"></script>
+
+    <script>var KRASNOFF_TASKS =  {}</script>
+    <script src="tasks/task0.js"></script>
+    <script src="tasks/task1.js"></script>
+
+    <script>var KRASNOFF_GLIDERS = {}</script>
+    <script src="gliders/asw28.js"></script>
+    <script src="gliders/asw27.js"></script>
+    <script src="gliders/asw22.js"></script>
+
+</head>
+<body onload="KRASNOFF_MAIN.init()">
+<div id="page_home">
+    <h2><font color="black">Welcome to the Krasnoff Soaring Simulator!</font></h2>
+
+    <p>Select a competition task at the top of the page.  If you haven't used this
+    simulator before, choose the practice task (click in the little circle next to where it
+    says 'Practice' at the top of this page) and you'll see further instructions here.</p>
+
+    <p>There is a <a href="k_help.html" target="new">help</a> file which gives more
+    information on running the simulator, plus a detailed description of how the
+    simulator actually works.</p>
+    </font>
+
+    <input type="button" value="Show Results..." onClick="show_results()">
+    <input type="text" size="18" name="pilot" value="pilot name" onChange="set_pilot()">Pilot name</input>
+    <input type="button" value="Show Task........" onClick="show_task()"></input>
+
+    <!-- GLIDERS LISTING -->
+    <div id="main_gliders_title">Choose a glider:</div>
+    <div id="main_gliders">
+        <table border="1" bgcolor="lightgreen" width="100%">
+        <tr>
+          <td><strong><font color="green">Glider:</font></strong></td>
+          <td><input type="radio" name="glider" value="glider0" onClick="KRASNOFF_MAIN.set_glider('asw28')" checked>
+          <a href="https://en.wikipedia.org/wiki/Schleicher_ASW_28" target="_blank">ASW-28 (std 44:1)</a></td>
+          <td><input type="radio" name="glider" value="glider1" onClick="KRASNOFF_MAIN.set_glider('asw27')">
+          <a href="https://en.wikipedia.org/wiki/Schleicher_ASW_27" target="_blank">ASW-27 (15m 48:1)</a></td>
+          <td><input type="radio" name="glider" value="glider2" onClick="KRASNOFF_MAIN.set_glider('asw22')">
+          <a href="https://en.wikipedia.org/wiki/Schleicher_ASW_22" target="_blank">ASW-22 (25m Open 60:1)</a></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- TASKS LISTING -->
+    <div id="main_tasks_title">Choose a task:</div>
+
+    <div id="main_tasks">
+        <!-- list of tasks will go here -->
+    </div>
+</div><!-- end page_home -->
+
+<div id="page_fly">
+    <table width="100%">
+      <tr>
+        <td align="center">
+          <img src="images/panel.jpg"/>
+        </td>
+      </tr>
+    </table>
+    <form name="form1" style="margin-bottom:0;" >
+    <table border="1" align="center">
+    <tr><td align="center">
+    <table>
+      <tr>
+        <td>
+          <table>
+            <tr>
+              <td><input type="text" size="7" name="time" value="12:00:00"></td>
+              <td><input type="text" size="10" name="altitude" value="4000"></td>
+              <td><input type="text" size="10" name="distance" value="0 km"></td>
+              <td><input type="text" size="15" name="speed" value="0 km/h"></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td colspan="2"></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><input type="text" size="7" name="task_time" value="00:00:00"></td>
+              <td colspan="2"><input type="text" size="25" name="distance_to_next_tp" value="0 km"></td>
+              <td><input type="text" size="15" name="headwind" value="0 km/h"></td>
+            </tr>
+          <!-- COMMENT OUT THE UNITS CHANGE RADIO BUTTONS
+            <tr>
+              <td></td>
+              <td></td>
+              <td><input type="radio" name="altitude_units" value="feet" checked>feet
+                  <input type="radio" name="altitude_units" value="meters">meters
+              </td>
+              <td><input type="radio" name="distance_units" value="kilometers" checked>kilometers
+                  <input type="radio" name="distance_units" value="miles">miles
+                  <input type="radio" name="distance_units" value="nautical_miles">nautical niles
+              </td>
+              <td></td>
+              <td></td>
+            </tr>
+          END OF COMMENTED OUT UNIT CHANGE RADIO BUTTONS -->
+          </table>
+        </td>
+
+        <!-- john_w flight computer -->
+
+        <td><table cellpadding="0" cellspacing="2" bgcolor="gray">
+              <tr>
+                <td><table cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td><input type="text" size="8" name="mc" value="Mc: 0 kts"></td>
+                        <td><table cellspacing="0" cellpadding="0">
+                              <tr><td><img src="a_up.gif" alt="MC+" onClick="set_mc(0.5)"></td></tr>
+                              <tr><td><img src="a_down.gif" alt="MC-" onClick="set_mc(-0.5)"></td></tr>
+                            </table>
+                        </td>
+                      </tr>
+                    </table>
+                </td>
+              </tr>
+              <tr>
+                <td><input type="text" size="15" name="stf" value="StF: 0 kts"></td>
+              </tr>
+              <tr>
+                <td><input type="text" size="15" name="altReq" value="Arr: 0 ft"></td>
+              </tr>
+            </table>
+        </td>
+      </tr>
+    </table>
+    <table>
+        <tr><td align="center">
+            <input type="button" name="start" value="Start Task" onClick="start_task()">
+            <input type="button" name="climb1" value="Climb" onClick="start_climb()">
+            <input type="button" name="hunt1" value="Hunt" onClick="start_cruise(1)">
+            <input type="button" name="cruise2" value="60 kts" onClick="start_cruise(2)">
+            <input type="button" name="cruise3" value="70 kts" onClick="start_cruise(3)">
+            <input type="button" name="cruise4" value="80 kts" onClick="start_cruise(4)">
+            <input type="button" name="cruise5" value="90 kts" onClick="start_cruise(5)">
+            <input type="button" name="cruise6" value="100 kts" onClick="start_cruise(6)">
+            <input type="button" name="cruise7" value="110 kts" onClick="start_cruise(7)">
+            <input type="button" name="cruise7" value="120 kts" onClick="start_cruise(8)">
+            </td>
+        </tr>
+    </table>
+
+</div> <!-- end page_ply -->
+
+    <!-- here we initialize the javascript -->
+    <script>
+        var KRASNOFF_MAIN = new Main();
+    </script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+
+body {
+    font-family: sans-serif;
+}
+
+#main_tasks {
+    background-color: lightgreen;
+}
+
+.main_task_div {
+    background-color: lightyellow;
+}
+
+.main_task_title {
+    background-color: lightblue;
+}
