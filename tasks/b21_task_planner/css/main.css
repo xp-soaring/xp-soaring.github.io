@@ -655,6 +655,15 @@ th {
     margin-left: 5px;
 }
 
+#icon_data {
+    display: inline-flex;
+    align-items: center;
+    border: 2px solid #888;
+    border-radius: 8px;
+    height: 25px;
+    padding-right: 2px;
+}
+
 #replay_sync {
     display: inline-flex;
     align-items: center;

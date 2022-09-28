@@ -68,6 +68,7 @@ class B21_TaskPlanner {
         this.replay_hide_tracks_el = document.getElementById("replay_hide_tracks"); // button
         this.replay_speed_el = document.getElementById("replay_speed_value");
         this.replay_time_el = document.getElementById("replay_time");
+        this.icon_data_el = document.getElementById("icon_data_checkbox");
         this.replay_sync_el = document.getElementById("replay_sync_checkbox");
         // charts
         this.charts_el = document.getElementById("charts");
@@ -272,7 +273,7 @@ class B21_TaskPlanner {
     }
 
     draw_map(parent) {
-        //console.log("b21_task_planner draw_map()");
+        console.log("b21_task_planner draw_map()");
 
         let checked_count = parent.tracklogs_checked_count(parent);
         //console.log("checked_count", checked_count);
@@ -351,18 +352,22 @@ class B21_TaskPlanner {
         parent.charts_el.style.display = "block";
         parent.charts_hidden = false;
         parent.replay_hide_chart_el.innerHTML = "hide chart";
-
+        parent.resize_charts()
     }
 
     hide_charts(parent) {
         console.log("hide_charts()");
+        // Adjust map size to either full height or full minus the replay bar height
         if (parent.replay_el.style.display == "none" || parent.replay_el.style.display == "") {
             console.log("replay_el display == none");
+            // No replay bar so map can take 100%
             parent.map_el.style.height = "100%";
         } else {
             console.log("replay_el display != none : ", `"${parent.replay_el.style.display}"`);
+            // tracklogs loaded and replay bar showing, so map subtract height of replay bar
             parent.map_el.style.height = "calc(100% - 42px)";
         }
+        // hide the charts div
         parent.charts_el.style.display = "none";
         parent.charts_hidden = true;
         parent.replay_hide_chart_el.innerHTML = "show chart";
@@ -1427,6 +1432,20 @@ class B21_TaskPlanner {
         }
     }
 
+    icon_data_click() {
+        if (this.icon_data_el.checked) {
+            console.log("icon_data_click ON");
+            for (let i=0; i<this.tracklogs.length; i++) {
+                this.tracklogs[i].show_icon_data();
+            }
+        } else {
+            console.log("icon_data_click OFF");
+            for (let i=0; i<this.tracklogs.length; i++) {
+                this.tracklogs[i].hide_icon_data();
+            }
+        }
+    }
+
     // Update the time displayed in the replay bar
     replay_update_time(parent) {
         let ts = parent.replay_ts == null ? 0 : parent.replay_ts;
@@ -1770,6 +1789,7 @@ class B21_TaskPlanner {
     }
 
     resize_charts() {
+        console.log("resizing charts");
         for (let i = 0; i < this.tracklogs.length; i++) {
             let tracklog = this.tracklogs[i];
             if (tracklog.checked) {

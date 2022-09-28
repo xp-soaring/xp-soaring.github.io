@@ -663,6 +663,14 @@ class B21_TrackLog {
         }
     }
 
+    show_icon_data() {
+        this.aircraft_marker.openPopup();
+    }
+
+    hide_icon_data() {
+        this.aircraft_marker.closePopup();
+    }
+
     draw_chart_line_for_logpoint(parent, logpoints_index) {
         // Draw line on speed/alt chart
         let x_value = new Date(parent.logpoints[logpoints_index].time_iso);

@@ -62,7 +62,7 @@ function loaded() {
     <div class="header">
         <div class="title">
             <!-- NOTE VERSION NUMBER HERE -->
-            <div class="title_text">B21 Task Planner v2.17</div>
+            <div class="title_text">B21 Task Planner v2.18</div>
             <div class="title_task_option">Soaring task: <input id="soaring_task_checkbox" type="checkbox" onclick="b21_task_planner.click_soaring_task(this)" checked/></div>
         </div>
     </div>
@@ -140,6 +140,10 @@ function loaded() {
         <div id="right_pane">
             <div id="map"></div>
             <div id="replay">
+                <div id="icon_data" title="Show each glider height/speed above icon.">
+                    <input type="checkbox" id="icon_data_checkbox" onclick="b21_task_planner.icon_data_click()"/>
+                    Icon data
+                </div>
                 <div id="replay_sync" title="Offset tracklog times to a common start time. Tracklogs must have successful task start.">
                     <input type="checkbox" id="replay_sync_checkbox" onclick="b21_task_planner.replay_sync_click()"/>
                     Sync starts
