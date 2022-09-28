@@ -1,21 +1,21 @@
 class Glider {
 
-    constructor(glider_obj) {
-        console.log("Glider constructor", glider_obj);
+    constructor(settings) {
+        console.log("Glider constructor", settings);
 
-        this.task = null;
+        //this.task = null;
 
-        this.glider_id = glider_obj.glider_id;
-        this.title = glider_obj.title;
-        this.handicap = glider_obj.handicap;
-        this.sink = glider_obj.sink;
+        this.glider_id = settings.glider_id;
+        this.title = settings.title;
+        this.handicap = settings.handicap;
+        this.sink = settings.sink;
 
         this.current_altitude = 2000;      // start off tow at 2000 feet
         this.current_time = 43200;         // 12:00:00
         this.current_distance = 0;         // distance around the task
         this.current_hdistance = 0;        // handicapped distance around the task
         this.current_ballast = 2;          // 0 = dry, 1 = half, 2 = full
-        this.current_day = 0;              // day number, events loaded from k_day<n>.html
+        //this.current_day = 0;              // day number, events loaded from k_day<n>.html
         this.current_pilot = "";           // pilot name or code used to distinguish stored results
         this.current_speed = 0;            // cross-country speed
         this.current_hspeed = 0;           // handicapped cross-country speed

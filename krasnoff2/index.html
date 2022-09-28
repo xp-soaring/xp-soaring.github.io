@@ -5,22 +5,25 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=VT323">
     <link rel="stylesheet" type="text/css" href="css/main.css" />
 
-    <script src="js/main.js"></script>
+    <!-- config -->
     <script src="config.js"></script>
+    <!-- data files -->
+    <script src="js/weather.js"></script>
+    <script src="js/gliders.js"></script>
+    <script src="js/tasks.js"></script>
+    <!-- main program -->
+    <script src="js/main.js"></script>
+
     <script src="js/glider.js"></script>
     <script src="js/results.js"></script>
 
-    <script>var KRASNOFF_TASKS =  {}</script>
-    <script src="tasks/task0.js"></script>
-    <script src="tasks/task1.js"></script>
-
-    <script>var KRASNOFF_GLIDERS = {}</script>
-    <script src="gliders/asw28.js"></script>
-    <script src="gliders/asw27.js"></script>
-    <script src="gliders/asw22.js"></script>
-
 </head>
 <body onload="KRASNOFF_MAIN.init()">
+
+<!-- ##################################################### -->
+<!--    page_home                                           -->
+<!-- ##################################################### -->
+
 <div id="page_home">
     <h2><font color="black">Welcome to the Krasnoff Soaring Simulator!</font></h2>
 
@@ -61,37 +64,64 @@
     </div>
 </div><!-- end page_home -->
 
-<div id="page_fly">
-    <table width="100%">
-      <tr>
-        <td align="center">
-          <img src="images/panel.jpg"/>
-        </td>
-      </tr>
-    </table>
-    <form name="form1" style="margin-bottom:0;" >
-    <table border="1" align="center">
-    <tr><td align="center">
-    <table>
-      <tr>
-        <td>
-          <table>
-            <tr>
-              <td><input type="text" size="7" name="time" value="12:00:00"></td>
-              <td><input type="text" size="10" name="altitude" value="4000"></td>
-              <td><input type="text" size="10" name="distance" value="0 km"></td>
-              <td><input type="text" size="15" name="speed" value="0 km/h"></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td colspan="2"></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><input type="text" size="7" name="task_time" value="00:00:00"></td>
-              <td colspan="2"><input type="text" size="25" name="distance_to_next_tp" value="0 km"></td>
-              <td><input type="text" size="15" name="headwind" value="0 km/h"></td>
-            </tr>
+<!-- ##################################################### -->
+<!--    page_fly                                           -->
+<!-- ##################################################### -->
+
+<div id="page_fly" style="text-align: center">
+
+    <div id="fly_weather">
+    </div>
+
+    <div id="fly_instruments">
+        <div id="altimeter">
+            <div id="altimeter_needle_2"></div>
+            <div id="altimeter_needle_1"></div>
+        </div>
+        <div id="asi">
+            <div id="asi_needle"></div>
+        </div>
+        <div id="variometer">
+            <div id="variometer_needle"></div>
+        </div>
+        <div id="maccready">
+            <table cellpadding="0" cellspacing="2" bgcolor="gray">
+                <tr>
+                    <td><table cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td><input type="text" size="8" name="mc" value="Mc: 0 kts"></td>
+                            <td><table cellspacing="0" cellpadding="0">
+                                <tr><td><img src="a_up.gif" alt="MC+" onClick="set_mc(0.5)"></td></tr>
+                                <tr><td><img src="a_down.gif" alt="MC-" onClick="set_mc(-0.5)"></td></tr>
+                                </table>
+                            </td>
+                        </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="text" size="15" name="stf" value="StF: 0 kts"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" size="15" name="altReq" value="Arr: 0 ft"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div id="fly_data">
+        <div>
+            <input type="text" size="7" name="time" value="12:00:00">
+            <input type="text" size="10" name="distance" value="0 km">
+            <input type="text" size="15" name="speed" value="0 km/h">
+        </div>
+        <div>
+            <input type="text" size="7" name="task_time" value="00:00:00">
+            <input type="text" size="10" name="distance_to_next_tp" value="0 km">
+            <input type="text" size="15" name="headwind" value="0 km/h">
+        </div>
+    </div>
+
           <!-- COMMENT OUT THE UNITS CHANGE RADIO BUTTONS
             <tr>
               <td></td>
@@ -107,37 +137,8 @@
               <td></td>
             </tr>
           END OF COMMENTED OUT UNIT CHANGE RADIO BUTTONS -->
-          </table>
-        </td>
-
-        <!-- john_w flight computer -->
-
-        <td><table cellpadding="0" cellspacing="2" bgcolor="gray">
-              <tr>
-                <td><table cellspacing="0" cellpadding="0">
-                      <tr>
-                        <td><input type="text" size="8" name="mc" value="Mc: 0 kts"></td>
-                        <td><table cellspacing="0" cellpadding="0">
-                              <tr><td><img src="a_up.gif" alt="MC+" onClick="set_mc(0.5)"></td></tr>
-                              <tr><td><img src="a_down.gif" alt="MC-" onClick="set_mc(-0.5)"></td></tr>
-                            </table>
-                        </td>
-                      </tr>
-                    </table>
-                </td>
-              </tr>
-              <tr>
-                <td><input type="text" size="15" name="stf" value="StF: 0 kts"></td>
-              </tr>
-              <tr>
-                <td><input type="text" size="15" name="altReq" value="Arr: 0 ft"></td>
-              </tr>
-            </table>
-        </td>
-      </tr>
-    </table>
-    <table>
-        <tr><td align="center">
+    <div id="fly_controls">
+            <input type="button" name="launch" value="Launch" onClick="launch()">
             <input type="button" name="start" value="Start Task" onClick="start_task()">
             <input type="button" name="climb1" value="Climb" onClick="start_climb()">
             <input type="button" name="hunt1" value="Hunt" onClick="start_cruise(1)">
@@ -148,9 +149,10 @@
             <input type="button" name="cruise6" value="100 kts" onClick="start_cruise(6)">
             <input type="button" name="cruise7" value="110 kts" onClick="start_cruise(7)">
             <input type="button" name="cruise7" value="120 kts" onClick="start_cruise(8)">
-            </td>
-        </tr>
-    </table>
+    </div>
+
+    <div id="fly_message">
+    </div>
 
 </div> <!-- end page_ply -->
 

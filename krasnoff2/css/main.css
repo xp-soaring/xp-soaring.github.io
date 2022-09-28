@@ -14,3 +14,114 @@ body {
 .main_task_title {
     background-color: lightblue;
 }
+
+#fly_instruments {
+    width: 600px;
+    height:200px;
+    position: relative;
+}
+
+#altimeter {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 200px;
+    height: 200px;
+    background-image: url(../images/variometer.png);
+    background-size:     cover;
+    background-repeat:   no-repeat;
+    background-position: center center;
+}
+
+#altimeter_needle_1 {
+    position: absolute;
+    left: 0px;
+    top: 90px;
+    width: 100px;
+    height: 20px;
+    transform-origin: 100px 10px;
+    transform: rotate(33deg);
+    background-image: url(../images/altimeter_needle_1.png);
+    background-size:     cover;
+    background-repeat:   no-repeat;
+    background-position: center center;
+}
+
+#altimeter_needle_2 {
+    position: absolute;
+    left: 0px;
+    top: 90px;
+    width: 100px;
+    height: 20px;
+    transform-origin: 100px 10px;
+    transform: rotate(0deg);
+    background-image: url(../images/altimeter_needle_2.png);
+    background-size:     cover;
+    background-repeat:   no-repeat;
+    background-position: center center;
+}
+
+#asi {
+    position: absolute;
+    left: 200px;
+    top: 0px;
+    width: 200px;
+    height: 200px;
+    background-image: url(../images/variometer.png);
+    background-size:     cover;
+    background-repeat:   no-repeat;
+    background-position: center center;
+}
+
+#asi_needle {
+    position: absolute;
+    left: 0px;
+    top: 90px;
+    width: 100px;
+    height: 20px;
+    transform-origin: 100px 10px;
+    transform: rotate(45deg);
+    background-image: url(../images/asi_needle.png);
+    background-size:     cover;
+    background-repeat:   no-repeat;
+    background-position: center center;
+}
+
+#variometer {
+    position: absolute;
+    left: 400px;
+    top: 0px;
+    width: 200px;
+    height: 200px;
+    background-image: url(../images/variometer.png);
+    background-size:     cover;
+    background-repeat:   no-repeat;
+    background-position: center center;
+}
+
+#variometer_needle {
+    position: absolute;
+    left: 0px;
+    top: 90px;
+    width: 100px;
+    height: 20px;
+    transform-origin: 100px 10px;
+    transform: rotate(-33deg);
+    background-image: url(../images/variometer_needle.png);
+    background-size:     cover;
+    background-repeat:   no-repeat;
+    background-position: center center;
+}
+
+
+#maccready {
+    position: absolute;
+    left: 600px;
+    top: 0px;
+    width: 200px;
+    height: 200px;
+    background-image: url(../images/variometer.png);
+    background-size:     cover;
+    background-repeat:   no-repeat;
+    background-position: center center;
+}
