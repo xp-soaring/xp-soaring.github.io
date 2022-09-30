@@ -15,8 +15,18 @@ body {
     background-color: lightblue;
 }
 
+#main_gliders {
+    width: 80%;
+    margin-left: 10%;
+}
+
+#main_tasks {
+    width: 80%;
+    margin-left: 10%;
+}
+
 #fly_instruments {
-    width: 600px;
+    width: 1000px;
     height:200px;
     position: relative;
 }
@@ -120,7 +130,19 @@ body {
     top: 0px;
     width: 200px;
     height: 200px;
-    background-image: url(../images/variometer.png);
+    /* background-image: url(../images/variometer.png); */
+    background-size:     cover;
+    background-repeat:   no-repeat;
+    background-position: center center;
+}
+
+#ballast {
+    position: absolute;
+    left: 800px;
+    top: 0px;
+    width: 200px;
+    height: 200px;
+    /* background-image: url(../images/variometer.png); */
     background-size:     cover;
     background-repeat:   no-repeat;
     background-position: center center;

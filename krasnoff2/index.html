@@ -68,7 +68,7 @@
 <!--    page_fly                                           -->
 <!-- ##################################################### -->
 
-<div id="page_fly" style="text-align: center">
+<div id="page_fly">
 
     <div id="fly_weather">
     </div>
@@ -91,8 +91,8 @@
                         <tr>
                             <td><input type="text" size="8" name="mc" value="Mc: 0 kts"></td>
                             <td><table cellspacing="0" cellpadding="0">
-                                <tr><td><img src="a_up.gif" alt="MC+" onClick="set_mc(0.5)"></td></tr>
-                                <tr><td><img src="a_down.gif" alt="MC-" onClick="set_mc(-0.5)"></td></tr>
+                                <tr><td><img src="images/a_up.gif" alt="MC+" onClick="set_mc(0.5)"></td></tr>
+                                <tr><td><img src="images/a_down.gif" alt="MC-" onClick="set_mc(-0.5)"></td></tr>
                                 </table>
                             </td>
                         </tr>
@@ -107,11 +107,24 @@
                 </tr>
             </table>
         </div>
+        <div id="ballast">
+            <table>
+                <tr>
+                  <td bgcolor="lightblue"><input type="radio" name="ballast" value="dry" onClick="set_ballast(0)"><font color="blue">dry</font></td>
+                </tr>
+                <tr>
+                  <td bgcolor="lightblue"><input type="radio" name="ballast" value="half" onClick="set_ballast(1)"><font color="blue">half</font></td>
+                </tr>
+                <tr>
+                  <td bgcolor="lightblue"><input type="radio" name="ballast" value="full"  onClick="set_ballast(2)" checked><font color="blue">full</font></td>
+                </tr>
+            </table>
+        </div>
     </div>
 
     <div id="fly_data">
         <div>
-            <input type="text" size="7" name="time" value="12:00:00">
+            <input id="clock" type="text" size="7" name="time" value="12:00:00">
             <input type="text" size="10" name="distance" value="0 km">
             <input type="text" size="15" name="speed" value="0 km/h">
         </div>
@@ -138,17 +151,17 @@
             </tr>
           END OF COMMENTED OUT UNIT CHANGE RADIO BUTTONS -->
     <div id="fly_controls">
-            <input type="button" name="launch" value="Launch" onClick="launch()">
-            <input type="button" name="start" value="Start Task" onClick="start_task()">
-            <input type="button" name="climb1" value="Climb" onClick="start_climb()">
-            <input type="button" name="hunt1" value="Hunt" onClick="start_cruise(1)">
-            <input type="button" name="cruise2" value="60 kts" onClick="start_cruise(2)">
-            <input type="button" name="cruise3" value="70 kts" onClick="start_cruise(3)">
-            <input type="button" name="cruise4" value="80 kts" onClick="start_cruise(4)">
-            <input type="button" name="cruise5" value="90 kts" onClick="start_cruise(5)">
-            <input type="button" name="cruise6" value="100 kts" onClick="start_cruise(6)">
-            <input type="button" name="cruise7" value="110 kts" onClick="start_cruise(7)">
-            <input type="button" name="cruise7" value="120 kts" onClick="start_cruise(8)">
+            <input id="launch" type="button" name="launch" value="Launch" onClick="KRASNOFF_MAIN.launch()">
+            <input type="button" name="start" value="Start Task" onClick="KRASNOFF_MAIN.start_task()">
+            <input type="button" name="climb1" value="Climb" onClick="KRASNOFF_MAIN.start_climb()">
+            <input type="button" name="hunt1" value="Hunt" onClick="KRASNOFF_MAIN.start_cruise(1)">
+            <input type="button" name="cruise2" value="60 kts" onClick="KRASNOFF_MAIN.start_cruise(2)">
+            <input type="button" name="cruise3" value="70 kts" onClick="KRASNOFF_MAIN.start_cruise(3)">
+            <input type="button" name="cruise4" value="80 kts" onClick="KRASNOFF_MAIN.start_cruise(4)">
+            <input type="button" name="cruise5" value="90 kts" onClick="KRASNOFF_MAIN.start_cruise(5)">
+            <input type="button" name="cruise6" value="100 kts" onClick="KRASNOFF_MAIN.start_cruise(6)">
+            <input type="button" name="cruise7" value="110 kts" onClick="KRASNOFF_MAIN.start_cruise(7)">
+            <input type="button" name="cruise7" value="120 kts" onClick="KRASNOFF_MAIN.start_cruise(8)">
     </div>
 
     <div id="fly_message">
