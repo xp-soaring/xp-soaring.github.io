@@ -495,7 +495,7 @@ class B21_TrackLog {
         this.chart_range_altitude = this.chart.renderer.label("", range_x_px, 6).attr({zIndex: 2}).add();
         this.chart_range_speed = this.chart.renderer.label("", range_x_px, 16).attr({zIndex: 2}).add();
         this.chart_range_distance = this.chart.renderer.label("", range_x_px, 26).attr({zIndex: 2}).add();
-        this.chart_range_glide = this.chart.renderer.label("", range_x_px - 130, -4)
+        this.chart_range_glide = this.chart.renderer.label("", range_x_px - 160, -4)
             .attr({ zIndex: 2 })
             .css({
                 "font-size": "16px"
