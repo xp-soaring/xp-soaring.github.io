@@ -930,7 +930,7 @@ class B21_TrackLog {
             task_completion_time_el.setAttribute("id", "tracklog_task_completion_time");
             task_completion_el.appendChild(task_completion_time_el);
             let task_time_s = this.scoring_data.finished_ok["task_time_s"];
-            let ss = ("0"+task_time_s % 60).slice(-2);
+            let ss = ("0"+Math.floor(task_time_s % 60)).slice(-2);
             let mm = ("0"+Math.floor(task_time_s % 3600 / 60)).slice(-2);
             let hh = Math.floor(task_time_s / 3600);
             task_completion_time_el.innerHTML = "Task completed in "+hh+":"+mm+":"+ss;
