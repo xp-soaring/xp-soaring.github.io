@@ -348,10 +348,10 @@ class B21_WP {
         }
 
         // MENU items
-        form_str += '<div class="menu">';
-        form_str += parent.planner.menuitem("Remove from task", "remove_wp_from_task");
+        form_str += '<div class="wp_menu">';
         form_str += parent.planner.menuitem("Append to task", "duplicate_wp_to_task");
         form_str += parent.planner.menuitem("Update elevation", "update_wp_elevation");
+        form_str += parent.planner.menuitem('<img src="images/delete.png"/>', "remove_wp_from_task");
         form_str += '</div>';
 
         // POPUP

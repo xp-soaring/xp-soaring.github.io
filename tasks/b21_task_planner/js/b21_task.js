@@ -732,7 +732,7 @@ class B21_Task {
     }
 
     remove_wp_from_task(index) {
-        console.log("remove_wp_from_task", index, this.waypoints[index].name, this.waypoints.length);
+        console.log("Task.remove_wp_from_task", index, this.waypoints[index].name, this.waypoints.length);
         let wp = this.waypoints[index];
         // remove line TO this waypoint
         if (index > 0) {
@@ -757,7 +757,7 @@ class B21_Task {
 
         // Remove this waypoint from waypoints list
         this.waypoints.splice(index, 1);
-        console.log("remove_wp_from_task waypoints.length=" + this.waypoints.length);
+        console.log("Task.remove_wp_from_task waypoints.length=" + this.waypoints.length);
         // Reset index values in waypoints
         for (let i = 0; i < this.waypoints.length; i++) {
             this.waypoints[i].index = i;
@@ -765,7 +765,25 @@ class B21_Task {
         // If we just deleted the last waypoint, we need to set current to new last WP
         if (index >= this.waypoints.length) {
             this.index = this.waypoints.length - 1;
-            console.log("remove_wp_from_task last wp", index, this.index);
+            console.log("Task.remove_wp_from_task last wp", index, this.index);
+        }
+
+        // Fixup start index after we've deleted a waypoint
+        if (this.start_index != null && index <= this.start_index) {
+            if (this.start_index == index) {
+                this.start_index = null;
+            } else {
+                this.start_index--;
+            }
+        }
+
+        // Fixup finish index after we've deleted a waypoint
+        if (this.finish_index != null && index <= this.finish_index) {
+            if (this.finish_index == index) {
+                this.finish_index = null;
+            } else {
+                this.finish_index--;
+            }
         }
     }
 

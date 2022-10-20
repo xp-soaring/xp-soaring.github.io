@@ -884,7 +884,7 @@ class B21_TaskPlanner {
     }
 
     menuitem(menu_str, menu_function_name) {
-        return '<button onclick="b21_task_planner.' + menu_function_name + '()" class="menuitem">' + menu_str + '</button>';
+        return '<button onclick="b21_task_planner.' + menu_function_name + '()" class="wp_menuitem">' + menu_str + '</button>';
     }
 
     // User has clicked somewhere on the map
@@ -981,7 +981,7 @@ class B21_TaskPlanner {
     }
 
     remove_wp_from_task() {
-        console.log("remove WP from task", this.task.current_wp().get_name());
+        console.log("b21_task_planner.remove WP from task", this.task.current_wp().get_name());
         this.task.remove_wp(this.task.index);
     }
 
