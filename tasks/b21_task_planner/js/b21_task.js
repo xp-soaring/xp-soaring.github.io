@@ -125,6 +125,17 @@ class B21_Task {
         if (wp.index > 0) {
             this.add_line(this.waypoints[wp.index - 1], wp);
         }
+
+        // Fixup start_index
+        if (this.start_index != null && wp_index <= this.start_index) {
+            this.start_index++;
+        }
+
+        // Fixup finish_index
+        if (this.finish_index != null && wp_index <= this.finish_index) {
+            this.finish_index++;
+        }
+        
         return wp;
     }
 
