@@ -78,7 +78,7 @@ class B21_WP {
             parent.planner.task.set_current_wp(parent.index);
             console.log("WP dragend");
             let marker = e.target;
-            parent.request_alt_m(parent);
+            parent.planner.request_alt_m(parent, parent.position, parent.request_alt_m_ok, parent.request_alt_m_fail);
         });
 
         //marker.on("click", function(e) {
@@ -129,6 +129,7 @@ class B21_WP {
         return wp_icon;
     }
 
+    /*
     request_alt_m(parent) {
         console.log("WP.request_alt_m called with parent=",parent);
         let request_str = "https://tfc-app9.cl.cam.ac.uk/90adc1c1-2c02-46ce-a140-db0d7dda1b4e/lookup?locations=" + this.position.lat + "," + this.position.lng;
@@ -162,6 +163,19 @@ class B21_WP {
         } catch (e) {
             console.log('elevation request error');
         }
+    }
+    */
+
+    request_alt_m_ok(parent, position, alt_m) {
+        console.log("wp.request_alt_m_ok elevation(m):", position, alt_m);
+        parent.alt_m = alt_m;
+        parent.alt_m_updated = true;
+        parent.display_menu(parent);
+        parent.planner.task.display_task_info();
+    }
+
+    request_alt_m_fail(parent, position, error_str, error) {
+        console.log("WP alt_m fetch error", error_str, error);
     }
 
     is_task_start() {

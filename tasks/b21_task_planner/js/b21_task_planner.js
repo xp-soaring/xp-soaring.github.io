@@ -857,6 +857,45 @@ class B21_TaskPlanner {
         this.skyvector_button_el.setAttribute("href", sv_link);
     }
 
+    // ********************************************************************************************
+    // *********  Request altitude                         ****************************************
+    // ********************************************************************************************
+
+    request_alt_m(parent, position, callback_ok, callback_fail) {
+        console.log("request_alt_m", position);
+        let request_str = "https://tfc-app9.cl.cam.ac.uk/90adc1c1-2c02-46ce-a140-db0d7dda1b4e/lookup?locations=" + position.lat + "," + position.lng;
+        request_str += "&id=" + this.id;
+        let request_error = false;
+        //console.log(request_str);
+        try {
+            fetch(request_str)
+            .then(response => {
+                if (!response.ok) {
+                    console.log(response);
+                    throw new Error(response.statusText);
+                }
+                console.log("response ok");
+                return response.json();
+            }).catch(error => {
+                request_error = true;
+                console.log('Elevation fetch error:', response.status, error);
+                callback_fail(parent, position, "Elevation fetch error",error);
+            }).then(results => {
+                console.log("request_alt_m(): handle results, request_error=", request_error);
+                if (!request_error){
+                    console.log("elevation(m):", results["results"][0]["elevation"], "query time(s):", parseFloat(results["query_time"]).toFixed(6));
+                    callback_ok(parent, position, results["results"][0]["elevation"]);
+                }
+            }).catch(error => {
+                console.log('Elevation access error:', error);
+                callback_fail(parent, position, "Elevation access error",error);
+            });
+        } catch (e) {
+            console.log('elevation request error');
+            callback_fail(parent, position, "Elevation request error",error);
+
+        }
+    }
 
     // ********************************************************************************************
     // *********  Map click callbacks                      ****************************************
@@ -868,19 +907,31 @@ class B21_TaskPlanner {
     }
 
     map_right_click(parent, e) {
-        /*
         this.current_latlng = e.latlng; // Preserve 'current' latlng so page methods can use it
 
-        let menu_str = '<div class="menu">';
-        menu_str += parent.menuitem("Add WP", "add_wp");
-        menu_str += parent.menuitem("Add Airport", "add_airport");
-        menu_str += '</div>'; // end menu
+        if (this.map_contextmenu == null) {
+            this.map_contextmenu = L.popup();
+        }
 
-        var popup = L.popup()
-            .setLatLng(this.current_latlng)
-            .setContent(menu_str)
-            .openOn(parent.map);
-        */
+        this.request_alt_m(this, this.current_latlng, this.map_right_click_ok, this.map_right_click_fail);
+    }
+
+    map_right_click_ok(planner, position, alt_m) {
+        console.log("Map right click ok", position, alt_m, planner);
+        let alt_str = planner.settings.altitude_units == "m" ? alt_m.toFixed(0)+" m" : (alt_m * planner.M_TO_FEET).toFixed(0) +" feet";
+        let pos_str = position.lat.toFixed(8)+", "+position.lng.toFixed(9);
+        planner.map_contextmenu
+            .setLatLng(position)
+            .setContent("<div>"+pos_str+"<br/>"+alt_str+"</div>")
+            .openOn(planner.map);
+    }
+
+    map_right_click_fail(planner, position, error_str, error) {
+        console.log("Map right click fail", error_str, error);
+        planner.map_contextmenu
+            .setLatLng(position)
+            .setContent(error_str)
+            .openOn(planner.map);
     }
 
     menuitem(menu_str, menu_function_name) {
@@ -894,7 +945,7 @@ class B21_TaskPlanner {
 
         this.map.closePopup();
 
-        wp.request_alt_m(wp);
+        this.request_alt_m(wp, position, wp.request_alt_m_ok, wp.request_alt_m_fail);
 
         this.task.update_display();
 
@@ -911,7 +962,7 @@ class B21_TaskPlanner {
     update_wp_elevation() {
         console.log("User click Update WP elevation");
         let wp = this.task.current_wp();
-        wp.request_alt_m(wp);
+        this.request_alt_m(wp, wp.position, wp.request_alt_m_ok, wp.request_alt_m_fail);
     }
 
     change_wp_name(new_name) {

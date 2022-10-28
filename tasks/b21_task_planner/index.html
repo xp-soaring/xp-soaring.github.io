@@ -62,7 +62,7 @@ function loaded() {
     <div class="header">
         <div class="title">
             <!-- NOTE VERSION NUMBER HERE -->
-            <div class="title_text">B21 Task Planner v2.19</div>
+            <div class="title_text">B21 Task Planner v2.20</div>
             <div class="title_task_option">Soaring task: <input id="soaring_task_checkbox" type="checkbox" onclick="b21_task_planner.click_soaring_task(this)" checked/></div>
         </div>
     </div>
@@ -74,8 +74,9 @@ function loaded() {
             title="Download .TSK file to your Downloads folder">Download XCsoar Task</button>
         <button onclick="b21_task_planner.reset_all()"
             title="Clear the current task and tracklogs">Reset All</button>
-        <button onclick="b21_task_planner.update_elevations()"
+        <!--<button onclick="b21_task_planner.update_elevations()"
             title="Insert the correct elevation for each user waypoint, airports will be unchanged">Update elevations</button>
+        -->
         <button onclick="b21_task_planner.zoom_to_task()"
             title="Reset the map to show the whole task">Zoom to task</button>
         <a  id="skyvector_button"
