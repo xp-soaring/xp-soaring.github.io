@@ -129,48 +129,14 @@ class B21_WP {
         return wp_icon;
     }
 
-    /*
-    request_alt_m(parent) {
-        console.log("WP.request_alt_m called with parent=",parent);
-        let request_str = "https://tfc-app9.cl.cam.ac.uk/90adc1c1-2c02-46ce-a140-db0d7dda1b4e/lookup?locations=" + this.position.lat + "," + this.position.lng;
-        request_str += "&id=" + this.planner.id;
-        let request_error = false;
-        //console.log(request_str);
-        try {
-            fetch(request_str)
-            .then(response => {
-                if (!response.ok) {
-                    console.log(response);
-                    throw new Error(response.statusText);
-                }
-                console.log("response ok");
-                return response.json();
-            }).catch(error => {
-                request_error = true;
-                console.log('Elevation fetch error:', response.status, error);
-            }).then(results => {
-                console.log("wp.request_alt_m(): handle results, request_error=", request_error);
-                if (!request_error){
-                    console.log("elevation(m):", results["results"][0]["elevation"], "query time(s):", parseFloat(results["query_time"]).toFixed(6));
-                    parent.alt_m = results["results"][0]["elevation"];
-                    parent.alt_m_updated = true;
-                    parent.display_menu(parent);
-                    parent.planner.task.display_task_info();
-                }
-            }).catch(error => {
-                console.log('Elevation access error:', error);
-            });
-        } catch (e) {
-            console.log('elevation request error');
-        }
-    }
-    */
-
     request_alt_m_ok(parent, position, alt_m) {
         console.log("wp.request_alt_m_ok elevation(m):", position, alt_m);
         parent.alt_m = alt_m;
         parent.alt_m_updated = true;
-        parent.display_menu(parent);
+        // If this is the current waypoint, popup the wp menu
+        if (parent.index == parent.planner.task.index) {
+            parent.display_menu(parent);
+        }
         parent.planner.task.display_task_info();
     }
 
