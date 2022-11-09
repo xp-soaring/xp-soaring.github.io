@@ -14,10 +14,12 @@ class B21_Task {
 
     init() {
         this.name = null;
-        this.waypoints = [];
-        this.index = null; // Index of current waypoint
-        this.start_index = null;
-        this.finish_index = null;
+        this.waypoints = [];        // Ordered list of waypoints
+        this.index = null;          // Index of current waypoint
+        this.start_index = null;    // Index of start waypoint
+        this.finish_index = null;   // Index of finish waypoint
+        this.start_index_set = null;    // Will be set to TRUE if user has assigned start wp
+        this.finish_index_set = null;   // Will be set to TRUE if user has assigned finish wp
         this.task_distance_m = 123456;
 
         // task bounds
@@ -230,7 +232,8 @@ class B21_Task {
         return wp;
     }
 
-    // Parse soaring-encoded WP name, e.g. *Mifflin+813|6000-1000x500 => Mifflin alt 613ft, max_alt=6000ft, min_alt=1000ft, radius=500m
+    // Parse soaring-encoded WP name, e.g.
+    // *Mifflin+813|6000/1000x500 => Mifflin elevation=813ft, max_alt=6000ft, min_alt=1000ft, radius=500m
     // The "x" (radius) must come after either "+" or "|", so +813x500 is ok.
     decode_wp_name(wp) {
         console.log("decoding", wp.index, wp.name);
@@ -245,9 +248,11 @@ class B21_Task {
         } else if (wp.name.startsWith("*")) {
             if (this.start_index == null) {
                 console.log("Setting " + wp.name + " as START");
+                this.start_index_set = true; // Confirm USER has explicitly set start WP
                 this.start_index = wp.index;
             } else {
                 console.log("Setting " + wp.name + " as FINISH");
+                this.finish_index_set = true; // Confirm USER has explicitly set finish WP
                 this.finish_index = wp.index;
             }
             wp.name = wp.name.slice(1);
@@ -586,9 +591,9 @@ class B21_Task {
     }
 
     display_task_waypoint(task_info_table_el, wp) {
+        let parent = this;
         let wp_el = document.createElement("tr");
         wp_el.className = wp.index == this.index ? "task_info_wp_current" : "task_info_wp";
-        let parent = this;
 
         // Build elevation string
         let alt_str = wp.alt_m.toFixed(0);
@@ -604,12 +609,26 @@ class B21_Task {
                 dist_str = (wp.leg_distance_m / 1000).toFixed(1);
             }
         }
+
+        // Start/Finish indicator
+        // Note here we will also FIXUP start/finish in the task if words "start" or "finish" are in wp name and
+        // start/finish has otherwise not been set.
         let wp_index_el = document.createElement("td"); // WP #
         wp_index_el.className = "task_info_wp_index";
         wp_index_el.onclick = function() {
             parent.set_current_wp(wp.index);
         };
         let index_note = "";
+        // Check if no start set and WP name includes word "start"
+        if (parent.start_index_set == null && /\bstart\b/.test(wp.get_name().toLowerCase())) {
+            console.log("Task.display_task_waypoint fixup START waypoint index=",wp.index);
+            parent.start_index = wp.index;
+        }
+        // Check if no finish set and WP name includes word "finish"
+        if (parent.finish_index_set == null && /\bfinish\b/.test(wp.get_name().toLowerCase())) {
+            console.log("Task.display_task_waypoint fixup FINISH waypoint index=",wp.index);
+            parent.finish_index = wp.index;
+        }
         if (wp.index == this.start_index) {
             index_note = "[St]";
         }
@@ -854,7 +873,7 @@ class B21_Task {
     }
 
     set_current_wp(index) {
-        console.log("Task. Set current WP index", index);
+        console.log("Task.set_current_wp index=", index);
         this.index = index;
         this.update_waypoint_icons();
         this.redraw();

@@ -9,7 +9,7 @@
 /*  Note the use of 'parent' variables is simply a substitute for 'this', but consistently set to
     be an 'object reference' to the currently instantiated class object, as you would expect in most languages.
     Javascript has complex 'this' behaviour when code is executed following a 'click' on a DOM object or during
-    setTimeout.
+    setTimeout so passing a reference to the intended parent object avoids unexpected errors.
 */
 
 class B21_TaskPlanner {
@@ -270,6 +270,12 @@ class B21_TaskPlanner {
 
         parent.set_map_events(parent);
 
+    }
+
+    // Close all WP popup menus
+    close_popups(parent) {
+        console.log("planner.close_popups()");
+        parent.map.eachLayer((l) => { l.closePopup();});
     }
 
     draw_map(parent) {
@@ -903,17 +909,17 @@ class B21_TaskPlanner {
 
     map_left_click(parent, e) {
         let position = e.latlng;
-        this.add_task_point(position);
+        parent.add_task_point(position);
     }
 
     map_right_click(parent, e) {
-        this.current_latlng = e.latlng; // Preserve 'current' latlng so page methods can use it
+        parent.current_latlng = e.latlng; // Preserve 'current' latlng so page methods can use it
 
-        if (this.map_contextmenu == null) {
-            this.map_contextmenu = L.popup();
+        if (parent.map_contextmenu == null) {
+            parent.map_contextmenu = L.popup();
         }
 
-        this.request_alt_m(this, this.current_latlng, this.map_right_click_ok, this.map_right_click_fail);
+        parent.request_alt_m(parent, parent.current_latlng, parent.map_right_click_ok, parent.map_right_click_fail);
     }
 
     map_right_click_ok(planner, position, alt_m) {
@@ -1055,6 +1061,8 @@ class B21_TaskPlanner {
                 return;
             }
             this.task.start_index = wp.index;
+            this.task.start_index_set = true; // Flag the fact USER has explicitly set start (so no need to guess)
+
             if (wp.radius_m == null) {
                 wp.radius_m = wp.DEFAULT_START_RADIUS_M;
             }
@@ -1063,6 +1071,7 @@ class B21_TaskPlanner {
             }
         } else {
             this.task.start_index = null;
+            this.task.start_index_set = null;
         }
         this.task.update_waypoint_icons();
         wp.display_menu(wp);
@@ -1077,12 +1086,14 @@ class B21_TaskPlanner {
             if (wp.icao != null) {
                 let alert_str = "You cannot set the destination airport as a soaring task FINISH in a flightplan.";
                 alert_str += " Create a waypoint before this and set that as task FINISH.";
-                alert_str += " See General Hint (1) in help.";
+                alert_str += " Click Help Button on top right of page and see General Hint (1).";
                 alert(alert_str);
                 e.checked = false;
                 return;
             }
             this.task.finish_index = wp.index;
+            this.task.finish_index_set = true; // Flag the fact USER has explicitly set finish (so no need to guess)
+
             if (wp.radius_m == null) {
                 wp.radius_m = wp.DEFAULT_FINISH_RADIUS_M;
             }
@@ -1090,9 +1101,12 @@ class B21_TaskPlanner {
             // Remove start if it is AFTER this finish
             if (this.task.start_index != null && this.task.start_index >= wp.index) {
                 this.task.start_index = null;
+                this.task.start_index_set = null;
             }
         } else {
             this.task.finish_index = null;
+            this.task.finish_index_set = null;
+
         }
         this.task.update_waypoint_icons();
         wp.display_menu(wp);

@@ -286,6 +286,7 @@ class B21_MSFS_PLN {
 
 <SimBase.Document Type="AceXML" version="1,0">
     <Descr>AceXML Document</Descr>
+    <!-- Created in B21 Task Planner -->
     <FlightPlan.FlightPlan>
         <Title>#TITLE#</Title>
         <FPType>VFR</FPType>

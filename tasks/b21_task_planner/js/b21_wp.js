@@ -113,6 +113,7 @@ class B21_WP {
         parent.planner.task.set_current_wp(parent.index);
     }
 
+    // The ap "icon" is the permanently displayed div containing the name
     get_icon(parent) {
         //let icon_str = '<div onclick="b21_task_planner.task.set_current_wp(0);">';
         let icon_str = ((1 + parent.index) + "." + parent.get_name()).replaceAll(" ", "&nbsp;");
