@@ -24,104 +24,103 @@ class B21_TaskPlanner {
     }
 
     init() {
-        let parent = this;
+        let planner = this;
 
         // Set unique id for user
-        this.id = localStorage.getItem('b21_task_planner_id');
-        if (this.id == null) {
-            this.id = this.create_guid();
-            localStorage.setItem('b21_task_planner_id', this.id);
+        planner.id = localStorage.getItem('b21_task_planner_id');
+        if (planner.id == null) {
+            planner.id = planner.create_guid();
+            localStorage.setItem('b21_task_planner_id', planner.id);
         }
         // ********************************************
         // Define vars for DOM elements
         // ********************************************
 
-        this.skyvector_button_el = document.getElementById("skyvector_button"); // So we can update action URL
+        planner.skyvector_button_el = document.getElementById("skyvector_button"); // So we can update action URL
         // Search box
-        this.search_results_el = document.getElementById("search_results");
-        this.search_input_el = document.getElementById("search_input");
+        planner.search_results_el = document.getElementById("search_results");
+        planner.search_input_el = document.getElementById("search_input");
 
         // left_pane content
-        this.left_pane_el = document.getElementById("left_pane"); // display none|block
-        this.left_pane_show_el = document.getElementById("left_pane_show"); // display none|block
-        this.left_pane_tabs_el = document.getElementById("left_pane_tabs"); // display none|block
+        planner.left_pane_el = document.getElementById("left_pane"); // display none|block
+        planner.left_pane_show_el = document.getElementById("left_pane_show"); // display none|block
+        planner.left_pane_tabs_el = document.getElementById("left_pane_tabs"); // display none|block
 
         // tabs and their content on left pane
-        //DEBUG add an "Update Scores" button to tabs when task + tracklogs are loaded.
-        this.tab_task_el = document.getElementById("tab_task");
-        this.tab_tracklogs_el = document.getElementById("tab_tracklogs");
-        this.task_info_el = document.getElementById("task_info");
-        this.tracklogs_el = document.getElementById("tracklogs");
-        this.tracklogs_select_all_el = document.getElementById("tracklogs_select_all");
-        this.tracklog_info_el = document.getElementById("tracklog_info");
-        this.rescore_button_el = document.getElementById("rescore_button");
+        planner.tab_task_el = document.getElementById("tab_task");
+        planner.tab_tracklogs_el = document.getElementById("tab_tracklogs");
+        planner.task_info_el = document.getElementById("task_info");
+        planner.tracklogs_el = document.getElementById("tracklogs");
+        planner.tracklogs_select_all_el = document.getElementById("tracklogs_select_all");
+        planner.tracklog_info_el = document.getElementById("tracklog_info");
+        planner.rescore_button_el = document.getElementById("rescore_button");
 
         // right_pane content
-        this.right_pane_el = document.getElementById("right_pane");
-        this.panes_resize();
+        planner.right_pane_el = document.getElementById("right_pane");
+        planner.panes_resize();
 
         // map pane
-        this.map_el = document.getElementById("map");
+        planner.map_el = document.getElementById("map");
         // replay bar
-        this.replay_el = document.getElementById("replay");
-        this.replay_hide_chart_el = document.getElementById("replay_hide_chart"); // button
-        this.replay_hide_tracks_el = document.getElementById("replay_hide_tracks"); // button
-        this.replay_speed_el = document.getElementById("replay_speed_value");
-        this.replay_time_el = document.getElementById("replay_time");
-        this.icon_data_el = document.getElementById("icon_data_checkbox");
-        this.replay_sync_el = document.getElementById("replay_sync_checkbox");
+        planner.replay_el = document.getElementById("replay");
+        planner.replay_hide_chart_el = document.getElementById("replay_hide_chart"); // button
+        planner.replay_hide_tracks_el = document.getElementById("replay_hide_tracks"); // button
+        planner.replay_speed_el = document.getElementById("replay_speed_value");
+        planner.replay_time_el = document.getElementById("replay_time");
+        planner.icon_data_el = document.getElementById("icon_data_checkbox");
+        planner.replay_sync_el = document.getElementById("replay_sync_checkbox");
         // charts
-        this.charts_el = document.getElementById("charts");
+        planner.charts_el = document.getElementById("charts");
 
         // ********************************************
         // Define class vars
         // ********************************************
 
         // Tracklogs array, will contain Tracklog objects for each loaded GPX file
-        this.tracklogs = []; // Loaded tracklogs
-        this.tracklog_index = null; // index of current tracklog
+        planner.tracklogs = []; // Loaded tracklogs
+        planner.tracklog_index = null; // index of current tracklog
 
         // Replay clock - will set to earliest time from any loaded GPX file
-        this.replay_mode = false; // true when replay is running.
-        this.replay_ts = null; // Timestamp (s) for current replay
-        this.replay_end_ts = null; // Latest timestamp in tracklogs, limit for replay
-        this.replay_speed = 10; // Replay speed multiplier, relative to real time
-        this.replay_timer = null; // JS interval timer
-        this.replay_completed = false; // set to true when this.replay_ts is larger than any timestamp in tracklogs
-        this.replay_sync = false; // true => replay will synchronize all tracklogs to a common start time
+        planner.replay_mode = false; // true when replay is running.
+        planner.replay_ts = null; // Timestamp (s) for current replay
+        planner.replay_end_ts = null; // Latest timestamp in tracklogs, limit for replay
+        planner.replay_speed = 10; // Replay speed multiplier, relative to real time
+        planner.replay_timer = null; // JS interval timer
+        planner.replay_completed = false; // set to true when planner.replay_ts is larger than any timestamp in tracklogs
+        planner.replay_sync = false; // true => replay will synchronize all tracklogs to a common start time
 
-        this.charts_hidden = true; // The 'charts' div is hidded until GPX file is loaded
-        this.tracks_hidden = false; // The tracks on the map can be hidden or displayed
+        planner.charts_hidden = true; // The 'charts' div is hidded until GPX file is loaded
+        planner.tracks_hidden = false; // The tracks on the map can be hidden or displayed
 
-        this.local_waypoints = {};      // DICTIONARY of { key -> B21_Local_Waypoints }
+        planner.local_waypoints = {};      // DICTIONARY of { key -> B21_Local_Waypoints }
 
         // Restore saved settings
-        this.settings = new B21_Settings(this); // Load settings from localStorage incl. local_waypoints
+        planner.settings = new B21_Settings(planner); // Load settings from localStorage incl. local_waypoints
 
         window.addEventListener("resize", (e) => {
             console.log("window resized", window.innerWidth, window.innerHeight);
-            this.panes_resize();
+            planner.panes_resize();
         });
 
-        this.init_drop_zone();
+        planner.init_drop_zone();
 
         // Make sure is initialized ok
-        this.reset_all();
+        planner.reset_all();
 
-        this.airports = new B21_Airports(this);
+        planner.airports = new B21_Airports(planner, "https://xp-soaring.github.io/tasks/b21_task_planner/airports/airports.json");
 
-        this.airports.init(this.map); // Here we ASYCHRONOUSLY load the airports JSON data (& will draw on map)
+        planner.airports.init(planner.map); // Here we ASYCHRONOUSLY load the airports JSON data (& will draw on map)
 
-        // Load parameters from querystring into this.querystring object
+        // Load parameters from querystring into planner.querystring object
         try {
-            this.querystring = this.parse_querystring();
+            planner.querystring = planner.parse_querystring();
         } catch (e) {
-            this.querystring = null;
+            planner.querystring = null;
             console.log("parse_querystring fail");
         }
-        console.log("querystring", this.querystring);
+        console.log("querystring", planner.querystring);
 
-        this.handle_querystring(this.querystring);
+        planner.handle_querystring(planner.querystring);
     }
 
     panes_resize() {

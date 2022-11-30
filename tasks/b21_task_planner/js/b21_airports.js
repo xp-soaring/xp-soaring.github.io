@@ -1,4 +1,5 @@
 "use strict"
+
 // ********************************************************************************************
 // *********  Manager for the airports data                ************************************
 //
@@ -26,14 +27,15 @@
 
 class B21_Airports {
 
-    constructor(planner) {
-        this.AIRPORTS_JSON_URL = "https://xp-soaring.github.io/tasks/b21_task_planner/airports/airports.json";
+    constructor(planner, json_url) {
+        this.AIRPORTS_JSON_URL = json_url;
         this.DEBUG_DRAW_MAP_BOXES = false;
 
         this.planner = planner;
         this.airports_data = null;
         this.markers = null; // dictionary IDENT -> marker for each airport drawn on map
         this.search_ident = null; // ident of an airport search result to be highlighted on map
+
         this.available = false;
     }
 
@@ -117,17 +119,40 @@ class B21_Airports {
                         let name = airport[this.KEY_NAME].replaceAll('"', ""); // Remove double quotes if original name includes those.
                         let alt_m = airport[this.KEY_ALT_M];
                         let runways = airport[this.KEY_RUNWAYS];
-                        let circle_radius = 3 * (zoom - 7);
-                        if (type == "large_airport") {
-                            circle_radius *= 3;
-                        } else if (type == "medium_airport") {
-                            circle_radius *= 2;
+
+                        let marker;
+                        if (type == "msfs_airport") {
+                            // For MSFS airports we use a "canvasMarker" i.e. place a rotated 20x20 IMAGE on the canvas
+                            // Calculate the first runway direction
+                            let px = Math.max(14,Math.min(60,10 * (zoom - 7)));
+
+                            let airport_rotate = null;
+                            if (runways != null && runways.length > 0) {
+                                airport_rotate = parseInt(runways) * 10;
+                            }
+
+                            marker = L.canvasMarker(position, {
+                                renderer: this.planner.canvas_renderer,
+                                img: {  url: "images/airport_00.png",
+                                        rotate: airport_rotate,
+                                        size: [px,px]
+                                }
+                            });
+                        } else {
+                            // For non-MSFS airports we use a light green circle
+                            let circle_radius = 3 * (zoom - 7);
+                            if (type == "large_airport") {
+                                circle_radius *= 3;
+                            } else if (type == "medium_airport") {
+                                circle_radius *= 2;
+                            }
+
+                            marker = L.circleMarker(position, {
+                                renderer: this.planner.canvas_renderer,
+                                color: '#33ff88',
+                                radius: circle_radius
+                            });
                         }
-                        let marker = L.circleMarker(position, {
-                            renderer: this.planner.canvas_renderer,
-                            color: this.planner.task.is_msfs_airport(type) ? '#3388ff' : '#33ff88',
-                            radius: circle_radius
-                        });
                         marker.addTo(this.planner.airport_markers);
 
                         // add popup
