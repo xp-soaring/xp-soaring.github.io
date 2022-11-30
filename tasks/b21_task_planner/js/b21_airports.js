@@ -25,13 +25,22 @@
 //
 // ********************************************************************************************
 
+/*
+This class is usable in B21 Task Planner and B21LeafletMap used in MSFS Nav instruments, with the parent object
+given in the constructor as "mapper". The mapper interface required is:
+
+mapper.airport_markers = Leaflet layerGroup e.g. L.layerGroup().addTo(parent.map);
+mapper.canvas_renderer = L.canvas()
+mapper.task.add_new_poi(position, type, info) -- only used for planner, i.e. is_instrument() == false
+*/
+
 class B21_Airports {
 
-    constructor(planner, json_url) {
+    constructor(mapper, json_url) {
         this.AIRPORTS_JSON_URL = json_url;
         this.DEBUG_DRAW_MAP_BOXES = false;
 
-        this.planner = planner;
+        this.mapper = mapper;
         this.airports_data = null;
         this.markers = null; // dictionary IDENT -> marker for each airport drawn on map
         this.search_ident = null; // ident of an airport search result to be highlighted on map
@@ -69,7 +78,7 @@ class B21_Airports {
         const ZOOM_MIN_MSFS = 8;
         const ZOOM_MIN_OTHER = 9;
 
-        this.planner.airport_markers.clearLayers();
+        this.mapper.airport_markers.clearLayers();
 
         if (!this.available) {
             console.log("b21_airports.draw(), airports not available, returning.");
@@ -115,7 +124,6 @@ class B21_Airports {
                         }
                         let position = new L.latLng(airport[this.KEY_LAT], airport[this.KEY_LNG]);
                         let ident = airport[this.KEY_IDENT];
-                        //let type = airport[this.KEY_TYPE];
                         let name = airport[this.KEY_NAME].replaceAll('"', ""); // Remove double quotes if original name includes those.
                         let alt_m = airport[this.KEY_ALT_M];
                         let runways = airport[this.KEY_RUNWAYS];
@@ -132,7 +140,7 @@ class B21_Airports {
                             }
 
                             marker = L.canvasMarker(position, {
-                                renderer: this.planner.canvas_renderer,
+                                renderer: this.mapper.canvas_renderer,
                                 img: {  url: "images/airport_00.png",
                                         rotate: airport_rotate,
                                         size: [px,px]
@@ -148,45 +156,56 @@ class B21_Airports {
                             }
 
                             marker = L.circleMarker(position, {
-                                renderer: this.planner.canvas_renderer,
+                                renderer: this.mapper.canvas_renderer,
                                 color: '#33ff88',
                                 radius: circle_radius
                             });
                         }
-                        marker.addTo(this.planner.airport_markers);
+                        marker.addTo(this.mapper.airport_markers);
 
-                        // add popup
-                        let popup_content = name + "<br/>" + type + "<br/>" + ident;
-                        let popup = L.popup({
-                            autoPan: false,
-                            className: "airport_popup"
-                        }).setContent(popup_content);
-                        marker.bindPopup(popup);
+                        if (!this.is_instrument()) {
+                            // add popup
+                            let popup_content = name + "<br/>" + type + "<br/>" + ident;
+                            let popup = L.popup({
+                                autoPan: false,
+                                className: "airport_popup"
+                            }).setContent(popup_content);
+                            marker.bindPopup(popup);
 
-                        marker.on('mouseover', function(event) {
-                            marker.openPopup();
-                        });
-                        marker.on('mouseout', function(event) {
-                            marker.closePopup();
-                        });
-                        marker.on('click', (e) => {
-                            console.log("User click:", ident, name);
-                            this.planner.task.add_new_poi(position, type, {
-                                "ident": ident,
-                                "name": name,
-                                "alt_m": alt_m,
-                                "runways": runways
+                            marker.on('mouseover', function(event) {
+                                marker.openPopup();
                             });
-                        });
-                        if (ident == this.search_ident) {
-                            marker.openPopup();
-                            this.search_ident = null;
+                            marker.on('mouseout', function(event) {
+                                marker.closePopup();
+                            });
+                            marker.on('click', (e) => {
+                                console.log("User click:", ident, name);
+                                this.mapper.task.add_new_poi(position, type, {
+                                    "ident": ident,
+                                    "name": name,
+                                    "alt_m": alt_m,
+                                    "runways": runways
+                                });
+                            });
+                            if (ident == this.search_ident) {
+                                marker.openPopup();
+                                this.search_ident = null;
+                            }
                         }
-                        //this.markers[ident] = marker;
                     }
                 }
             }
         }
+    }
+
+    // Return true if given airport "type" represents an MSFS airport
+    is_msfs_airport(type) {
+        return type != null && type.includes("msfs") && type.includes("airport")
+    }
+
+    // Return true if these airports are being displayed in an MSFS instrument
+    is_instrument() {
+        return this.instrument != null;
     }
 
     // Return airport info given ident e.g. lookup("LSMM") returns
