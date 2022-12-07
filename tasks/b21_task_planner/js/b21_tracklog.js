@@ -748,14 +748,19 @@ class B21_TrackLog {
         for (let i=0; i<tracklog.logpoints_file.length; i++) {
             let point = Object.assign({},tracklog.logpoints_file[i]); // SHALLOW COPY, ok for logpoint
             let sample_delta_s = point.ts - prev_point.ts;
-            if (sample_delta_s > Math.max(15,sample_period * 3)) {
+            if (i>1 && sample_delta_s > Math.max(15,sample_period * 3)) {
                 // time delta between data points is enough for us to consider this as a possible 'pause'
                 // Pause time  = sample_delta_s
                 let distance_m = Geo.get_distance_m(prev_point, point);
+                try {
                 console.log("B21_Tracklog.skip_pause_logpoints() pause detected ",
                     point, prev_point,
                     "(" + sample_delta_s.toFixed(2) + " s) ("+ distance_m.toFixed(0) + " m)",
                     "(sample_period: "+sample_period.toFixed(1) + " s) (speed: "+prev_point.speed_ms.toFixed(1)+" ms)");
+                } catch (e) {
+                    console.log("Exception on trackpoint "+i);
+                }
+
                 if (distance_m < 400) { // If the plane has moved >400m between begin/end of pause, do not treat as pause (skipped data instead).
                     // We know the distance_m across the pause, so use an estimated speed to calculate the new time between pause data points
                     let pause_speed_ms = Math.max(25, Math.min(60, prev_point.speed_ms));
