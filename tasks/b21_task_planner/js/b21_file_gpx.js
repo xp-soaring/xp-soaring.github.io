@@ -13,6 +13,7 @@
         .name
         .logpoints
         .using_airspeed
+        .plane_pilot e.g. "DG808S RUSSIA (ANRI)" from SimFlightPath
 */
 
 class B21_File_GPX {
@@ -20,6 +21,7 @@ class B21_File_GPX {
     constructor(tracklog) {
         this.tracklog = tracklog;
         this.file_type = "gpx";
+        this.creator = null; // "Little Navmap" | "SimFlightPath 1.8"
     }
 
     //DEBUG reloading same GPX file should reset any task_fixup
@@ -29,12 +31,30 @@ class B21_File_GPX {
 
         let parser = new DOMParser();
         let xmlDoc = parser.parseFromString(file_str, "text/xml");
-        let gpx = xmlDoc.getElementsByTagName("gpx");
-        if (gpx == null || gpx.length == 0) {
+        let gpxs = xmlDoc.getElementsByTagName("gpx");
+        if (gpxs == null || gpxs.length == 0) {
             console.log("Bad GPX: failed to find 'gpx' element");
             return;
         }
-        this.load_trks(gpx[0]);
+        let gpx = gpxs[0];
+        this.creator = gpx.getAttribute("creator");
+        console.log("Creator",this.creator);
+
+        let metadatas = gpx.getElementsByTagName("metadata");
+        if (metadatas != null && metadatas.length != 0) {
+            let descs = metadatas[0].getElementsByTagName("desc");
+            if (descs != null & descs.length != 0) {
+                let desc = descs[0].textContent;
+                console.log("GPX load desc="+desc);
+                let desc_index = desc.indexOf("✈"); // e.g. "✈ DG808S RUSSIA (ANRI)"
+                if (desc_index >= 0) {
+                    let plane_pilot = desc.slice(desc_index+2);
+                    console.log("GPX load plane/pilot="+plane_pilot);
+                    this.tracklog.plane_pilot = plane_pilot;
+                }
+            }
+        }
+        this.load_trks(gpx);
     }
 
     // GPX file could have multiple <trk> elements, we only load the first
@@ -121,7 +141,7 @@ class B21_File_GPX {
                     let dist_m = Geo.get_distance_m(prev_pt, decoded_pt);
                     let speed_ms = dist_m / time_delta_s;
                     // Smoothing
-                    const SMOOTH_S = 10; // smoothing time constant
+                    const SMOOTH_S = this.creator == "Little Navmap" ? 10 : 1; // smoothing time constant
                     let weight = Math.min(1,time_delta_s / SMOOTH_S);
                     if (prev_speed_ms != null) {
                         decoded_pt["speed_ms"] = speed_ms * weight + prev_speed_ms * (1 - weight);
@@ -130,7 +150,7 @@ class B21_File_GPX {
                     }
                 }
             }
-            if (i==1) { console.log("GPX logpoint[1] airspeed_ms=",airspeed_ms, trkpt, decoded_pt); }
+
             // Store completed logpoint
             this.tracklog.logpoints.push(decoded_pt);
         }

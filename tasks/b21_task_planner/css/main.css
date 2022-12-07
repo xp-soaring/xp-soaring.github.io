@@ -526,6 +526,11 @@ th {
     /* width: 90%; */
 }
 
+.tracklogs_entry_filename {
+    max-width: 80%;
+    overflow: ellipsis;
+}
+
 .tracklogs_entry_info:hover {
     background-color: #cccc88;
 }
@@ -533,23 +538,24 @@ th {
 /* tracklog colors column */
 
 .tracklogs_entry_colors {
-    width: 7px;
+    width: 9px;
     height: 55px;
+    border: 1px solid black;
 }
 
 .tracklogs_entry_color_top {
     height: 40%;
-    width: 100%;
+    width: 9px;
 }
 
 .tracklogs_entry_color_middle {
     height: 20%;
-    width: 100%;
+    width: 9px;
 }
 
 .tracklogs_entry_color_bottom {
     height: 40%;
-    width: 100%;
+    width: 9px;
 }
 
 /* tracklogs finished column */
@@ -569,7 +575,7 @@ th {
     left: 4%;
     top: 4%;
     height: 50%;
-    width: 40%;
+    max-width: 40%;
     font-size: 16px;
     cursor: default;
     z-index: 2000; /* position above Leaflet map */
@@ -587,9 +593,8 @@ th {
 #tracklog_info_name {
     display: inline-block;
     font-weight: bold;
-    width: 90%;
     margin: 0;
-    text-align: center;
+    text-align: left;
     border-radius: 8px;
 }
 
@@ -608,11 +613,8 @@ th {
 #tracklog_info_task_wps {
     margin-left: auto;
     margin-right: auto;
-}
-
-#tracklog_info_name {
-    text-align: center;
-    border-radius: 8px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 .tracklog_wp_info {
@@ -658,6 +660,15 @@ th {
 
 #replay * {
     margin-left: 5px;
+}
+
+#skip_pause {
+    display: inline-flex;
+    align-items: center;
+    border: 2px solid #888;
+    border-radius: 8px;
+    height: 25px;
+    padding-right: 2px;
 }
 
 #icon_data {

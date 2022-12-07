@@ -36,14 +36,18 @@ mapper.task.add_new_poi(position, type, info) -- only used for planner, i.e. is_
 
 class B21_Airports {
 
-    constructor(mapper, json_url) {
-        this.AIRPORTS_JSON_URL = json_url;
+    constructor(mapper, options) {
+        this.AIRPORTS_JSON_URL = options["json_url"];
+        this.AIRPORT_IMG_URL = options["airport_img_url"];
+
         this.DEBUG_DRAW_MAP_BOXES = false;
 
         this.mapper = mapper;
         this.airports_data = null;
         this.markers = null; // dictionary IDENT -> marker for each airport drawn on map
         this.search_ident = null; // ident of an airport search result to be highlighted on map
+
+        new LeafletCanvasMarker(); // Extend leaflet so we can add markers to the canvas
 
         this.available = false;
     }
@@ -123,9 +127,6 @@ class B21_Airports {
                             continue;
                         }
                         let position = new L.latLng(airport[this.KEY_LAT], airport[this.KEY_LNG]);
-                        let ident = airport[this.KEY_IDENT];
-                        let name = airport[this.KEY_NAME].replaceAll('"', ""); // Remove double quotes if original name includes those.
-                        let alt_m = airport[this.KEY_ALT_M];
                         let runways = airport[this.KEY_RUNWAYS];
 
                         let marker;
@@ -141,7 +142,7 @@ class B21_Airports {
 
                             marker = L.canvasMarker(position, {
                                 renderer: this.mapper.canvas_renderer,
-                                img: {  url: "images/airport_00.png",
+                                img: {  url: this.AIRPORT_IMG_URL,
                                         rotate: airport_rotate,
                                         size: [px,px]
                                 }
@@ -164,6 +165,10 @@ class B21_Airports {
                         marker.addTo(this.mapper.airport_markers);
 
                         if (!this.is_instrument()) {
+                            let ident = airport[this.KEY_IDENT];
+                            //let name = airport[this.KEY_NAME].replaceAll('"', ""); // Remove double quotes if original name includes those.
+                            let name = airport[this.KEY_NAME].replace(/"/g, '');
+                            let alt_m = airport[this.KEY_ALT_M];
                             // add popup
                             let popup_content = name + "<br/>" + type + "<br/>" + ident;
                             let popup = L.popup({

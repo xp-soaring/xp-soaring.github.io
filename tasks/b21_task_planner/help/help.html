@@ -31,6 +31,7 @@
         <ul>
             <li><a href="#tracklog_flightplan">Loading a tracklog AND a flightplan</a></li>
             <li><a href="#tracklog_missed">Correcting "missed" waypoints</a></li>
+            <li><a href="#tracklog_paused">Correcting for any "pause" in the tracklog</a></li>
         </ul>
     </li>
     <li><a href="#competitions">Viewing multiple tracklogs as in a competition</a></li>
@@ -344,6 +345,52 @@ In this case the analysis is extremely useful in assessing the glide performance
     of the task.
 </p>
 
+<h3 id="tracklog_paused">Correcting for any "pause" in the tracklogs</h3>
+
+<p>It should be considered normal for a Sim pilot to "pause" the flight (e.g. hit the "Esc" key during the flight) due to whatever
+    domestic disturbance needs to be handled. In MSFS the sim "clock" will continue to run, but the position of the plane will be
+    frozen.
+</p>
+
+<p>B21 Task Planner can automatically scan the loaded tracklogs, detect where the sim pilot has paused the sim, and 'correct' the
+    tracklog as if the pause had never occurred. A minimum threshold of 15 seconds for the pause is set to avoid situations where
+    the logger used simply briefly skipped a few points. In other words if a sim pilot DOES pause the sim for 10 seconds, then he/she
+    will have to suck that up and accept being 10 seconds slower than they otherwise would have been.
+</p>
+
+<p>The image below illustrates a tracklog containing a pause. The pause is clearly visible on the time/altitude/groundspeed chart but
+    pretty much impossible to spot on the tracklog displayed on the map.
+</p>
+
+<p>As can be seen below the tracklog contains the pause, and B21 Task Planner is calculating a task completion speed of 105.3 kph including
+    however long was spent with the sim paused. Clearly the task would have been completed more quickly without the pause.
+</p>
+
+<div class="hcenter"><img src="images/tracklog_pause.png" width="70%" /></div>
+
+<p>This image below shows the same tracklog, AFTER the "Skip pause" checkbox has been checked. The Task Planner has scanned ALL the loaded
+    tracklogs (in this case only the one shown) and identified and corrected the completion times and speeds for any tracklogs containing
+    pauses. In the example given you can see the completion speed has improved to 124.6 kph.
+</p>
+
+<div class="hcenter"><img src="images/tracklog_pause_removed.png" width="70%" /></div>
+
+<p>Removing pauses is great for fairly comparing tracklog completion speeds (unless your task is somehow hardass "no pauses allowed") but also
+    it makes the "maggot racing" replay of multiple tracklogs a better comparison between flights. The "Skip pause" effect is reversible, simply
+    by unchecking the checkbox and the analysis will be redone using the original data.
+</p>
+
+<p>Removing pauses requires scanning through ALL of the loaded tracklogs point-by-point. It's pretty quick (maybe half-a-second per tracklog)
+    but if you have a large number of large tracklogs loaded then be prepared to wait a few seconds while it completes.
+</p>
+
+<p>The essential method used in B21 Task Planner is to spot areas in the tracklog where 'jumps' occur in the logging WITHOUT a material distance
+    covered between the otherwise adjacent logpoints, and it fixes up the timestamps so the tracklog becomes sensibly continuous. Typically
+    the tracklog will show a small amount of distance between the points either side of the pause and B21 Task Planner will adjust those points
+    to have an appropriate time separation given the distance travelled. For example, a 30 minute pause might be replaced with a 3-second
+    gap between the logged points either side of that pause.
+</p>
+
 <h2 id="competitions">Viewing multiple tracklogs as in a competition</h2>
 
 <p>Loading a flightplan and many tracklog files for a 'competition' (i.e. many pilots attempting the same task) is
@@ -541,7 +588,7 @@ https://xp-soaring.github.io/tasks/b21_task_planner/testing/files_comp/Lasham_20
 <p><b>|</b> indicates the <i>max altitude in feet</i> permitted at the waypoint.
 </p>
 
-<p><b>-</b> any time after the <b>|</b> indicates the <i>min altitude in feet</i> permitted at the waypoint.
+<p><b>/</b> indicates the <i>min altitude in feet</i> permitted at the waypoint.
 </p>
 
 <p><b>x</b> any time after the <b>|</b> indicates the <i>radius of the waypoint in meters</i>
@@ -568,14 +615,14 @@ https://xp-soaring.github.io/tasks/b21_task_planner/testing/files_comp/Lasham_20
         <td>Burnt Cabins|6000</td><td>The WP has a max altitude of 6000 feet MSL</td>
     </tr>
     <tr>
-        <td>Burnt Cabins|-1000</td><td>The WP has a min altitude of 1000 feet MSL</td>
+        <td>Burnt Cabins/1000</td><td>The WP has a min altitude of 1000 feet MSL</td>
     </tr>
     <tr>
         <td>Burnt Cabins|x800</td><td>The WP has a turn radius of 800 meters. The <b>|</b> is required anywhere <i>before</i> the <b>x</b>,
         which can most simply achieved by adding the turn radius after the other WP parameters.</td>
     </tr>
     <tr>
-        <td class="nowrap">*Burnt Cabins+2310|6000-1000x800"</td><td>The WP "Burnt Cabins" is a start or finish waypoint, at an elevation of
+        <td class="nowrap">*Burnt Cabins+2310|6000/1000x800"</td><td>The WP "Burnt Cabins" is a start or finish waypoint, at an elevation of
             2310 feet MSL, a maximum turn altitude of 6000 feet, a minimum turn altitude of 1000 feet, and a turn radius of 800 meters. </td>
     </tr>
 

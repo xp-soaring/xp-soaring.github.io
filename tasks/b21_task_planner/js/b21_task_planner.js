@@ -67,6 +67,7 @@ class B21_TaskPlanner {
         planner.replay_hide_tracks_el = document.getElementById("replay_hide_tracks"); // button
         planner.replay_speed_el = document.getElementById("replay_speed_value");
         planner.replay_time_el = document.getElementById("replay_time");
+        planner.skip_pause_el = document.getElementById("skip_pause_checkbox");
         planner.icon_data_el = document.getElementById("icon_data_checkbox");
         planner.replay_sync_el = document.getElementById("replay_sync_checkbox");
         // charts
@@ -107,7 +108,11 @@ class B21_TaskPlanner {
         // Make sure is initialized ok
         planner.reset_all();
 
-        planner.airports = new B21_Airports(planner, "https://xp-soaring.github.io/tasks/b21_task_planner/airports/airports.json");
+        // Note B21_Airports is common to this B21 Task Planner and the MSFS B21 Nav Panel
+        planner.airports = new B21_Airports(planner, {
+            json_url: "https://xp-soaring.github.io/tasks/b21_task_planner/airports/airports.json",
+            airport_img_url: "images/airport_00.png"
+        });
 
         planner.airports.init(planner.map); // Here we ASYCHRONOUSLY load the airports JSON data (& will draw on map)
 
@@ -149,8 +154,6 @@ class B21_TaskPlanner {
     // *******************************************************************************
 
     init_map(parent) {
-
-        parent.canvas_renderer = L.canvas();
 
         // https://leaflet-extras.github.io/leaflet-providers/preview/
 
@@ -212,7 +215,10 @@ class B21_TaskPlanner {
                 attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
             });
 
-        // Optional additional layers
+        // b21_airports requirements
+
+        parent.canvas_renderer = L.canvas();
+
         parent.airport_markers = L.layerGroup(); //.addTo(this.map);
 
         let open_railway_map = L.tileLayer('https://{s}.tiles.openrailwaymap.org/standard/{z}/{x}/{y}.png', {
@@ -691,16 +697,16 @@ class B21_TaskPlanner {
     // *********  Handle GPX file (from drop or URL)                   ****************************
     // ********************************************************************************************
 
-    handle_gpx_str(parent, fetch_start, file_str, filename) {
-        console.log("loading GPX as tracklogs[" + parent.tracklogs.length + "]", filename);
-        let tracklog = new B21_TrackLog(parent.tracklogs.length, parent, parent.map);
+    handle_gpx_str(planner, fetch_start, file_str, filename) {
+        console.log("loading GPX as tracklogs[" + planner.tracklogs.length + "]", filename);
+        let tracklog = new B21_TrackLog(planner.tracklogs.length, planner, planner.map);
+        if (planner.skip_pause_el.checked) {
+            tracklog.skip_pause_on();
+        }
         let ok = tracklog.load_gpx(file_str, filename);
 
         if (ok) {
-            parent.tracklogs.push(tracklog);
-            parent.tracklog_index = parent.tracklogs.length - 1;
-
-            parent.tracklog_loaded(parent, tracklog);
+            planner.tracklog_loaded(planner, tracklog);
         } else {
             alert("Problem loading GPX file "+filename);
         }
@@ -710,16 +716,16 @@ class B21_TaskPlanner {
     // *********  Handle IGC file (from drop or URL)                   ****************************
     // ********************************************************************************************
 
-    handle_igc_str(parent, fetch_start, file_str, filename) {
-        console.log("loading IGC as tracklogs[" + parent.tracklogs.length + "]", filename);
-        let tracklog = new B21_TrackLog(parent.tracklogs.length, parent, parent.map);
+    handle_igc_str(planner, fetch_start, file_str, filename) {
+        console.log("loading IGC as tracklogs[" + planner.tracklogs.length + "]", filename);
+        let tracklog = new B21_TrackLog(planner.tracklogs.length, planner, planner.map);
+        if (planner.skip_pause_el.checked) {
+            tracklog.skip_pause_on();
+        }
         let ok = tracklog.load_igc(file_str, filename);
 
         if (ok) {
-            parent.tracklogs.push(tracklog);
-            parent.tracklog_index = parent.tracklogs.length - 1;
-
-            parent.tracklog_loaded(parent, tracklog);
+            planner.tracklog_loaded(planner, tracklog);
         } else {
             alert("Problem loading IGC file "+filename);
         }
@@ -1496,6 +1502,25 @@ class B21_TaskPlanner {
         }
     }
 
+    // User has clicked the 'skip pause' checkbox on the replay bar
+    skip_pause_click() {
+        let planner = this;
+        if (planner.skip_pause_el.checked) {
+            console.log("skip_pause_click ON");
+            for (let i=0; i<planner.tracklogs.length; i++) {
+                planner.tracklogs[i].skip_pause_on();
+            }
+        } else {
+            console.log("skip_pause_click OFF");
+            for (let i=0; i<planner.tracklogs.length; i++) {
+                planner.tracklogs[i].skip_pause_off();
+            }
+        }
+        planner.score_tracklogs();
+        //planner.display_charts();
+    }
+
+    // User has clicked the 'icon data' checkbox on the replay bar
     icon_data_click() {
         if (this.icon_data_el.checked) {
             console.log("icon_data_click ON");
@@ -1569,16 +1594,16 @@ class B21_TaskPlanner {
     // *********  Tracklogs                                ****************************************
     // ********************************************************************************************
 
-    init_tracklogs(parent) {
+    init_tracklogs(planner) {
         // Discard existing tracklogs
         this.tracklogs = [];
         // Empty the 'tracklogs' div
         B21_Utils.clear_div(this.tracklogs_el);
         // Hide the tabs in the left-pane
-        parent.left_pane_tabs_el.style.display = "none";
+        planner.left_pane_tabs_el.style.display = "none";
     }
 
-    display_tracklogs(parent) {
+    display_tracklogs(planner) {
 
         B21_Utils.clear_div(this.tracklogs_el);
 
@@ -1587,8 +1612,8 @@ class B21_TaskPlanner {
 
         // Create array with tracklogs sorted by speed (no task, or incompleted task => 0)
         let sorted_tracklog_indexes = [];
-        for (let i=0; i < parent.tracklogs.length; i++) {
-            let tracklog = parent.tracklogs[i];
+        for (let i=0; i < planner.tracklogs.length; i++) {
+            let tracklog = planner.tracklogs[i];
             let speed = tracklog.scoring_data == null ? 0 :
                 tracklog.scoring_data.finished_ok == null ? 0 :
                 tracklog.scoring_data.finished_ok.task_speed_ms ;
@@ -1600,31 +1625,34 @@ class B21_TaskPlanner {
         // Add tracklog entries sorted by speed
         for (let i = 0; i < sorted_tracklog_indexes.length; i++) {
             let tracklog_index = sorted_tracklog_indexes[i].tracklog_index;
-            parent.display_tracklogs_entry(tracklogs_table_el, parent.tracklogs[tracklog_index]);
+            planner.display_tracklogs_entry(tracklogs_table_el, planner.tracklogs[tracklog_index]);
         }
-        parent.tracklogs_el.appendChild(tracklogs_table_el);
+        planner.tracklogs_el.appendChild(tracklogs_table_el);
     }
 
     // * Handle loaded tracklog
-    tracklog_loaded(parent, tracklog) {
+    tracklog_loaded(planner, tracklog) {
+        planner.tracklogs.push(tracklog);
+        planner.tracklog_index = planner.tracklogs.length - 1;
+
         tracklog.draw_map();
 
-        parent.left_pane_tabs_el.style.display = 'block';
+        planner.left_pane_tabs_el.style.display = 'block';
 
-        parent.draw_map(parent);
+        planner.draw_map(planner);
 
         // zoom the map to the polyline
         //DEBUG before zooming to tracklog check to see if we have already zoomed to task
-        parent.map.fitBounds(tracklog.map_bounds);
+        planner.map.fitBounds(tracklog.map_bounds);
 
         tracklog.draw_chart();
-        if (parent.task != null) {
+        if (planner.task != null) {
             tracklog.score_task();
         }
 
         this.replay_restart();
 
-        parent.show_tracklogs();
+        planner.show_tracklogs();
     }
 
     set_current_tracklog(index) {
@@ -1640,11 +1668,11 @@ class B21_TaskPlanner {
     }
 
     score_tracklogs() {
-        let parent = this;
-        for (let i = 0; i < parent.tracklogs.length; i++) {
-            parent.tracklogs[i].score_task();
+        let planner = this;
+        for (let i = 0; i < planner.tracklogs.length; i++) {
+            planner.tracklogs[i].score_task();
         }
-        parent.display_tracklogs(parent);
+        planner.display_tracklogs(planner);
     }
 
     // Create and display an entry on the "Tracklogs" tab
@@ -1689,10 +1717,20 @@ class B21_TaskPlanner {
         //    tracklog.scroll_chart();
         //});
         // info: name
+
+        // IF we have plane_pilot info, list this first
+        if (tracklog.plane_pilot != null) {
+            let plane_pilot_el = document.createElement("div");
+            plane_pilot_el.textContent = tracklog.plane_pilot;
+            tracklogs_entry_info_el.appendChild(plane_pilot_el);
+        }
+
+        // Create first row (NAME) div content
         let name_el = document.createElement("div");
         let name_str = tracklog.get_name();
-        name_el.innerHTML = name_str;
+        name_el.textContent = name_str;
         let name_size = Math.max(...(name_str.split(/[\s-]+/).map(el => el.length))); // find length of longest word in name
+        console.log("B21TaskPlanner name_size=", name_size, name_str);
         if (name_size > 28) {
             name_el.style = "font-size: " + (14 * 28 / name_size).toFixed(0) + "px;"; // scale font down from 14px
         }
@@ -1700,11 +1738,19 @@ class B21_TaskPlanner {
 
         // info: filename
         let filename_el = document.createElement("div");
+        filename_el.className = "tracklogs_entry_filename";
         let filename_str = tracklog.get_filename();
         filename_el.innerHTML = filename_str;
         let filename_size = Math.max(...(filename_str.split(/[\s-]+/).map(el => el.length))); // find length of longest word in name
+        console.log("B21TaskPlanner filename_size=",filename_size, filename_str);
         if (filename_size > 28) {
-            filename_el.style = "font-size: " + (14 * 28 / filename_size).toFixed(0) + "px;"; // scale font down from 14px
+            if (filename_size > 48) {
+                let front = filename_str.slice(0,22);
+                let back = filename_str.slice(-22);
+                filename_el.innerHTML = front+"&nbsp;...&nbsp;"+back;
+                filename_size = 48;
+            }
+            filename_el.style = "font-size: " + Math.min(14,Math.max(8, 14 * 38 / filename_size)).toFixed(0) + "px;"; // scale font down from 14px
         }
         tracklogs_entry_info_el.appendChild(filename_el);
 
@@ -1853,11 +1899,21 @@ class B21_TaskPlanner {
     }
 
     resize_charts() {
-        console.log("resizing charts");
+        console.log("B21TaskPlanner.resize_charts()");
         for (let i = 0; i < this.tracklogs.length; i++) {
             let tracklog = this.tracklogs[i];
             if (tracklog.checked) {
                 tracklog.resize_chart();
+            }
+        }
+    }
+
+    display_charts() {
+        console.log("B21TaskPlanner.display_charts()");
+        for (let i = 0; i < this.tracklogs.length; i++) {
+            let tracklog = this.tracklogs[i];
+            if (tracklog.checked) {
+                tracklog.draw_chart();
             }
         }
     }

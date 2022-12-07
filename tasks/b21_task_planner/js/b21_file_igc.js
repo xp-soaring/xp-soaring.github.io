@@ -35,6 +35,12 @@ class B21_File_IGC {
         let prev_time_s = 0;
         let prev_point = null;
 
+        // See if we find these values in the file
+        let info_gliderid = ""; // Glider reg e.g. "D-KVMY"
+        let info_competitionid = ""; // Competition id e.g. "B21"
+        let info_glidertype = ""; // Glider type e.g. "DG-800S (18m)"
+        let info_pilot = ""; // Pilot name
+
         var lines = file_str.split('\n');
         for (var line_num=0; line_num < lines.length; line_num++) {
             let buf = lines[line_num];
@@ -120,23 +126,41 @@ class B21_File_IGC {
 
                 record_count++;
 
-            } else if (buf.startsWith("HFGID")) {
-                        let name_pos = buf.indexOf(":");
-                        if (name_pos > 4 && name_pos+1 < buf.length)
-                        {
-                            name = buf.substring(name_pos+1);
-                            while (name.startsWith(" ")) name = name.substring(1);
-                        }
-                        console.log("Using Glider ID <"+name+"> from IGC file");
+            } else if (buf.toLowerCase().includes("gliderid")) {   // E.g.
+                let pos = buf.indexOf(":");
+                if (pos > 4 && pos + 1 < buf.length) {
+                    info_gliderid = buf.substring(pos + 1);
+                    // Remove leading/trailing spaces
+                    info_gliderid = info_gliderid.trim();
+                }
+                console.log("Found info_gliderid <" + info_gliderid + "> from IGC file");
 
-            } else if (buf.startsWith("HFCID")) {
-                        let name_pos = buf.indexOf(":");
-                        if (name_pos > 4 && name_pos+1 < buf.length)
-                        {
-                            name = buf.substring(name_pos+1);
-                            while (name.startsWith(" ")) name = name.substring(1);
-                        }
-                        console.log("Using Comp ID <"+name+"> from IGC file");
+            } else if (buf.toLowerCase().includes("competitionid")) {
+                let pos = buf.indexOf(":");
+                if (pos > 4 && pos + 1 < buf.length) {
+                    info_competitionid = buf.substring(pos + 1);
+                    // Remove leading/trailing spaces
+                    info_competitionid = info_competitionid.trim();
+                }
+                console.log("Found info_competitionid <" + info_competitionid + "> from IGC file");
+
+            } else if (buf.toLowerCase().includes("glidertype")) {
+                let pos = buf.indexOf(":");
+                if (pos > 4 && pos + 1 < buf.length) {
+                    info_glidertype = buf.substring(pos + 1);
+                    // Remove leading/trailing spaces
+                    info_glidertype = info_glidertype.trim();
+                }
+                console.log("Found glider type <" + info_glidertype + "> from IGC file");
+
+            } else if (buf.toLowerCase().includes("pilot")) {
+                let pos = buf.indexOf(":");
+                if (pos > 4 && pos + 1 < buf.length) {
+                    info_pilot = buf.substring(pos + 1);
+                    // Remove leading/trailing spaces
+                    info_pilot = info_pilot.trim();
+                }
+                console.log("Found pilot <" + info_pilot + "> from IGC file");
 
             } else if (buf.startsWith("HFDTE")) {
                     // E.g. HFDTE230622
@@ -146,7 +170,12 @@ class B21_File_IGC {
 
         }
 
-        // if no HFGID or HFCID record then get name from filename
+        if (info_gliderid != "" || info_competitionid != "" || info_glidertype != "" || info_pilot != "") {
+            name = info_glidertype + " ("+(info_competitionid=="" ? info_gliderid : info_competitionid)+") "+info_pilot;
+            console.log("Made name '"+name+"'");
+        }
+
+        // if no info_gliderid or info_competitionid record then get name from filename
         if (name==null) {
             let i = filename.lastIndexOf("/");
             if (i==-1) i = filename.lastIndexOf("\\");
