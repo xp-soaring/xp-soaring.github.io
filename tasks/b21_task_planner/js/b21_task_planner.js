@@ -252,6 +252,7 @@ class B21_TaskPlanner {
         parent.map = L.map(parent.map_el, {
             minZoom: 5,
             maxZoom: 16,
+            worldCopyJump: true,
             layers: [parent.base_maps[parent.settings.base_layer_name], parent.airport_markers]
         });
         //parent.tiles_outdoor.addTo(parent.map);
