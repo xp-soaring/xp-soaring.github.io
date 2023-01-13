@@ -184,7 +184,14 @@ class B21_File_IGC {
             name = filename.substring(i+1,j);
         }
 
+        // Write tracklog.name
         this.tracklog.name = name;
+
+        // Write tracklog.tail_number
+        if (info_competitionid != "") {
+            this.tracklog.tail_number = info_competitionid;
+        }
+
         console.log(`IGC file "${name}" loaded ${this.tracklog.logpoints.length} logpoints`);
     }
 

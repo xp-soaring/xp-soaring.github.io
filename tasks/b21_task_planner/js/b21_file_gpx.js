@@ -51,10 +51,31 @@ class B21_File_GPX {
                     let plane_pilot = desc.slice(desc_index+2);
                     console.log("GPX load plane/pilot="+plane_pilot);
                     this.tracklog.plane_pilot = plane_pilot;
+
+                    this.tracklog.tail_number = this.get_tail_number(desc);
+
+                    this.tracklog.plane_icao = this.get_plane_icao(desc);
+
                 }
             }
         }
         this.load_trks(gpx);
+    }
+
+    get_tail_number(in_str) {
+        let i0 = in_str.lastIndexOf("(");
+        if (i0 == -1) {
+            return null;
+        }
+        let i1 = in_str.indexOf(")",i0+2);
+        if (i1 == -1) {
+            return null;
+        }
+        return in_str.substring(i0+1,i1);
+    }
+
+    get_plane_icao(in_str) {
+        return "NO GPX PLANE ICAO"
     }
 
     // GPX file could have multiple <trk> elements, we only load the first

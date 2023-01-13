@@ -26,6 +26,8 @@ class B21_TrackLog {
         tracklog.name = null;       // from the <trk>... <name> property in the GPX file
         tracklog.filename = null;   // from the dropped filename or URL
         tracklog.plane_pilot = null; // E.g. "DG808S RUSSIA (ANRI)"
+        tracklog.tail_number = null; // E.g. B21
+        tracklog.plane_icao = null;  // E.g. DG808S
         tracklog.using_airspeed = false; // set to true if we detect 'airspeed' properties in the GPX scoring_data
         tracklog.file_obj = null;  // Will contain a reference to a B21_File_GPX or B21_File_IGC object
 
@@ -1247,7 +1249,7 @@ class B21_TrackLog {
         let aircraft_marker = L.marker([0,0], { icon: svgIcon, rotationOrigin: 'center'}); // extended using leaflet.rotationMarker
 
         let popup = L.popup({
-            closeButton: true,
+            closeButton: false,
             className: "tracklog_popup",
             autoPan: false,
             autoClose: false
@@ -1278,12 +1280,17 @@ class B21_TrackLog {
             if (tracklog.logpoints_index != null) {
                 let p1 = tracklog.logpoints[tracklog.logpoints_index];
 
-                let speed_str = "" + ((p1.speed_ms == null ? 0 : p1.speed_ms) * tracklog.speed_scaler).toFixed(
+                let alt_str = (p1.alt_m * tracklog.alt_scaler).toFixed(0) + tracklog.alt_units_str;
+
+                let speed_str = "<br/>" + ((p1.speed_ms == null ? 0 : p1.speed_ms) * tracklog.speed_scaler).toFixed(
                     0) + tracklog.speed_units_str ;
 
-                let alt_str = "" + (p1.alt_m * tracklog.alt_scaler).toFixed(0) + tracklog.alt_units_str;
+                let tail_str = "";
+                if (tracklog.tail_number != null) {
+                    tail_str = "<br/>"+tracklog.tail_number;
+                }
 
-                let popup_str = alt_str + "<br/>"+ speed_str;
+                let popup_str = '<div class="icon_popup">'+alt_str + speed_str + tail_str + "</div>";
 
                 tracklog.aircraft_marker.setPopupContent(popup_str);
             } else {

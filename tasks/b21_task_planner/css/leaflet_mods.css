@@ -31,6 +31,11 @@
     box-shadow: none;
 }
 
+.icon_popup {
+    position: absolute;
+    bottom: -10px;
+}
+
 /* these popups appear when mouse hovers over any airport/poi on map*/
 .airport_popup .leaflet-popup-content-wrapper,
 .airport_popup .leaflet-popup-tip
