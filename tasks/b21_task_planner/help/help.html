@@ -641,7 +641,7 @@ https://xp-soaring.github.io/tasks/b21_task_planner/testing/files_comp/Lasham_20
     <p><b>/</b> indicates the <i>min altitude in feet</i> permitted at the waypoint.
     </p>
     
-    <p><b>x</b> any time after the <b>|</b> indicates the <i>radius of the waypoint in meters</i>
+    <p><b>x</b> any time after the <b>|</b> indicates the <i>diameter (i.e. 2x radius) of the waypoint in meters</i>
     </p>
     
 <table>
@@ -666,15 +666,20 @@ https://xp-soaring.github.io/tasks/b21_task_planner/testing/files_comp/Lasham_20
         <td>Burnt Cabins/1000</td><td>The WP has a min altitude of 1000 feet MSL</td>
     </tr>
     <tr>
-        <td>Burnt Cabins|x800</td><td>The WP has a turn radius of 800 meters. The <b>|</b> is required anywhere <i>before</i> the <b>x</b>,
-        which can most simply achieved by adding the turn radius after the other WP parameters.</td>
+        <td>Burnt Cabins|x800</td><td>The WP has a turn DIAMETER of 800 meters (i.e. a radius of 400 meters). The <b>|</b> is required anywhere 
+        <i>before</i> the <b>x</b>,
+        which can most simply achieved by adding the turn diameter after the other WP parameters.</td>
     </tr>
     <tr>
         <td class="nowrap">*Burnt Cabins+2310|6000/1000x800"</td><td>The WP "Burnt Cabins" is a start or finish waypoint, at an elevation of
-            2310 feet MSL, a maximum turn altitude of 6000 feet, a minimum turn altitude of 1000 feet, and a turn radius of 800 meters. </td>
+            2310 feet MSL, a maximum turn altitude of 6000 feet, a minimum turn altitude of 1000 feet, and a turn diameter of 800 meters (radius 400m). </td>
     </tr>
 
 </table>
 
+<p>Note for user-interface purposes we talk about a turnpoint RADIUS, because that aligns with the distance-to-go value pilots will see displayed in
+    the glider nav instruments. For 'historical' reasons the name encoding format actually records the DIAMETER so the user input value is doubled
+    before it is inserted into the PLN and halved each time it is displayed.
+    </p>
 </body>
 </html>
