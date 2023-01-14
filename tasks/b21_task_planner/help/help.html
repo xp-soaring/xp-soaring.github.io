@@ -573,29 +573,77 @@ https://xp-soaring.github.io/tasks/b21_task_planner/testing/files_comp/Lasham_20
 
 <h2 id="pln_extensions">TECH APPENDIX: The MSFS .pln format, with extensions for the soaring parameters</h2>
 
-<p>To pass these additional parameters through to MSFS and the aircraft, while ensuring the flight plan remains completely compatible
-    with 'plain vanilla' MSFS, the B21 Task Planner encodes the additional parameters into the <i>name</i> assigned to the waypoint.
+<p>Note a MSFS flightplan (.pln) contains two different kinds of waypoints, and treats them differently:
+</p>    
+
+<ol>
+    <li><b>Airports</b> - these have an <b>ICAO</b> code, and MSFS ignores EVERYTHING in this entry except the ICAO code, reconstructing any other data
+        it wants from its internal database entry for that ICAO code. This is a massive pain in the ass, the elevation and even the lat/long in your PLN is overridden
+        by whatever MSFS thinks it should be.
+    </li>
+    <li><b>User Waypoints</b> - these have a name, a lat/long, and an elevation. <i>Bizarrely</i>, MSFS ignores whatever elevation you put in the PLN and generates another
+        value based on an internal calculation of what altitude it thinks your aircraft would reach if it was flying in the the general direction of this WP given
+        the cruise and climb rate parameters in the aircraft cfg files. This clearly absolutely sucks but hey, someone in Microsoft thought this made sense.
+    </li>
+</ol>
+<h4>DEPARTURE</h4>
+    <p>This needs to be an MSFS AIRPORT, i.e. have an ICAO code entered in the B21 Task Planner. The task planner will do this automatically if you click on an airport.</p>
+
+<h4>DESTINATION</h4>
+    <p>This needs to be an MSFS AIRPORT, i.e. have an ICAO code, again the task planner will do this for you when you click on an airport on the map.</p>
+
+<h4>Intermediate WAYPOINTS</h4>
+    <p>Technically these can be either "Airport" waypoints (with an ICAO code) or "User" waypoints (without an ICAO code). For gliding tasks, it really
+        makes the most sense for ALL intermediate waypoints to be "User" waypoints, because at the very least B21 Task Planner can annotate those with the ground
+        elevation which can make its way through into the aircraft instruments. IF a .PLN waypoint is added as an "Airport", i.e. with an ICAO code,
+        then ALL information in that waypoint will be discarded by MSFS except for the ICAO code and new lat/long/elevation values will be created
+        inside MSFS.
+    </p>
+    <p>If the waypoint is added as a "User" waypoint (i.e. no ICAO code), then MSFS will accept the lat/long and name, and <i>discard the elevation</i> and create a new
+        seemingly random (for a glider) value for that.
+    </p>
+
+    <p>B21 Task Planner tries to be helpful with your "Airport" waypoints. You're FIRST waypoint most be an airport if you want to download a PLN, because MSFS needs that for the 
+        DEPARTURE. After that, when you click on an airport, B21 Task Planner doesn't know at that point if you've just set the DESTINATION (so it should keep the wp as as "Airport")
+        or you're planning it as an intermediate waypoint which is common for gliding tasks. If you click to make the NEXT waypoint, B21 Task Planner will switch any prior
+        "Airport" waypoint into a "User" airport, prepending the ICAO code onto the waypoint name and removing it from the ICAO data field.
+    </p>
+
+<h4>Our workaround - a name 'encoding' scheme for soaring info</h4>
+
+<p>None of this would be necessary if MSFS just made the flightplan available to instruments without mangling it first, including any custom data that the MSFS stock
+    instruments could just ignore.
 </p>
 
-<p><b>*</b> is used to flag a WP as the Start or Finish of the task, <i>prepended to the name</i>, e.g. "*Burnt Cabins" will imply the
-    "Burnt Cabins" waypoint is the start or finish (the first *WP will be the start, the second one will be the finish)
+<p>As described above, the "NAME" used for "User" waypoints is still visible after MSFS loads the PLN file. Essentially the instruments see name/lat/long for the waypoint,
+    the elevation is garbage, and any other info added in the PLN file is ignored. So we encode any additional information we want for soaring into the "NAME".
 </p>
 
-<p><b>+</b> indicates the <i>elevation in feet</i> of the waypoint, e.g. "Burnt Cabins+2310" implies the "Burnt Cabins" waypoint is at
-    2310 feet.
+<p>The 'nav' instruments in the freeware gliders <i>decode</i> this 'name encoding' format, and B21 Task Planner is a convenient tool for <i>encoding</i> information into
+    the waypoint names in the PLN. E.g. a User waypoint "Blairstown+375" is recognized by the instruments as being at 375 feet.
 </p>
 
-<p><b>|</b> indicates the <i>max altitude in feet</i> permitted at the waypoint.
-</p>
-
-<p><b>/</b> indicates the <i>min altitude in feet</i> permitted at the waypoint.
-</p>
-
-<p><b>x</b> any time after the <b>|</b> indicates the <i>radius of the waypoint in meters</i>
-</p>
-
-<h3>Waypoint name format examples</h3>
-
+    <p>To pass these additional parameters through to MSFS and the aircraft, while ensuring the flight plan remains completely compatible
+        with 'plain vanilla' MSFS, the B21 Task Planner encodes the additional parameters into the <i>name</i> assigned to the waypoint.
+    </p>
+    
+    <p><b>*</b> is used to flag a WP as the Start or Finish of the task, <i>prepended to the name</i>, e.g. "*Burnt Cabins" will imply the
+        "Burnt Cabins" waypoint is the start or finish (the first *WP will be the start, the second one will be the finish)
+    </p>
+    
+    <p><b>+</b> indicates the <i>elevation in feet</i> of the waypoint, e.g. "Burnt Cabins+2310" implies the "Burnt Cabins" waypoint is at
+        2310 feet.
+    </p>
+    
+    <p><b>|</b> indicates the <i>max altitude in feet</i> permitted at the waypoint.
+    </p>
+    
+    <p><b>/</b> indicates the <i>min altitude in feet</i> permitted at the waypoint.
+    </p>
+    
+    <p><b>x</b> any time after the <b>|</b> indicates the <i>radius of the waypoint in meters</i>
+    </p>
+    
 <table>
 
     <tr>

@@ -155,6 +155,16 @@ class B21_MSFS_PLN {
         if (this.task.finish_index == this.task.waypoints.length - 1) {
             throw "Cannot set the destination airport as the task FINISH waypoint. See Help - General Hint (1).";
         }
+
+        for (let i=0;i < this.task.waypoints.length; i++) {
+            let wp = this.task.waypoints[i];
+            if (wp.icao != null && wp.icao != "") {
+                let wp_name = this.task.get_encoded_name(wp);
+                if (wp_name.indexOf("|") != -1 || wp_name.indexOf("+") != -1) {
+                    throw "Your waypoint "+(i+1).toFixed(0)+" has an ICAO code "+wp.icao+". You need to remove that for MSFS to allow soaring details (start, radius, max_alt etc).";
+                }
+            }
+        }
     }
 
     clean(str) {
@@ -224,7 +234,7 @@ class B21_MSFS_PLN {
         let wp = this.task.waypoints[index];
         let encoded_name = this.clean(this.task.get_encoded_name(wp));
         let wp_text = "";
-        if (wp.icao == null) {
+        if (wp.icao == null || wp.icao == "") {
             let wp_template = this.get_wp_user_template();
             wp_text = wp_template.replace("#ATCWAYPOINT_ID#", encoded_name);
             wp_text = wp_text.replace("#WORLD_POSITION#", this.get_world_position(wp));

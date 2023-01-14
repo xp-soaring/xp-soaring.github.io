@@ -62,6 +62,10 @@ th {
     right: 8px;
 }
 
+#help_button button {
+    background-color: lightgreen;
+}
+
 /* ****************************** */
 /*  Search                        */
 /* ****************************** */

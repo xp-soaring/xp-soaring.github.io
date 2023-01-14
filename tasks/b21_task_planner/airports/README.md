@@ -42,28 +42,7 @@ keywords	LON, Londres	Extra keywords/phrases to assist with search, comma-separa
 
 ## Reading the data from MSFS 2020
 
-Here you need a PC with MSFS installed, and use [LittleNavMap](https://albar965.github.io/littlenavmap.html) to
-read the data from MSFS into an SQLite database (i.e. file), and then use the SQLite command line to query the data
-in the tables and output CSV.
-
-### `make_merge_runways.py`
-```
-usage: make_merge_runways.py [-h] [--output_file OUTPUT_FILE] airport_file runway_file
-
-positional arguments:
-  airport_file          CSV file id,ident,type,name,lat,lng,elev_ft[,short_desc,long_desc]
-  runway_file           CSV file ident,runway_name
-
-optional arguments:
-  -h, --help            show this help message and exit
-  --output_file OUTPUT_FILE
-                        CSV output file
-```
-
-Suitable queries will extract the Airports data and the Runways data (both as CSV), and then the program
-`make_merge_runways.py` in this package can be used to append the runway information (just the names) onto
-each airport CSV record. With input files `msfs_airports.csv` and `msfs_runways.csv` we produce the
-output file `msfs_airports_runways.csv` which has one row per airport
+See ![MSFS.md](MSFS.md)
 
 ## Structuring the data for fast access
 

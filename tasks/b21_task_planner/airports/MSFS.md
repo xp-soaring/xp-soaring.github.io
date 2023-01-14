@@ -1,20 +1,29 @@
 # MSFS Airport data
 
-## Extracting the MSFS airports data (using LittleNavMap)
+Here you need a PC with MSFS installed, and use [LittleNavMap](https://albar965.github.io/littlenavmap.html) to
+read the data from MSFS into an SQLite database (i.e. file), and then use the SQLite command line to query the data
+in the tables and output CSV.
+
+Basic process is we extract the airports into CSV (from table 'airport') then extract the runways (from table 'runway')
+and merge those csv files using `make_merge_runways.py`.
+
+Detailed steps for extracting the MSFS data are below.
+
+## Using Little Navmap to export MSFS airports into a sqlite database
 
 Install LittleNavMap
 
 Menu: Scenery Library, select MSFS, click Load Scenery Library
 
-This will generate file %APPDATA%C:\Roaming\ABarthel\little_navmap_db\little_navmap_msfs.sqlite
+This will generate the sqlite database file %APPDATA%\ABarthel\little_navmap_db\little_navmap_msfs.sqlite
 
-## Using SQLITE
+## General info for querying the database using sqlite commands
 
 Download the SQLITE command shell https://www.sqlite.org/cli.html
 
 Run with e.g.
 ```
-G:\bin\sqlite\sqlite-tools-win32-x86-3360000\sqlite3.exe C:\Users\fripl\AppData\Roaming\ABarthel\little_navmap_db\little_navmap_msfs.sqlite
+G:\bin\sqlite\sqlite-tools-win32-x86-3360000\sqlite3.exe %appdata%\ABarthel\little_navmap_db\little_navmap_msfs.sqlite
 ```
 
 `.tables` - list tables (see table `airport`)
@@ -117,7 +126,8 @@ CREATE TABLE airport
 ### Blairstown Airport, NJ:
 
 ```
-sqlite> select airport_id,ident,icao,name,altitude,lonx,laty from airport where ident='1N7';
+sqlite> .headers on
+sqlite> select airport_id,ident,icao,name,laty,lonx,altitude from airport where ident='1N7';
 ```
 ```
 airport_id, ident,  icao,   name,       altitude,   lonx,               laty
@@ -149,7 +159,20 @@ blank   - iata_code
  87610|3272|KJFK||||Kennedy Intl|New York|New York||K6||1073741872|1|0|1|119100|128725|0|128725|122950|0|0|1|20|121|146|0|0|0|0|4|0|0|4|0|4|4|7|1107|3404|0|0|12|14510|200|120.733848571777|A|4|RGAL|GH|5|0|fs-base, asobo-airport-kjfk-new-york-jfk|APX28170.bgl, KJFK.bgl|-73.8231811523437|40.6648330688477|-73.7534713745117|40.6213569641113|-13.9459600448608|||||12|-73.7776718139648|40.6413688659668
 ```
 
-## Runways
+# Select from the `airport` table to produce `msfs_airports.csv`
+
+```
+G:\bin\sqlite\sqlite-tools-win32-x86-3360000\sqlite3.exe %appdata%\ABarthel\little_navmap_db\little_navmap_msfs.sqlite
+
+SQLite version 3.36.0 2021-06-18 18:36:39
+Enter ".help" for usage hints.
+sqlite> .mode csv
+sqlite> .output msfs_airports_2023-01-13.csv
+sqlite> select airport_id,ident,"msfs_airport",name,laty,lonx,altitude from airport;
+sqlite> .quit
+```
+
+## Select from the `runway` table to produce `msfs_runways.csv`
 
 ```
 sqlite> .mode csv
@@ -157,3 +180,23 @@ sqlite> .output msfs_runways.csv
 sqlite> select ident,runway_end.name from airport,runway,runway_end where airport.airport_id=runway.airport_id and (runway.primary_end_id=runway_end.runway_end_id or runway.secondary_end_id=runway_end_id);
 ```
 Outputs `<airport ident>,<runway name>` rows (i.e. multiple rows per airport)
+
+### Merge the airports and runways using `make_merge_runways.py` to produce `msfs_airports_runways.csv`
+
+```
+usage: make_merge_runways.py [-h] [--output_file OUTPUT_FILE] airport_file runway_file
+
+positional arguments:
+  airport_file          CSV file id,ident,type,name,lat,lng,elev_ft[,short_desc,long_desc]
+  runway_file           CSV file ident,runway_name
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --output_file OUTPUT_FILE
+                        CSV output file
+```
+
+Suitable queries will extract the Airports data and the Runways data (both as CSV), and then the program
+`make_merge_runways.py` in this package can be used to append the runway information (just the names) onto
+each airport CSV record. With input files `msfs_airports.csv` and `msfs_runways.csv` we produce the
+output file `msfs_airports_runways.csv` which has one row per airport

@@ -979,8 +979,19 @@ class B21_TaskPlanner {
 
     change_wp_name(new_name) {
         console.log("new wp name = ", new_name);
-        this.task.current_wp().set_name(new_name);
-        this.task.display_task_info();
+        let error = false;
+        if (new_name.indexOf("|") != -1 || new_name.indexOf("+") != -1) {
+            error = true;
+            alert("Your waypoint name "+new_name+' should not contain "|" or "+".');
+        }
+        if (!error) {
+            this.task.current_wp().set_name(new_name);
+            this.task.display_task_info();
+        } else {
+            console.log("new wp name had error, so ignoring an refreshing wp icon with previous name");
+            let wp = this.task.current_wp();
+            wp.display_menu(wp);
+        }
     }
 
     change_wp_icao(new_icao) {
