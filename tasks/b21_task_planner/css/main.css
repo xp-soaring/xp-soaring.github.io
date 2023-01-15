@@ -578,8 +578,9 @@ th {
     position: absolute;
     left: 4%;
     top: 4%;
-    height: 50%;
+    margin: 15px;
     max-width: 40%;
+    max-height: 65%;
     font-size: 16px;
     cursor: default;
     z-index: 2000; /* position above Leaflet map */
@@ -646,6 +647,11 @@ th {
     text-align: left;
 }
 
+#tracklog_task_completion {
+    background-color: lightgreen;
+    border-radius: 8px;
+    padding: 4px;
+}
 
 /* *************************************************** */
 /* ******* Replay                ********************* */
@@ -726,6 +732,18 @@ th {
 }
 
 #replay_hide_tracks {
+}
+
+.tracklog_icon_popup { /* see also .tracklog_popup in leaflet_mods.css */
+    position: absolute;
+    bottom: -10px;
+}
+
+
+.tracklog_icon_tail_number {
+    background-color: white;
+    display: inline-block;
+    line-height: 10px;
 }
 
 /* *************************************************** */

@@ -1285,12 +1285,17 @@ class B21_TrackLog {
                 let speed_str = "<br/>" + ((p1.speed_ms == null ? 0 : p1.speed_ms) * tracklog.speed_scaler).toFixed(
                     0) + tracklog.speed_units_str ;
 
-                let tail_str = "";
+                let tail_number_str = "";
                 if (tracklog.tail_number != null) {
-                    tail_str = "<br/>"+tracklog.tail_number;
+                    tail_number_str = tracklog.tail_number;
                 }
 
-                let popup_str = '<div class="icon_popup">'+alt_str + speed_str + tail_str + "</div>";
+                let tail_str = "";
+                if (tail_number_str != "") {
+                    tail_str = '<div><div class="tracklog_icon_tail_number">'+tail_number_str+"</div></div>";
+                }
+
+                let popup_str = '<div class="tracklog_icon_popup">'+alt_str + speed_str + tail_str + "</div>";
 
                 tracklog.aircraft_marker.setPopupContent(popup_str);
             } else {

@@ -1721,6 +1721,7 @@ class B21_TaskPlanner {
         // ***********************************
         let tracklogs_entry_info_el = document.createElement("td"); // TrackLog name
         tracklogs_entry_info_el.className = "tracklogs_entry_info";
+        tracklogs_entry_info_el.title = "Click for task results.";
         tracklogs_entry_info_el.addEventListener("click", (e) => {
             parent.set_current_tracklog(tracklog.index);
             parent.show_tracklog_info();
