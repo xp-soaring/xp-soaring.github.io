@@ -256,7 +256,7 @@ class B21_WP {
             ' Runway: <input id="wp_runway" class="wp_runway" onchange="b21_task_planner.change_wp_runway(this.value)" value="' +
             parent.get_runway() + '"</input> ';
         if (parent.runways != null) {
-            form_str += '<select class="wp_runway_select" onchange="b21_task_planner.select_wp_runway(this.value)" value="">';
+            form_str += '<select class="wp_runway_select" onclick="b21_task_planner.select_wp_runway(this.value)" value="">';
             for (let i = 0; i < parent.runways.length; i++) {
                 form_str += '<option>' + parent.runways[i] + '</option>';
             }
