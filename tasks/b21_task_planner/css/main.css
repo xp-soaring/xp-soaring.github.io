@@ -188,6 +188,16 @@ th {
     padding: 5px;
 }
 
+#click_to_edit {
+    display: none; /* none | block */
+    border-radius: 8px;
+    margin-top: 4px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+    background-color: #D3ECD5;
+}
+
 /* *************************************************** */
 /* ******* Tabs Area             ********************* */
 /* *************************************************** */

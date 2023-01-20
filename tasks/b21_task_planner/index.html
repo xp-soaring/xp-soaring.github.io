@@ -63,7 +63,7 @@ function loaded() {
     <div class="header">
         <div class="title">
             <!-- NOTE VERSION NUMBER HERE -->
-            <div class="title_text">B21 Task Planner v2.37</div>
+            <div class="title_text">B21 Task Planner v2.38</div>
             <div class="title_task_option">Soaring task: <input id="soaring_task_checkbox" type="checkbox" onclick="b21_task_planner.click_soaring_task(this)" checked/></div>
         </div>
     </div>
@@ -105,6 +105,7 @@ function loaded() {
         <div id="left_pane">
             <div id="left_top_area">
                 <div id="drop_zone">
+                    <button id="click_to_edit" onclick="b21_task_planner.click_to_edit()">Click to edit this flightplan</button>
                     DROP FILES HERE<br/>
                     Task: (.PLN .TSK)<br/>
                     Tracklogs: (.GPX .IGC)<br/>

@@ -95,6 +95,10 @@ class B21_TaskPlanner {
 
         planner.local_waypoints = {};      // DICTIONARY of { key -> B21_Local_Waypoints }
 
+        // Edit mode status, set to false on PLN/TSK load
+        planner.edit_mode = true;
+        planner.edit_mode_el = document.getElementById("click_to_edit");
+
         // Restore saved settings
         planner.settings = new B21_Settings(planner); // Load settings from localStorage incl. local_waypoints
 
@@ -178,16 +182,17 @@ class B21_TaskPlanner {
             attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
         });
 
+        let tfkey= "db5"+"ae1"+"f57"+"78a"+"448"+"ca6"+"625"+"545"+"81f"+"283"+"c5";
         let thunderforest_landscape = L.tileLayer(
-            'https://{s}.tile.thunderforest.com/landscape/{z}/{x}/{y}.png?apikey={apikey}', {
+            'https://{s}.tile.thunderforest.com/landscape/{z}/{x}/{y}.png?apikey='+tfkey, {
                 attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-                apikey: '<your apikey>',
+                apikey: tfkey,
                 maxZoom: 22
             });
 
-        let thunderforest_outdoors = L.tileLayer('https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey={apikey}', {
+        let thunderforest_outdoors = L.tileLayer('https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey='+tfkey, {
             attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-            apikey: '<your apikey>',
+            apikey: tfkey,
             maxZoom: 22
         });
 
@@ -231,8 +236,8 @@ class B21_TaskPlanner {
             "TopoMap": tiles_opentopomap,
             "NatGeo": esri_natgeo_world,
             "Outdoor": tiles_outdoor,
-            //"Thunderforest Land": thunderforest_landscape,
-            //"Thunderforest Outdoor": thunderforest_outdoors,
+            "Thunderforest Land": thunderforest_landscape,
+            "Thunderforest Outdoor": thunderforest_outdoors,
             "StamenTerrain": stamen_terrain,
             //"CyclOSM": cyclosm,
             "Satellite": esri_world_imagery
@@ -663,6 +668,7 @@ class B21_TaskPlanner {
         ]);
         parent.score_tracklogs();
         parent.show_task_info();
+        parent.reset_edit_mode(parent); // Prevent edits when we first load a PLN file
     }
 
     handle_tsk_str(parent, fetch_start, tsk_str, name) {
@@ -692,6 +698,7 @@ class B21_TaskPlanner {
         ]);
         this.score_tracklogs();
         this.show_task_info();
+        parent.reset_edit_mode(parent); // Prevent edits when we first load a TSK file
     }
 
     // ********************************************************************************************
@@ -913,31 +920,41 @@ class B21_TaskPlanner {
     // *********  Map click callbacks                      ****************************************
     // ********************************************************************************************
 
+    // A left-click on the map will add a waypoint to the current task
     map_left_click(parent, e) {
-        let position = e.latlng;
-        parent.add_task_point(position);
+        if (parent.edit_mode) {
+            let position = e.latlng;
+            parent.add_task_point(position);
+        }
     }
 
+    // Right-click on the map does an elevation lookup
     map_right_click(parent, e) {
         parent.current_latlng = e.latlng; // Preserve 'current' latlng so page methods can use it
 
         if (parent.map_contextmenu == null) {
-            parent.map_contextmenu = L.popup();
+            parent.map_contextmenu = L.popup({interactive: true});
+            parent.map_contextmenu.on('contextmenu', (e) => {
+                console.log("right click popup contextmenu");
+                parent.map_right_click(parent, e);
+            });
         }
 
         parent.request_alt_m(parent, parent.current_latlng, parent.map_right_click_ok, parent.map_right_click_fail);
     }
 
+    // This is the callback for the right-click elevation request (if successful)
     map_right_click_ok(planner, position, alt_m) {
         console.log("Map right click ok", position, alt_m, planner);
         let alt_str = planner.settings.altitude_units == "m" ? alt_m.toFixed(0)+" m" : (alt_m * planner.M_TO_FEET).toFixed(0) +" feet";
-        let pos_str = position.lat.toFixed(8)+", "+position.lng.toFixed(9);
+        let pos_str = position.lat.toFixed(5)+"<br/>"+position.lng.toFixed(5);
         planner.map_contextmenu
             .setLatLng(position)
-            .setContent("<div>"+pos_str+"<br/>"+alt_str+"</div>")
+            .setContent("<div>"+pos_str+"<br/><b>"+alt_str+"</b></div>")
             .openOn(planner.map);
     }
 
+    // This is the callback when the right-click elevation request fails
     map_right_click_fail(planner, position, error_str, error) {
         console.log("Map right click fail", error_str, error);
         planner.map_contextmenu
@@ -950,7 +967,7 @@ class B21_TaskPlanner {
         return '<button onclick="b21_task_planner.' + menu_function_name + '()" class="wp_menuitem">' + menu_str + '</button>';
     }
 
-    // User has clicked somewhere on the map
+    // User has clicked somewhere on the map (called from map_left_click)
     add_task_point(position) {
         console.log("add_task_point " + position);
         let wp = this.task.add_point_wp(position);
@@ -1132,25 +1149,53 @@ class B21_TaskPlanner {
     }
 
     // ********************************************************************************************
-    // *********  Reset things                             ****************************************
+    // *********  Edit mode                                ****************************************
     // ********************************************************************************************
 
-    init_task(parent) {
-        if (this.task) {
-            this.task.reset();
-        } else {
-            // Task object to hold accumulated waypoints
-            this.task = new B21_Task(this);
+    // User clicked on 'click to edit' button on dropzone
+    click_to_edit() {
+        let planner = this;
+        planner.set_edit_mode(planner);
+    }
+
+    // Allow editing of the task, e.g. click to add waypoint.
+    set_edit_mode(planner) {
+        planner.edit_mode = true;
+        planner.edit_mode_el.style.display = "none";
+        if (planner.task != null) {
+            planner.task.set_edit_mode();
         }
     }
 
-    init_replay(parent) {
-        parent.replay_restart();
+    reset_edit_mode(planner) {
+        planner.edit_mode = false;
+        planner.edit_mode_el.style.display = "block";
+        if (planner.task != null) {
+            planner.task.reset_edit_mode();
+        }
     }
 
-    init_tracklog_info(parent) {
-        parent.rescore_button_el.style.display = "none";
-        parent.tracklog_info_el.style.display = "none";
+    // ********************************************************************************************
+    // *********  Reset things                             ****************************************
+    // ********************************************************************************************
+
+    init_task(planner) {
+        planner.set_edit_mode(planner);
+        if (planner.task) {
+            planner.task.reset();
+        } else {
+            // Task object to hold accumulated waypoints
+            planner.task = new B21_Task(planner);
+        }
+    }
+
+    init_replay(planner) {
+        planner.replay_restart();
+    }
+
+    init_tracklog_info(planner) {
+        planner.rescore_button_el.style.display = "none";
+        planner.tracklog_info_el.style.display = "none";
     }
 
     // ********************************************************************************************
@@ -1159,17 +1204,17 @@ class B21_TaskPlanner {
 
     // Clear the current task and start afresh
     reset_all() {
-        let parent = this;
-        parent.init_task(parent);
-        parent.init_tracklogs(parent);
-        parent.init_tracklog_info(parent);
-        parent.init_replay(parent);
-        parent.init_charts(parent);
-        parent.init_map(parent);
-        if (parent.airports) {
-            parent.airports.draw(parent.map);
+        let planner = this;
+        planner.init_task(planner);
+        planner.init_tracklogs(planner);
+        planner.init_tracklog_info(planner);
+        planner.init_replay(planner);
+        planner.init_charts(planner);
+        planner.init_map(planner);
+        if (planner.airports) {
+            planner.airports.draw(planner.map);
         }
-        for (const [local_waypoints_key, waypoints] of Object.entries(parent.local_waypoints) ) {
+        for (const [local_waypoints_key, waypoints] of Object.entries(planner.local_waypoints) ) {
             try {
                 console.log("reset_all local_waypoints ",local_waypoints_key);
                 waypoints.waypoints_loaded();
@@ -1608,7 +1653,7 @@ class B21_TaskPlanner {
 
     init_tracklogs(planner) {
         // Discard existing tracklogs
-        this.tracklogs = [];
+        planner.tracklogs = [];
         // Empty the 'tracklogs' div
         B21_Utils.clear_div(this.tracklogs_el);
         // Hide the tabs in the left-pane

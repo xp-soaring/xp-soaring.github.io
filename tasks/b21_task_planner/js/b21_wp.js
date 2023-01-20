@@ -81,12 +81,6 @@ class B21_WP {
             parent.planner.request_alt_m(parent, parent.position, parent.request_alt_m_ok, parent.request_alt_m_fail);
         });
 
-        //marker.on("click", function(e) {
-        //    this.openPopup();
-        //    return;
-        //    parent.wp_click(parent, e);
-        //});
-
         // POPUP
         console.log("creating WP popup",this.get_name());
         var popup = L.popup({
@@ -106,6 +100,15 @@ class B21_WP {
         marker.addTo(this.planner.map);
 
         return marker;
+    }
+
+    set_edit_mode(wp) {
+        wp.marker.dragging.enable();
+    }
+
+    reset_edit_mode(wp) {
+        console.log("WP.reset_edit_mode "+wp.name);
+        wp.marker.dragging.disable();
     }
 
     wp_click(parent, e) {

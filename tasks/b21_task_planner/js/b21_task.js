@@ -102,6 +102,24 @@ class B21_Task {
         return this.waypoints[this.index];
     }
 
+    // *****************************************************
+    //   edit mode
+    // *****************************************************
+
+    set_edit_mode() {
+        for (let i=0; i<this.waypoints.length; i++) {
+            let wp = this.waypoints[i];
+            wp.set_edit_mode(wp);
+        }
+    }
+
+    reset_edit_mode() {
+        for (let i=0; i<this.waypoints.length; i++) {
+            let wp = this.waypoints[i];
+            wp.reset_edit_mode(wp);
+        }
+    }
+
     get_task_distance_m() {
         let start_index = (this.start_index != null) ? this.start_index : 0;
         let finish_index = (this.finish_index != null && this.finish_index < this.waypoints.length) ? this.finish_index : this.waypoints
@@ -338,7 +356,7 @@ class B21_Task {
 
     // Update the .leg_distance_m for each waypoint around task
     update_waypoints() {
-        console.log("update_waypoints");
+        console.log("update_waypoints()");
         for (let i = 0; i < this.waypoints.length; i++) {
             const wp = this.waypoints[i];
             wp.index = i;
