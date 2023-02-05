@@ -744,6 +744,10 @@ th {
 #replay_hide_tracks {
 }
 
+#icon_data_numbers_checkbox {
+    margin-left: 0;
+}
+
 .tracklog_icon_popup { /* see also .tracklog_popup in leaflet_mods.css */
     position: absolute;
     bottom: -10px;
@@ -753,7 +757,8 @@ th {
 .tracklog_icon_tail_number {
     background-color: white;
     display: inline-block;
-    line-height: 10px;
+    line-height: 12px;
+    border-radius: 4px;
 }
 
 /* *************************************************** */
