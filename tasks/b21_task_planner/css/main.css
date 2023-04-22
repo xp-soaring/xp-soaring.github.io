@@ -443,12 +443,15 @@ th {
     width: 1%;
     white-space: nowrap;
     vertical-align: bottom;
+    font-weight: bold;
+    color: darkred;
 }
 
 .task_info_wp_name {
     padding-right: 4px;
     text-align: right;
     vertical-align: bottom;
+    font-weight: bold;
 }
 
 .task_info_wp_alt {
@@ -466,6 +469,7 @@ th {
     padding-right: 5px;
     text-align: right;
     vertical-align: top;
+    font-weight: bold;
 }
 
 
@@ -495,6 +499,7 @@ th {
     font-size: 24px;
     background-color: #d0d0d0;
     margin-right: 10px;
+    font-weight: bold;
 }
 
 /* *************************************************** */
