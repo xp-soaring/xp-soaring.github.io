@@ -474,7 +474,7 @@ th {
 
 
 .task_info_wp_buttons {
-    min-width: 58px;
+    white-space: nowrap;
     text-align: right;
 }
 
