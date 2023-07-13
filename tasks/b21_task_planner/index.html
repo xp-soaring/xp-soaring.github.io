@@ -44,7 +44,8 @@
     <script src="js/b21_tracklog.js"> </script>     <!-- B21_TrackLog: holds tracklog logpoints array plus metadata incl. scoring -->
     <script src="js/b21_wp.js"> </script>           <!-- B21_WP: internal representation of a gliding waypoint -->
     <script src="js/b21_task.js"> </script>         <!-- B21_Task: internal representation of a gliding task from FlightPlan -->
-    <script src="js/b21_msfs_pln.js"> </script>     <!-- B21_MSFS_PLN: Supports PLN files -->
+    <script src="js/b21_msfs_pln.js"> </script>     <!-- B21_MSFS_PLN: Supports PLN flightplan files -->
+    <script src="js/b21_weather.js"> </script>      <!-- B21_Weather: Supports WPR weather files -->
     <script src="js/b21_xcsoar_tsk.js"> </script>   <!-- B21_XCsoar_TSK: Supports XCSoar TSK files -->
     <script src="js/b21_task_planner.js"> </script> <!-- B21_TaskPlanner: the main app class -->
 
@@ -66,7 +67,7 @@ function loaded() {
     <div class="header">
         <div class="title">
             <!-- NOTE VERSION NUMBER HERE -->
-            <div class="title_text">B21 Task Planner <span id="b21_task_planner_version">v3.10</span></div>
+            <div class="title_text">B21 Task Planner <span id="b21_task_planner_version">v3.20</span></div>
             <div class="title_task_option">Soaring task: <input id="soaring_task_checkbox" type="checkbox" onclick="b21_task_planner.click_soaring_task(this)" checked/></div>
         </div>
     </div>
@@ -112,17 +113,21 @@ function loaded() {
                     DROP FILES HERE<br/>
                     Task: (.PLN .TSK)<br/>
                     Tracklogs: (.GPX .IGC)<br/>
-                    WPs: (.CUP)<br/>
+                    Weather: (.WPR) WPs: (.CUP)<br/>
                     Or: <input type="file" id="drop_zone_choose_input" multiple="multiple"/> <button id="drop_zone_choose_button">Choose file(s)</button>
                 </div>
                 <div id="left_pane_hide">
                     <button id="left_pane_hide_button" href="#" onclick="b21_task_planner.left_pane_hide_click()"
                         title="Hide this display pane.">h<br/>i<br/>d<br/>e</button>
+                    <div id="wind_rose_hide">
+                        <input id="wind_rose_hide_check" type="checkbox" checked onclick="b21_task_planner.wind_hide_clicked()">Wind</input>
+                    </div>
                 </div>
             </div>
             <!-- TABS content -->
             <div id="left_pane_tabs">
-                <div id="tab_task" class="tab_active"><a href="#" onclick="b21_task_planner.tab_task_click()">Task Info</a></div>
+                <div id="tab_task" class="tab_active"><a href="#" onclick="b21_task_planner.tab_task_click()">Task</a></div>
+                <div id="tab_weather" class="tab_inactive"><a href="#" onclick="b21_task_planner.tab_weather_click()">Weather</a></div>
                 <div id="tab_tracklogs" class="tab_inactive">
                     <input id="tracklogs_select_all" type="checkbox" checked="checked" onclick="b21_task_planner.tracklogs_select_all_clicked()"/>
                     <a href="#" onclick="b21_task_planner.tab_tracklogs_click()">Tracklogs</a>
@@ -136,6 +141,8 @@ function loaded() {
                 <div id="task_info_content">
                 </div>
             </div>
+            <div id="weather_info">
+            </div>
             <div id="tracklogs">TRACKLOGS ENTRIES GO HERE</div>
         </div> <!-- end left_pane -->
         <div id="left_pane_show">
@@ -143,6 +150,16 @@ function loaded() {
                 title="Show this display pane.">s<br/>h<br/>o<br/>w</button>
         </div>
         <div id="right_pane">
+            <div id="wind_rose">
+                <div id="compass_rose"></div>
+                <div id="wind_arrow_1">
+                    <div id="wind_arrow_1_text"></div>
+                </div>
+                <div id="wind_speed_1">
+                    <div id="wind_speed_1_value"></div>
+                    <div id="wind_speed_units"></div>
+                </div>
+            </div>
             <div id="map"></div>
             <div id="replay">
                 <div id="skip_pause" title="Ignore 'pauses' in tracklogs (note this may take a little while).">

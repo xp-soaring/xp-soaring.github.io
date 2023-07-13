@@ -204,7 +204,11 @@ th {
 
 #left_pane_tabs {
     display: none; /* will enable when GPX is loaded */
-    font-size: calc(min(22px, max(12px,1.5vw)));
+    font-size: calc(min(16px, max(12px,1.5vw)));
+}
+
+#tab_weather {
+    display: none;
 }
 
 .tab_active {
@@ -214,6 +218,9 @@ th {
     margin: 0;
     background-color: #e6ffff;
     color: black;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
 }
 
 .tab_inactive {
@@ -223,6 +230,7 @@ th {
     margin: 0;
     background-color: #999999;
     color: lightgray;
+    border-bottom: 1px solid black;
 }
 
 #rescore_button {
@@ -390,6 +398,80 @@ th {
 }
 
 /* *************************************************** */
+/* ******* Wind                  ********************* */
+/* *************************************************** */
+
+#wind_rose {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    width: 450px;
+    height: 450px;
+    background: transparent;
+    z-index: 690;
+    pointer-events: none;
+    display: none;
+    font-size: 0.8em;
+}
+
+#compass_rose {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/compass_rose.png");
+    background-size: cover;
+}
+
+#wind_arrow_1 {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/wind_arrow_1.png");
+    background-size: cover;
+    transform-origin: center;
+    transform: rotate(200deg);
+}
+
+#wind_arrow_1_text {
+    position: absolute;
+    left: 16.7%;
+    top: 48%;
+    width: 26.5%;
+    height: 5.09%;
+    color: darkblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-origin: center;
+}
+
+#wind_speed_1 {
+    position: absolute;
+    left: 44.44%;
+    top: 44.44%;
+    width: 11.11%;
+    height: 11.11%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: pink; */
+    color: darkblue;
+    flex-direction: column;
+}
+
+#wind_rose_hide {
+    border: 1px solid black;
+    border-radius: 6px;
+    display: none;
+    font-size: 14px;
+    margin-top: 3px;
+    background-color: #eee;
+    padding-right: 2px;
+}
+
+/* *************************************************** */
 /* ******* Task info elements    ********************* */
 /* *************************************************** */
 
@@ -500,6 +582,37 @@ th {
     background-color: #d0d0d0;
     margin-right: 10px;
     font-weight: bold;
+}
+
+/* *************************************************** */
+/* ******* Weather info elements    ****************** */
+/* *************************************************** */
+
+#weather_info {
+    font-size: 14px;
+    width: 100%;
+    display: none;
+    margin-top: 6px;
+}
+
+#weather_info h4 {
+    margin-bottom: 4px;
+}
+
+#weather_info table {
+    min-width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#weather_info td {
+    text-align: center;
+    background-color: lightblue;
+}
+
+#weather_info th {
+    text-align: center;
+    background-color: pink;
 }
 
 /* *************************************************** */
