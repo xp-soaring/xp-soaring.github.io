@@ -628,7 +628,7 @@ th {
 }
 
 #tracklogs_table {
-    /* width: 100%; */
+    width: 100%;
     border-collapse: collapse;
 }
 
@@ -655,7 +655,6 @@ th {
     text-align: left;
     background-color: #e6ffff;
     font-size: 14px;
-    /* width: 90%; */
 }
 
 .tracklogs_entry_filename {
@@ -698,6 +697,16 @@ th {
     text-align: center;
 }
 
+.tracklogs_entry_finished_ok {
+    background-color: lightgreen;
+    min-width: 10px;
+    text-align: center;
+}
+
+.tracklogs_entry_finished_ok:hover {
+    background-color: #cccc88;
+}
+
 /* *************************************************** */
 /* ******* TrackLog info elements    ***************** */
 /* *************************************************** */
@@ -707,9 +716,7 @@ th {
     left: 4%;
     top: 4%;
     margin: 15px;
-    max-width: 40%;
-    max-height: 65%;
-    font-size: 16px;
+    font-size: 20px;
     cursor: default;
     z-index: 2000; /* position above Leaflet map */
     border-radius: 8px;
@@ -748,10 +755,12 @@ th {
     margin-right: auto;
     padding-top: 15px;
     padding-bottom: 15px;
+    border-collapse: collapse;
 }
 
 .tracklog_wp_info {
-    border-top: 2px solid #888888;
+    border-top: 1px solid #cccccc;
+    background-color: #e6ffff;
 }
 
 .tracklog_wp_info:hover {
@@ -759,12 +768,19 @@ th {
 }
 
 .tracklog_wp_info_name {
+    font-weight: bold;
 }
 
 .tracklog_wp_info_time {
 }
 
 .tracklog_wp_info_alt {
+    padding-left: 20px;
+}
+
+.tracklog_wp_info_leg {
+    background-color: white;
+    text-align: right;
 }
 
 .tracklog_wp_info_missed {
@@ -779,6 +795,8 @@ th {
     background-color: lightgreen;
     border-radius: 8px;
     padding: 4px;
+    font-size: 24px;
+    font-weight: bold;
 }
 
 /* *************************************************** */
