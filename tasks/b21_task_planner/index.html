@@ -67,7 +67,7 @@ function loaded() {
     <div class="header">
         <div class="title">
             <!-- NOTE VERSION NUMBER HERE -->
-            <div class="title_text">B21 Task Planner <span id="b21_task_planner_version">v3.25</span></div>
+            <div class="title_text">B21 Task Planner <span id="b21_task_planner_version">v3.26</span></div>
             <div class="title_task_option">Soaring task: <input id="soaring_task_checkbox" type="checkbox" onclick="b21_task_planner.click_soaring_task(this)" checked/></div>
         </div>
     </div>
@@ -163,8 +163,9 @@ function loaded() {
             <div id="map"></div>
             <div id="replay">
                 <div id="skip_pause" title="Ignore 'pauses' in tracklogs (note this may take a little while).">
-                    <input type="checkbox" id="skip_pause_checkbox" onclick="b21_task_planner.skip_pause_click()"/>
-                    Skip pause
+                    <div><input type="checkbox" id="skip_pause_checkbox" onclick="b21_task_planner.skip_pause_click()"/>
+                    Skip pause</div>
+                    <div id="skip_pause_progress"></div>
                 </div>
                 <div id="icon_data" title="Show each glider name/height/speed above icon.">
                     <input type="checkbox" title="name" id="icon_data_name_checkbox" onclick="b21_task_planner.icon_data_name_click()" />
