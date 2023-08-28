@@ -67,7 +67,7 @@ function loaded() {
     <div class="header">
         <div class="title">
             <!-- NOTE VERSION NUMBER HERE -->
-            <div class="title_text">B21 Task Planner <span id="b21_task_planner_version">v3.29</span></div>
+            <div class="title_text">B21 Task Planner <span id="b21_task_planner_version">v3.30</span></div>
             <div class="title_task_option">Soaring task: <input id="soaring_task_checkbox" type="checkbox" onclick="b21_task_planner.click_soaring_task(this)" checked/></div>
         </div>
     </div>
@@ -121,6 +121,7 @@ function loaded() {
                         title="Hide this display pane.">h<br/>i<br/>d<br/>e</button>
                     <div id="wind_rose_hide">
                         <input id="wind_rose_hide_check" type="checkbox" checked onclick="b21_task_planner.wind_hide_clicked()">Wind</input>
+                        <img id="wind_rose_position" src="images/compass_rose_position.png" onclick="b21_task_planner.wind_position_clicked()"/>
                     </div>
                 </div>
             </div>
@@ -169,7 +170,8 @@ function loaded() {
                 </div>
                 <div id="icon_data" title="Show each glider name/height/speed above icon.">
                     <input type="checkbox" title="name" id="icon_data_name_checkbox" onclick="b21_task_planner.icon_data_name_click()" />
-                    <input type="checkbox" title="numbers" id="icon_data_numbers_checkbox" onclick="b21_task_planner.icon_data_numbers_click()" />
+                    <input type="checkbox" title="altitude" id="icon_data_altitude_checkbox" onclick="b21_task_planner.icon_data_altitude_click()" />
+                    <input type="checkbox" title="speed" id="icon_data_speed_checkbox" onclick="b21_task_planner.icon_data_speed_click()" />
                     Icon data
                 </div>
                 <div id="replay_sync" title="Offset tracklog times to a common start time. Tracklogs must have successful task start.">

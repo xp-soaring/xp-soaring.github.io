@@ -469,6 +469,11 @@ th {
     margin-top: 3px;
     background-color: #eee;
     padding-right: 2px;
+    align-items: center;
+}
+
+#wind_rose_position {
+    cursor: pointer;
 }
 
 /* *************************************************** */
@@ -879,6 +884,7 @@ th {
 
 #replay_time {
     display: inline-flex;
+    font-family: monospace;
 }
 
 #replay_hide_chart {
