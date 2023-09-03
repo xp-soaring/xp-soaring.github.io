@@ -151,12 +151,17 @@ th {
 }
 
 #left_top_area { /* drop_zone + left_pane_hide */
-    display: block;
+    display: flex;
+    justify-content: right;
 }
 
 #left_pane_hide {
-    display: inline-block;
-    vertical-align: top;
+    display: inline-flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: right;
+    align-items: flex-end;
+    margin-right: 5px;
 }
 
 #left_pane_hide button {
@@ -168,6 +173,7 @@ th {
     margin-left: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
+    width: 25px;
 }
 
 #left_pane_show {
@@ -255,7 +261,7 @@ th {
 
 #drop_zone {
     display: inline-block;
-    width: 75%;
+    width: 65%;
     /* min-height: 25%;*/
     border-radius: 20px;
     border: 2px dashed gray;
@@ -266,6 +272,7 @@ th {
     text-align: center;
     line-height: 25px;
     padding-bottom: 6px;
+    flex: 3;
 }
 
 #drop_zone_choose_input {
@@ -405,8 +412,10 @@ th {
     position: absolute;
     left: 20px;
     top: 20px;
-    width: 450px;
-    height: 450px;
+    width: 25vw;
+    height: 25vw;
+    max-height: 450px;
+    max-width: 450px;
     background: transparent;
     z-index: 690;
     pointer-events: none;
@@ -421,7 +430,8 @@ th {
     width: 100%;
     height: 100%;
     background-image: url("../images/compass_rose.png");
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 #wind_arrow_1 {
@@ -429,7 +439,8 @@ th {
     width: 100%;
     height: 100%;
     background-image: url("../images/wind_arrow_1.png");
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
     transform-origin: center;
     transform: rotate(200deg);
 }
@@ -660,6 +671,11 @@ th {
     text-align: left;
     background-color: #e6ffff;
     font-size: 14px;
+}
+
+.tracklogs_entry_name {
+    max-width: 80%;
+    overflow: ellipsis;
 }
 
 .tracklogs_entry_filename {

@@ -1,0 +1,556 @@
+<html>
+<head>
+<style>
+    body {
+        font-family: sans-serif;
+    }
+
+    .parameter_table {
+        border-collapse: collapse;
+        border: 2px solid black;
+    }
+
+    .parameter_table tr {
+        border-top: 1px solid;
+    }
+
+    .parameter_table td {
+        border-left: 1px solid;
+    }
+</style>
+</head>
+<body>
+    <h2 id="flight_model_cf">flight_model.cfg - [AERODYNAMICS]</h2>
+    <p>This section is for defining the aerodynamics of an aircraft. In general, the aerodynamics of the aircraft should be created and edited through the <a href="../Developer_Mode/Aircraft_Editor_Old/The_Aircraft_Editor_Deprecated.htm">Aircraft Editor</a>, and only tweaked if required through the <a href="../Content_Configuration/SimObjects/Aircraft_SimO/flight_model_cfg.htm"><code class="inline">flight_model.cfg</code></a> file.</p>
+    <p>&nbsp;</p>
+    <p>Note that you can find further information on the physics behind this section from the following page:</p>
+    <ul>
+      <li><a href="https://docs.flightsimulator.com/html/Samples_And_Tutorials/Primers/Flight_Model_Physics.htm#aerodynamics">Aircraft Description - Aerodynamics</a></li>
+    </ul>
+    <p>&nbsp;</p>
+    <p>You can also find a helpful tutorial on the basics of setting up the aircraft geometry from the following page:</p>
+    <ul>
+      <li><a data-xref="{text}" href="https://docs.flightsimulator.com/html/mergedProjects/How_To_Make_An_Aircraft/Contents/Files/The_Flight_Model.htm">Setup The Aircraft Flight Model</a></li>
+    </ul>
+    <p>&nbsp;</p>
+    <p>The available parameters in the <code class="inline">[AERODYNAMICS]</code> section are:</p>
+    <p>&nbsp;</p>
+    <table class="parameter_table">
+      <colgroup>
+        <col style="width: 137px;">
+        <col style="width: 647px;">
+        <col style="width: 105px;">
+        <col style="width: 94px;">
+      </colgroup>
+      <tbody>
+        <tr>
+          <th>Parameter</th>
+          <th>Description</th>
+          <th>Type</th>
+          <th>Required</th>
+        </tr>
+        <tr>
+          <td><a id="CFD_EnableSimulation"></a><code class="inline">CFD_EnableSimulation</code></td>
+          <td colspan="1">
+            <p>This can be used to enable (1, TRUE) or disable (0, FALSE) the use of <a href="#" data-popovertext="Computational Fluid Dynamics (CFD) is a branch of fluid mechanics that uses numerical analysis and data structures to analyze and solve problems that involve fluid flows. Computers are used to perform the calculations required to simulate the free-stream flow of the fluid, and the interaction of the fluid (liquids and gases) with surfaces defined by boundary conditions." data-rhwidget="TextPopOver" aria-haspopup="true" role="button">CFD</a> within the simulation.</p>
+            <p>Default value is 0 (FALSE).</p>
+            <p>For more information, please see here: <a href="../Developer_Mode/Aircraft_Editor/Debug/Debug_Aircraft_CFD.htm">Debug Aircraft CFD</a>.</p>
+          </td>
+          <td>Boolean</td>
+          <td style="text-align: center;">No</td>
+        </tr>
+        <tr>
+          <td><a id="CFD_ReinjectBody"></a><code class="inline">CFD_ReinjectBody</code></td>
+          <td colspan="1">
+            <p>This can be used to enable (1, TRUE) or disable (0, FALSE) the reinjection of the <a href="#" data-popovertext="Computational Fluid Dynamics (CFD) is a branch of fluid mechanics that uses numerical analysis and data structures to analyze and solve problems that involve fluid flows. Computers are used to perform the calculations required to simulate the free-stream flow of the fluid, and the interaction of the fluid (liquids and gases) with surfaces defined by boundary conditions." data-rhwidget="TextPopOver" aria-haspopup="true" role="button">CFD</a> output with that of the flight model, specifically affecting the airframe surface. Note that this needs to be set to 1 (TRUE) for <code class="inline"><a href="../Content_Configuration/SimObjects/Aircraft_SimO/flight_model/aerodynamics.htm#CFD_ReinjectRotors">CFD_ReinjectRotors</a></code>, <code class="inline"><a href="../Content_Configuration/SimObjects/Aircraft_SimO/flight_model/aerodynamics.htm#CFD_ReinjectVTailX">CFD_ReinjectVTailX</a></code>, and <code class="inline"><a href="../Content_Configuration/SimObjects/Aircraft_SimO/flight_model/aerodynamics.htm#CFD_ReinjectHTailY">CFD_ReinjectHTailY</a></code> to work as well. If this is 0 (FALSE), then those parameters will have no effect.</p>
+            <p>Default value is 0 (FALSE).</p>
+            <p>For more information, please see here: <a href="../Developer_Mode/Aircraft_Editor/Debug/Debug_Aircraft_CFD.htm">Debug Aircraft CFD</a>.</p>
+          </td>
+          <td>Boolean</td>
+          <td style="text-align: center;">No</td>
+        </tr>
+        <tr>
+          <td><a id="CFD_ReinjectRotors"></a><code class="inline">CFD_ReinjectRotors</code></td>
+          <td colspan="1">
+            <p>This can be used to enable (1, TRUE) or disable (0, FALSE) the re-injection of the <a href="#" data-popovertext="Computational Fluid Dynamics (CFD) is a branch of fluid mechanics that uses numerical analysis and data structures to analyze and solve problems that involve fluid flows. Computers are used to perform the calculations required to simulate the free-stream flow of the fluid, and the interaction of the fluid (liquids and gases) with surfaces defined by boundary conditions." data-rhwidget="TextPopOver" aria-haspopup="true" role="button">CFD</a> output with that of the flight model for rotors/propellers. Note that this parameter will have no effect if the <code class="inline"><a href="../Content_Configuration/SimObjects/Aircraft_SimO/flight_model/aerodynamics.htm#CFD_ReinjectBody">CFD_ReinjectBody</a></code> parameter is not set to 1 (TRUE).</p>
+            <p>Default value is 0 (FALSE).</p>
+            <p>For more information, please see here: <a href="../Developer_Mode/Aircraft_Editor/Debug/Debug_Aircraft_CFD.htm">Debug Aircraft CFD</a>.<br>
+              <span class="note"><strong>IMPORTANT!</strong> This requires that you have the <code class="inline"><a href="../Content_Configuration/SimObjects/Aircraft_SimO/engine_cfg.htm#prop_mod_use_modern">prop_mod_use_modern</a></code> parameter set to 1 (TRUE).</span>
+            </p>
+          </td>
+          <td>Boolean</td>
+          <td style="text-align: center;">No</td>
+        </tr>
+        <tr>
+          <td><a id="CFD_ReinjectVTailX"></a><code class="inline">CFD_ReinjectVTailX</code></td>
+          <td colspan="1">
+            <p>This can be used to enable (1, TRUE) or disable (0, FALSE) the re-injection of the <a href="#" data-popovertext="Computational Fluid Dynamics (CFD) is a branch of fluid mechanics that uses numerical analysis and data structures to analyze and solve problems that involve fluid flows. Computers are used to perform the calculations required to simulate the free-stream flow of the fluid, and the interaction of the fluid (liquids and gases) with surfaces defined by boundary conditions." data-rhwidget="TextPopOver" aria-haspopup="true" role="button">CFD</a> output with that of the flight model, specifically affecting the tail control surfaces. Note that this parameter will have no effect if the <code class="inline"><a href="../Content_Configuration/SimObjects/Aircraft_SimO/flight_model/aerodynamics.htm#CFD_ReinjectBody">CFD_ReinjectBody</a></code> parameter is not set to 1 (TRUE).</p>
+            <p>Default value is 0 (FALSE).</p>
+            <p>For more information, please see here: <a href="../Developer_Mode/Aircraft_Editor/Debug/Debug_Aircraft_CFD.htm">Debug Aircraft CFD</a>.</p>
+          </td>
+          <td>Boolean</td>
+          <td style="text-align: center;">No</td>
+        </tr>
+        <tr>
+          <td><a id="CFD_ReinjectHTailY"></a><code class="inline">CFD_ReinjectHTailY</code></td>
+          <td colspan="1">
+            <p>This can be used to enable (1, TRUE) or disable (0, FALSE) the re-injection of the <a href="#" data-popovertext="Computational Fluid Dynamics (CFD) is a branch of fluid mechanics that uses numerical analysis and data structures to analyze and solve problems that involve fluid flows. Computers are used to perform the calculations required to simulate the free-stream flow of the fluid, and the interaction of the fluid (liquids and gases) with surfaces defined by boundary conditions." data-rhwidget="TextPopOver" aria-haspopup="true" role="button">CFD</a> output with that of the flight model, specifically affecting the tail control surfaces. Note that this parameter will have no effect if the <code class="inline"><a href="../Content_Configuration/SimObjects/Aircraft_SimO/flight_model/aerodynamics.htm#CFD_ReinjectBody">CFD_ReinjectBody</a></code> parameter is not set to 1 (TRUE).</p>
+            <p>Default value is 0 (FALSE).</p>
+            <p>For more information, please see here: <a href="../Developer_Mode/Aircraft_Editor/Debug/Debug_Aircraft_CFD.htm">Debug Aircraft CFD</a>.</p>
+          </td>
+          <td>Boolean</td>
+          <td style="text-align: center;">No</td>
+        </tr>
+        <tr class="rh-cursor-row">
+          <td><a id="CFD_AirViscosity"></a><code class="inline">CFD_AirViscosity</code></td>
+          <td colspan="1">
+            <p>Set the air viscosity when the <a href="#" data-popovertext="Computational Fluid Dynamics (CFD) is a branch of fluid mechanics that uses numerical analysis and data structures to analyze and solve problems that involve fluid flows. Computers are used to perform the calculations required to simulate the free-stream flow of the fluid, and the interaction of the fluid (liquids and gases) with surfaces defined by boundary conditions." data-rhwidget="TextPopOver" aria-haspopup="true" role="button">CFD</a> simulation is active. This is essentially the viscosity term of the <a href="https://en.wikipedia.org/wiki/Navier%E2%80%93Stokes_equations">Navier Stokes equations</a> used by the CFD simulation, and it sets the rate at which the airspeed of a voxel will tend to the average airspeed of the surrounding voxels.</p>
+            <p>Default value is 0.05, and the value will only be used when the <code class="inline"><a href="../Content_Configuration/SimObjects/Aircraft_SimO/flight_model/aerodynamics.htm#CFD_EnableSimulation">CFD_EnableSimulation</a></code> parameter is set to 1 (TRUE).</p>
+            <p>For more information, please see here: <a href="../Developer_Mode/Aircraft_Editor/Debug/Debug_Aircraft_CFD.htm">Debug Aircraft CFD</a>.</p>
+          </td>
+          <td>Float</td>
+          <td style="text-align: center;">No</td>
+        </tr>
+        <tr>
+          <td><a id="CFD_AirInCompressibility"></a><code class="inline">CFD_AirInCompressibility</code></td>
+          <td colspan="1">
+            <p>Set the air incompressibility when the <a href="#" data-popovertext="Computational Fluid Dynamics (CFD) is a branch of fluid mechanics that uses numerical analysis and data structures to analyze and solve problems that involve fluid flows. Computers are used to perform the calculations required to simulate the free-stream flow of the fluid, and the interaction of the fluid (liquids and gases) with surfaces defined by boundary conditions." data-rhwidget="TextPopOver" aria-haspopup="true" role="button">CFD</a> simulation is active. This is essentially the divergence term of the the <a href="https://en.wikipedia.org/wiki/Navier%E2%80%93Stokes_equations">Navier Stokes equations</a> used by the CFD simulation, and sets the rate at which the pressure of a voxel will be impacted by the local divergence.</p>
+            <p>Default value is 1.0, and the value will only be used when the <code class="inline"><a href="../Content_Configuration/SimObjects/Aircraft_SimO/flight_model/aerodynamics.htm#CFD_EnableSimulation">CFD_EnableSimulation</a></code> parameter is set to 1 (TRUE).</p>
+            <p>For more information, please see here: <a href="../Developer_Mode/Aircraft_Editor/Debug/Debug_Aircraft_CFD.htm">Debug Aircraft CFD</a>.</p>
+          </td>
+          <td>Float</td>
+          <td style="text-align: center;">No</td>
+        </tr>
+        <tr>
+          <td><a id="CFD_VoxelSizeScale"></a><code class="inline">CFD_VoxelSizeScale</code></td>
+          <td colspan="1">
+            <p>Set the scale of the voxel volume for <a href="#" data-popovertext="Computational Fluid Dynamics (CFD) is a branch of fluid mechanics that uses numerical analysis and data structures to analyze and solve problems that involve fluid flows. Computers are used to perform the calculations required to simulate the free-stream flow of the fluid, and the interaction of the fluid (liquids and gases) with surfaces defined by boundary conditions." data-rhwidget="TextPopOver" aria-haspopup="true" role="button">CFD</a> simulation. At 1, this will create a volume that is 150% that of the aircraft wingspan, and the volume will be comprised of <em>n</em>³ voxels (where <em>n</em> is set by the <code class="inline"><a href="../Content_Configuration/SimObjects/Aircraft_SimO/flight_model/aerodynamics.htm#CFD_VoxelNbVoxels">CFD_VoxelNbVoxels</a></code> parameter).</p>
+            <p>Default value is 1.0, and the value will only be used when the <code class="inline"><a href="../Content_Configuration/SimObjects/Aircraft_SimO/flight_model/aerodynamics.htm#CFD_EnableSimulation">CFD_EnableSimulation</a></code> parameter is set to 1 (TRUE).</p>
+            <p>For more information, please see here: <a href="../Developer_Mode/Aircraft_Editor/Debug/Debug_Aircraft_CFD.htm">Debug Aircraft CFD</a>.</p>
+          </td>
+          <td>Float</td>
+          <td style="text-align: center;">No</td>
+        </tr>
+        <tr>
+          <td><a id="CFD_VoxelNbVoxels"></a><code class="inline">CFD_VoxelNbVoxels</code></td>
+          <td colspan="1">
+            <p>This can be used to set the number of voxels that will be cubed to make the sample volume for the <a href="#" data-popovertext="Computational Fluid Dynamics (CFD) is a branch of fluid mechanics that uses numerical analysis and data structures to analyze and solve problems that involve fluid flows. Computers are used to perform the calculations required to simulate the free-stream flow of the fluid, and the interaction of the fluid (liquids and gases) with surfaces defined by boundary conditions." data-rhwidget="TextPopOver" aria-haspopup="true" role="button">CFD</a> simulation.</p>
+            <p><span class="note"><strong>IMPORTANT!</strong> This may have a serious impact on performance if set to values greater than the default value, due to it currently having a time complexity of <code class="inline">O(n3)</code>.</span></p>
+            <p>Default value is 20.0, and the value will only be used when the <code class="inline"><a href="../Content_Configuration/SimObjects/Aircraft_SimO/flight_model/aerodynamics.htm#CFD_EnableSimulation">CFD_EnableSimulation</a></code> parameter is set to 1 (TRUE).</p>
+            <p>For more information, please see here: <a href="../Developer_Mode/Aircraft_Editor/Debug/Debug_Aircraft_CFD.htm">Debug Aircraft CFD</a>.</p>
+          </td>
+          <td>Float</td>
+          <td style="text-align: center;">No</td>
+        </tr>
+        <tr>
+          <td><a id="CFD_GroundCollisionVoxelOffset"></a><code class="inline">CFD_GroundCollisionVoxelOffset</code></td>
+          <td colspan="1">
+            <p>This parameter allows you to offset the ground collision vertically by <em>N</em> voxels. With a value of 0 voxels, the ground collision lets the air penetrate up to 1 voxel into the ground, ie: the ground is a "soft collision layer" of about 1 voxel thickness that starts at ground level and ends 1 voxel into the ground. By setting this to 1 voxel, the soft ground collision starts 1 voxel <em>above</em> the ground and stops airflow <em>before</em> it touches the ground. Adjusting this value will have an impact on the strength of the ground effect that is applied on the aircraft. It is worth noting that ground effect is calculated taking into account the ground conditions, so things like icing will have an effect on the drag and lift.</p>
+            <p>Default value is 0.0, and the value will only be used when the <code class="inline"><a href="../Content_Configuration/SimObjects/Aircraft_SimO/flight_model/aerodynamics.htm#CFD_EnableSimulation">CFD_EnableSimulation</a></code> parameter is set to 1 (TRUE).</p>
+            <p>For more information, please see here: <a href="../Developer_Mode/Aircraft_Editor/Debug/Debug_Aircraft_CFD.htm">Debug Aircraft CFD</a>.</p>
+          </td>
+          <td>Float</td>
+          <td style="text-align: center;">No</td>
+        </tr>
+        <tr>
+          <td><a id="lift_coef_flaps"></a><code class="inline">lift_coef_flaps</code></td>
+          <td colspan="1">Defines the lift coefficient that will be added to the target lift coefficient obtained with the <code class="inline"><a href="../Content_Configuration/SimObjects/Aircraft_SimO/flight_model/aerodynamics.htm#lift_coef_aoa_table">lift_coef_aoa_table</a></code> of the airplane when at maximum flap expansion.</td>
+          <td>Float</td>
+          <td style="text-align: center;">Yes</td>
+        </tr>
+        <tr>
+          <td><a id="lift_coef_spoilers"></a><code class="inline">lift_coef_spoilers</code></td>
+          <td colspan="1">
+            <p>Defines the lift coefficient that will be added to the target lift coefficient obtained with the <code class="inline"><a href="../Content_Configuration/SimObjects/Aircraft_SimO/flight_model/aerodynamics.htm#lift_coef_aoa_table">lift_coef_aoa_table</a></code> of the aircraft when at maximum spoiler expansion on the ground. This allows you to correctly tune the spoilers for ground usage where there is very strong drag and very strong loss in lift. Essentially this is the coefficient for the deflection of 1 radian.</p>
+            <p>&nbsp;</p>
+            <p>The lift value is multiplied by the spoiler deflection in radians, so this coefficient is necessary to compensate for the scale by the deflection angle (also in radians), in order to reach 100%.</p>
+            <p><span class="note"><strong>NOTE</strong>:&nbsp;This value will also be used when the aircraft is airborne, unless the&nbsp;<code class="inline">lift_coef_air_spoilers</code> value is set.</span></p>
+          </td>
+          <td>Float</td>
+          <td style="text-align: center;">Yes</td>
+        </tr>
+        <tr>
+          <td><code class="inline">lift_coef_air_spoilers</code></td>
+          <td colspan="1">
+            <p>Defines the lift coefficient that will be added to the target lift coefficient obtained with the <code class="inline"><a href="../Content_Configuration/SimObjects/Aircraft_SimO/flight_model/aerodynamics.htm#lift_coef_aoa_table">lift_coef_aoa_table</a></code> of the aircraft when at maximum spoiler expansion in the air. This allows to correctly tune the spoiler behaviour in the air where you have strong drag, and little loss in lift.&nbsp;The lift value is multiplied by the spoiler deflection in radians, so this coefficient is necessary to compensate for the scale by the deflection angle (also in radians), in order to reach 100%.</p>
+            <p><span class="note">NOTE:&nbsp;This value overrides the value set by&nbsp;<code class="inline">lift_coef_spoilers</code>.&nbsp;</span></p>
+          </td>
+          <td>Float</td>
+          <td style="text-align: center;">No</td>
+        </tr>
+        <tr>
+          <td><a id="drag_coef_zero_lift"></a><code class="inline">drag_coef_zero_lift</code></td>
+          <td colspan="1">
+            <p>Defines the target drag of the airplane in clean configuration (ie: no propeller, no turbulence, no engine wash, no gears, no flaps, no spoilers, no deflections...), when there is zero lift. This is usually also called the <mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="4" style="font-size: 123.5%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-msub><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D436 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em; margin-left: -0.045em;"><mjx-texatom size="s" texclass="ORD"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D437 TEX-I"></mjx-c></mjx-mi><mjx-mn class="mjx-n"><mjx-c class="mjx-c30"></mjx-c></mjx-mn></mjx-texatom></mjx-script></mjx-msub></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>C</mi><mrow data-mjx-texclass="ORD"><mi>D</mi><mn>0</mn></mrow></msub></math></mjx-assistive-mml></mjx-container> or <mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="5" style="font-size: 123.5%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-msub><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D436 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em; margin-left: -0.045em;"><mjx-texatom size="s" texclass="ORD"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D437 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D44D TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D452 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45F TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45C TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D43F TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D456 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D453 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D461 TEX-I"></mjx-c></mjx-mi></mjx-texatom></mjx-script></mjx-msub></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>C</mi><mrow data-mjx-texclass="ORD"><mi>D</mi><mi>Z</mi><mi>e</mi><mi>r</mi><mi>o</mi><mi>L</mi><mi>i</mi><mi>f</mi><mi>t</mi></mrow></msub></math></mjx-assistive-mml></mjx-container>. Zero lift may occur at an angle of attack of zero - reason for which <mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="6" style="font-size: 123.5%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-msub><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D436 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em; margin-left: -0.045em;"><mjx-texatom size="s" texclass="ORD"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D437 TEX-I"></mjx-c></mjx-mi><mjx-mn class="mjx-n"><mjx-c class="mjx-c30"></mjx-c></mjx-mn></mjx-texatom></mjx-script></mjx-msub></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>C</mi><mrow data-mjx-texclass="ORD"><mi>D</mi><mn>0</mn></mrow></msub></math></mjx-assistive-mml></mjx-container> is sometimes the drag at an <a href="#" data-popovertext="This stands for the 'Angle of Attack', which specifies the angle between the chord line of the wing of a fixed-wing aircraft and the vector representing the relative motion between the aircraft and the atmosphere." data-rhwidget="TextPopOver" aria-haspopup="true" role="button">AoA</a> of 0 - but most of the time, zero lift occurs at an angle of attack that is negative and the <mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="7" style="font-size: 123.5%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-msub><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D436 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em; margin-left: -0.045em;"><mjx-texatom size="s" texclass="ORD"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D437 TEX-I"></mjx-c></mjx-mi><mjx-mn class="mjx-n"><mjx-c class="mjx-c30"></mjx-c></mjx-mn></mjx-texatom></mjx-script></mjx-msub></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>C</mi><mrow data-mjx-texclass="ORD"><mi>D</mi><mn>0</mn></mrow></msub></math></mjx-assistive-mml></mjx-container> does not correspond to the drag at <a href="#" data-popovertext="This stands for the 'Angle of Attack', which specifies the angle between the chord line of the wing of a fixed-wing aircraft and the vector representing the relative motion between the aircraft and the atmosphere." data-rhwidget="TextPopOver" aria-haspopup="true" role="button">AoA</a> 0.</p>
+            <p>In the <em>legacy</em> <span data-keyref="game_fx_short">FSX</span> flight model, this defines the actual <mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="8" style="font-size: 123.5%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-msub><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D436 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em; margin-left: -0.045em;"><mjx-texatom size="s" texclass="ORD"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D437 TEX-I"></mjx-c></mjx-mi><mjx-mn class="mjx-n"><mjx-c class="mjx-c30"></mjx-c></mjx-mn></mjx-texatom></mjx-script></mjx-msub></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>C</mi><mrow data-mjx-texclass="ORD"><mi>D</mi><mn>0</mn></mrow></msub></math></mjx-assistive-mml></mjx-container>. In the <em>modern</em> flight model, this defines the target <mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="9" style="font-size: 123.5%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-msub><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D436 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em; margin-left: -0.045em;"><mjx-texatom size="s" texclass="ORD"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D437 TEX-I"></mjx-c></mjx-mi><mjx-mn class="mjx-n"><mjx-c class="mjx-c30"></mjx-c></mjx-mn></mjx-texatom></mjx-script></mjx-msub></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>C</mi><mrow data-mjx-texclass="ORD"><mi>D</mi><mn>0</mn></mrow></msub></math></mjx-assistive-mml></mjx-container> that will be distributed over all the surfaces of the aircraft when building the airplane used in the aerodynamic surface simulation. Once the aircraft is built, it will then be normalized to match exactly the target <mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="10" style="font-size: 123.5%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-msub><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D436 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em; margin-left: -0.045em;"><mjx-texatom size="s" texclass="ORD"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D437 TEX-I"></mjx-c></mjx-mi><mjx-mn class="mjx-n"><mjx-c class="mjx-c30"></mjx-c></mjx-mn></mjx-texatom></mjx-script></mjx-msub></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>C</mi><mrow data-mjx-texclass="ORD"><mi>D</mi><mn>0</mn></mrow></msub></math></mjx-assistive-mml></mjx-container>.</p>
+          </td>
+          <td>Float</td>
+          <td style="text-align: center;">Yes</td>
+        </tr>
+        <tr>
+          <td><a id="drag_coef_flaps"></a><code class="inline">drag_coef_flaps</code></td>
+          <td colspan="1">Defines the target drag added when flaps are fully extended. In the <em>legacy</em> <span data-keyref="game_fx_short">FSX</span> flight model, this defines the actual flap drag. In the <em>modern</em> flight model, this defines the target flap drag that will be distributed over all the flap surfaces of the aircraft when building the airplane used in the aerodynamic surface simulation. Once the aircraft is built, it will then be normalized to match exactly the target flap drag.</td>
+          <td>Float</td>
+          <td style="text-align: center;">Yes</td>
+        </tr>
+        <tr>
+          <td><a id="drag_coef_gear"></a><code class="inline">drag_coef_gear</code></td>
+          <td colspan="1">
+            <p>Defines the drag of the gears that will be applied at the location of the gear contact points and create the appropriate angular moment.</p>
+            <p>If the aircraft features retractable gears, this coefficient will be zero once the gears are retracted. For non retractable gears this will always be present. All aircraft which feature gears, retractable or not, should define a drag coefficient for gears. This drag coefficient should <em>not</em> be baked into the <code class="inline"><a href="../Content_Configuration/SimObjects/Aircraft_SimO/flight_model/aerodynamics.htm#drag_coef_zero_lift">drag_coef_zero_lift</a></code> otherwise the gear angular moment calculations will be wrong.</p>
+          </td>
+          <td>Float</td>
+          <td style="text-align: center;">Yes</td>
+        </tr>
+        <tr>
+          <td><a id="drag_coef_spoilers"></a><code class="inline">drag_coef_spoilers</code></td>
+          <td colspan="1">
+            <p>Defines the target drag added when spoilers are fully extended on the ground, where there is very strong drag and very strong loss in lift.&nbsp;The drag value is multiplied by the spoiler deflection in radians, so this coefficient is necessary to compensate for the scale by the deflection angle (also in radians), in order to reach 100%.</p>
+            <p><span class="note"><strong>NOTE</strong>:&nbsp;This value will also be used when the aircraft is airborne, unless the&nbsp;<code class="inline">drag_coef_air_spoilers</code> value is set.</span>In the <em>legacy</em> <span data-keyref="game_fx_short">FSX</span> flight model, this defines the actual flap drag. In the <em>modern</em> flight model, this defines the target spoiler drag that will be distributed over all the spoiler surfaces of the aircraft when building the airplane used in the aerodynamic surface simulation. Once the aircraft is built, it will then be normalized to match exactly the target spoiler drag.</p>
+          </td>
+          <td>Float</td>
+          <td style="text-align: center;">Yes</td>
+        </tr>
+        <tr>
+          <td><code class="inline">drag_coef_air_spoilers</code></td>
+          <td colspan="1">
+            <p>Defines the target drag added when spoilers are fully extended in the air, where you have strong drag, and little loss in lift.&nbsp;The drag value is multiplied by the spoiler deflection in radians, so this coefficient is necessary to compensate for the scale by the deflection angle (also in radians), in order to reach 100%.</p>
+            <p><span class="note">NOTE:&nbsp;This value overrides the value set by&nbsp;<code class="inline">drag_coef_spoilers</code>.&nbsp;</span></p>
+          </td>
+          <td>Float</td>
+          <td style="text-align: center;">Yes</td>
+        </tr>
+        <tr>
+          <td><code class="inline">StallDef_StartRatio</code></td>
+          <td colspan="1">
+            <p>Ratio of the stall <a href="#" data-popovertext="This stands for the 'Angle of Attack', which specifies the angle between the chord line of the wing of a fixed-wing aircraft and the vector representing the relative motion between the aircraft and the atmosphere." data-rhwidget="TextPopOver" aria-haspopup="true" role="button">AoA</a> at which the airflow will start detaching from the wing.</p>
+            <p>Default value is: 0.9</p>
+          </td>
+          <td>Float</td>
+          <td style="text-align: center;">No</td>
+        </tr>
+        <tr>
+          <td><code class="inline">StallDef_EndRatio</code></td>
+          <td colspan="1">
+            <p>Ratio of the stall <a href="#" data-popovertext="This stands for the 'Angle of Attack', which specifies the angle between the chord line of the wing of a fixed-wing aircraft and the vector representing the relative motion between the aircraft and the atmosphere." data-rhwidget="TextPopOver" aria-haspopup="true" role="button">AoA</a> at which the airflow will be completely detached from the wing.</p>
+            <p>Default value is: 1.1</p>
+          </td>
+          <td>Float</td>
+          <td style="text-align: center;">No</td>
+        </tr>
+        <tr>
+          <td><code class="inline">StallDef_CurvePower</code></td>
+          <td colspan="1">
+            <p>Power of the ratio curve that controls the airflow detaching from the wing between start and end.</p>
+            <p>Default value is: 8.0</p>
+          </td>
+          <td>Float</td>
+          <td style="text-align: center;">No</td>
+        </tr>
+        <tr>
+          <td><code class="inline">StallDef_minTransition</code></td>
+          <td colspan="1">
+            <p>In Radians, minimum angle between the stall <a href="#" data-popovertext="This stands for the 'Angle of Attack', which specifies the angle between the chord line of the wing of a fixed-wing aircraft and the vector representing the relative motion between the aircraft and the atmosphere." data-rhwidget="TextPopOver" aria-haspopup="true" role="button">AoA</a> at which the airflow starts detaching and at which it is fully detached.</p>
+            <p>Default value is: 0.025</p>
+          </td>
+          <td>Float</td>
+          <td style="text-align: center;">No</td>
+        </tr>
+        <tr>
+          <td><code class="inline">StallDef_airflowdetachspeed</code></td>
+          <td colspan="1">
+            <p>In ratios per second, speed at which the airflow will be detaching.</p>
+            <p>Default value is: 1.0</p>
+          </td>
+          <td>Float</td>
+          <td style="text-align: center;">No</td>
+        </tr>
+        <tr>
+          <td><code class="inline">StallDef_airflowattachspeed</code></td>
+          <td colspan="1">
+            <p>In ratios per second, speed at which the airflow will be attaching.</p>
+            <p>Default value is: 1.0</p>
+          </td>
+          <td>Float</td>
+          <td style="text-align: center;">No</td>
+        </tr>
+        <tr>
+          <td><code class="inline">Stall_AileronAddIncidence</code></td>
+          <td colspan="1">
+            <p>Degrees added to the stall <a href="#" data-popovertext="This stands for the 'Angle of Attack', which specifies the angle between the chord line of the wing of a fixed-wing aircraft and the vector representing the relative motion between the aircraft and the atmosphere." data-rhwidget="TextPopOver" aria-haspopup="true" role="button">AoA</a> at the ailerons.</p>
+            <p>Default value is: 0.0</p>
+          </td>
+          <td>Float</td>
+          <td style="text-align: center;">No</td>
+        </tr>
+        <tr>
+          <td><code class="inline">Stall_TipAddIncidence</code></td>
+          <td colspan="1">
+            <p>Degrees added to the stall <a href="#" data-popovertext="This stands for the 'Angle of Attack', which specifies the angle between the chord line of the wing of a fixed-wing aircraft and the vector representing the relative motion between the aircraft and the atmosphere." data-rhwidget="TextPopOver" aria-haspopup="true" role="button">AoA</a> at the wingtips.</p>
+            <p>Default value is: 2.0</p>
+          </td>
+          <td>Float</td>
+          <td style="text-align: center;">No</td>
+        </tr>
+        <tr>
+          <td><code class="inline">Stall_TipAddTwist</code></td>
+          <td colspan="1">
+            <p>Virtual added wing twist to reduce stall at the root of the wing.</p>
+            <p>Default value is: 2.5</p>
+          </td>
+          <td>Float</td>
+          <td style="text-align: center;">No</td>
+        </tr>
+        <tr>
+          <td><code class="inline">Stall_TipTwistScaleRatio</code></td>
+          <td colspan="1">
+            <p>Scale ratio of the virtual added wing twist.</p>
+            <p>Default value is: 0.9</p>
+          </td>
+          <td>Float</td>
+          <td style="text-align: center;">No</td>
+        </tr>
+        <tr>
+          <td><code class="inline">fuselage_rigidity</code></td>
+          <td colspan="1">
+            <p>This parameter sets the rigidity of the fuselage. If set to -1 then the fuselage will be considered as having "infinite" rigidity, while values greater than 0 will mean that applied forces will affect the airframe. The approximate value for this parameter can be calculated as follows:</p>
+            <ul>
+              <li><span class="smallfont"><code class="inline">fuselage_rigidity</code> = distance from the <a href="#" data-popovertext="This stands for the 'Center Of Gravity'. The CG of an aircraft is the point over which the aircraft would balance. The center of gravity affects the stability of the aircraft and must fall within specified limits established by the aircraft manufacturer." data-rhwidget="TextPopOver" aria-haspopup="true" role="button">CG</a> in <a href="#" data-popovertext="The 'foot' (or 'feet' in plural) is an Imperial unit of measurement, and is approximately 0.3 meters on the metric scale." data-rhwidget="TextPopOver" aria-haspopup="true" role="button">ft</a> at which a force applied yields 50% of it's effect on the entire airframe after 1 second.</span></li>
+            </ul>
+            <p>Note that low rigidity will increase the aircraft oscillations, and if the rigidity is low enough for the time accumulation to correspond to the oscillation frequency, then you can even get a situation of resonance that will cause the entire airframe to "flutter" wildly.</p>
+            <p>Default value is -1, and the value is in <a href="#" data-popovertext="The 'foot' (or 'feet' in plural) is an Imperial unit of measurement, and is approximately 0.3 meters on the metric scale." data-rhwidget="TextPopOver" aria-haspopup="true" role="button">ft</a>.</p>
+          </td>
+          <td>Float</td>
+          <td style="text-align: center;">No</td>
+        </tr>
+        <tr>
+          <td><code class="inline">fuselage_inertia</code></td>
+          <td colspan="1">
+            <p>This parameter sets the inertia for the fuselage, and works in harmony with the <code class="inline">fuselage_rigidity</code> parameter. However, if that parameter is less than or equal to zero, then this parameter will have no effect. Generally you want to set this to 1 to start with then tweak it up or down to get the aircraft behaviour that you require.</p>
+            <p>Default value is 1.</p>
+          </td>
+          <td>Float</td>
+          <td style="text-align: center;">No</td>
+        </tr>
+        <tr>
+          <td><code class="inline">presspt_fwd_Alpha0_pMAC</code></td>
+          <td colspan="1">Defines an additional forward offset applied to the overall pressure center of the wing when the wing surface is at an <a href="#" data-popovertext="This stands for the 'Angle of Attack', which specifies the angle between the chord line of the wing of a fixed-wing aircraft and the vector representing the relative motion between the aircraft and the atmosphere." data-rhwidget="TextPopOver" aria-haspopup="true" role="button">AoA</a> of 0. The offset is defined as a ratio of the local Mean Aerodynamic Chord and negative values indicate a backwards offset.</td>
+          <td>Float</td>
+          <td style="text-align: center;">No</td>
+        </tr>
+        <tr>
+          <td><code class="inline">presspt_fwd_AlphaStall_pMAC</code></td>
+          <td colspan="1">Defines an additional forward offset applied to the overall pressure center of the wing when the wing surface is at an the stall <a href="#" data-popovertext="This stands for the 'Angle of Attack', which specifies the angle between the chord line of the wing of a fixed-wing aircraft and the vector representing the relative motion between the aircraft and the atmosphere." data-rhwidget="TextPopOver" aria-haspopup="true" role="button">AoA</a>. The offset is defined as a ratio of the local Mean Aerodynamic Chord and negative values indicate a backwards offset.</td>
+          <td>Float</td>
+          <td style="text-align: center;">No</td>
+        </tr>
+        <tr>
+          <td><code class="inline">presspt_fwd_AlphaHiStall_pMAC</code></td>
+          <td colspan="1">Defines an additional forward offset applied to the overall pressure center of the wing when the wing surface is at high above the stall <a href="#" data-popovertext="This stands for the 'Angle of Attack', which specifies the angle between the chord line of the wing of a fixed-wing aircraft and the vector representing the relative motion between the aircraft and the atmosphere." data-rhwidget="TextPopOver" aria-haspopup="true" role="button">AoA</a> (during a stall). The offset is defined as a ratio of the local Mean Aerodynamic Chord, and negative values indicate a backwards offset.</td>
+          <td>Float</td>
+          <td style="text-align: center;">No</td>
+        </tr>
+        <tr>
+          <td><code class="inline">side_force_slip_angle</code></td>
+          <td colspan="1">
+            <p>Defines how much side force will be generated when the yaw angle is non zero (during a side slip).</p>
+            <p><span class="smallfont">This is a <em>legacy</em> <span data-keyref="game_fx_short">FSX</span> parameter not used in the modern flight model. In the <em>modern</em> flight model this effect is natively obtained through aerodynamic simulation of the surfaces defined in the <a href="../Content_Configuration/SimObjects/Aircraft_SimO/flight_model/geometry.htm"><code class="inline">[AIRPLANE_GEOMETRY]</code></a> section. In the modern flight model, use <code class="inline"><a href="../Content_Configuration/SimObjects/Aircraft_SimO/flight_model/aerodynamics.htm#fuselage_lateral_cx">fuselage_lateral_cx</a></code> to modify the side drag coefficient of the fuselage and <code class="inline"><a href="../Content_Configuration/SimObjects/Aircraft_SimO/flight_model/aerodynamics.htm#rudder_lift_coef">rudder_lift_coef</a></code> to modify the forces generated by the rudder.</span></p>
+          </td>
+          <td>Float</td>
+          <td style="text-align: center;">Yes</td>
+        </tr>
+        <tr>
+          <td><code class="inline">pitch_moment_delta_elevator</code></td>
+          <td colspan="1">
+            <p>Defines how much pitch moment will be generated when the elevator is deflected.</p>
+            <p><span class="smallfont">This is a <em>legacy</em> <span data-keyref="game_fx_short">FSX</span> parameter and the actual value here is not normally used in the modern flight model, but the <strong>sign</strong> of the value <em>is</em> used and it <strong><em>is necessary to set a value other than 0 for the autopilot </em></strong>(see the notes below). In the modern flight model the effect that this parameter is natively obtained through aerodynamic simulation of the surfaces defined in the <a href="../Content_Configuration/SimObjects/Aircraft_SimO/flight_model/geometry.htm"><code class="inline">[AIRPLANE_GEOMETRY]</code></a> section. In the modern flight model, use the <code class="inline"><a href="../Content_Configuration/SimObjects/Aircraft_SimO/flight_model/aerodynamics.htm#elevator_lift_coef">elevator_lift_coef</a></code>, elevator longitudinal position and elevator area to adjust this effect.</span></p>
+            <p><span class="note"><strong>NOTE</strong>: The absolute value of this parameter is ignored by the modern flight model <strong>but it's sign is used to invert the elevator input angle when it is negative</strong>. This may be <span>useful for aircraft that need an inverted elevator (elevator in the front).</span></span></p>
+            <p><span class="note"><strong>NOTE</strong>: Even in the modern flight model, the autopilot system may still use this variable to calculate the elevator deflection necessary to find a required pitch moment. The <a href="#" data-popovertext="A 'Proportional–Integral–Derivative' controller is a control loop mechanism employing feedback for systems requiring continuously modulated control. A PID controller continuously calculates an error value as the difference between a desired setpoint and a measured process variable and applies a correction based on proportional, integral, and derivative terms." data-rhwidget="TextPopOver" aria-haspopup="true" role="button">PID</a> will usually compensate for wrong values, but this variable cannot be set to zero or very far off and must be relatively close to reality. You can use the legacy flight model tool to calculate the correct value that will then usually work with the autopilot.</span></p>
+          </td>
+          <td>Float</td>
+          <td style="text-align: center;">Yes</td>
+        </tr>
+        <tr>
+          <td><a id="compute_aero_center"></a><code class="inline">compute_aero_center</code></td>
+          <td colspan="1">
+            <p>Defines if the aerodynamic center longitudinal position should be placed computationally or manually. In <em>legacy</em> <span data-keyref="game_fx_short">FSX</span>, the aerodynamic center was in a constant position and computed based on the pitch moment data and moment of inertia values. This would still work with the modern flight model, but we recommend disabling the computation of the aerodynamic center - setting it to 0 (FALSE) - and positioning this manually with <code class="inline"><a href="../Content_Configuration/SimObjects/Aircraft_SimO/flight_model/aerodynamics.htm#aero_center_lift">aero_center_lift</a></code>.</p>
+          </td>
+          <td>Float</td>
+          <td style="text-align: center;">Yes</td>
+        </tr>
+        <tr>
+          <td><a id="aero_center_lift"></a><code class="inline">aero_center_lift</code></td>
+          <td colspan="1">
+            <p>When <code class="inline"><a href="../Content_Configuration/SimObjects/Aircraft_SimO/flight_model/aerodynamics.htm#compute_aero_center">compute_aero_center</a></code> is set to 0 (FALSE) this variable allows you to define the longitudinal position of the aerodynamic center, expressed in <a href="#" data-popovertext="The 'foot' (or 'feet' in plural) is an Imperial unit of measurement, and is approximately 0.3 meters on the metric scale." data-rhwidget="TextPopOver" aria-haspopup="true" role="button">ft</a>. The modern flight model does not force the position of the aerodynamic center during the simulation because the aerodynamic center is not static in this flight model - it is calculated as the result of complex pressure forces applied on the surfaces, which actually causes a moving aerodynamic center. It is, however, usually very close to 25% and will normally move between 20% and 30%. So, we use this variable to longitudinally align the wing surfaces with the wing geometry, considering that the aerodynamic center is located at 25% <a href="#" data-popovertext="This means the 'Mean Aerodynamic Chord' which is a mathematical calculation that shows where the center of gravity is over the wing." data-rhwidget="TextPopOver" aria-haspopup="true" role="button">MAC</a>. Again, this does not mean that the aero center will then stay at 25% <a href="#" data-popovertext="This means the 'Mean Aerodynamic Chord' which is a mathematical calculation that shows where the center of gravity is over the wing." data-rhwidget="TextPopOver" aria-haspopup="true" role="button">MAC</a> during the simulation, it will just be used to initialize the surface position <em>once</em> at start.</p>
+            <p><span class="note"><strong>IMPORTANT!</strong> This is positioned relative to the (0,0,0) position in the 3D model reference, <strong>not </strong>the Reference Datum position.</span></p>
+          </td>
+          <td>Float</td>
+          <td style="text-align: center;">Yes</td>
+        </tr>
+        <tr>
+          <td><a id="aileron_up_drag_coef"></a><code class="inline">aileron_up_drag_coef</code></td>
+          <td colspan="1">
+            <p>Defines the drag added by upwards aileron deflection. This parameter has a significant impact on adverse yaw. Reduce upward deflection drag to get more adverse yaw. This parameter is multiplied by the aileron deflection angle and internal coefficients.</p>
+            <p>Default is 0.5. This can be scaled with the <code class="inline"><a href="../Content_Configuration/SimObjects/Aircraft_SimO/flight_model_cfg.htm#aileron_up_drag_scalar">aileron_up_drag_scalar</a></code> parameter in the <code class="inline"><a href="../Content_Configuration/SimObjects/Aircraft_SimO/flight_model_cfg.htm#h1">[FLIGHT_TUNING]</a></code> section and is further modified by internal coefficients.</p>
+          </td>
+          <td>Float</td>
+          <td style="text-align: center;">No</td>
+        </tr>
+        <tr>
+          <td><a id="aileron_down_drag_coef"></a><code class="inline">aileron_down_drag_coef</code></td>
+          <td colspan="1">
+            <p>Defines the drag added by upwards aileron deflection. This parameter has a significant impact on adverse yaw. Increase downward deflection drag to get more adverse yaw. This parameter is multiplied by the aileron deflection angle.</p>
+            <p>Default is 1. This can be scaled with the <code class="inline"><a href="../Content_Configuration/SimObjects/Aircraft_SimO/flight_model_cfg.htm#aileron_down_drag_scalar">aileron_down_drag_scalar</a></code> parameter in the <code class="inline"><a href="../Content_Configuration/SimObjects/Aircraft_SimO/flight_model_cfg.htm#h1">[FLIGHT_TUNING]</a></code> section and is further modified by internal coefficients.</p>
+          </td>
+          <td>Float</td>
+          <td style="text-align: center;">No</td>
+        </tr>
+        <tr>
+          <td><a id="elevator_lift_coef"></a><code class="inline">elevator_lift_coef</code></td>
+          <td colspan="1">
+            <p>Defines the lift coefficient slope of the elevator control surface. This will have a direct impact on elevator authority and pitch stability. The elevator lift coefficient slope is usually dependent on the elevator aspect ratio and should be between 1.0 and 𝝅.</p>
+            <p>Default is 5.0, and generally values will always fall between 1.0 and 5.0, with a theoretical maximum of 2𝝅 and a recommended value between 2.0 (for less authority and stability) and 5.0 (for more authority and stability). This can be scaled with the <code class="inline"><a href="../Content_Configuration/SimObjects/Aircraft_SimO/flight_model_cfg.htm#elevator_effectiveness">elevator_effectiveness</a></code> parameter in the <code class="inline"><a href="../Content_Configuration/SimObjects/Aircraft_SimO/flight_model_cfg.htm#h1">[FLIGHT_TUNING]</a></code> section.</p>
+          </td>
+          <td>Float</td>
+          <td style="text-align: center;">No</td>
+        </tr>
+        <tr>
+          <td><a id="rudder_lift_coef"></a><code class="inline">rudder_lift_coef</code></td>
+          <td colspan="1">
+            <p>Defines the lift coefficient slope of the rudder control surface. This will have a direct impact on rudder authority, yaw stability, adverse yaw and induced roll. The rudder lift coefficient slope is usually dependent on the rudder aspect ratio and should be between 1.0 and 𝝅.</p>
+            <p>Default is 5.0, and generally values will always fall between 1.0 and 5.0, with a theoretical maximum of 2𝝅 and a recommended value between 2.0 (for less authority and stability) and 5.0 (for more authority and stability). This can be scaled with the <code class="inline"><a href="../Content_Configuration/SimObjects/Aircraft_SimO/flight_model_cfg.htm#rudder_effectiveness">rudder_effectiveness</a></code> parameter in the <code class="inline"><a href="../Content_Configuration/SimObjects/Aircraft_SimO/flight_model_cfg.htm#h1">[FLIGHT_TUNING]</a></code> section.</p>
+          </td>
+          <td>Float</td>
+          <td style="text-align: center;">No</td>
+        </tr>
+        <tr>
+          <td><a id="lift_coef_aoa_table"></a><code class="inline">lift_coef_aoa_table</code></td>
+          <td colspan="1">
+            <p>This table allows you to define the <a href="#" data-popovertext="This stands for the 'Angle of Attack', which specifies the angle between the chord line of the wing of a fixed-wing aircraft and the vector representing the relative motion between the aircraft and the atmosphere." data-rhwidget="TextPopOver" aria-haspopup="true" role="button">AoA</a> polar (in radians) against the clean aircraft lift coefficient. The <a href="#" data-popovertext="This stands for the 'Angle of Attack', which specifies the angle between the chord line of the wing of a fixed-wing aircraft and the vector representing the relative motion between the aircraft and the atmosphere." data-rhwidget="TextPopOver" aria-haspopup="true" role="button">AoA</a> vs. lift table defines how much lift the aircraft generates at various <a href="#" data-popovertext="This stands for the 'Angle of Attack', which specifies the angle between the chord line of the wing of a fixed-wing aircraft and the vector representing the relative motion between the aircraft and the atmosphere." data-rhwidget="TextPopOver" aria-haspopup="true" role="button">AoA</a>s. The table has a maximum of 13 entries with the following format:</p>
+            <pre class="codeblock">AoA_alpha:lift_coef,
+  AoA_alpha:lift_coef,
+  AoA_alpha:lift_coef,
+  etc...</pre>
+            <p>In the <em>modern</em> flight model, this is used during the aircraft surfaces construction as a lift target that the aircraft should achieve at various angles of attack. This will impact the wing surfaces only, but the total lift will consider all surfaces. It describes the lift in clean configuration (ie: zero slip, no propeller, no gears, no control surface deflection). Once the aircraft is created, if will be normalized so that the effective lift coefficients measured actually match the target lift coefficients.</p>
+            <p><span class="note"><strong>NOTE</strong>: The lift coefficients are only matched between <a href="#" data-popovertext="This stands for the 'Angle of Attack', which specifies the angle between the chord line of the wing of a fixed-wing aircraft and the vector representing the relative motion between the aircraft and the atmosphere." data-rhwidget="TextPopOver" aria-haspopup="true" role="button">AoA</a>s 0 and the stall <a href="#" data-popovertext="This stands for the 'Angle of Attack', which specifies the angle between the chord line of the wing of a fixed-wing aircraft and the vector representing the relative motion between the aircraft and the atmosphere." data-rhwidget="TextPopOver" aria-haspopup="true" role="button">AoA</a>. For other <a href="#" data-popovertext="This stands for the 'Angle of Attack', which specifies the angle between the chord line of the wing of a fixed-wing aircraft and the vector representing the relative motion between the aircraft and the atmosphere." data-rhwidget="TextPopOver" aria-haspopup="true" role="button">AoA</a>s all around the 360° of the polar, it will be a natural consequence of the setup of the aerodynamic surfaces and other parameters. The polar does not need to be accurately defined in detail for <a href="#" data-popovertext="This stands for the 'Angle of Attack', which specifies the angle between the chord line of the wing of a fixed-wing aircraft and the vector representing the relative motion between the aircraft and the atmosphere." data-rhwidget="TextPopOver" aria-haspopup="true" role="button">AoA</a>s outside of the -10° to stall +10° range in this table.</span></p>
+          </td>
+          <td>2D Table of Floats</td>
+          <td style="text-align: center;">Yes</td>
+        </tr>
+        <tr>
+          <td><code class="inline">lift_coef_ground_effect_mach_table</code></td>
+          <td colspan="1">
+            <p>This table allows you to scale the ground effect intensity. This defines the maximum ground effect on the lift component but will impact the maximum effect on the induced drag component proportionally as well. Even though this table allows you to define the ground effect at various mach levels, it is the primary way to set the ground effect intensity. The table has the format:</p>
+            <pre class="codeblock">mach:lift_coef,
+  mach:lift_coef,
+  mach:lift_coef,
+  etc...</pre>
+          </td>
+          <td>2D Table of Floats</td>
+          <td style="text-align: center;">Yes</td>
+        </tr>
+        <tr>
+          <td><code class="inline">lift_coef_mach_table</code></td>
+          <td colspan="1">
+            <p>Scales the lift coefficient based on the mach level. The table permits a maximum of 17 entries and has the following format:</p>
+            <pre class="codeblock">mach:lift_coef,
+  mach:lift_coef,
+  mach:lift_coef,
+  etc...
+  </pre>
+            <p><span class="smallfont">This is a <em>legacy</em> <span data-keyref="game_fx_short">FSX</span> parameter not used in the modern flight model. In the modern flight model this effect is natively obtained through aerodynamic simulation of the surfaces defined in the <a href="../Content_Configuration/SimObjects/Aircraft_SimO/flight_model/geometry.htm"><code class="inline">[AIRPLANE_GEOMETRY]</code></a> section.</span></p>
+          </td>
+          <td>
+            <p>2D Table of Floats</p>
+          </td>
+          <td style="text-align: center;">Yes</td>
+        </tr>
+        <tr>
+          <td><code class="inline">drag_coef_zero_lift_mach_tab</code></td>
+          <td colspan="1">
+            <p>Adds drag based on the mach level. In the modern flight model, the drag coefficient at higher mach levels is automatically impacted by a progressive detaching of the laminar airflow over the surfaces. However this table allows to add more drag at specific mach levels to simulate a mach wall or specific effects of drag due to turbulence at specific drag levels. Drag walls are not natively simulated yet and will need to be defined with this table. The table has the format:</p>
+            <pre class="codeblock">mach:drag_coef,
+  mach:drag_coef,
+  mach:drag_coef,
+  etc...</pre>
+          </td>
+          <td>
+            <p>2D Table of Floats</p>
+          </td>
+          <td style="text-align: center;">Yes</td>
+        </tr>
+        <tr>
+          <td><code class="inline">elevator_scaling_table</code></td>
+          <td colspan="1">
+            <p>Allows you to define a non linear elevator deflection curve on top of the input curve settings possible in the simulator. The table defines how the input value is scaled for each range of input values. The table has the following format (maximum 16 value pairs):</p>
+            <pre class="codeblock">elevator_angle:scale,
+  elevator_angle:scale,
+  elevator_angle:scale,
+  etc...</pre>
+            <p>Default is to scale all input values by 1, and that the angles should be expressed in radians.</p>
+          </td>
+          <td>2D Table of Floats</td>
+          <td style="text-align: center;">Yes</td>
+        </tr>
+        <tr>
+          <td><code class="inline">aileron_scaling_table</code></td>
+          <td colspan="1">
+            <p>Allows to define a non linear aileron deflection curve on top of the input curve settings possible in the simulator. The table defines how the input value is scaled for each range of input values. The table has the following format (maximum 16 value pairs):</p>
+            <pre class="codeblock">aileron_angle:scale,
+  aileron_angle:scale,
+  aileron_angle:scale,
+  etc...</pre>
+            <p>Default is to scale all input values by 1, and that the angles should be expressed in radians.</p>
+          </td>
+          <td>2D Table of Floats</td>
+          <td style="text-align: center;">Yes</td>
+        </tr>
+        <tr>
+          <td><code class="inline">rudder_scaling_table</code></td>
+          <td colspan="1">
+            <p>Allows to define a non linear rudder deflection curve on top of the input curve settings possible in the simulator. The table defines how the input value is scaled for each range of input values. The table has the following format (maximum 16 value pairs):</p>
+            <pre class="codeblock">rudder_angle:scale,
+  rudder_angle:scale,
+  rudder_angle:scale,
+  etc...</pre>
+            <p>Default is to scale all input values by 1, and that the angles should be expressed in radians.</p>
+          </td>
+          <td>2D Table of Floats</td>
+          <td style="text-align: center;">Yes</td>
+        </tr>
+        <tr>
+          <td><a id="lift_coef_at_drag_zero"></a><code class="inline">lift_coef_at_drag_zero</code></td>
+          <td colspan="1">
+            <p>When building the surfaces of the aircraft, the modern flight model allows us to use the following drag formula:</p>
+            <p><mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="13" style="font-size: 123.5%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-texatom texclass="ORD"><mjx-msub><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D436 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em; margin-left: -0.045em;"><mjx-mi class="mjx-i" size="s"><mjx-c class="mjx-c1D437 TEX-I"></mjx-c></mjx-mi></mjx-script></mjx-msub></mjx-texatom><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-texatom space="4" texclass="ORD"><mjx-msub><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D436 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em; margin-left: -0.045em;"><mjx-texatom size="s" texclass="ORD"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D437 TEX-I"></mjx-c></mjx-mi><mjx-mn class="mjx-n"><mjx-c class="mjx-c30"></mjx-c></mjx-mn></mjx-texatom></mjx-script></mjx-msub></mjx-texatom><mjx-mo class="mjx-n" space="3"><mjx-c class="mjx-c2B"></mjx-c></mjx-mo><mjx-mi class="mjx-i" space="3"><mjx-c class="mjx-c1D43E TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n"><mjx-c class="mjx-c28"></mjx-c></mjx-mo><mjx-msub><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D436 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em; margin-left: -0.045em;"><mjx-mi class="mjx-i" size="s"><mjx-c class="mjx-c1D43F TEX-I"></mjx-c></mjx-mi></mjx-script></mjx-msub><mjx-mo class="mjx-n" space="3"><mjx-c class="mjx-c2212"></mjx-c></mjx-mo><mjx-msub space="3"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D436 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em; margin-left: -0.045em;"><mjx-texatom size="s" texclass="ORD"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D43F TEX-I"></mjx-c></mjx-mi><mjx-mn class="mjx-n"><mjx-c class="mjx-c30"></mjx-c></mjx-mn></mjx-texatom></mjx-script></mjx-msub><mjx-msup><mjx-mo class="mjx-n"><mjx-c class="mjx-c29"></mjx-c></mjx-mo><mjx-script style="vertical-align: 0.363em;"><mjx-texatom size="s" texclass="ORD"><mjx-mn class="mjx-n"><mjx-c class="mjx-c32"></mjx-c></mjx-mn></mjx-texatom></mjx-script></mjx-msup></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow data-mjx-texclass="ORD"><msub><mi>C</mi><mi>D</mi></msub></mrow><mo>=</mo><mrow data-mjx-texclass="ORD"><msub><mi>C</mi><mrow data-mjx-texclass="ORD"><mi>D</mi><mn>0</mn></mrow></msub></mrow><mo>+</mo><mi>K</mi><mo stretchy="false">(</mo><msub><mi>C</mi><mi>L</mi></msub><mo>−</mo><msub><mi>C</mi><mrow data-mjx-texclass="ORD"><mi>L</mi><mn>0</mn></mrow></msub><msup><mo stretchy="false">)</mo><mrow data-mjx-texclass="ORD"><mn>2</mn></mrow></msup></math></mjx-assistive-mml></mjx-container></p>
+            <p>This parameter represents the <mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="14" style="font-size: 123.5%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-texatom texclass="ORD"><mjx-msub><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D436 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em; margin-left: -0.045em;"><mjx-texatom size="s" texclass="ORD"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D43F TEX-I"></mjx-c></mjx-mi><mjx-mn class="mjx-n"><mjx-c class="mjx-c30"></mjx-c></mjx-mn></mjx-texatom></mjx-script></mjx-msub></mjx-texatom></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow data-mjx-texclass="ORD"><msub><mi>C</mi><mrow data-mjx-texclass="ORD"><mi>L</mi><mn>0</mn></mrow></msub></mrow></math></mjx-assistive-mml></mjx-container> parameter of this formula in the clean configuration. The aircraft is built trying to match this drag polar and then a normalization pass is done on all surfaces to perfectly match the target polar. This parameter has also been added to the <em>legacy</em> <span data-keyref="game_fx_short">FSX</span> flight model that now also allows <mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="15" style="font-size: 123.5%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-texatom texclass="ORD"><mjx-msub><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D436 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em; margin-left: -0.045em;"><mjx-texatom size="s" texclass="ORD"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D437 TEX-I"></mjx-c></mjx-mi><mjx-mn class="mjx-n"><mjx-c class="mjx-c30"></mjx-c></mjx-mn></mjx-texatom></mjx-script></mjx-msub></mjx-texatom></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow data-mjx-texclass="ORD"><msub><mi>C</mi><mrow data-mjx-texclass="ORD"><mi>D</mi><mn>0</mn></mrow></msub></mrow></math></mjx-assistive-mml></mjx-container> to not be always zero.</p>
+          </td>
+          <td>Float</td>
+          <td style="text-align: center;">Yes</td>
+        </tr>
+        <tr>
+          <td><code class="inline">lift_coef_at_drag_zero_flaps</code></td>
+          <td colspan="1">
+            <p>When building the surfaces of the aircraft, the modern flight model allows us to use the following drag formula:</p>
+            <p><mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="16" style="font-size: 123.5%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-texatom texclass="ORD"><mjx-msub><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D436 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em; margin-left: -0.045em;"><mjx-mi class="mjx-i" size="s"><mjx-c class="mjx-c1D437 TEX-I"></mjx-c></mjx-mi></mjx-script></mjx-msub></mjx-texatom><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-texatom space="4" texclass="ORD"><mjx-msub><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D436 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em; margin-left: -0.045em;"><mjx-texatom size="s" texclass="ORD"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D437 TEX-I"></mjx-c></mjx-mi><mjx-mn class="mjx-n"><mjx-c class="mjx-c30"></mjx-c></mjx-mn></mjx-texatom></mjx-script></mjx-msub></mjx-texatom><mjx-mo class="mjx-n" space="3"><mjx-c class="mjx-c2B"></mjx-c></mjx-mo><mjx-mi class="mjx-i" space="3"><mjx-c class="mjx-c1D43E TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n"><mjx-c class="mjx-c28"></mjx-c></mjx-mo><mjx-msub><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D436 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em; margin-left: -0.045em;"><mjx-mi class="mjx-i" size="s"><mjx-c class="mjx-c1D43F TEX-I"></mjx-c></mjx-mi></mjx-script></mjx-msub><mjx-mo class="mjx-n" space="3"><mjx-c class="mjx-c2212"></mjx-c></mjx-mo><mjx-msub space="3"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D436 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em; margin-left: -0.045em;"><mjx-texatom size="s" texclass="ORD"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D43F TEX-I"></mjx-c></mjx-mi><mjx-mn class="mjx-n"><mjx-c class="mjx-c30"></mjx-c></mjx-mn></mjx-texatom></mjx-script></mjx-msub><mjx-msup><mjx-mo class="mjx-n"><mjx-c class="mjx-c29"></mjx-c></mjx-mo><mjx-script style="vertical-align: 0.363em;"><mjx-texatom size="s" texclass="ORD"><mjx-mn class="mjx-n"><mjx-c class="mjx-c32"></mjx-c></mjx-mn></mjx-texatom></mjx-script></mjx-msup></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow data-mjx-texclass="ORD"><msub><mi>C</mi><mi>D</mi></msub></mrow><mo>=</mo><mrow data-mjx-texclass="ORD"><msub><mi>C</mi><mrow data-mjx-texclass="ORD"><mi>D</mi><mn>0</mn></mrow></msub></mrow><mo>+</mo><mi>K</mi><mo stretchy="false">(</mo><msub><mi>C</mi><mi>L</mi></msub><mo>−</mo><msub><mi>C</mi><mrow data-mjx-texclass="ORD"><mi>L</mi><mn>0</mn></mrow></msub><msup><mo stretchy="false">)</mo><mrow data-mjx-texclass="ORD"><mn>2</mn></mrow></msup></math></mjx-assistive-mml></mjx-container></p>
+            <p>This parameter represents the <mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="17" style="font-size: 123.5%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-texatom texclass="ORD"><mjx-msub><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D436 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em; margin-left: -0.045em;"><mjx-texatom size="s" texclass="ORD"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D43F TEX-I"></mjx-c></mjx-mi><mjx-mn class="mjx-n"><mjx-c class="mjx-c30"></mjx-c></mjx-mn></mjx-texatom></mjx-script></mjx-msub></mjx-texatom></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow data-mjx-texclass="ORD"><msub><mi>C</mi><mrow data-mjx-texclass="ORD"><mi>L</mi><mn>0</mn></mrow></msub></mrow></math></mjx-assistive-mml></mjx-container> parameter of this formula in the landing configuration with flaps fully deployed. The aircraft is built trying to match this drag polar and then a normalization pass is done on all surfaces to perfectly match the target polar. This parameter has also been added to the <em>legacy</em> <span data-keyref="game_fx_short">FSX</span> flight model that now also allows <mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="18" style="font-size: 123.5%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-texatom texclass="ORD"><mjx-msub><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D436 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em; margin-left: -0.045em;"><mjx-texatom size="s" texclass="ORD"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D437 TEX-I"></mjx-c></mjx-mi><mjx-mn class="mjx-n"><mjx-c class="mjx-c30"></mjx-c></mjx-mn></mjx-texatom></mjx-script></mjx-msub></mjx-texatom></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow data-mjx-texclass="ORD"><msub><mi>C</mi><mrow data-mjx-texclass="ORD"><mi>D</mi><mn>0</mn></mrow></msub></mrow></math></mjx-assistive-mml></mjx-container> to not be always zero.</p>
+          </td>
+          <td>Float</td>
+          <td style="text-align: center;">Yes</td>
+        </tr>
+        <tr>
+          <td><a id="fuselage_lateral_cx"></a><code class="inline">fuselage_lateral_cx</code></td>
+          <td colspan="1">
+            <p>Defines the perpendicular drag coefficient of the fuselage, which occurs when the airflow is going perpendicular to the front axis (ie: sideways - left to right or right to left) but also going up and down. This coefficient has an impact on drag when side slipping, as well as a general impact on yaw stability and pitch stability.</p>
+            <p>Default is 0.4 - which is about the perpendicular drag of a cylinder - and the value should usually fall between 0.2 and 0.8 for most aircraft.</p>
+          </td>
+          <td>Float</td>
+          <td style="text-align: center;">No</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  
+</body>
+</html>
