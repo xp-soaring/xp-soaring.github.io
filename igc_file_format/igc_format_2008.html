@@ -9,7 +9,7 @@ ul {list-style-type: none;}
 </head>
 <body>
 <p>
-    <a href="../index.html">x-plane</a>
+    <a href="../index.html">xp-soaring.github.io</a>
     &nbsp;&gt;&nbsp;<a href="index.html">igc file format homepage</a>
     &nbsp;&gt;&nbsp;reference and guide
 </p>
@@ -18,18 +18,14 @@ ul {list-style-type: none;}
 <h1>IGC FILE FORMAT REFERENCE AND DEVELOPERS' GUIDE - Ian Forster-Lewis</h1>
 
 <p>These are notes created for my personal use to try and make the FAI documentation more useful to me as a logger
-developer. I have taken the 2008 version of the 
-<a href="http://www.fai.org/gliding/gnss/tech_spec_gnss.asp" target="_blank">FAI documentation</a> as a starting point and
-added links and other information to make it more usable by a developer that is either writing or reading these
-lof files.
+developer.
 </p>
 
-<p><i>Ian Forster-Lewis, Sept 2009.</i></p>
-
-<p>This is essentially a modified version of the 'igc file format' Appendix 1 of 
-<a href="http://www.fai.org/gliding/gnss/tech_spec_gnss.asp" target="_blank">the original IGC document available on www.fai.org.</a>.
-I have kept the FAI chapter/section numbers but added to some of the sections.
+<p>Web links in the <a href="https://fai.org">FIA</a> change every time they hire a new webdev, so a copy of the
+<a href="igc_fr_specification_with_al8_2023-2-1_0.pdf">FAI IGC Specification 2023 is hosted here</a>.
 </p>
+
+<p>This web-linked html version is for the IGC spec 2008, but it hasn't changed much. I have kept the FAI chapter/section numbers but added to some of the sections.</p>
 
 <h2>Contents</h2>
 
@@ -90,75 +86,75 @@ I have kept the FAI chapter/section numbers but added to some of the sections.
 want to cut-and-paste this file as a starting point for your development, you could use the version of the same
 file in <a href="#link_9">section 9</a> without the inserted spaces. Free text is in italics meaning you can enter pretty much anything, otherwise the exact number
 of characters must match the example. Each 'record' in an IGC file fits on a single line and the first few characters
-determine the record <i>type</i>.  I have linked those initial chars in the sample below to the corresponding 
+determine the record <i>type</i>.  I have linked those initial chars in the sample below to the corresponding
 section of the specification. </p>
 
 <div style="{margin-left: 20px;}">
 <table>
 <tr><td valign="top"><a href="#link_A">A</a>&nbsp;XXX&nbsp;ABC<i>&nbsp;FLIGHT:1</i></td>
-    <td><a href="#link_2.5.6">Manufacturer code</a>, use XXX if you don't have one. 
+    <td><a href="#link_2.5.6">Manufacturer code</a>, use XXX if you don't have one.
     ABC is the unique code for this logger (serial no.?), rest of line can be anything you like</td>
-</tr>    
+</tr>
 <tr><td valign="top"><a href="#link_HFFXA">HFFXA</a>&nbsp;035</td>
     <td>Typical fix accuracy, here 35 meters. FXA field can also be added to each <a href="#link_B">B record</a></td>
-</tr>    
+</tr>
 <tr><td valign="top"><a href="#link_HFDTE">HFDTE</a>&nbsp;160701</td>
     <td>UTC date of flight, here 16th July 2001</td>
-</tr>    
+</tr>
 <tr><td valign="top"><a href="#link_HFPLT">HFPLT</a>&nbsp;PILOTINCHARGE:<i>&nbsp;Bloggs&nbsp;Bill&nbsp;D</i></td>
     <td>Free-text name of the pilot</td>
-</tr>    
+</tr>
 <tr><td valign="top"><a href="#link_HFCM2">HFCM2</a>&nbsp;CREW2:<i>&nbsp;Smith-Barry&nbsp;John&nbsp;A</i></td>
     <td>Free-text name of the second pilot in a two seater</td>
-</tr>    
+</tr>
 <tr><td valign="top"><a href="#link_HFGTY">HFGTY</a>&nbsp;GLIDERTYPE:<i>&nbsp;Schleicher&nbsp;ASH-25</i></td>
     <td>Free-text glider type</td>
-</tr>    
+</tr>
 <tr><td valign="top"><a href="#link_HFGID">HFGID</a>&nbsp;GLIDERID:<i>&nbsp;N116&nbsp;EL</i></td>
-    <td>Free-text aircraft registration number or code, e.g. N-number in USA. 
+    <td>Free-text aircraft registration number or code, e.g. N-number in USA.
      Or the number on the fin - it doesn't really matter</td>
-</tr>    
+</tr>
 <tr><td valign="top"><a href="#link_HFDTM">HFDTM</a>100&nbsp;GPSDATUM:&nbsp;WGS-1984</td>
     <td>Which GPS datum is the logger using. Always 100 in my experience but see the
         <a href="http://www.fai.org/gliding/gnss/tech_spec_gnss.asp" target="_blank">original FAI document</a>
          if you want do something unusual.</td>
-</tr>    
+</tr>
 <tr><td valign="top"><a href="#link_HFRFW">HFRFW</a>&nbsp;FIRMWAREVERSION:<i>6.4</i></td>
     <td>Firmware (i.e. software) version of the logger - anything you like</td>
-</tr>    
+</tr>
 <tr><td valign="top"><a href="#link_HFRHW">HFRHW</a>&nbsp;HARDWAREVERSION:<i>3.0</i></td>
     <td>Hardware version of the logger - any text that is appropriate</td>
-</tr>    
+</tr>
 <tr><td valign="top"><a href="#link_HFFTY">HFFTY</a>&nbsp;FRTYPE:<i>&nbsp;Calibri,FunkyLogger&nbsp;77</i></td>
     <td>Flight Recorded Type - any text is ok</td>
-</tr>    
+</tr>
 <tr><td valign="top"><a href="#link_HFGPS">HFGPS</a><i>&nbsp;Marconi,Superstar,12ch,10000m</i></td>
     <td>Manufacturer of the GPS receiver inside the logger. Do we really care? Any text will work</td>
-</tr>    
+</tr>
 <tr><td valign="top"><a href="#link_HFPRS">HFPRS</a>&nbsp;PRESSALTSENSOR:<i>&nbsp;Sensyn,XYZ11,11000m</i></td>
     <td>Manufacturer of the pressure sensor in the logger. Any text.</td>
-</tr>    
+</tr>
 <tr><td valign="top"><a href="#link_HFCID">HFCID</a>&nbsp;COMPETITIONID:<i>&nbsp;B21</i></td>
     <td>Tail fin number of the glider.  IGC logger analysis software (e.g. SeeYou) will typically use this
     value to label the log that you upload, helpful when animating multiple logs. Free text but keep it
     short.</td>
-</tr>    
+</tr>
 <tr><td valign="top"><a href="#link_HFCCL">HFCCL</a>&nbsp;COMPETITIONCLASS:<i>15m&nbsp;Motor&nbsp;Glider</i></td>
     <td>Free text describing the glider class, e.g. Standard, 15m.  No standard for the values though.</td>
-</tr>    
+</tr>
 <tr><td valign="top"><a href="#link_I">I&nbsp;</a>03
       &nbsp;36&nbsp;38&nbsp;<a href="#link_FXA">FXA</a>
       &nbsp;39&nbsp;40&nbsp;<a href="#link_SIU">SIU</a>
       &nbsp;41&nbsp;43&nbsp;<a href="#link_ENL">ENL</a></td>
-    <td>(only the FXA extension is 'mandatory' as of 2009). 
+    <td>(only the FXA extension is 'mandatory' as of 2009).
     This is the 'extension' header record, describing <i>additional</i> fields that can be appended
     to every <a href="#link_B">B record</a>. The B record is the basic timeseries 'fix' data that is pretty much
     all analysis programs look at (you'd be surprised how much of this 'H' stuff they simply throw away...).
     So with the <a href="#link_I">I&nbsp;record</a> you can include, say, engine noise level, with every
-    fix point. The sample here says engine noise level (<a href="#link_ENL">ENL</a>) will be 
+    fix point. The sample here says engine noise level (<a href="#link_ENL">ENL</a>) will be
     added as bytes 41 to 43 to each B record, similarly for FXA, and SIU.  The "03" after the "I" is the
     number of extensions given, i.e. three.</td>
-</tr>    
+</tr>
 <tr><td valign="top"><a href="#link_J">J</a>&nbsp;01&nbsp;08&nbsp;12&nbsp;<a href="#link_HDT">HDT</a></td>
     <td>(Optional) As the <a href="#link_I">I&nbsp;record</a> above extends the <a href="#link_B">B record</a>,
     so the <a href="#link_J">J&nbsp;record</a> extends the <a href="#link_K">K&nbsp;record</a>. The
@@ -167,94 +163,94 @@ section of the specification. </p>
     can then be embedded anywhere between the B records with the idea that they're used for less frequent
     updates than the frequent B record. This example gives Heading True (<a href="#link_HDT">HDT</a>) as
     the piece of information occassionally placed into the log using K records.</td>
-</tr>    
+</tr>
 <tr><td valign="top"><a href="#link_C">C</a>&nbsp;150701&nbsp;213841&nbsp;160701&nbsp;0001&nbsp;02<i>&nbsp;500K&nbsp;Tri</i></td>
     <td>(Optional)
      (The following example of a C (Declaration) record is for a 500 km triangle to be flown from Lasham gliding
       centre in the UK)<br/>
-      This first line contains the date/time of the declaration (15/Jul/2001), 21:38 (9:38pm) and 14 seconds, 
+      This first line contains the date/time of the declaration (15/Jul/2001), 21:38 (9:38pm) and 14 seconds,
       the date of
-      the intended flight (16/Jul/2001), a four-digit task id (0001), number of turnpoints (02) 
+      the intended flight (16/Jul/2001), a four-digit task id (0001), number of turnpoints (02)
       not including start/finish, and then free text describing the task.
     </td>
-</tr>    
+</tr>
 <tr><td valign="top"><a href="#link_C">C</a>&nbsp;5111359N&nbsp;00101899W<i>&nbsp;Lasham&nbsp;Clubhouse</i></td>
     <td>C latitude as DDMMmmmN, longitude as DDDMMmmmE, description</td>
-</tr>    
+</tr>
 <tr><td valign="top"><a href="#link_C">C</a>&nbsp;5110179N&nbsp;00102644W<i>&nbsp;Lasham&nbsp;Start&nbsp;S,&nbsp;Start</i></td>
     <td>&nbsp;</td>
-</tr>    
+</tr>
 <tr><td valign="top"><a href="#link_C">C</a>&nbsp;5209092N&nbsp;00255227W<i>&nbsp;Sarnesfield,&nbsp;TP1</i></td>
     <td>&nbsp;</td>
-</tr>    
+</tr>
 <tr><td valign="top"><a href="#link_C">C</a>&nbsp;5230147N&nbsp;00017612W<i>&nbsp;Norman&nbsp;Cross,&nbsp;TP2</i></td>
     <td>&nbsp;</td>
-</tr>    
+</tr>
 <tr><td valign="top"><a href="#link_C">C</a>&nbsp;5110179N&nbsp;00102644W<i>&nbsp;Lasham&nbsp;Start&nbsp;S,&nbsp;Finish</i></td>
     <td>C record the same format as the others above, but this is the <i>point of takeoff</i> and not formally
        part of the task declaration. Typically just put th location of the home airfield.</td>
-</tr>    
+</tr>
 <tr><td valign="top"><a href="#link_C">C</a>&nbsp;5111359N&nbsp;00101899W<i>&nbsp;Lasham&nbsp;Clubhouse</i></td>
     <td>C record as above, this time for the <i>landing</i> location. Again, not formally part of the
     task declaration and will typically be the home airfield.</td>
-</tr>    
-</tr>    
+</tr>
+</tr>
 <tr><td valign="top"><a href="#link_F">F</a>160240&nbsp;04&nbsp;06&nbsp;09&nbsp;12&nbsp;36&nbsp;24&nbsp;22&nbsp;18&nbsp;21</td>
     <td>
       This gives the ID's of the satellites visible, in the format "F-timestamp-ID-ID-ID..." where timestamp is
       HHMMSS and each id a two-byte pair. In this example at 16:02:40 the logger could see nine satellites.
-      
+
     </td>
-</tr>    
+</tr>
 <tr><td valign="top"><a href="#link_B">B</a>160240&nbsp;5407121N&nbsp;00249342W&nbsp;A&nbsp;00280&nbsp;00421&nbsp;205&nbsp;09&nbsp;950</td>
     <td>Great, we've finally got to the log points we are interested in. The format is
     "B-timestamp-latitude-longitude-AVflag-pressure&nbsp;alt-GPS alt-extensions". As mentioned above, the first
     35 bytes of the B record have a fixed definition, then after that the fields are determined by the
-    <a href="#link_I">I&nbsp;record</a>.  This B record has timestamp <i>16:02:40</i>, 
+    <a href="#link_I">I&nbsp;record</a>.  This B record has timestamp <i>16:02:40</i>,
     lat <i>54 degrees 7.121 mins North</i>, long
     <i>2 deg 49.342 mins West</i>, AVflag (3D validity) <i>A</i>, 280m altitude from pressure sensor, 421m altitude from GPS,
-     and <a href="#link_FXA">FXA</a> (accuracy) 205m, 
-     <a href="#link_SIU">SIU</a> (satellite count) 09 and 
+     and <a href="#link_FXA">FXA</a> (accuracy) 205m,
+     <a href="#link_SIU">SIU</a> (satellite count) 09 and
      <a href="#link_ENL">ENL</a> (engine noise) 950 (suggesting the engine is running...). </td>
-</tr>    
+</tr>
 <tr><td valign="top"><a href="#link_D">D</a>&nbsp;20331</td>
-    <td>(Optional) This gives the ID of a "Differential GPS" station being 
+    <td>(Optional) This gives the ID of a "Differential GPS" station being
     used, format "D2xxxx" where xxxx is the ID.</td>
-</tr>    
+</tr>
 <tr><td valign="top"><a href="#link_E">E</a>160245&nbsp;<a&nbsp;href="#link_PEV">PEV</a></td>
     <td>(Optional) This record records an <i>event</i>, format "timestamp-code", with the permissible
     3-letter codes given in <a href="#link_7">section 7</a>. In this example the code is a generic "Pilot Event" which
-    will typically be used to cause the logger to temporarily speed up its logging rate. The 
+    will typically be used to cause the logger to temporarily speed up its logging rate. The
     <a href="#link_E">E&nbsp;record</a> must be followed by a <a href="#link_B">B&nbsp;record</a>
     giving the location.</td>
-</tr>    
+</tr>
 <tr><td valign="top"><a href="#link_B">B</a>160245&nbsp;5107126N&nbsp;00149300W&nbsp;A&nbsp;00288&nbsp;00429&nbsp;195&nbsp;09&nbsp;020</td>
-    <td>This <a href="#link_B">B&nbsp;record</a> matches the <a href="#link_E">E record above</a>, 
+    <td>This <a href="#link_B">B&nbsp;record</a> matches the <a href="#link_E">E record above</a>,
     i.e. has the same timestamp. The eagle-eyed amongst you will notice the engine noise level has fallen from 950
     in the previous B record to 020, i.e. the engine has stopped in 5 seconds beween these fixes.</td>
-</tr>    
+</tr>
 <tr><td valign="top"><a href="#link_B">B</a>160250&nbsp;5107134N&nbsp;00149283W&nbsp;A&nbsp;00290&nbsp;00432&nbsp;210&nbsp;09&nbsp;015</td>
     <td>continue logging at 5-second intervals (any period is ok)</td>
-</tr>    
+</tr>
 <tr><td valign="top"><a href="#link_B">B</a>160255&nbsp;5107140N&nbsp;00149221W&nbsp;A&nbsp;00290&nbsp;00430&nbsp;200&nbsp;09&nbsp;012</td>
     <td>still logging at 5-second intervals... normally the file would be almost entirely made up of these records.</td>
-</tr>    
+</tr>
     <td><a href="#link_F">F</a> 160300 06 09 12 36 24 22 18 21</td>
     <td>satellites in use reduce from 9 to 8 as ID 04 is no longer received</td>
-</tr>    
-</tr>    
+</tr>
+</tr>
 <tr><td valign="top"><a href="#link_B">B</a>160300&nbsp;5107150N&nbsp;00149202W&nbsp;A&nbsp;00291&nbsp;00432&nbsp;256&nbsp;08&nbsp;009</td>
     <td>here is a fix record (B) providing a location for the F record above.</td>
-</tr>    
+</tr>
     <td><a href="#link_E">E</a>160305&nbsp;<a href="#link_PEV">PEV</a></td>
-    <td>a "Pilot Event", e.g. he/she pushed a button to speed up the logging rate</td> 
-</tr>    
+    <td>a "Pilot Event", e.g. he/she pushed a button to speed up the logging rate</td>
+</tr>
 <tr><td valign="top"><a href="#link_B">B</a>160305&nbsp;5107180N&nbsp;00149185W&nbsp;A&nbsp;00291&nbsp;00435&nbsp;210&nbsp;08&nbsp;015</td>
     <td>A fix record giving the lat/long of the PEV event above.</td>
-</tr>    
+</tr>
 <tr><td valign="top"><a href="#link_B">B</a>160310&nbsp;5107212N&nbsp;00149174W&nbsp;A&nbsp;00293&nbsp;00435&nbsp;196&nbsp;08&nbsp;024</td>
     <td>another fix</td>
-</tr>    
+</tr>
 <tr><td valign="top"><a href="#link_K">K</a>&nbsp;160248&nbsp;00090</td>
     <td>This <a href="#link_K">K record</a> is general-purpose placeholder for periodic values selected from
     the list that can be defined in the single <a href="#link_J">J record</a> in the header. In this example the
@@ -262,42 +258,42 @@ section of the specification. </p>
     Here the value for True Heading at 16:02:48 is 90 degrees.
       (<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al7.pdf" target=_blank>
        <small>AL7</small></a>)</td>
-</tr>    
+</tr>
 <tr><td valign="top"><a href="#link_B">B</a>160248&nbsp;5107220N&nbsp;00149150W&nbsp;A&nbsp;00494&nbsp;00436&nbsp;190&nbsp;08&nbsp;018</td>
     <td>here is a fix (B) record giving the location for the K record above (note same timestamp).</td>
-</tr>    
+</tr>
 <tr><td valign="top"><a href="#link_B">B</a>160252&nbsp;5107330N&nbsp;00149127W&nbsp;A&nbsp;00496&nbsp;00439&nbsp;195&nbsp;08&nbsp;015</td>
     <td>another general fix record</td>
-</tr>    
+</tr>
 <tr><td valign="top"><a href="#link_L">L</a>&nbsp;XXX&nbsp;<i>RURITANIAN&nbsp;STANDARD&nbsp;NATIONALS&nbsp;DAY&nbsp;1</i></td>
     <td>this is a general 'comment' record.  The three characters after the 'L' can be manufacturer code
      (XXX in this example), 'PLT' (pilot comment), 'OOI' (observer comment) or 'PFC' (post flight comment). After
      that, any free text is fine.</td>
-</tr>    
+</tr>
 <tr><td valign="top"><a href="#link_L">L</a>&nbsp;XXX&nbsp;FLIGHT&nbsp;TIME:&nbsp;4:14:25,&nbsp;TASK&nbsp;SPEED:58.48KT</td>
     <td>Another comment record</td>
-</tr>    
+</tr>
 <tr><td valign="top"><a href="#link_G">G</a>&nbsp;REJNGJERJKNJKRE31895478537H43982FJN9248F942389T433T</td>
     <td>Security key calculated by the logger from the content above. The only point is that a seperate program should be
     available to check this key so you know the log file is kosher...</td>
-</tr>    
+</tr>
 <tr><td valign="top"><a href="#link_G">G</a>&nbsp;JNJK2489IERGNV3089IVJE9GO398535J3894N358954983O0934</td>
     <td>multiple <a href="#link_G">G records</a> are allowed, whatever the logger software needs</td>
-</tr>    
+</tr>
 <tr><td valign="top"><a href="#link_G">G</a>&nbsp;SKTO5427FGTNUT5621WKTC6714FT8957FGMKJ134527FGTR6751</td>
     <td>&nbsp;</td>
-</tr>    
+</tr>
 <tr><td valign="top"><a href="#link_G">G</a>&nbsp;K2489IERGNV3089IVJE39GO398535J3894N358954983FTGY546</td>
     <td>&nbsp;</td>
-</tr>    
+</tr>
 <tr><td valign="top"><a href="#link_G">G</a>&nbsp;12560DJUWT28719GTAOL5628FGWNIST78154INWTOLP7815FITN</td>
     <td>&nbsp;</td>
-</tr>    
+</tr>
 </table>
 </div>
 
 <h2><a name="link_1"></a>1. INTRODUCTION</h2>
-<p><b><a name="link_1.1"></a>1.1 Background, and IGC file production.</b> The IGC Data File Standard was 
+<p><b><a name="link_1.1"></a>1.1 Background, and IGC file production.</b> The IGC Data File Standard was
 initially developed by a group
 consisting of representatives of IGC, glider FR manufacturers and a number of independent software developers
 mainly concerned with flight data analysis programs. After discussion and development during 1993 and 1994 it
@@ -305,9 +301,9 @@ was initially defined in December 1994 and became part of official IGC/FAI docum
 in March 1995. It has been refined and developed afterwards, through regular amendments. It provides a
 common world standard data format for the verification of badge, record, and competition flights to FAI/IGC
 criteria. The Standard may also be used by other FAI sports and activities.</p>
-<p><a name="link_1.1.1"></a><b>1.1.1</b> Production of Flight Data File. It must be possible to produce a 
+<p><a name="link_1.1.1"></a><b>1.1.1</b> Production of Flight Data File. It must be possible to produce a
 separate and complete IGC flight
-data file for each flight including all record types (<a href="#link_2.2">para 2.2</a> following) 
+data file for each flight including all record types (<a href="#link_2.2">para 2.2</a> following)
 relevant to the flight such as header
 records, flight declaration, etc. Two ways of achieving this are by continuous recording of fixes between
 the times that the FR was switched on and off, or, for FRs that have a "standby" state on switch-on, only
@@ -421,7 +417,7 @@ L - Logbook/comments (if used)
 G - Security record (always last)
 </pre>
 
-<p><b><a name="link_2.4"></a>2.4 UNITS.</b> 
+<p><b><a name="link_2.4"></a>2.4 UNITS.</b>
 <p>Data in the IGC file shall use the following unit system:</p>
 Time - UTC, obtained from the same GNSS data package from which the recorded lat/long and GPS altitude are
 also obtained, or, if GPS is not locked on, from the Real-Time Clock in the recorder. Note that UTC is not the
@@ -543,7 +539,7 @@ file or, for earlier systems, through the CONV-XXX.EXE program.(<a href="http://
 <table border="1">
 <tr>
     <td colspan="6">
-    
+
     IGC DATA FILE FORMAT - CODES FOR MANUFACTURERS
     OF IGC-APPROVED FLIGHT RECORDERS(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al5.pdf" target=_blank><small>AL5</small></a>)
     </td>
@@ -833,7 +829,7 @@ HFCCLCOMPETITIONCLASS: TEXTSTRING e.g. Standard, 15m, 18m, Open
 
 </table>
 
-<p>And here's the field descriptions from the 
+<p>And here's the field descriptions from the
 <a href="http://www.fai.org/gliding/gnss/tech_spec_gnss.asp" target="_blank">original FAI document</a>.</p>
 
 <table border="1">
@@ -1001,7 +997,7 @@ end of subsequent B Records. Only one I-Record line is included in each file, lo
 before the first B Record. The Fix Accuracy (<a href="#link_FXA">FXA</a>) must be included, in the form of the Estimated Position
 Error figure (see Glossary under EPE). This shall be followed by SIU, ENL and RPM, if these are recorded in
 the FR concerned. Note that although the SIU number is optional in the B record, the F Record (satellite
-constellation used) is mandatory, see para <a href="#link_4.3">4.3</a>. 
+constellation used) is mandatory, see para <a href="#link_4.3">4.3</a>.
 
 The format of the I Record is as follows:(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al11.pdf" target=_blank><small>AL11</small></a>)</p>
 <pre>
@@ -1019,7 +1015,7 @@ I N N S S F F C C C S S F F C C C CR LF
 <p> The first byte of the extension data always begins at
     byte position 36, because that's where the basic lat/long/alt stuff of the B record ends.
 </p>
-    
+
 <p>The byte count starts from the beginning of the B Record, taking the first B in the line as byte one. Example:</p>
 <pre>
 I 01 36 40 FXA CR LF
@@ -1265,7 +1261,7 @@ after Amendment 4</td></tr>
 <p>The E-record is used to record specific events on the IGC file that occur at
 irregular intervals. Such events include a pilot-initiated event (PEV code) or, for recorders fitted with proximity
 sensing devices, a proximity event using one of the appropriate Three-Letter Codes followed by the appropriate
-data as defined under the appropriate TLC in <a href="#link_7">section 7</a>. The E Record is placed before the individual fix 
+data as defined under the appropriate TLC in <a href="#link_7">section 7</a>. The E Record is placed before the individual fix
 <a href="#link_B">B&nbsp;record</a> for the same time that shows where and when the event occurred. Events must have a Three Letter Code
 (TLC) from <a href="#link_7">section 7</a>. More than one event record may be used at the same time, but Events initiated within the
 FR (as opposed to by the pilot) are only expected to be occasional in the time-history of the flight file and
@@ -1827,10 +1823,10 @@ more details of formats for individual records, see the relevant paragraphs earl
 to a reader. In a real IGC-format file there should be no spaces in any record except within a text string as
 a word separator.</p>
 <p><b><a name="link_9.3"></a>9.3</b> CRLF&nbsp;=&nbsp;line terminator, not flight data.</p>
-<p><b><a name="link_9.4"></a>9.4</b> In a real file there would be many more <a href="#link_B">B records</a> at 
+<p><b><a name="link_9.4"></a>9.4</b> In a real file there would be many more <a href="#link_B">B records</a> at
 the preset fix intervals for cruise and fast fix rates.
 <p><b><a name="link_9.4"></a>9.5</b> In the example below, some notes appear in brackets. These are not part of the file format itself. Also,
-for clarity, some spaces are used in <a href="#link_B">B record</a> lines between different variables 
+for clarity, some spaces are used in <a href="#link_B">B record</a> lines between different variables
 that are recorded, but no
 spaces should be used in the IGC file itself.</p>
 <pre>
