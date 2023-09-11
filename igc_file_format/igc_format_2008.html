@@ -18,7 +18,7 @@ ul {list-style-type: none;}
 <h1>IGC FILE FORMAT REFERENCE AND DEVELOPERS' GUIDE - Ian Forster-Lewis</h1>
 
 <p>These are notes created for my personal use to try and make the FAI documentation more useful to me as a logger
-developer.
+developer. For a comprehensive example IGC file see <a href="complex_example_lxn.igc">this LXN-produced real IGC file</a>.
 </p>
 
 <p>Web links in the <a href="https://fai.org">FIA</a> change every time they hire a new webdev, so a copy of the
@@ -439,7 +439,7 @@ see * below under PPPPpp
 
 The above items shall be recorded in the flight log as follows:
 <ul>
-<li>Time - HHMMSSsss (UTC)<br/>
+<li><b>Time - HHMMSSsss (UTC)</b><br/>
 HH- Hours fixed to 2 digits with leading 0 where necessary<br/>
 MM - Minutes fixed to 2 digits with leading 0 where necessary<br/>
 SS - Seconds fixed to 2 digits with leading 0 whre necessary<br/>
@@ -447,49 +447,42 @@ sss - number of decimal seconds are those available in the Record concerned, les
 HHMMSS.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
 </li>
 <li>
-Distance - DDDDddd, kilometres up to 9999 with leading zeros as required and then three decimal places (that
+<b>Distance - DDDDddd</b>, kilometres up to 9999 with leading zeros as required and then three decimal places (that
 is, the last figure is metres)
 </li>
-<li>
-Speed - SSSsss.<br/>
+<li><b>Speed - SSSsss.</b><br/>
  SSS - fixed to 3 digits with leading 0<br/>
 sss - number of speed decimals (the number of fields recorded are those available for speed in the Record
 concerned, less fields already used for SSS)
 </li>
-<li>
-Date - DDMMYY<br/>
+<li><b>Date - DDMMYY</b><br/>
 DD- number of the day in the month, fixed to 2 digits with leading 0 where necessary<br/>
 MM - number of the month in year, fixed to 2 digits with leading 0 where necessary<br/>
 YY- number of the year modulo 100, fixed to 2 digits with leading 0 where necessary
 </li>
-<li>
-Direction DDDddd.<br/>
+<li><b>Direction DDDddd.</b><br/>
  DDD - fixed to 3 digits with leading 0 where necessary<br/>
 ddd - number of direction decimals (the number of fields recorded are those available for direction in the Record
 concerned, less fields already used for DDD)
-</li>
-Lat/Long - D D M Mm m m N D D D M M m m m E<br/>
+</li><b>Lat/Long - D D M Mm m m N D D D M M m m m E</b><br/>
 DD- Latitude degrees with leading 0 where necessary<br/>
 DDD - Longitude degrees with leading 0 or 00 where necessary<br/>
 MMmmmNSEW - Lat/Long minutes with leading 0 where necessary, 3 decimal places of minutes (mandatory,
 not optional), followed by North, South, East or West letter as appropriate<br/>
 </li>
-<li>
-Altitude - AAAAAaaa<br/>
+<li><b>Altitude - AAAAAaaa</b><br/>
 AAAAA - fixed to 5 digits with leading 0<br/>
 aaa - number of altitude decimals (the number of fields recorded are those available for altitude in the Record
 concerned, less fields already used for AAAAA)
 </li>
-<li>
-PPPPpp - Pressure in hPa (mb) with two decimal places, PPPPpp fixed to 6 digits with leading zero for settings
+<li><b>PPPPpp - Pressure in hPa (mb)</b> with two decimal places, PPPPpp fixed to 6 digits with leading zero for settings
 in the 900 range). For altimeter subscale settings, 1013.25 mb (ISA Sea Level) has an PPPPpp code of 101325,
 and 980 mb has a code of 098000.<br/>
 * An altimeter setting (and any change to it) may be recorded, for instance where the FR feeds a cockpit display
 (three-letter code ATS, see <a href="#link_7">para 7</a>). However, it must not be used to change the pressure altitude recorded with
 each fix in the IGC file, which must remain with respect to the ISA sea level datum (1013.25 mb) at all times.
 </li>
-<li>
-GNSS Altitude. Where GNSS altitude is not available from GNSS position-lines such as in the case of a 2D fix
+<li><b>GNSS Altitude.</b> Where GNSS altitude is not available from GNSS position-lines such as in the case of a 2D fix
 (altitude drop-out), it shall be recorded in the IGC format file as zero so that the lack of valid GNSS altitude can
 be clearly seen during post-flight analysis.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al3.pdf" target=_blank><small>AL3</small></a>)
 </li>
@@ -1815,6 +1808,9 @@ flight. Other Geodetic Datums have been numbered by IGC as follows.</p>
 <p><i>Note from Ian Forster-Lewis: I skipped this section - just use WGS84 IGC code </i><b>100.</b></p>
 
 <h2><a name="link_9"></a>9. EXAMPLE IGC-FORMAT FILE</h2>
+<p>For a complex real-world example see
+<a href="complex_example_lxn.igc">this LXN-produced IGC file from a real flight in 2022</a>
+</p>
 <p><b><a name="link_9.1"></a>9.1</b>
 The IGC file format starts with the <a href="#link_A">A Record</a> and is followed by the H (header) and other records. The
 record letter is always at the start of the appropriate line in the file when it is viewed in text format. For
