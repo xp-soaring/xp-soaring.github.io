@@ -498,8 +498,16 @@ th {
     display: block;
 }
 
-#task_info_none {
+#task_info_header {
     display: none;
+    text-align: center;
+    font-weight: bold;
+    background-color: #5485db;
+    color: white;
+    padding: 10px 0 10px 0;
+    margin: 8px 5px;
+    font-size: 16px;
+    border-radius: 10px;
 }
 
 #task_info_content {
@@ -507,7 +515,7 @@ th {
 
 #task_info_table {
     border-collapse: collapse;
-    width: 100%;
+    width: calc(100% - 4px);
 }
 
 #task_info_summary {
@@ -529,8 +537,8 @@ th {
 
 .task_info_wp_current {
     border-top: 2px solid black;
-    background-color: yellow;
-    height: 50px;
+    background-color: #f7f72d;
+    /* height: 50px; */
     text-align: right;
     font-size: calc(min(14px, max(11px, 1vw)));
 }
@@ -547,7 +555,7 @@ th {
 
 .task_info_wp_name {
     padding-right: 4px;
-    text-align: right;
+    text-align: left;
     vertical-align: bottom;
     font-weight: bold;
 }
@@ -588,16 +596,19 @@ th {
 
 .task_info_wp_limits {
     font-size: min(14px, max(10px,1vw));
-    text-align: center;
+    text-align: left;
     background-color: #ffedf0;
 }
 
 #task_info_distance {
-    text-align: right;
-    font-size: 24px;
-    background-color: #d0d0d0;
-    margin-right: 10px;
+    text-align: center;
     font-weight: bold;
+    background-color: #5485db;
+    color: white;
+    padding: 10px 0 10px 0;
+    margin: 9px 5px;
+    font-size: 16px;
+    border-radius: 10px;
 }
 
 /* *************************************************** */
@@ -675,12 +686,13 @@ th {
 
 .tracklogs_entry_name {
     max-width: 80%;
-    overflow: ellipsis;
+    overflow-x: hidden;
+    font-weight: bold;
 }
 
 .tracklogs_entry_filename {
     max-width: 80%;
-    overflow: ellipsis;
+    overflow-x: hidden;
 }
 
 .tracklogs_entry_info:hover {
@@ -757,14 +769,17 @@ th {
     margin: 0;
     text-align: left;
     border-radius: 8px;
+    flex: 6;
 }
 
 #tracklog_info_select {
     display: inline-flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     width: 60px;
-    margin: 0;
+    /* margin: 0; */
+    flex: 1;
+    margin-top: 4px;
 }
 
 #tracklog_info_task {
