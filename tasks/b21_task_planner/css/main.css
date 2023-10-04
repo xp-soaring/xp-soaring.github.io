@@ -776,10 +776,14 @@ th {
     display: inline-flex;
     align-items: flex-start;
     justify-content: center;
-    width: 60px;
+    /* width: 60px; */
     /* margin: 0; */
     flex: 1;
     margin-top: 4px;
+}
+
+#tracklog_info_select button {
+    margin-right: 5px;
 }
 
 #tracklog_info_task {
@@ -941,6 +945,13 @@ th {
     border-radius: 4px;
 }
 
+.tracklog_icon_competition_id {
+    background-color: white;
+    display: inline-block;
+    line-height: 12px;
+    border-radius: 4px;
+}
+
 /* *************************************************** */
 /* ******* Settings              ********************* */
 /* *************************************************** */
@@ -978,12 +989,65 @@ th {
     width: 45%;
     font-size: 20px;
     text-align: right;
+    padding-top: 2px;
+}
+
+.setting_compact_name {
+    width: 45%;
+    font-size: 20px;
+    text-align: right;
+    display: inline-block;
 }
 
 .setting_options {
     width: 55%;
     text-align: right;
+    margin-bottom: 4px;
 }
+
+.setting_string {
+    background-color: white;
+    margin-left: 20px;
+    padding-top: 2px;
+    padding-bottom: 4px;
+    width: 50%;
+    display: inline-block;
+}
+
+.setting_string_entry {
+    display: inline-block;
+    background-color: lightgreen;
+    min-width: 50%;
+}
+
+.setting_number {
+    background-color: white;
+    margin-left: 20px;
+    padding-top: 2px;
+    padding-bottom: 4px;
+    display: inline-block;
+}
+
+.setting_number_entry {
+    display: inline-block;
+    background-color: lightgreen;
+    width: 35px;
+}
+
+.setting_boolean {
+    background-color: white;
+    margin-left: 20px;
+    padding-top: 2px;
+    padding-bottom: 4px;
+    display: inline-block;
+}
+
+.setting_boolean_entry {
+    display: inline-block;
+    background-color: lightgreen;
+    width: 35px;
+}
+
 .setting_option {
     background-color: white;
     text-align: right;
