@@ -14,7 +14,7 @@
 }
 
 .leaflet-grab {
-    cursor: pointer;
+    cursor: crosshair;
 }
 
 .leaflet-dragging .leaflet-grab {
