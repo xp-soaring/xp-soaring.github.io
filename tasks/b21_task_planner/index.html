@@ -34,7 +34,7 @@
 
     <script>
         console.log("location.protocol is '"+location.protocol+"'");
-        if (location.protocol == "file:") {
+        if (location.href.toLowerCase().includes("devmode") || location.protocol == "file:") {
             let local_script = document.createElement("script");
             if (location.pathname.includes("/build/")) {
                 local_script.setAttribute("src", "js/all.js");

@@ -36,6 +36,7 @@
     </li>
     <li><a href="#competitions">Viewing multiple tracklogs as in a competition</a></li>
     <li><a href="#replay">Using the 'replay' functionality</a></li>
+    <li><a href="#multiplayer">Displaying aircraft from a multiplayer service</a></li>
     <li><a href="#custom_waypoints">Loading custom waypoints</a></li>
     <li><a href="#url_filenames">Adding filenames to the Planner URL</a></li>
     <li><a href="#comp_files">Using a COMP file to load a collection of task and tracklogs</a></li>
@@ -446,6 +447,40 @@ real-world days but with the same simulator date/time and weather.
     chart.
 </p>
 
+<h2 id="multiplayer">Displaying aircraft from a multiplayer service</h2>
+<p>The B21 Task Planner can connect to multiplayer services that serve aircraft position information in
+    the Whazzup / IVAO text format. Note to send YOUR plane position information to a multiplayer server (so other
+    people can see <i>you</i>) you must install a corresponding <i>transmitter</i> that connects to MSFS, picks up your
+    latitute/longitude, and sends that to the server.
+</p>
+
+<p>The Planner will distinguish between gliders and other aircraft (using relevant icons) and will also highlight
+    the aircraft you are flying to differentiate it on the map compared to the others. The Planner compares the
+    'Multiplayer Pilot Id' in your Planner Settings with the id's received from the multiplayer service to identify the
+    aircraft you're actually flying.
+</p>
+
+<p>With the multiplayer options set correctly you'll see other planes on the map as below:
+</p>
+<div class="hcenter"><img src="images/multiplayer_aircraft.png" width="70%" /></div>
+
+<p>The first step is to enter the appropriate Multiplayer Settings. The B21 Task Planner is not itself hosting
+    a multiplayer server, nor is it transmitting your position to any multiplayer server. In a tragi-comical situation
+    MSSF has neglible multiplayer support so you'll need to find 3rd-party options for these.
+</p>
+<div class="hcenter"><img src="images/multiplayer_settings.png" width="70%" /></div>
+
+<p>Once those Settings are correct, you can display the aircraft from the multiplayer service on the B21 Task Planner
+    map by clicking the first checkbox on the 'Multiplayer' button. The other multiplayer checkboxes provide incremental
+    useful features i.e. adding the player identifiers and centering the map on YOUR aircraft.
+</p>
+
+<p>You'll see the 'map-centering' feature immediately transforms the B21 Task Planner into a moving map with your plane
+    plus any flightplan you've set displayed.
+</p>
+
+<div class="hcenter"><img src="images/multiplayer_options.png" width="70%" /></div>
+
 <h2 id="custom_waypoints">Loading custom waypoints</h2>
 
 <p>You can drag-and-drop ".cup" files into the drop-zone. In the screenshot below I have selected the file "BGA 2022 Revision a SeeYou.cup" to
@@ -574,7 +609,7 @@ https://xp-soaring.github.io/tasks/b21_task_planner/testing/files_comp/Lasham_20
 <h2 id="pln_extensions">TECH APPENDIX: The MSFS .pln format, with extensions for the soaring parameters</h2>
 
 <p>Note a MSFS flightplan (.pln) contains two different kinds of waypoints, and treats them differently:
-</p>    
+</p>
 
 <ol>
     <li><b>Airports</b> - these have an <b>ICAO</b> code, and MSFS ignores EVERYTHING in this entry except the ICAO code, reconstructing any other data
@@ -603,7 +638,7 @@ https://xp-soaring.github.io/tasks/b21_task_planner/testing/files_comp/Lasham_20
         seemingly random (for a glider) value for that.
     </p>
 
-    <p>B21 Task Planner tries to be helpful with your "Airport" waypoints. You're FIRST waypoint most be an airport if you want to download a PLN, because MSFS needs that for the 
+    <p>B21 Task Planner tries to be helpful with your "Airport" waypoints. You're FIRST waypoint most be an airport if you want to download a PLN, because MSFS needs that for the
         DEPARTURE. After that, when you click on an airport, B21 Task Planner doesn't know at that point if you've just set the DESTINATION (so it should keep the wp as as "Airport")
         or you're planning it as an intermediate waypoint which is common for gliding tasks. If you click to make the NEXT waypoint, B21 Task Planner will switch any prior
         "Airport" waypoint into a "User" airport, prepending the ICAO code onto the waypoint name and removing it from the ICAO data field.
@@ -626,24 +661,24 @@ https://xp-soaring.github.io/tasks/b21_task_planner/testing/files_comp/Lasham_20
     <p>To pass these additional parameters through to MSFS and the aircraft, while ensuring the flight plan remains completely compatible
         with 'plain vanilla' MSFS, the B21 Task Planner encodes the additional parameters into the <i>name</i> assigned to the waypoint.
     </p>
-    
+
     <p><b>*</b> is used to flag a WP as the Start or Finish of the task, <i>prepended to the name</i>, e.g. "*Burnt Cabins" will imply the
         "Burnt Cabins" waypoint is the start or finish (the first *WP will be the start, the second one will be the finish)
     </p>
-    
+
     <p><b>+</b> indicates the <i>elevation in feet</i> of the waypoint, e.g. "Burnt Cabins+2310" implies the "Burnt Cabins" waypoint is at
         2310 feet.
     </p>
-    
+
     <p><b>|</b> indicates the <i>max altitude in feet</i> permitted at the waypoint.
     </p>
-    
+
     <p><b>/</b> indicates the <i>min altitude in feet</i> permitted at the waypoint.
     </p>
-    
+
     <p><b>x</b> any time after the <b>|</b> indicates the <i>diameter (i.e. 2x radius) of the waypoint in meters</i>
     </p>
-    
+
 <table>
 
     <tr>
@@ -666,7 +701,7 @@ https://xp-soaring.github.io/tasks/b21_task_planner/testing/files_comp/Lasham_20
         <td>Burnt Cabins/1000</td><td>The WP has a min altitude of 1000 feet MSL</td>
     </tr>
     <tr>
-        <td>Burnt Cabins|x800</td><td>The WP has a turn DIAMETER of 800 meters (i.e. a radius of 400 meters). The <b>|</b> is required anywhere 
+        <td>Burnt Cabins|x800</td><td>The WP has a turn DIAMETER of 800 meters (i.e. a radius of 400 meters). The <b>|</b> is required anywhere
         <i>before</i> the <b>x</b>,
         which can most simply achieved by adding the turn diameter after the other WP parameters.</td>
     </tr>

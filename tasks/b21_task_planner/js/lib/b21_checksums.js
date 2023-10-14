@@ -1,7 +1,8 @@
 
 var NB21_CHECKSUMS = {
     "AS-33": {
-        "ACFG": [ "128D63EA22585AA47C381FC8"
+        "ACFG": [ "128D63EA22585AA47C381FC8",
+                    "21735116C3548A2C1B61D69B"
         ],
         "FMCG": [ "1B0477A5B0103B6FBBB971A6"
         ]
@@ -13,7 +14,8 @@ var NB21_CHECKSUMS = {
         ]
     },
     "JS3-15": {
-            "ACFG": [ "14E993B8CAA8350EF404F92C"
+            "ACFG": [ "14E993B8CAA8350EF404F92C",
+                        "A51D14335FA6C71DBF197FEB"
             ],
             "FMCG": [ "350C66E7F8C644AC30537D6B"
             ]

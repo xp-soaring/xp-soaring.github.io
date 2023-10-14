@@ -55,6 +55,8 @@ th {
 
 #buttons input {
     border-radius: 5px;
+    margin: 0;
+    vertical-align: middle;
 }
 
 #help_button {
