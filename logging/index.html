@@ -1,33 +1,187 @@
 <html>
     <head>
-        <title>X-Plane Flight Logging</title>
+        <title>Logging</title>
         <link rel="stylesheet" type="text/css" href="../xp-soaring.css"/>
     </head>
 <body>
 <div>
-    <div class="breadcrumbs"><a href="../index.html">xp-soaring</a> &gt; </div>
+    <div class="breadcrumbs"><a href="../index.html">Home</a> &gt; </div>
     <div class="page_heading">Flight Logging</div>
 </div>
 
-<h2>Objective</h2>
+<h2>Overview</h2>
 
-<p>An easy-to-use and secure logger is available that records the pilots cross-country flight,
-    including the waypoints of the set task, such that the tracklog can be analyzed to show
-    successful completion of the flight and the associated completion time.
-</p>
-<p>If the <a href="../igc_file_format/index.html">IGC format</a> is available as a log format, then real-world gliding analysis software
-    can be used for the tracklog analysis.
+<p>All tracklogs store rows of TIME/LAT/LONG/ALT showing where you've been in your aircraft. This data can be found reliably in IGC-format files and GPX-format
+files. There are TWO major issues to consider:</p>
+
+<ol>
+  <li>TIME. This is an issue logging flights in all simulators. Which time should the logger use? The in-sim time provided by the simulator? Or the real-world
+      time on the computer the pilot is using. That real-world time can be UTC or local. For sim-soaring we really need BOTH sim-date/time and real UTC time.
+      Sim-time can be really quirky, not necessarily running at the same
+      rate as the real world, may contain pauses, and surprisingly often goes backwards which befuddles any general-purpose tracklog analysis software.
+      Real-world time reassuringly progresses forwards at a constant rate but it contains no information about the in-sim time of day the pilot was flying in
+      the simulator. Note that the format ALL log file formats use is TIME/LAT/LONG/ALT, i.e. there is only one place for the time to be written, so you have to
+      choose. Some loggers choose in-sim time. Other loggers choose real-world time.
+        </li>
+  <li>ANY DATA OTHER THAN TIME/LAT/LONG/ALT. There are lots of things you might want to store in the tracklog. This rather crucially includes who was flying the
+      plane and what plane were they flying. Tragically with GPX tracklogs there's no common format for anything other than TIME/LAT/LONG/ALT. Of course you could
+      could invent a format, that's the issue, no-one is using anyone elses format. The IGC format does <i>much</i> better than this, with a bunch of
+      soaring-related data fields inside the file. In fact for sim-soaring the IGC format is pretty much great except it only contains the simple concept of <i>time</i>
+      i.e. time is some absolute truth, the same for everyone, and always marches forwards at a predictatable rate. This makes sense as a RL logger will use GPS time
+      which is truly guaranteed to be the same for everyone, but within a sim you cannot rely on this <b>at all</b>.
+</li>
+</ol>
+
+<p>For sim-soaring, the most popular software to <i>view</i> these glider tracklogs is the online <a href="https://xp-soaring.github.io/tasks/b21_task_planner/">B21 Task Planner</a>,
+however the IGC format produced is compatible with other IGC file viewers
+<h2>NB21 Logger for MSFS</h2>
+
+<img src="images/nb21_logger_home.png"/>
+
+<img src="images/nb21_logger_settings.png"/>
+
+<img src="images/planner.png" style="max-width: 100%"/>
+
+<p><b>NB21 Logger</b> is specifically designed for Microsoft Flight Simulator but uses the FAI IGC file format to store its tracklogs.
 </p>
 
-<h2>Technology</h2>
+<h3>NB21 Logger 'Standard format' data</h3>
 
-<p>X-Plane provides a logging capability (details to follow).
+<p>The file 'header'/'footer' data (as opposed to the repeating TIME/LAT/LONG/ALT data) contains:
 </p>
+<ol>
+<li>the logger type, i.e. NB21 Logger</li>
+<li>pilot name (from NB21 Logger settings)</li>
+<li>pilot competition id (also from the settings)</li>
+<li>DATE of flight (real-world UTC)</li>
+<li>plane model e.g. AS-33</li>
+<li>glider type e.g. 15m flapped</li>
+<li>Stores the <b>loaded flight plan</b> as the 'task' inside the IGC file</li>
+<li>checksums for the aircraft.cfg and flight_model.cfg files</li>
+<li>'signatures' for the weather loaded</li>
+<li>an overall checksum for the IGC file itself</li>
+</ol>
+
+<p>Data stored in the repeating position records (i.e. time/lat/long/alt/++)</p>
+
+<ol>
+<li>time: real-world UTC time from the user's PC.</li>
+<li>lat/long/alt: in the required IGC format, height in meters</li>
+<li>alt meters AGL</li>
+<li>True airspeed kph</li>
+<li>wind vertical speed m/s</li>
+<li>Engine on/off</li>
+<li>Flap position 0..N</li>
+<li>On ground indication 0..1</li>
+</ol>
+
+<h3>Additional NB21 Logger records embedded in the tracklog</h3>
+
+<p>This is done using the 'L' records designed into the IGC format allowing additional custom records that can be
+ignored by software that doesn't recognise them.</p>
+
+<ol>
+<li>Slew detected<pre>
+LNB21 &lt;hhmmss&gt; SLEW  ON &lt;current altitude m&gt;
+LNB21 &lt;hhmmss&gt; SLEW OFF &lt;current altitude m&gt;
+</pre></li>
+<li>Pause detected<pre>
+LNB21 &lt;hhmmss&gt; PAUS  ON
+LNB21 &lt;hhmmss&gt; PAUS OFF &lt;pause duration seconds&gt;
+</pre></li>
+<li>Local time change detected<pre>
+LNB21 &lt;hhmmss&gt; LTIM &lt;previous local time&gt; &lt;new local time&gt; &lt;change seconds&gt;
+</pre></li>
+<li>Local date change detected<pre>
+LNB21 &lt;hhmmss&gt; LDAT &lt;prev date&gt; &lt;new date&gt;
+</pre></li>
+<li>SIMULATION RATE change detected<pre>
+LNB21 &lt;hhmmss&gt; RATE &lt;prev rate&gt; &lt;new rate&gt;
+</pre></li>
+<li>PC system time change detected<pre>
+LNB21 &lt;hhmmss&gt; PTIM &lt;previous UTC time&gt;
+</pre></li>
+<li>Engine on/off detected<pre>
+LNB21 &lt;hhmmss&gt;  ENG  ON
+LNB21 &lt;hhmmss&gt;  ENG OFF
+</pre></li>
+<li>Total weight change detected.<pre>
+LNB21 &lt;hhmmss&gt; TOTW &lt;weight kg&gt;
+</pre></li>
+<li>Load Aircraft detected<pre>
+LNB21 &lt;hhmmss&gt; LDAC &lt;aircraft type&gt;
+</pre></li>
+</ol>
+
+<h2>Other tracklog loggers</h2>
+
+<h3>SimFlightPath</h3>
+
+<img src="images/SimFlightPath.png"/>
+
+<h4>Advantages</h4>
+
+<ol>
+<li>Very simple to use</li>
+<li>Reliable</li>
+<li>Uses 'real PC clock' time to store TIME/LAT/LONG/ALT records so less drama than the in-sim clock.</li>
+</ol>
+
+<h4>Disadvantages</h4>
+<ol>
+<li>Just uses the PC clock time, so no info on what in-sim time the pilot is flying.</li>
+<li>Uses some 'local' variant of the PC clock time, so simultaneous flights from different locations will not have same time in log</li>
+<li>Has a 'variable rate' tracklog storage concept which can slow down to one sample per 12 seconds</li>
+<li>Uses the GPX format for storage, so no standardisation of anything other than time/lat/long/alt</li>
+</ol>
+
+<h3>XCSoar</h3>
+
+<h4>Advantages</h4>
+
+<ol>
+<li>Uses the IGC format for the data, so possibility of some enhancements</li>
+</ol>
+
+<h4>Disadvantages</h4>
+
+<ol>
+<li>Is a real-world logger designed originally to run on a PDA receiving data from a GPS so has no idea about the simulator at all</li>
+<li>Requires FSUIPC to get MS Flight Simulator from 2020 to emulate a GPS from 1998</li>
+</ol>
+
+<h5>
+<h3>Little Navmap</h3>
+
+<h4>Advantages</h4>
+
+<ol>
+<li>Is a map/planner tool lots of people are using anyway, so they get a logger 'by default'</li>
+</ol>
+
+<h4>Disadvantages</h4>
+
+<ol>
+<li>Logging is definitely not the primary function of Little Navmap, so the logger is time/lat/long/alt only.</li>
+<li>The time used is in-sim local clock, so it will vary greatly due to common user interaction</li>
+</ol>
+
+<h2>Tracklog storage file formats</h2>
+
+<h3>IGC</h3>
+
+<p>This is the 'official' format for RL soaring competitions and badge submissions, originally designed by Ian Strachan a very long time ago. It is a compact format but
+extensible, with standardised fields for much useful aviation data.
+</p>
+
+<p>I've <a href="../igc_file_format/index.html">documented the IGC format here</a>.
+</p>
+
+<h3>GPX</h3>
+
+<h2>Archive</h2>
 
 <p><a href="../fsx/dev/sim_logger/index.html">sim_logger</a> provides this capability for FSX.
-</p>
-
-<p>... more coming soon...
 </p>
 
 </body>
