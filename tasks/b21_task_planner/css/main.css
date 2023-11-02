@@ -693,8 +693,9 @@ th {
 }
 
 .tracklogs_entry_filename {
-    max-width: 80%;
+    max-width: 95%;
     overflow-x: hidden;
+    white-space: nowrap;
 }
 
 .tracklogs_entry_info:hover {
