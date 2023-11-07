@@ -30,7 +30,8 @@ var NB21_CHECKSUMS = {
         },
     "DG808S": {
             "ACFG": [ "0D933FB14EC7C1FC5E9C50FF",
-                        '617D8901FFC57865966C1A42'
+                        '617D8901FFC57865966C1A42',
+                        'AD2A2DAE9489BE555A943A0B'
             ],
             "FMCG": [ "612014C72D2B9816C06CB778",
                         '8BDD0288671E70B14A3F9944'
@@ -45,7 +46,8 @@ var NB21_CHECKSUMS = {
     "D2C": {
             "ACFG": [ "3E0C44899BFAE022333DD031"
             ],
-            "FMCG": [ "9423DEDB0380C1A9D482080A"
+            "FMCG": [ "9423DEDB0380C1A9D482080A",
+                    'F5F9FFE0AC73623470D0D39A'
             ]
         },
     "Asobo_LS8": {

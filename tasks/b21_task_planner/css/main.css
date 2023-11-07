@@ -687,10 +687,30 @@ th {
 }
 
 .tracklogs_entry_name {
-    max-width: 80%;
     overflow-x: hidden;
     font-weight: bold;
 }
+
+/* tracklogs finished div in tracklogs_entry_name */
+
+.tracklogs_entry_finished {
+    background-color: #e6ffff;
+    min-width: 10px;
+    text-align: center;
+    float: right;
+}
+
+.tracklogs_entry_finished_ok {
+    background-color: lightgreen;
+    min-width: 10px;
+    text-align: center;
+    float: right;
+}
+
+.tracklogs_entry_finished_ok:hover {
+    background-color: #cccc88;
+}
+
 
 .tracklogs_entry_filename {
     max-width: 95%;
@@ -725,45 +745,32 @@ th {
     width: 9px;
 }
 
-/* tracklogs finished column */
-
-.tracklogs_entry_finished {
-    background-color: #e6ffff;
-    min-width: 10px;
-    text-align: center;
-}
-
-.tracklogs_entry_finished_ok {
-    background-color: lightgreen;
-    min-width: 10px;
-    text-align: center;
-}
-
-.tracklogs_entry_finished_ok:hover {
-    background-color: #cccc88;
-}
-
 /* *************************************************** */
 /* ******* TrackLog info elements    ***************** */
 /* *************************************************** */
 
 #tracklog_info {
     position: absolute;
-    left: 4%;
-    top: 4%;
-    margin: 15px;
-    font-size: 20px;
+    left: 0;
+    top: 0;
+    margin: 0;
+    font-size: 16px;
     cursor: default;
     z-index: 2000; /* position above Leaflet map */
     border-radius: 8px;
     background-color: white;
     display: none;
+    width: 100%;
 }
 
 #tracklog_info_header {
     display: flex;
     background-color: #e6ffff;
     border-radius: 8px;
+}
+
+#tracklog_info_body {
+    display: flex;
 }
 
 #tracklog_info_name {
@@ -789,11 +796,16 @@ th {
     margin-right: 5px;
 }
 
-#tracklog_info_task {
+#tracklog_info_details {
+    flex: 1;
+}
+
+#tracklog_info_timeline {
+    flex: 4;
     background-color: white;
 }
 
-#tracklog_info_task_wps {
+#tracklog_info_timeline_wps {
     margin-left: auto;
     margin-right: auto;
     padding-top: 15px;
@@ -815,6 +827,7 @@ th {
 }
 
 .tracklog_wp_info_time {
+    min-width: 100px;
 }
 
 .tracklog_wp_info_alt {
@@ -840,6 +853,7 @@ th {
     padding: 4px;
     font-size: 24px;
     font-weight: bold;
+    text-align: center;
 }
 
 /* *************************************************** */
@@ -1085,3 +1099,53 @@ th {
 #skyvector_button {
     text-decoration: none;
 }
+
+/* *************************************************** */
+/* ******* Leaflet                ******************** */
+/* *************************************************** */
+
+.leaflet-popup-content-wrapper, .leaflet-popup.tip {
+    /* background-color: lightgrey; */
+  }
+
+  .leaflet-container {
+      cursor: auto;
+  }
+
+  .leaflet-popup-content input {
+      border-style: solid;
+      border-width: 1px;
+      margin: 1px;
+  }
+
+  .leaflet-grab {
+      cursor: crosshair;
+  }
+
+  .leaflet-dragging .leaflet-grab {
+     cursor: move;
+  }
+
+  /* This is the tracklog info details for the current tracklog point */
+  .tracklog_popup .leaflet-popup-content-wrapper,
+  .tracklog_popup .leaflet-popup-tip
+  {
+      background: transparent;
+      text-align: center;
+      color: blue;
+      box-shadow: none;
+  }
+
+  /* these popups appear when mouse hovers over any airport/poi on map*/
+  .airport_popup .leaflet-popup-content-wrapper,
+  .airport_popup .leaflet-popup-tip
+  {
+      background-color: lightgrey;
+  }
+
+  /* This is the 'task waypoint' menu */
+  .wp_popup .leaflet-popup-content-wrapper,
+  .wp_popup .leaflet-popup-tip
+  {
+      background-color: lightgreen;
+  }

@@ -20,33 +20,39 @@
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script> <!-- just for csvParse of local waypoints -->
 
     <!-- CSS -->
-    <link href="https://xp-soaring.github.io/tasks/b21_task_planner/css/main.css" rel="stylesheet"/>    <!-- Main app CSS --> <!-- //DEBUG awaiting load at GitHub -->
+    <link id="main_css" rel="stylesheet"/>
     <link href="https://xp-soaring.github.io/tasks/b21_task_planner/css/highcharts.css" rel="stylesheet"/>
-    <link href="https://xp-soaring.github.io/tasks/b21_task_planner/css/leaflet_mods.css" rel="stylesheet"/> <!-- our local tweaks to the map CSS -->
 
     <!-- Lib JS files -->
     <script src="https://xp-soaring.github.io/tasks/b21_task_planner/js/lib/jszip.min.js"></script>
     <script src="https://xp-soaring.github.io/tasks/b21_task_planner/js/lib/sha1.min.js"></script>
-    <script src="https://xp-soaring.github.io/tasks/b21_task_planner/js/lib/b21_checksums.js"> </script><!-- aircraft file checksums -->
     <script src="https://xp-soaring.github.io/tasks/b21_task_planner/js/lib/semicircle.js"></script> <!-- 3rd-party mod to add semicircles to Leaflet -->
     <script src="https://xp-soaring.github.io/tasks/b21_task_planner/js/lib/leaflet.rotatedmarker.js"></script> <!-- https://github.com/bbecquet/Leaflet.RotatedMarker -->
     <script src="https://xp-soaring.github.io/tasks/b21_task_planner/js/lib/b21_leaflet-canvas-markers.js"></script> <!-- https://github.com/lipton-ice-tea/leaflet-canvas-markers -->
 
     <script>
         console.log("location.protocol is '"+location.protocol+"'");
+        let checksums_el = document.createElement("script");
+        checksums_el.type = "text/javascript";
         if (location.href.toLowerCase().includes("devmode") || location.protocol == "file:") {
+            document.getElementById("main_css").setAttribute("href", "css/main.css");
             let local_script = document.createElement("script");
             if (location.pathname.includes("/build/")) {
                 local_script.setAttribute("src", "js/all.js");
+                checksums_el.setAttribute("src", "https://xp-soaring.github.io/tasks/b21_task_planner/js/lib/b21_checksums.js");
             } else {
+                checksums_el.setAttribute("src", "js/lib/b21_checksums.js");
                 local_script.setAttribute("src", "js/local/b21_local_js.js");
             }
             document.head.appendChild(local_script);
         } else {
+            document.getElementById("main_css").setAttribute("href", "https://xp-soaring.github.io/tasks/b21_task_planner/css/main.css");
+            checksums_el.setAttribute("src", "https://xp-soaring.github.io/tasks/b21_task_planner/js/lib/b21_checksums.js");
             let all_script = document.createElement("script");
             all_script.setAttribute("src", "https://xp-soaring.github.io/tasks/b21_task_planner/js/all.js");
             document.head.appendChild(all_script);
         }
+        document.head.appendChild(checksums_el);
     </script>
 
 </head>
