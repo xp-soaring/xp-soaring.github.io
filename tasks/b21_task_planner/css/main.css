@@ -659,6 +659,7 @@ th {
 #tracklogs_table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed;
 }
 
 /* tracklogs entry */
@@ -724,6 +725,10 @@ th {
 
 /* tracklog colors column */
 
+.tracklogs_entry_colors_td {
+    width: 12px;
+}
+
 .tracklogs_entry_colors {
     width: 9px;
     height: 55px;
@@ -761,6 +766,7 @@ th {
     background-color: white;
     display: none;
     width: 100%;
+    height: 100%;
 }
 
 #tracklog_info_header {
@@ -771,6 +777,43 @@ th {
 
 #tracklog_info_body {
     display: flex;
+    height: calc(60% - 80px);
+    overflow-y: scroll;
+}
+
+#tracklog_info_details {
+    flex: 1;
+    white-space: nowrap;
+}
+
+#tracklog_info_timeline {
+    flex: 4;
+    background-color: white;
+}
+
+#tracklog_info_footer {
+}
+
+#tracklog_info_chart_area {
+    height: 40%;
+    width: 100%;
+    background-color: pink;
+}
+
+#tracklog_info_chart_header {
+    height: 30px;
+    border-top: 2px solid black;
+    background-color: white;
+}
+
+#tracklog_info_chart {
+    height: calc(100% - 55px);
+    width: 100%;
+}
+
+#tracklog_info_chart_footer {
+    height: 25px;
+    background-color: white;
 }
 
 #tracklog_info_name {
@@ -796,21 +839,16 @@ th {
     margin-right: 5px;
 }
 
-#tracklog_info_details {
-    flex: 1;
-}
-
-#tracklog_info_timeline {
-    flex: 4;
-    background-color: white;
-}
-
-#tracklog_info_timeline_wps {
+#tracklog_info_timeline_table {
     margin-left: auto;
     margin-right: auto;
     padding-top: 15px;
     padding-bottom: 15px;
     border-collapse: collapse;
+}
+
+#tracklog_info_timeline_table th {
+    text-align: left;
 }
 
 .tracklog_wp_info {
@@ -834,6 +872,11 @@ th {
     padding-left: 20px;
 }
 
+.tracklog_wp_info_notes {
+    padding-left: 20px;
+    text-align: left;
+}
+
 .tracklog_wp_info_leg {
     background-color: white;
     text-align: right;
@@ -851,9 +894,22 @@ th {
     background-color: lightgreen;
     border-radius: 8px;
     padding: 4px;
-    font-size: 24px;
+    font-size: 18px;
     font-weight: bold;
     text-align: center;
+}
+
+#tracklog_fixup {
+    display: none;
+    text-align: center;
+    background-color: #FCFFC5;
+}
+
+#tracklog_fixup_text {
+    display: inline-block;
+}
+
+#tracklog_fixup_button {
 }
 
 /* *************************************************** */
