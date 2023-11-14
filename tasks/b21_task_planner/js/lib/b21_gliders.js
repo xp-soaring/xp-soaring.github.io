@@ -2,7 +2,8 @@
 var B21_GLIDERS = {
     "AS-33": {
         "NB21_ACFG": [ "128D63EA22585AA47C381FC8",
-                    "21735116C3548A2C1B61D69B"
+                    "21735116C3548A2C1B61D69B",
+                    "0C26C63E4D7FAD13BC406545"
         ],
         "NB21_FMCG": [ "1B0477A5B0103B6FBBB971A6"
         ],
