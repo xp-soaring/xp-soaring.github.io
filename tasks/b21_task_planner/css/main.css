@@ -632,16 +632,26 @@ th {
     min-width: 75%;
     margin-left: auto;
     margin-right: auto;
+    border-collapse: collapse;
+    background-color: lightblue;
+}
+
+#weather_info tr:hover {
+    background-color: #e0f6fd;
+    cursor: pointer;
 }
 
 #weather_info td {
     text-align: center;
-    background-color: lightblue;
 }
 
 #weather_info th {
     text-align: center;
     background-color: pink;
+}
+
+.weather_info_layer_selected {
+    background-color: #e0f6fd;
 }
 
 /* *************************************************** */
