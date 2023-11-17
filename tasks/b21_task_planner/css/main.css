@@ -145,7 +145,7 @@ th {
     height: 100%;
     margin-left: 5px;
     background-color: white;
-    /* overflow-y: auto; */
+    overflow-y: auto;
     min-width: 300px;
     max-width: 500px;
     border-right: 2px solid black;
@@ -664,6 +664,8 @@ th {
     /* width: 100%; */
     border-collapse: collapse;
     display: none;
+    height: 100%;
+    /* overflow-y: scroll; */
 }
 
 #tracklogs_table {
