@@ -318,7 +318,7 @@ th {
     overflow-y: auto;
 }
 
-.chart {
+.map_chart {
     width: 100%;
     height: calc(100% - 10px);
     margin-top: 3px;
@@ -664,7 +664,7 @@ th {
     /* width: 100%; */
     border-collapse: collapse;
     display: none;
-    height: 100%;
+    /* height: 100%; */
     /* overflow-y: scroll; */
 }
 
@@ -911,6 +911,15 @@ th {
     text-align: center;
 }
 
+#tracklog_task_landout {
+    background-color: lightgreen;
+    border-radius: 8px;
+    padding: 4px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
 #tracklog_fixup {
     display: none;
     text-align: center;
@@ -931,6 +940,7 @@ th {
 #replay {
     width: 100%;
     height: 40px;
+    font-size: 14px;
     background-color: white;
     align-items: center;
     justify-content: center;
