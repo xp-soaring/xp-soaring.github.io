@@ -954,17 +954,28 @@ th {
 }
 
 #skip_pause {
-    /*display: inline-flex; */
+    /* display: inline-flex; */
     align-items: center;
     border: 2px solid #888;
     border-radius: 8px;
     height: 25px;
     padding-right: 2px;
+    line-height: 10px;
+    padding-top: 2px;
+}
+
+#skip_pause_check_text {
+    display: flex;
+}
+
+#skip_pause input {
+    flex: 1;
 }
 
 #skip_pause_progress {
     display: none;
-    height: 4px;
+    position: absolute;
+    height: 14px;
     width: 0%;
     background-color: lightgreen;
 }
