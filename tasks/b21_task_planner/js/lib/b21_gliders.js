@@ -54,7 +54,8 @@ var B21_GLIDERS = {
         "NB21_ACFG": [ "3E0C44899BFAE022333DD031"
         ],
         "NB21_FMCG": [ "9423DEDB0380C1A9D482080A",
-                'F5F9FFE0AC73623470D0D39A'
+                    'F5F9FFE0AC73623470D0D39A',
+                    'F310F9D3DEEA4B5B90CBD29B' // 2.0.8
         ],
         "MAX_WEIGHT_KG": 525
     },
