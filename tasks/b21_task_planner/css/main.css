@@ -666,6 +666,16 @@ th {
     display: none;
     /* height: 100%; */
     /* overflow-y: scroll; */
+    position: relative;
+}
+
+#tracklogs_scoresheet {
+    left: 0;
+    top: 0;
+    position: absolute;
+    width: 100%;
+    display: block;
+    cursor: default;
 }
 
 #tracklogs_table {
