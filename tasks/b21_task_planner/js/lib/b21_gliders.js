@@ -75,10 +75,12 @@ var B21_GLIDERS = {
         ],
         "MAX_WEIGHT_KG": 750
     },
-    "SZD30-Pirat": {
-        "NB21_ACFG": [ '5A6A99C67F3A928DC2954647'
+    "SZD30": {
+        "NB21_ACFG": [ '5A6A99C67F3A928DC2954647', // 1.0
+                    '599B237024EAA4287CF76D71' // B21 1.01
         ],
-        "NB21_FMCG": [ '5FA5FE53894E11284FD6FEF2'
+        "NB21_FMCG": [ '5FA5FE53894E11284FD6FEF2',
+                    'FB56C6A897F6088BA3446CC9' // EPPR 1.01
         ],
         "MAX_WEIGHT_KG": 370
     }
