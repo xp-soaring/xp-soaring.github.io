@@ -1,0 +1,1305 @@
+
+html {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+    height: 100%;
+}
+
+/* don't underline links */
+a {
+    text-decoration: none;
+}
+
+th {
+    text-align: right;
+}
+
+.header {
+    background-color: #888888;
+}
+
+.title {
+    font-size: 26px;
+    margin-left: 10px;
+}
+
+.title_text {
+    display: inline-block;
+}
+
+.title_task_option {
+    vertical-align: middle;
+    display: none; /* inline-block; -- have hidden this for now */
+    float: right;
+}
+
+.title_task_option input {
+    vertical-align: middle;
+    margin-right: 30px;
+}
+
+#buttons {
+    margin-bottom: 4px;
+    margin-top: 2px;
+    position: relative;
+}
+
+#buttons button {
+    border-radius: 5px;
+}
+
+#buttons input {
+    border-radius: 5px;
+    margin: 0;
+    vertical-align: middle;
+}
+
+#help_button {
+    position: absolute;
+    right: 8px;
+}
+
+#help_button button {
+    background-color: lightgreen;
+}
+
+/* ****************************** */
+/*  Search                        */
+/* ****************************** */
+
+#search {
+    position: relative;
+    display: inline;
+}
+
+#search_results {
+    position: absolute;
+    top: 24px;
+    left: 0px;
+    max-height: calc(80vh);
+    overflow-y: auto;
+    word-break: keep-all;
+    white-space: nowrap;
+    background-color: white;
+    border: 1px solid black;
+    z-index: 2000;
+    display: none;
+    padding-left: 2px;
+    padding-right: 10px;
+}
+
+.search_result {
+    cursor: pointer;
+}
+
+.search_result_text {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.search_result_marker_msfs {
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    background-image: url("../images/search_msfs.png");
+}
+
+.search_result_marker_ourairports {
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    background-image: url("../images/search_ourairports.png");
+}
+
+.search_result_marker_waypoint {
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    background-image: url("../images/search_user_waypoint.png");
+}
+
+.search_result:hover {
+    background-color: yellow;
+}
+
+/* ******************************************* */
+/* ******   PANES           ****************** */
+/* ******************************************* */
+
+#panes {
+    height: calc(100% - 80px);
+    position: relative;
+}
+
+#left_pane {
+    display: inline-block; /* show/hide will toggle this to "none" */
+    width: 25%;
+    height: 100%;
+    margin-left: 5px;
+    background-color: white;
+    overflow-y: auto;
+    min-width: 300px;
+    max-width: 500px;
+    border-right: 2px solid black;
+    vertical-align: top;
+}
+
+#left_top_area { /* drop_zone + left_pane_hide */
+    display: flex;
+    justify-content: right;
+}
+
+#left_pane_hide {
+    display: inline-flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: right;
+    align-items: flex-end;
+    margin-right: 5px;
+}
+
+#left_pane_hide button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    margin-top: 20px;
+    margin-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 25px;
+}
+
+#left_pane_show {
+    display: none; /* show/hide will toggle this to "inline-block" */
+    height: 100%;
+    border-right: 2px solid black;
+    width: 25px;
+    vertical-align: top;
+}
+
+#left_pane_show button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    height: 110px;
+    margin-top: 10px;
+    padding: 5px;
+}
+
+#click_to_edit {
+    display: none; /* none | block */
+    border-radius: 8px;
+    margin-top: 4px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+    background-color: #D3ECD5;
+}
+
+/* *************************************************** */
+/* ******* Tabs Area             ********************* */
+/* *************************************************** */
+
+#left_pane_tabs {
+    display: none; /* will enable when GPX is loaded */
+    font-size: calc(min(16px, max(12px,1.5vw)));
+}
+
+#tab_weather {
+    display: none;
+}
+
+.tab_active {
+    display: inline-flex;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 0;
+    background-color: #e6ffff;
+    color: black;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.tab_inactive {
+    display: inline-flex;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 0;
+    background-color: #999999;
+    color: lightgray;
+    border-bottom: 1px solid black;
+}
+
+#rescore_button {
+    display: none;
+    float: right;
+    margin-right: 10px;
+}
+
+#rescore_button button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    padding-left: 2px;
+    padding-right: 2px;
+    font-size: calc(min(18px,max(10px,1vw)));
+}
+
+/* *************************************************** */
+/* ******* Drop Zone             ********************* */
+/* *************************************************** */
+
+#drop_zone {
+    display: inline-block;
+    width: 65%;
+    /* min-height: 25%;*/
+    border-radius: 20px;
+    border: 2px dashed gray;
+    border-color: gray;
+    margin-left: 5%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    line-height: 25px;
+    padding-bottom: 6px;
+    flex: 3;
+}
+
+#drop_zone_choose_input {
+    display: none;
+}
+
+#drop_zone button {
+    border-radius: 5px;
+}
+
+/* *************************************************** */
+/* ******* Right Pane            ********************* */
+/* *************************************************** */
+
+#right_pane {
+    position: relative; /* so position: absolute works for tracklog_info */
+    display: inline-block;
+    height: 100%;
+    width: 70%;
+    margin-right: 8px;
+}
+
+#right_pane button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    min-height: 20px;
+    font-size: 13px;
+}
+
+
+#map {
+    height: 100%;
+}
+
+#charts {
+    width: 100%;
+    height: 25%;
+    display: none;
+    overflow-y: auto;
+}
+
+.map_chart {
+    width: 100%;
+    height: calc(100% - 10px);
+    margin-top: 3px;
+    border-bottom: 2px solid black;
+}
+
+.wp_menu {
+    display: flex;
+    align-items: center;
+    /* background-color: lightgray; */
+    cursor: pointer;
+}
+
+.wp_menuitem {
+    margin: 1px;
+}
+
+.wp_menuitem:hover {
+    background-color: white;
+}
+
+/* *************************************************** */
+/* ******* WP elements    **************************** */
+/* *************************************************** */
+
+.wp_icon {
+    background-color: red;
+}
+
+.wp_icon_html_current {
+    position: absolute;
+    display: inline-block;
+    font-size: 16px;
+    border: 1px solid black;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgba(255,255,0,0.6);
+}
+
+.wp_icon_html {
+    position: absolute;
+    display: inline-block;
+    font-size: 16px;
+    border: 1px solid black;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgba(255,255,255,0.6);
+}
+
+.wp_name {
+    width: 16em;
+}
+
+.wp_icao {
+    width: 60px;
+}
+
+.wp_runway {
+    width:45px;
+}
+
+.wp_alt {
+    width: 50px;
+}
+
+.wp_radius {
+    width: 50px;
+}
+
+.wp_start {
+    display: inline-flex;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding-left: 4px;
+    padding-right: 2px;
+}
+
+.wp_finish {
+    display: inline-flex;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding-left: 4px;
+    padding-right: 2px;
+}
+
+.wp_aat {
+    display: inline-flex;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin-left: 10px;
+    padding-left: 4px;
+    padding-right: 2px;
+}
+
+/* *************************************************** */
+/* ******* Wind                  ********************* */
+/* *************************************************** */
+
+#wind_rose {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    width: 25vw;
+    height: 25vw;
+    max-height: 450px;
+    max-width: 450px;
+    background: transparent;
+    z-index: 690;
+    pointer-events: none;
+    display: none;
+    font-size: 0.8em;
+}
+
+#compass_rose {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/compass_rose.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#wind_arrow_1 {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/wind_arrow_1.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform-origin: center;
+    transform: rotate(200deg);
+}
+
+#wind_arrow_1_text {
+    position: absolute;
+    left: 16.7%;
+    top: 48%;
+    width: 26.5%;
+    height: 5.09%;
+    color: darkblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-origin: center;
+}
+
+#wind_speed_1 {
+    position: absolute;
+    left: 44.44%;
+    top: 44.44%;
+    width: 11.11%;
+    height: 11.11%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: pink; */
+    color: darkblue;
+    flex-direction: column;
+}
+
+#wind_rose_hide {
+    border: 1px solid black;
+    border-radius: 6px;
+    display: none;
+    font-size: 14px;
+    margin-top: 3px;
+    background-color: #eee;
+    padding-right: 2px;
+    align-items: center;
+}
+
+#wind_rose_position {
+    cursor: pointer;
+}
+
+/* *************************************************** */
+/* ******* Task info elements    ********************* */
+/* *************************************************** */
+
+#task_info {
+    cursor: pointer;
+    font-size: 14px;
+    width: 100%;
+    display: block;
+}
+
+#task_info_header {
+    display: none;
+    text-align: center;
+    font-weight: bold;
+    background-color: #5485db;
+    color: white;
+    padding: 10px 0 10px 0;
+    margin: 8px 5px;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+#task_info_content {
+}
+
+#task_info_table {
+    border-collapse: collapse;
+    width: calc(100% - 4px);
+}
+
+#task_info_summary {
+}
+
+#task_info_headings {
+    background-color: #e6ffff;
+}
+
+.task_info_wp {
+    border-top: 2px solid black;
+    background-color: #e6ffff;
+    font-size: calc(min(14px, max(11px, 1vw)));
+}
+
+.task_info_wp:hover {
+    background-color: #cccc88;
+}
+
+.task_info_wp_current {
+    border-top: 2px solid black;
+    background-color: #f7f72d;
+    /* height: 50px; */
+    text-align: right;
+    font-size: calc(min(14px, max(11px, 1vw)));
+}
+
+.task_info_wp_index {
+    text-align: left;
+    font-size: 12px;
+    width: 1%;
+    white-space: nowrap;
+    vertical-align: bottom;
+    font-weight: bold;
+    color: darkred;
+}
+
+.task_info_wp_index_startfinish {
+    text-align: left;
+    font-size: 12px;
+    width: 1%;
+    white-space: nowrap;
+    vertical-align: middle;
+    font-weight: bold;
+    color: darkblue;
+}
+
+.task_info_wp_index_aat {
+    text-align: left;
+    font-size: 12px;
+    width: 1%;
+    white-space: nowrap;
+    vertical-align: middle;
+    font-weight: bold;
+    color: darkgreen;
+}
+
+.task_info_wp_name {
+    padding-right: 4px;
+    text-align: left;
+    vertical-align: bottom;
+    font-weight: bold;
+}
+
+.task_info_wp_alt {
+    text-align: right;
+    vertical-align: bottom;
+}
+
+.task_info_wp_bearing {
+    padding-right: 15px;
+    text-align: right;
+    vertical-align: top;
+}
+
+.task_info_wp_distance {
+    padding-right: 5px;
+    text-align: right;
+    vertical-align: top;
+    font-weight: bold;
+}
+
+
+.task_info_wp_buttons {
+    white-space: nowrap;
+    text-align: right;
+}
+
+.task_info_wp_buttons div:hover { /* highlight buttons in red */
+    border: 2px solid red;
+}
+
+.task_info_wp_button {
+    display: inline-block;
+    width: calc(min(27px, max(15px, 1.2vw)));
+    max-width: 27px;
+}
+
+.task_info_wp_limits {
+    font-size: min(14px, max(10px,1vw));
+    text-align: left;
+    background-color: #ffedf0;
+}
+
+#task_info_distance {
+    text-align: center;
+    font-weight: bold;
+    background-color: #5485db;
+    color: white;
+    padding: 10px 0 10px 0;
+    margin: 9px 5px;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+/* *************************************************** */
+/* ******* Weather info elements    ****************** */
+/* *************************************************** */
+
+#weather_info {
+    font-size: 14px;
+    width: 100%;
+    display: none;
+    margin-top: 6px;
+}
+
+#weather_info h4 {
+    margin-bottom: 4px;
+}
+
+#weather_info table {
+    min-width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    background-color: lightblue;
+}
+
+#weather_info tr:hover {
+    background-color: #e0f6fd;
+    cursor: pointer;
+}
+
+#weather_info td {
+    text-align: center;
+}
+
+#weather_info th {
+    text-align: center;
+    background-color: pink;
+}
+
+.weather_info_layer_selected {
+    background-color: #e0f6fd;
+}
+
+/* *************************************************** */
+/* ******* TrackLogs elements         **************** */
+/* *************************************************** */
+
+#tracklogs {
+    cursor: pointer;
+    font-size: 16px;
+    /* width: 100%; */
+    border-collapse: collapse;
+    display: none;
+    /* height: 100%; */
+    /* overflow-y: scroll; */
+    position: relative;
+}
+
+#tracklogs_scoresheet {
+    left: 0;
+    top: 0;
+    position: absolute;
+    width: 100%;
+    display: block;
+    cursor: default;
+    font-family: monospace;
+    font-size: 12px;
+    white-space: pre;
+}
+
+#tracklogs_scoresheet_csv_div {
+    display: flex;
+    justify-content: right;
+    margin-right: 7px;
+    margin-top: 12px;
+    margin-bottom: 10px;
+}
+
+#tracklogs_scoresheet_csv_div button {
+    display: inline-flex;
+    align-items: center;
+    font-size: 10px;
+    height: 18px;
+}
+
+#tracklogs_table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+/* tracklogs entry */
+
+.tracklogs_entry {
+    border-top: 2px solid black;
+    height: 36px;
+}
+
+.tracklogs_entry_current {
+    border: 4px solid yellow;
+    background-color: yellow;
+    height: 36px;
+}
+
+.tracklogs_entry_checkbox {
+    width: 5%;
+}
+
+/* tracklogs info column */
+
+.tracklogs_entry_info {
+    text-align: left;
+    background-color: #e6ffff;
+    font-size: 14px;
+}
+
+.tracklogs_entry_name {
+    overflow-x: hidden;
+    font-weight: bold;
+}
+
+/* tracklogs finished div in tracklogs_entry_name */
+
+.tracklogs_entry_finished {
+    background-color: #e6ffff;
+    min-width: 10px;
+    text-align: center;
+    float: right;
+}
+
+.tracklogs_entry_finished_ok {
+    background-color: lightgreen;
+    min-width: 10px;
+    text-align: center;
+    float: right;
+}
+
+.tracklogs_entry_finished_ok:hover {
+    background-color: #cccc88;
+}
+
+
+.tracklogs_entry_filename {
+    max-width: 95%;
+    overflow-x: hidden;
+    white-space: nowrap;
+}
+
+.tracklogs_entry_info:hover {
+    background-color: #cccc88;
+}
+
+/* tracklog colors column */
+
+.tracklogs_entry_colors_td {
+    width: 12px;
+}
+
+.tracklogs_entry_colors {
+    width: 9px;
+    height: 55px;
+    border: 1px solid black;
+}
+
+.tracklogs_entry_color_top {
+    height: 40%;
+    width: 9px;
+}
+
+.tracklogs_entry_color_middle {
+    height: 20%;
+    width: 9px;
+}
+
+.tracklogs_entry_color_bottom {
+    height: 40%;
+    width: 9px;
+}
+
+/* *************************************************** */
+/* ******* TrackLog info elements    ***************** */
+/* *************************************************** */
+
+#tracklog_info {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0;
+    font-size: 16px;
+    cursor: default;
+    z-index: 2000; /* position above Leaflet map */
+    border-radius: 8px;
+    background-color: white;
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+#tracklog_info_header {
+    display: flex;
+    background-color: #e6ffff;
+    border-radius: 8px;
+}
+
+#tracklog_info_body {
+    display: flex;
+    height: calc(60% - 80px);
+    overflow-y: scroll;
+}
+
+#tracklog_info_details {
+    flex: 1;
+    white-space: nowrap;
+}
+
+#tracklog_info_timeline {
+    flex: 4;
+    background-color: white;
+}
+
+#tracklog_info_footer {
+}
+
+#tracklog_info_chart_area {
+    height: 40%;
+    width: 100%;
+    background-color: pink;
+}
+
+#tracklog_info_chart_header {
+    height: 30px;
+    border-top: 2px solid black;
+    background-color: white;
+}
+
+#tracklog_info_chart {
+    height: calc(100% - 55px);
+    width: 100%;
+}
+
+#tracklog_info_chart_footer {
+    height: 25px;
+    background-color: white;
+}
+
+#tracklog_info_name {
+    display: inline-block;
+    font-weight: bold;
+    margin: 0;
+    text-align: left;
+    border-radius: 8px;
+    flex: 6;
+}
+
+#tracklog_info_select {
+    display: inline-flex;
+    align-items: flex-start;
+    justify-content: center;
+    /* width: 60px; */
+    /* margin: 0; */
+    flex: 1;
+    margin-top: 4px;
+}
+
+#tracklog_info_select button {
+    margin-right: 5px;
+}
+
+#tracklog_info_timeline_table {
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-collapse: collapse;
+}
+
+#tracklog_info_timeline_table th {
+    text-align: left;
+}
+
+.tracklog_wp_info {
+    border-top: 1px solid #cccccc;
+    background-color: #e6ffff;
+}
+
+.tracklog_wp_info:hover {
+    background-color: #cccc88;
+}
+
+.tracklog_wp_info_name {
+    font-weight: bold;
+}
+
+.tracklog_wp_info_time {
+    min-width: 100px;
+}
+
+.tracklog_wp_info_alt {
+    padding-left: 20px;
+}
+
+.tracklog_wp_info_notes {
+    padding-left: 20px;
+    text-align: left;
+}
+
+.tracklog_wp_info_leg {
+    background-color: white;
+    text-align: right;
+}
+
+.tracklog_wp_info_missed {
+    text-align: center;
+}
+
+.tracklog_wp_info_missed_button {
+    text-align: left;
+}
+
+#tracklog_task_completion {
+    background-color: lightgreen;
+    border-radius: 8px;
+    padding: 4px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#tracklog_task_landout {
+    background-color: lightgreen;
+    border-radius: 8px;
+    padding: 4px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#tracklog_fixup {
+    display: none;
+    text-align: center;
+    background-color: #FCFFC5;
+}
+
+#tracklog_fixup_text {
+    display: inline-block;
+}
+
+#tracklog_fixup_button {
+}
+
+/* *************************************************** */
+/* ******* Replay                ********************* */
+/* *************************************************** */
+
+#replay {
+    width: 100%;
+    height: 40px;
+    font-size: 14px;
+    background-color: white;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid black;
+    border-top: 2px solid black;
+    display: none;
+}
+
+#replay * {
+    margin-left: 5px;
+}
+
+#skip_pause {
+    /* display: inline-flex; */
+    align-items: center;
+    border: 2px solid #888;
+    border-radius: 8px;
+    height: 25px;
+    padding-right: 2px;
+    line-height: 10px;
+    padding-top: 2px;
+}
+
+#skip_pause_check_text {
+    display: flex;
+}
+
+#skip_pause input {
+    flex: 1;
+}
+
+#skip_pause_progress {
+    display: none;
+    position: absolute;
+    height: 14px;
+    width: 0%;
+    background-color: lightgreen;
+}
+
+#icon_data {
+    display: inline-flex;
+    align-items: center;
+    border: 2px solid #888;
+    border-radius: 8px;
+    height: 25px;
+    padding-right: 2px;
+}
+
+#replay_sync {
+    display: inline-flex;
+    align-items: center;
+    border: 2px solid #888;
+    border-radius: 8px;
+    height: 25px;
+    padding-right: 2px;
+}
+
+#replay_speed {
+    display: inline-flex;
+    align-items: center;
+    border: 2px solid #888;
+    border-radius: 8px;
+    height: 25px;
+}
+
+#replay_speed_value {
+    display: inline-block;
+    font-size: 18px;
+    width: 30px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#replay_speed button {
+    font-size: 18px;
+    width: 30px;
+    height: 20px;
+    margin-left: 4px;
+    margin-right: 4px;
+    border-radius: 5px;
+}
+
+#replay_time {
+    display: inline-flex;
+    font-family: monospace;
+}
+
+#replay_hide_chart {
+}
+
+#replay_hide_tracks {
+}
+
+#icon_data_numbers_checkbox {
+    margin-left: 0;
+}
+
+.tracklog_icon_popup { /* see also .tracklog_popup in leaflet_mods.css */
+    position: absolute;
+    bottom: -10px;
+}
+
+
+.tracklog_icon_tail_number {
+    background-color: white;
+    display: inline-block;
+    line-height: 12px;
+    border-radius: 4px;
+}
+
+.tracklog_icon_competition_id {
+    background-color: white;
+    display: inline-block;
+    line-height: 12px;
+    border-radius: 4px;
+}
+
+/* *************************************************** */
+/* ******* Settings              ********************* */
+/* *************************************************** */
+
+#settings {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: 2000;
+}
+
+#settings_heading {
+    text-align: center;
+    font-size: 32px;
+}
+
+#settings_heading_text {
+    display: inline-block;
+}
+
+#settings_heading button {
+    vertical-align: middle;
+    margin-left: 30px;
+    border-radius: 5px;
+}
+
+.setting {
+    border-bottom: 2px solid black;
+}
+
+.setting_name {
+    width: 45%;
+    font-size: 20px;
+    text-align: right;
+    padding-top: 2px;
+}
+
+.setting_compact_name {
+    width: 45%;
+    font-size: 20px;
+    text-align: right;
+    display: inline-block;
+}
+
+.setting_options {
+    width: 55%;
+    text-align: right;
+    margin-bottom: 4px;
+}
+
+.setting_string {
+    background-color: white;
+    margin-left: 20px;
+    padding-top: 2px;
+    padding-bottom: 4px;
+    width: 50%;
+    display: inline-block;
+}
+
+.setting_string_entry {
+    display: inline-block;
+    background-color: lightgreen;
+    min-width: 50%;
+}
+
+.setting_number {
+    background-color: white;
+    margin-left: 20px;
+    padding-top: 2px;
+    padding-bottom: 4px;
+    display: inline-block;
+}
+
+.setting_number_entry {
+    display: inline-block;
+    background-color: lightgreen;
+    width: 35px;
+}
+
+.setting_boolean {
+    background-color: white;
+    margin-left: 20px;
+    padding-top: 2px;
+    padding-bottom: 4px;
+    display: inline-block;
+}
+
+.setting_boolean_entry {
+    display: inline-block;
+    background-color: lightgreen;
+    width: 35px;
+}
+
+.setting_option {
+    background-color: white;
+    text-align: right;
+    margin-left: 50%;
+}
+
+.setting_option_entry {
+    display: inline-block;
+    background-color: white;
+    min-width: 50%;
+}
+
+.setting_option_entry:hover {
+    cursor: pointer;
+    background-color: lightgreen;
+}
+
+.setting_option_entry_selected {
+    display: inline-block;
+    background-color: lightgreen;
+    min-width: 50%;
+}
+
+.setting_option_entry_selected:hover {
+    cursor: pointer;
+}
+
+/* *************************************************** */
+/* ******* SkyVector Button       ******************** */
+/* *************************************************** */
+
+#skyvector_button {
+    text-decoration: none;
+}
+
+/* *************************************************** */
+/* ******* Multiplayer Button      ******************* */
+/* *************************************************** */
+
+#multiplayer_local {
+    display: inline-block;
+}
+
+/* *************************************************** */
+/* ******* Leaflet                ******************** */
+/* *************************************************** */
+
+.leaflet-popup-content-wrapper, .leaflet-popup.tip {
+    /* background-color: lightgrey; */
+  }
+
+  .leaflet-container {
+      cursor: auto;
+  }
+
+  .leaflet-popup-content input {
+      border-style: solid;
+      border-width: 1px;
+      margin: 1px;
+  }
+
+  .leaflet-grab {
+      cursor: crosshair;
+  }
+
+  .leaflet-dragging .leaflet-grab {
+     cursor: move;
+  }
+
+  /* This is the tracklog info details for the current tracklog point */
+  .tracklog_popup .leaflet-popup-content-wrapper,
+  .tracklog_popup .leaflet-popup-tip
+  {
+      background: transparent;
+      text-align: center;
+      color: blue;
+      box-shadow: none;
+  }
+
+  /* these popups appear when mouse hovers over any airport/poi on map*/
+  .airport_popup .leaflet-popup-content-wrapper,
+  .airport_popup .leaflet-popup-tip
+  {
+      background-color: lightgrey;
+  }
+
+  /* This is the 'task waypoint' menu */
+  .wp_popup .leaflet-popup-content-wrapper,
+  .wp_popup .leaflet-popup-tip
+  {
+      background-color: lightgreen;
+  }

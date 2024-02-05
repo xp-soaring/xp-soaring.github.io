@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!-- B21 Task Planner version number is embedded in title_text below -->
+<html lang="en" translate="no">
+<meta name="google" content="notranslate" />
+<!-- this line is required to get Javascript to default to UTF-8 -->
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<head>
+    <title>B21 Task Planner</title>
+
+    <!-- Leaflet, the OpenStreetMap API -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <!-- Highcharts used to draw the baro/speed chart -->
+    <!-- <script src="js/highcharts.js"></script> -->
+    <script src="https://code.highcharts.com/11.2.0/highcharts.js"></script>
+
+    <!-- D3 for CSV -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script> <!-- just for csvParse of local waypoints -->
+
+    <!-- CSS -->
+    <link id="main_css" rel="stylesheet"/>
+    <link href="https://xp-soaring.github.io/tasks/b21_task_planner/css/highcharts.css" rel="stylesheet"/>
+
+    <!-- Lib JS files -->
+    <script src="https://xp-soaring.github.io/tasks/b21_task_planner/js/lib/jszip.min.js"></script>
+    <script src="https://xp-soaring.github.io/tasks/b21_task_planner/js/lib/sha1.min.js"></script>
+    <script src="https://xp-soaring.github.io/tasks/b21_task_planner/js/lib/semicircle.js"></script> <!-- 3rd-party mod to add semicircles to Leaflet -->
+    <script src="https://xp-soaring.github.io/tasks/b21_task_planner/js/lib/leaflet.rotatedmarker.js"></script> <!-- https://github.com/bbecquet/Leaflet.RotatedMarker -->
+    <script src="https://xp-soaring.github.io/tasks/b21_task_planner/js/lib/b21_leaflet-canvas-markers.js"></script> <!-- https://github.com/lipton-ice-tea/leaflet-canvas-markers -->
+
+    <script>
+        console.log("location.protocol is '"+location.protocol+"'");
+        let gliders_el = document.createElement("script");
+        gliders_el.type = "text/javascript";
+        if (location.href.toLowerCase().includes("devmode") || location.protocol == "file:") {
+            document.getElementById("main_css").setAttribute("href", "css/main.css");
+            let local_script = document.createElement("script");
+            if (location.pathname.includes("/build/")) {
+                local_script.setAttribute("src", "js/all.js");
+                gliders_el.setAttribute("src", "https://xp-soaring.github.io/tasks/b21_task_planner/js/lib/b21_gliders.js");
+            } else {
+                gliders_el.setAttribute("src", "js/lib/b21_gliders.js");
+                local_script.setAttribute("src", "js/local/b21_local_js.js");
+            }
+            document.head.appendChild(local_script);
+        } else {
+            document.getElementById("main_css").setAttribute("href", "https://xp-soaring.github.io/tasks/b21_task_planner/css/main.css");
+            gliders_el.setAttribute("src", "https://xp-soaring.github.io/tasks/b21_task_planner/js/lib/b21_gliders.js");
+            let all_script = document.createElement("script");
+            all_script.setAttribute("src", "https://xp-soaring.github.io/tasks/b21_task_planner/js/all.js");
+            document.head.appendChild(all_script);
+        }
+        document.head.appendChild(gliders_el);
+    </script>
+
+</head>
+<body onload="b21_task_planner_loaded()">
+</body>
+</html>
