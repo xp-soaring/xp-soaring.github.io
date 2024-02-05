@@ -45,6 +45,12 @@
                 local_script.setAttribute("src", "js/local/b21_local_js.js");
             }
             document.head.appendChild(local_script);
+        } else if (location.protocol == "https:") {
+            document.getElementById("main_css").setAttribute("href", "css/main.css");
+            gliders_el.setAttribute("src", "js/lib/b21_gliders.js");
+            let all_script = document.createElement("script");
+            all_script.setAttribute("src", "js/all.js");
+            document.head.appendChild(all_script);
         } else {
             document.getElementById("main_css").setAttribute("href", "https://xp-soaring.github.io/tasks/b21_task_planner/css/main.css");
             gliders_el.setAttribute("src", "https://xp-soaring.github.io/tasks/b21_task_planner/js/lib/b21_gliders.js");
