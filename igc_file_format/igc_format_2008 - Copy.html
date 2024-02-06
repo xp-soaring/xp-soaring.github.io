@@ -444,7 +444,7 @@ HH- Hours fixed to 2 digits with leading 0 where necessary<br/>
 MM - Minutes fixed to 2 digits with leading 0 where necessary<br/>
 SS - Seconds fixed to 2 digits with leading 0 whre necessary<br/>
 sss - number of decimal seconds are those available in the Record concerned, less fields already used for
-HHMMSS.(<a href="igc_fr_specification_with_al8_2023-2-1_0.pdf" target=_blank><small>AL8</small></a>)
+HHMMSS.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
 </li>
 <li>
 <b>Distance - DDDDddd</b>, kilometres up to 9999 with leading zeros as required and then three decimal places (that
@@ -528,7 +528,7 @@ download from the recorder in an intermediate format such as binary, the file na
 intermediate format shall be as for the IGC file but with the Manufacturer's three letter code used
 instead of the "IGC" after the dot. It shall then be possible to convert the intermediate format to the
 IGC ASCII format through the Conversion utility that is part of the manufacturer's IGC-XXX.DLL
-file or, for earlier systems, through the CONV-XXX.EXE program.(<a href="igc_fr_specification_with_al8_2023-2-1_0.pdf" target=_blank><small>AL8</small></a>)
+file or, for earlier systems, through the CONV-XXX.EXE program.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
 <table border="1">
 <tr>
     <td colspan="6">
@@ -1374,7 +1374,7 @@ LPLT from Eagle Field
 multiple-instance record if, during the flight, more than one differential beacon is used. It is placed in the IGC
 file before the first fix <a href="#link_B">B record</a> after the <a href="#link_H">H</a>,
 <a href="#link_I">I</a>, <a href="#link_J">J</a> and <a href="#link_C">C records</a>. The format of the D Record is as follows.
-(<a href="igc_fr_specification_with_al8_2023-2-1_0.pdf" target=_blank><small>AL8</small></a>)</p>
+(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)</p>
 <pre>
 D Q S S S S CR LF
 </pre>
@@ -1448,7 +1448,7 @@ of four characters and is confidential to the OO.
 <br/><b>photo </b> - A photograph has been taken, such as of a turn point.
 <br/>Pilot Event (PEV code) � Where the pilot has marked a particular time. This may represent a number of
 different occurrences or events such as crossing a start line (or marking the intention to cross shortly) or arriving
-at a point. A sequence of fast fixes follows (para 2.6.7.3).(<a href="igc_fr_specification_with_al8_2023-2-1_0.pdf" target=_blank><small>AL8</small></a>)
+at a point. A sequence of fast fixes follows (para 2.6.7.3).(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
 <br/><b>pressure altitude </b> - A five numeric group indicating the pressure altitude in metres above the 1013.25 HPa sea
 level datum and the ICAO ISA above.
 <br/><b>raim</b> - Receiver Autonomous Integrity Monitoring (when used) - This is used to indicate the quality of GNSS
@@ -1630,184 +1630,93 @@ should provide an exact definition of the event and a proposed coding.</p>
 <table border="1" cellpadding="6">
 <tr><th>CODE</th><th>Record Letter(s) TLC is used with</th><th>TLC meaning, notes on how it is to be used</th></tr>
 
-<tr><td><a name="link_ACXYZ"></a>ACX<br/>ACY<br/>ACZ</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a></td><td>Linear accelerations in X, Y and Z axes, for aerobatic aircraft equipped with appropriate sensors
-feeding to the recorder and IGC file. X = longitudinal, Y = lateral, Z = vertical (so-called "G")</td></tr>
-
-<tr><td><a name="link_ANXYZ"></a>ANX<br/>ANY<br/>ANZ</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a></td><td>Angular accelerations in X, Y and Z axes, for aerobatic aircraft equipped with appropriate sensors feeding to the recorder
-and IGC file. Pitch = X, roll = Y, yaw = Z in degrees per second</td></tr>
-
-
-<tr><td><a name="link_AOPR"></a>AOP<br/>AOR</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a></td><td>Attitude Pitch Angle, Attitude Bank/Roll Angle in degrees (for nose down or left bank angle, start with "-") (AL8)</td></tr>
-
 <tr><td><a name="link_ATS"></a>ATS</td><td><a href="#link_H">H</a>,<a href="#link_E">E</a></td><td>Altimeter pressure setting in hectoPascals with 4 numbers and one decimal point (for
 instance, 1013.2, 0995.7). Although an altimeter pressure setting may be recorded
 (for instance where the FR feeds a cockpit display), it must not be used to change the
 pressure altitude recorded with each fix, which must remain with respect to the ISA
-sea level datum of 1013.25 mb at all times(<a href="igc_fr_specification_with_al8_2023-2-1_0.pdf" target=_blank><small>AL8</small></a>)</td></tr>
-
-<tr><td><a name="link_BEI"></a>BEI</td><td><a href="#link_H">H</a></td><td>BeiDou 2 GNS System from the People’s Republic of China</td></tr>
-
-<tr><td><a name="link_BFI"></a>BFI</td><td><a href="#link_E">H</a></td><td>Blind Flying Instrument. Recorded as ON or OFF in the format BFION or BFIOFF, followed by a space and then AH (Artificial Horizon)
-for an instrument displaying the horizon, or TI (Turn Indicator) for one giving rate of turn, change of heading, or similar. If the ON/OFF
-status is uncertain, use the format BFIUN (for Status Unknown). A Text String (optional) may follow to give more detail of the instrument
-and its status. The initial state shall be reported in an E record at the time of the first B record in the IGC file with the Fix Validity byte set
-to A (3D Fix, see A4.1.2 table under Fix Validity).
-</td></tr>
-
-<tr><td><a name="link_CCL"></a>CCL</td><td><a href="#link_H">H</a></td><td>Competition class</td></tr>
-
-<tr><td><a name="link_CCN"></a>CCN</td><td><a href="#link_E">E</a></td><td>Camera Connect</td></tr>
-
-<tr><td><a name="link_CCO"></a>CCO</td><td><a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Compass course (from the aircraft compass sensor). Three numbers based on
-degrees clockwise from 000 for north.(<a href="igc_fr_specification_with_al8_2023-2-1_0.pdf" target=_blank><small>AL8</small></a>)</td></tr>
-
-<tr><td><a name="link_CDC"></a>CDC</td><td><a href="#link_E">E</a></td><td>Camera Disconnect</td></tr>
-
-<tr><td><a name="link_CGD"></a>CGD</td><td><a href="#link_E">E</a></td><td>Change of geodetic datum</td></tr>
-
-<tr><td><a name="link_CID"></a>CID</td><td><a href="#link_H">H</a></td><td>Competition ID</td></tr>
-
-<tr><td><a name="link_CLB"></a>CLB</td><td><a href="#link_H">H</a></td><td>Club or organisation, and country, from which flown or operated (eg Elmira US,
+sea level datum of 1013.25 mb at all times(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)</td></tr>
+<tr><td><a name="link_CCL"></a>CCL</td><td><a href="#link_H">H</a></td><td>Competition class
+</td></tr><tr><td><a name="link_CCN"></a>CCN</td><td><a href="#link_E">E</a></td><td>Camera Connect
+</td></tr><tr><td><a name="link_CCO"></a>CCO</td><td><a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Compass course (from the aircraft compass sensor). Three numbers based on
+degrees clockwise from 000 for north.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td><a name="link_CDC"></a>CDC</td><td><a href="#link_E">E</a></td><td>Camera Disconnect
+</td></tr><tr><td><a name="link_CGD"></a>CGD</td><td><a href="#link_E">E</a></td><td>Change of geodetic datum
+</td></tr><tr><td><a name="link_CID"></a>CID</td><td><a href="#link_H">H</a></td><td>Competition ID
+</td></tr><tr><td><a name="link_CLB"></a>CLB</td><td><a href="#link_H">H</a></td><td>Club or organisation, and country, from which flown or operated (eg Elmira US,
 Lasham UK). For Nation, use the ISO 3166 two-letter codes, some of which are
-given in para <a href="#link_3.3.3">3.3.3</a> of Appendix A</td></tr>
+given in para <a href="#link_3.3.3">3.3.3</a> of Appendix A
+</td></tr><tr><td><a name="link_CM2"></a>CM2</td><td><a href="#link_H">H</a></td><td>Second Crew Member's Name, family name first then given name(s) as required
+(same format as PLT for pilot-in-charge). For aircraft with more than two crew, use CM3 and so forth if required.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td><a name="link_DAE"></a>DAE</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Displacement east, metres. For West use negative sign
+</td></tr><tr><td><a name="link_DAN"></a>DAN</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Displacement north, metres. For South use negative sign
+</td></tr><tr><td><a name="link_DB1"></a>DB1</td><td><a href="#link_H">H</a></td><td>Date of Birth of the pilot-in-charge (aircraft commander) in the previous line of the
+<a href="#link_H">H record</a> (DDMMYY)(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
 
-<tr><td><a name="link_CM2"></a>CM2</td><td><a href="#link_H">H</a></td><td>Second Crew Member's Name, family name first then given name(s) as required
-(same format as PLT for pilot-in-charge). For aircraft with more than two crew, use CM3 and so forth if required.(<a href="igc_fr_specification_with_al8_2023-2-1_0.pdf" target=_blank><small>AL8</small></a>)</td></tr>
-
-<tr><td><a name="link_COT"></a>COT</td><td><a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Controller temperature (for instance for FES) in degrees C. AL5</td></tr>
-
-<tr><td><a name="link_CUR"></a>CUR</td><td><a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Electrical current, Amperes. AL5</td></tr>
-
-<tr><td><a name="link_CU1"></a>CU1</td><td><a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Electrical Current, Amperes, of the first propulsion battery where 2 batteries are installed (AL8)</td></tr>
-
-<tr><td><a name="link_CU2"></a>CU2</td><td><a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Electrical Current, Amperes, of the second propulsion battery where 2 batteries are installed (AL8)</td></tr>
-
-<tr><td><a name="link_DAE"></a>DAE</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Displacement east, metres. For West use negative sign</td></tr>
-
-<tr><td><a name="link_DAN"></a>DAN</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Displacement north, metres. For South use negative sign</td></tr>
-
-<tr><td><a name="link_DB1"></a>DB1</td><td><a href="#link_H">H</a></td><td>Date of Birth of the pilot-in-charge (aircraft commander) in the previous line of the
-<a href="#link_H">H record</a> (DDMMYY)(<a href="igc_fr_specification_with_al8_2023-2-1_0.pdf" target=_blank><small>AL8</small></a>)</td></tr>
-
-<tr><td><a name="link_DB2"></a>DB2</td><td><a href="#link_H">H</a></td><td>Date of Birth of second crew member in format DDMMYY. For aircraft with more
-than two crew, use DB3 and so forth if required.(<a href="igc_fr_specification_with_al8_2023-2-1_0.pdf" target=_blank><small>AL8</small></a>)</td></tr>
-
-<tr><td><a name="link_DOB"></a>DOB</td><td><a href="#link_H">H</a></td><td>Obsolete code, now use DB1. Was Date of Birth of the pilot in the previous line of
-the <a href="#link_H">H record</a> (DDMMYY)(<a href="igc_fr_specification_with_al8_2023-2-1_0.pdf" target=_blank><small>AL8</small></a>)</td></tr>
-
-<tr><td><a name="link_DTE"></a>DTE</td><td><a href="#link_H">H</a></td><td>Date, expressed as DDMMYY
+</td></tr><tr><td><a name="link_DB2"></a>DB2</td><td><a href="#link_H">H</a></td><td>Date of Birth of second crew member in format DDMMYY. For aircraft with more
+than two crew, use DB3 and so forth if required.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td><a name="link_DOB"></a>DOB</td><td><a href="#link_H">H</a></td><td>Obsolete code, now use DB1. Was Date of Birth of the pilot in the previous line of
+the <a href="#link_H">H record</a> (DDMMYY)(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td><a name="link_DTE"></a>DTE</td><td><a href="#link_H">H</a></td><td>Date, expressed as DDMMYY
 DTM H Geodetic Datum in use for lat/long records (for IGC purposes this must be set to
-WGS84)</td></tr>
-
-<tr><td><a name="link_EDN"></a>EDN</td><td><a href="#link_E">E</a></td><td>Engine down. See note on line for EON</td></tr>
-
-<tr><td><a name="link_ENL"></a>ENL</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a></td><td>Engine Noise Level, recorded from 000 to 999. This is the preferred MoP recording
+WGS84)
+</td></tr><tr><td><a name="link_EDN"></a>EDN</td><td><a href="#link_E">E</a></td><td>Engine down. See note on line for EON
+</td></tr><tr><td><a name="link_ENL"></a>ENL</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a></td><td>Engine Noise Level, recorded from 000 to 999. This is the preferred MoP recording
 method because it requires no cables or sensors external to the FR, and is selfvalidating,
-recording a positive value with each fix.</td></tr>
-
-<tr><td><a name="link_EOF"></a>EOF</td><td><a href="#link_E">E</a></td><td>Engine off. See note on line for EON</td></tr>
-
-<tr><td><a name="link_EON"></a>EON</td><td><a href="#link_E">E</a></td><td>Engine on. Note: Where ENL or RPM are not used as the primary indicator of MoP
+recording a positive value with each fix.
+</td></tr><tr><td><a name="link_EOF"></a>EOF</td><td><a href="#link_E">E</a></td><td>Engine off. See note on line for EON
+</td></tr><tr><td><a name="link_EON"></a>EON</td><td><a href="#link_E">E</a></td><td>Engine on. Note: Where ENL or RPM are not used as the primary indicator of MoP
 operation, event records and the EON/EOF or EUP/EDN codes shall be used. A
 combination of the two methods may be used, eg EON/EOF based on a parameter
 such as ignition ON/OFF, a minimum generator output, EUP/EDN for engine bay
-doors open/closed or pylon up/down; plus RPM based on prop or engine rpm, or <a href="#link_ENL">ENL</a> for noise level at the FR.</td></tr>
-
-<tr><td><a name="link_EUP"></a>EUP</td><td><a href="#link_E">E</a></td><td>Engine up. See note on line for EON</td></tr>
-
-<tr><td><a name="link_FIN"></a>FIN</td><td><a href="#link_E">E</a></td><td>Finish</td></tr>
-
-<tr><td><a name="link_FLE"></a>FLE</td><td><a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Fuel level, centilitres. AL5</td></tr>
-
-<tr><td><a name="link_FFL"></a>FFL</td><td><a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Fuel flow, litres per minute (AL8)</td></tr>
-
-<tr><td><a name="link_FLP"></a>FLP</td><td><a href="#link_E">E</a></td><td>Flap position, three characters such as FLP060 for 60 degrees of positive flap. If
+doors open/closed or pylon up/down; plus RPM based on prop or engine rpm, or <a href="#link_ENL">ENL</a> for noise level at the FR.
+</td></tr><tr><td><a name="link_EUP"></a>EUP</td><td><a href="#link_E">E</a></td><td>Engine up. See note on line for EON
+</td></tr><tr><td><a name="link_FIN"></a>FIN</td><td><a href="#link_E">E</a></td><td>Finish
+</td></tr><tr><td><a name="link_FLP"></a>FLP</td><td><a href="#link_E">E</a></td><td>Flap position, three characters such as FLP060 for 60 degrees of positive flap. If
 negative, use a negative sign before the numbers, such as FLP-20 for minus 20
-degrees flap.(<a href="igc_fr_specification_with_al8_2023-2-1_0.pdf" target=_blank><small>AL8</small></a>)</td></tr>
-
-<tr><td><a name="link_FRS"></a>FRS</td><td><a href="#link_H">H</a></td><td>Flight Recorder Security. To be used where a security fault has been detected such
-as the recorder internal security system (microswitch) having operated.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al6.pdf" target=_blank><small>AL6</small></a>)</td></tr>
-
-<tr><td><a name="link_FTY"></a>FTY</td><td><a href="#link_H">H</a></td><td>FR Type (Manufacturer's name, FR Model Number)</td></tr>
-
-<tr><td><a name="link_FXA"></a>FXA</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td><i>Fix accuracy. When used in the B (fix) record</i>. This is the EPE (Estimated Position
+degrees flap.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td><a name="link_FRS"></a>FRS</td><td><a href="#link_H">H</a></td><td>Flight Recorder Security. To be used where a security fault has been detected such
+as the recorder internal security system (microswitch) having operated.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al6.pdf" target=_blank><small>AL6</small></a>)
+</td></tr><tr><td><a name="link_FTY"></a>FTY</td><td><a href="#link_H">H</a></td><td>FR Type (Manufacturer's name, FR Model Number)
+</td></tr><tr><td><a name="link_FXA"></a>FXA</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td><i>Fix accuracy. When used in the B (fix) record</i>. This is the EPE (Estimated Position
 Error) figure in metres (MMMM) for the individual fix concerned, to a 2-Sigma
-(95.45%) probability(<a href="igc_fr_specification_with_al8_2023-2-1_0.pdf" target=_blank><small>AL8</small></a>)</td></tr>
-
-<tr><td>FXA</td><td><a href="#link_H">H</a></td><td>Fix Data Accuracy Category. When used in the header record, this is a general
+(95.45%) probability(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td>FXA</td><td><a href="#link_H">H</a></td><td>Fix Data Accuracy Category. When used in the header record, this is a general
 indication of potential fix accuracy and indicates a category of receiver capability
 rather than an exact figure such as applies to each recorded fix in the B, I, J or K
 records, see above. If in doubt, use a three figure group in metres that refers to a
-typical EPE radius achieved by the receiver in good reception conditions.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al3.pdf" target=_blank><small>AL3</small></a>)</td></tr>
-
-<tr><td><a name="link_GAL"></a>GAL</td><td><a href="#link_H">H</a></td><td>Galileo (European GNSS system), followed by receiver maker, type & version
-letter/number. See <a href="#link_3.3.1">3.3.1</a> above.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al11.pdf" target=_blank><small>AL11</small></a>)</td></tr>
-
-<tr><td><a name="link_GCN"></a>GCN</td><td><a href="#link_E">E</a></td><td>GNSS (Separate module) Connect</td></tr>
-
-<tr><td><a name="link_GDC"></a>GDC</td><td><a href="#link_E">E</a></td><td>GNSS (Separate module) Disconnect</td></tr>
-
-<tr><td><a name="link_GID"></a>GID</td><td><a href="#link_H">H</a></td><td>Glider ID</td></tr>
-
-<tr><td><a name="link_GLO"></a>GLO</td><td><a href="#link_H">H</a></td><td>GLONASS (Russian GNSS system), followed by receiver maker, type & version
-letter/number. See <a href="#link_3.3.1">3.3.1</a> above(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al11.pdf" target=_blank><small>AL11</small></a>)</td></tr>
-
-<tr><td><a name="link_GPS"></a>GPS</td><td><a href="#link_H">H</a></td><td>GPS (US GNSS system), followed by receiver maker, type & version letter/number.
-See <a href="#link_3.3.1">3.3.1</a> above.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al11.pdf" target=_blank><small>AL11</small></a>)</td></tr>
-
-<tr><td><a name="link_GSP"></a>GSP</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Groundspeed, three numbers in kilometres per hour(<a href="igc_fr_specification_with_al8_2023-2-1_0.pdf" target=_blank><small>AL8</small></a>)</td></tr>
-
-<tr><td><a name="link_GTY"></a>GTY</td><td><a href="#link_H">H</a></td><td>Glider type, manufacturer, model</td></tr>
-
-<tr><td><a name="link_HDM"></a>HDM</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Heading Magnetic, three numbers based on degrees clockwise from 000 for north
-(<a href="igc_fr_specification_with_al8_2023-2-1_0.pdf" target=_blank><small>AL8</small></a>)</td></tr>
-
-<tr><td><a name="link_HDT"></a>HDT</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Heading True, three numbers based on degrees clockwise from 000 for north(<a href="igc_fr_specification_with_al8_2023-2-1_0.pdf" target=_blank><small>AL8</small></a>)</td></tr>
-
-<tr><td><a name="link_IAS"></a>IAS</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Airspeed, three numbers in kilometres per hour(<a href="igc_fr_specification_with_al8_2023-2-1_0.pdf" target=_blank><small>AL8</small></a>)</td></tr>
-
-<tr><td><a name="link_JPT"></a>JPT</td><td><a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Jet Pipe Temperature, for jet engines. AL5</td></tr>
-
-<tr><td><a name="link_HUM"></a>HUM</td><td><a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Relative Humidity, percent (AL8)</td></tr>
-
-<tr><td><a name="link_LEB"></a>LEB</td><td><a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Battery - state of charge, percent. AL5</td></tr>
-
-<tr><td><a name="link_LE1"></a>LE1</td><td><a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Battery 1 - state of charge, percent, first propulsion battery where 2 batteries are installed (AL8)</td></tr>
-
-<tr><td><a name="link_LE2"></a>LE2</td><td><a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Battery 2 -state of charge, percent, second propulsion battery where 2 batteries are installed (AL8)</td></tr>
-
-<tr><td><a name="link_LAD"></a>LAD</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a></td><td>The last places of decimal minutes of latitude, where latitude is recorded to a greater
+typical EPE radius achieved by the receiver in good reception conditions.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al3.pdf" target=_blank><small>AL3</small></a>)
+</td></tr><tr><td><a name="link_GAL"></a>GAL</td><td><a href="#link_H">H</a></td><td>Galileo (European GNSS system), followed by receiver maker, type & version
+letter/number. See <a href="#link_3.3.1">3.3.1</a> above.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al11.pdf" target=_blank><small>AL11</small></a>)
+</td></tr><tr><td><a name="link_GCN"></a>GCN</td><td><a href="#link_E">E</a></td><td>GNSS (Separate module) Connect
+</td></tr><tr><td><a name="link_GDC"></a>GDC</td><td><a href="#link_E">E</a></td><td>GNSS (Separate module) Disconnect
+</td></tr><tr><td><a name="link_GID"></a>GID</td><td><a href="#link_H">H</a></td><td>Glider ID
+</td></tr><tr><td><a name="link_GLO"></a>GLO</td><td><a href="#link_H">H</a></td><td>GLONASS (Russian GNSS system), followed by receiver maker, type & version
+letter/number. See <a href="#link_3.3.1">3.3.1</a> above(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al11.pdf" target=_blank><small>AL11</small></a>)
+</td></tr><tr><td><a name="link_GPS"></a>GPS</td><td><a href="#link_H">H</a></td><td>GPS (US GNSS system), followed by receiver maker, type & version letter/number.
+See <a href="#link_3.3.1">3.3.1</a> above.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al11.pdf" target=_blank><small>AL11</small></a>)
+</td></tr><tr><td><a name="link_GSP"></a>GSP</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Groundspeed, three numbers in kilometres per hour(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td><a name="link_GTY"></a>GTY</td><td><a href="#link_H">H</a></td><td>Glider type, manufacturer, model
+</td></tr><tr><td><a name="link_HDM"></a>HDM</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Heading Magnetic, three numbers based on degrees clockwise from 000 for north
+(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td><a name="link_HDT"></a>HDT</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Heading True, three numbers based on degrees clockwise from 000 for north(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td><a name="link_IAS"></a>IAS</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Airspeed, three numbers in kilometres per hour(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td><a name="link_LAD"></a>LAD</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a></td><td>The last places of decimal minutes of latitude, where latitude is recorded to a greater
 precision than the three decimal minutes that are in the main body of the <a href="#link_B">B record</a>.
 The fourth and any further decimal places of minutes are recorded as an extension to
 the <a href="#link_B">B record</a>, their position in each <a href="#link_B">B record</a> line being specified in the <a href="#link_I">I record</a>.
-(<a href="igc_fr_specification_with_al8_2023-2-1_0.pdf" target=_blank><small>AL8</small></a>)</td></tr>
+(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
 
-<tr><td><a name="link_LCU"></a>LCU</td><td><a href="#link_L">L</a></td><td>Data from the SeeYou system after flight, not needed for Validation but used in some flight analysis systems</td></tr>
-
-<tr><td><a name="link_LOD"></a>LOD</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a></td><td>The last places of decimal minutes of longitude, where longitude is recorded to a
+</td></tr><tr><td><a name="link_LOD"></a>LOD</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a></td><td>The last places of decimal minutes of longitude, where longitude is recorded to a
 greater precision than the three decimal minutes that are in the main body of the Brecord.
 The fourth and any further decimal places of minutes are recorded as an
 extension to the <a href="#link_B">B record</a>, their position in each <a href="#link_B">B record</a> line being specified in the
-<a href="#link_I">I record</a>.(<a href="igc_fr_specification_with_al8_2023-2-1_0.pdf" target=_blank><small>AL8</small></a>)</td></tr>
-
-<tr><td><a name="link_LOV"></a>LOV</td><td><a href="#link_E">E</a></td><td>Low voltage. Must be set for each FR at the lowest voltage at which the FR will
+<a href="#link_I">I record</a>.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td><a name="link_LOV"></a>LOV</td><td><a href="#link_E">E</a></td><td>Low voltage. Must be set for each FR at the lowest voltage at which the FR will
 operate without the possibility of recorded data being degraded by the voltage level.
 Not to be used to invalidate a flight if the flight data appears correct when checked
-in the normal way, but a warning to check fix data particularly carefully. (AL1)</td></tr>
-
-<tr><td><a name="link_MAC"></a>MAC</td><td><a href="#link_E">E</a></td><td>MacCready setting for rate of climb/speed-to-fly (m/sec)(<a href="igc_fr_specification_with_al8_2023-2-1_0.pdf" target=_blank><small>AL8</small></a>)</td></tr>
-
-<tr><td><a name="link_MCU"></a>MCU</td><td><a href="#link_L">L</a></td><td>Data from the SeeYou system after flight, not needed for Validation but used in some flight analysis systems</td></tr>
-
-<tr><td><a name="link_MP2"></a>MP2,<br/>MP3, etc</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a></td><td>Means of Propulsion systems fitted in addition to the basic MOP system, see MOP below</td></tr>
-
-<tr><td><a name="link_MOT"></a>MOT</td><td><a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Motor temperature, degrees C</td></tr>
-
-<tr><td><a name="link_MOP"></a>MOP</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a></td><td>Means of Propulsion. A signal from an engine-related function from a sensor separate from the ENL system in the FR, giving three numbers</td></tr>
-
-<tr><td><a name="link_NET"></a>NET</td><td><a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>NETTO - NETT (=overall) Vertical Air Movement Vertical speed of air in metres per second (AL8)</td></tr>
-
-<tr><td><a name="link_OA1"></a>OA1 OA2 OA3 Etc</td><td><a href="#link_E">E</a></td><td>Position of other aircraft (if this is recorded by the system), data fields after the
+in the normal way, but a warning to check fix data particularly carefully. (AL1)
+</td></tr><tr><td><a name="link_MAC"></a>MAC</td><td><a href="#link_E">E</a></td><td>MacCready setting for rate of climb/speed-to-fly (m/sec)(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td><a name="link_OA1"></a>OA1 OA2 OA3 Etc</td><td><a href="#link_E">E</a></td><td>Position of other aircraft (if this is recorded by the system), data fields after the
 Codes being separated by colons. Format after the Three Letter Code is the
 identification of the aircraft concerned (if this is recorded by the system, otherwise
 insert NK for not known) followed by a colon, letter P for polar or C for Cartesian
@@ -1822,38 +1731,25 @@ the 3D position of the Other Aircraft (for instance from ADS-B and similar posit
 reporting systems). Format is lat/long followed by pressure and GPS altitudes (if
 these are recorded by the system) in the same order and format as for the <a href="#link_B">B record</a>
 (para 4.1), omitting the fix validity character. Where a type of altitude is not
-recorded, zeros should be substituted.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al10.pdf" target=_blank><small>AL10</small></a>)</td></tr>
-
-<tr><td><a name="link_OAT"></a>OAT</td><td><a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Outside air temperature (Celsius). If negative, use negative sign before the numbers.</td></tr>
-
-<tr><td><a name="link_ONT"></a>ONT</td><td><a href="#link_E">E</a></td><td>On Task � attempting task</td></tr>
-
-<tr><td><a name="link_OOI"></a>OOI</td><td><a href="#link_H">H</a></td><td>OO ID � OO equipment observation</td></tr>
-
-<tr><td><a name="link_PEV"></a>PEV</td><td><a href="#link_E">E</a></td><td>Pilot EVent - Pilot initiated action such as pressing a button. A sequence of fast fixes
-follows (para 2.6.7.3).(<a href="igc_fr_specification_with_al8_2023-2-1_0.pdf" target=_blank><small>AL8</small></a>)</td></tr>
-
-<tr><td><a name="link_PFC"></a>PFC</td><td><a href="#link_L">L</a></td><td>Post-Flight Claim. For Free Flights where waypoints are claimed post-flight.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al5.pdf" target=_blank><small>AL5</small></a>)</td></tr>
-
-<tr><td><a name="link_PHO"></a>PHO</td><td><a href="#link_E">E</a></td><td>Photo taken (shutter-press)</td></tr>
-
-<tr><td><a name="link_PLT"></a>PLT</td><td><a href="#link_H">H</a></td><td>Pilot-in-charge (aircraft commander), family name first then given name(s) as
-required(<a href="igc_fr_specification_with_al8_2023-2-1_0.pdf" target=_blank><small>AL8</small></a>)</td></tr>
-
-<tr><td><a name="link_PRS"></a>PRS</td><td><a href="#link_H">H</a></td><td>Pressure Altitude Sensor, manufacturer, model, etc.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al3.pdf" target=_blank><small>AL3</small></a>)</td></tr>
-
-<tr><td><a name="link_RAI"></a>RAI</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>RAIM - GPS Parameter, see Glossary</td></tr>
-
-<tr><td><a name="link_REX"></a>REX</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Record extension - Manufacturer defined data defined in the I or <a href="#link_J">J record</a> as
+recorded, zeros should be substituted.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al10.pdf" target=_blank><small>AL10</small></a>)
+</td></tr><tr><td><a name="link_OAT"></a>OAT</td><td><a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Outside air temperature (Celsius). If negative, use negative sign before the numbers.
+</td></tr><tr><td><a name="link_ONT"></a>ONT</td><td><a href="#link_E">E</a></td><td>On Task � attempting task
+</td></tr><tr><td><a name="link_OOI"></a>OOI</td><td><a href="#link_H">H</a></td><td>OO ID � OO equipment observation
+</td></tr><tr><td><a name="link_PEV"></a>PEV</td><td><a href="#link_E">E</a></td><td>Pilot EVent - Pilot initiated action such as pressing a button. A sequence of fast fixes
+follows (para 2.6.7.3).(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td><a name="link_PFC"></a>PFC</td><td><a href="#link_L">L</a></td><td>Post-Flight Claim. For Free Flights where waypoints are claimed post-flight.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al5.pdf" target=_blank><small>AL5</small></a>)
+</td></tr><tr><td><a name="link_PHO"></a>PHO</td><td><a href="#link_E">E</a></td><td>Photo taken (shutter-press)
+</td></tr><tr><td><a name="link_PLT"></a>PLT</td><td><a href="#link_H">H</a></td><td>Pilot-in-charge (aircraft commander), family name first then given name(s) as
+required(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td><a name="link_PRS"></a>PRS</td><td><a href="#link_H">H</a></td><td>Pressure Altitude Sensor, manufacturer, model, etc.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al3.pdf" target=_blank><small>AL3</small></a>)
+</td></tr><tr><td><a name="link_RAI"></a>RAI</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>RAIM - GPS Parameter, see Glossary
+</td></tr><tr><td><a name="link_REX"></a>REX</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Record extension - Manufacturer defined data defined in the I or <a href="#link_J">J record</a> as
 appropriate, normally in the form of a TLC (which, if a new variable is agreed, may
 be a new TLC allocated by GFAC at the time). Any use must be approved by
-GFAC, and published so that there will be no doubt on how it is being used.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al4.pdf" target=_blank><small>AL4</small></a>)</td></tr>
-
-<tr><td><a name="link_RFW"></a>RFW</td><td><a href="#link_H">H</a></td><td>Firmware Revision Version of FR</td></tr>
-
-<tr><td><a name="link_RHW"></a>RHW</td><td><a href="#link_H">H</a></td><td>Hardware Revision Version of FR</td></tr>
-
-<tr><td><a name="link_RPM"></a>RPM</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a></td><td>A group of three numbers from 000 to 999 associated with the generation of forward
+GFAC, and published so that there will be no doubt on how it is being used.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al4.pdf" target=_blank><small>AL4</small></a>)
+</td></tr><tr><td><a name="link_RFW"></a>RFW</td><td><a href="#link_H">H</a></td><td>Firmware Revision Version of FR
+</td></tr><tr><td><a name="link_RHW"></a>RHW</td><td><a href="#link_H">H</a></td><td>Hardware Revision Version of FR
+</td></tr><tr><td><a name="link_RPM"></a>RPM</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a></td><td>A group of three numbers from 000 to 999 associated with the generation of forward
 thrust. Examples include propellor or engine RPM or another MoP variable agreed
 with GFAC that varies in a similar way. Such variable must always be recorded and
 must not be able to be switched off by the pilot, for instance through a cockpit
@@ -1863,72 +1759,43 @@ in the <a href="#link_B">B record</a> as 999 or close to it. The baseline minimu
 positive but low RPM numbers on the IGC file (such as 010 but not above 025) as a
 continuous check that the circuit is still live. GFAC will look particularly at the
 recording of lower powers that give forward thrust and ensure that they produce high
-enough numbers to clearly show any use of engine.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al10.pdf" target=_blank><small>AL10</small></a>)</td></tr>
-
-<tr><td><a name="link_SCM"></a>SCM</td><td><a href="#link_H">H</a></td><td>Obsolete code, now use CM2. Was Second Crew Member's Name(<a href="igc_fr_specification_with_al8_2023-2-1_0.pdf" target=_blank><small>AL8</small></a>)</td></tr>
-
-<tr><td><a name="link_SEC"></a>SEC</td><td>G</td><td>Security - Log security data</td></tr>
-
-<tr><td><a name="link_SIT"></a>SIT</td><td><a href="#link_H">H</a></td><td>Site, Name, region, nation etc.</td></tr>
-
-<tr><td><a name="link_SIU"></a>SIU</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a></td><td>Satellites in use. A two-character field from the NMEA GGA or GNS sentences, as
-appropriate, or equivalent data agreed by GFAC.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al4.pdf" target=_blank><small>AL4</small></a>)</td></tr>
-
-<tr><td><a name="link_STA"></a>STA</td><td><a href="#link_E">E</a></td><td>Start event</td></tr>
-
-<tr><td><a name="link_TAS"></a>TAS</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Airspeed True, give units (kt, kph, etc.)</td></tr>
-
-<tr><td><a name="link_TDS"></a>TDS</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Decimal seconds of UTC time, for use with systems recording time to this accuracy.
+enough numbers to clearly show any use of engine.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al10.pdf" target=_blank><small>AL10</small></a>)
+</td></tr><tr><td><a name="link_SCM"></a>SCM</td><td><a href="#link_H">H</a></td><td>Obsolete code, now use CM2. Was Second Crew Member's Name(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td><a name="link_SEC"></a>SEC</td><td>G</td><td>Security - Log security data
+</td></tr><tr><td><a name="link_SIT"></a>SIT</td><td><a href="#link_H">H</a></td><td>Site, Name, region, nation etc.
+</td></tr><tr><td><a name="link_SIU"></a>SIU</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a></td><td>Satellites in use. A two-character field from the NMEA GGA or GNS sentences, as
+appropriate, or equivalent data agreed by GFAC.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al4.pdf" target=_blank><small>AL4</small></a>)
+</td></tr><tr><td><a name="link_STA"></a>STA</td><td><a href="#link_E">E</a></td><td>Start event
+</td></tr><tr><td><a name="link_TAS"></a>TAS</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Airspeed True, give units (kt, kph, etc.)
+</td></tr><tr><td><a name="link_TDS"></a>TDS</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Decimal seconds of UTC time, for use with systems recording time to this accuracy.
 Time in seconds is recorded in the main body of the <a href="#link_B">B record</a> and decimal seconds
 are recorded as an extension to the <a href="#link_B">B record</a>, their position in each <a href="#link_B">B record</a> line
-being specified in the <a href="#link_I">I record</a>. Similarly with the K and <a href="#link_J">J records</a>.(<a href="igc_fr_specification_with_al8_2023-2-1_0.pdf" target=_blank><small>AL8</small></a>)</td></tr>
-
-<tr><td><a name="link_TEN"></a>TEN</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Total Energy Altitude in metres</td></tr>
-
-<tr><td><a name="link_TPC"></a>TPC</td><td><a href="#link_E">E</a></td><td>Turn point confirmation - Equipment generated event (not valid for flight validation
-which requires independent checking of fixes and relevant Observation Zones)</td></tr>
-
-<tr><td><a name="link_TRM"></a>TRM</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Track Magnetic. Three numbers based on degrees clockwise from 000 for north
-(<a href="igc_fr_specification_with_al8_2023-2-1_0.pdf" target=_blank><small>AL8</small></a>)</td></tr>
-
-<tr><td><a name="link_TRT"></a>TRT</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Track True. Three numbers based on degrees clockwise from 000 for north(<a href="igc_fr_specification_with_al8_2023-2-1_0.pdf" target=_blank><small><small>AL8</small></small></a>)</td></tr>
-
-<tr><td><a name="link_TZN"></a>TZN</td><td><a href="#link_H">H</a></td><td>Time Zone Offset, hours from UTC to local time.</td></tr>
-
-<tr><td><a name="link_UND"></a>UND</td><td><a href="#link_E">E</a></td><td>Undercarriage (landing gear), recorded as UP or DN, in the format UNDUP or
-UNDDN.(<a href="igc_fr_specification_with_al8_2023-2-1_0.pdf" target=_blank><small><small>AL8</small></small></a>)</td></tr>
-
-<tr><td><a name="link_UNT"></a>UNT</td><td><a href="#link_H">H</a></td><td>Units of Measure</td></tr>
-
-<tr><td><a name="link_VAR"></a>VAR</td><td><a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Uncompensated variometer (non-total energy) vertical speed in metres and decimal
-metres. If negative, use negative sign before the numbers.(<a href="igc_fr_specification_with_al8_2023-2-1_0.pdf" target=_blank><small>AL8</small></a>)</td></tr>
-
-<tr><td><a name="link_VAT"></a>VAT</td><td><a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Compensated variometer (total energy/netto) vertical speed in metres and decimal
-metres. If negative, use negative sign before the numbers.(<a href="igc_fr_specification_with_al8_2023-2-1_0.pdf" target=_blank><small>AL8</small></a>)</td></tr>
-
-<tr><td><a name="link_VOL"></a>VOL</td><td><a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Electrical Volts</td></tr>
-
-<tr><td><a name="link_VO1"></a>VO1</td><td><a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Voltage of first battery where two propulsion batteries are installed (AL8)</td></tr>
-
-<tr><td><a name="link_VO2"></a>VO2</td><td><a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Voltage of second battery where two propulsion batteries are installed (AL8)</td></tr>
-
-<tr><td><a name="link_VXA"></a>VXA</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Vertical Fix Accuracy, Three characters in metres from the VDOP part of the
-NMEA GSA sentence, or equivalent data agreed by GFAC.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al4.pdf" target=_blank><small>AL4</small></a>)</td></tr>
-
-<tr><td><a name="link_WDI"></a>WDI</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Wind Direction (the direction the wind is coming from). Three numbers based on
-degrees clockwise from 000 for north(<a href="igc_fr_specification_with_al8_2023-2-1_0.pdf" target=_blank><small>AL8</small></a>)</td></tr>
-
-<tr><td><a name="link_WSP"></a>WSP</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Wind speed, three numbers in kilometres per hour(<a href="igc_fr_specification_with_al8_2023-2-1_0.pdf" target=_blank><small>AL8</small></a>)</td></tr>
-
-<tr><td><a name="link_WVE"></a>WVE</td><td><a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Wind Velocity - wind direction (degrees from True North) and strength (kph) such as "27022"
-meaning due West (270 degrees) at 22 kph (AL8)</td></tr>
-
-<tr><td><a name="link_XN"></a>XN*</td><td>As Appropriate</td><td>A manufacturer-selected code where N is the manufacturer's single-character IGC
+being specified in the <a href="#link_I">I record</a>. Similarly with the K and <a href="#link_J">J records</a>.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td><a name="link_TEN"></a>TEN</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Total Energy Altitude in metres
+</td></tr><tr><td><a name="link_TPC"></a>TPC</td><td><a href="#link_E">E</a></td><td>Turn point confirmation - Equipment generated event (not valid for flight validation
+which requires independent checking of fixes and relevant Observation Zones)
+</td></tr><tr><td><a name="link_TRM"></a>TRM</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Track Magnetic. Three numbers based on degrees clockwise from 000 for north
+(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td><a name="link_TRT"></a>TRT</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Track True. Three numbers based on degrees clockwise from 000 for north(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small><small>AL8</small></small></a>)
+</td></tr><tr><td><a name="link_TZN"></a>TZN</td><td><a href="#link_H">H</a></td><td>Time Zone Offset, hours from UTC to local time.
+</td></tr><tr><td><a name="link_UND"></a>UND</td><td><a href="#link_E">E</a></td><td>Undercarriage (landing gear), recorded as UP or DN, in the format UNDUP or
+UNDDN.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small><small>AL8</small></small></a>)
+</td></tr><tr><td><a name="link_UNT"></a>UNT</td><td><a href="#link_H">H</a></td><td>Units of Measure
+</td></tr><tr><td><a name="link_VAR"></a>VAR</td><td><a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Uncompensated variometer (non-total energy) vertical speed in metres and decimal
+metres. If negative, use negative sign before the numbers.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td><a name="link_VAT"></a>VAT</td><td><a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Compensated variometer (total energy/netto) vertical speed in metres and decimal
+metres. If negative, use negative sign before the numbers.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td><a name="link_VXA"></a>VXA</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Vertical Fix Accuracy, Three characters in metres from the VDOP part of the
+NMEA GSA sentence, or equivalent data agreed by GFAC.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al4.pdf" target=_blank><small>AL4</small></a>)
+</td></tr><tr><td><a name="link_WDI"></a>WDI</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Wind Direction (the direction the wind is coming from). Three numbers based on
+degrees clockwise from 000 for north(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td><a name="link_WSP"></a>WSP</td><td><a href="#link_I">I</a>,<a href="#link_B">B</a>,<a href="#link_J">J</a>,<a href="#link_K">K</a></td><td>Wind speed, three numbers in kilometres per hour(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)
+</td></tr><tr><td><a name="link_XN"></a>XN*</td><td>As Appropriate</td><td>A manufacturer-selected code where N is the manufacturer's single-character IGC
 name (Appendix 1 para 3.5.6) and * can be any character. The manufacturer must
 specify its meaning and usage in the documentation for the recorder and its use must
 be approved by GFAC before IGC-approval of the recorder. The X prefix is
 intended to allow a trial with a provisional new code before deciding whether it is
-worthwhile adding to the full list.(<a href="igc_fr_specification_with_al8_2023-2-1_0.pdf" target=_blank><small>AL8</small></a>)</td>
+worthwhile adding to the full list.(<a href="http://www.fai.org/gliding/system/files/tech_spec_gnss_al8.pdf" target=_blank><small>AL8</small></a>)</td>
 </tr>
 
 </table>
