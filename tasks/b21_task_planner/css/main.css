@@ -406,6 +406,15 @@ th {
     padding-right: 2px;
 }
 
+.wp_aat {
+    display: inline-flex;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin-left: 10px;
+    padding-left: 4px;
+    padding-right: 2px;
+}
+
 /* *************************************************** */
 /* ******* Wind                  ********************* */
 /* *************************************************** */
@@ -555,6 +564,26 @@ th {
     color: darkred;
 }
 
+.task_info_wp_index_startfinish {
+    text-align: left;
+    font-size: 12px;
+    width: 1%;
+    white-space: nowrap;
+    vertical-align: middle;
+    font-weight: bold;
+    color: darkblue;
+}
+
+.task_info_wp_index_aat {
+    text-align: left;
+    font-size: 12px;
+    width: 1%;
+    white-space: nowrap;
+    vertical-align: middle;
+    font-weight: bold;
+    color: darkgreen;
+}
+
 .task_info_wp_name {
     padding-right: 4px;
     text-align: left;
@@ -676,6 +705,24 @@ th {
     width: 100%;
     display: block;
     cursor: default;
+    font-family: monospace;
+    font-size: 12px;
+    white-space: pre;
+}
+
+#tracklogs_scoresheet_csv_div {
+    display: flex;
+    justify-content: right;
+    margin-right: 7px;
+    margin-top: 12px;
+    margin-bottom: 10px;
+}
+
+#tracklogs_scoresheet_csv_div button {
+    display: inline-flex;
+    align-items: center;
+    font-size: 10px;
+    height: 18px;
 }
 
 #tracklogs_table {
@@ -1064,7 +1111,7 @@ th {
 .tracklog_icon_competition_id {
     background-color: white;
     display: inline-block;
-    line-height: 12px;
+    line-height: 16px;
     border-radius: 4px;
 }
 
@@ -1205,6 +1252,19 @@ th {
 
 #multiplayer_local {
     display: inline-block;
+}
+
+/* *************************************************** */
+/* ******* MSFS_WIND map overlay  ******************** */
+/* *************************************************** */
+
+#msfs_wind_div {
+    position: absolute;
+    left: calc(50% - 32px);
+    top: 0;
+    /* background-color: pink;*/
+    z-index: 690;
+    display: none;
 }
 
 /* *************************************************** */
