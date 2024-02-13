@@ -1,0 +1,101 @@
+
+body {
+    font-family: sans-serif;
+}
+
+/* ----------------------------------- */
+/* ---       Date / Time select    --- */
+
+#datetime_select {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 30px;
+}
+
+#datetime_select input {
+    font-size: 1.5em;
+}
+
+/* ----------------------------------- */
+/* ---  Wrapper for text areas     --- */
+
+#text_areas {
+    display: flex;
+    flex-direction: row;
+    align-items: top;
+}
+
+.frame_header {
+    background-color: #aaaaaa;
+    padding-left: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.frame_header button {
+    float: right;
+    margin-right: 15px;
+    border-radius: 4px;
+    background-color: #424242;
+    color: white;
+}
+
+/* ----------------------------------- */
+/* ---       Display area          --- */
+
+#discorddoc_display_frame {
+    display: inline-flex;
+    flex-direction: column;
+    flex: 1;
+    border: 2px solid black;
+    background-color: #424242;
+    color: white;
+    white-space: pre-wrap;
+}
+
+#discorddoc_display {
+    min-height: calc(100vh - 350px);
+    padding: 10px;
+}
+
+/* unvisited link */
+#discorddoc_display_frame a:link {
+    color: lightblue;
+  }
+
+/* visited link */
+#discorddoc_display_frame a:visited {
+    color: rgb(108, 207, 240);
+}
+
+/* mouse over link */
+#discorddoc_display_frame a:hover {
+    color: #5c79f0;
+}
+
+/* selected link */
+#discorddoc_display_frame a:active {
+    color: blue;
+}
+
+/* ----------------------------------- */
+/* ---      Template area          --- */
+
+#discorddoc_template_frame {
+    display: inline-flex;
+    flex-direction: column;
+    flex: 1;
+    border: 2px solid black;
+    width: 45%;
+    margin-left: auto;
+    margin-right: auto;
+    white-space: pre-wrap;
+}
+
+#discorddoc_template {
+    min-height: calc(100vh - 350px);
+    padding: 10px;
+}
+

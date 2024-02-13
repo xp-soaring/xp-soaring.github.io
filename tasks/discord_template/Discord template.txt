@@ -1,0 +1,22 @@
+SSC TITLE
+
+<t:1699728300:F>
+
+**MSFS Server:** Southeast Asia
+
+**Sim date/time:** Nov 11th 3pm local (i.e. 3pm on day we are flying)
+
+**Max start:** START_HEIGHT Feet MSL
+
+Distance is 300km, expected duration ~90 min
+
+**Meet/Briefing:** <t:1699728300:t>
+At this time we meet in the voice chat and get ready. https://discord.com/channels/876123356385149009/876397825934626836
+
+**Synchronized Fly:** <t:1699729200:t>
+At this time we simultaneously click the [FLY] button to sync our weather.
+
+**Task Start:** <t:1699731000:t>
+At this time we cross the starting line and start the task.
+
+A scenic trip out of Valparaiso, Chile.  Pilots who finish this task successfully during the event will be eligible to apply for the Silver Soaring Badge :silver:
