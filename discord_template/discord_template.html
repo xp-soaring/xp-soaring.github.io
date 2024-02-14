@@ -1,0 +1,53 @@
+<html>
+<head>
+    <title>B21 Discord Hammertime Template</title>
+    <link rel="stylesheet" type="text/css" href="discord_template.css"/>
+    <script type="text/javascript" src="discord_template.js"></script>
+
+    <script>
+        var dd = new DiscordDoc();
+    </script>
+</head>
+<body onload="dd.init()">
+<div id="header">
+    <div id="header_left">
+        <h2>B21 Discord Hammertime Template</h2>
+        <div id="datetime_select">
+            <h3>Input your required LOCAL date and time:</h3>
+            <input id="input_date" type="date" />
+            <input id="input_time" type="time" min="00:00" max="23:59" value="18:45"/>
+        </div>
+    </div>
+    <div id="header_right">
+        <table>
+            <tr>
+                <td>#DATE#</td>
+                <td id="header_discord_date">&lt;t:1707909240:d&gt;</td>
+                <td id="header_discord_date_display">14/02/2024</td>
+            </tr>
+            <tr>
+                <td>#TIME#</td>
+                <td id="header_discord_time">&lt;t:1707909240:t&gt;</td>
+                <td id="header_discord_time_display">11:14</td>
+            </tr>
+            <tr>
+                <td>#DATETIME#</td>
+                <td id="header_discord_datetime">&lt;t:1707909240:F&gt;</td>
+                <td id="header_discord_datetime_display">Wednesday, 14 February 2024 11:14</td>
+            </tr>
+        </table>
+    </div>
+</div> <!-- end header -->
+<div id="text_areas">
+    <div id="discorddoc_template_frame">
+        <div class="frame_header">Template (you can edit this) <button id="reset">Reset</button> <button id="store">Store</button></div>
+        <div id="discorddoc_template" contenteditable="true" spellcheck="false"></div>
+    </div>
+    <div id="discorddoc_display_frame">
+        <div class="frame_header">Discord layout preview <button id="copy">Copy to clipboard</button></div>
+        <div id="discorddoc_display"></div>
+    </div>
+</div> <!-- end text_areas -->
+
+</body>
+</html>

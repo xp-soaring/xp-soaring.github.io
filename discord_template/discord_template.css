@@ -4,12 +4,41 @@ body {
 }
 
 /* ----------------------------------- */
+/* ----------------------------------- */
+/* ---     Header                  --- */
+/* ----------------------------------- */
+/* ----------------------------------- */
+
+#header {
+    display: flex;
+    border: 1px solid pink;
+}
+
+/* ----------------------------------- */
+/* ---     Header left             --- */
+/* ----------------------------------- */
+
+#header_left {
+    display: inline-flex;
+    width: 49%;
+    border: 1px solid green;
+    background-color: lightgreen;
+    flex-direction: column;
+    flex: 3;
+}
+
+#header_left h2 {
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+/* ----------------------------------- */
 /* ---       Date / Time select    --- */
 
 #datetime_select {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    margin-left: 30px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    margin-left: 10px;
 }
 
 #datetime_select input {
@@ -17,7 +46,34 @@ body {
 }
 
 /* ----------------------------------- */
-/* ---  Wrapper for text areas     --- */
+/* ---     Header right            --- */
+/* ----------------------------------- */
+
+#header_right {
+    display: inline-flex;
+    border: 1px solid blue;
+    background-color: lightblue;
+    flex: 4;
+}
+
+table {
+    border-collapse: collapse;
+    display: block;
+    padding: 0;
+}
+td {
+    padding: 2px;
+}
+
+tr {
+
+}
+
+/* ----------------------------------- */
+/* ----------------------------------- */
+/* ---     Text areas              --- */
+/* ----------------------------------- */
+/* ----------------------------------- */
 
 #text_areas {
     display: flex;
@@ -58,6 +114,7 @@ body {
 #discorddoc_display {
     min-height: calc(100vh - 350px);
     padding: 10px;
+    overflow-wrap: anywhere;
 }
 
 /* unvisited link */
@@ -92,6 +149,10 @@ body {
     margin-left: auto;
     margin-right: auto;
     white-space: pre-wrap;
+}
+
+[contenteditable] {
+  outline: 0px solid transparent;
 }
 
 #discorddoc_template {
