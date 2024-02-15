@@ -11,7 +11,7 @@ body {
 
 #header {
     display: flex;
-    border: 1px solid pink;
+    /* border: 1px solid pink; */
 }
 
 /* ----------------------------------- */
@@ -21,8 +21,8 @@ body {
 #header_left {
     display: inline-flex;
     width: 49%;
-    border: 1px solid green;
-    background-color: lightgreen;
+    /* border: 1px solid green; */
+    /* background-color: lightgreen; */
     flex-direction: column;
     flex: 3;
 }
@@ -51,8 +51,8 @@ body {
 
 #header_right {
     display: inline-flex;
-    border: 1px solid blue;
-    background-color: lightblue;
+    /* border: 1px solid blue; */
+    /* background-color: lightblue; */
     flex: 4;
 }
 
@@ -60,13 +60,45 @@ table {
     border-collapse: collapse;
     display: block;
     padding: 0;
+    margin-top: 1em;
 }
-td {
+
+.copy_button {
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
+    border: 0.0625rem solid transparent;
+    background-color: #3b5bdb;
+    color: #fff;
+}
+
+.copy_button:hover {
+    background-color: #364fc7;
+}
+<t:1708022700:F>
+.copy_button svg {
+    height: 1em;
+}
+
+.hammertime_div {
     padding: 2px;
+    display: inline-flex;
 }
 
-tr {
-
+.hammertime {
+    display: inline-flex;
+    color: white;
+    background-color: #424242;
+    border-radius: 4px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-family: monospace;
+    padding-top: 5px;
 }
 
 /* ----------------------------------- */

@@ -38,6 +38,27 @@ class DiscordDoc {
         dd.date_el.valueAsDate = new Date();
 
         // -------------------------------
+        // Hammertime copy elements
+
+        dd.hammertime_date_display_el = document.getElementById("hammertime_date_display");
+        dd.hammertime_date_el = document.getElementById("hammertime_date");
+        document.getElementById("hammertime_date_button").addEventListener("click", (e) => {
+            dd.ui_hammertime_copy(dd.hammertime_date_el);
+        });
+
+        dd.hammertime_time_display_el = document.getElementById("hammertime_time_display");
+        dd.hammertime_time_el = document.getElementById("hammertime_time");
+        document.getElementById("hammertime_time_button").addEventListener("click", (e) => {
+            dd.ui_hammertime_copy(dd.hammertime_time_el);
+        });
+
+        dd.hammertime_datetime_display_el = document.getElementById("hammertime_datetime_display");
+        dd.hammertime_datetime_el = document.getElementById("hammertime_datetime");
+        document.getElementById("hammertime_datetime_button").addEventListener("click", (e) => {
+            dd.ui_hammertime_copy(dd.hammertime_datetime_el);
+        });
+
+        // -------------------------------
         // Discord template elements
 
         dd.template_el = document.getElementById("discorddoc_template");
@@ -76,6 +97,7 @@ class DiscordDoc {
         dd.unix_timestamp_int = Math.round(dd.datetime_js.getTime()/1000);
 
         console.log(`Local datetime: ${dd.local_datetime_str}, timestamp: ${dd.unix_timestamp_int}`);
+        dd.update_hammertime(dd);
         dd.update_output(dd);
     }
 
@@ -101,6 +123,20 @@ class DiscordDoc {
         dd.update_output(dd);
     }
 
+    update_hammertime(dd) {
+        // #DATE#
+        dd.hammertime_date_el.innerText = dd.output_replace_date("#DATE#");
+        dd.hammertime_date_display_el.innerText = dd.display_replace_date("#DATE#");
+
+        // #TIME#
+        dd.hammertime_time_el.innerText = dd.output_replace_time("#TIME#");
+        dd.hammertime_time_display_el.innerText = dd.display_replace_time("#TIME#");
+
+        // #DATETIME#
+        dd.hammertime_datetime_el.innerText = dd.output_replace_datetime("#DATETIME#");
+        dd.hammertime_datetime_display_el.innerText = dd.display_replace_datetime("#DATETIME#");
+    }
+
     update_output(dd)  {
         let display_str = "";
         dd.discord_str = "";
@@ -113,6 +149,10 @@ class DiscordDoc {
             // Replace #DATETIME#
             display_line = dd.display_replace_datetime(display_line);
             output_line = dd.output_replace_datetime(output_line);
+
+            // Replace #DATE# - we are relying on #DATETIME already replaced
+            display_line = dd.display_replace_date(display_line);
+            output_line = dd.output_replace_date(output_line);
 
             // Replace #TIME...#
             display_line = dd.display_replace_time(display_line);
@@ -186,6 +226,57 @@ class DiscordDoc {
             replaced_str = replaced_str.slice(0,time_pos)+hammertime_str+replaced_str.slice(time_end_pos+1);
 
             time_pos = replaced_str.indexOf("#DATETIME", time_pos);
+        }
+        return replaced_str;
+    }
+
+    // Replace #DATE# with e.g. "11/02/2024" in locale date format
+    display_replace_date(str) {
+        let replaced_str = str;
+        let time_pos = replaced_str.indexOf("#DATE"); // Note we are relying on #DATETIME already replaced
+        while (time_pos >= 0) {
+            let time_end_pos = replaced_str.indexOf("#",time_pos+1);
+            if (time_end_pos < 0) {
+                break;
+            }
+            let time_str = replaced_str.slice(time_pos, time_end_pos+1);
+            console.log(`Date ${time_str} between ${time_pos} and ${time_end_pos}`);
+
+            // Check for time adjustment
+            let adjust_s = dd.get_adjust_s(time_str);
+
+            let d = new Date(dd.datetime_js); // Avoid side-effect update of dd.datetime_s
+            let adjusted_datetime_js = new Date(d.setSeconds(d.getSeconds() + adjust_s));
+
+            let date_str = adjusted_datetime_js.toLocaleString().slice(0,10);
+
+            replaced_str = replaced_str.slice(0,time_pos)+date_str+replaced_str.slice(time_end_pos+1);
+
+            time_pos = replaced_str.indexOf("#DATE", time_pos);
+        }
+        return replaced_str;
+    }
+
+    // Replace #DATE# with e.g. "<t:1707909240:d>"
+    output_replace_date(str) {
+        let replaced_str = str;
+        let time_pos = replaced_str.indexOf("#DATE"); // Note we are relying on #DATETIME already replaced
+        while (time_pos >= 0) {
+            let time_end_pos = replaced_str.indexOf("#",time_pos+1);
+            if (time_end_pos < 0) {
+                break;
+            }
+            let time_str = replaced_str.slice(time_pos, time_end_pos+1);
+            //console.log(`Datetime ${time_str} between ${time_pos} and ${time_end_pos}`);
+
+            // Check for time adjustment
+            let adjust_s = dd.get_adjust_s(time_str);
+
+            let hammertime_str = "<t:"+(dd.unix_timestamp_int + adjust_s).toFixed(0)+":d>";
+
+            replaced_str = replaced_str.slice(0,time_pos)+hammertime_str+replaced_str.slice(time_end_pos+1);
+
+            time_pos = replaced_str.indexOf("#DATE", time_pos);
         }
         return replaced_str;
     }
@@ -295,45 +386,38 @@ class DiscordDoc {
         return replaced_str;
     }
 
-    get_adjust_s(time_str) {
-        if (time_str.startsWith("#TIME+") || time_str.startsWith("#TIME-")) {
-            let adjust_sign = time_str.slice(5,6) == "+" ? 1 : -1;
-            // e.g. "#TIME+1:30#"
-            // to "1:30"
-            let adjust_str = time_str.slice(6,-1);
-            // to ["1", "30"] i.e. hours, minutes
-            let adjust_parts = adjust_str.split(":");
-            let adjust_s = parseInt(adjust_parts[adjust_parts.length - 1]) * 60; // add minutes
-            if (adjust_parts.length == 2) {
-                adjust_s += parseInt(adjust_parts[0]) * 3600; // add hours
-            }
-            if (isNaN(adjust_s)) {
+    get_adjust_s(template_str) {
+        let time_pos = template_str.indexOf("+");
+        let adjust_sign = 1;
+        if (time_pos < 0) {
+            time_pos = template_str.indexOf("-");
+            if (time_pos < 0) {
                 return 0;
             }
-            return adjust_sign * adjust_s;
-        } else if (time_str.startsWith("#DATETIME+") || time_str.startsWith("#DATETIME-")) {
-            let adjust_sign = time_str.slice(9,10) == "+" ? 1 : -1;
-            // e.g. "#TIME+1:30#"
-            // to "1:30"
-            let adjust_str = time_str.slice(10,-1);
-            //console.log(`adj '${adjust_str}'`);
-            // to ["1", "30"] i.e. hours, minutes
-            let adjust_parts = adjust_str.split(":");
-            let adjust_s = parseInt(adjust_parts[adjust_parts.length - 1]) * 60; // add minutes
-            if (adjust_parts.length == 2) {
-                adjust_s += parseInt(adjust_parts[0]) * 3600; // add hours
-            }
-            if (isNaN(adjust_s)) {
-                return 0;
-            }
-            return adjust_sign * adjust_s;
+            adjust_sign = -1;
         }
 
-        return 0;
+        // e.g. "#TIME+1:30#"
+        // to "1:30"
+        let adjust_str = template_str.slice(time_pos+1,-1);
+        // to ["1", "30"] i.e. hours, minutes
+        let adjust_parts = adjust_str.split(":");
+        let adjust_s = parseInt(adjust_parts[adjust_parts.length - 1]) * 60; // add minutes
+        if (adjust_parts.length == 2) {
+            adjust_s += parseInt(adjust_parts[0]) * 3600; // add hours
+        }
+        if (isNaN(adjust_s)) {
+            return 0;
+        }
+        return adjust_sign * adjust_s;
     }
 
     get_time_str(time_str) {
         return "XXX";
+    }
+
+    ui_hammertime_copy(el) {
+        navigator.clipboard.writeText(el.innerText);
     }
 
     ui_click_copy(dd) {
