@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>B21 Discord Hammertime Template</title>
+    <title>Hammertime Template B21</title>
     <link rel="stylesheet" type="text/css" href="discord_template.css"/>
     <script type="text/javascript" src="discord_template.js"></script>
 
@@ -11,7 +11,7 @@
 <body onload="dd.init()">
 <div id="header">
     <div id="header_left">
-        <h2>B21 Discord Hammertime Template</h2>
+        <h2>Discord Hammertime Template B21</h2>
         <div id="datetime_select">
             <h3>Input your required LOCAL date and time:</h3>
             <input id="input_date" type="date" />
@@ -19,6 +19,7 @@
         </div>
     </div>
     <div id="header_right">
+        <div id="copy_hammertime_popup">copied!</div>
         <table>
             <tr>
                 <td class="tag">#DATE#</td>
@@ -58,12 +59,19 @@
 </div> <!-- end header -->
 <div id="text_areas">
     <div id="discorddoc_template_frame">
-        <div class="frame_header">Template (you can edit this) <button id="reset">Reset</button> <button id="store">Store</button></div>
+        <div class="frame_header">
+            <div class="frame_header_text">Template (you can edit this)</div>
+            <button id="reset_button">Reset</button>
+            <button id="load_button">Load</button>
+            <button id="store_template_buttton">Store</button>
+            <div id="load_dropdown"></div>
+        </div>
         <div id="discorddoc_template" contenteditable="true" spellcheck="false"></div>
     </div>
-    <div id="discorddoc_display_frame">
-        <div class="frame_header">Discord layout preview <button id="copy">Copy to clipboard</button></div>
-        <div id="discorddoc_display"></div>
+    <div id="discorddoc_preview_frame">
+        <div id="copy_template_popup">copied!</div>
+        <div class="frame_header"><div class="frame_header_text">Discord layout preview</div><button id="copy_template_button">Copy to clipboard</button></div>
+        <div id="discorddoc_preview"></div>
     </div>
 </div> <!-- end text_areas -->
 
