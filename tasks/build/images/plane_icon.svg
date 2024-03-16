@@ -1,7 +1,0 @@
-<svg width="64" height="64" xmlns="http://www.w3.org/2000/svg">
-             <g id="Layer_1">
-              <title>Layer 1</title>
-              <path id="wings" d="M33 37 h 14 l 4 5 v 3 h -38 v -3 l 4 -5 z" stroke="#000" fill="`+c1+`"/>
-              <path id="fuselage" d="M30 31 h 4 l 1 6 v4 l -1 17  h 5 v 5 h -14 v -5  h 5 l -1 -17 v -4 z" stroke="#000" fill="`+c2+`"/>
-             </g>
-            </svg>
