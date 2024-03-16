@@ -1,0 +1,720 @@
+<html>
+<head>
+    <title>Help for B21 task Planner</title>
+    <link href="help.css" rel="stylesheet"/>
+</head>
+<body>
+<h1>B21 Task Planner V2 Help</h1>
+
+<p>B21 Task Planner helps you do TWO things as easily as possible:</p>
+<ol>
+    <li>CREATE a Microsoft Flight Simulator flightplan, particularly suited to VFR flying including gliding.</li>
+    <li>VIEW tracklog files recorded during a flight in the sim (or in a real flight) and help analyze those
+        flights relative to a chosen flightplan if you have one loaded (e.g. to calculate the cross-country speed).</li>
+</ol>
+
+<p>If reading help text isn't your thing, then
+    <a href="https://www.youtube.com/watch?v=QS7iGN_Lw4Y" target="_blank">there's an intro video here</a>.
+</p>
+
+<h2>Contents</h2>
+
+<ul>
+    <li><a href="#flightplan">Loading or creating a flight plan</a>
+        <ul>
+            <li><a href="#load_flightplan">Loading an existing .PLN or .TSK flightplan</a></li>
+            <li><a href="#create_flightplan">Creating a flight plan from scratch</a></li>
+        </ul>
+    </li>
+    <li><a href="#skyvector">Viewing SkyVector aeronautical charts</a></li>
+    <li><a href="#tracklogs">Loading a tracklog (.IGC or .GPX file)</a>
+        <ul>
+            <li><a href="#tracklog_flightplan">Loading a tracklog AND a flightplan</a></li>
+            <li><a href="#tracklog_missed">Correcting "missed" waypoints</a></li>
+            <li><a href="#tracklog_paused">Correcting for any "pause" in the tracklog</a></li>
+        </ul>
+    </li>
+    <li><a href="#competitions">Viewing multiple tracklogs as in a competition</a></li>
+    <li><a href="#replay">Using the 'replay' functionality</a></li>
+    <li><a href="#multiplayer">Displaying aircraft from a multiplayer service</a></li>
+    <li><a href="#custom_waypoints">Loading custom waypoints</a></li>
+    <li><a href="#url_filenames">Adding filenames to the Planner URL</a></li>
+    <li><a href="#comp_files">Using a COMP file to load a collection of task and tracklogs</a></li>
+    <li><a href="#defaults">Default distances used for waypoints</a></li>
+    <li><a href="#pln_extensions">Tech appendix: how flightplan waypoints names are encoded to embed gliding info.</a></li>
+</ul>
+
+<h2 id="flightplan">Loading or creating a flight plan</h2>
+
+<div class="hcenter"><img src="images/overview_legend.png" width="70%"/></div>
+
+<p>We want to create <i>soaring tasks</i> in MSFS as simply as possible, e.g. a three-waypoint task could be created
+    with three clicks on a map. The soaring tasks are created as standard '.PLN' MSFS Flight Plans or XCSoar '.TSK' files.
+</p>
+
+<p>B21 Task Planner has THREE ways to get started with a Flight Plan:</p>
+<ol>
+    <li>Just start clicking on the map. Make sure you start/end with an MSFS Airport.</li>
+    <li>Drag an existing MSFS .pln or XCsoar .tsk file onto the DROP ZONE. This is useful if you have that file on your local PC.</li>
+    <li>If you're a gliding techie server admin, you can add links to task and tracklog files to the Planner URL (see
+        <a href="#url_filenames">here</a>)</li>
+</ol>
+
+<p> Soaring tasks can have additional information embedded into the MSFS .pln file so the soaring Nav gauges and other
+    addons (e.g. ALBATROSS) can pick up this information. Sticking with the MSFS '.pln' format gives us the maximum
+    compatibility and flexibility with MSFS and other flight planning tools. The soaring parameters need to be passed to the
+    aircraft without corruption by MSFS - these include:
+    <ul>
+        <li>the <i>elevation</i> of the waypoint</li>
+        <li>the <i>radius</i> of the waypoint (i.e. how close the pilot must get to the WP to confirm having reached it)</li>
+        <li><i>minimum and maximum altitudes</i> required at the WP.</li>
+    </ul>
+     This is done in an upwards-compatible way, so an ordinary MSFS waypoint with no additional
+    soaring parameters will work fine and the parameters will be given default values.
+</p>
+
+<p>The 'additional' soaring parameters in the flight plan are entirely optional, and the B21 Task Planner can equally produce a valid MSFS
+    flight plan with none of these parameters provided. When the optional parameters <i>are</i> provided, and encoded into the waypoint
+    name, custom soaring gauges in the aircraft (such as the B21 Nav Panel) can pick those parameters out of the name and display the
+    name <i>without</i> the parameters to the pilot in the gauge, i.e. a waypoint called "*Burnt Cabins+2310|6000/1000x800" will be
+    displayed in the cockpit as "Burnt Cabins".
+</p>
+
+<img width="24%" src="images/task_start_finish.png"/>
+<img width="24%" src="images/topo.png"/>
+<img width="24%" src="images/streetmap.png"/>
+<img width="24%" src="images/satellite.png"/>
+
+<h2>Flightplan General Hints</h2>
+
+<p>Most of these hints relate to the fact that MSFS ignores much of the information in the Flight Plan, e.g. it will take
+the airport ICAO code but ignore the other data in the flightplan for that airport
+ (such as name of the airport, and its elevation). MSFS will use what is in its own database rather
+than accepting what is in the Flight Plan. For intermediate waypoints MSFS will accept the name but completely ignore the
+altitude in the Flight Plan and generate an estimate of the altitude it thinks the autopilot should be flying at instead.
+</p>
+
+<p><b>(1)</b> Always start and end the flightplan with an AIRPORT. For these you will need the ICAO code, and for the departure airport
+    it is possible to specify a launch runway but you will need to look the name for this in MSFS (e.g. "26" or "06L"). Confusingly
+    you cannot label those airports as the START or FINISH of the soaring task because of the way MSFS treats that data. Instead you
+    can create another 'user' waypoint nearby (e.g. at the downwind end of the runway) and flag that as the finish e.g.
+    <a href="https://www.youtube.com/watch?v=QS7iGN_Lw4Y&t=496s">here</a>.
+</p>
+
+<p><b>(2)</b> Generally it is better to have Start and Finish waypoints that are other than the departure and destination airports. They
+    can be in roughly the same location, if that is what is wanted, but zoom in on the map and create an additional waypoint
+    such as "Mifflin Start" rather than using the ICAO code "KRVL".
+</p>
+
+<p><b>(3)</b> Task waypoints, even ones which are airports, should be specifed WITHOUT the ICAO code, so they will be stored in
+    the Flight Plan as 'User' waypoints. MSFS does not allow the
+    additional soaring parameters (like max/min heights) relative to airports.
+</p>
+
+<p><b>(4)</b> If you want to create a general VFR flightplan, perhaps nothing to do with soaring, you can uncheck the
+    [Soaring&nbsp;Task] checkbox in the top-right of the window and the waypoint menu will be simplified.
+</p>
+
+<p><b>(5)</b> Soaring flightplans created with B21 Task Planner can contain additional information that is not normally stored
+    inside an MSFS Flight Plan. The 'trick' used is to add data to the <b>name</b> of the waypoint, e.g. a waypoint
+    named in the Flight Plan as "Burnt Cabins+2340" can be read by the soaring Nav instruments as a waypoint called
+    "Burnt Cabins" at an elevation of 2340 feet. That waypoint will be displayed as "Burnt Cabins" in the soaring
+    instruments, while the Flight Plan remains valid for any use in MSFS (where it will be displayed as
+    "Burnt&nbsp;Cabins+2340"). Note that MSFS is generally ok with elevations for Airports but it ignores elevations in
+    the Flight Plan for intermediate waypoints.
+</p>
+
+<p><b>(6)</b> B21 Task Planner remembers your settings from one session to the next (assuming the same browser), this includes
+    the units you've chosen for altitudes and distances, and the map location and zoom.
+</p>
+
+<h4>The 'right-click' popup</h4>
+
+<p>You can quickly see the lat/long and elevation of any point by right-clicking anywhere on the map as shown below:</p>
+
+<img width="50%" src="images/right_click.png"/>
+
+<h3 id="load_flightplan">An example starting with an existing MSFS .pln Flight Plan (or XCSoar .tsk)</h3>
+
+<p>We'll use an example starting with an existing flightplan as apart from the first step (the 'drop') the use of the
+program is the same as if you'd clicked on the map to create the waypoints.
+</p>
+
+<p>Here's the program (i.e. web page) when you first open it. The map position will be wherever you left it last time you
+used the program.
+</p>
+
+<img src="images/start.png"/>
+
+<p>After we 'drag & drop' a flightplan:
+</p>
+
+<img src="images/drop_flightplan.png"/>
+
+<p>Checking the box to show which waypoint is the task start. We also set a maximum start height:
+</p>
+
+<img src="images/set_start.png"/>
+
+<p>Similarly we can set a checkbox to show which is the FINISH waypoint. Note the task distance is calculated from
+    Start to Finish, ignoring legs before or after those.
+</p>
+
+<img src="images/set_finish.png"/>
+
+<p>A 'killer' feature of the B21 Task Planner (for soaring tasks) is it can look up the ground elevation for each
+    waypoint an annotate the data in the MSFS Flight Plan with that information. For B21 instruments that display Nav
+    information including Arrival Height, this elevation allows that information to be AGL. You can click the
+    [Update&nbsp;elevations] button which will update the elevations for ALL the waypoints, or for a single waypoint you
+    can click the waypoint "Update this waypoint elevation" option, as illustrated below.
+</p>
+
+<img src="images/update_elevations.png"/>
+
+<p>Setting a 'radius' for each turnpoint is also easy via the waypoint pop-up menu:
+
+<img src="images/set_wp_radius.png"/>
+
+<p>At this point the task is complete, and can be downloaded by clicking the [Download] button:
+
+<img src="images/download.png"/>
+
+<h2>Setting the start and finish airport.</h2>
+
+<p>The Flight Plan MUST begin and end with an airport, and for these you MUST know the ICAO code to enter into the
+    waypoint data. The B21 Task Planner includes an airports database with ICAO codes but be aware MSFS has its own
+    database so there may be differences. One easy way to find the ICAO code for the airport (e.g. LOWZ for Zell
+    am See airport) is to use the World Map
+    page in MSFS, and that will also give you the runway names if you want to specify one for the departure (you should,
+    so the plane is facing into wind).
+</p>
+
+<p>If you have an existing Flight Plan containing the airports you're interested in, you can simply drag-and-drop that
+    onto the Drop Zone and those waypoints will be imported.
+</p>
+
+<h3 id="create_flightplan">Creating a Flight Plan from scratch</h3>
+
+<p>Here we will click on the existing Zell am See airport displayed on the map, adding the ICAO code.
+    We can also add a departure runway. <b>Note that MSFS will accept cardinal values, e.g. EAST or SOUTHWEST for the
+    runway.</b>
+</p>
+
+<img src="images/LOWZ.png"/>
+
+<p>Now is a useful time to add the destination airport - that only takes one click:
+</p>
+
+<img src="images/LOWI.png"/>
+
+<p>Now if you RESELECT LOWZ (because additional waypoints are always added after the CURRENTLY SELECTED waypoint), you can
+    click on the map and add waypoints between those airports:
+</p>
+
+<img src="images/WP2.png"/>
+
+<p>Note you can <i>drag the waypoints around</i> which means you can 'draft' a task keeping the map at a fixed scale enabling
+you to see the whole task, and then you can zoom in on individual waypoints and drag them to the exact point you want them e.g.
+the downwind end of the runway often makes sense for finish waypoints.
+</p>
+
+<p>At this point you have pretty much caught up with the example given before with a loaded MSFS Flight Plan, and
+    the editting of waypoint radius, and min/max altitudes is the same.
+</p>
+
+<h2>Units used for the additional soaring parameters</h2>
+
+<p>The B21 Task Planner allows the user to choose the units they want to input/see for altitude (meters or feet) and distance (kilometers
+    or miles). However, when these values are encoded into the MSFS flight plan WP name, altitude/elevation will be in
+    <i>feet MSL</i> and distances will be in <i>meters</i>.
+</p>
+
+<h2 id="skyvector">Using the SkyVector charts service</h2>
+
+<p>The [SkyVector] button will open a new tab in your browser, with the SkyVector map lined up the same as the map
+    within B21 Task Planner.
+</p>
+<p>So first navigate to the airport of interest on the map in B21 Task Planner, the example below shows
+    Blairstown NJ - you'll notice the Task Planner database includes Blairstown so at this point you could click
+    on it and this exercise would be complete, but let's continue with the SkyVector exercise...
+</p>
+
+<img src="images/blairstown.png"/>
+
+<p>Then click the [SkyVector] button. A new tab opens, and you can see Blairstown Airport also centered on
+    the SkyVector map with the ICAO code (1N7) shown next to the airport name:
+</p>
+
+<img src="images/skyvector.png"/>
+
+<p>Given the "1N7" code for Blairstown Airport, you can click the SkyVector [Airports] button, put "1N7"
+    (or Blairstown) into the search box, and you will get the Airport information page including the
+    runways "07" and "25" (top-left of page):
+</p>
+
+<img src="images/1n7.png"/>
+
+<h2 id="tracklogs">Loading a tracklog (.IGC or .GPX)</h2>
+
+<p>You load a tracklog the same as you do for the flightplans... just drag-and-drop a .IGC or .GPX file onto the Drop Zone.
+    If more convenient, you can use the "Choose Files" button in the Drop Zone.
+</p>
+
+<p>A new 'tab' section will appear on the left side of the window ("Task Info", "Tracklogs").
+
+<div class="hcenter"><img src="images/tracklog_load.png" width="70%"/></div>
+
+<p>You can inspect any part of the tracklog simply by hovering the mouse over the chart. This will calculate the tracklog point
+underneath the mouse and display the current information in the top-left area of the chart.
+</p>
+
+<h3 id="tracklog_zoom">Inspection/analysis of a section of the tracklog</h3>
+
+<div class="hcenter"><img src="images/tracklog_zoom.png" width="70%"/></div>
+
+<p>Here we have zoomed the map to a part of the flight we're interested in and then
+ dragged the mouse across a section of the tracklog in the chart. The chart 'zooms' to show just that section of the tracklog and
+ the top-right of the chart area shows calculated values just for this selected section. Clicking the "Reset zoom" button on the
+ chart will return to the full chart.
+</p>
+
+<p>The analysis data is calculated from the first and last tracklog points in the selected section:</p>
+<ul>
+    <li>the start-to-finish duration of the tracklog segment, in this case 3 minutes 13 seconds</li>
+    <li>The height gain/loss, in this case +990 feet</li>
+    <li>The ground speed assuming a straight line between the first and last tracklog points (10 kph)</li>
+    <li>The distance covered in a straight line between the first and last tracklog points (536 meters)</li>
+    <li>The climb rate for the height gained over the time taken (3.0 knots)</li>
+</ul>
+
+<p>The climb rate is useful to glider pilots in assessing their thermalling performance.</p>
+
+<p>If the height gain is NEGATIVE, then instead of "Climb (knots) 3.0" the chart will display the GLIDE RATIO for the
+height loss over the straight-line distance, e.g. "Glide 42:1". This is only useful for soaring pilots IF they have
+purposely flown at a fixed airspeed in a straight line with nil wind over an extended distance.
+In this case the analysis is extremely useful in assessing the glide performance of the aircraft.
+</p>
+
+<h3 id="tracklog_flightplan">Loading a tracklog AND a flightplan</h3>
+
+<p>This example shows the flightplan being loaded that was used during the flight that generated the tracklog above.
+</p>
+
+<div class="hcenter"><img src="images/tracklog_flightplan.png" width="70%"/></div>
+
+<p>A tracklog and a flightplan can be loaded in any order and the Planner will then 'score' the
+    tracklog against that flightplan. To complete the task, the tracklog must pass through the start, finish and
+    each ofthe waypoints. The Planner will check the tracklog against the specified boundaries of the waypoints
+    (such as radius and altitude limits) and if completed a task completion speed will be calculated.
+</p>
+
+<p>As in the image below, if the tracklog is clicked on the "Tracklogs" tab, an "Info" panel will open showing the
+    details of the flight performance at each waypoint.
+</p>
+
+<div class="hcenter"><img src="images/tracklog_task_info.png" width="70%"/></div>
+
+<h3 id="tracklog_missed">Correcting a "missed" waypoint</h3>
+
+<p>This example uses the same tracklog and task as above but with the "Coventry" waypoint moved a little so the
+    current tracklog fails to pass through that waypoint (i.e. within the required radius).
+</p>
+
+<div class="hcenter"><img src="images/tracklog_missed.png" width="70%"/></div>
+
+<p>The "Tracklog Info" panel shows the Coventry waypoints was missed so at this point that task is 'incomplete' and
+    a completion speed is not available. In a real soaring competition the pilot would have penalty points applied for
+    closely missing the waypoint, and the completion speed would still be calculated.
+</p>
+
+<p>The Planner allows the completion time to be calculated by allowing the manual selection of a tracklog point to be
+    deemed to be acceptable for completion of the missed waypoint. In a sim-soaring competition there could be similar
+    calculation of 'penalty points'.
+</p>
+
+<div class="hcenter"><img src="images/tracklog_missed_click.png" width="70%"/></div>
+
+<p>In the image above, we have zoomed the map into the area of the turnpoint and clicked the previous "Choose Point to Fix" button.
+    The button and the chart become highlighted, so now we should hover the mouse over the chart points until we click on one that
+    seems most appropriate to use for the current waypoint. The glider icon will move on the map as we move the mouse over the
+    chart.
+</p>
+
+<div class="hcenter"><img src="images/tracklog_missed_clicked.png" width="70%"/></div>
+
+<p>On clicking the chosen point in the chart, the tracklog gets re-scored and the "Tracklog Info" panel shows a successful completion
+    of the task.
+</p>
+
+<h3 id="tracklog_paused">Correcting for any "pause" in the tracklogs</h3>
+
+<p>It should be considered normal for a Sim pilot to "pause" the flight (e.g. hit the "Esc" key during the flight) due to whatever
+    domestic disturbance needs to be handled. In MSFS the sim "clock" will continue to run, but the position of the plane will be
+    frozen.
+</p>
+
+<p>B21 Task Planner can automatically scan the loaded tracklogs, detect where the sim pilot has paused the sim, and 'correct' the
+    tracklog as if the pause had never occurred. A minimum threshold of 15 seconds for the pause is set to avoid situations where
+    the logger used simply briefly skipped a few points. In other words if a sim pilot DOES pause the sim for 10 seconds, then he/she
+    will have to suck that up and accept being 10 seconds slower than they otherwise would have been.
+</p>
+
+<p>The image below illustrates a tracklog containing a pause. The pause is clearly visible on the time/altitude/groundspeed chart but
+    pretty much impossible to spot on the tracklog displayed on the map.
+</p>
+
+<p>As can be seen below the tracklog contains the pause, and B21 Task Planner is calculating a task completion speed of 105.3 kph including
+    however long was spent with the sim paused. Clearly the task would have been completed more quickly without the pause.
+</p>
+
+<div class="hcenter"><img src="images/tracklog_pause.png" width="70%" /></div>
+
+<p>This image below shows the same tracklog, AFTER the "Skip pause" checkbox has been checked. The Task Planner has scanned ALL the loaded
+    tracklogs (in this case only the one shown) and identified and corrected the completion times and speeds for any tracklogs containing
+    pauses. In the example given you can see the completion speed has improved to 124.6 kph.
+</p>
+
+<div class="hcenter"><img src="images/tracklog_pause_removed.png" width="70%" /></div>
+
+<p>Removing pauses is great for fairly comparing tracklog completion speeds (unless your task is somehow hardass "no pauses allowed") but also
+    it makes the "maggot racing" replay of multiple tracklogs a better comparison between flights. The "Skip pause" effect is reversible, simply
+    by unchecking the checkbox and the analysis will be redone using the original data.
+</p>
+
+<p>Removing pauses requires scanning through ALL of the loaded tracklogs point-by-point. It's pretty quick (maybe half-a-second per tracklog)
+    but if you have a large number of large tracklogs loaded then be prepared to wait a few seconds while it completes.
+</p>
+
+<p>The essential method used in B21 Task Planner is to spot areas in the tracklog where 'jumps' occur in the logging WITHOUT a material distance
+    covered between the otherwise adjacent logpoints, and it fixes up the timestamps so the tracklog becomes sensibly continuous. Typically
+    the tracklog will show a small amount of distance between the points either side of the pause and B21 Task Planner will adjust those points
+    to have an appropriate time separation given the distance travelled. For example, a 30 minute pause might be replaced with a 3-second
+    gap between the logged points either side of that pause.
+</p>
+
+<h2 id="competitions">Viewing multiple tracklogs as in a competition</h2>
+
+<p>Loading a flightplan and many tracklog files for a 'competition' (i.e. many pilots attempting the same task) is
+as simple as dragging all those files into the Drop Zone in a single sweep. The screenshot below shows all the REAL
+tracklogs for the Lasham Regionals Day 4 flights in 2001.
+</p>
+
+<p>You will see each tracklog on the map is 'color-coded', with those colors matching on the "Tracklogs" list on the left and the charts
+    below the map.
+</p>
+
+<p>The "hide map tracks" button can be used to show/hide the lines on the map showing the route of each plane.
+</p>
+
+<div class="hcenter"><img src="images/competition.png" width="70%"/></div>
+
+<h2 id="replay">Using the Replay functionality a.k.a. Maggot Racing</h2>
+
+<p>The central bar of buttons between the map and the charts is primarily for the 'replay' buttons. They do what you
+    would expect i.e. you can play, pause and reset the animation of the gliders flying around the task.
+</p>
+
+<div class="hcenter"><img src="images/replay.png" width="70%"/></div>
+
+<p><b>Top tip:</b> keep in mind different simulator flights that <i>look</i> similar often have different times/dates
+in the tracklog. This is likely to be true if you have completed the same MSFS task on different days (some MSFS
+loggers record 'simulator' time, others record 'real' time). Even on a real gliding competition day competitors
+might start an hour apart. So there are <i>two</i> equally valid ways to animate multiple tracklogs together. One is to
+start the animation at the first logpoint of the <i>earliest</i> flight, and animate all the tracklogs using this
+same 'realtime' clock. This works well for real gliding competition flights that are obviously on the same day and in the
+same weather. The alternative method is to synchronize the START TIMES for all gliders flying the same task. This allows
+the flights to be directly compared and makes more sense if multiple pilots are flying the same simulator task on different
+real-world days but with the same simulator date/time and weather.
+</p>
+
+<p>Actually it would be best if MSFS soaring flights were better structured with a common clock and weather AND the logger
+    recorded simulator time, not real-world time, but this is not currently always the case.
+</p>
+
+<p>Note that the 'start time' of the replay is the EARLIEST timestamp of any tracklog that is loaded. If you only have a single
+    tracklog loaded this is what you'd expect and everything is very simple. With multiple tracklogs loaded it is possible for their
+    times to differ by a great deal (i.e. decades). You can select/unselect individual tracklogs using the checkboxes on the "Tracklogs" list and the
+    replay "start time" will adjust to the earliest time of the <i>selected</i> tracklogs.
+</p>
+
+<p>For viewing gliding competitions, the "Sync starts" checkbox is <i>important</i>. This creates a time offset for every tracklog so
+    each plane in the replay animation crosses the start line at the same time. This is very important for sim-soaring flight
+    comparisons when the pilots may have flown the flight on different days.
+</p>
+
+<p>The <b>Icon data</b> checkbox shows height and speed above each of the glider icons, as is also shown top-left
+    of each tracklog chart. You can toggle icon data on/off for a <i>single</i> glider by clicking its icon, or clicking its
+    chart.
+</p>
+
+<h2 id="multiplayer">Displaying aircraft from a multiplayer service</h2>
+<p>The B21 Task Planner can connect to multiplayer services that serve aircraft position information in
+    the Whazzup / IVAO text format. Note to send YOUR plane position information to a multiplayer server (so other
+    people can see <i>you</i>) you must install a corresponding <i>transmitter</i> that connects to MSFS, picks up your
+    latitute/longitude, and sends that to the server.
+</p>
+
+<p>The Planner will distinguish between gliders and other aircraft (using relevant icons) and will also highlight
+    the aircraft you are flying to differentiate it on the map compared to the others. The Planner compares the
+    'Multiplayer Pilot Id' in your Planner Settings with the id's received from the multiplayer service to identify the
+    aircraft you're actually flying.
+</p>
+
+<p>With the multiplayer options set correctly you'll see other planes on the map as below:
+</p>
+<div class="hcenter"><img src="images/multiplayer_aircraft.png" width="70%" /></div>
+
+<p>The first step is to enter the appropriate Multiplayer Settings. The B21 Task Planner is not itself hosting
+    a multiplayer server, nor is it transmitting your position to any multiplayer server. In a tragi-comical situation
+    MSSF has neglible multiplayer support so you'll need to find 3rd-party options for these.
+</p>
+<div class="hcenter"><img src="images/multiplayer_settings.png" width="70%" /></div>
+
+<p>Once those Settings are correct, you can display the aircraft from the multiplayer service on the B21 Task Planner
+    map by clicking the first checkbox on the 'Multiplayer' button. The other multiplayer checkboxes provide incremental
+    useful features i.e. adding the player identifiers and centering the map on YOUR aircraft.
+</p>
+
+<p>You'll see the 'map-centering' feature immediately transforms the B21 Task Planner into a moving map with your plane
+    plus any flightplan you've set displayed.
+</p>
+
+<div class="hcenter"><img src="images/multiplayer_options.png" width="70%" /></div>
+
+<h2 id="custom_waypoints">Loading custom waypoints</h2>
+
+<p>You can drag-and-drop ".cup" files into the drop-zone. In the screenshot below I have selected the file "BGA 2022 Revision a SeeYou.cup" to
+    load the British Gliding Association competition waypoints. A good source of soaring waypoints is:<br/>
+    <a href="https://soaringweb.org/TP">Worldwide Soaring Turnpoint Exchange</a><br/>
+    AFTER choosing your country, follow the link for "Files formatted for downloading...", the SeeYou or XCSoar 'CUP' format is what we need.
+</p>
+
+<div class="hcenter"><img src="images/waypoints_load.png" width="70%"/></div>
+
+<p>After clicking 'OK' or 'Cancel', the waypoints will appear on the map as <img src="../images/search_user_waypoint.png"/>. Hovering the mouse over
+    waypoint will show the information popup, and the 'id' (or 'code') of the waypoint and the 'name' will be included in the search function
+    provided on the menu bar.
+</p>
+
+<div class="hcenter"><img src="images/waypoints_loaded.png" width="70%"/></div>
+
+<p>As mentioned in the pop-up, you can either load these 'CUP' waypoints only for your current session (i.e. they will be forgotten when you
+    refresh the browser, or you can click 'OK' at the prompt and these custom waypoints will be stored within your browser to be loaded from
+    this local storage whenever you access the Planner. Via 'Settings' you can control whether the stored waypoints are automatically
+    loaded when you start the Planner, or
+    whether they are stored for future use but otherwise 'disabled'. Choosing the 'disabled' option means the Planner will retain but
+    ignore those custom waypoints, saving you a few milliseconds of startup time. Example below:
+</p>
+
+<div class="hcenter"><img src="images/waypoints_settings.png" width="70%"/></div>
+
+<h2 id="url_filenames">Adding filenames to the URL</h2>
+
+<p>The generic url for the B21 Task Planner is:
+    <a href="https://xp-soaring.github.io/tasks/b21_task_planner/index.html">https://xp-soaring.github.io/tasks/b21_task_planner/index.html</a><br/>
+    although in general it might be better to just type "b21 task planner" into Google.
+</p>
+
+<p>For each of the recognised file types, you can add url's (OMITTING THE "HTTPS://") to those files to the Planner web URL using the
+    file type as the key, e.g. adding a 'pln' task file:<br/>
+    <a href="https://xp-soaring.github.io/tasks/b21_task_planner/index.html?pln=xp-soaring.github.io/tasks/b21_task_planner/files_PLN/HusBos%20100km.pln">
+        https://xp-soaring.github.io/tasks/b21_task_planner/index.html?pln=xp-soaring.github.io/tasks/b21_task_planner/files_PLN/HusBos 100km.pln
+    </a>
+</p>
+
+<p>A cool thing is you can add a combination of a task and tracklog (i.e. add both a '?pln= .. ' and '&gpx= ..') and both those files will
+    be loaded so you can see someone's tracklog scored against the corresponding task, e.g.
+    <a href="https://xp-soaring.github.io/tasks/b21_task_planner/index.html?pln=xp-soaring.github.io/tasks/b21_task_planner/files_PLN/HusBos%20100km.pln&gpx=xp-soaring.github.io/tasks/b21_task_planner/files_GPX/2022-08-10 HusBos 100km LS4 dry.gpx">
+    here</a>
+    </p>
+
+<h2 id="comp_files">Using COMP files to create a collection of task and tracklogs files</h2>
+
+<p>You can put a list of web URL's to task and tracklog files into a plain text file with suffix ".comp" (for "competition"), and then
+    load <i>that</i> file into
+    B21 Task Planner, and the planner will load all the files referenced. E.g. we have a sample "Lasham_2001_Day_4.comp" containing:
+</p>
+<pre>
+https://xp-soaring.github.io/tasks/b21_task_planner/testing/files_comp/Lasham_2001_Day_4/Lasham_2001_Day_4.pln
+https://xp-soaring.github.io/tasks/b21_task_planner/testing/files_comp/Lasham_2001_Day_4/254.IGC
+https://xp-soaring.github.io/tasks/b21_task_planner/testing/files_comp/Lasham_2001_Day_4/335.IGC
+https://xp-soaring.github.io/tasks/b21_task_planner/testing/files_comp/Lasham_2001_Day_4/36.IGC
+https://xp-soaring.github.io/tasks/b21_task_planner/testing/files_comp/Lasham_2001_Day_4/381.IGC
+https://xp-soaring.github.io/tasks/b21_task_planner/testing/files_comp/Lasham_2001_Day_4/387.IGC
+https://xp-soaring.github.io/tasks/b21_task_planner/testing/files_comp/Lasham_2001_Day_4/391.IGC
+https://xp-soaring.github.io/tasks/b21_task_planner/testing/files_comp/Lasham_2001_Day_4/40.IGC
+https://xp-soaring.github.io/tasks/b21_task_planner/testing/files_comp/Lasham_2001_Day_4/430.IGC
+https://xp-soaring.github.io/tasks/b21_task_planner/testing/files_comp/Lasham_2001_Day_4/494.IGC
+https://xp-soaring.github.io/tasks/b21_task_planner/testing/files_comp/Lasham_2001_Day_4/540.IGC
+https://xp-soaring.github.io/tasks/b21_task_planner/testing/files_comp/Lasham_2001_Day_4/570.IGC
+https://xp-soaring.github.io/tasks/b21_task_planner/testing/files_comp/Lasham_2001_Day_4/630.IGC
+https://xp-soaring.github.io/tasks/b21_task_planner/testing/files_comp/Lasham_2001_Day_4/710.IGC
+https://xp-soaring.github.io/tasks/b21_task_planner/testing/files_comp/Lasham_2001_Day_4/744.IGC
+https://xp-soaring.github.io/tasks/b21_task_planner/testing/files_comp/Lasham_2001_Day_4/775.IGC
+https://xp-soaring.github.io/tasks/b21_task_planner/testing/files_comp/Lasham_2001_Day_4/910.IGC
+https://xp-soaring.github.io/tasks/b21_task_planner/testing/files_comp/Lasham_2001_Day_4/930.IGC
+https://xp-soaring.github.io/tasks/b21_task_planner/testing/files_comp/Lasham_2001_Day_4/D2.IGC
+https://xp-soaring.github.io/tasks/b21_task_planner/testing/files_comp/Lasham_2001_Day_4/E4.IGC
+https://xp-soaring.github.io/tasks/b21_task_planner/testing/files_comp/Lasham_2001_Day_4/FBN.IGC
+https://xp-soaring.github.io/tasks/b21_task_planner/testing/files_comp/Lasham_2001_Day_4/GP.IGC
+https://xp-soaring.github.io/tasks/b21_task_planner/testing/files_comp/Lasham_2001_Day_4/JSL.IGC
+https://xp-soaring.github.io/tasks/b21_task_planner/testing/files_comp/Lasham_2001_Day_4/P2-2.IGC
+https://xp-soaring.github.io/tasks/b21_task_planner/testing/files_comp/Lasham_2001_Day_4/V7.IGC
+https://xp-soaring.github.io/tasks/b21_task_planner/testing/files_comp/Lasham_2001_Day_4/V8.IGC
+https://xp-soaring.github.io/tasks/b21_task_planner/testing/files_comp/Lasham_2001_Day_4/Z8.IGC
+</pre>
+
+<p>You can add a '?comp= ...' reference onto the B21 Task Planner URL, and the planner will load that .comp file and then
+    load all the files referenced within it. E.g. as
+    <a href="https://xp-soaring.github.io/tasks/b21_task_planner/index.html?comp=xp-soaring.github.io/tasks/b21_task_planner/testing/files_comp/Lasham_2001_Day_4.comp">
+        here</a>
+</p>
+
+<p>Please note an awkward technical detail, the ".comp" file DOES contain the "https://" part of the URL, while all URL references added as properties to
+    the planner URL must OMIT the "https://" part. Also, because the Planner is served to you over 'https' then the browser security requires all other
+    web references from within that page to be 'https' also, i.e. you cannot load files from 'http' web addresses.
+</p>
+
+<h2 id="defaults">Default values for the soaring parameters</h2>
+
+<table>
+    <tr>
+        <td>WP elevation</td>
+        <td>For an <i>airport</i> the default elevation will be the ground elevation for the airport defined by MSFS. In most
+            circumstances this should work great. For a user waypoint, the ground elevation will default to 0 MSL.
+        </td>
+    </tr>
+    <tr>
+        <td>WP max altitude</td>
+        <td>no limit</td>
+    </tr>
+    <tr>
+        <td>WP min altitude</td>
+        <td>no limit</td>
+    </tr>
+    <tr>
+        <td>WP radius</td>
+        <td>500 meters</td>
+    </tr>
+    <tr>
+        <td>Start sector radius</td>
+        <td>2500 meters</td>
+    </tr>
+    <tr>
+        <td>Finish sector radius</td>
+        <td>2000 meters</td>
+    </tr>
+</table>
+
+<h2 id="pln_extensions">TECH APPENDIX: The MSFS .pln format, with extensions for the soaring parameters</h2>
+
+<p>Note a MSFS flightplan (.pln) contains two different kinds of waypoints, and treats them differently:
+</p>
+
+<ol>
+    <li><b>Airports</b> - these have an <b>ICAO</b> code, and MSFS ignores EVERYTHING in this entry except the ICAO code, reconstructing any other data
+        it wants from its internal database entry for that ICAO code. This is a massive pain in the ass, the elevation and even the lat/long in your PLN is overridden
+        by whatever MSFS thinks it should be.
+    </li>
+    <li><b>User Waypoints</b> - these have a name, a lat/long, and an elevation. <i>Bizarrely</i>, MSFS ignores whatever elevation you put in the PLN and generates another
+        value based on an internal calculation of what altitude it thinks your aircraft would reach if it was flying in the the general direction of this WP given
+        the cruise and climb rate parameters in the aircraft cfg files. This clearly absolutely sucks but hey, someone in Microsoft thought this made sense.
+    </li>
+</ol>
+<h4>DEPARTURE</h4>
+    <p>This needs to be an MSFS AIRPORT, i.e. have an ICAO code entered in the B21 Task Planner. The task planner will do this automatically if you click on an airport.</p>
+
+<h4>DESTINATION</h4>
+    <p>This needs to be an MSFS AIRPORT, i.e. have an ICAO code, again the task planner will do this for you when you click on an airport on the map.</p>
+
+<h4>Intermediate WAYPOINTS</h4>
+    <p>Technically these can be either "Airport" waypoints (with an ICAO code) or "User" waypoints (without an ICAO code). For gliding tasks, it really
+        makes the most sense for ALL intermediate waypoints to be "User" waypoints, because at the very least B21 Task Planner can annotate those with the ground
+        elevation which can make its way through into the aircraft instruments. IF a .PLN waypoint is added as an "Airport", i.e. with an ICAO code,
+        then ALL information in that waypoint will be discarded by MSFS except for the ICAO code and new lat/long/elevation values will be created
+        inside MSFS.
+    </p>
+    <p>If the waypoint is added as a "User" waypoint (i.e. no ICAO code), then MSFS will accept the lat/long and name, and <i>discard the elevation</i> and create a new
+        seemingly random (for a glider) value for that.
+    </p>
+
+    <p>B21 Task Planner tries to be helpful with your "Airport" waypoints. You're FIRST waypoint most be an airport if you want to download a PLN, because MSFS needs that for the
+        DEPARTURE. After that, when you click on an airport, B21 Task Planner doesn't know at that point if you've just set the DESTINATION (so it should keep the wp as as "Airport")
+        or you're planning it as an intermediate waypoint which is common for gliding tasks. If you click to make the NEXT waypoint, B21 Task Planner will switch any prior
+        "Airport" waypoint into a "User" airport, prepending the ICAO code onto the waypoint name and removing it from the ICAO data field.
+    </p>
+
+<h4>Our workaround - a name 'encoding' scheme for soaring info</h4>
+
+<p>None of this would be necessary if MSFS just made the flightplan available to instruments without mangling it first, including any custom data that the MSFS stock
+    instruments could just ignore.
+</p>
+
+<p>As described above, the "NAME" used for "User" waypoints is still visible after MSFS loads the PLN file. Essentially the instruments see name/lat/long for the waypoint,
+    the elevation is garbage, and any other info added in the PLN file is ignored. So we encode any additional information we want for soaring into the "NAME".
+</p>
+
+<p>The 'nav' instruments in the freeware gliders <i>decode</i> this 'name encoding' format, and B21 Task Planner is a convenient tool for <i>encoding</i> information into
+    the waypoint names in the PLN. E.g. a User waypoint "Blairstown+375" is recognized by the instruments as being at 375 feet.
+</p>
+
+    <p>To pass these additional parameters through to MSFS and the aircraft, while ensuring the flight plan remains completely compatible
+        with 'plain vanilla' MSFS, the B21 Task Planner encodes the additional parameters into the <i>name</i> assigned to the waypoint.
+    </p>
+
+    <p><b>*</b> is used to flag a WP as the Start or Finish of the task, <i>prepended to the name</i>, e.g. "*Burnt Cabins" will imply the
+        "Burnt Cabins" waypoint is the start or finish (the first *WP will be the start, the second one will be the finish)
+    </p>
+
+    <p><b>+</b> indicates the <i>elevation in feet</i> of the waypoint, e.g. "Burnt Cabins+2310" implies the "Burnt Cabins" waypoint is at
+        2310 feet.
+    </p>
+
+    <p><b>|</b> indicates the <i>max altitude in feet</i> permitted at the waypoint.
+    </p>
+
+    <p><b>/</b> indicates the <i>min altitude in feet</i> permitted at the waypoint.
+    </p>
+
+    <p><b>x</b> any time after the <b>|</b> indicates the <i>diameter (i.e. 2x radius) of the waypoint in meters</i>
+    </p>
+
+<table>
+
+    <tr>
+        <td>Burnt Cabins</td><td>A waypoint with the default values for the soaring parameters (e.g. a waypoint elevation of 0 MSL)</td>
+    </tr>
+    <tr>
+        <td>*Burnt Cabins</td><td>This waypoint is the start or finish WP of the task.</td>
+    </tr>
+    <tr>
+        <td>Burnt Cabins+2310</td><td>The elevation of the WP is 2310 feet</td>
+    </tr>
+    <tr>
+        <td>*Burnt Cabins+2310|6000</td><td>Burnt Cabins is the start (or finish) WP with an elevation of 2310
+        feet and a max start height of 6000 feet MSL.</td>
+    </tr>
+    <tr>
+        <td>Burnt Cabins|6000</td><td>The WP has a max altitude of 6000 feet MSL</td>
+    </tr>
+    <tr>
+        <td>Burnt Cabins/1000</td><td>The WP has a min altitude of 1000 feet MSL</td>
+    </tr>
+    <tr>
+        <td>Burnt Cabins|x800</td><td>The WP has a turn DIAMETER of 800 meters (i.e. a radius of 400 meters). The <b>|</b> is required anywhere
+        <i>before</i> the <b>x</b>,
+        which can most simply achieved by adding the turn diameter after the other WP parameters.</td>
+    </tr>
+    <tr>
+        <td class="nowrap">*Burnt Cabins+2310|6000/1000x800"</td><td>The WP "Burnt Cabins" is a start or finish waypoint, at an elevation of
+            2310 feet MSL, a maximum turn altitude of 6000 feet, a minimum turn altitude of 1000 feet, and a turn diameter of 800 meters (radius 400m). </td>
+    </tr>
+
+</table>
+
+<p>Note for user-interface purposes we talk about a turnpoint RADIUS, because that aligns with the distance-to-go value pilots will see displayed in
+    the glider nav instruments. For 'historical' reasons the name encoding format actually records the DIAMETER so the user input value is doubled
+    before it is inserted into the PLN and halved each time it is displayed.
+    </p>
+</body>
+</html>
