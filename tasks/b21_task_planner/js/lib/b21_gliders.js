@@ -122,6 +122,19 @@ class B21_GLIDERS {
         return B21_GLIDERS.glider_data[id][key];
     }
 
+    static check_key(glider_type, event_key, chksum) {
+        let chksums = B21_GLIDERS.lookup(glider_type, "NB21_"+event_key);
+        if (chksums == null) {
+            return null;
+        }
+        for (let i=0;i<chksums.length;i++) {
+            if (chksums[i] == chksum) {
+                return i;
+            }
+        }
+        return null;
+    }
+
     // Here's our plane-mapping code because MSFS does it so badly
     static find_glider_type(title_str) {
 
