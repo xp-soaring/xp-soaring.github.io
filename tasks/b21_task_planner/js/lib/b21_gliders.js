@@ -2,15 +2,10 @@
 // Static class providec methods:
 //
 // find_glider_type(title_str) - returns glider_type or ""
-// lookup(glider_type, key) - returns matching property in glider_data
+// lookup(glider_type, key) - returns matching property in B21_GLIDERS_DATA
 
-class B21_GLIDERS {
-
-    constructor() {
-    }
-
-    // Note TITLE_STRS should be LOWER CASE
-    static glider_data = {
+// Note TITLE_STRS should be LOWER CASE
+var B21_GLIDERS_DATA = {
         "AS-33": {
             "TITLE_STRS": [ "as33", "as-33" ],
             "NB21_ACFG": [ "128D63EA22585AA47C381FC8",
@@ -113,13 +108,20 @@ class B21_GLIDERS {
         }
     }; // end glider_data
 
+class B21_GLIDERS {
+
+    constructor() {
+    }
+
+
+    // Onlyy used inside B21_GLIDERS
     static lookup(glider_type, key) {
         let id = glider_type;
         if (B21_GLIDERS[id] == null) {
             // That glider id not found, so search using title strings
             id = B21_GLIDERS.find_glider_type(id);
         }
-        return B21_GLIDERS.glider_data[id][key];
+        return B21_GLIDERS_DATA[id][key];
     }
 
     static check_key(glider_type, event_key, chksum) {
@@ -140,7 +142,7 @@ class B21_GLIDERS {
 
         let title_str_lc = title_str.toLowerCase();
 
-        for (const [glider_type, glider_entry] of Object.entries(B21_GLIDERS.glider_data)) {
+        for (const [glider_type, glider_entry] of Object.entries(B21_GLIDERS_DATA)) {
 
             for (let i=0; i<glider_entry.TITLE_STRS.length; i++) {
                 if (title_str_lc.includes(glider_entry.TITLE_STRS[i])) {
