@@ -17,7 +17,7 @@ var B21_GLIDERS_DATA = {
             "MAX_WEIGHT_KG": 600
         },
         "ASW28": {
-            "TITLE_STRS": [ "asw28" ]
+            "TITLE_STRS": [ "asw28", "asw-28" ]
         },
         "JS3-18": {
             "TITLE_STRS": [ "js3-18" ],
@@ -76,7 +76,7 @@ var B21_GLIDERS_DATA = {
             "MAX_WEIGHT_KG": 525
         },
         "Asobo_LS8": {
-            "TITLE_STRS": [ "ls8" ],
+            "TITLE_STRS": [ "ls8", "mxs" ],
             "NB21_ACFG": [ "3B42B4378BE570DF675D2363F",
                         '913A154DD71DB358BC981B3A'
             ],
@@ -105,6 +105,18 @@ var B21_GLIDERS_DATA = {
                         'FB56C6A897F6088BA3446CC9' // EPPR 1.1
             ],
             "MAX_WEIGHT_KG": 370
+        },
+        "ASW28": {
+            "TITLE_STRS": ["asw28", "asw-28"]
+        },
+        "S12G": {
+            "TITLE_STRS": ["stemme", "s12g"]
+        },
+        "ASK21": {
+            "TITLE_STRS": ["ask21", "ask-21", "k21"]
+        },
+        "Taurus": {
+            "TITLE_STRS": ["taurus", "pipistrel"]
         }
     }; // end glider_data
 
