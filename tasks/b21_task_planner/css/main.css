@@ -894,6 +894,19 @@ th {
     flex: 6;
 }
 
+#tracklog_info_alerts {
+    display: flex;
+    justify-content: center;
+}
+
+#tracklog_info_alerts .info_alerts_vne{
+    display: flex;
+    padding-left: 1em;
+    padding-right: 1em;
+    justify-content: center;
+    background-color: pink;
+}
+
 #tracklog_info_select {
     display: inline-flex;
     align-items: flex-start;
