@@ -521,6 +521,36 @@ th {
     border-radius: 10px;
 }
 
+#task_info_header input[type='text'] {
+    background-color: #5485db;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+#task_info_header .task_is_aat {
+    background-color: #5485db;
+    border: 1px solid white;
+    border-radius: 5px;
+    display: inline-flex;
+    margin-top: 6px;
+    padding-right: 5px;
+    padding-left: 3px;
+}
+
+#task_info_header .task_is_aat input {
+    border: none;
+    background-color: #5485db;
+    color: white;
+    cursor: text;
+}
+
+#task_info_header .task_is_local {
+}
+
 #task_info_content {
 }
 
@@ -706,7 +736,7 @@ th {
     display: block;
     cursor: default;
     font-family: monospace;
-    font-size: 12px;
+    font-size: 10px;
     white-space: pre;
 }
 
@@ -775,6 +805,10 @@ th {
     min-width: 10px;
     text-align: center;
     float: right;
+}
+
+.tracklogs_entry_finished_ok.penalties {
+    background-color: pink;
 }
 
 .tracklogs_entry_finished_ok:hover {
@@ -899,7 +933,7 @@ th {
     justify-content: center;
 }
 
-#tracklog_info_alerts .info_alerts_vne{
+#tracklog_info_alerts .info_alert {
     display: flex;
     padding-left: 1em;
     padding-right: 1em;
