@@ -4,13 +4,14 @@
     <link href="help.css" rel="stylesheet"/>
 </head>
 <body>
-<h1>B21 Task Planner V2 Help</h1>
+<h1>B21 Task Planner Help</h1>
 
-<p>B21 Task Planner helps you do TWO things as easily as possible:</p>
+<p>B21 Task Planner helps you do THREE things as easily as possible:</p>
 <ol>
-    <li>CREATE a Microsoft Flight Simulator flightplan, particularly suited to VFR flying including gliding.</li>
+    <li>CREATE (or VIEW) a Microsoft Flight Simulator flightplan, particularly suited to VFR flying including gliding.</li>
     <li>VIEW tracklog files recorded during a flight in the sim (or in a real flight) and help analyze those
         flights relative to a chosen flightplan if you have one loaded (e.g. to calculate the cross-country speed).</li>
+    <li>Act as a real-time moving map, displaying multiplayer aircraft, and connecting to MSFS to show the position of your plane.</li>
 </ol>
 
 <p>If reading help text isn't your thing, then
@@ -480,6 +481,19 @@ real-world days but with the same simulator date/time and weather.
 </p>
 
 <div class="hcenter"><img src="images/multiplayer_options.png" width="70%" /></div>
+
+<h2 id="nb21_logger">Connecting to the NB21 Logger</h2>
+
+<p>The NB21 Logger (<a href="https://flightsim.to/file/64628/nb21-logger">download from here</a>) provides a 'launch link' for the B21
+Task Planner web app which allows a connection to be made between that Windows logger (and hence MSFS) and the B21 Task Planner.
+Flightsim info from MSFS can be requested and displayed in real-time on the Task Planner map.
+</p>
+<div class="hcenter"><img src="images/nb21_logger.png" width="70%" /></div>
+
+<p>Firstly, this allows the Task Planner to draw your aircraft in real-time on the correct position and heading on the map. Also the Planner can
+discover the 'task' (i.e. the PLN file that was loaded) and automatically display that. This connection/communication capability
+between MSFS - NB21 Logger - B21 Task Planner has considerable potential for further development but time will tell.
+</p>
 
 <h2 id="custom_waypoints">Loading custom waypoints</h2>
 
