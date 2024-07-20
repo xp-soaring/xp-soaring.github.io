@@ -541,11 +541,12 @@ th {
     padding-left: 3px;
 }
 
-#task_info_header .task_is_aat input {
+#task_info_header .task_is_aat select {
     border: none;
     background-color: #5485db;
     color: white;
     cursor: text;
+    margin: 2px;
 }
 
 #task_info_header .task_is_local {
