@@ -539,12 +539,13 @@ th {
     margin-top: 6px;
     padding-right: 5px;
     padding-left: 3px;
+    color: yellow;
 }
 
 #task_info_header .task_is_aat select {
     border: none;
     background-color: #5485db;
-    color: white;
+    color: yellow;
     margin: 2px;
 }
 
@@ -661,7 +662,7 @@ th {
     background-color: #ffedf0;
 }
 
-#task_info_distance {
+.task_info_distance {
     text-align: center;
     font-weight: bold;
     background-color: #5485db;
@@ -670,6 +671,16 @@ th {
     margin: 9px 5px;
     font-size: 16px;
     border-radius: 10px;
+}
+
+.task_info_aat_min_distance {
+    color: yellow;
+    font-size: 0.9em;
+}
+
+.task_info_aat_max_distance {
+    color: yellow;
+    font-size: 0.9em;
 }
 
 /* *************************************************** */
@@ -889,6 +900,14 @@ th {
     white-space: nowrap;
 }
 
+#tracklog_info_details .pilot {
+    font-weight: bold;
+}
+
+#tracklog_info_details .alert {
+    background-color: pink;
+}
+
 #tracklog_info_timeline {
     flex: 4;
     background-color: white;
@@ -931,6 +950,7 @@ th {
 #tracklog_info_alerts {
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }
 
 #tracklog_info_alerts .info_alert {
@@ -939,6 +959,20 @@ th {
     padding-right: 1em;
     justify-content: center;
     background-color: pink;
+    border-radius: 5px;
+    margin-left: 0.5em;
+}
+
+#tracklog_info_alerts .info_alerts_summary {
+    display: flex;
+    padding-left: 1em;
+    padding-right: 1em;
+    justify-content: center;
+    /* background-color: pink; */
+}
+
+#tracklog_info_alerts .alert_summary {
+    font-weight: bold;
 }
 
 #tracklog_info_select {
@@ -953,6 +987,13 @@ th {
 
 #tracklog_info_select button {
     margin-right: 5px;
+}
+
+.tracklog_info_weather {
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    background-color: #e6ffff;
 }
 
 #tracklog_info_timeline_table {
@@ -1004,6 +1045,10 @@ th {
 
 .tracklog_wp_info_missed_button {
     text-align: left;
+}
+
+.tracklog_wp_info_events {
+    background-color: pink;
 }
 
 #tracklog_task_completion {

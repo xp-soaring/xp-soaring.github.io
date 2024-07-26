@@ -183,4 +183,18 @@ class B21_GLIDERS {
         return "";
     }
 
+    static get_glider_data(glider_type) {
+        console.log(`B21_GLIDERS.get_glider_type '${glider_type}'`);
+        if (B21_GLIDERS_DATA[glider_type] != null) {
+            console.log(`B21_GLIDERS.get_glider_type '${glider_type} immediate success'`);
+            return B21_GLIDERS_DATA[glider_type];
+        }
+        let gtype = B21_GLIDERS.find_glider_type(glider_type);
+        if (gtype == "") {
+            console.log(`B21_GLIDERS.get_glider_type '${glider_type}' find_glider_type failed`);
+            return null;
+        }
+        console.log(`B21_GLIDERS.get_glider_type '${gtype}' returning glider_data `);
+        return B21_GLIDERS_DATA[gtype];
+    }
 } // end class B21_GLIDERS
