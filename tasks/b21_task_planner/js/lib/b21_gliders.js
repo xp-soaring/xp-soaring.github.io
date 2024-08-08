@@ -56,10 +56,12 @@ var B21_GLIDERS_DATA = {
             "TITLE_STRS": [ "dg808" ],
             "NB21_ACFG": [ "0D933FB14EC7C1FC5E9C50FF",
                         '617D8901FFC57865966C1A42',
-                        'AD2A2DAE9489BE555A943A0B'
+                        'AD2A2DAE9489BE555A943A0B',
+                        '7E3FC6A03E66257D41360809'
             ],
             "NB21_FMCG": [ "612014C72D2B9816C06CB778",
-                        '8BDD0288671E70B14A3F9944'
+                        '8BDD0288671E70B14A3F9944',
+                        'D44F8E99540D500341A45DE0'
             ],
             "MAX_WEIGHT_KG": 600,
             "VNE_TAS_KPH": 282
