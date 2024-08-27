@@ -130,6 +130,37 @@ th {
     background-color: yellow;
 }
 
+/* ****************************** */
+/*  Task Download Menu            */
+/* ****************************** */
+
+#task_download_menu {
+    position: absolute;
+    display: none;
+    top: 0px;
+    /* top: 50px; */
+    left: 10px;
+    min-width: 11em;
+    /* width: 100px; */
+    /* height: 100px; */
+    z-index: 2000;
+    background-color: #ddd;
+    text-wrap: nowrap;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* padding: 15px;*/
+}
+
+.task_download_item {
+    background-color: #d7d7d7;
+    padding: 4px 15px;
+    cursor: pointer;
+}
+
+.task_download_item:hover {
+    background-color: #777777;
+}
+
 /* ******************************************* */
 /* ******   PANES           ****************** */
 /* ******************************************* */
