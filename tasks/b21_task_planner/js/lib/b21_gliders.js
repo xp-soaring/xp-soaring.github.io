@@ -81,7 +81,9 @@ var B21_GLIDERS_DATA = {
             ],
             "NB21_FMCG": [ "9423DEDB0380C1A9D482080A",
                         'F5F9FFE0AC73623470D0D39A',
-                        'F310F9D3DEEA4B5B90CBD29B' // 2.0.8
+                        'F310F9D3DEEA4B5B90CBD29B', // 2.0.8
+                        'F09A18F3A4B0A1DD95A8308E', // 2.1.0
+                        '0D3E5A401F352EE566C53109' // engine?
             ],
             "MAX_WEIGHT_KG": 565,
             "VNE_TAS_KPH": 292
