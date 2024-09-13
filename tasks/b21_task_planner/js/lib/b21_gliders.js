@@ -132,7 +132,15 @@ var B21_GLIDERS_DATA = {
         "ASK21": {
             "TITLE_STRS": ["ask21", "ask-21", "k21"],
             "MAX_WEIGHT_KG": 600,
-            "VNE_TAS_KPH": 292
+            "VNE_TAS_KPH": 292,
+            "NB21_ACFG": [ '0D80744D55C63B52D3858C4B', // 1.0
+                        'CFBF0C2E620475F9DA335EDB', // 1.0 aero
+                        '4752A186F3309FCDA2C89F70', // 1.05
+                        '1DD715876D3E401A6CF62849'  // 1.05 aero
+            ],
+            "NB21_FMCG": [ 'CD2F043264848184C4B6D089', // 1.0 base & aero
+                        '83B3D349102683CAAF23034A' // 1.05 base & aero
+            ]
         },
         "Taurus": {
             "TITLE_STRS": ["taurus", "pipistrel"],
