@@ -134,21 +134,22 @@ th {
 /*  Task Download Menu            */
 /* ****************************** */
 
+#task_download_button {
+    margin-left: 1em;
+}
+
 #task_download_menu {
     position: absolute;
     display: none;
     top: 0px;
-    /* top: 50px; */
-    left: 10px;
+    left: 0.5em;
     min-width: 11em;
-    /* width: 100px; */
-    /* height: 100px; */
     z-index: 2000;
     background-color: #ddd;
     text-wrap: nowrap;
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* padding: 15px;*/
+    overflow: hidden;
+    border-bottom-left-radius: 0.8em;
+    border-bottom-right-radius: 0.8em;
 }
 
 .task_download_item {
