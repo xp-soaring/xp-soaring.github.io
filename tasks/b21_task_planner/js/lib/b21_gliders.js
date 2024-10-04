@@ -139,7 +139,8 @@ var B21_GLIDERS_DATA = {
                         '1DD715876D3E401A6CF62849'  // 1.05 aero
             ],
             "NB21_FMCG": [ 'CD2F043264848184C4B6D089', // 1.0 base & aero
-                        '83B3D349102683CAAF23034A' // 1.05 base & aero
+                        '83B3D349102683CAAF23034A', // 1.05 base & aero
+                        '548E2BA6550F987325F6D92D'
             ]
         },
         "Taurus": {
