@@ -136,11 +136,13 @@ var B21_GLIDERS_DATA = {
             "NB21_ACFG": [ '0D80744D55C63B52D3858C4B', // 1.0
                         'CFBF0C2E620475F9DA335EDB', // 1.0 aero
                         '4752A186F3309FCDA2C89F70', // 1.05
-                        '1DD715876D3E401A6CF62849'  // 1.05 aero
+                        '1DD715876D3E401A6CF62849',  // 1.05 aero
+                        'F3AAD1FD4395E298FD9AC5AE' // 1.3.0
             ],
             "NB21_FMCG": [ 'CD2F043264848184C4B6D089', // 1.0 base & aero
                         '83B3D349102683CAAF23034A', // 1.05 base & aero
-                        '548E2BA6550F987325F6D92D'
+                        '548E2BA6550F987325F6D92D', // 1.2.0
+                        '13D7A87B12889FDFE376F49E' // 1.3.0
             ]
         },
         "Taurus": {
