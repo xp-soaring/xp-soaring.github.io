@@ -336,6 +336,7 @@ th {
     border-radius: 8px;
     min-height: 20px;
     font-size: 13px;
+    white-space: nowrap;
 }
 
 
@@ -561,6 +562,7 @@ th {
     text-align: center;
     border: 1px solid white;
     border-radius: 5px;
+    max-width: 97%;
 }
 
 #task_info_header .task_is_aat {
