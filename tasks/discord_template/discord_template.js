@@ -218,7 +218,7 @@ class DiscordDoc {
             const days = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
             let day_of_week = days[adjusted_datetime_js.getDay()];
             let day_of_month = adjusted_datetime_js.getDate().toString();
-            const months = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "November", "December");
+            const months = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
             let month = months[adjusted_datetime_js.getMonth()];
             let year = adjusted_datetime_js.getFullYear().toString();
             let time = ("0"+adjusted_datetime_js.getHours()).slice(-2) + ":" + ("0"+adjusted_datetime_js.getMinutes()).slice(-2);
