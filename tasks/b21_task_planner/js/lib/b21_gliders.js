@@ -68,7 +68,8 @@ var B21_GLIDERS_DATA = {
         },
         "AS7": {
             "TITLE_STRS": [ "as7", " k7", "k7 " ],
-            "NB21_ACFG": [ "0CF71B19CD5135728AE56972"
+            "NB21_ACFG": [ "0CF71B19CD5135728AE56972",
+                        "1179917BE9A2FBC690C157C5"
             ],
             "NB21_FMCG": [ "51EF38E151AAAFAA8D56AB13"
             ],
