@@ -44,10 +44,12 @@ var B21_GLIDERS_DATA = {
         "LS4": {
             "TITLE_STRS": [ "ls4" ],
             "NB21_ACFG": [ "A48A4EF4E2A9D96C843B4361",
-                        '067AD89CAA95B9D8F2104D3C'
+                        '067AD89CAA95B9D8F2104D3C',
+                        '46C5998C473790CDB000AAEC' // V3 = MSFS2024 1.4.0
             ],
             "NB21_FMCG": [ "2CF10E6AEDEF85C111F41401",
-                        '49297C175A997216905BE06D'
+                        '49297C175A997216905BE06D',
+                        '9148FF5AA844B0AC1C8732BD' // V3 = MSFS2024 1.4.0
             ],
             "MAX_WEIGHT_KG": 525,
             "VNE_TAS_KPH": 282
