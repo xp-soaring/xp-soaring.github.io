@@ -24,19 +24,23 @@ var B21_GLIDERS_DATA = {
         },
         "JS3-18": {
             "TITLE_STRS": [ "js3-18" ],
-            "NB21_ACFG": [ "753B807E002326612ACFA3A3"
+            "NB21_ACFG": [ "753B807E002326612ACFA3A3", // V1 MSFS2020
+                        "A51EB12DFB0552972D2A0A9E" // V2 MSFS2020+2024 v.2.3.1
             ],
-            "NB21_FMCG": [ "5395E12E6384EABE7B636C6F"
+            "NB21_FMCG": [ "5395E12E6384EABE7B636C6F", // V1 MSFS2020
+                         "DC1887B394EECA940D4EBE46" // V2 MSFS2020+2024 v.2.3.1
             ],
             "MAX_WEIGHT_KG": 600,
             "VNE_TAS_KPH": 292
         },
         "JS3-15": {
             "TITLE_STRS": [ "js3-15" ],
-            "NB21_ACFG": [ "14E993B8CAA8350EF404F92C",
-                        "A51D14335FA6C71DBF197FEB"
+            "NB21_ACFG": [ "14E993B8CAA8350EF404F92C", // V1 MSFS2020
+                        "A51D14335FA6C71DBF197FEB", // V2 MSFS2020
+                        "963040A114AE421A90E34873" // V3 MSFS2020+2024 v2.3.1
             ],
-            "NB21_FMCG": [ "350C66E7F8C644AC30537D6B"
+            "NB21_FMCG": [ "350C66E7F8C644AC30537D6B", // V1 MSFS2020
+                        "D58D5A058359CA594AB55499" // V2 MSFS2020+2024 v2.3.1
             ],
             "MAX_WEIGHT_KG": 525,
             "VNE_TAS_KPH": 292
@@ -74,7 +78,8 @@ var B21_GLIDERS_DATA = {
             "NB21_ACFG": [ "0CF71B19CD5135728AE56972",
                         "1179917BE9A2FBC690C157C5"
             ],
-            "NB21_FMCG": [ "51EF38E151AAAFAA8D56AB13"
+            "NB21_FMCG": [ "51EF38E151AAAFAA8D56AB13", // V1 MSFS2020
+                        "ECCE3FB85D18431EE75840DC" // V2 MSFS2020 + 2024
             ],
             "MAX_WEIGHT_KG": 484.5,
             "VNE_TAS_KPH": 209
