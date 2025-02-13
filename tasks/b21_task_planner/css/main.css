@@ -178,8 +178,8 @@ th {
     margin-left: 5px;
     background-color: white;
     overflow-y: auto;
-    min-width: 300px;
-    max-width: 500px;
+    min-width: 18em;
+    max-width: 25em;
     border-right: 2px solid black;
     vertical-align: top;
 }
