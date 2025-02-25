@@ -25,10 +25,11 @@ var B21_GLIDERS_DATA = {
         "JS3-18": {
             "TITLE_STRS": [ "js3-18" ],
             "NB21_ACFG": [ "753B807E002326612ACFA3A3", // V1 MSFS2020
-                        "A51EB12DFB0552972D2A0A9E" // V2 MSFS2020+2024 v.2.3.1
+                        "A51EB12DFB0552972D2A0A9E" // V2 MSFS2020+2024 v2.3.1
             ],
             "NB21_FMCG": [ "5395E12E6384EABE7B636C6F", // V1 MSFS2020
-                         "DC1887B394EECA940D4EBE46" // V2 MSFS2020+2024 v.2.3.1
+                         "DC1887B394EECA940D4EBE46", // V2 MSFS2020+2024 v2.3.1
+                         "AD19DE857405A5640BE1848D"  // V3 v2.3.5
             ],
             "MAX_WEIGHT_KG": 600,
             "VNE_TAS_KPH": 292
