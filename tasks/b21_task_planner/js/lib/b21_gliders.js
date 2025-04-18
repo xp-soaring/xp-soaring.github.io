@@ -416,10 +416,12 @@ var B21_GLIDERS_DATA = {
         "SZD30": {
             "TITLE_STRS": [ "szd30", "szd-30", "pirat", "yanosik" ],
             "NB21_ACFG": [ '5A6A99C67F3A928DC2954647', // 1.0
-                        'B586C65483CE078AD2254383' // B21 1.1.1
+                        'B586C65483CE078AD2254383', // B21 1.1.1
+                        '88E5E28E6A8AE3C379708CB1' // B21 1.3.6
             ],
             "NB21_FMCG": [ '5FA5FE53894E11284FD6FEF2', // 1.0
-                        'FB56C6A897F6088BA3446CC9' // EPPR 1.1
+                        'FB56C6A897F6088BA3446CC9', // EPPR 1.1
+                        '5790E5C13D1B05BB62BFF626' // B21 1.3.6
             ],
             "MAX_WEIGHT_KG": 370,
             "VNE_TAS_KPH": 204
