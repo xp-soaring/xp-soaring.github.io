@@ -404,7 +404,8 @@ th {
 }
 
 .wp_name {
-    width: 16em;
+    width: 100%;
+    text-overflow: ellipsis;
 }
 
 .wp_icao {
@@ -413,6 +414,10 @@ th {
 
 .wp_runway {
     width:45px;
+}
+
+.wp_runway_select {
+    font-size: 0.8em;
 }
 
 .wp_alt {
