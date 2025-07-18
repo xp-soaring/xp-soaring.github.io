@@ -369,7 +369,8 @@ var B21_GLIDERS_DATA = {
             "NB21_FMCG": [ "2CF10E6AEDEF85C111F41401",
                         '49297C175A997216905BE06D',
                         '2B2CAD92FD80DE5E3696CD9A', // V3 = MSFS2024 1.3.8
-                        '9148FF5AA844B0AC1C8732BD'  // V4 = MSFS2024 1.4.0
+                        '9148FF5AA844B0AC1C8732BD',  // V4 = MSFS2024 1.4.0
+                        '997D55A78464103E481B8092' // V5 MSFS2024 1.4.2
             ],
             "MAX_WEIGHT_KG": 525,
             "VNE_TAS_KPH": 282
@@ -404,15 +405,15 @@ var B21_GLIDERS_DATA = {
         "D2C": {
             "KEY": "D2C",
             "TITLE_STRS": [ "d2c", "discus" ],
-            "NB21_ACFG": [ "3E0C44899BFAE022333DD031",
-                        '556D9BE3CCE77CC7A0A84A9D'
+            "NB21_ACFG": [ "3E0C44899BFAE022333DD031", // V1
+                        '556D9BE3CCE77CC7A0A84A9D'     // V2
             ],
-            "NB21_FMCG": [ "9423DEDB0380C1A9D482080A",
-                        'F5F9FFE0AC73623470D0D39A',
-                        'F310F9D3DEEA4B5B90CBD29B', // 2.0.8
-                        'F09A18F3A4B0A1DD95A8308E', // 2.1.0
-                        '0D3E5A401F352EE566C53109', // engine?
-                        '3AC21F9E1693E2F26F956EFA' // 2020/24 release 1
+            "NB21_FMCG": [ "9423DEDB0380C1A9D482080A", // V1
+                        'F5F9FFE0AC73623470D0D39A', // V2
+                        'F310F9D3DEEA4B5B90CBD29B', // V3: 2.0.8
+                        'F09A18F3A4B0A1DD95A8308E', // V4: 2.1.0
+                        '0D3E5A401F352EE566C53109', // V5: engine?
+                        '3AC21F9E1693E2F26F956EFA'  // V6: 2020/24 release 1
             ],
             "MAX_WEIGHT_KG": 565,
             "VNE_TAS_KPH": 292
