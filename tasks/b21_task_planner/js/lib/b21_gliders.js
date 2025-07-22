@@ -298,7 +298,7 @@ var B21_GLIDERS_DATA = {
         "AS33": {
             "KEY": "AS33",
             "TITLE": "AS-33 (madolo)",
-            "TITLE_STRS": [ "as33", "^as-33" ],
+            "TITLE_STRS": [ "^as33$", "^as-33" ],
             "NB21_ACFG": [ "128D63EA22585AA47C381FC8",
                         "21735116C3548A2C1B61D69B",
                         "0C26C63E4D7FAD13BC406545"
@@ -327,11 +327,13 @@ var B21_GLIDERS_DATA = {
             "TITLE_STRS": [ "as.33.*18", "as33.*18", "as-33.*18" ],
             "NB21_ACFG": [
                 'AC1C296A90290B150175BD02', // V1 1.0.1
-                '902F34ACD16BC5ECBB3F628B'  // V2 1.0.3 2024
+                'BA8BD315D8CA3EC937FF66A4', // V2 ?
+                '902F34ACD16BC5ECBB3F628B'  // V3 1.0.3 2024
             ],
             "NB21_FMCG": [
                 '119F1C2C0B9C9BE3EFCDFC6D', // V1 1.0.1
-                'B1FB63B485907BFFB56AA7C5'  // V1 1.0.3 2024
+                'FCA8B719D90BF9BB7B11E97E', // V2 ?
+                'B1FB63B485907BFFB56AA7C5'  // V3 1.0.3 2024
             ],
             "MAX_WEIGHT_KG": 600,
             "VNE_TAS_KPH": 282
