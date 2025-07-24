@@ -291,7 +291,7 @@ class B21_WEATHER {
 // Static class providec methods:
 //
 // find_glider_type(title_str) - returns glider_type or ""
-// lookup(glider_type, key) - returns matching property in B21_GLIDERS_DATA
+// lookup_key(glider_type, key) - returns matching property in B21_GLIDERS_DATA
 
 // Note TITLE_STRS should be LOWER CASE
 var B21_GLIDERS_DATA = {
@@ -348,7 +348,7 @@ var B21_GLIDERS_DATA = {
         "JS3-18": {
             "KEY": "JS3-18",
             "TITLE": "JS3-18",
-            "TITLE_STRS": [ "js3-18" ],
+            "TITLE_STRS": [ "js3-18", "js 3 18m" ],
             "NB21_ACFG": [ "753B807E002326612ACFA3A3", // V1 MSFS2020
                         "A51EB12DFB0552972D2A0A9E" // V2 MSFS2020+2024 v2.3.1
             ],
@@ -362,7 +362,7 @@ var B21_GLIDERS_DATA = {
         "JS3-15": {
             "KEY": "JS3-15",
             "TITLE": "JS3-15",
-            "TITLE_STRS": [ "js3-15" ],
+            "TITLE_STRS": [ "js3-15", "js 3 15m" ],
             "NB21_ACFG": [ "14E993B8CAA8350EF404F92C", // V1 MSFS2020
                         "A51D14335FA6C71DBF197FEB", // V2 MSFS2020
                         "963040A114AE421A90E34873" // V3 MSFS2020+2024 v2.3.1
@@ -410,7 +410,7 @@ var B21_GLIDERS_DATA = {
         "AS7": {
             "KEY": "AS7",
             "TITLE": "ASK7",
-            "TITLE_STRS": [ "as7", " k7", "k7 " ],
+            "TITLE_STRS": [ "as7", " k7", "k7 ", "schleicherk7" ],
             "NB21_ACFG": [ "0CF71B19CD5135728AE56972",
                         "1179917BE9A2FBC690C157C5"
             ],
@@ -437,7 +437,7 @@ var B21_GLIDERS_DATA = {
             "MAX_WEIGHT_KG": 565,
             "VNE_TAS_KPH": 292
         },
-        "Asobo_LS8": {
+        "Asobo_LS8-18": {
             "KEY": "Asobo_LS8",
             "TITLE": "Asobo LS8",
             "TITLE_STRS": [ "ls8", "mxs" ],
@@ -524,19 +524,25 @@ class B21_GLIDERS {
 
 
     // Only used inside B21_GLIDERS
-    static lookup(glider_type, key) {
+    static lookup_key(glider_type, key) {
         let id = glider_type;
-        if (B21_GLIDERS_DATA[id] == null) {
+        if (B21_GLIDERS_DATA[glider_type] == null) {
             // That glider id not found, so search using title strings
             id = B21_GLIDERS.find_glider_type(id);
         }
-        return B21_GLIDERS_DATA[id][key];
+        if (id != "") {
+            return B21_GLIDERS_DATA[id][key];
+        }
+        return -1;
     }
 
     static check_key(glider_type, event_key, chksum) {
-        let chksums = B21_GLIDERS.lookup(glider_type, "NB21_"+event_key);
+        let chksums = B21_GLIDERS.lookup_key(glider_type, "NB21_"+event_key);
         if (chksums == null) {
-            return null;
+            return null; // key not found
+        }
+        if (chksums == -1) { // plane unrecognized
+            return -1;
         }
         for (let i=0;i<chksums.length;i++) {
             if (chksums[i] == chksum) {
