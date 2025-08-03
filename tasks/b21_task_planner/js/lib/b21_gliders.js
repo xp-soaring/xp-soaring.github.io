@@ -297,7 +297,7 @@ class B21_WEATHER {
 var B21_GLIDERS_DATA = {
         "AS33": {
             "KEY": "AS33",
-            "TITLE": "AS-33 (Madolo)",
+            "TITLE": "AS-33 (madolo)",
             "TITLE_STRS": [ "^as33$", "^as-33" ],
             "NB21_ACFG": [ "128D63EA22585AA47C381FC8",
                         "21735116C3548A2C1B61D69B",
@@ -310,7 +310,7 @@ var B21_GLIDERS_DATA = {
         },
         "AS33-15": {
             "KEY": "AS33-15",
-            "TITLE": "AS-33 15m (GotFriends)",
+            "TITLE": "AS-33 15m (gotfriends)",
             "TITLE_STRS": [ "as.33.*15","as33.*15", "as-33.*15" ],
             "NB21_ACFG": [
                 'E79771C31BFCB65B35C1B0B6'  // V1 1.0.3 2024
@@ -323,7 +323,7 @@ var B21_GLIDERS_DATA = {
         },
         "AS33-18": {
             "KEY": "AS33-18",
-            "TITLE": "AS-33 18m (GotFriends)",
+            "TITLE": "AS-33 18m (gotfriends)",
             "TITLE_STRS": [ "as.33.*18", "as33.*18", "as-33.*18" ],
             "NB21_ACFG": [
                 'AC1C296A90290B150175BD02', // V1 1.0.1
@@ -347,7 +347,7 @@ var B21_GLIDERS_DATA = {
         },
         "JS3-18": {
             "KEY": "JS3-18",
-            "TITLE": "JS3-18 (Madolo)",
+            "TITLE": "JS3-18",
             "TITLE_STRS": [ "js3-18", "js 3 18m" ],
             "NB21_ACFG": [ "753B807E002326612ACFA3A3", // V1 MSFS2020
                         "A51EB12DFB0552972D2A0A9E" // V2 MSFS2020+2024 v2.3.1
@@ -361,7 +361,7 @@ var B21_GLIDERS_DATA = {
         },
         "JS3-15": {
             "KEY": "JS3-15",
-            "TITLE": "JS3-15 (Madolo)",
+            "TITLE": "JS3-15",
             "TITLE_STRS": [ "js3-15", "js 3 15m" ],
             "NB21_ACFG": [ "14E993B8CAA8350EF404F92C", // V1 MSFS2020
                         "A51D14335FA6C71DBF197FEB", // V2 MSFS2020
@@ -376,7 +376,7 @@ var B21_GLIDERS_DATA = {
         },
         "LS4": {
             "KEY": "LS4",
-            "TITLE": "LS4 (Madolo)",
+            "TITLE": "LS4",
             "TITLE_STRS": [ "ls4" ],
             "NB21_ACFG": [ "A48A4EF4E2A9D96C843B4361",
                         '067AD89CAA95B9D8F2104D3C',
@@ -393,7 +393,7 @@ var B21_GLIDERS_DATA = {
         },
         "DG808S": {
             "KEY": "DG808S",
-            "TITLE": "DG808S (Touching Cloud)",
+            "TITLE": "DG808S",
             "TITLE_STRS": [ "dg808" ],
             "NB21_ACFG": [ "0D933FB14EC7C1FC5E9C50FF",
                         '617D8901FFC57865966C1A42',
@@ -409,8 +409,8 @@ var B21_GLIDERS_DATA = {
         },
         "AS7": {
             "KEY": "AS7",
-            "TITLE": "ASK7 (GlideSimmer67)",
-            "TITLE_STRS": [ "as7", "^k7$", " k7", "k7 ", "schleicherk7" ],
+            "TITLE": "ASK7",
+            "TITLE_STRS": [ "as7", " k7", "k7 ", "schleicherk7" ],
             "NB21_ACFG": [ "0CF71B19CD5135728AE56972",
                         "1179917BE9A2FBC690C157C5"
             ],
@@ -422,7 +422,7 @@ var B21_GLIDERS_DATA = {
         },
         "D2C": {
             "KEY": "D2C",
-            "TITLE": "Discus2c-18 (GotFriends)",
+            "TITLE": "Discus2c-18",
             "TITLE_STRS": [ "d2c", "discus" ],
             "NB21_ACFG": [ "3E0C44899BFAE022333DD031", // V1
                         '556D9BE3CCE77CC7A0A84A9D'     // V2
@@ -439,7 +439,7 @@ var B21_GLIDERS_DATA = {
         },
         "Asobo_LS8-18": {
             "KEY": "Asobo_LS8",
-            "TITLE": "LS8 (Asobo)",
+            "TITLE": "Asobo LS8",
             "TITLE_STRS": [ "ls8", "mxs" ],
             "NB21_ACFG": [ "3B42B4378BE570DF675D2363F",
                         '913A154DD71DB358BC981B3A'
@@ -452,7 +452,7 @@ var B21_GLIDERS_DATA = {
         },
         "DGF": {
             "KEY": "DGF",
-            "TITLE": "DG1001 (Asobo)",
+            "TITLE": "DG1001",
             "TITLE_STRS": [ "dgf", "dg1001" ],
             "NB21_ACFG": [ "CA728979D50E2D4E1B413891"
             ],
@@ -463,14 +463,14 @@ var B21_GLIDERS_DATA = {
         },
         "T31": {
             "KEY": "T31",
-            "TITLE": "T31 (klem)",
+            "TITLE": "T31",
             "TITLE_STRS": [ "t31" ],
             "MAX_WEIGHT_KG": 376,
             "VNE_TAS_KPH": 292
         },
         "SZD30": {
             "KEY": "SZD30",
-            "TITLE": "SZD30 Pirat (Ignacy)",
+            "TITLE": "SZD30 Pirat",
             "TITLE_STRS": [ "szd30", "szd-30", "pirat", "yanosik" ],
             "NB21_ACFG": [ '5A6A99C67F3A928DC2954647', // 1.0
                         'B586C65483CE078AD2254383', // B21 1.1.1
@@ -485,14 +485,14 @@ var B21_GLIDERS_DATA = {
         },
         "S12G": {
             "KEY": "S12G",
-            "TITLE": "Stemme 12G (GotFriends)",
+            "TITLE": "Stemme 12G",
             "TITLE_STRS": ["stemme", "s12g"],
             "MAX_WEIGHT_KG": 900,
             "VNE_TAS_KPH": 282
         },
         "ASK21": {
             "KEY": "ASK21",
-            "TITLE": "ASK21 (f7 Simulations)",
+            "TITLE": "ASK21",
             "TITLE_STRS": ["ask21", "ask-21", "k21"],
             "MAX_WEIGHT_KG": 600,
             "VNE_TAS_KPH": 292,
