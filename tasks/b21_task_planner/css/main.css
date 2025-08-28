@@ -167,8 +167,10 @@ th {
 /* ******************************************* */
 
 #panes {
+    display: flex;
+    flex-direction: row;
     height: calc(100% - 80px);
-    position: relative;
+    /* position: relative; */
 }
 
 #left_pane {
@@ -322,11 +324,11 @@ th {
 /* *************************************************** */
 
 #right_pane {
+    display: flex;
+    flex-direction: column;
     position: relative; /* so position: absolute works for tracklog_info */
-    display: inline-block;
-    height: 100%;
-    width: 70%;
     margin-right: 8px;
+    flex: 4;
 }
 
 #right_pane button {
