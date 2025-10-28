@@ -398,11 +398,13 @@ var B21_GLIDERS_DATA = {
             "NB21_ACFG": [ "0D933FB14EC7C1FC5E9C50FF",
                         '617D8901FFC57865966C1A42',
                         'AD2A2DAE9489BE555A943A0B',
-                        '7E3FC6A03E66257D41360809'
+                        '7E3FC6A03E66257D41360809',
+                        '35D6021031870C25807D6747' // V5 B21 mod 1.0.5
             ],
             "NB21_FMCG": [ "612014C72D2B9816C06CB778",
                         '8BDD0288671E70B14A3F9944',
-                        'D44F8E99540D500341A45DE0'
+                        'D44F8E99540D500341A45DE0',
+                        'A7342E88BA89EC47AA0EAB70' // V4 B21 mod 1.0.5
             ],
             "MAX_WEIGHT_KG": 600,
             "VNE_TAS_KPH": 282
@@ -537,6 +539,7 @@ class B21_GLIDERS {
     }
 
     static check_key(glider_type, event_key, chksum) {
+        console.log("B21_GLIDERS.check_key()",glider_type, event_key, chksum);
         let chksums = B21_GLIDERS.lookup_key(glider_type, "NB21_"+event_key);
         if (chksums == null) {
             return null; // key not found
