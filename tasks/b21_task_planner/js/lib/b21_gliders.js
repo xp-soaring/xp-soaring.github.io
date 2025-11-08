@@ -328,12 +328,14 @@ var B21_GLIDERS_DATA = {
             "NB21_ACFG": [
                 'AC1C296A90290B150175BD02', // V1 1.0.1
                 'BA8BD315D8CA3EC937FF66A4', // V2 ?
-                '902F34ACD16BC5ECBB3F628B'  // V3 1.0.3 2024
+                '902F34ACD16BC5ECBB3F628B', // V3 1.0.3 2024
+                '1C8F6DDB3CE0135B3FF65110'  // V4 1.0.5 2024
             ],
             "NB21_FMCG": [
                 '119F1C2C0B9C9BE3EFCDFC6D', // V1 1.0.1
                 'FCA8B719D90BF9BB7B11E97E', // V2 ?
-                'B1FB63B485907BFFB56AA7C5'  // V3 1.0.3 2024
+                'B1FB63B485907BFFB56AA7C5', // V3 1.0.3 2024
+                'D55E92597425CED1F3BB118D'  // V4 1.0.5 2024
             ],
             "MAX_WEIGHT_KG": 600,
             "VNE_TAS_KPH": 282
