@@ -179,10 +179,12 @@ var B21_GLIDERS_DATA = {
             "TITLE": "AS-33 15m (GotFriends)",
             "TITLE_STRS": [ "as.33.*15","as33.*15", "as-33.*15" ],
             "NB21_ACFG": [
-                'E79771C31BFCB65B35C1B0B6'  // V1 1.0.3 2024
+                'E79771C31BFCB65B35C1B0B6',  // V1 1.0.3 2024
+                'F43D42D4AE125F74BB0912B0'   // V2
              ],
             "NB21_FMCG": [
-                'F0071E3A06F4EFA1454BC978'  // V1 1.0.3 2024
+                'F0071E3A06F4EFA1454BC978',  // V1 1.0.3 2024
+                 'A9ADBFCEE54778AABC5DA1FC'  // V2
             ],
             "MAX_WEIGHT_KG": 550,
             "VNE_TAS_KPH": 282
@@ -199,7 +201,7 @@ var B21_GLIDERS_DATA = {
             ],
             "NB21_FMCG": [
                 '119F1C2C0B9C9BE3EFCDFC6D', // V1 1.0.1
-                'FCA8B719D90BF9BB7B11E97E', // V2 ?
+                '7EFA8C97E153AF0220A7C85F', // V2
                 'B1FB63B485907BFFB56AA7C5', // V3 1.0.3 2024
                 'D55E92597425CED1F3BB118D'  // V4 1.0.5 2024
             ],

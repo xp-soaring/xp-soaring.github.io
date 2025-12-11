@@ -778,13 +778,10 @@ th {
     /* height: 100%; */
     /* overflow-y: scroll; */
     position: relative;
+    padding-top: 0.5em;
 }
 
 #tracklogs_scoresheet {
-    left: 0;
-    top: 0;
-    position: absolute;
-    width: 100%;
     display: block;
     cursor: default;
     font-family: monospace;
@@ -805,29 +802,40 @@ th {
     align-items: center;
     font-size: 10px;
     height: 18px;
+    margin-left: 1em;
 }
 
 #tracklogs_table {
-    width: 100%;
-    border-collapse: collapse;
-    table-layout: fixed;
+    display: flex;
+    flex-direction: column;
+}
+
+.tracklogs_entry_sim {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #898989;
+    color: white;
+    font-weight: bold;
 }
 
 /* tracklogs entry */
 
-.tracklogs_entry {
-    border-top: 2px solid black;
-    height: 36px;
+.tracklogs_entry{
+    display: flex;
+    border-top: 1px solid black;
+    flex: 1;
 }
 
 .tracklogs_entry_current {
+    display: flex;
     border: 4px solid yellow;
     background-color: yellow;
-    height: 36px;
+    flex: 1;
 }
 
 .tracklogs_entry_checkbox {
-    width: 5%;
+    display: flex;
 }
 
 /* tracklogs info column */
@@ -836,27 +844,34 @@ th {
     text-align: left;
     background-color: #e6ffff;
     font-size: 14px;
+    overflow-x: hidden;
+    flex: 4;
 }
 
 .tracklogs_entry_name {
     overflow-x: hidden;
     font-weight: bold;
+    display: flex;
+}
+
+.tracklogs_entry_name_pilot {
+    flex: 4;
 }
 
 /* tracklogs finished div in tracklogs_entry_name */
 
 .tracklogs_entry_finished {
     background-color: #e6ffff;
-    min-width: 10px;
     text-align: center;
-    float: right;
+    flex: 1;
+    white-space: nowrap;
 }
 
 .tracklogs_entry_finished_ok {
     background-color: lightgreen;
-    min-width: 10px;
     text-align: center;
-    float: right;
+    flex: 1;
+    white-space: nowrap;
 }
 
 .tracklogs_entry_finished_ok.penalties {
@@ -869,9 +884,9 @@ th {
 
 
 .tracklogs_entry_filename {
-    max-width: 95%;
     overflow-x: hidden;
     white-space: nowrap;
+    text-overflow: ellipsis
 }
 
 .tracklogs_entry_info:hover {
