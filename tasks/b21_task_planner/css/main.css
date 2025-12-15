@@ -1423,46 +1423,58 @@ th {
 
 .leaflet-popup-content-wrapper, .leaflet-popup.tip {
     /* background-color: lightgrey; */
-  }
+}
 
-  .leaflet-container {
-      cursor: auto;
-  }
+.leaflet-container {
+    cursor: auto;
+}
 
-  .leaflet-popup-content input {
-      border-style: solid;
-      border-width: 1px;
-      margin: 1px;
-  }
+.leaflet-popup-content input {
+    border-style: solid;
+    border-width: 1px;
+    margin: 1px;
+}
 
-  .leaflet-grab {
-      cursor: crosshair;
-  }
+.leaflet-grab {
+    cursor: crosshair;
+}
 
-  .leaflet-dragging .leaflet-grab {
-     cursor: move;
-  }
+.leaflet-dragging .leaflet-grab {
+    cursor: move;
+}
 
-  /* This is the tracklog info details for the current tracklog point */
-  .tracklog_popup .leaflet-popup-content-wrapper,
-  .tracklog_popup .leaflet-popup-tip
-  {
-      background: transparent;
-      text-align: center;
-      color: blue;
-      box-shadow: none;
-  }
+/* This is the tracklog info details for the current tracklog point */
+.tracklog_popup .leaflet-popup-content-wrapper,
+.tracklog_popup .leaflet-popup-tip
+{
+    background: transparent;
+    text-align: center;
+    color: blue;
+    box-shadow: none;
+}
 
-  /* these popups appear when mouse hovers over any airport/poi on map*/
-  .airport_popup .leaflet-popup-content-wrapper,
-  .airport_popup .leaflet-popup-tip
-  {
-      background-color: lightgrey;
-  }
+/* these popups appear when mouse hovers over any airport/poi on map*/
+.airport_popup .leaflet-popup-content-wrapper,
+.airport_popup .leaflet-popup-tip
+{
+    background-color: lightgrey;
+}
 
-  /* This is the 'task waypoint' menu */
-  .wp_popup .leaflet-popup-content-wrapper,
-  .wp_popup .leaflet-popup-tip
-  {
-      background-color: lightgreen;
-  }
+/* This is the 'task waypoint' menu */
+.wp_popup .leaflet-popup-content-wrapper,
+.wp_popup .leaflet-popup-tip
+{
+    background-color: lightgreen;
+}
+
+.mouseposition.leaflet-control {
+    background-color: #ffffffb0;
+    color: #383838;
+    border-right: 2px solid #aaaaaa;
+    border-bottom: 2px solid #aaaaaa;
+    padding: 1px 5px 1px 5px;
+    margin-left: 6px;
+    margin-bottom: 6px;
+    border-left: 2px solid #888888;
+}
+
