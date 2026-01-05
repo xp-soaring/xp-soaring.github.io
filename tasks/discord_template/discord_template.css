@@ -51,10 +51,15 @@ body {
 
 #header_right {
     position: relative;
-    /* display: inline-flex; */
-    /* border: 1px solid blue; */
-    /* background-color: lightblue; */
+    display: inline-flex;
+    border: 1px solid blue;
+    background-color: lightblue;
     flex: 4;
+    /* width: 50px; */
+    border-radius: 2em;
+    padding: 0.2em;
+    align-items: center;
+    justify-content: center;
 }
 
 table {
@@ -254,7 +259,7 @@ table {
     color: blue;
 }
 
-.preview_hammertime {
+#discorddoc_preview .preview_hammertime {
     display: inline-block;
     color: #fff;
     background-color: #626262;
@@ -263,4 +268,13 @@ table {
     padding-right: 3px;
     padding-top: 2px;
     padding-bottom: 2px;
+}
+
+#discorddoc_preview .preview_heading {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+#discorddoc_preview .preview_flag {
+    width: 1.4em;
 }

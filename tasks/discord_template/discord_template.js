@@ -1,5 +1,10 @@
 "use strict"
 
+/* Notes:
+    * "input" refers to the user input on the "Template" form.
+    * "preview" refers to the formatted 'preview' content with the "Copy to clipboard" button
+    * "output" refers to the date/time-substituted input that should be copied to the clipboard
+*/
 class DiscordDoc {
     constructor() {
         let dd = this;
@@ -59,6 +64,14 @@ class DiscordDoc {
             dd.ui_hammertime_copy(dd.hammertime_time_el);
         });
 
+        // dd.hammertime_time_plus_display_el
+
+        dd.hammertime_time_plus_display_el = document.getElementById("hammertime_time_plus_display");
+        dd.hammertime_time_plus_el = document.getElementById("hammertime_time_plus");
+        document.getElementById("hammertime_time_plus_button").addEventListener("click", (e) => {
+            dd.ui_hammertime_copy(dd.hammertime_time_plus_el);
+        });
+
         // dd.hammertime_datetime_display_el
 
         dd.hammertime_datetime_display_el = document.getElementById("hammertime_datetime_display");
@@ -70,11 +83,11 @@ class DiscordDoc {
         // -------------------------------
         // Discord template elements
 
-        // dd.template_el
+        // dd.input_el
 
-        dd.template_el = document.getElementById("discorddoc_template");
-        dd.template_el.addEventListener("input", (event) => {
-            dd.template_updated(dd);
+        dd.input_el = document.getElementById("discorddoc_template");
+        dd.input_el.addEventListener("input", (event) => {
+            dd.input_updated(dd);
         });
 
         document.getElementById("store_template_buttton").addEventListener("click", (e) => {
@@ -103,7 +116,7 @@ class DiscordDoc {
             dd.load_dropdown_hide(dd);
         });
 
-        dd.template_str = null; // Will hold current template string
+        dd.input_str = null; // Will hold current template string
 
         dd.init_load(dd);
 
@@ -126,24 +139,24 @@ class DiscordDoc {
     }
 
     // The user has changed the template
-    template_updated(dd) {
+    input_updated(dd) {
         // First we have to clean out the double linefeeds in the template
         // Remove single leading linefeed (<div>)
-        let html_str = dd.template_el.innerHTML;
+        let html_str = dd.input_el.innerHTML;
         if (html_str.startsWith("<div><br></div>")) {
             html_str = html_str.slice(14);
         }
         if (html_str.startsWith("<br>")) {
             html_str = html_str.slice(4);
         }
-        dd.template_str = html_str
+        dd.input_str = html_str
             .replaceAll("<div><br></div>","\n")
             .replaceAll("<div>","\n")
             .replaceAll("</div>","")
             .replaceAll("<br>","\n");
 
-        //console.log(`template_updated() '${dd.template_str}'`);
-        //console.log(`linefeeds: ${dd.template_str.replaceAll('\n','$')}`);
+        //console.log(`input_updated() '${dd.input_str}'`);
+        //console.log(`linefeeds: ${dd.input_str.replaceAll('\n','$')}`);
         dd.update_output(dd);
     }
 
@@ -156,6 +169,10 @@ class DiscordDoc {
         dd.hammertime_time_el.innerText = dd.output_replace_time("#TIME#");
         dd.hammertime_time_display_el.innerHTML = dd.preview_replace_time("#TIME#");
 
+        // #TIME+10#
+        dd.hammertime_time_plus_el.innerText = dd.output_replace_time("#TIME+10#");
+        dd.hammertime_time_plus_display_el.innerHTML = dd.preview_replace_time("#TIME+10#");
+
         // #DATETIME#
         dd.hammertime_datetime_el.innerText = dd.output_replace_datetime("#DATETIME#");
         dd.hammertime_datetime_display_el.innerHTML = dd.preview_replace_datetime("#DATETIME#");
@@ -165,7 +182,7 @@ class DiscordDoc {
         let display_str = "";
         dd.discord_str = "";
 
-        let lines = dd.template_str.split("\n");
+        let lines = dd.input_str.split("\n");
         for (let i=0; i<lines.length; i++) {
             let display_line = lines[i];
             let output_line = lines[i];
@@ -181,6 +198,12 @@ class DiscordDoc {
             // Replace #TIME...#
             display_line = dd.preview_replace_time(display_line);
             output_line = dd.output_replace_time(output_line);
+
+            // Replace ":flag_za:" with "<img... src="flags/za.svg"/>"
+            display_line = dd.preview_replace_flags(display_line);
+
+            // Replace "# xxx" with "<div...>xxxx</div>"
+            display_line = dd.preview_replace_heading(display_line); // this MUST be after replacing date/time as both start with "#"
 
             // Replace **xxxx** with <b>xxxx</b>
             display_line = dd.preview_replace_bold(display_line);
@@ -366,6 +389,28 @@ class DiscordDoc {
         return replaced_str;
     }
 
+    preview_replace_flags(str) {
+        let return_str = str;
+        let flag_regexp = /:flag_(\w\w):/g;
+        for (const match of str.matchAll(flag_regexp)) {
+            return_str = return_str.replace(match[0], `<img class="preview_flag" src="flags/${match[1]}.svg"/>`);
+        }
+        return return_str;
+    }
+    // replace "# xxx" with "<div class="preview_heading>xxx</div>
+    preview_replace_heading(str) {
+        //console.log("preview_replace_heading "+str);
+        if (str.indexOf("#") == 0) {
+            let offset = 1;
+            if (str.startsWith("# ")) {
+                offset = 2;
+            }
+            console.log("preview_replace_heading "+str);
+            return '<div class="preview_heading">'+str.slice(offset)+"</div>";
+        }
+        return str;
+    }
+
     preview_replace_bold(str) {
         let replaced_str = str;
         let bold_pos = replaced_str.indexOf("**");
@@ -418,11 +463,11 @@ class DiscordDoc {
         return replaced_str;
     }
 
-    get_adjust_s(template_str) {
-        let time_pos = template_str.indexOf("+");
+    get_adjust_s(input_str) {
+        let time_pos = input_str.indexOf("+");
         let adjust_sign = 1;
         if (time_pos < 0) {
-            time_pos = template_str.indexOf("-");
+            time_pos = input_str.indexOf("-");
             if (time_pos < 0) {
                 return 0;
             }
@@ -431,7 +476,7 @@ class DiscordDoc {
 
         // e.g. "#TIME+1:30#"
         // to "1:30"
-        let adjust_str = template_str.slice(time_pos+1,-1);
+        let adjust_str = input_str.slice(time_pos+1,-1);
         // to ["1", "30"] i.e. hours, minutes
         let adjust_parts = adjust_str.split(":");
         let adjust_s = parseInt(adjust_parts[adjust_parts.length - 1]) * 60; // add minutes
@@ -487,11 +532,11 @@ class DiscordDoc {
         dd.store_index = localStorage.getItem("template_index");
         if (dd.store_index != null) {
             dd.store_index = parseInt(dd.store_index);
-            dd.template_str = localStorage.getItem("template_"+dd.store_index);
+            dd.input_str = localStorage.getItem("template_"+dd.store_index);
         } else {
-            dd.template_str = DiscordDoc.initial_template_str;
+            dd.input_str = DiscordDoc.initial_input_str;
         }
-        dd.template_el.innerText = dd.template_str;
+        dd.input_el.innerText = dd.input_str;
     }
 
     ui_click_load(dd) {
@@ -535,14 +580,14 @@ class DiscordDoc {
     }
 
     load_stored_template(dd, index) {
-        let template_str = localStorage.getItem("template_"+index.toFixed(0));
-        if (template_str != null && template_str != 'null') {
-            dd.template_el.innerText = template_str;
+        let input_str = localStorage.getItem("template_"+index.toFixed(0));
+        if (input_str != null && input_str != 'null') {
+            dd.input_el.innerText = input_str;
         } else {
-            dd.template_el.innerText = DiscordDoc.initial_template_str;
+            dd.input_el.innerText = DiscordDoc.initial_input_str;
         }
         dd.load_dropdown_el.style.display = "none";
-        dd.template_updated(dd);
+        dd.input_updated(dd);
     }
 
     ui_click_store(dd) { //DEBUG add popup confirm for store 'firstline'
@@ -555,7 +600,7 @@ class DiscordDoc {
 
         let index_value = dd.store_index.toFixed(0);
 
-        let template_title = dd.template_str.split('\n')[0];
+        let template_title = dd.input_str.split('\n')[0];
         if (template_title == null || template_title.trim() == "") {
             template_title = `Template ${dd.store_index}`;
         }
@@ -563,7 +608,7 @@ class DiscordDoc {
         let store_var_name = "template_"+index_value;
         console.log(`Storing tmeplate '${template_title}' as ${store_var_name}`);
 
-        localStorage.setItem(store_var_name, dd.template_str);
+        localStorage.setItem(store_var_name, dd.input_str);
         localStorage.setItem("template_index", index_value);
         localStorage.setItem(store_var_name+"_title", template_title);
 
@@ -583,29 +628,38 @@ class DiscordDoc {
     // *********   Default initial tempalte               ********************************
     // ***********************************************************************************
 
-    static initial_template_str = `SSC Task Title
+    static initial_input_str = `# SSC ZA Paarl AAT :flag_za:
 
-#DATETIME#
+**Meetup:** #DATETIME#
 
-**MSFS Server:** Southeast Asia
+**MSFS Server:** South-East Asia
 
-**Sim date/time:** Nov 11th 3pm local (i.e. 3pm *on day we are flying*)
+**Glider:** Freeware DG808S from Touching Cloud
 
-**Max start:** 5000 Feet MSL
+**Sim date/time:** 7th Jan 1pm local (i.e. 1300 *on day we are flying*)
 
-Distance is 300km, expected duration ~90 min
+**Min Duration:** 1 hour 40 mins
+
+**Max start:** 6000 Feet MSL
+
+**Departure:** Paarl Airport FAPU runway 30.
+
+**Distance:** AAT 329km (min 271km .. max 388km)
 
 **Meet/Briefing:** #TIME#
-At this time we meet in the voice chat and get ready. https://discord.com/channels/876123356385149009/876397825934626836
+At this time we meet in the voice chat and get ready. Perhaps test load the sim 
+and spawn at FAPU to check for MSFS updates, but then QUIT the sim and wait at 
+the Windows Desktop. https://discord.com/channels/876123356385149009/876397825934626836
 
-**Synchronized Fly:** #TIME+15#
-At this time we simultaneously click the [FLY] button to sync our weather.
+**Synchronized Start MSFS and Launch:** #TIME+10#
+At this time we all simultaneously start MSFS, choose the plane, load the departure/runway, 
+set the time/weather, and hit "Fly Now". This will give us all clouds in the same places.
 
-**Task Start:** #TIME+45#
+**Task Start:** will be called by task organizer around #TIME+35#
 At this time we cross the starting line and start the task.
 
-A scenic trip out of Valparaiso, Chile.  Pilots who finish this task successfully during the event will be eligible to apply for the Silver Soaring Badge :silver:
-`;
+A ridge and thermals task in South Africa.  Pilots who finish this task successfully 
+with over 300km during the event will be eligible to apply for the Silver Soaring Badge :silver:`;
 
 } // end class DiscordDoc
 
