@@ -175,7 +175,7 @@ th {
 
 #left_pane {
     display: inline-block; /* show/hide will toggle this to "none" */
-    width: 25%;
+    /* width: 25%; */
     height: 100%;
     margin-left: 5px;
     background-color: white;
