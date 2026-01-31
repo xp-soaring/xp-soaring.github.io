@@ -278,7 +278,7 @@ th {
 #rescore_button {
     display: none;
     float: right;
-    margin-right: 10px;
+    margin-right: 0.5em;
 }
 
 #rescore_button button {
@@ -288,7 +288,7 @@ th {
     border-radius: 5px;
     padding-left: 2px;
     padding-right: 2px;
-    font-size: calc(min(18px,max(10px,1vw)));
+    font-size: 0.9em;
 }
 
 /* *************************************************** */
@@ -562,7 +562,7 @@ th {
 }
 
 #task_info_header input[type='text'] {
-    background-color: #5485db;
+    background-color: #84a9eb;
     color: white;
     font-size: 16px;
     font-weight: bold;
@@ -576,7 +576,10 @@ th {
     background-color: #5485db;
     border: 1px solid white;
     border-radius: 5px;
-    display: inline-flex;
+    display: flex;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 6px;
     padding-right: 5px;
     padding-left: 3px;
@@ -591,6 +594,7 @@ th {
 }
 
 #task_info_header .task_is_local {
+    margin-top: 0.3em;
 }
 
 #task_info_content {
@@ -631,7 +635,7 @@ th {
     font-size: 12px;
     width: 1%;
     white-space: nowrap;
-    vertical-align: bottom;
+    vertical-align: middle;
     font-weight: bold;
     color: darkred;
 }
