@@ -298,6 +298,7 @@ th {
 #drop_zone {
     display: inline-block;
     width: 65%;
+    background-color: #d9efc7; /*#C7E8AE;*/
     /* min-height: 25%;*/
     border-radius: 20px;
     border: 2px dashed gray;
@@ -410,8 +411,12 @@ th {
     text-overflow: ellipsis;
 }
 
+.wp_icao_rw {
+    white-space: nowrap;
+}
+
 .wp_icao {
-    width: 60px;
+    width: 2.8em;
 }
 
 .wp_runway {
@@ -422,12 +427,25 @@ th {
     font-size: 0.8em;
 }
 
-.wp_alt {
-    width: 50px;
+.wp_elev_aat {
+    white-space: nowrap;
 }
 
-.wp_radius {
-    width: 50px;
+.wp_aat {
+    display: inline-flex;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin-left: 10px;
+    padding-left: 4px;
+    padding-right: 2px;
+}
+
+.wp_alt {
+    width: 3em;
+}
+
+.wp_start_fin_radius {
+    white-space: nowrap;
 }
 
 .wp_start {
@@ -446,13 +464,12 @@ th {
     padding-right: 2px;
 }
 
-.wp_aat {
-    display: inline-flex;
-    border: 1px solid black;
-    border-radius: 4px;
-    margin-left: 10px;
-    padding-left: 4px;
-    padding-right: 2px;
+.wp_radius {
+    width: 3em;
+}
+
+.wp_max_min_alt {
+    white-space: nowrap;
 }
 
 /* *************************************************** */
@@ -584,6 +601,7 @@ th {
     padding-right: 5px;
     padding-left: 3px;
     color: yellow;
+    align-items: center;
 }
 
 #task_info_header .task_is_aat select {
@@ -1431,6 +1449,10 @@ th {
 
 .leaflet-container {
     cursor: auto;
+}
+
+.leaflet-popup-content {
+    width: auto !important;
 }
 
 .leaflet-popup-content input {
