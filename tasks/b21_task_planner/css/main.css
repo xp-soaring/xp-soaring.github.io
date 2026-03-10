@@ -162,6 +162,38 @@ th {
     background-color: #777777;
 }
 
+/* ****************************** */
+/*  Apps Menu                     */
+/* ****************************** */
+
+#apps_button {
+    /* margin-left: 1em; */
+}
+
+#apps_menu {
+    position: absolute;
+    display: none;
+    top: 0px;
+    left: 0.5em;
+    min-width: 11em;
+    z-index: 2000;
+    background-color: #ddd;
+    text-wrap: nowrap;
+    overflow: hidden;
+    border-bottom-left-radius: 0.8em;
+    border-bottom-right-radius: 0.8em;
+}
+
+.apps_item {
+    background-color: #d7d7d7;
+    padding: 4px 15px;
+    cursor: pointer;
+}
+
+.apps_item:hover {
+    background-color: #777777;
+}
+
 /* ******************************************* */
 /* ******   PANES           ****************** */
 /* ******************************************* */
@@ -174,25 +206,28 @@ th {
 }
 
 #left_pane {
-    display: inline-block; /* show/hide will toggle this to "none" */
+    display: flex; /* show/hide will toggle this to "none" */
+    flex-direction: column;
     /* width: 25%; */
     height: 100%;
     margin-left: 5px;
     background-color: white;
     overflow-y: auto;
-    min-width: 18em;
-    max-width: 25em;
+    /* min-width: 18em;
+    max-width: 25em; */
     border-right: 2px solid black;
     vertical-align: top;
+    min-width: 16em;
 }
 
 #left_top_area { /* drop_zone + left_pane_hide */
     display: flex;
     justify-content: right;
+    align-items: start;
 }
 
 #left_pane_hide {
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
     flex: 1;
     justify-content: right;
@@ -296,8 +331,9 @@ th {
 /* *************************************************** */
 
 #drop_zone {
-    display: inline-block;
-    width: 65%;
+    display: flex;
+    flex-direction: column;
+    /* width: 15em; */
     background-color: #d9efc7; /*#C7E8AE;*/
     /* min-height: 25%;*/
     border-radius: 20px;
@@ -307,9 +343,10 @@ th {
     margin-top: 10px;
     margin-bottom: 10px;
     text-align: center;
+    align-items: center;
     line-height: 25px;
     padding-bottom: 6px;
-    flex: 3;
+    flex: 5;
 }
 
 #drop_zone_choose_input {
@@ -347,7 +384,7 @@ th {
     height: 100%;
 }
 
-#charts {
+#chart_area {
     width: 100%;
     height: 25%;
     display: none;
@@ -827,6 +864,10 @@ th {
     margin-left: 1em;
 }
 
+#scores_list {
+    padding-left: 0.5em;
+}
+
 #tracklogs_table {
     display: flex;
     flex-direction: column;
@@ -1070,10 +1111,10 @@ th {
 }
 
 .tracklog_info_weather {
-    font-weight: bold;
+    /* font-weight: bold;
     display: flex;
     justify-content: center;
-    background-color: #e6ffff;
+    background-color: #e6ffff; */
 }
 
 #tracklog_info_timeline_table {
