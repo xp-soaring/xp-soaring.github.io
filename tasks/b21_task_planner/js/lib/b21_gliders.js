@@ -670,7 +670,8 @@ var B21_GLIDERS_DATA = {
                         '49297C175A997216905BE06D',
                         '2B2CAD92FD80DE5E3696CD9A', // V3 = MSFS2024 1.3.8
                         '9148FF5AA844B0AC1C8732BD',  // V4 = MSFS2024 1.4.0
-                        '997D55A78464103E481B8092' // V5 MSFS2024 1.4.2
+                        '997D55A78464103E481B8092', // V5 MSFS2024 1.4.2
+                        '962DA21FCD626959FBC2DED2' // V6 MSFS2024 1.5.8
             ],
             "MAX_WEIGHT_KG": 525,
             "VNE_TAS_KPH": 282
