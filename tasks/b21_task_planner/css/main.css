@@ -176,7 +176,7 @@ th {
     top: 0px;
     left: 0.5em;
     min-width: 11em;
-    z-index: 2000;
+    z-index: 2100;
     background-color: #ddd;
     text-wrap: nowrap;
     overflow: hidden;

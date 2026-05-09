@@ -664,7 +664,8 @@ var B21_GLIDERS_DATA = {
             "TITLE_STRS": [ "ls4" ],
             "NB21_ACFG": [ "A48A4EF4E2A9D96C843B4361",
                         '067AD89CAA95B9D8F2104D3C',
-                        '46C5998C473790CDB000AAEC'  // V3 = MSFS2024 1.4.0
+                        '46C5998C473790CDB000AAEC',  // V3 = MSFS2024 1.4.0
+                        '72D3C12F5F1231C754F2F6F4' // V4 MSFS2024 1.6.1
             ],
             "NB21_FMCG": [ "2CF10E6AEDEF85C111F41401",
                         '49297C175A997216905BE06D',
