@@ -733,7 +733,8 @@ var B21_GLIDERS_DATA = {
                         'F310F9D3DEEA4B5B90CBD29B', // V3: 2.0.8
                         'F09A18F3A4B0A1DD95A8308E', // V4: 2.1.0
                         '0D3E5A401F352EE566C53109', // V5: engine?
-                        '3AC21F9E1693E2F26F956EFA'  // V6: 2020/24 release 1
+                        '3AC21F9E1693E2F26F956EFA', // V6: 2020/24 release 1
+                        'C6F182FE3D663796B81AB686'  // V7 FES
             ],
             "MAX_WEIGHT_KG": 565,
             "VNE_TAS_KPH": 292
