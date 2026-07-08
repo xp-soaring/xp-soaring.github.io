@@ -629,6 +629,24 @@ var B21_GLIDERS_DATA = {
             "MAX_WEIGHT_KG": 525,
             "VNE_TAS_KPH": 282
         },
+        "BC_JS3-18": {
+            "KEY": "BC_JS3-18",
+            "TITLE": "JS3-18 (CalVR)",
+            "TITLE_STRS": [ "bc_js3_18" ],
+            "NB21_ACFG": [ 'FB93EDB7A0C4C4A1F3AE8F9B' ], // V1 (0.0.4)
+            "NB21_FMCG": [ '89A25E5FDE491C6B07C4586B' ], // V1 (0.0.4)
+            "MAX_WEIGHT_KG": 600,
+            "VNE_TAS_KPH": 292
+        },
+        "BC_JS3-15": {
+            "KEY": "BC_JS3-15",
+            "TITLE": "JS3-15 (CalVR)",
+            "TITLE_STRS": [ "bc_js3_15" ],
+            "NB21_ACFG": [ "14E993B8CAA8350EF404F92C" ],
+            "NB21_FMCG": [ "350C66E7F8C644AC30537D6B" ],
+            "MAX_WEIGHT_KG": 525,
+            "VNE_TAS_KPH": 292
+        },
         "JS3-18": {
             "KEY": "JS3-18",
             "TITLE": "JS3-18 (Madolo)",
