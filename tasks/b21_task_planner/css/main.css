@@ -1076,8 +1076,8 @@ th {
 
 #tracklog_info_alerts .info_alert {
     display: flex;
-    padding-left: 1em;
-    padding-right: 1em;
+    padding-left: 0.2em;
+    padding-right: 0.2em;
     justify-content: center;
     background-color: pink;
     border-radius: 5px;
@@ -1236,6 +1236,7 @@ th {
 
 #skip_pause_check_text {
     display: flex;
+    align-items: center;
 }
 
 #skip_pause input {
