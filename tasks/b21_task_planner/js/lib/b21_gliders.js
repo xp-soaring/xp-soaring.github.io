@@ -711,8 +711,8 @@ var B21_GLIDERS_DATA = {
             "KEY": "CJS3-18",
             "TITLE": "JS3-18 (CalVR)",
             "TITLE_STRS": [ "cjs3-18","jonkerjs3-18","bc_js3_18" ],
-            "NB21_ACFG": [ 'FB93EDB7A0C4C4A1F3AE8F9B' ], // V1 (0.0.4)
-            "NB21_FMCG": [ '89A25E5FDE491C6B07C4586B' ], // V1 (0.0.4)
+            "NB21_ACFG": [ 'BD191E6D1093839ADF79E3A2' ], // V1 (0.0.8)
+            "NB21_FMCG": [ 'BCBBCC1A4EE88D4883A2D5BB' ], // V1 (0.0.8)
             "MAX_WEIGHT_KG": 600,
             "VNE_TAS_KPH": 292,
             "DEFAULT_PENALTIES": [ "ALL" ]
