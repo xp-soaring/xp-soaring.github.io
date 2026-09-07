@@ -710,9 +710,13 @@ var B21_GLIDERS_DATA = {
         "CJS3-18": {
             "KEY": "CJS3-18",
             "TITLE": "JS3-18 (CalVR)",
-            "TITLE_STRS": [ "cjs3-18","jonkerjs3-18","bc_js3_18" ],
-            "NB21_ACFG": [ 'BD191E6D1093839ADF79E3A2' ], // V1 (0.0.8)
-            "NB21_FMCG": [ 'BCBBCC1A4EE88D4883A2D5BB' ], // V1 (0.0.8)
+            "TITLE_STRS": [ "cjs3-18","jonker.*js.*18","bc_js3_18" ],
+            "NB21_ACFG": [ "BD191E6D1093839ADF79E3A2", // V1 (0.0.8)
+                        "83220356B64B09DCCAEB5784"     // V2 (1.0.9)
+            ],
+            "NB21_FMCG": [ "BCBBCC1A4EE88D4883A2D5BB", // V1 (0.0.8)
+                        "DFDDF0B01D9AECCBADB933A7"     // V2 (1.0.9)
+            ],
             "MAX_WEIGHT_KG": 600,
             "VNE_TAS_KPH": 292,
             "DEFAULT_PENALTIES": [ "ALL" ]
@@ -720,7 +724,7 @@ var B21_GLIDERS_DATA = {
         "CJS3-15": {
             "KEY": "CJS3-15",
             "TITLE": "JS3-15 (CalVR)",
-            "TITLE_STRS": [ "cjs3-15","jonkerjS3-15","bc_js3_15" ],
+            "TITLE_STRS": [ "cjs3-15","jonker.*js3.*15","bc_js3_15" ],
             "NB21_ACFG": [ "14E993B8CAA8350EF404F92C" ],
             "NB21_FMCG": [ "350C66E7F8C644AC30537D6B" ],
             "MAX_WEIGHT_KG": 525,
